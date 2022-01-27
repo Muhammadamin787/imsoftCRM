@@ -5,13 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import {ConfigProvider} from "antd";
 import ruRu from "antd/lib/locale/ru_RU";
 import {BrowserRouter as Router} from "react-router-dom";
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
     <React.StrictMode>
         <ConfigProvider locale={ruRu}>
-            <Router>
-                <App/>
-            </Router>
+           <Provider store={store} >
+                <Router>
+                    <App/>
+                </Router>
+            </Provider> 
         </ConfigProvider>
     </React.StrictMode>,
     document.getElementById('root')

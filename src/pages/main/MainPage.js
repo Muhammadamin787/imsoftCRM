@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {Layout, Menu, Input, Select} from 'antd';
 import "./mainPage.scss";
 
+import BottomTabs from "../../components/tabs/Tabs"
 import {Footer} from "antd/es/layout/layout";
 import {
 	CloseIconSmall,
@@ -10,13 +11,14 @@ import {
 	DiagrammIcon,
 	GlobusIcon2,
 	ServiceIcon,
-	TelegramIcon,
+	TelegramIcon
 } from "../../components/functions/icons";
 import moment from "moment";
 import {AllPages} from "../../pageTemplates";
 import AccountPNG from "../../components/functions/Ellipse 3.png"
 import FirstPage from "../mainPage/FirstPage";
 import {PageIndex} from "../PageIndex";
+import AccountPNG from "../../components/functions/Ellipse 3.png"
 
 // Bismillahir rohmanyir rohiym!
 
@@ -26,16 +28,16 @@ const MainPage = () => {
 	setInterval(() => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")), 1000)
 
 	const {Header, Content} = Layout;
-	const {Search} = Input;
-	const {Option} = Select;
+	const { Search } = Input;
+	const { Option } = Select;
 	const {SubMenu, Item} = Menu;
 
 
 	const onSearch = value => console.log(value);
-
 	function handleChangeSelect(value) {
 		console.log(`selected ${value}`);
-	}
+	  }
+
 
 
 	return (
@@ -55,18 +57,18 @@ const MainPage = () => {
 									</Item>
 								)}
 							</SubMenu> :
-							<Item key={i} icon={menu.icon}>
-								<Link to={menu.path} style={{marginLeft: "10px"}}>
+							<Item key={i} icon={menu.icon} >
+								<Link to={menu.path} style={{marginLeft:"10px"}}>
 									{menu.text}
 								</Link>
 							</Item>
 					)}
 				</Menu>
 				<div className="header__user-profile">
-					<Search placeholder="Qidiruv" className="user-profile-search" allowClear onSearch={onSearch}/>
-					<img className="user-profile-image" src={AccountPNG} alt="Foydalanuvchi rasmi"/>
-					<Select onChange={handleChangeSelect} bordered={false}>
-						{/* <Option value="Jack">JAck</Option> */}
+					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} />
+						<img className="user-profile-image" src={AccountPNG} />
+					<Select  onChange={handleChangeSelect} bordered={false} >
+						<Option value="Jack">JAck</Option>
 					</Select>
 				</div>
 			</Header>
@@ -84,10 +86,9 @@ const MainPage = () => {
 				</div>
 			</Content>
 			<Footer className="site-footer">
-				<div className="site-footer__tabs">
-					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
-					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
-				</div>
+					<BottomTabs />
+					{/* <div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
+					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div> */}
 				<div className="site-footer__content">
 					<div>
 						<GlobusIcon2/>
