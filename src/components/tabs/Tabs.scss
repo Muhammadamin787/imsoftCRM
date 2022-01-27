@@ -1,62 +1,55 @@
 .site-footer__tabs {
+  display: flex;
+  background: #4447e2;
+  height: 30px;
+  border: 1px solid red;
+
+  .ant-tabs-tab {
     display: flex;
-    background: #4447E2;
-    height: 25px;
-    border: 1px solid red;
-    // border-radius: 5px;
-    .ant-tabs-tab {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        padding: 12px 0;
-        font-size: 14px;
-        background: transparent;
-        border: 0;
-        height: 25px;
-        min-width: 100px;
-        outline: none;
-        cursor: pointer;
-        .anticon-close{
-            position: absolute;
-            right: 5px;
-            top: 5px;
-        }
-    }
-    .ant-tabs-tab{
-        background:red;
-    }
-    .site-footer__tab {
-        background: #5154FF !important;
-        border-radius: 5px;
-    border: 1px solid yellow;
-
-        // border: 1px solid yellow;
-    //     display: block;
-    //   padding: 3px 12px;
-    //   margin-right: 3px;
-    //   align-items: center;
-    //   color: #fff;
-
-    //   svg {
-    //     margin-right: 7px;
-    //     width: 17px;
-    //     height: 17px;
-    //   }
-
-    //   .close-icon-small {
-    //     margin-left: 8px;
-    //     margin-right: -3px;
-    //     cursor: pointer;
-    //     transition: .07s;
-    //     height: 100%;
-    //     width: 19px;
-    //     padding: 0 2.8px;
-
-    //     &:hover {
-    //       path {
-    //         fill: #f14a4a;
-    //       }
-    //     }
-    //   }
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    font-size: 14px;
+    background: transparent;
+    border: 0;
+    height: 30px;
+    min-width: 100px;
+    outline: none;
+    cursor: pointer;
+    .anticon-close {
+      position: absolute;
+      right: 5px;
+      top: 9px;
     }
   }
+
+  .ant-tabs-tab-remove {
+    color: #ffffff;
+    font-size: 10px;
+  }
+  .site-footer__tab {
+    background: #5154ff !important;
+    border-radius: 5px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-left: 15px;
+    }
+    svg {
+      width: 17px;
+      height: 17px;
+      fill: #ffffff;
+      path {
+        fill: #ffffff;
+      }
+    }
+  }
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  background: #5154ff;
+  border-radius: 5px;
+  color: #ffffff;
+}

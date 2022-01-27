@@ -71,9 +71,9 @@ class BottomTabs extends React.Component {
         >
           {this.state.panes.map(pane => (
             <TabPane 
-              tab={<span><ServiceIcon/>{pane.title}</span>}
-              key={pane.key}
-              className="site-footer__tab"
+              tab={<div className="site-footer__tab" ><ServiceIcon/>  <span>{pane.title}</span></div>}
+              key={pane.key} 
+              forceRender="true"
               >
               {/* {pane.content}   */}
             </TabPane>
