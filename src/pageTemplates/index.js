@@ -4,6 +4,7 @@ import MainTemplate from "./MainTemplate";
 import ServiceTemplate from './ServiceTemplate';
 import ReportTemplate from './ReportTemplate';
 
+
 export const AllPages =[
     MainTemplate,
     CustomersTemplate,
