@@ -1,11 +1,13 @@
 import React from 'react';
-import {COMMON_PAGE} from "./pageConstants/PageTypes";
-import CommonPage from "./commonPage/CommonPage";
+import {SERVIS_PAGE, CUSTOMERS_PAGE, } from "./pageConstants/PageTypes";
+import ServisPage from "./ServisPage/ServisPage";
 
 export const PageIndex = ({currentPage}) => {
 	switch (currentPage.type) {
-		case COMMON_PAGE:
-			return <CommonPage page={currentPage}/>;
+		case SERVIS_PAGE:
+			return <ServisPage page={currentPage}/>;
+		case CUSTOMERS_PAGE:
+			return <ServisPage page={currentPage}/>;	
 		default:
 			return <h1>Not found</h1>;
 	}

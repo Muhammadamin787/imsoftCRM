@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom";
 import React, {useState} from "react";
-import {Layout, Menu} from 'antd';
+import {Layout, Menu, Input, Select } from 'antd';
+import { AudioOutlined } from '@ant-design/icons';
 import "./mainPage.scss";
-import MainTemplate from "../../pageTemplates/MainTemplate";
+
 import {Footer} from "antd/es/layout/layout";
 import {
 	CloseIconSmall,
@@ -10,22 +11,32 @@ import {
 	DiagrammIcon,
 	GlobusIcon2,
 	ServiceIcon,
-	TelegramIcon
+	TelegramIcon,
 } from "../../components/functions/icons";
 import moment from "moment";
+import { AllPages } from "../../pageTemplates";
+import AccountPNG from "../../components/functions/Ellipse 3.png"
 
 // Bismillahir rohmanyir rohiym!
+
+
 
 const MainPage = () => {
 	const [currentTime, setCurrentTime] = useState(moment(new Date()).format("DD.MM.YYYY hh:mm:ss"));
 	setInterval(() => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")), 1000)
 
 	const {Header, Content} = Layout;
+	const { Search } = Input;
+	const { Option } = Select;
 	const {SubMenu, Item} = Menu;
 
-	const AllPages = [
-		MainTemplate,
-	];
+
+	const onSearch = value => console.log(value);  
+	function handleChangeSelect(value) {
+		console.log(`selected ${value}`);
+	  }
+	
+    
 
 	return (
 		<Layout className="site-container">
@@ -40,22 +51,23 @@ const MainPage = () => {
 										<Link to={sub.path}>
 											{sub.text}
 										</Link>
+										
 									</Item>
 								)}
 							</SubMenu> :
-							<Item key={i} icon={menu.icon}>
-								<Link to={menu.path}>
+							<Item key={i} icon={menu.icon} >
+								<Link to={menu.path} style={{marginLeft:"10px"}}>
 									{menu.text}
 								</Link>
 							</Item>
 					)}
-					{/*<Menu.Item className="header__navigation__item" key="1"><MainIcon/>Бош меню</Menu.Item>*/}
-					{/*<Menu.Item key="2">Янгиликлар</Menu.Item>*/}
-					{/*<Menu.Item key="3">Ёрдам</Menu.Item>*/}
-					{/* hello world */}
 				</Menu>
 				<div className="header__user-profile">
-					Search input
+					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} /> 
+						<img className="user-profile-image" src={AccountPNG} />
+					<Select  onChange={handleChangeSelect} bordered={false} >
+						{/* <Option value="Jack">JAck</Option> */}
+					</Select>
 				</div>
 			</Header>
 			<Content className="site-layout" style={{padding: '0 50px', marginTop: 64}}>

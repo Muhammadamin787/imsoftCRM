@@ -31,6 +31,21 @@
     }
 
     .header__user-profile {
+      text-align: center;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      .user-profile-search{
+        display: block;
+        background: rgba(186, 200, 220, 0.2);
+        border-radius: 10px;
+        outline: none;
+        border: none;
+      }
+      .user-profile-image{
+        transform: translate(10px,-5px)
+      }
+
     }
   }
 
