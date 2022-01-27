@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {ConfigProvider} from "antd";
 import ruRu from "antd/lib/locale/ru_RU";
 import {BrowserRouter as Router} from "react-router-dom";
-import { store } from './app/store'
+import { store } from './store'
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
