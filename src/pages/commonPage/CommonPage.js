@@ -4,8 +4,7 @@ import "./pageStyles.scss";
 const CommonPage = ({page}) => {
     return (
         <div className="common-page">
-            <h1>Dashboard</h1>
-            <h3>Dashboard</h3>
+            <h1>This is a Common Page</h1>
         </div>
     );
 };

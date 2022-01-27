@@ -1,7 +1,6 @@
-import {Link} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
 import React, {useState} from "react";
-import {Layout, Menu, Input, Select } from 'antd';
-import { AudioOutlined } from '@ant-design/icons';
+import {Layout, Menu, Input, Select} from 'antd';
 import "./mainPage.scss";
 
 import {Footer} from "antd/es/layout/layout";
@@ -14,11 +13,12 @@ import {
 	TelegramIcon,
 } from "../../components/functions/icons";
 import moment from "moment";
-import { AllPages } from "../../pageTemplates";
+import {AllPages} from "../../pageTemplates";
 import AccountPNG from "../../components/functions/Ellipse 3.png"
+import FirstPage from "../mainPage/FirstPage";
+import {PageIndex} from "../PageIndex";
 
 // Bismillahir rohmanyir rohiym!
-
 
 
 const MainPage = () => {
@@ -26,17 +26,17 @@ const MainPage = () => {
 	setInterval(() => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")), 1000)
 
 	const {Header, Content} = Layout;
-	const { Search } = Input;
-	const { Option } = Select;
+	const {Search} = Input;
+	const {Option} = Select;
 	const {SubMenu, Item} = Menu;
 
 
-	const onSearch = value => console.log(value);  
+	const onSearch = value => console.log(value);
+
 	function handleChangeSelect(value) {
 		console.log(`selected ${value}`);
-	  }
-	
-    
+	}
+
 
 	return (
 		<Layout className="site-container">
@@ -51,57 +51,36 @@ const MainPage = () => {
 										<Link to={sub.path}>
 											{sub.text}
 										</Link>
-										
+
 									</Item>
 								)}
 							</SubMenu> :
-							<Item key={i} icon={menu.icon} >
-								<Link to={menu.path} style={{marginLeft:"10px"}}>
+							<Item key={i} icon={menu.icon}>
+								<Link to={menu.path} style={{marginLeft: "10px"}}>
 									{menu.text}
 								</Link>
 							</Item>
 					)}
 				</Menu>
 				<div className="header__user-profile">
-					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} /> 
-						<img className="user-profile-image" src={AccountPNG} />
-					<Select  onChange={handleChangeSelect} bordered={false} >
+					<Search placeholder="Qidiruv" className="user-profile-search" allowClear onSearch={onSearch}/>
+					<img className="user-profile-image" src={AccountPNG} alt="Foydalanuvchi rasmi"/>
+					<Select onChange={handleChangeSelect} bordered={false}>
 						{/* <Option value="Jack">JAck</Option> */}
 					</Select>
 				</div>
 			</Header>
 			<Content className="site-layout" style={{padding: '0 50px', marginTop: 64}}>
 				<div className="site-layout__content" style={{padding: 24, minHeight: 380}}>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Ҳисоботлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Хужжатлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Маълумотлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
+					<Routes>
+						{AllPages.map((page, i) =>
+							page.submenus ?
+								page.submenus.map((sub, k) =>
+									<Route path={sub.path} element={<PageIndex currentPage={sub}/>}/>
+								) :
+								<Route path={page.path} element={<PageIndex currentPage={page}/>}/>
+						)}
+					</Routes>
 				</div>
 			</Content>
 			<Footer className="site-footer">

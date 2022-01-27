@@ -8,6 +8,23 @@ const CustomersTemplate = {
 	path: CUSTOMERS_PATH,
 	icon: <ProfileIcon/>,
 	type: CUSTOMERS_PAGE,
+	columns: [
+		{
+			title: 'Name',
+			dataIndex: 'name',
+			key: 'name',
+		},
+		{
+			title: 'Age',
+			dataIndex: 'age',
+			key: 'age',
+		},
+		{
+			title: 'Address',
+			dataIndex: 'address',
+			key: 'address',
+		},
+	]
 	// submenus: [
 	// 	// Service2,
 	// ]
