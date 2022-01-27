@@ -10,7 +10,7 @@ const ServiceTemplate = {
 	type: COMMON_PAGE,
 	submenus: [
 		// Service2,
-	]
+	],
 };
 
 export default ServiceTemplate;

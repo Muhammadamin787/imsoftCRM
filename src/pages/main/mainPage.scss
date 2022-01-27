@@ -104,42 +104,7 @@
     background-color: #fff;
     padding: 0;
 
-    .site-footer__tabs {
-      display: flex;
-      background-color: #4447E2;
 
-      .site-footer__tab {
-        background-color: #5154FF;
-        //border: 1px solid red;
-        padding: 3px 12px;
-        display: flex;
-        margin-right: 3px;
-        align-items: center;
-        color: #fff;
-
-        svg {
-          margin-right: 7px;
-          width: 17px;
-          height: 17px;
-        }
-
-        .close-icon-small {
-          margin-left: 8px;
-          margin-right: -3px;
-          cursor: pointer;
-          transition: .07s;
-          height: 100%;
-          width: 19px;
-          padding: 0 2.8px;
-
-          &:hover {
-            path {
-              fill: #f14a4a;
-            }
-          }
-        }
-      }
-    }
 
     .site-footer__content {
       padding: 4px 40px;

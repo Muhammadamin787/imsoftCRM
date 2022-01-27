@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {Layout, Menu, Input, Select } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
 import "./mainPage.scss";
-
+import BottomTabs from "../../components/tabs/Tabs"
 import {Footer} from "antd/es/layout/layout";
 import {
 	CloseIconSmall,
@@ -66,7 +66,7 @@ const MainPage = () => {
 					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} /> 
 						<img className="user-profile-image" src={AccountPNG} />
 					<Select  onChange={handleChangeSelect} bordered={false} >
-						{/* <Option value="Jack">JAck</Option> */}
+						<Option value="Jack">JAck</Option>
 					</Select>
 				</div>
 			</Header>
@@ -105,10 +105,9 @@ const MainPage = () => {
 				</div>
 			</Content>
 			<Footer className="site-footer">
-				<div className="site-footer__tabs">
-					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
-					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
-				</div>
+					<BottomTabs />
+					{/* <div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
+					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div> */}
 				<div className="site-footer__content">
 					<div>
 						<GlobusIcon2/>
