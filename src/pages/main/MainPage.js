@@ -15,8 +15,6 @@ import {
 } from "../../components/functions/icons";
 import moment from "moment";
 import {AllPages} from "../../pageTemplates";
-import AccountPNG from "../../components/functions/Ellipse 3.png"
-import FirstPage from "../mainPage/FirstPage";
 import {PageIndex} from "../PageIndex";
 import AccountPNG from "../../components/functions/Ellipse 3.png"
 
@@ -66,7 +64,7 @@ const MainPage = () => {
 				</Menu>
 				<div className="header__user-profile">
 					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} />
-						<img className="user-profile-image" src={AccountPNG} />
+						<img className="user-profile-image" src={AccountPNG}  alt="Foydalanuvchi rasmi"/>
 					<Select  onChange={handleChangeSelect} bordered={false} >
 						<Option value="Jack">JAck</Option>
 					</Select>

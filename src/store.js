@@ -1,5 +1,5 @@
 // import { createStore } from 'redux'
-import reducer from './src/redux/root_reducer'
+import reducer from './redux/root_reducer'
 import { createStore } from '@reduxjs/toolkit'
 
 
