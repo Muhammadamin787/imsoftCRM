@@ -52,6 +52,7 @@ const MainPage = () => {
 					{/*<Menu.Item className="header__navigation__item" key="1"><MainIcon/>Бош меню</Menu.Item>*/}
 					{/*<Menu.Item key="2">Янгиликлар</Menu.Item>*/}
 					{/*<Menu.Item key="3">Ёрдам</Menu.Item>*/}
+					{/* hello world */}
 				</Menu>
 				<div className="header__user-profile">
 					Search input
