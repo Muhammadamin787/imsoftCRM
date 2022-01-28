@@ -8,6 +8,7 @@ const ProgrammsTemplate = {
 	path: PROGRAMMES_PATH,
 	icon: <VectorIcon/>,
 	type: PROGRAMMES_PAGE,
+	// sections: [],
 	// submenus: [
 	// 	// Service2,
 	// ]

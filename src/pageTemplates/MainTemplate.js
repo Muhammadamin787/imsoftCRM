@@ -4,10 +4,11 @@ import {MAIN_PATH} from "../pages/pageConstants/PageRoutes";
 import {MainIcon} from "../components/functions/icons";
 
 const MainTemplate = {
-    text: "Asosiy Oyna",
-    path: MAIN_PATH,
-    icon: <MainIcon/>,
-    type: MAIN_PAGE,
+	text: "Asosiy Oyna",
+	path: MAIN_PATH,
+	icon: <MainIcon/>,
+	type: MAIN_PAGE,
+	// sections: [],
 };
 
 export default MainTemplate;

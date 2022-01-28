@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 0,
+  ActiveModal:[]
 }
 
 export const counterSlice = createSlice({
@@ -10,7 +11,6 @@ export const counterSlice = createSlice({
   reducers: {
     increment: (state) => {
       state.value += 1
-      console.log(state.value);
     },
     decrement: (state) => {
       state.value -= 1

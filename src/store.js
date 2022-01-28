@@ -1,6 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './redux/root_reducer'
+import { configureStore } from '@reduxjs/toolkit';
+import toolkit_test from "./redux/toolket_test";
+import tabs_reducer from "./redux/tabs_reducer";
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    toolkit_test,
+    tabs_reducer
+  },
 })

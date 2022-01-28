@@ -1,9 +1,9 @@
-import {Link} from "react-router-dom";
+import {Link, Route, Routes} from "react-router-dom";
 import React, {useState} from "react";
-import {Layout, Menu, Input, Select } from 'antd';
-import { AudioOutlined } from '@ant-design/icons';
+import {Layout, Menu, Input, Select} from 'antd';
 import "./mainPage.scss";
-import BottomTabs from "../../components/tabs/Tabs"
+
+import BottomTabs from "../../components/tabs/BottomTabs"
 import {Footer} from "antd/es/layout/layout";
 import {
 	CloseIconSmall,
@@ -11,20 +11,20 @@ import {
 	DiagrammIcon,
 	GlobusIcon2,
 	ServiceIcon,
-	TelegramIcon,
+	TelegramIcon
 } from "../../components/functions/icons";
 import moment from "moment";
-import { AllPages } from "../../pageTemplates";
+import {AllPages} from "../../pageTemplates";
+import {PageIndex} from "../PageIndex";
 import AccountPNG from "../../components/functions/Ellipse 3.png"
 
 
 // Bismillahir rohmanyir rohiym!
 
 
-
 const MainPage = () => {
 	const [currentTime, setCurrentTime] = useState(moment(new Date()).format("DD.MM.YYYY hh:mm:ss"));
-	setInterval(() => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")), 1000)
+	// setInterval(() => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")), 1000)
 
 	const {Header, Content} = Layout;
 	const { Search } = Input;
@@ -32,12 +32,12 @@ const MainPage = () => {
 	const {SubMenu, Item} = Menu;
 
 
-	const onSearch = value => console.log(value);  
+	const onSearch = value => console.log(value);
 	function handleChangeSelect(value) {
 		console.log(`selected ${value}`);
 	  }
-	
-    
+
+
 
 	return (
 		<Layout className="site-container">
@@ -52,7 +52,7 @@ const MainPage = () => {
 										<Link to={sub.path}>
 											{sub.text}
 										</Link>
-										
+
 									</Item>
 								)}
 							</SubMenu> :
@@ -64,8 +64,8 @@ const MainPage = () => {
 					)}
 				</Menu>
 				<div className="header__user-profile">
-					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} /> 
-						<img className="user-profile-image" src={AccountPNG} />
+					<Search placeholder="Qidiruv" className="user-profile-search"  allowClear onSearch={onSearch} />
+						<img className="user-profile-image" src={AccountPNG}  alt="Foydalanuvchi rasmi"/>
 					<Select  onChange={handleChangeSelect} bordered={false} >
 						<Option value="Jack">JAck</Option>
 					</Select>
@@ -73,42 +73,19 @@ const MainPage = () => {
 			</Header>
 			<Content className="site-layout" style={{padding: '0 50px', marginTop: 64}}>
 				<div className="site-layout__content" style={{padding: 24, minHeight: 380}}>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Ҳисоботлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Хужжатлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
-					<div className="site-layout__body">
-						<div className="site-layout__body-items">
-							<h2>Маълумотлар</h2>
-							<div><DiagrammIcon/>Савдо реестери</div>
-							<div><DiagrammIcon/>Кирим реестери</div>
-							<div><DiagrammIcon/>Маҳсулот қолдиғи</div>
-							<div><DiagrammIcon/>Маҳсулот айланмаси</div>
-							<div><DiagrammIcon/>Бошқа ҳисоботлар</div>
-						</div>
-					</div>
+					<Routes>
+						{AllPages.map((page, i) =>
+							page.submenus ?
+								page.submenus.map((sub, k) =>
+									<Route path={sub.path} element={<PageIndex page={sub}/>}/>
+								) :
+								<Route path={page.path} element={<PageIndex page={page}/>}/>
+						)}
+					</Routes>
 				</div>
 			</Content>
 			<Footer className="site-footer">
 					<BottomTabs />
-					{/* <div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div>
-					<div className="site-footer__tab"><ServiceIcon/>Сервис<CloseIconSmall/></div> */}
 				<div className="site-footer__content">
 					<div>
 						<GlobusIcon2/>

@@ -1,10 +1,18 @@
 import React from 'react';
-import "./reportPage.scss"
+import {useDispatch} from "react-redux"
+import GlobalModal from '../../components/Modal/GlobalModal';
+import {increment} from "./../../redux/toolket_test"
+
 
 const ReportPage = () => {
-  return <div className="report-page">
-        <h1>report Page</h1>
-  </div>;
+	const dispatch = useDispatch()
+	return (
+		<div>
+			Report Page
+			<h1 onClick={() => dispatch(increment())}>dispatch incerment</h1>
+			<GlobalModal/>
+		</div>
+	);
 };
 
 export default ReportPage;

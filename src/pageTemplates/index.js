@@ -10,5 +10,5 @@ export const AllPages =[
     CustomersTemplate,
     ProgrammsTemplate,
     ServiceTemplate,
-    ReportTemplate 
+    ReportTemplate
 ]
