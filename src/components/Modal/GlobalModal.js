@@ -31,3 +31,26 @@ const GlobalModal = () => {
 };
 
 export default GlobalModal;
+
+
+
+    // {forms?.map(f => (
+    //   <div className="grid_form" style={{ gridTemplateColumns: f.grid }}>
+    //     {f.inputs.map(inp => (
+    //       <ModalInput
+    //         type={inp.type}
+    //         label={inp.label}
+    //         name={inp.name}
+    //         component={inp.component}
+    //         allDataType={inp.allData}
+    //         onChange={handleChange}
+    //         readOnly={inp.readOnly}
+    //         condition={inp.condition}
+    //         secondDate={inp.secondDate}
+    //         costumData={inp.costumData}
+    //         costumColumns={inp.costumColumns}
+    //       ></ModalInput>
+    //     ))}
+    //   </div>
+    // ))}
+  

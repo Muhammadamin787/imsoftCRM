@@ -35,17 +35,16 @@
       padding: 0 20px;
       display: flex;
       align-items: center;
-      .user-profile-search{
+      .user-profile-search {
         display: block;
         background: rgba(186, 200, 220, 0.2);
         border-radius: 10px;
         outline: none;
         border: none;
       }
-      .user-profile-image{
-        transform: translate(10px,-5px)
+      .user-profile-image {
+        transform: translate(10px, -5px);
       }
-
     }
   }
 
@@ -53,7 +52,14 @@
 
   // __________________________Site Layout start
   .site-layout {
-    background-color: #EAEDF2;
+    background-color: #eaedf2;
+    // border: 2px solid yellow;
+    // height: calc(100% -70px);
+    
+    & > div {
+      border: 1px solid deeppink;
+      height: 100%;
+    }
   }
 
   // __________________________Site Layout end
@@ -62,8 +68,9 @@
   .site-footer {
     background-color: #fff;
     padding: 0;
-
-// border: 3px solid green;
+    border: 3px solid green;
+    // background-color: yellow;
+    height: 70px;
 
     .site-footer__content {
       padding: 4px 40px;
@@ -77,7 +84,7 @@
 
       .site-footer-clock {
         font-size: 1.2em;
-        color: #4447E2;
+        color: #4447e2;
         font-weight: 600;
       }
     }

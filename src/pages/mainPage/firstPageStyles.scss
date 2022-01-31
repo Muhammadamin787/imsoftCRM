@@ -5,16 +5,15 @@
   display: flex;
   justify-content: space-between;
   height: 100%;
-  border: 1px solid red;
+  // margin-top: 100px;
+  margin: 100px 100px 0 100px;
 
   .site-layout__body {
     width: 330px;
-  border: 1px solid green;
-  // height: auto;
   display: flex;
   width: 100%;
+  // border: solid 1px red;
   padding: 0 40px;
-  // justify-content: center;
   gap: 0 70px;
   flex-wrap: wrap;
 
@@ -31,7 +30,7 @@
         cursor: pointer;
         margin: 10px 0;
         height: 55px;
-        width: 350px;
+        width: 330px;
 
         .body-item-meaning{
           display: flex;
