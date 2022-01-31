@@ -1,32 +1,10 @@
 .site-footer__tabs {
   display: flex;
-  background: #4447e2;
+  background-color: #4447e2;
   height: 30px;
-  border: 1px solid red;
 
-  .ant-tabs-tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 0;
-    font-size: 14px;
-    background: transparent;
-    border: 0;
-    height: 30px;
-    min-width: 100px;
-    outline: none;
-    cursor: pointer;
-    .anticon-close {
-      position: absolute;
-      right: 5px;
-      top: 9px;
-    }
-  }
+// custum style
 
-  .ant-tabs-tab-remove {
-    color: #ffffff;
-    font-size: 10px;
-  }
   .site-footer__tab {
     background: #5154ff !important;
     border-radius: 5px;
@@ -45,6 +23,31 @@
         fill: #ffffff;
       }
     }
+  }
+
+  // default antd styles
+  .ant-tabs-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    font-size: 14px;
+    background: transparent;
+    border: 0;
+    height: 30px;
+    min-width: 100px;
+    outline: none;
+    cursor: pointer;
+    .anticon-close {
+      position: absolute;
+      right: 5px;
+      top: 9px;
+    }
+  }
+  
+  .ant-tabs-tab-remove {
+    color: #ffffff;
+    font-size: 10px;
   }
 }
 

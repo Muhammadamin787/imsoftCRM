@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: 0,
+  ActiveModal:[]
 }
 
 export const counterSlice = createSlice({
@@ -21,6 +22,7 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
+
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer

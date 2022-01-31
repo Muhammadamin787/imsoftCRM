@@ -8,6 +8,7 @@ const MainTemplate = {
 	path: MAIN_PATH,
 	icon: <MainIcon/>,
 	type: MAIN_PAGE,
+	// sections: [],
 };
 
 export default MainTemplate;

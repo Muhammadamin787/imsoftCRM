@@ -8,6 +8,7 @@ const CustomersTemplate = {
 	path: CUSTOMERS_PATH,
 	icon: <ProfileIcon/>,
 	type: CUSTOMERS_PAGE,
+	// sections: [],
 	columns: [
 		{
 			title: 'Name',
