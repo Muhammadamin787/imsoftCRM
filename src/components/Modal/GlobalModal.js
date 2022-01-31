@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Form } from 'antd';
 import "./GlobalModal.scss"
 
 const GlobalModal = () => {
@@ -23,8 +23,11 @@ const GlobalModal = () => {
         Open Modal
       </Button>
       <Modal   bodyStyle={{height: 100}}   footer={ null} visible={isModalVisible}  closable={false}>
-        <Button onClick={handleOk}>OK</Button>
-        <Button onClick={handleCancel}>Close</Button>
+        <Form>
+          hjkml,;.
+          {/* <Button onClick={handleOk}>OK</Button>
+          <Button onClick={handleCancel}>Close</Button> */} 
+        </Form>
       </Modal>
     </>
   );
