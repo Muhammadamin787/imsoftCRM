@@ -8,6 +8,8 @@ import { addNewTab } from "../../redux/tabs_reducer";
 const ServicePage = ({ page }) => {
   const sections = page?.sections;
 
+  console.log(sections);
+
   const dispatch = useDispatch();
   const handleTab = (section) => {
     dispatch(addNewTab(section));
@@ -24,7 +26,7 @@ const ServicePage = ({ page }) => {
             >
               <div className="body-item-meaning">
                 {section.icon}
-                <span>{section.title}</span>
+                <span>{section.text}</span>
               </div>
               <Arrow />
             </Button>

@@ -8,7 +8,7 @@ import {
 } from "antd";
 import { Option } from "antd/lib/mentions";
 import React,{ useState} from "react";
-import PhoneInput from "react-phone-input-2";
+// import PhoneInput from "react-phone-input-2";
 
 // import ImageUpload from "./ImageUpload";
 import {
@@ -35,7 +35,7 @@ const ModalInput = ({ type,label,name }) => {
       input = (
         <Input
           name={name}
-          value={}
+          value={""}
         />
       );
       break;
@@ -59,25 +59,25 @@ const ModalInput = ({ type,label,name }) => {
         </Select>
       );
       break;
-    case PHONE:
-      input = (
-        <PhoneInput
-          country={"uz"}
-          specialLabel={false}
-          disableDropdown={true}
-          countryCodeEditable={false}
-          value={"+998"}
-          areaCodes={{
-            uz: ["+998"],
-          }}
-          masks={{ uz: "(..) ...-..-.." }}
-          prefix="+"
-        />
-      );
+    // case PHONE:
+    //   input = (
+    //     <PhoneInput
+    //       country={"uz"}
+    //       specialLabel={false}
+    //       disableDropdown={true}
+    //       countryCodeEditable={false}
+    //       value={"+998"}
+    //       areaCodes={{
+    //         uz: ["+998"],
+    //       }}
+    //       masks={{ uz: "(..) ...-..-.." }}
+    //       prefix="+"
+    //     />
+    //   );
       break;
-    case IMAGE:
-      input = <ImageUpload onImage={"upload img function"}></ImageUpload>;
-      break;
+    // case IMAGE:
+    //   input = <ImageUpload onImage={"upload img function"}></ImageUpload>;
+    //   break;
     case RADIO:
       input = (
           <Radio.Group name="turi" >
@@ -96,9 +96,9 @@ const ModalInput = ({ type,label,name }) => {
         />
       );
       break;
-    case MAP:
-      input = <MapContainer></MapContainer>;
-      break;
+    // case MAP:
+    //   input = <MapContainer></MapContainer>;
+    //   break;
 
     default:
       break;

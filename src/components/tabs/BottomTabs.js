@@ -13,7 +13,7 @@ const BottomTabs = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const pathname = window.location.pathname;
+  const {pathname} = window.location;
 
   const [panes, setPanes] = useState(Panes);
   const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
@@ -43,6 +43,7 @@ const BottomTabs = () => {
     }
   };
 
+
   return (
     // <div>
       <Tabs
@@ -58,7 +59,7 @@ const BottomTabs = () => {
             <TabPane
               tab={
                 <div className="site-footer__tab">
-                  {pane.icon} <span>{pane.title}</span>
+                  {pane.icon} <span>{pane.text}</span>
                 </div>
               }
               key={i}

@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { useNavigate } from "react-router-dom";
 
 
 const initialState = {
   Panes: [],
 };
 
-// const navigate = useNavigate();
-
+// console.log(initialState.Panes);
 
 export const counterSlice = createSlice({
   name: "Bottom Tabs",
@@ -21,6 +19,8 @@ export const counterSlice = createSlice({
       if (!isExsist) {
         state.Panes.push(action.payload)
       }
+
+      console.log(state.Panes);
     },
     removeTab: (state, action) => {
       state.Panes.splice(action.payload, 1);
