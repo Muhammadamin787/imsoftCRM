@@ -22,7 +22,6 @@ export const AllPages =[
     ProgrammsTemplate,
     ServiceTemplate,
     ReportTemplate,
-
 ]
 
 

@@ -18,9 +18,9 @@ import GlobalTable from "../../../components/Table/GlobalTable";
 
 const ChildServicePages = ({ page }) => {
   
-  const handleModalClick = () => {
-    //to do
-  }
+  // const handleModalClick = () => {
+  //   console.log("is is");
+  // }
 
   return (
     <div className="child-page">
@@ -57,8 +57,8 @@ const ChildServicePages = ({ page }) => {
         </div> */}
         {/* tools */}
         <div className="child-page__tools">
-          <Button>
-            <AddItem onClick={handleModalClick()} />
+          <Button onClick={()=> console.log(page)}>
+            <AddItem ></AddItem>                                                                                                                                                                                                                                                             
           </Button>
           <Button>
             <AddFolder />

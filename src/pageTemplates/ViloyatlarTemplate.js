@@ -3,12 +3,15 @@ import {VILOYATLAR_PATH} from "../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../pages/pageConstants/PageTypes";
 import {ServiceIcon} from "../components/functions/icons";
 import { STRING } from '../components/Modal/ModalInputTypes';
-
+import {
+	Group
+  } from "../components/functions/icons";
+  
 
 const ViloyatlarTemplate = {
 	text: "Viloyatlar",
 	path: VILOYATLAR_PATH,
-	icon: <ServiceIcon/>,
+	icon: <Group/>,
 	type: SERVIS_CHILD_PAGES,
 	forms: [
 		{

@@ -1,18 +1,20 @@
 import React from "react";
 import { FAOLYAT_TURLARI_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { ServiceIcon } from "../components/functions/icons";
 import { STRING } from '../components/Modal/ModalInputTypes';
+import { Faoliyat } from "../components/functions/icons";
+
 
 
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
   path: FAOLYAT_TURLARI_PATH,
-  icon: <ServiceIcon />,
+  icon: <Faoliyat />,
   type: SERVIS_CHILD_PAGES,
   forms: [
     {
       grid: "1fr",
+      isOpen: false,
       inputs: [
         {
           label: "Faolyat turlari",
@@ -22,7 +24,8 @@ const FaolyatTurlaiTemplate = {
         },
       ],
     },
-  ]
+  ],
+  isOpenModal: true,
 };
 
 export default FaolyatTurlaiTemplate;

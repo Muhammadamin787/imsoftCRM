@@ -120,7 +120,7 @@ const MainPage = () => {
         </div>
       </Content>
       <Footer className="site-footer">
-        <BottomTabs />
+        <BottomTabs  />
         <div className="site-footer__content">
           <div>
             <GlobusIcon2 />
