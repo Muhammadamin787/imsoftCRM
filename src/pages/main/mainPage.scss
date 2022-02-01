@@ -25,6 +25,33 @@
       justify-content: center;
       flex-grow: 1;
 
+      .ant-menu-item {
+        a {
+          letter-spacing: 0.03em;
+          color: #bac8dc;
+        }
+
+        svg {
+          position: relative;
+          top: 2px;
+          path {
+            transition: .3s;
+            fill: #bac8dc;
+          }
+        }
+      }
+      .ant-menu-item-active,
+      .ant-menu-item-selected {
+        a {
+          color: #1890ff;
+        }
+        svg {
+          path {
+            fill: #1890ff;
+          }
+        }
+      }
+
       .header__navigation__item:first-child {
         margin-left: -100px;
       }
@@ -53,11 +80,9 @@
   // __________________________Site Layout start
   .site-layout {
     background-color: #eaedf2;
-    // border: 2px solid yellow;
-    // height: calc(100% -70px);
-    
+
     & > div {
-      border: 1px solid deeppink;
+      // border: 1px solid deeppink;
       height: 100%;
     }
   }
@@ -68,8 +93,7 @@
   .site-footer {
     background-color: #fff;
     padding: 0;
-    border: 3px solid green;
-    // background-color: yellow;
+    // border: 2px solid green;
     height: 70px;
 
     .site-footer__content {
