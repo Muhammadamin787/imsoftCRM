@@ -15,12 +15,20 @@ import {
 import { Button } from "antd";
 import { MacRed, MacGreen, MacGray } from "../../../components/functions/icons";
 import GlobalTable from "../../../components/Table/GlobalTable";
+import GlobalModal from "../../../components/Modal/GlobalModal";
+import {useDispatch } from "react-redux"
+import { toggleModal } from "../../../redux/tabs_reducer";
+
 
 const ChildServicePages = ({ page }) => {
+
+  const dispatch = useDispatch()
   
-  // const handleModalClick = () => {
-  //   console.log("is is");
-  // }
+  // console.log(page);
+
+  const handleModalClick = () => {
+    dispatch(toggleModal(true) ) 
+  }
 
   return (
     <div className="child-page">
@@ -57,7 +65,7 @@ const ChildServicePages = ({ page }) => {
         </div> */}
         {/* tools */}
         <div className="child-page__tools">
-          <Button onClick={()=> console.log(page)}>
+          <Button onClick={()=> handleModalClick()}>
             <AddItem ></AddItem>                                                                                                                                                                                                                                                             
           </Button>
           <Button>

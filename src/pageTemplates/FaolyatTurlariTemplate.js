@@ -11,21 +11,21 @@ const FaolyatTurlaiTemplate = {
   path: FAOLYAT_TURLARI_PATH,
   icon: <Faoliyat />,
   type: SERVIS_CHILD_PAGES,
-  forms: [
+  isOpenModal: false,
+  form: [
     {
       grid: "1fr",
-      isOpen: false,
       inputs: [
         {
           label: "Faolyat turlari",
           name: "Faolyat turlari",
           type: STRING,
           required: true,
+          value:"",
         },
       ],
     },
   ],
-  isOpenModal: true,
 };
 
 export default FaolyatTurlaiTemplate;

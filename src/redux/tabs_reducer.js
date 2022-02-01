@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   Panes: [],
+  currentPage:{},
 };
 
-// console.log(initialState.Panes);
 
 export const counterSlice = createSlice({
   name: "Bottom Tabs",
@@ -19,17 +19,22 @@ export const counterSlice = createSlice({
       if (!isExsist) {
         state.Panes.push(action.payload)
       }
-
-      console.log(state.Panes);
     },
     removeTab: (state, action) => {
       state.Panes.splice(action.payload, 1);
     },
+    toggleModal: (state, {payload}) => {
+      state.currentPage.isOpenModal = payload;
+    },
+    setCurrentPage: (state, {payload}) => {
+      state.currentPage = payload
+    }
+
   },
 });
 
 // Action creators are generated for each case reducer function
 
-export const { addNewTab, removeTab } = counterSlice.actions;
+export const { addNewTab, removeTab, toggleModal ,setCurrentPage} = counterSlice.actions;
 
 export default counterSlice.reducer;

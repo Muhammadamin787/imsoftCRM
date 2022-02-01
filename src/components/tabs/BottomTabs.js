@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./BottomTabs.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { Tabs } from "antd";
-import { removeTab } from "../../redux/tabs_reducer";
+import { removeTab, setCurrentPage } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
-
+import { AllServiceChildPages } from "../../pageTemplates";
 const { TabPane } = Tabs;
 
 const BottomTabs = () => {
   const { Panes } = useSelector((state) => state?.tabs_reducer);
+
+//   console.log(AllServiceChildPages);
+// console.log(Panes);
+
 
 
   const navigate = useNavigate();
@@ -26,6 +30,9 @@ const BottomTabs = () => {
     setActiveKey(activeKey);
     const active = Panes[activeKey].path;
     navigate(active, { replace: true });
+    dispatch(setCurrentPage(Panes[activeKey]))
+    
+    console.log(activeKey);
   };
 
   const onEdit = (targetKey, action) => {

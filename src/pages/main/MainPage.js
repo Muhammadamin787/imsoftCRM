@@ -16,6 +16,9 @@ import moment from "moment";
 import { AllPages, AllServiceChildPages } from "../../pageTemplates";
 import { PageIndex } from "../PageIndex";
 import AccountPNG from "../../components/functions/Ellipse 3.png";
+import GlobalModal from "../../components/Modal/GlobalModal";
+import { useDispatch } from "react-redux";
+import {setCurrentPage} from "../../redux/tabs_reducer"
 
 // Bismillahir rohmanyir rohiym!
 
@@ -32,6 +35,7 @@ const MainPage = () => {
   const { Search } = Input;
   const { Option } = Select;
   const { SubMenu, Item } = Menu;
+  const dispatch = useDispatch()
 
   const onSearch = (value) => console.log(value);
   function handleChangeSelect(value) {
@@ -118,6 +122,7 @@ const MainPage = () => {
             )}
           </Routes>
         </div>
+        <GlobalModal />
       </Content>
       <Footer className="site-footer">
         <BottomTabs  />

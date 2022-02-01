@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux"
 import GlobalModal from '../../components/Modal/GlobalModal';
-import {increment} from "./../../redux/toolket_test"
+
 
 
 const ReportPage = () => {
@@ -9,7 +9,7 @@ const ReportPage = () => {
 	return (
 		<div>
 			Report Page
-			<h1 onClick={() => dispatch(increment())}>dispatch incerment</h1>
+			<h1 >dispatch incerment</h1>
 			<GlobalModal/>
 		</div>
 	);

@@ -53,56 +53,19 @@ const ModalInput = ({ type,label,name }) => {
           placeholder={label + "ни танланг"}
           size="small"
         >
-                <Option value={""}>
+                <Option value={"hi"}>
                   option
                 </Option>
         </Select>
       );
       break;
-    // case PHONE:
-    //   input = (
-    //     <PhoneInput
-    //       country={"uz"}
-    //       specialLabel={false}
-    //       disableDropdown={true}
-    //       countryCodeEditable={false}
-    //       value={"+998"}
-    //       areaCodes={{
-    //         uz: ["+998"],
-    //       }}
-    //       masks={{ uz: "(..) ...-..-.." }}
-    //       prefix="+"
-    //     />
-    //   );
-      break;
-    // case IMAGE:
-    //   input = <ImageUpload onImage={"upload img function"}></ImageUpload>;
-    //   break;
-    case RADIO:
-      input = (
-          <Radio.Group name="turi" >
-              <Radio value={""}>nomi</Radio>
-          </Radio.Group>
-      );
-      break;
-    case DATE:
-      input = (
-        <DatePicker
-          showTime
-          value={"date"}
-          format="DD.MM.YYYY HH:mm"
-          allowClear={false}
-          locale={""}
-        />
-      );
-      break;
-    // case MAP:
-    //   input = <MapContainer></MapContainer>;
-    //   break;
 
     default:
       break;
   }
+
+  return input;
+  
 };
 
 export default ModalInput;

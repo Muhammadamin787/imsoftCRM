@@ -9,7 +9,8 @@ const RegionlarTemplate = {
   path: REGIONLAR_PATH,
   icon: <Regionlar />,
   type: SERVIS_CHILD_PAGES,
-  forms: [
+  isOpenModal: false,
+  form: [
     {
       grid: "1fr",
       inputs: [

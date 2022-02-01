@@ -4,15 +4,15 @@ import { Arrow } from "../../components/functions/icons";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addNewTab } from "../../redux/tabs_reducer";
+import {setCurrentPage} from "../../redux/tabs_reducer"
 
 const ServicePage = ({ page }) => {
   const sections = page?.sections;
 
-  console.log(sections);
-
   const dispatch = useDispatch();
   const handleTab = (section) => {
     dispatch(addNewTab(section));
+    dispatch(setCurrentPage(section));
   };
 
   return (

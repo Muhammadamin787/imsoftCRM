@@ -9,7 +9,8 @@ const ReklamalarTemplate = {
 	path: REKLAMALAR_PATH,
 	icon: <Reklamalar/>,
 	type: SERVIS_CHILD_PAGES,
-	forms: [
+	isOpenModal: false,
+	form: [
 		{
 		  grid: "1fr",
 		  inputs: [
