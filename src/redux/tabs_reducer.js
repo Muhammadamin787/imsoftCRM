@@ -8,37 +8,7 @@ import { STRING } from '../components/Modal/ModalInputTypes';
 
 const initialState = {
   Panes: [],
-  currentPage:{
-    text: "Faolyat turlari",
-  path: FAOLYAT_TURLARI_PATH,
-  icon: <Faoliyat />,
-  type: SERVIS_CHILD_PAGES,
-  isOpenModal: false,
-  form: [
-    {
-      grid: "2fr 1fr",
-      inputs: [
-        {
-          label: "Faolyat turlari",
-          name: "Faolyat turlari",
-          type: STRING,
-          required: true,
-          value:"",
-          placeholder:"Faolyat turlari"
-        },
-        {
-          label: "Faolyat turlari",
-          name: "Faolyat turlari",
-          type: STRING,
-          required: true,
-          value:"",
-          placeholder:"Faolyat turlari"
-
-        },
-      ],
-    },
-  ],
-  }
+  currentPage:{}
   
 };
 
