@@ -62,6 +62,15 @@ const ModalInput = ({ type,label,name,placeholder }) => {
                 <Option value={"hi"}>
                   option
                 </Option>
+                <Option value={"hi"}>
+                  option
+                </Option>
+                <Option value={"hi"}>
+                  option
+                </Option>
+                <Option value={"hi"}>
+                  option
+                </Option>
         </Select>
       );
       break;
