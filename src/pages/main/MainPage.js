@@ -44,7 +44,7 @@ const currentPage = allPages.find(allPage => allPage.path === pathname); // hamm
 useEffect(() => {
   dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
   dispatch(addNewTab(currentPage)) // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
-},[]) // [] 👈 qachonki brovser yangilangande 
+},[]) // [] 👈 qachonki brovser yangilanganda
  
 
 
