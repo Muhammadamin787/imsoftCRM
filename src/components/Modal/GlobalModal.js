@@ -1,37 +1,37 @@
-import React, {useState, useEffect} from "react";
-import {Modal, Button, Form, Input} from "antd";
+import React, { useState, useEffect } from "react";
+import { Modal, Button, Form, Input } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
-import {useSelector, useDispatch} from "react-redux";
-import {toggleModal} from "../../redux/tabs_reducer";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../redux/tabs_reducer";
 import {MacRed, MacGreen, MacYellow} from "../functions/icons";
 
 
 const GlobalModal = () => {
-    const {currentPage} = useSelector((state) => state?.tabs_reducer);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const dispatch = useDispatch();
+  const { currentPage } = useSelector((state) => state?.tabs_reducer);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
 
     const showModal = () => {
         setIsModalVisible(false);
     };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    dispatch(toggleModal(false));
+  };
 
-    console.log(currentPage);
+  console.log(currentPage);
 
-    const sty = {
-        // height: "100%",
-        // backgroundColor:"red"
-        // borderTopLeftRadius:"5px",
-    };
+  const sty = {
+    // height: "100%",
+    // backgroundColor:"red"
+    // borderTopLeftRadius:"5px",
+  };
 
     return (
         <>
@@ -56,9 +56,9 @@ const GlobalModal = () => {
                     </div>
                 </div>
                 <form className="modal-form">
-                    {currentPage.form.map((form) => (
+                    {currentPage?.form?.map((form) => (
                         <div className="modal-grid__form" style={{gridTemplateColumns: form.grid}}>
-                            {form.inputs.map((input) => (
+                            {form?.inputs?.map((input) => (
                                 <ModalInput
                                     type={input.type}
                                     name={input.name}

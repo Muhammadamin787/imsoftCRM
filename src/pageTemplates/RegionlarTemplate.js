@@ -26,6 +26,19 @@ const RegionlarTemplate = {
           type: SELECT,
           required: true,
         },
+        {
+          label: "Shahar/Tuman",
+          name: "shahar/tuman",
+          type: SELECT,
+          required: true,
+          options:[
+            {value:"custom value 1", key: "custom value 1",},
+            {value:"custom value 2", key: "custom value 2",},
+            {value:"custom value 3", key: "custom value 3",},
+            {value:"custom value 4", key: "custom value 5",},
+
+          ]
+        },
         //   {
         // 	label: "Shahar/Tuman",
         // 	name: "shahar/tuman",

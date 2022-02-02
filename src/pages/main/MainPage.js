@@ -15,7 +15,6 @@ import { PageIndex } from "../PageIndex";
 import AccountPNG from "../../components/functions/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
-import {setCurrentPage} from "../../redux/tabs_reducer"
 
 // Bismillahir rohmanyir rohiym!
 

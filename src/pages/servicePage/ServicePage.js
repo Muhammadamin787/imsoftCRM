@@ -12,6 +12,7 @@ const ServicePage = ({ page }) => {
   const handleTab = (section) => {
     dispatch(addNewTab(section));
     dispatch(setCurrentPage(section));
+
   };
 
   return (
