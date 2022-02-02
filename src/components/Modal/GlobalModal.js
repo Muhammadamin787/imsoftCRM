@@ -67,9 +67,9 @@ const GlobalModal = () => {
     
 
         <form className="modal-form">
-          {currentPage.form.map((form) => (
+          {currentPage?.form?.map((form) => (
             <div  className="modal-grid__form" style={{ gridTemplateColumns: form.grid }} >
-              {form.inputs.map((input) => (
+              {form?.inputs?.map((input) => (
                 <ModalInput
                   type={input.type}
                   name={input.name}

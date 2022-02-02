@@ -32,7 +32,6 @@ const BottomTabs = () => {
     navigate(active, { replace: true });
     dispatch(setCurrentPage(Panes[activeKey]))
     
-    console.log(activeKey);
   };
 
   const onEdit = (targetKey, action) => {
