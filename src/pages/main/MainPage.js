@@ -15,8 +15,11 @@ import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
+import {setCurrentPage,addNewTab} from "../../redux/tabs_reducer";
 
 // Bismillahir rohmanyir rohiym!
+
+
 
 const MainPage = () => {
   const [currentTime, setCurrentTime] = useState(
@@ -32,6 +35,18 @@ const MainPage = () => {
   const { Option } = Select;
   const { SubMenu, Item } = Menu;
   const dispatch = useDispatch()
+
+  
+const pathname = window.location.pathname; // hozirgi(joriy) uril 
+const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
+const currentPage = allPages.find(allPage => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
+
+useEffect(() => {
+  dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
+  dispatch(addNewTab(currentPage)) // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
+},[]) // [] 👈 qachonki brovser yangilangande 
+ 
+
 
   const onSearch = (value) => console.log(value);
   function handleChangeSelect(value) {

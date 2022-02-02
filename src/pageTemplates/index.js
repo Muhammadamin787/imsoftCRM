@@ -15,6 +15,10 @@ import ShaharTumanTemplate from './ShaharTumanTempilate';
 import YunalishlarTemplate from './YunalishlarTemplate';
 
 
+
+
+
+
 // Basic routes templates
 export const AllPages =[
     MainTemplate,

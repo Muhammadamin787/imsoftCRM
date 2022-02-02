@@ -59,9 +59,10 @@ const RegionlarTemplate = {
         {
           label: "Viloyat4",
           name: "viloyat4",
-          type: NUMBER,
+          type: MAP,
           required: true,
           placeholder: "viloyat4",
+          height: inputDeafultHeght*4,
           gridColumn: "2 / 3",
           gridRow: "1 / 4",
           height: inputDeafultHeght * 4,
