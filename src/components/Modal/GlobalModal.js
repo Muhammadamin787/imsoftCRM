@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form } from "antd";
+import { Modal, Button, Form, Input } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../redux/tabs_reducer";
+import { MacRed, MacGreen, MacGray } from "../functions/icons";
+
 
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state?.tabs_reducer);
@@ -29,47 +31,62 @@ const GlobalModal = () => {
     dispatch(toggleModal(false));
   };
 
-  console.log(currentPage.forms);
+  console.log(currentPage);
+
+  const sty = {
+    // height: "100%",
+    // backgroundColor:"red"
+    // borderTopLeftRadius:"5px",
+  };
 
   return (
     <>
       <Modal
-        bodyStyle={{ height: 100 }}
+        bodyStyle={sty}
         footer={null}
         visible={isModalVisible}
         closable={false}
       >
-        <Button onClick={handleCancel}>is exit</Button>
-        <h1>{currentPage?.text}</h1>
+        <div className="modal-header">
+          <span>{currentPage.text}</span>
+          <div>
+          <div className="modal-header__buttons">
+            <Button className="modal-header__button">
+              <MacGray />
+            </Button>
+            <Button className="modal-header__button">
+              <MacRed />
+            </Button>
+            <Button className="modal-header__button">
+              <MacGreen />
+            </Button>
+          </div>
+          </div>
+        </div>
 
-        <Form>
-            {/* {currentPage.form?.inputs.map((input) => (
-              <ModalInput type={input.type} name={input.name} label={input.label} />
-            ))} */}
-          </Form>
+
+
+        <form className="modal-form">
+          {currentPage.form.map((form) => (
+            <div  className="modal-grid__form" style={{ gridTemplateColumns: form.grid }} >
+              {form.inputs.map((input) => (
+                <ModalInput
+                  type={input.type}
+                  name={input.name}
+                  label={input.label}
+                  placeholder={input.placeholder}
+                />
+              ))}
+            </div>
+          ))}
+          <div className="modal-form_buttons">
+            <Button type="submit" className="modal-form__button qaytish"onClick={handleCancel}>Qaytish</Button>
+            <Button type="submit" className="modal-form__button saqlash"onClick={handleCancel}>Saqlash</Button>
+          </div>
+        </form>
       </Modal>
     </>
   );
 };
 
 export default GlobalModal;
-
-// {forms?.map(f => (
-//   <div className="grid_form" style={{ gridTemplateColumns: f.grid }}>
-//     {f.inputs.map(inp => (
-//       <ModalInput
-//         type={inp.type}
-//         label={inp.label}
-//         name={inp.name}
-//         component={inp.component}
-//         allDataType={inp.allData}
-//         onChange={handleChange}
-//         readOnly={inp.readOnly}
-//         condition={inp.condition}
-//         secondDate={inp.secondDate}
-//         costumData={inp.costumData}
-//         costumColumns={inp.costumColumns}
-//       ></ModalInput>
-//     ))}
-//   </div>
-// ))}

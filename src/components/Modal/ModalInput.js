@@ -26,16 +26,16 @@ import "moment/locale/ru";
 
 
 
-const ModalInput = ({ type,label,name }) => {
+const ModalInput = ({ type,label,name,placeholder }) => {
   let input = null;
   
 
   switch (type) {
     case STRING:
       input = (
-        <Input
+        <Input 
           name={name}
-          value={""}
+          placeholder={placeholder}
         />
       );
       break;
@@ -43,6 +43,9 @@ const ModalInput = ({ type,label,name }) => {
       input = (
         <InputNumber
           type="number"
+          name={name}
+
+          placeholder={placeholder}
         />
       );
       break;
@@ -52,6 +55,9 @@ const ModalInput = ({ type,label,name }) => {
           value={""}
           placeholder={label + "ни танланг"}
           size="small"
+          name={name}
+          placeholder={placeholder}
+
         >
                 <Option value={"hi"}>
                   option
