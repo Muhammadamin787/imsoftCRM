@@ -35,12 +35,10 @@ const GlobalModal = () => {
 
     return (
         <>
-            <Modal
-                bodyStyle={sty}
-                footer={null}
-                visible={isModalVisible}
-                closable={false}
-            >
+            <Modal bodyStyle={sty}
+                   footer={null}
+                   visible={isModalVisible}
+                   closable={false}>
                 <div className="modal-header">
                     <span>{currentPage.text}</span>
                     <div>
@@ -57,8 +55,6 @@ const GlobalModal = () => {
                         </div>
                     </div>
                 </div>
-
-
                 <form className="modal-form">
                     {currentPage.form.map((form) => (
                         <div className="modal-grid__form" style={{gridTemplateColumns: form.grid}}>
