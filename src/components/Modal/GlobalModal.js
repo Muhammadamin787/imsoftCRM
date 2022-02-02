@@ -26,7 +26,6 @@ const GlobalModal = () => {
   };
 
   console.log(currentPage);
-
   const sty = {
     // height: "100%",
     // backgroundColor:"red"
