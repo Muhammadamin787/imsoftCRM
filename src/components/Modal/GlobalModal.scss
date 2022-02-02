@@ -1,15 +1,112 @@
-.ant-modal-mask  {
-    // top:100px !important;
-    bottom:100px !important;
-    height: 90.7% !important;
-    // background: #E5E5E5;
-  }
-  .ant-modal-wrap {
-    border: 2px solid red;
-    // top: 100px !important;
-    // bottom:100px !important;
-    height: 90.7% !important;
+.ant-modal-mask {
+  // top:100px !important;
+  bottom: 100px !important;
+  height: 90.7% !important;
+  // background: rgba(234, 237, 242, 1);
+}
+.ant-modal-wrap {
+  border: 2px solid red;
+  // top: 100px !important;
+  // bottom:100px !important;
+  height: 90.7% !important;
+}
 
+.ant-modal-content {
+  border-radius: 15px;
+}
 
+.ant-modal-body {
+  padding: 0;
+  padding-bottom: 1px;
+}
+
+.modal-header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 100%;
+  background-color: #4447e2;
+  height: 40px;
+  padding: 0 15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+
+  .modal-header__buttons {
+    height: 20px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    background-color: none;
+    justify-content: flex-end;
+    .modal-header__button {
+      background-color: #4447e2;
+      outline: none;
+      border: none;
+      height: 15px;
+      width: 15px;
+      padding: 0px;
+      position: relative;
+      margin-left: 5px;
+      svg {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    }
   }
-  
+}
+
+.modal-form {
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+
+  .modal-grid__form {
+    width: 100%;
+    display: grid;
+    grid-gap: 0px 20px;
+    grid-template-rows: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .ant-input {
+      background-color: #f1f4f8;
+      height: 40px;
+      width: 100%;
+      padding-left: 10px;
+      font-weight: 400;
+      border-radius: 7px;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+
+  .modal-form_buttons{
+    // border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin-top: 30px;
+    .modal-form__button{
+      // background-color: red;
+      width: 150px;
+      border-radius:7px;
+      height: 40px;
+      font-weight: 400;
+      font-size:13px;
+      line-height: 20px;
+    }
+    .qaytish{
+      border:1px solid #4447E2;
+      color:#4447E2;
+    }
+
+    .saqlash{
+      color:#ffffff;
+      background-color:#4447E2;
+    }
+  }
+
+}

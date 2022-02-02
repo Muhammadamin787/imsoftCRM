@@ -14,7 +14,7 @@ const FaolyatTurlaiTemplate = {
   isOpenModal: false,
   form: [
     {
-      grid: "1fr",
+      grid: "2fr 1fr",
       inputs: [
         {
           label: "Faolyat turlari",
@@ -22,6 +22,16 @@ const FaolyatTurlaiTemplate = {
           type: STRING,
           required: true,
           value:"",
+          placeholder:"Faolyat turlari"
+        },
+        {
+          label: "Faolyat turlari",
+          name: "Faolyat turlari",
+          type: STRING,
+          required: true,
+          value:"",
+          placeholder:"Faolyat turlari"
+
         },
       ],
     },
