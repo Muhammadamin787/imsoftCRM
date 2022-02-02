@@ -2,7 +2,7 @@ import React from 'react';
 import {REPORT_PATH} from "../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../pages/pageConstants/PageTypes";
 import { STRING } from "../components/Modal/ModalInputTypes";
-import {VectorIcon} from "../components/functions/icons";
+import {VectorIcon} from "../assets/icons/icons";
 
 const ReportTemplate = {
 	text: "Xisobot",

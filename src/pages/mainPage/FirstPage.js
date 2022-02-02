@@ -1,6 +1,6 @@
 import React from 'react';
 import "./firstPageStyles.scss";
-import {Group, ServiceIcon, Arrow} from "../../components/functions/icons";
+import {Group, ServiceIcon, Arrow} from "../../assets/icons/icons";
 import { Button } from 'antd';
 
 const FirstPage = ({page}) => {

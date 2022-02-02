@@ -1,7 +1,7 @@
 import React from "react";
 import {SERVIS_PATH} from "../pages/pageConstants/PageRoutes";
 import {SERVIS_PAGE} from "../pages/pageConstants/PageTypes";
-import {ServiceIcon} from "../components/functions/icons";
+import {ServiceIcon} from "../assets/icons/icons";
 
 import FaoliyatTurlariTemplate from "./FaolyatTurlariTemplate";
 import YunalishlarTemplate from "./YunalishlarTemplate";

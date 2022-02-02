@@ -8,11 +8,11 @@ import {
   CompanyLogo,
   GlobusIcon2,
   TelegramIcon,
-} from "../../components/functions/icons";
+} from "../../assets/icons/icons";
 import moment from "moment";
 import { AllPages, AllServiceChildPages } from "../../pageTemplates";
-import { PageIndex } from "../PageIndex";
-import AccountPNG from "../../components/functions/Ellipse 3.png";
+import { PageController } from "../PageController";
+import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 
@@ -37,7 +37,7 @@ const MainPage = () => {
   function handleChangeSelect(value) {
     console.log(`selected ${value}`);
   }
-
+// console.log("40px" * "4");
   return (
     <Layout className="site-container">
       <Header className="site-header">
@@ -92,10 +92,10 @@ const MainPage = () => {
             {[...AllPages, ...AllServiceChildPages].map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (
-                  <Route path={sub.path} element={<PageIndex page={sub} />} />
+                  <Route path={sub.path} element={<PageController page={sub} />} />
                 ))
               ) : (
-                <Route path={page.path} element={<PageIndex page={page} />} />
+                <Route path={page.path} element={<PageController page={page} />} />
               )
             )}
           </Routes>

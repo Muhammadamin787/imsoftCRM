@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {FAOLYAT_TURLARI_PATH} from "../pages/pageConstants/PageRoutes"
 // import {FAOLYAT_TURLARI_PAGE} from "../pages/pageConstants/PageTypes"
-import {Faoliyat} from "../components/functions/icons";
+import {Faoliyat} from "../assets/icons/icons";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
 import { STRING } from '../components/Modal/ModalInputTypes';
 
 
 const initialState = {
   Panes: [],
-  currentPage:{}
+  currentPage:{}  
   
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import {VILOYATLAR_PATH} from "../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../pages/pageConstants/PageTypes";
-import {ServiceIcon} from "../components/functions/icons";
+import {ServiceIcon} from "../assets/icons/icons";
 import { STRING } from '../components/Modal/ModalInputTypes';
 import {
 	Group
-  } from "../components/functions/icons";
+  } from "../assets/icons/icons";
   
 
 const ViloyatlarTemplate = {

@@ -2,7 +2,7 @@ import React from "react";
 import { FAOLYAT_TURLARI_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
 import { STRING } from '../components/Modal/ModalInputTypes';
-import { Faoliyat } from "../components/functions/icons";
+import { Faoliyat } from "../assets/icons/icons";
 
 
 

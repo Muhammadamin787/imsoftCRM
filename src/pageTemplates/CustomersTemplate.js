@@ -1,7 +1,7 @@
 import React from 'react';
 import {CUSTOMERS_PATH} from "../pages/pageConstants/PageRoutes";
 import {CUSTOMERS_PAGE} from "../pages/pageConstants/PageTypes";
-import {ProfileIcon} from "../components/functions/icons";
+import {ProfileIcon} from "../assets/icons/icons";
 
 const CustomersTemplate = {
 	text: "Mijozlar Ro'yxati",

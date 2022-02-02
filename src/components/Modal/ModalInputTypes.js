@@ -1,17 +1,9 @@
 export const STRING = "STRING";
 export const NUMBER = "NUMBER";
-export const NUMBERFOIZ = "NUMBERFOIZ";
 export const SELECT = "SELECT";
-export const SELECTMULTIPLE = "SELECTMULTIPLE";
 export const IMAGE = "IMAGE";
 export const DATE = "DATE";
 export const PHONE = "PHONE";
 export const RADIO = "RADIO";
 export const CHECKBOX = "CHECKBOX";
-export const TEXTBLOCK = "TEXTBLOCK";
-export const MODALTABLE = "MODALTABLE";
-export const BUTTON_MIJOZ = "BUTTON_MIJOZ";
-export const MIJOZ_OTKAZ = "MIJOZ_OTKAZ";
-export const COSTUM = "COSTUM";
-export const CURRENCY = "CURRENCY";
 export const MAP = "MAP";

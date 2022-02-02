@@ -34,3 +34,4 @@ export const AllServiceChildPages =[
     ShaharTumanTemplate,
     YunalishlarTemplate
 ]
+

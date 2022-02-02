@@ -67,40 +67,63 @@
   .modal-grid__form {
     width: 100%;
     display: grid;
-    grid-gap: 0px 20px;
-    grid-template-rows: 40px;
+    grid-gap: 20px 20px;
+    // grid-template-rows: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
     .ant-input {
       background-color: #f1f4f8;
-      height: 40px;
+      // height: 40px;
       width: 100%;
       padding-left: 10px;
       font-weight: 400;
       border-radius: 7px;
       font-size: 12px;
       line-height: 20px;
+      border: none;
+    }
+    .ant-input-number{
+      background-color: #f1f4f8;
+      // height: 40px;
+      width: 100%;
+      // padding-left: 10px;
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      border-radius: 7px;
+      font-size: 12px;
+      line-height: 20px;
+      border: none;
+      .ant-input-number-handler {
+      background-color: #f1f4f8;
+      }
     }
     .ant-select-single{
       background-color: #f1f4f8;
       height: 40px;
       width: 100%;
-      padding-left: 10px;
       font-weight: 400;
       border-radius: 7px;
       font-size: 12px;
       line-height: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .ant-select-selector{
+      background-color: red;
+      background-color: #f1f4f8;
+      border:none;
+      outline: none;
     }
   }
 
+  // form bottoms (sqalash,qaytish)
   .modal-form_buttons{
-    // border: 2px solid red;
     display: flex;
     align-items: center;
     justify-content:space-evenly;
     margin-top: 30px;
     .modal-form__button{
-      // background-color: red;
       width: 150px;
       border-radius:7px;
       height: 40px;
@@ -119,4 +142,16 @@
     }
   }
 
+}
+
+
+// map
+
+// .ymaps-2-1-79-map{
+//   width: 300px !important;
+//   border: 1px solid red;
+// }
+
+.ymaps-2-1-79-events-pane .ymaps-2-1-79-user-selection-none{
+  border: 1px solid red !important;
 }

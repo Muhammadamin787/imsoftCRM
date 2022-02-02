@@ -2,7 +2,7 @@ import React from 'react';
 import {REKLAMALAR_PATH} from "../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../pages/pageConstants/PageTypes";
 import { STRING } from '../components/Modal/ModalInputTypes';
-import {Reklamalar} from "../components/functions/icons";
+import {Reklamalar} from "../assets/icons/icons";
 
 const ReklamalarTemplate = {
 	text: "Reklamalar",

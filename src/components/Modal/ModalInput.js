@@ -9,8 +9,7 @@ import {
 import { Option } from "antd/lib/mentions";
 import React,{ useState} from "react";
 // import PhoneInput from "react-phone-input-2";
-
-// import ImageUpload from "./ImageUpload";
+import "./GlobalModal.scss"
 import {
   DATE,
   IMAGE,
@@ -21,14 +20,14 @@ import {
   SELECT,
   STRING,
 } from "./ModalInputTypes";
-
+import {inputDeafultHeght} from "../../constant/deafultStyle"
 import "moment/locale/ru";
+import {YMaps,Map,Placemark} from "react-yandex-maps"
 
 
-
-const ModalInput = ({ type,label,name,placeholder }) => {
+const ModalInput = ({ placeholder,name, gridRow, gridColumn,type, option,height}) => {
   let input = null;
-  
+
 
   switch (type) {
     case STRING:
@@ -36,6 +35,8 @@ const ModalInput = ({ type,label,name,placeholder }) => {
         <Input 
           name={name}
           placeholder={placeholder}
+          style={{gridColumn:gridColumn, gridRow:gridRow ,height: height ? height+"px" : inputDeafultHeght+"px" }}
+
         />
       );
       break;
@@ -44,7 +45,7 @@ const ModalInput = ({ type,label,name,placeholder }) => {
         <InputNumber
           type="number"
           name={name}
-
+          style={{gridColumn:gridColumn, gridRow:gridRow ,height: height ? height+"px" : inputDeafultHeght+"px" }}
           placeholder={placeholder}
         />
       );
@@ -52,28 +53,28 @@ const ModalInput = ({ type,label,name,placeholder }) => {
     case SELECT:
       input = (
         <Select
-          value={""}
-          placeholder={label + "ни танланг"}
-          size="small"
-          name={name}
-          placeholder={placeholder}
-
-        >
-                <Option value={"hi"}>
-                  option
-                </Option>
-                <Option value={"hi"}>
-                  option
-                </Option>
-                <Option value={"hi"}>
-                  option
-                </Option>
-                <Option value={"hi"}>
-                  option
-                </Option>
+        size="small"
+        name={name}
+        placeholder={placeholder + "ni tanlang"}
+        style={{gridColumn:gridColumn, gridRow:gridRow ,height: height ? height+"px" : inputDeafultHeght+"px" }}
+        >{
+          option && option?.map(option =>
+            <Option value={option.value} key={option.key}> {option.value}</Option>
+          )
+        }
         </Select>
       );
       break;
+      case MAP:
+        input = (
+          
+            <YMaps height={height+"px"}>
+            <Map defaultState={{ center: [38.838334, 65.795188], zoom: 9 }} width={"100%"} height={"100%"} style={{border: "1px solid red"}}>
+              <Placemark defaultGeometry={[38.838334, 65.795188]} />
+            </Map>
+            </YMaps>
+        );
+        break;
 
     default:
       break;

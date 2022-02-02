@@ -7,7 +7,7 @@ import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
 import ChildServicePages from "./servicePage/childServicePages/ChildServicePages"
 
-export const PageIndex = ({page}) => {
+export const PageController = ({page}) => {
 
 	switch (page.type) {
 		case MAIN_PAGE:
@@ -26,3 +26,4 @@ export const PageIndex = ({page}) => {
 			return <h1>Not found</h1>;
 	}
 }
+

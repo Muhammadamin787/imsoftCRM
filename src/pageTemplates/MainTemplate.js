@@ -1,7 +1,7 @@
 import React from 'react';
 import {MAIN_PAGE} from "../pages/pageConstants/PageTypes";
 import {MAIN_PATH} from "../pages/pageConstants/PageRoutes";
-import {MainIcon} from "../components/functions/icons";
+import {MainIcon} from "../assets/icons/icons";
 
 const MainTemplate = {
 	text: "Asosiy Oyna",

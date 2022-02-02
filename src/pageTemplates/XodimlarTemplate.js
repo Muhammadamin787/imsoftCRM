@@ -1,7 +1,7 @@
 import React from "react";
 import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { Xodimlar } from "../components/functions/icons";
+import { Xodimlar } from "../assets/icons/icons";
 import { STRING } from "../components/Modal/ModalInputTypes";
 
 
