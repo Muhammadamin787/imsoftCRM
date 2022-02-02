@@ -271,22 +271,22 @@ function Circle() {
 
 function MacRed(){
 	return <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<circle cx="6" cy="6" r="6" fill="#FD5C4E"/>
+	<circle cx="6" cy="6" r="6" fill="#F65951"/>
 	</svg>
 	
 }
 
 function MacGreen(){
 	return <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<circle cx="6" cy="6" r="6" fill="#76E264"/>
+	<circle cx="6" cy="6" r="6" fill="#24C33D"/>
 	</svg>
 	
 	
 }
 
-function MacGray(){
+function MacYellow(){
 	return <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<circle cx="6" cy="6" r="6" fill="#DBDCFF"/>
+	<circle cx="6" cy="6" r="6" fill="#F7B629"/>
 	</svg>
 	
 	
@@ -323,6 +323,6 @@ export {
 	Circle,
 	MacRed,
 	MacGreen,
-	MacGray
+	MacYellow
 }
 

@@ -43,9 +43,9 @@ const GlobalModal = () => {
         <h1>{currentPage?.text}</h1>
 
         <Form>
-            {currentPage.form?.inputs.map((input) => (
+            {/* {currentPage.form?.inputs.map((input) => (
               <ModalInput type={input.type} name={input.name} label={input.label} />
-            ))}
+            ))} */}
           </Form>
       </Modal>
     </>

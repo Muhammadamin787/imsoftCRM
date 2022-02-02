@@ -2,6 +2,17 @@
   height: 100%;
 }
 
+// __________________________Scroll-bar start
+*::-webkit-scrollbar {
+  width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #1890ff;
+  background-color: rgba(90, 90, 90, 0.3);
+  border-radius: 3px;
+}
+// __________________________Scroll-bar end
+
 .site-container {
   height: 100%;
 
@@ -11,6 +22,8 @@
     position: fixed;
     z-index: 500;
     width: 100%;
+    height: 55px;
+    // border: 1px solid red;
     display: flex;
     padding: 0;
 
@@ -24,8 +37,14 @@
     .header__navigation {
       justify-content: center;
       flex-grow: 1;
+      align-items: center;
 
       .ant-menu-item {
+        height: 100%;
+        display: flex;
+        // border: 1px solid red;
+        align-items: center;
+
         a {
           letter-spacing: 0.03em;
           color: #bac8dc;
@@ -33,9 +52,9 @@
 
         svg {
           position: relative;
-          top: 2px;
+          // top: 2px;
           path {
-            transition: .3s;
+            transition: 0.3s;
             fill: #bac8dc;
           }
         }
@@ -80,6 +99,7 @@
   // __________________________Site Layout start
   .site-layout {
     background-color: #eaedf2;
+    margin-top: 54px !important;
 
     & > div {
       // border: 1px solid deeppink;
@@ -93,12 +113,14 @@
   .site-footer {
     background-color: #fff;
     padding: 0;
-    // border: 2px solid green;
-    height: 70px;
+    // border: 1px solid red;
+    height: 64px;
 
     .site-footer__content {
-      padding: 4px 40px;
+      padding: 0px 40px;
       display: flex;
+      // border: 1px solid red;
+      align-items: center;
       justify-content: space-between;
 
       .site-footer__text {
