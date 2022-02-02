@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../redux/tabs_reducer";
 import { MacRed, MacGreen, MacGray } from "../functions/icons";
 
-
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state?.tabs_reducer);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -16,15 +15,15 @@ const GlobalModal = () => {
     if (currentPage?.isOpenModal) {
       setIsModalVisible(true);
     }
-  });
+  }, [currentPage]);
 
-  const showModal = () => {
-    setIsModalVisible(false);
-  };
+  // const showModal = () => {
+  //   setIsModalVisible(false);
+  // };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
 
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -50,25 +49,26 @@ const GlobalModal = () => {
         <div className="modal-header">
           <span>{currentPage.text}</span>
           <div>
-          <div className="modal-header__buttons">
-            <Button className="modal-header__button">
-              <MacGray />
-            </Button>
-            <Button className="modal-header__button">
-              <MacRed />
-            </Button>
-            <Button className="modal-header__button">
-              <MacGreen />
-            </Button>
-          </div>
+            <div className="modal-header__buttons">
+              <Button className="modal-header__button">
+                <MacGray />
+              </Button>
+              <Button className="modal-header__button">
+                <MacRed />
+              </Button>
+              <Button className="modal-header__button">
+                <MacGreen />
+              </Button>
+            </div>
           </div>
         </div>
 
-    
-
         <form className="modal-form">
           {currentPage?.form?.map((form) => (
-            <div  className="modal-grid__form" style={{ gridTemplateColumns: form.grid }} >
+            <div
+              className="modal-grid__form"
+              style={{ gridTemplateColumns: form.grid }}
+            >
               {form?.inputs?.map((input) => (
                 <ModalInput
                   type={input.type}
@@ -80,8 +80,20 @@ const GlobalModal = () => {
             </div>
           ))}
           <div className="modal-form_buttons">
-            <Button type="submit" className="modal-form__button qaytish"onClick={handleCancel}>Qaytish</Button>
-            <Button type="submit" className="modal-form__button saqlash"onClick={handleCancel}>Saqlash</Button>
+            <Button
+              type="submit"
+              className="modal-form__button qaytish"
+              onClick={handleCancel}
+            >
+              Qaytish
+            </Button>
+            <Button
+              type="submit"
+              className="modal-form__button saqlash"
+              onClick={handleCancel}
+            >
+              Saqlash
+            </Button>
           </div>
         </form>
       </Modal>
