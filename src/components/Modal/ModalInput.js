@@ -1,4 +1,4 @@
-import { Button, Input, InputNumber, Radio, DatePicker, Select, Upload } from "antd";
+import { Button, Input, InputNumber, Radio, DatePicker, Select, Upload, Icon } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -15,10 +15,12 @@ import {
   STRING,
   UPLOAD
 } from "./ModalInputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { inputDeafultHeght, inputDeafultWidth } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import Avatar from "./upLoadInput"
+
+
 
 const { TextArea } = Input;
 
@@ -30,6 +32,7 @@ const ModalInput = ({
   type,
   option,
   height,
+  width
 }) => {
   let input = null;
 
@@ -43,6 +46,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: width ? width + "px" : inputDeafultWidth + "px",
           }}
         />
       );
@@ -56,6 +60,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: width ? width + "px" : inputDeafultWidth + "px",
           }}
           placeholder={placeholder}
         />
@@ -71,6 +76,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: width ? width + "px" : inputDeafultWidth + "px",
           }}
         >
           {option &&
@@ -90,7 +96,12 @@ const ModalInput = ({
             defaultState={{ center: [38.838334, 65.795188], zoom: 9 }}
             width={"100%"}
             height={"100%"}
-            style={{ border: "1px solid red" }}
+            style={{
+              gridColumn: gridColumn,
+              gridRow: gridRow,
+              height: height ? height + "px" : inputDeafultHeght + "px",
+              width: width ? width + "px" : inputDeafultWidth + "px",
+            }}
           >
             <Placemark defaultGeometry={[38.838334, 65.795188]} />
           </Map>
@@ -105,7 +116,10 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: width ? width + "px" : inputDeafultWidth + "px",
           }}
+          format="DD.MM.YYYY"
+          allowClear={false}
           // showTime
           // value={
           //   values[name]
@@ -114,8 +128,6 @@ const ModalInput = ({
           //     ? moment().set("hour", 23).set("minute", 59)
           //     : moment().set("hour", 0).set("minute", 1)
           // }
-          format="DD.MM.YYYY"
-          allowClear={false}
           // locale={locale}
           // onChange={(v) => {
           //   const e = {
@@ -138,6 +150,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: width ? width + "px" : inputDeafultWidth + "px",
           }}
           autoSize={{ minRows: 3, maxRows: 5 }}
         />
@@ -152,6 +165,7 @@ const ModalInput = ({
               gridColumn: gridColumn,
               gridRow: gridRow,
               height: height ? height + "px" : inputDeafultHeght + "px",
+              width: width ? width + "px" : inputDeafultWidth + "px",
             }}
             specialLabel={false}
             disableDropdown={true}
@@ -177,7 +191,12 @@ const ModalInput = ({
 
         case UPLOAD:
           input = (
-            <Avatar />
+              <Input style={{
+                gridColumn: gridColumn,
+                gridRow: gridRow,
+                height: height && height > 0 ? height + "px" : inputDeafultHeght + "px",
+                width: width ? width + "px" : inputDeafultWidth + "px",
+              }}  type="file"/>
           )
 
     default:

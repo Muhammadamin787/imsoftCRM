@@ -10,7 +10,7 @@ const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state?.tabs_reducer);
     const tabs = useSelector((state) => state);
 
-    console.log(tabs);
+    // console.log(tabs);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
@@ -65,11 +65,11 @@ const GlobalModal = () => {
                 </div>
                 <form className="modal-form">
                     {currentPage?.form?.map((form) => (
-                        <div className="modal-grid__form" style={{gridTemplateColumns: form.grid?.columns,}}>
+                        <div className="modal-grid__form" style={{gridTemplateColumns: form.grid?.columns, gridAutoRows:form.grid?.rows}}>
                             {form?.inputs?.map((input) => (
                                 <ModalInput {...input}
                                 />
-                            ))}
+                            ))} 
                         </div>
                     ))}
                     <div className="modal-form_buttons">
