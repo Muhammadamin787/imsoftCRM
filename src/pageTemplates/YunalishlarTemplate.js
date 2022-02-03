@@ -15,10 +15,10 @@ const YunalishlarTemplate = {
       grid: "1fr",
       inputs: [
         {
-          label: "Yunalishlar",
-          name: "Yunalishlar",
+          name: "Yo'nalishlar",
           type: STRING,
           required: true,
+          placeholder: "Yo'nalishlar",
         },
       ],
     },

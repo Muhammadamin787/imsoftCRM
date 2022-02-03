@@ -8,6 +8,10 @@ import {MacRed, MacGreen, MacYellow} from "../../assets/icons/icons";
 
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state?.tabs_reducer);
+    const tabs = useSelector((state) => state);
+
+    console.log(tabs);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -33,6 +37,7 @@ const GlobalModal = () => {
   const sty = {
     // height: "100%",
     // backgroundColor:"red"
+    // width:"800px"
     // borderTopLeftRadius:"5px",
   };
 
@@ -42,7 +47,7 @@ const GlobalModal = () => {
                    footer={null}
                    visible={isModalVisible}
                    closable={false}>
-                <div className="modal-header">
+                <div className="modal-header" style={sty}>
                     <span>{currentPage.text}</span>
                     <div>
                         <div className="modal-header__buttons">
@@ -60,7 +65,7 @@ const GlobalModal = () => {
                 </div>
                 <form className="modal-form">
                     {currentPage?.form?.map((form) => (
-                        <div className="modal-grid__form" style={{gridTemplateColumns: form.grid.columns}}>
+                        <div className="modal-grid__form" style={{gridTemplateColumns: form.grid?.columns,}}>
                             {form?.inputs?.map((input) => (
                                 <ModalInput {...input}
                                 />

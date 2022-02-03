@@ -15,9 +15,9 @@ const ReklamalarTemplate = {
 		  grid: "1fr",
 		  inputs: [
 			{
-			  label: "Reklamalar nomi",
 			  name: "reklamalar",
 			  type: STRING,
+			  placeholder:"Reklamalar nomi",
 			  required: true,
 			},
 		  ],

@@ -7,3 +7,5 @@ export const PHONE = "PHONE";
 export const RADIO = "RADIO";
 export const CHECKBOX = "CHECKBOX";
 export const MAP = "MAP";
+export const TEXTAREA = "TEXTAREA";
+export const UPLOAD = "UPLOAD";

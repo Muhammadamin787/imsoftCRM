@@ -26,7 +26,6 @@ const ServiceTemplate = {
     ReklamalarTemplate,
     ViloyatlarTemplate,
     ShaharTumanTemplate,
-    ShaharTumanTemplate
   ],
 };
 
