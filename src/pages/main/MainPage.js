@@ -15,11 +15,10 @@ import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
-import {setCurrentPage,addNewTab} from "../../redux/tabs_reducer";
+import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
+import SearchInput from "../../components/SearchInput/SearchInput";
 
 // Bismillahir rohmanyir rohiym!
-
-
 
 const MainPage = () => {
   const [currentTime, setCurrentTime] = useState(
@@ -31,28 +30,22 @@ const MainPage = () => {
   // );
 
   const { Header, Content } = Layout;
-  const { Search } = Input;
   const { Option } = Select;
   const { SubMenu, Item } = Menu;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  
-const pathname = window.location.pathname; // hozirgi(joriy) uril 
-const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
-const currentPage = allPages.find(allPage => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
+  const pathname = window.location.pathname; // hozirgi(joriy) uril
+  const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
+  const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
 
-useEffect(() => {
-  dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
-  dispatch(addNewTab(currentPage)) // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
-},[]) // [] 👈 qachonki brovser yangilanganda
- 
-
-
-  const onSearch = (value) => console.log(value);
-  function handleChangeSelect(value) {
-    console.log(`selected ${value}`);
+  const handleChangeSelect = () =>{
+    
   }
-// console.log("40px" * "4");
+  useEffect(() => {
+    dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
+    dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
+  }, []); // [] 👈 qachonki brovser yangilanganda
+
   return (
     <Layout className="site-container">
       <Header className="site-header">
@@ -83,12 +76,7 @@ useEffect(() => {
           )}
         </Menu>
         <div className="header__user-profile">
-          <Search
-            placeholder="Qidiruv"
-            className="user-profile-search"
-            allowClear
-            onSearch={onSearch}
-          />
+          <SearchInput />
           <img
             className="user-profile-image"
             src={AccountPNG}
@@ -107,10 +95,16 @@ useEffect(() => {
             {[...AllPages, ...AllServiceChildPages].map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (
-                  <Route path={sub.path} element={<PageController page={sub} />} />
+                  <Route
+                    path={sub.path}
+                    element={<PageController page={sub} />}
+                  />
                 ))
               ) : (
-                <Route path={page.path} element={<PageController page={page} />} />
+                <Route
+                  path={page.path}
+                  element={<PageController page={page} />}
+                />
               )
             )}
           </Routes>
