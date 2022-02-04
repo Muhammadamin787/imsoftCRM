@@ -15,7 +15,6 @@
   border-radius: 15px;
   // width: 1000px;
   margin: auto 0;
-
 }
 
 .ant-modal-body {
@@ -86,8 +85,67 @@
       font-size: 12px;
       line-height: 20px;
       border: none;
+      outline: none;
     }
-    .ant-input-number{
+
+    .ant-upload {
+      background-color: #f1f4f8;
+      // height: 40px;
+      // height: 100px !important;
+
+      // width: 100%;
+      // grid-column: 10/13 !important;
+      // grid-row: 2/5 !important;
+      padding-left: 10px;
+      border: 1px solid red !important;
+      font-weight: 400;
+      border-radius: 7px;
+      font-size: 12px;
+      line-height: 20px;
+      border: none;
+      outline: none;
+    }
+    .avatar-uploader {
+      border: 1px solid blue;
+      // height: 0px !important;
+      // width: 100%;
+      grid-column: 10/17 !important;
+      grid-row: 2/5 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      & > div {
+        width: 30px;
+        border: 2px solid green !important;
+      }
+    }
+    .ant-upload .ant-upload-select .ant-upload-select-picture-card {
+      border: 1px solid green;
+    }
+
+    
+.file-uploader-label {
+  border:1px solid red;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f4f8;
+  // height: 40px;
+  width: 100%;
+  padding-left: 10px;
+  font-weight: 400;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 20px;
+  border: none;
+  outline: none;
+}
+
+#file-uploder {
+  display: none;
+}
+
+
+    .ant-input-number {
       background-color: #f1f4f8;
       // height: 40px;
       width: 100%;
@@ -100,10 +158,10 @@
       line-height: 20px;
       border: none;
       .ant-input-number-handler {
-      background-color: #f1f4f8;
+        background-color: #f1f4f8;
       }
     }
-    .ant-select-single{
+    .ant-select-single {
       background-color: #f1f4f8;
       height: 40px;
       width: 100%;
@@ -114,14 +172,14 @@
       display: flex;
       align-items: center;
     }
-    .ant-select-selector{
+    .ant-select-selector {
       background-color: red;
       background-color: #f1f4f8;
-      border:none;
+      border: none;
       outline: none;
     }
 
-    .ant-picker{
+    .ant-picker {
       background-color: #f1f4f8;
       // height: 40px;
       width: 100%;
@@ -132,7 +190,7 @@
       line-height: 20px;
       border: none;
     }
-    .react-tel-input{
+    .react-tel-input {
       background-color: #f1f4f8;
       // height: 40px;
       width: 100%;
@@ -147,42 +205,39 @@
       justify-content: flex-start;
       .form-control {
         width: 100%;
-      background-color: #f1f4f8;
+        background-color: #f1f4f8;
         border: none;
         outline: none;
-      padding-left: 10px;
-
+        padding-left: 10px;
       }
     }
   }
 
   // form bottoms (sqalash,qaytish)
-  .modal-form_buttons{
+  .modal-form_buttons {
     display: flex;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     margin-top: 30px;
-    .modal-form__button{
+    .modal-form__button {
       width: 150px;
-      border-radius:7px;
+      border-radius: 7px;
       height: 40px;
       font-weight: 400;
-      font-size:13px;
+      font-size: 13px;
       line-height: 20px;
     }
-    .qaytish{
-      border:1px solid #4447E2;
-      color:#4447E2;
+    .qaytish {
+      border: 1px solid #4447e2;
+      color: #4447e2;
     }
 
-    .saqlash{
-      color:#ffffff;
-      background-color:#4447E2;
+    .saqlash {
+      color: #ffffff;
+      background-color: #4447e2;
     }
   }
-
 }
-
 
 // map
 
@@ -191,6 +246,6 @@
 //   border: 1px solid red;
 // }
 
-.ymaps-2-1-79-events-pane .ymaps-2-1-79-user-selection-none{
+.ymaps-2-1-79-events-pane .ymaps-2-1-79-user-selection-none {
   border: 1px solid red !important;
 }

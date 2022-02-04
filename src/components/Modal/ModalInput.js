@@ -1,4 +1,13 @@
-import { Button, Input, InputNumber, Radio, DatePicker, Select, Upload, Icon } from "antd";
+import {
+  Button,
+  Input,
+  InputNumber,
+  Radio,
+  DatePicker,
+  Select,
+  Upload,
+  Icon,
+} from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -13,14 +22,12 @@ import {
   RADIO,
   SELECT,
   STRING,
-  UPLOAD
+  UPLOAD,
 } from "./ModalInputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
-import Avatar from "./upLoadInput"
-
-
+import Avatar from "./upLoadInput";
 
 const { TextArea } = Input;
 
@@ -37,9 +44,47 @@ const ModalInput = ({
 }) => {
   let input = null;
 
-  const [rasm, setRasm] = useState("")
+  // pdf doc img, jpg png yuklash kodlari
 
-  console.log(value);
+  const [pdfFile, setPdfFile] = useState({});
+  const [pdfFileError, setPdfFileError] = useState("");
+  const [pdfFileName, setFileName] = useState("");
+
+  // onchange event
+  const fileType = [
+    "application/pdf",
+    "application/msword",
+    "image/jpeg",
+    "image/png",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  ];
+  const handlePdfFileChange = (e) => {
+    let selectedFile = e.target.value;
+    if (selectedFile) {
+      if (selectedFile && fileType.includes(selectedFile.type)) {
+        let reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = (e) => {
+          setPdfFile({
+            ...pdfFile,
+            [e.target.name]: selectedFile
+          });
+          setPdfFileError("");
+          // console.log(e.target.result);
+          setFileName(selectedFile.name);
+          // console.log(selectedFile.name);
+        };
+      } else {
+        setPdfFile(null);
+        setPdfFileError("file type mos kelmadi");
+      }
+    }
+  };
+
+  // console.log(pdfFile !== null ? pdfFile : "yuq");
+  // console.log(pdfFileName);
+  // console.log(pdfFile);
+  // pdf doc img, jpg png yuklash kodlari tugadi
 
   switch (type) {
     case STRING:
@@ -96,9 +141,15 @@ const ModalInput = ({
       break;
     case MAP:
       input = (
-        <YMaps height={height + "px"}>
+        <YMaps
+        // height={height + "px"}
+        >
           <Map
-            defaultState={{ center: [38.838334, 65.795188], zoom: 7 , controls: [ 'fullscreenControl']}}
+            defaultState={{
+              center: [38.838334, 65.795188],
+              zoom: 7,
+              controls: ["fullscreenControl"],
+            }}
             width={"100%"}
             height={"100%"}
             style={{
@@ -107,8 +158,7 @@ const ModalInput = ({
               height: height ? height + "px" : inputDeafultHeght + "px",
               // width: width && width ? width + "px" : inputDeafultWidth + "px",
             }}
-            modules={['control.ZoomControl', 'control.FullscreenControl']}
-            
+            modules={["control.ZoomControl", "control.FullscreenControl"]}
           >
             <Placemark defaultGeometry={[38.838334, 65.795188]} />
             {/* <ZoomControl options={{float:"top"}} /> */}
@@ -165,55 +215,110 @@ const ModalInput = ({
       );
       break;
 
-      case PHONE:
-        input = (
-          <PhoneInput
-            country={"uz"}
-            style={{
-              gridColumn: gridColumn,
-              gridRow: gridRow,
-              height: height ? height + "px" : inputDeafultHeght + "px",
-              // width: width && width ? width + "px" : inputDeafultWidth + "px",
+    case PHONE:
+      input = (
+        <PhoneInput
+          country={"uz"}
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
+          }}
+          specialLabel={false}
+          disableDropdown={true}
+          countryCodeEditable={false}
+          // value={values[name] ? values[name] : "+998"}
+          areaCodes={{
+            uz: ["+998"],
+          }}
+          masks={{ uz: "(..) ...-..-.." }}
+          prefix="+"
+          // onChange={(phone) => {
+          //   const e = {
+          //     target: {
+          //       name: name,
+          //       value: phone,
+          //     },
+          //   };
+          //   // onChange(e);
+          // }}
+        />
+      );
+      break;
+
+    case UPLOAD:
+      input = (
+        <label
+          className="file-uploader-label"
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
+            // backgroundColor: "red",
+          }}
+          htmlFor="file-uploder"
+        >
+          {pdfFileName ? pdfFileName : "file yuklanmagan"}
+          <Input
+            id="file-uploder"
+            name={name}
+            value={pdfFile && pdfFile[name]}
+            placeholder={placeholder}
+            alt="file"
+            onChange={(e) => {
+              const objValue = {
+                target: {
+                  name,
+                  value: e?.target?.files[0],
+                },
+              };
+              handlePdfFileChange(objValue);
             }}
-            specialLabel={false}
-            disableDropdown={true}
-            countryCodeEditable={false}
-            // value={values[name] ? values[name] : "+998"}
-            areaCodes={{
-              uz: ["+998"],
-            }}
-            masks={{ uz: "(..) ...-..-.." }}
-            prefix="+"
-            // onChange={(phone) => {
-            //   const e = {
-            //     target: {
-            //       name: name,
-            //       value: phone,
-            //     },
-            //   };
-            //   // onChange(e);
-            // }}
+            type="file"
           />
-        );
-        break;
+        </label>
+      );
+      // input = (
+      //   <Avatar
+      //   // style={{
+      //   //           gridColumn: gridColumn,
+      //   //           gridRow: gridRow + "!important",
+      //   //           // height: height ? height + "px" : inputDeafultHeght + "px",
+      //   //           // width: width && width ? width + "px" : inputDeafultWidth + "px",
+      //   //           backgroundColor: "red",
+      //   //         }}
 
-        case UPLOAD:
-          input = (
-              <Input style={{
-                gridColumn: gridColumn,
-                gridRow: gridRow,
-                height: height && height > 0 ? height + "px" : inputDeafultHeght + "px",
-                // width: width && width ? width + "px" : inputDeafultWidth + "px",
-              }}
-              onChange={(e) => setRasm(e.target.value)}
-
-              type="file"/>
-            )
-            break;
-         case IMAGE:
-           input =(
-             <img src={value} alt="yuq" />
-           )   
+      //           gridColumn={gridColumn} gridRow={gridRow} height={height}
+      //           />
+      // )
+      break;
+    case IMAGE:
+      input = (
+        // <Input
+        //   alt="yuq"
+        //   type="file"
+        //   required
+        //   onChange={(e) => handlePdfFileChange(e)}
+        //   style={{
+        //     gridColumn: gridColumn,
+        //     gridRow: gridRow,
+        //     height: height ? height + "px" : inputDeafultHeght + "px",
+        //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
+        //     backgroundColor: "red",
+        //   }}
+        // />
+        <Avatar
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow + "!important",
+            // height: height ? height + "px" : inputDeafultHeght + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
+            backgroundColor: "red",
+          }}
+        />
+      );
     default:
       break;
   }

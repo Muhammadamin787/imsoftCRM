@@ -9,7 +9,6 @@ import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
-/* ------------------------------------ / ----------------------------------- */
 
 const align = "center";
 const XodimlarTemplate = {
@@ -106,7 +105,7 @@ const XodimlarTemplate = {
           type: PHONE,
           required: true,
           placeholder: "Telifon",
-          gridColumn: "10 / 17",
+          gridColumn: "10 / 16",
           gridRow: "1 / 2",
         },
         {
@@ -116,14 +115,14 @@ const XodimlarTemplate = {
           placeholder: "pasport",
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
-          height: inputDeafultHeght * 2.5,
+          height: inputDeafultHeght * 2.5 ,
         },
         {
           name: "oilasi",
           type: UPLOAD,
           required: true,
           placeholder: "Oilasi",
-          gridColumn: "13 / 17",
+          gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
         },
@@ -132,16 +131,16 @@ const XodimlarTemplate = {
           type: MAP,
           required: true,
           placeholder: "hozirgi turgan joyi (map quyiladi)",
-          gridColumn: "10 / 17",
+          gridColumn: "10 / 16",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 3.2,
         },
         {
           name: "rasmi",
-          type: IMAGE,
+          type: UPLOAD,
           required: true,
           placeholder: "rasmi",
-          gridColumn: "17 / 22",
+          gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
           // width: inputDeafultWidth * 1,
@@ -151,7 +150,9 @@ const XodimlarTemplate = {
     },
   ],
   filters: [
-    "yonalish"
+    {
+      dataIndex: "yonalish"
+    },
   ],
   columns: [
     {

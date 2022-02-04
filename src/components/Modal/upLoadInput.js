@@ -1,80 +1,91 @@
-import { Upload,  message } from 'antd';
-import React from 'react';
-import Icon from '@ant-design/icons';
+import { Upload, message } from "antd";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import {inputDeafultHeght,} from '../../constant/deafultStyle';
+;
 
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
+const Avatar = ({gridColumn, gridRow, height, width}) => {
+  const [pdfFile, setPdfFile] = useState({});
+  const [loadingi, setLoading] = useState({ loading: false });
 
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'application/msword' || file.type === 'application/pdf';
-  if (!isJpgOrPng) {
-    message.error('You can only upload jpg, png , doc or pdf file!');
+  function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => callback(reader?.result));
+    reader.readAsDataURL(img);
   }
-  return isJpgOrPng;
-}
- class Avatar extends React.Component {
-     constructor(props) {
-         super(props);
-         console.log(props.style);
-         this.style = props.style
-        //  console.log(this.style);
-     }
-  state = {
-    loading: false,
-    loadFile:"",
-  };
 
-  
+  function beforeUpload(file) {
+    const isJpgOrPng =
+      file.type === "application/pdf" ||
+      file.type === "application/msword" ||
+      file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.type === 'image/jpeg' ||
+      file.type === 'image/png';
 
-  handleChange = info => {
-    if (info.file.status === 'uploading') {
-      this.setState({ loading: true });
+      // console.log(isJpgOrPng);
+    if (!isJpgOrPng) {
+      message.error("You can only upload JPG/PNG file!");
+    }
+    setPdfFile(file);
+    // console.log(file);
+
+    return isJpgOrPng;
+  }
+
+  const handleChange = (info) => {
+    if (info.file.status === "uploading") {
+      setLoading({ loading: true });
       return;
     }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl =>
-        this.setState({
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, (imageUrl) =>
+        setLoading({
           imageUrl,
           loading: false,
-        }),
+        })
       );
     }
+    setPdfFile(info.file);
+    console.log(info.file);
+  };
 
-    this.state.loadFile = info.file
+  console.log(pdfFile.name);
 
-    // console.log(info.file.name);
-    // console.log(this.state.loadFile.name);
-};
-
-  render() {
-    const uploadButton = (
-      <div>
-        <Icon type="smile"  type={this.state.loading ? 'loading' : 'plus'}  />
-        <div className="ant-upload-text">Upload</div>
-        {this.state.loadFile !== "" ? <span >{this.state.loadFile.name}</span> : "not file"}
-      </div>
-    );
-    const { imageUrl } = this.state;
-    
-    return (
+  // render() {
+  const { loading, imageUrl } = loadingi;
+  const uploadButton = (
+    <div>
+      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      <div style={{ marginTop: 8 }}>{pdfFile ? pdfFile : "upload"}</div>
+    </div>
+  );
+  return (
       <Upload
-      style={this.props.style}
         name="avatar"
         listType="picture-card"
-        // className="avatar-uploader"
+        className="avatar-uploader"
         showUploadList={false}
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={beforeUpload}
-        onChange={this.handleChange}
+        onChange={handleChange}
+        maxCount={1}
+        style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow + "!important",
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    // width: width && width ? width + "px" : inputDeafultWidth + "px",
+                    backgroundColor: "red",
+                  }}
       >
-        {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+        {pdfFile?.name ? pdfFile.name : "yuklanmagan" }
+        {/* {imageUrl ? (
+          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+        ) : (
+          uploadButton
+        )} */}
       </Upload>
-    );
-  }
-}
+  );
+  // }
+};
 
 export default Avatar;
