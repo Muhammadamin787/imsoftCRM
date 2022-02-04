@@ -30,9 +30,7 @@ const XodimlarTemplate = {
     },
   ],
   filters: [
-    {
-      dataIndex: "yonalish"
-    },
+    "yonalish"
   ],
   columns: [
     {
