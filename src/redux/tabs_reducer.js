@@ -32,12 +32,16 @@ export const counterSlice = createSlice({
     },
     setCurrentPage: (state, {payload}) => {
       state.currentPage = payload
+    },
+    changeCurrentPageData: (state, {payload}) =>{
+      state.currentPage.data = payload;
     }
+
   },
 });
 
 // Action creators are generated for each case reducer function
 
-export const { addNewTab, removeTab, toggleModal ,setCurrentPage} = counterSlice.actions;
+export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData} = counterSlice.actions;
 
 export default counterSlice.reducer;

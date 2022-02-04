@@ -264,7 +264,7 @@ const XodimlarTemplate = {
     {
       number: "1",
       fish: "Hojiakbar Anorboyev",
-      telefon: "90 532 27 71",
+      telefon: "90 532 35 45",
       viloyat: "Farg'ona",
       shahar: "Marg'ilon",
       manzil: "Galatoy 82 A",
@@ -279,10 +279,10 @@ const XodimlarTemplate = {
     },
     {
       number: "1",
-      fish: "Hojiakbar Anorboyev",
+      fish: "Ravshanbek Fayziyev",
       telefon: "90 532 27 71",
       viloyat: "Farg'ona",
-      shahar: "Marg'ilon",
+      shahar: "Andijon",
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
       yonalish: "BAckend Dasturchi",
