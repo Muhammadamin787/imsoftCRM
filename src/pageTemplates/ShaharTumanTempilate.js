@@ -2,6 +2,7 @@ import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
 import { STRING, SELECT } from "../components/Modal/ModalInputTypes";
+import { FieldNumberOutlined } from '@ant-design/icons';
 import { City } from "../assets/icons/icons";
 
 const ShaharTumanTemplate = {
@@ -15,6 +16,16 @@ const ShaharTumanTemplate = {
       grid: "1fr",
       inputs: [
         {
+          label: "Viloyat",
+          name: "viloyat",
+          type: STRING,
+          required: true,
+        },
+        {
+          label: "Shahar/Tuman",
+          name: "Shahar/Tuman",
+          type: SELECT,
+          required: true,
           name: "Viloyat",
           type: STRING,
           required: true,
@@ -37,6 +48,35 @@ const ShaharTumanTemplate = {
           ],
         },
       ],
+    },
+  ],
+  columns: [
+    {
+      title: <FieldNumberOutlined />,
+      dataIndex: "number",
+      key: "number",
+      width: "5%",
+      align: "center",
+    },
+    {
+      title: "Shahar nomi",
+      dataIndex: "shahar",
+      key: "Shahar",
+      width: "47%",
+    },
+    {
+      title: "Viloyat nomi",
+      dataIndex: "viloyat",
+      key: "Viloyat",
+      width: "47%",
+    },
+  ],
+  data: [
+    {
+      number: "1",
+      shahar: "Marg'ilon",
+      viloyat: "Farg'ona",
+      key: 1,
     },
   ],
 };

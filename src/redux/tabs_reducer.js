@@ -9,14 +9,12 @@ import { STRING } from '../components/Modal/ModalInputTypes';
 const initialState = {
   Panes: [],
   currentPage:{}  
-  
 };
 
 
 export const counterSlice = createSlice({
   name: "Bottom Tabs",
   initialState,
-  
   reducers: {
 
     addNewTab: (state, action) => {
@@ -35,7 +33,6 @@ export const counterSlice = createSlice({
     setCurrentPage: (state, {payload}) => {
       state.currentPage = payload
     }
-
   },
 });
 
