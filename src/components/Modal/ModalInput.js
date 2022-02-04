@@ -15,9 +15,9 @@ import {
   STRING,
   UPLOAD
 } from "./ModalInputTypes";
-import { inputDeafultHeght, inputDeafultWidth } from "../../constant/deafultStyle";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
-import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import Avatar from "./upLoadInput"
 
 
@@ -32,9 +32,14 @@ const ModalInput = ({
   type,
   option,
   height,
-  width
+  width,
+  value,
 }) => {
   let input = null;
+
+  const [rasm, setRasm] = useState("")
+
+  console.log(value);
 
   switch (type) {
     case STRING:
@@ -46,7 +51,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            width: width ? width + "px" : inputDeafultWidth + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
         />
       );
@@ -60,7 +65,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            width: width ? width + "px" : inputDeafultWidth + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           placeholder={placeholder}
         />
@@ -76,7 +81,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            width: width ? width + "px" : inputDeafultWidth + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
         >
           {option &&
@@ -93,17 +98,20 @@ const ModalInput = ({
       input = (
         <YMaps height={height + "px"}>
           <Map
-            defaultState={{ center: [38.838334, 65.795188], zoom: 9 }}
+            defaultState={{ center: [38.838334, 65.795188], zoom: 7 , controls: [ 'fullscreenControl']}}
             width={"100%"}
             height={"100%"}
             style={{
               gridColumn: gridColumn,
               gridRow: gridRow,
               height: height ? height + "px" : inputDeafultHeght + "px",
-              width: width ? width + "px" : inputDeafultWidth + "px",
+              // width: width && width ? width + "px" : inputDeafultWidth + "px",
             }}
+            modules={['control.ZoomControl', 'control.FullscreenControl']}
+            
           >
             <Placemark defaultGeometry={[38.838334, 65.795188]} />
+            {/* <ZoomControl options={{float:"top"}} /> */}
           </Map>
         </YMaps>
       );
@@ -116,7 +124,7 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            width: width ? width + "px" : inputDeafultWidth + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           format="DD.MM.YYYY"
           allowClear={false}
@@ -150,9 +158,9 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            width: width ? width + "px" : inputDeafultWidth + "px",
+            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
-          autoSize={{ minRows: 3, maxRows: 5 }}
+          autoSize={{ minRows: 3, maxRows: 3 }}
         />
       );
       break;
@@ -165,7 +173,7 @@ const ModalInput = ({
               gridColumn: gridColumn,
               gridRow: gridRow,
               height: height ? height + "px" : inputDeafultHeght + "px",
-              width: width ? width + "px" : inputDeafultWidth + "px",
+              // width: width && width ? width + "px" : inputDeafultWidth + "px",
             }}
             specialLabel={false}
             disableDropdown={true}
@@ -195,10 +203,17 @@ const ModalInput = ({
                 gridColumn: gridColumn,
                 gridRow: gridRow,
                 height: height && height > 0 ? height + "px" : inputDeafultHeght + "px",
-                width: width ? width + "px" : inputDeafultWidth + "px",
-              }}  type="file"/>
-          )
+                // width: width && width ? width + "px" : inputDeafultWidth + "px",
+              }}
+              onChange={(e) => setRasm(e.target.value)}
 
+              type="file"/>
+            )
+            break;
+         case IMAGE:
+           input =(
+             <img src={value} alt="yuq" />
+           )   
     default:
       break;
   }

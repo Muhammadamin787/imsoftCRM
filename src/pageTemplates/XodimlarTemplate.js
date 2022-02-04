@@ -2,9 +2,9 @@ import React from "react";
 import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
 import { Xodimlar } from "../assets/icons/icons";
-import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD } from "../components/Modal/ModalInputTypes";
-import {inputDeafultHeght,inputDeafultWidth} from "../constant/deafultStyle"
-
+import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/ModalInputTypes";
+import {inputDeafultHeght,} from "../constant/deafultStyle"
+import image from "../assets/images/Ellipse 3.png"
 
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -12,19 +12,23 @@ const XodimlarTemplate = {
   icon: <Xodimlar />,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
+  modal:{
+    width:1000,
+  },
   form: [
     {
       grid: {
         columns: "repeat(20, 1fr)",
         rows:"repeat(6, 1fr)",
       },
+
       inputs: [
         {
           name: "full name",
           type: STRING,
           required: true,
           placeholder: "F.I.SH",
-          gridColumn: "1 / 9",
+          gridColumn: "1 / 10",
           gridRow: "1 / 2",
         },
         {
@@ -32,7 +36,7 @@ const XodimlarTemplate = {
           type: DATE,
           required: true,
           placeholder: "Tug'ilgan sana",
-          gridColumn: "1 / 4",
+          gridColumn: "1 / 5",
           gridRow: "2 / 3",
         },
         {
@@ -40,7 +44,7 @@ const XodimlarTemplate = {
           type: SELECT,
           required: true,
           placeholder: "viloyat",
-          gridColumn: "1 / 4",
+          gridColumn: "1 / 5",
           gridRow: "3 / 4",
           option: [
             { value: "Qashqadaryo", key: "Qashqadaroy"},
@@ -53,7 +57,7 @@ const XodimlarTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Yo'nalishi",
-          gridColumn: "4 / 9",
+          gridColumn: "5 / 10",
           gridRow: "2 / 3",
           option: [
             { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
@@ -66,7 +70,7 @@ const XodimlarTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Shahar",
-          gridColumn: "4 / 9",
+          gridColumn: "5 / 10",
           gridRow: "3 / 4",
           option: [
             { value: "Olti ariq", key: "Olti ariq"},
@@ -80,7 +84,7 @@ const XodimlarTemplate = {
           type: STRING,
           required: true,
           placeholder: "Manzil",
-          gridColumn: "1 / 9",
+          gridColumn: "1 / 10",
           gridRow: "4 / 5",
         },
         {
@@ -88,7 +92,7 @@ const XodimlarTemplate = {
           type: TEXTAREA,
           required: true,
           placeholder: "Qo'shimcha malumot",
-          gridColumn: "1 / 9",
+          gridColumn: "1 / 10",
           gridRow: "5 / 7",
         },
         {
@@ -96,7 +100,7 @@ const XodimlarTemplate = {
           type: PHONE,
           required: true,
           placeholder: "Telifon",
-          gridColumn: "9 / 17",
+          gridColumn: "10 / 17",
           gridRow: "1 / 2",
         },
         {
@@ -104,7 +108,7 @@ const XodimlarTemplate = {
           type: UPLOAD,
           required: true,
           placeholder: "pasport",
-          gridColumn: "9 / 13",
+          gridColumn: "10 / 13",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
         },
@@ -119,22 +123,23 @@ const XodimlarTemplate = {
         },
         {
           name: "hozirgi turgan joyi",
-          type: STRING,
+          type: MAP,
           required: true,
           placeholder: "hozirgi turgan joyi (map quyiladi)",
-          gridColumn: "9 / 17",
+          gridColumn: "10 / 17",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 3.2,
         },
         {
           name: "rasmi",
-          type: STRING,
+          type: IMAGE,
           required: true,
           placeholder: "rasmi",
           gridColumn: "17 / 22",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
-          width: inputDeafultWidth * 5
+          // width: inputDeafultWidth * 1,
+          value:image,
         },
       ],
     },

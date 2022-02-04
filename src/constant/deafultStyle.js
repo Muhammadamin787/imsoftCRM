@@ -1,2 +1,2 @@
 export const inputDeafultHeght = 40;
-export const inputDeafultWidth = 100;
+// export const inputDeafultWidth = 1;

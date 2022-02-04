@@ -43,7 +43,7 @@ const GlobalModal = () => {
 
     return (
         <>
-            <Modal bodyStyle={sty}
+            <Modal width={currentPage?.modal?.width}
                    footer={null}
                    visible={isModalVisible}
                    closable={false}>
