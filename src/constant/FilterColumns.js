@@ -5,16 +5,16 @@ export default (filters, columns, data) => {
     let filteredCols = [...columns];
     filters.forEach(d => {
         filteredCols = filteredCols.map(a => {
-            if (a.dataIndex == d.dataIndex) {
-                let filtereds = _.uniqBy(data, e => e[d.dataIndex]).map(k => {
-                    if (d.dataIndex === "time_create") {
+            if (a.dataIndex == d) {
+                let filtereds = _.uniqBy(data, e => e[d]).map(k => {
+                    if (d === "time_create") {
                         return {
-                            text: moment(k[d.dataIndex]).format("DD.MM.YYYY") || "",
-                            value: moment(k[d.dataIndex]).format("DD.MM.YYYY") || "",
+                            text: moment(k[d]).format("DD.MM.YYYY") || "",
+                            value: moment(k[d]).format("DD.MM.YYYY") || "",
                         };
                     } else {
                         return {
-                            text: k[d.dataIndex], value: k[d.dataIndex],
+                            text: k[d], value: k[d],
                         };
                     }
                 });
