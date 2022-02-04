@@ -31,7 +31,7 @@ const BottomTabs = () => {
     const active = Panes[activeKey].path;
     navigate(active, { replace: true });
     dispatch(setCurrentPage(Panes[activeKey]))
-    
+    console.log(activeKey);
   };
 
   const onEdit = (targetKey, action) => {
@@ -51,10 +51,8 @@ const BottomTabs = () => {
 
 
   return (
-    // <div>
       <Tabs
         hideAdd
-        onChange={onChange}
         activeKey={activeKey}
         type="editable-card"
         onEdit={onEdit}
@@ -64,17 +62,16 @@ const BottomTabs = () => {
           panes.map((pane, i) => (
             <TabPane
               tab={
-                <div className="site-footer__tab">
-                  {pane.icon} <span>{pane.text}</span>
+                <div className="site-footer__tab" onClick={() => onChange(i)}>
+                  {pane?.icon} <span>{pane?.text}</span>
                 </div>
               }
+              
               key={i}
             >
-              {/* {pane.title} */}
             </TabPane>
           ))}
       </Tabs>
-    // {/* </div> */}
   );
 };
 

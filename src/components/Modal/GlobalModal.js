@@ -48,7 +48,7 @@ const GlobalModal = () => {
                    visible={isModalVisible}
                    closable={false}>
                 <div className="modal-header" style={sty}>
-                    <span>{currentPage.text}</span>
+                    <span>{currentPage?.text}</span>
                     <div>
                         <div className="modal-header__buttons">
                             <Button className="modal-header__button">

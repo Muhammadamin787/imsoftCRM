@@ -1,15 +1,9 @@
 import React from "react";
 import { REGIONLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import {
-  STRING,
-  SELECT,
-  MAP,
-  NUMBER,
-} from "../components/Modal/ModalInputTypes";
-import { Regionlar } from "../assets/icons/icons";
-import { inputDeafultHeght } from "../constant/deafultStyle";
-
+import { SELECT, STRING } from "../components/Modal/ModalInputTypes";
+import { AimOutlined, FieldNumberOutlined } from "@ant-design/icons";
+import {Regionlar} from '../assets/icons/icons'
 const RegionlarTemplate = {
   text: "Regionlar",
   path: REGIONLAR_PATH,
@@ -18,62 +12,82 @@ const RegionlarTemplate = {
   isOpenModal: false,
   form: [
     {
-      grid: {
-        columns: "1fr 1fr",
-        // rows:"1fr"
-      },
+      grid: "1fr",
       inputs: [
         {
-          name: "Viloyat",
+          label: "Viloyat",
+          name: "viloyat",
           type: STRING,
           required: true,
-          placeholder: "viloyat",
-          gridColumn: "1 / 2",
-          gridRow: "1 / 2",
         },
         {
-          name: "Shahar/Tuman",
+          label: "Shahar/Tuman",
+          name: "shahar/tuman",
           type: SELECT,
           required: true,
-          placeholder: "Shahar/Tuman",
-          gridColumn: "1 / 2",
-          gridRow: "2 / 3",
-          option: [
-            { value: "Olti ariq", key: "Olti ariq"},
-            { value: "Qo'qon", key: "Qo'qon"},
-            { value: "Marg'ilon", key: "Marg'ilon"},
-            { value: "Farg'ona", key: "Farg'ona"},
-          ],
         },
         {
-          label: "Viloyat4",
-          name: "viloyat4",
-          type: MAP,
+          label: "Shahar/Tuman",
+          name: "shahar/tuman",
+          type: SELECT,
           required: true,
-          placeholder: "viloyat4",
-          height: inputDeafultHeght*4,
-          gridColumn: "2 / 3",
-          gridRow: "1 / 4",
-          height: inputDeafultHeght * 4,
+          options: [
+            { value: "custom value 1", key: "custom value 1" },
+            { value: "custom value 2", key: "custom value 2" },
+            { value: "custom value 3", key: "custom value 3" },
+            { value: "custom value 4", key: "custom value 5" },
+          ],
         },
+        //   {
+        // 	label: "Shahar/Tuman",
+        // 	name: "shahar/tuman",
+        // 	type: SELECTION,
+        // 	required: true,
+        //   },
       ],
+    },
+  ],
+  columns: [
+    {
+      title: <FieldNumberOutlined />,
+      dataIndex: "number",
+      key: "number",
+      width: "5%",
+      align: "center",
+    },
+    {
+      title: "Shahar nomi",
+      dataIndex: "shahar_nomi",
+      key: "Shahar nomi",
+      width: "40%",
+    },
+    {
+      title: "Viloyat nomi",
+      dataIndex: "viloyat_nomi",
+      key: "Viloyat nomi",
+      width: "40%",
+    },
+    {
+      title: "Lokatsiya",
+      dataIndex: "lokatsiya",
+      key: "Lokatsiya",
+      width: "15%",
+      align: "center",
+    },
+  ],
+  data: [
+    {
+      number: "1",
+      shahar_nomi: "Marg'ilon",
+      viloyat_nomi: "Farg'ona",
+      lokatsiya: (
+        <div>
+          <AimOutlined size={50} />
+        </div>
+      ),
+      key: 1,
     },
   ],
 };
 
 export default RegionlarTemplate;
-
-// {
-//   label: "Shahar/Tuman",
-//   name: "shahar/tuman",
-//   type: SELECT,
-//   placeholder: "shahar",
-//   required: true,
-//   options:[
-//     {value:"custom value 1", key: "custom value 1",},
-//     {value:"custom value 2", key: "custom value 2",},
-//     {value:"custom value 3", key: "custom value 3",},
-//     {value:"custom value 4", key: "custom value 5",},
-
-//   ]
-// },
