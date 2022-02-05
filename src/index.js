@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { ConfigProvider } from "antd";
 import ruRu from "antd/lib/locale/ru_RU";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -30,4 +29,3 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-reportWebVitals();
