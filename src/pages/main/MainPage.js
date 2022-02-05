@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Input, Select } from "antd";
+import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
 import BottomTabs from "../../components/tabs/BottomTabs";
 import { Footer } from "antd/es/layout/layout";
@@ -24,10 +24,6 @@ const MainPage = () => {
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
   );
-  // setInterval(
-  //   () => setCurrentTime(moment(new Date()).format("DD.MM.YYYY hh:mm:ss")),
-  //   1000
-  // );
 
   const { Header, Content } = Layout;
   const { Option } = Select;
@@ -39,7 +35,7 @@ const MainPage = () => {
   const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
 
   const handleChangeSelect = () =>{
-    
+
   }
   useEffect(() => {
     dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
@@ -83,7 +79,7 @@ const MainPage = () => {
             alt="Foydalanuvchi rasmi"
           />
           <Select onChange={handleChangeSelect} bordered={false}>
-            <Option value="Jack">JAck</Option>
+            <Option value="Jack">Jack</Option>
           </Select>
         </div>
       </Header>
@@ -114,7 +110,7 @@ const MainPage = () => {
       <Footer className="site-footer">
         <BottomTabs />
         <div className="site-footer__content">
-          <div>
+          <div className="site-footer__icons">
             <GlobusIcon2 />
             <TelegramIcon />
           </div>

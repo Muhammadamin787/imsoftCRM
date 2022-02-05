@@ -14,24 +14,48 @@ import { MacRed, MacGreen, MacGray,  AddItem,
   MacYellow, } from "../../../assets/icons/icons";
 import GlobalTable from "../../../components/Table/GlobalTable";
 import GlobalModal from "../../../components/Modal/GlobalModal";
-import { useDispatch } from "react-redux";
-import { toggleModal } from "../../../redux/tabs_reducer";
-
+import {useSelector, useDispatch } from "react-redux";
+import { toggleModal, setCurrentPage, changePanes } from "../../../redux/tabs_reducer";
+import { useNavigate } from "react-router-dom";
 const ChildServicePages = ({ page }) => {
   const dispatch = useDispatch();
+  const data = useSelector((s) => s.tabs_reducer);
+  const navigate = useNavigate();
+  const {Panes, currentPage} = data;
 
   const handleModalClick = () => {
     dispatch(toggleModal(true));
   };
 
+  function deleteTab(){
+
+  }
+  const removeCurrentPage = (type = null) => {
+    let position = null;
+    Panes.forEach((item, i) =>{
+      if(item.text === currentPage.text){
+        position = i;
+        !type && dispatch(changePanes(i));
+      }
+    });
+    if(position === 0 && Panes.length === 1){
+      navigate('/servis');
+    }else if(Panes.length -1> position){
+      navigate(Panes[position].path);
+      dispatch(setCurrentPage(Panes[position]));
+    }else{
+      navigate(Panes[position-1].path);
+      dispatch(setCurrentPage(Panes[position-1]));
+    }
+  }
+
   return (
     <div className="child-page">
       <div className="child-header">
-        {/* header  */}
         <div className="child-page__header">
           <div className="child-page__iconTitle">
-            {page.icon}
-            <span>{page.text}</span>
+            {currentPage.icon}
+            <span>{currentPage.text}</span>
           </div>
           <div className="child-page__tools">
             <Button onClick={() => handleModalClick()}>
@@ -66,15 +90,15 @@ const ChildServicePages = ({ page }) => {
             </Button>
           </div>
           <div className="child-page__buttons">
-            <Button className="child-page__button">
+            <button className="child-page__button" onClick={() => removeCurrentPage('minimize')}>
               <MacGreen />
-            </Button>
-            <Button className="child-page__button">
+            </button>
+            <button className="child-page__button">
               <MacYellow />
-            </Button>
-            <Button className="child-page__button">
+            </button>
+            <button className="child-page__button" onClick={() => removeCurrentPage()}>
               <MacRed />
-            </Button>
+            </button>
           </div>
         </div>
       </div>

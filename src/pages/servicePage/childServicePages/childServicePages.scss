@@ -7,13 +7,10 @@
 
   .child-header {
     .child-page__header {
-      // border: 1px solid red;
       background-color: #4447e2;
-      // padding: 0 20px 0 20px;
       height: 35px;
       width: 100%;
       color: #ffffff;
-      // font-family: Montserrat;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -39,7 +36,6 @@
         }
       }
       .child-page__tools {
-        // border: 1px solid red;
         flex-grow: 1;
         padding: 0 6px;
         button {
@@ -70,11 +66,12 @@
       }
       .child-page__buttons {
         display: flex;
-        // border: 1px solid red;
         padding-right: 15px;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        width: 80px;
         .child-page__button {
+          cursor: pointer;
           width: 10px;
           background: none;
           outline: none;
@@ -104,28 +101,6 @@
     // height: 459px !important;
     overflow: auto;
   }
-  // .main-table .ant-spin-nested-loading,
-  // .main-table .ant-spin-nested-loading .ant-spin-container,
-  // .main-table .ant-spin-nested-loading .ant-spin-container .ant-table,
-  // .main-table
-  // .ant-spin-nested-loading
-  // .ant-spin-container
-  // .ant-table
-  // .ant-table-container {
-  // border: 1px solid red;
-  // height: 300px !important;
-  // }
-  // .ant-table-wrapper.main-table {
-  // border: 1px solid blue;
-  // height: 200px !important;
-  // }
-  // .main-table .ant-table-content {
-  // height: 100% !important;
-  // border: 1px solid red;
-  // overflow: auto !important;
-  // table {
-  // }
-  // }
 }
 
 .data_change_sections {
@@ -138,9 +113,8 @@
 
   .child-page__tools {
     height: 40px;
-    display: flex;
+    // display: flex;
     align-items: center;
-
     button {
       height: 20px;
       width: 20px;
@@ -159,7 +133,6 @@
     }
   }
 }
-
 // .ant-table-pagination{
 //   display: none;
 // }

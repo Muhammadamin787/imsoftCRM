@@ -27,6 +27,9 @@ export const counterSlice = createSlice({
     removeTab: (state, action) => {
       state.Panes.splice(action.payload, 1);
     },
+    changePanes: (state, {payload}) => {
+      state.Panes.splice(payload, 1);
+    },
     toggleModal: (state, {payload}) => {
       state.currentPage.isOpenModal = payload;
     },
@@ -42,6 +45,6 @@ export const counterSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 
-export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData} = counterSlice.actions;
+export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData, changePanes} = counterSlice.actions;
 
 export default counterSlice.reducer;

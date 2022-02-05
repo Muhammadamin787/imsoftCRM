@@ -16,10 +16,12 @@ export const PageController = ({page}) => {
 			return <CustomersPage page={page}/>;
 		case PROGRAMMES_PAGE:
 			return <ProgrammesPage page={page}/>;
-		case SERVIS_PAGE:
+		case SERVIS_PAGE:{
 			return <ServicePage page={page}/>;
-		case REPORT_PAGE:
+		}
+		case REPORT_PAGE:{
 			return <ReportPage page={page}/>;
+		}
 		case SERVIS_CHILD_PAGES:
 			return <ChildServicePages page={page}/>;
 		default:
