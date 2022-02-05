@@ -7,6 +7,7 @@ import {
   Select,
   Upload,
   Icon,
+  message
 } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useState } from "react";
@@ -26,8 +27,9 @@ import {
 } from "./ModalInputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
-import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, ZoomControl ,  FullscreenControl, SearchControl, GeolocationControl, Placemark } from "react-yandex-maps";
 import Avatar from "./upLoadInput";
+import MapModal from "./MapModal"
 
 const { TextArea } = Input;
 
@@ -41,50 +43,95 @@ const ModalInput = ({
   height,
   width,
   value,
+  icon
 }) => {
   let input = null;
 
   // pdf doc img, jpg png yuklash kodlari
 
-  const [pdfFile, setPdfFile] = useState({});
-  const [pdfFileError, setPdfFileError] = useState("");
-  const [pdfFileName, setFileName] = useState("");
+  // const [pdfFile, setPdfFile] = useState({});
+  // const [pdfFileError, setPdfFileError] = useState("");
+  // const [pdfFileName, setFileName] = useState("");
 
-  // onchange event
-  const fileType = [
-    "application/pdf",
-    "application/msword",
-    "image/jpeg",
-    "image/png",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  ];
-  const handlePdfFileChange = (e) => {
-    let selectedFile = e.target.value;
-    if (selectedFile) {
-      if (selectedFile && fileType.includes(selectedFile.type)) {
-        let reader = new FileReader();
-        reader.readAsDataURL(selectedFile);
-        reader.onloadend = (e) => {
-          setPdfFile({
-            ...pdfFile,
-            [e.target.name]: selectedFile
-          });
-          setPdfFileError("");
-          // console.log(e.target.result);
-          setFileName(selectedFile.name);
-          // console.log(selectedFile.name);
-        };
-      } else {
-        setPdfFile(null);
-        setPdfFileError("file type mos kelmadi");
-      }
+  // // onchange event
+  // const fileType = [
+  //   "application/pdf",
+  //   "application/msword",
+  //   "image/jpeg",
+  //   "image/png",
+  //   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  // ];
+  // const handlePdfFileChange = (e) => {
+  //   let selectedFile = e.target.value;
+  //   console.log(selectedFile);
+
+  //   if (selectedFile) {
+  //     if (selectedFile && fileType.includes(selectedFile.type)) {
+  //       let reader = new FileReader();
+  //       reader.readAsDataURL(selectedFile);
+  //       reader.onloadend = (e) => {
+  //         setPdfFile({selectedFile});
+  //         setFileName(selectedFile.name);
+  //       };
+  //     } else {
+  //       setPdfFile(null);
+  //       setPdfFileError("file type mos kelmadi");
+  //     }
+  //   }
+  // };
+// console.log(pdfFile);
+// console.log(pdfFileName);
+
+  // pdf doc img, jpg png yuklash kodlari tugadi
+  // pdf file 2 (Avatar) kodlari
+
+  const [pdfFile, setPdfFile] = useState({});
+  const [loadingi, setLoading] = useState({ loading: false });
+  // const [pdfFileName, setFileName] = useState("");
+
+  function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => callback(reader?.result));
+    reader.readAsDataURL(img)
+  }
+
+  function beforeUpload(file) {
+    const isJpgOrPng =
+      file.type === "application/pdf" ||
+      file.type === "application/msword" ||
+      file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.type === 'image/jpeg' ||
+      file.type === 'image/png';
+
+    if (!isJpgOrPng) {
+      message.error("You can only upload JPG/PNG file!");
     }
+    setPdfFile(file);
+    return isJpgOrPng;
+  }
+
+  const handleChange = (info) => {
+    console.log(info);
+    if (info.file.status === "uploading") {
+      setLoading({ loading: true });
+      return;
+    }
+    if (info.file.status === "done") {
+      getBase64(info.file.originFileObj, (imageUrl) =>
+        setLoading({
+          imageUrl,
+          loading: false,
+        })
+      );
+    }
+    setPdfFile(info.file);
   };
 
-  // console.log(pdfFile !== null ? pdfFile : "yuq");
-  // console.log(pdfFileName);
-  // console.log(pdfFile);
-  // pdf doc img, jpg png yuklash kodlari tugadi
+  console.log(pdfFile);
+
+  const { loading, imageUrl } = loadingi;
+
+
 
   switch (type) {
     case STRING:
@@ -131,7 +178,7 @@ const ModalInput = ({
         >
           {option &&
             option?.map((option) => (
-              <Option value={option.value} key={option.key}>
+              <Option value={option?.value} key={option?.key}>
                 {" "}
                 {option.value}
               </Option>
@@ -141,29 +188,8 @@ const ModalInput = ({
       break;
     case MAP:
       input = (
-        <YMaps
-        // height={height + "px"}
-        >
-          <Map
-            defaultState={{
-              center: [38.838334, 65.795188],
-              zoom: 7,
-              controls: ["fullscreenControl"],
-            }}
-            width={"100%"}
-            height={"100%"}
-            style={{
-              gridColumn: gridColumn,
-              gridRow: gridRow,
-              height: height ? height + "px" : inputDeafultHeght + "px",
-              // width: width && width ? width + "px" : inputDeafultWidth + "px",
-            }}
-            modules={["control.ZoomControl", "control.FullscreenControl"]}
-          >
-            <Placemark defaultGeometry={[38.838334, 65.795188]} />
-            {/* <ZoomControl options={{float:"top"}} /> */}
-          </Map>
-        </YMaps>
+        <MapModal gridColumn={gridColumn} gridRow={gridRow} height={height} />
+        
       );
       break;
     case DATE:
@@ -174,7 +200,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           format="DD.MM.YYYY"
           allowClear={false}
@@ -214,7 +239,6 @@ const ModalInput = ({
         />
       );
       break;
-
     case PHONE:
       input = (
         <PhoneInput
@@ -223,7 +247,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           specialLabel={false}
           disableDropdown={true}
@@ -246,7 +269,6 @@ const ModalInput = ({
         />
       );
       break;
-
     case UPLOAD:
       input = (
         <label
@@ -255,47 +277,35 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
-            // backgroundColor: "red",
           }}
           htmlFor="file-uploder"
         >
-          {pdfFileName ? pdfFileName : "file yuklanmagan"}
-          <Input
+          <Upload
             id="file-uploder"
             name={name}
-            value={pdfFile && pdfFile[name]}
             placeholder={placeholder}
             alt="file"
-            onChange={(e) => {
-              const objValue = {
-                target: {
-                  name,
-                  value: e?.target?.files[0],
-                },
-              };
-              handlePdfFileChange(objValue);
-            }}
+            beforeUpload={ beforeUpload}
+            onClick={handleChange}
             type="file"
-          />
+            maxCount={1}
+            showUploadList={false}
+          >
+            {pdfFile?.name ? pdfFile?.name : <div  style={{ height:height, border:"1px solid black" , display:"flex", justifyContent: "center", alignItems:"center"}}>
+              {/* <span className="file-uploader__icon">{icon && icon}</span> */}
+              {pdfFile.name ? pdfFile.name : <span style={{border: "1px solid red", height: "100%"}}>{placeholder + " yuklash"}</span>}
+              </div>}
+          </Upload>
         </label>
       );
       // input = (
       //   <Avatar
-      //   // style={{
-      //   //           gridColumn: gridColumn,
-      //   //           gridRow: gridRow + "!important",
-      //   //           // height: height ? height + "px" : inputDeafultHeght + "px",
-      //   //           // width: width && width ? width + "px" : inputDeafultWidth + "px",
-      //   //           backgroundColor: "red",
-      //   //         }}
-
-      //           gridColumn={gridColumn} gridRow={gridRow} height={height}
-      //           />
+      //     gridColumn={gridColumn} gridRow={gridRow} height={height}
+      //      />
       // )
       break;
-    case IMAGE:
-      input = (
+    // case IMAGE:
+    //   input = (
         // <Input
         //   alt="yuq"
         //   type="file"
@@ -309,16 +319,17 @@ const ModalInput = ({
         //     backgroundColor: "red",
         //   }}
         // />
-        <Avatar
-          style={{
-            gridColumn: gridColumn,
-            gridRow: gridRow + "!important",
-            // height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
-            backgroundColor: "red",
-          }}
-        />
-      );
+        // <Avatar
+        //   style={{
+        //     gridColumn: gridColumn,
+        //     gridRow: gridRow + "!important",
+        //     // height: height ? height + "px" : inputDeafultHeght + "px",
+        //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
+        //     backgroundColor: "red",
+        //   }}
+        // />
+      // );
+      // break;
     default:
       break;
   }

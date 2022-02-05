@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import tabs_reducer from "./redux/tabs_reducer";
+import {useLocalStorage} from "./localS"
 
 export const store = configureStore({
   reducer: {
     tabs_reducer
   },
 })
+
+// const s =  useLocalStorage('name', tabs_reducer);
+
+// return <input value={name} onChange={e => setName(e.target.value)} />;
 
 
 

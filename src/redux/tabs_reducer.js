@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {FAOLYAT_TURLARI_PATH} from "../pages/pageConstants/PageRoutes"
-// import {FAOLYAT_TURLARI_PAGE} from "../pages/pageConstants/PageTypes"
-import {Faoliyat} from "../assets/icons/icons";
-import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { STRING } from '../components/Modal/ModalInputTypes';
+import {useLocalStorage} from "../localS"
 
 
 const initialState = {
-  Panes: [],
-  currentPage:{}  
+  Panes:  [], 
+  currentPage: {},
 };
 
 
@@ -23,6 +19,7 @@ export const counterSlice = createSlice({
       if (!isExsist) {
         state.Panes.push(action.payload)
       }
+
     },
     removeTab: (state, action) => {
       state.Panes.splice(action.payload, 1);
@@ -35,10 +32,11 @@ export const counterSlice = createSlice({
     },
     changeCurrentPageData: (state, {payload}) =>{
       state.currentPage.data = payload;
-    }
-
+    },
   },
-});
+}
+
+);
 
 // Action creators are generated for each case reducer function
 

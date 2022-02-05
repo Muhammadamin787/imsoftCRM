@@ -80,11 +80,7 @@ const RegionlarTemplate = {
       number: "1",
       shahar_nomi: "Marg'ilon",
       viloyat_nomi: "Farg'ona",
-      lokatsiya: (
-        <div>
-          <AimOutlined size={50} />
-        </div>
-      ),
+      lokatsiya:"ertyui",
       key: 1,
     },
   ],

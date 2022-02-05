@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {inputDeafultHeght,} from '../../constant/deafultStyle';
 ;
 
-const Avatar = ({gridColumn, gridRow, height, width}) => {
+const Avatar = ({gridColumn, gridRow, height}) => {
   const [pdfFile, setPdfFile] = useState({});
   const [loadingi, setLoading] = useState({ loading: false });
 
@@ -51,41 +51,27 @@ const Avatar = ({gridColumn, gridRow, height, width}) => {
 
   console.log(pdfFile.name);
 
-  // render() {
   const { loading, imageUrl } = loadingi;
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>{pdfFile ? pdfFile : "upload"}</div>
-    </div>
-  );
+  // const uploadButton = (
+  //   <div>
+  //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
+  //     <div style={{ marginTop: 8 }}>{pdfFile ? pdfFile : "upload"}</div>
+  //   </div>
+  // );
   return (
       <Upload
         name="avatar"
-        listType="picture-card"
+        // listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={beforeUpload}
         onChange={handleChange}
         maxCount={1}
-        style={{
-                    gridColumn: gridColumn,
-                    gridRow: gridRow + "!important",
-                    height: height ? height + "px" : inputDeafultHeght + "px",
-                    // width: width && width ? width + "px" : inputDeafultWidth + "px",
-                    backgroundColor: "red",
-                  }}
-      >
+        >
         {pdfFile?.name ? pdfFile.name : "yuklanmagan" }
-        {/* {imageUrl ? (
-          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-        ) : (
-          uploadButton
-        )} */}
       </Upload>
   );
-  // }
 };
 
 export default Avatar;

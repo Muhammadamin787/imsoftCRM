@@ -1,7 +1,7 @@
 import React from "react";
 import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { Xodimlar } from "../assets/icons/icons";
+import { Xodimlar, UploadFileOilasi, UploadFilePasport } from "../assets/icons/icons";
 import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/ModalInputTypes";
 import {inputDeafultHeght,} from "../constant/deafultStyle"
 import image from "../assets/images/Ellipse 3.png"
@@ -116,6 +116,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5 ,
+          icon: UploadFilePasport,
         },
         {
           name: "oilasi",
@@ -125,6 +126,7 @@ const XodimlarTemplate = {
           gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
+          icon: UploadFileOilasi,
         },
         {
           name: "hozirgi turgan joyi",
@@ -143,8 +145,6 @@ const XodimlarTemplate = {
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
-          // width: inputDeafultWidth * 1,
-          value:image,
         },
       ],
     },
