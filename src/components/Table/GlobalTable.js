@@ -6,7 +6,7 @@ import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';
 const GlobalTable = () => {
-  const { currentPage } = useSelector((s) => s.tabs_reducer);
+  const { currentPage } = useSelector((s) => s?.tabs_reducer);
   
   let filteredColumns = [];
   if(currentPage.filters){

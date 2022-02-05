@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {useLocalStorage} from "../localS"
+
 
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 
 
 export const counterSlice = createSlice({
-  name: "Bottom Tabs",
+  name: "tabs",
   initialState,
   reducers: {
 
