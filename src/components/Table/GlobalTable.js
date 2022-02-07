@@ -7,10 +7,10 @@ const GlobalTable = () => {
   const { currentPage } = useSelector((s) => s?.tabs_reducer);
   
   let filteredColumns = [];
-  if(currentPage.filters){
-    filteredColumns = FilterColumns(currentPage.filters, currentPage.columns, currentPage.data);
+  if(currentPage?.filters){
+    filteredColumns = FilterColumns(currentPage?.filters, currentPage?.columns, currentPage?.data);
   }else{
-    filteredColumns = currentPage.columns;
+    filteredColumns = currentPage?.columns;
   }
   return (
     <Table

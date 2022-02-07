@@ -56,9 +56,6 @@ const BottomTabs = () => {
             tab={
               <div className="site-footer__tab" onClick={() => onChange(i)}>
                 {pane?.icon} <span>{pane?.text}</span>
-                {pane.showBadge?<Badge dot={pane.showBadge}>
-                                  <Avatar shape="square" size="large" />
-                                </Badge>: ""}
               </div>
             }
             key={i}

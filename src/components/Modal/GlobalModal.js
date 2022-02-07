@@ -20,25 +20,12 @@ const GlobalModal = () => {
     }
   }, [currentPage]);
 
-  // const showModal = () => {
-  //   setIsModalVisible(false);
-  // };
-
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
-
   const handleCancel = () => {
     setIsModalVisible(false);
     dispatch(toggleModal(false));
   };
 
-  const sty = {
-    // height: "100%",
-    // backgroundColor:"red"
-    // width:"800px"
-    // borderTopLeftRadius:"5px",
-  };
+
 
     return (
         <>
@@ -46,7 +33,7 @@ const GlobalModal = () => {
                    footer={null}
                    visible={isModalVisible}
                    closable={false}>
-                <div className="modal-header" style={sty}>
+                <div className="modal-header">
                     <span>{currentPage?.text}</span>
                     <div>
                         <div className="modal-header__buttons">
@@ -66,8 +53,7 @@ const GlobalModal = () => {
                     {currentPage?.form?.map((form) => (
                         <div className="modal-grid__form" style={{gridTemplateColumns: form.grid?.columns, gridAutoRows:form.grid?.rows}}>
                             {form?.inputs?.map((input) => (
-                                <ModalInput {...input}
-                                />
+                                <ModalInput {...input} />
                             ))} 
                         </div>
                     ))}

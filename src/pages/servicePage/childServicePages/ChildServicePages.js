@@ -54,8 +54,8 @@ const ChildServicePages = ({ page }) => {
       <div className="child-header">
         <div className="child-page__header">
           <div className="child-page__iconTitle">
-            {currentPage.icon}
-            <span>{currentPage.text}</span>
+            {currentPage?.icon}
+            <span>{currentPage?.text}</span>
           </div>
           <div className="child-page__tools">
             <Button onClick={() => handleModalClick()}>

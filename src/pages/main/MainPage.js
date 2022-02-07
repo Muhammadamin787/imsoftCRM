@@ -85,7 +85,6 @@ const MainPage = () => {
       </Header>
       <Content className="site-layout" style={{ marginTop: 64 }}>
         <div
-        // className="site-layout__content"
         >
           <Routes>
             {[...AllPages, ...AllServiceChildPages].map((page, i) =>

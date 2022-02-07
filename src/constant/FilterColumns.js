@@ -26,6 +26,5 @@ export default (filters, columns, data) => {
             }
         });
     });
-
     return filteredCols;
 };

@@ -23,8 +23,8 @@ const XodimlarTemplate = {
   form: [
     {
       grid: {
-        columns: "repeat(20, 1fr)",
-        rows:"repeat(6, 1fr)",
+        columns: "repeat(20, 100fr)",
+        rows: "repeat(6, 1fr)",
       },
 
       inputs: [
@@ -116,7 +116,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5 ,
-          icon: UploadFilePasport,
+          Icon: UploadFilePasport,
         },
         {
           name: "oilasi",
@@ -126,7 +126,7 @@ const XodimlarTemplate = {
           gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
-          icon: UploadFileOilasi,
+          Icon: UploadFileOilasi,
         },
         {
           name: "hozirgi turgan joyi",
@@ -141,7 +141,7 @@ const XodimlarTemplate = {
           name: "rasmi",
           type: UPLOAD,
           required: true,
-          placeholder: "rasmi",
+          placeholder: "",
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
@@ -291,6 +291,22 @@ const XodimlarTemplate = {
       xarita: "",
       malumot: "",
       key: 2,
+    },
+    {
+      number: "1",
+      fish: "Hojiakbar Anorboyev",
+      telefon: "90 532 35 45",
+      viloyat: "Farg'ona",
+      shahar: "Marg'ilon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "01/21/2005",
+      yonalish: "Frontend Dasturchi",
+      rasmi:
+        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      pasport: "",
+      xarita: "",
+      malumot: "",
+      key: 1,
     },
   ],
   scroll: { x: 1500, y: 380 },

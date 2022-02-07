@@ -12,17 +12,6 @@ function SearchInput() {
 
   /* ------------------------------------ / ----------------------------------- */
 
-  // const dataArr = state?.currentPage?.data.map(obj => {
-  //   if (obj?.lokatsiya) {
-  //       obj.lokatsiya = null ;
-  //       return obj;
-  //   }
-  //   return obj ;
-  // } )
-
-
-  // console.log(state?.currentPage?.data);
-
   useEffect(() => {
     setData(state?.currentPage?.data);
   }, [state?.currentPage?.text]);
@@ -33,8 +22,6 @@ function SearchInput() {
     dispatch(changeCurrentPageData(search));
  }, [search]);
 
-//  console.log(search);
-//  console.log(data);
 
   return (
     <>

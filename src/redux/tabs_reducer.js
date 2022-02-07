@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import _ from 'lodash';
 
 
 const initialState = {
@@ -14,11 +14,17 @@ export const counterSlice = createSlice({
   reducers: {
 
     addNewTab: (state, action) => {
-      const isExsist = state?.Panes.find(obj => obj.path == action.payload.path)
+      // const isExsist = state?.Panes.find(obj => obj.path == action.payload.path);
 
-      if (!isExsist) {
-        state.Panes.push(action.payload)
-      }
+      // const newPanes = [...state?.Panes, action.payload];
+
+      state.Panes = _.uniqBy([...state?.Panes, action.payload], 'path');
+
+      // state.Panes = arr;
+
+      // if (!isExsist) {
+      //   state.Panes.push(action.payload)
+      // }
 
     },
     removeTab: (state, action) => {
