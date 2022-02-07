@@ -1,5 +1,5 @@
 import React from "react";
-import "./childServicePages.scss";
+import "./ToolsBar.scss";
 import { Button } from "antd";
 import { MacRed, MacGreen, MacGray,  AddItem,
   AddFile,
@@ -11,42 +11,77 @@ import { MacRed, MacGreen, MacGray,  AddItem,
   EditFile,
   CopyFolder,
   TransferFolder,
-  MacYellow, } from "../../../assets/icons/icons";
-import GlobalTable from "../../../components/Table/GlobalTable";
-import GlobalModal from "../../../components/Modal/GlobalModal";
+  MacYellow, } from "../../assets/icons/icons";
+import GlobalTable from "../Table/GlobalTable";
+import GlobalModal from "../Modal/GlobalModal";
 import {useSelector, useDispatch } from "react-redux";
-import { toggleModal, setCurrentPage, changePanes } from "../../../redux/tabs_reducer";
+import { toggleModal, setCurrentPage, changePanes,removeTableItem } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
-const ChildServicePages = ({ page }) => {
+
+import { Popconfirm, message } from 'antd';
+
+
+
+
+
+
+
+
+
+
+const ToolsBar = ({ page }) => {
   const dispatch = useDispatch();
-  const data = useSelector((s) => s.tabs_reducer);
+  const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
   const navigate = useNavigate();
-  const {Panes, currentPage} = data;
+
 
   const handleModalClick = () => {
     dispatch(toggleModal(true));
   };
 
-  function deleteTab(){
-
-  }
+  
   const removeCurrentPage = (type = null) => {
     let position = null;
-    Panes.forEach((item, i) =>{
-      if(item.text === currentPage.text){
+    Panes?.forEach((item, i) =>{
+      if(item?.text === currentPage?.text){
         position = i;
         !type && dispatch(changePanes(i));
       }
     });
-    if(position === 0 && Panes.length === 1){
+    if(position === 0 && Panes?.length === 1){
       navigate('/servis');
-    }else if(Panes.length -1> position){
-      navigate(Panes[position].path);
+    }else if(Panes?.length -1> position){
+      navigate(Panes[position]?.path);
       dispatch(setCurrentPage(Panes[position]));
     }else{
-      navigate(Panes[position-1].path);
+      navigate(Panes[position-1]?.path);
       dispatch(setCurrentPage(Panes[position-1]));
     }
+  }
+  
+  // console.log(currentPage?.data[tableItem.number-1]);
+  // console.log(tableItem);
+  const text = "malumotni o'chirmoqchimisiz !";
+
+  function confirm() {
+    dispatch(removeTableItem(tableItem))
+    message.info('Malumot uchirildi.');
+  }
+  
+
+  const handleTableItem = () => {
+    const item = currentPage.data.find(data => data.number === tableItem.number);
+    dispatch(toggleModal(true));
+
+    console.log(item);
+    console.log(currentPage.data[item.number]);
+
+
+    if(item) {
+        currentPage.data[item.number] = item
+      }
+
+      // console.log(state.currentPage);
   }
 
   return (
@@ -54,8 +89,8 @@ const ChildServicePages = ({ page }) => {
       <div className="child-header">
         <div className="child-page__header">
           <div className="child-page__iconTitle">
-            {currentPage.icon}
-            <span>{currentPage.text}</span>
+            {currentPage?.icon}
+            <span>{currentPage?.text}</span>
           </div>
           <div className="child-page__tools">
             <Button onClick={() => handleModalClick()}>
@@ -73,7 +108,7 @@ const ChildServicePages = ({ page }) => {
             <Button>
               <TransferFolder />
             </Button>
-            <Button>
+            <Button onClick={() => handleTableItem()}>
               <EditFile />
             </Button>
             <Button>
@@ -82,9 +117,9 @@ const ChildServicePages = ({ page }) => {
             <Button>
               <AntennaReceive />
             </Button>
-            <Button>
-              <SignallessAntenna />
-            </Button>
+            <Popconfirm placement="top" title={text} onConfirm={confirm} okText="Ha" cancelText="Yo'q">
+              <Button> <SignallessAntenna /> </Button>
+            </Popconfirm>
             <Button>
               <Circle />
             </Button>
@@ -111,4 +146,4 @@ const ChildServicePages = ({ page }) => {
   );
 };
 
-export default ChildServicePages;
+export default ToolsBar;

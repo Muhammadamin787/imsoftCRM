@@ -15,35 +15,33 @@ const RegionlarTemplate = {
       grid: "1fr",
       inputs: [
         {
-          label: "Viloyat",
           name: "viloyat",
           type: STRING,
           required: true,
+          placeholder:"Viloyat",
+          value: "",
         },
         {
-          label: "Shahar/Tuman",
+          name: "Map bulishi  kk",
+          type: SELECT,
+          required: true,
+          value: "",
+          placeholder:"map bulishi kk",
+        },
+        {
           name: "shahar/tuman",
           type: SELECT,
           required: true,
-        },
-        {
-          label: "Shahar/Tuman",
-          name: "shahar/tuman",
-          type: SELECT,
-          required: true,
+          placeholder:"Shahar/Tuman",
           options: [
             { value: "custom value 1", key: "custom value 1" },
             { value: "custom value 2", key: "custom value 2" },
             { value: "custom value 3", key: "custom value 3" },
             { value: "custom value 4", key: "custom value 5" },
           ],
+          value: "",
         },
-        //   {
-        // 	label: "Shahar/Tuman",
-        // 	name: "shahar/tuman",
-        // 	type: SELECTION,
-        // 	required: true,
-        //   },
+        
       ],
     },
   ],

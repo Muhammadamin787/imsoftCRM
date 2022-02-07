@@ -7,7 +7,7 @@ import {
   Select,
   Upload,
   Icon,
-  message
+  message,
 } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useState } from "react";
@@ -27,9 +27,18 @@ import {
 } from "./ModalInputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
-import { YMaps, Map, ZoomControl ,  FullscreenControl, SearchControl, GeolocationControl, Placemark } from "react-yandex-maps";
+import moment from "moment";
+import {
+  YMaps,
+  Map,
+  ZoomControl,
+  FullscreenControl,
+  SearchControl,
+  GeolocationControl,
+  Placemark,
+} from "react-yandex-maps";
 import Avatar from "./upLoadInput";
-import MapModal from "./MapModal"
+import MapModal from "./MapModal";
 
 const { TextArea } = Input;
 
@@ -43,66 +52,37 @@ const ModalInput = ({
   height,
   width,
   value,
-  icon
+  icon,
 }) => {
   let input = null;
 
+  const [values, setValues] = useState(value);
+
+  const handleChangeValue = (e) => {
+    setValues(e.target.value);
+  };
+
+  const dateFormat = "YYYY/MM/DD";
+
   // pdf doc img, jpg png yuklash kodlari
-
-  // const [pdfFile, setPdfFile] = useState({});
-  // const [pdfFileError, setPdfFileError] = useState("");
-  // const [pdfFileName, setFileName] = useState("");
-
-  // // onchange event
-  // const fileType = [
-  //   "application/pdf",
-  //   "application/msword",
-  //   "image/jpeg",
-  //   "image/png",
-  //   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  // ];
-  // const handlePdfFileChange = (e) => {
-  //   let selectedFile = e.target.value;
-  //   console.log(selectedFile);
-
-  //   if (selectedFile) {
-  //     if (selectedFile && fileType.includes(selectedFile.type)) {
-  //       let reader = new FileReader();
-  //       reader.readAsDataURL(selectedFile);
-  //       reader.onloadend = (e) => {
-  //         setPdfFile({selectedFile});
-  //         setFileName(selectedFile.name);
-  //       };
-  //     } else {
-  //       setPdfFile(null);
-  //       setPdfFileError("file type mos kelmadi");
-  //     }
-  //   }
-  // };
-// console.log(pdfFile);
-// console.log(pdfFileName);
-
-  // pdf doc img, jpg png yuklash kodlari tugadi
-  // pdf file 2 (Avatar) kodlari
-
   const [pdfFile, setPdfFile] = useState({});
   const [loadingi, setLoading] = useState({ loading: false });
-  // const [pdfFileName, setFileName] = useState("");
 
   function getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener("load", () => callback(reader?.result));
-    reader.readAsDataURL(img)
+    reader.readAsDataURL(img);
   }
 
   function beforeUpload(file) {
     const isJpgOrPng =
       file.type === "application/pdf" ||
       file.type === "application/msword" ||
-      file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-      file.type === 'image/jpeg' ||
-      file.type === 'image/png';
-
+      file.type ===
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.type === "image/jpeg" ||
+      file.type === "image/png";
+    console.log(file);
     if (!isJpgOrPng) {
       message.error("You can only upload JPG/PNG file!");
     }
@@ -127,24 +107,19 @@ const ModalInput = ({
     setPdfFile(info.file);
   };
 
-  console.log(pdfFile);
-
-  const { loading, imageUrl } = loadingi;
-
-
-
   switch (type) {
     case STRING:
       input = (
         <Input
           name={name}
           placeholder={placeholder}
+          value={values}
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
+          onChange={(e) => handleChangeValue(e)}
         />
       );
       break;
@@ -153,6 +128,7 @@ const ModalInput = ({
         <InputNumber
           type="number"
           name={name}
+          value={values}
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
@@ -160,6 +136,8 @@ const ModalInput = ({
             // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           placeholder={placeholder}
+          onChange={(e) => handleChangeValue(e)}
+          showSearch
         />
       );
       break;
@@ -169,11 +147,21 @@ const ModalInput = ({
           size="small"
           name={name}
           placeholder={placeholder}
+          value={values}
+          // onChange={e => handleChangeValue(e)}
+          onChange={(value) => {
+            const v = {
+              target: {
+                name: name,
+                value: value,
+              },
+            };
+            handleChangeValue(v);
+          }}
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
         >
           {option &&
@@ -188,8 +176,12 @@ const ModalInput = ({
       break;
     case MAP:
       input = (
-        <MapModal gridColumn={gridColumn} gridRow={gridRow} height={height} />
-        
+        <MapModal
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          value={values}
+        />
       );
       break;
     case DATE:
@@ -203,6 +195,10 @@ const ModalInput = ({
           }}
           format="DD.MM.YYYY"
           allowClear={false}
+          defaultValue={moment("2015/01/01", dateFormat)}
+          onChange={(e) => handleChangeValue(e)}
+          value={values}
+
           // showTime
           // value={
           //   values[name]
@@ -229,13 +225,14 @@ const ModalInput = ({
       input = (
         <TextArea
           placeholder={placeholder}
+          autoSize={{ minRows: 3, maxRows: 3 }}
+          value={values}
+          onChange={(e) => handleChangeValue(e)}
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
-          autoSize={{ minRows: 3, maxRows: 3 }}
         />
       );
       break;
@@ -251,21 +248,23 @@ const ModalInput = ({
           specialLabel={false}
           disableDropdown={true}
           countryCodeEditable={false}
-          // value={values[name] ? values[name] : "+998"}
           areaCodes={{
             uz: ["+998"],
           }}
           masks={{ uz: "(..) ...-..-.." }}
           prefix="+"
-          // onChange={(phone) => {
-          //   const e = {
-          //     target: {
-          //       name: name,
-          //       value: phone,
-          //     },
-          //   };
-          //   // onChange(e);
-          // }}
+          value={values}
+          // onChange={e => handleChangeValue(e)}
+          // value={valuess[name] ? values[name] : "+998"}
+          onChange={(phone) => {
+            const e = {
+              target: {
+                value: phone,
+              },
+            };
+            handleChangeValue(e);
+            console.log(values);
+          }}
         />
       );
       break;
@@ -285,51 +284,66 @@ const ModalInput = ({
             name={name}
             placeholder={placeholder}
             alt="file"
-            beforeUpload={ beforeUpload}
+            beforeUpload={beforeUpload}
             onClick={handleChange}
             type="file"
             maxCount={1}
             showUploadList={false}
+            // value={values}
           >
-            {pdfFile?.name ? pdfFile?.name : <div  style={{ height:height, border:"1px solid black" , display:"flex", justifyContent: "center", alignItems:"center"}}>
-              {/* <span className="file-uploader__icon">{icon && icon}</span> */}
-              {pdfFile.name ? pdfFile.name : <span style={{border: "1px solid red", height: "100%"}}>{placeholder + " yuklash"}</span>}
-              </div>}
+            {pdfFile?.name ? (
+              pdfFile?.name
+            ) : (
+              <div
+                style={{
+                  height: height,
+                  border: "1px solid black",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* <span className="file-uploader__icon">{icon && icon}</span> */}
+                {pdfFile.name ? (
+                  pdfFile.name
+                ) : (
+                  <span style={{ border: "1px solid red", height: "100%" }}>
+                    {placeholder + " yuklash"}
+                  </span>
+                )}
+                {/* {} */}
+              </div>
+            )}
           </Upload>
         </label>
       );
-      // input = (
-      //   <Avatar
-      //     gridColumn={gridColumn} gridRow={gridRow} height={height}
-      //      />
-      // )
       break;
     // case IMAGE:
     //   input = (
-        // <Input
-        //   alt="yuq"
-        //   type="file"
-        //   required
-        //   onChange={(e) => handlePdfFileChange(e)}
-        //   style={{
-        //     gridColumn: gridColumn,
-        //     gridRow: gridRow,
-        //     height: height ? height + "px" : inputDeafultHeght + "px",
-        //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
-        //     backgroundColor: "red",
-        //   }}
-        // />
-        // <Avatar
-        //   style={{
-        //     gridColumn: gridColumn,
-        //     gridRow: gridRow + "!important",
-        //     // height: height ? height + "px" : inputDeafultHeght + "px",
-        //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
-        //     backgroundColor: "red",
-        //   }}
-        // />
-      // );
-      // break;
+    // <Input
+    //   alt="yuq"
+    //   type="file"
+    //   required
+    //   onChange={(e) => handlePdfFileChange(e)}
+    //   style={{
+    //     gridColumn: gridColumn,
+    //     gridRow: gridRow,
+    //     height: height ? height + "px" : inputDeafultHeght + "px",
+    //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
+    //     backgroundColor: "red",
+    //   }}
+    // />
+    // <Avatar
+    //   style={{
+    //     gridColumn: gridColumn,
+    //     gridRow: gridRow + "!important",
+    //     // height: height ? height + "px" : inputDeafultHeght + "px",
+    //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
+    //     backgroundColor: "red",
+    //   }}
+    // />
+    // );
+    // break;
     default:
       break;
   }

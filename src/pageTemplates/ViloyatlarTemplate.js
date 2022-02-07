@@ -15,10 +15,11 @@ const ViloyatlarTemplate = {
       grid: "1fr",
       inputs: [
         {
-          label: "Viloyatlar",
           name: "Viloyatlar",
           type: STRING,
           required: true,
+          value: "uu",
+          placeholder:"Viloyatlar",
         },
       ],
     },

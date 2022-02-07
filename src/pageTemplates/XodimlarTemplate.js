@@ -35,6 +35,7 @@ const XodimlarTemplate = {
           placeholder: "F.I.SH",
           gridColumn: "1 / 10",
           gridRow: "1 / 2",
+          value: "Abdusattor",
         },
         {
           name: "Tug'ilgan sana",
@@ -43,6 +44,7 @@ const XodimlarTemplate = {
           placeholder: "Tug'ilgan sana",
           gridColumn: "1 / 5",
           gridRow: "2 / 3",
+          // value: "",
         },
         {
           name: "Viloyat",
@@ -51,6 +53,7 @@ const XodimlarTemplate = {
           placeholder: "viloyat",
           gridColumn: "1 / 5",
           gridRow: "3 / 4",
+          value: "Andijon",
           option: [
             { value: "Qashqadaryo", key: "Qashqadaroy"},
             { value: "Andijon", key: "Andijon"},
@@ -64,6 +67,7 @@ const XodimlarTemplate = {
           placeholder: "Yo'nalishi",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
+          value: "Dasturchi Web (Frontend)",
           option: [
             { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
             { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
@@ -77,6 +81,7 @@ const XodimlarTemplate = {
           placeholder: "Shahar",
           gridColumn: "5 / 10",
           gridRow: "3 / 4",
+          value: "Qo'qon",
           option: [
             { value: "Olti ariq", key: "Olti ariq"},
             { value: "Qo'qon", key: "Qo'qon"},
@@ -91,6 +96,7 @@ const XodimlarTemplate = {
           placeholder: "Manzil",
           gridColumn: "1 / 10",
           gridRow: "4 / 5",
+          value: "Olti ariq",
         },
         {
           name: "qo'shimcha malumot",
@@ -99,6 +105,7 @@ const XodimlarTemplate = {
           placeholder: "Qo'shimcha malumot",
           gridColumn: "1 / 10",
           gridRow: "5 / 7",
+          value: "yaxshi",
         },
         {
           name: "telifon",
@@ -107,6 +114,7 @@ const XodimlarTemplate = {
           placeholder: "Telifon",
           gridColumn: "10 / 16",
           gridRow: "1 / 2",
+          value: "998992348569",
         },
         {
           name: "pasport",
@@ -117,6 +125,7 @@ const XodimlarTemplate = {
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5 ,
           icon: UploadFilePasport,
+          // value: "",
         },
         {
           name: "oilasi",
@@ -127,6 +136,7 @@ const XodimlarTemplate = {
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
           icon: UploadFileOilasi,
+          // value: "",
         },
         {
           name: "hozirgi turgan joyi",
@@ -136,6 +146,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 3.2,
+          value: [40.34721024644568, 71.81948986127864],
         },
         {
           name: "rasmi",
@@ -145,6 +156,12 @@ const XodimlarTemplate = {
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
+          value: {
+            uid: '-1',
+            name: 'image.png',
+            status: 'done',
+            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          },
         },
       ],
     },
@@ -277,7 +294,7 @@ const XodimlarTemplate = {
       key: 1,
     },
     {
-      number: "1",
+      number: "2",
       fish: "Ravshanbek Fayziyev",
       telefon: "90 532 27 71",
       viloyat: "Farg'ona",
@@ -291,6 +308,22 @@ const XodimlarTemplate = {
       xarita: "",
       malumot: "",
       key: 2,
+    },
+    {
+      number: "3",
+      fish: "baxodir",
+      telefon: "90 532 27 71",
+      viloyat: "Farg'ona",
+      shahar: "Andijon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "01/21/2005",
+      yonalish: "BAckend Dasturchi",
+      rasmi:
+        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      pasport: "",
+      xarita: "",
+      malumot: "",
+      key: 3,
     },
   ],
   scroll: { x: 1500, y: 380 },

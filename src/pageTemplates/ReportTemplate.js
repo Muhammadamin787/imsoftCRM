@@ -15,10 +15,10 @@ const ReportTemplate = {
 		  grid: "1fr",
 		  inputs: [
 			{
-			  label: "Xisobotlar",
 			  name: "Xisobotlar",
 			  type: STRING,
 			  required: true,
+			  value: "",
 			},
 		  ],
 		},

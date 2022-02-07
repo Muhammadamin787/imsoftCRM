@@ -7,9 +7,10 @@ import { toggleModal } from "../../redux/tabs_reducer";
 import {MacRed, MacGreen, MacYellow} from "../../assets/icons/icons";
 
 const GlobalModal = () => {
-  const { currentPage } = useSelector((state) => state?.tabs_reducer);
-    const tabs = useSelector((state) => state);
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
+    // const tabs = useSelector((state) => state);
 
+    // console.log(currentPage);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
@@ -28,10 +29,18 @@ const GlobalModal = () => {
   //   setIsModalVisible(false);
   // };
 
-  const handleCancel = () => {
+  const handleCancel = (e) => {
+    e.preventDefault();
     setIsModalVisible(false);
     dispatch(toggleModal(false));
   };
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+      setIsModalVisible(false);
+      dispatch(toggleModal(false));
+  }
 
   const sty = {
     // height: "100%",
@@ -64,18 +73,18 @@ const GlobalModal = () => {
                 </div>
                 <form className="modal-form">
                     {currentPage?.form?.map((form) => (
-                        <div className="modal-grid__form" style={{gridTemplateColumns: form.grid?.columns, gridAutoRows:form.grid?.rows}}>
+                        <div className="modal-grid__form" key={form?.grid} style={{gridTemplateColumns: form.grid?.columns, gridAutoRows:form.grid?.rows}}>
                             {form?.inputs?.map((input) => (
-                                <ModalInput {...input}
+                                <ModalInput {...input} key={input?.name}
                                 />
                             ))} 
                         </div>
                     ))}
                     <div className="modal-form_buttons">
                         <Button type="submit" className="modal-form__button qaytish"
-                                onClick={handleCancel}>Qaytish</Button>
+                                onClick={(e) =>  handleCancel(e)}>Qaytish</Button>
                         <Button type="submit" className="modal-form__button saqlash"
-                                onClick={handleCancel}>Saqlash</Button>
+                                onClick={(e) => handleSubmit(e)}>Saqlash</Button>
                     </div>
                 </form>
             </Modal>

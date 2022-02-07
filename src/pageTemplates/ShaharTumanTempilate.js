@@ -16,22 +16,11 @@ const ShaharTumanTemplate = {
       grid: "1fr",
       inputs: [
         {
-          label: "Viloyat",
           name: "viloyat",
           type: STRING,
           required: true,
-        },
-        {
-          label: "Shahar/Tuman",
-          name: "Shahar/Tuman",
-          type: SELECT,
-          required: true,
-          name: "Viloyat",
-          type: STRING,
-          required: true,
-          placeholder: "viloyat",
-          gridColumn: "1 / 2",
-          gridRow: "1 / 2",
+          value: "",
+          placeholder:"Viloyat",
         },
         {
           name: "Shahar/Tuman",
@@ -40,12 +29,14 @@ const ShaharTumanTemplate = {
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",
+          value: "",
           option: [
             { value: "Olti ariq", key: "Olti ariq"},
             { value: "Qo'qon", key: "Qo'qon"},
             { value: "Marg'ilon", key: "Marg'ilon"},
             { value: "Farg'ona", key: "Farg'ona"},
           ],
+
         },
       ],
     },

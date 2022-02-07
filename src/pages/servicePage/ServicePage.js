@@ -19,7 +19,7 @@ const ServicePage = ({ page }) => {
     <div className="first-page">
       <div className="site-layout__body">
         {sections.map((section, i) => (
-          <Link to={section.path}>
+          <Link to={section.path} key={section?.path}>
             <Button
               className={"site-layout__body-items"}
               onClick={() => handleTab(section)}

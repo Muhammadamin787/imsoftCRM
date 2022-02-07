@@ -93,13 +93,13 @@ const MainPage = () => {
                 page.submenus.map((sub, k) => (
                   <Route
                     path={sub.path}
-                    element={<PageController page={sub} />}
+                    element={<PageController page={sub} key={sub?.path} />}
                   />
                 ))
               ) : (
                 <Route
                   path={page.path}
-                  element={<PageController page={page} />}
+                  element={<PageController page={page} key={page?.path} />}
                 />
               )
             )}

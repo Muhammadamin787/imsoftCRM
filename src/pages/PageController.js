@@ -5,7 +5,7 @@ import CustomersPage from "./customersPage/CustomersPage";
 import ProgrammesPage from "./programmesPage/ProgrammesPage";
 import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
-import ChildServicePages from "./servicePage/childServicePages/ChildServicePages"
+import ChildServicePages from "../components/ToolsBar/ToolsBar"
 
 export const PageController = ({page}) => {
 

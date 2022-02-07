@@ -5,24 +5,27 @@ import { ConfigProvider } from "antd";
 import ruRu from "antd/lib/locale/ru_RU";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-
-
+import { PersistGate } from "reduxjs-toolkit-persist/integration/react";
 import { persistStore } from "redux-persist";
-import { PersistGate } from 'redux-persist/integration/react'
+import {store} from "./store"
+// import {useSelector} from "react-redux"
 
-let persistor = persistStore(store);
 
+// // let persistor = persistStore(store);
+
+// const data = useSelector(state => state)
+
+// console.log(data);
 
 ReactDOM.render(
   <React.StrictMode>
     <ConfigProvider locale={ruRu}>
       <Provider store={store}>
-          <PersistGate loading={"... loading"} persistor={persistor}>
+          {/* <PersistGate loading={"... loading"} persistor={persistor}> */}
             <Router>
               <App />
             </Router>
-          </PersistGate>
+          {/* </PersistGate> */}
       </Provider>
     </ConfigProvider>
   </React.StrictMode>,

@@ -16,7 +16,6 @@ const YunalishlarTemplate = {
       grid: "1fr",
       inputs: [
         {
-          label: "Yunalishlar",
           name: "Yunalishlar",
           type: STRING,
           required: true,
@@ -24,6 +23,7 @@ const YunalishlarTemplate = {
           type: STRING,
           required: true,
           placeholder: "Yo'nalishlar",
+          value: "",
         },
       ],
     },

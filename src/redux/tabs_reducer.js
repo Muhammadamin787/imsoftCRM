@@ -2,15 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 
-const initialState = {
-  Panes:  [], 
-  currentPage: {},
-};
+// const initialState = {
+//   Panes:  [], 
+//   currentPage: {},
+// };
 
 
 export const counterSlice = createSlice({
-  name: "tabs",
-  initialState,
+  name: "tabs_data",
+  initialState:{
+    Panes:  [], 
+    currentPage: {},
+    tableItem: {},
+  },
   reducers: {
 
     addNewTab: (state, action) => {
@@ -36,13 +40,32 @@ export const counterSlice = createSlice({
     changeCurrentPageData: (state, {payload}) =>{
       state.currentPage.data = payload;
     },
+    setTableItem: (state, {payload}) =>{
+      state.tableItem = payload;
+      console.log(state.tableItem);
+    },
+    removeTableItem: (state, {payload}) =>{
+     state.currentPage.data = state.currentPage?.data?.filter(el => el.number != payload.number) 
+    },
+    editTableItem: (state, {payload}) =>{
+      const www = state.currentPage.data.find(data => data.number === state.tableItem.number);
+
+      console.log(www);
+      console.log(state.currentPage);
+      if(www) {
+        state.currentPage[www.number] = www
+      }
+
+      console.log(state.currentPage);
+    }
   },
+
 }
 
 );
 
-// Action creators are generated for each case reducer function
 
-export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData, changePanes} = counterSlice.actions;
+export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData, changePanes, setTableItem, removeTableItem,editTableItem} = counterSlice.actions;
 
 export default counterSlice.reducer;
+
