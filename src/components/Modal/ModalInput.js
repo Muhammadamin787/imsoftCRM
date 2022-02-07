@@ -52,7 +52,7 @@ const ModalInput = ({
   height,
   width,
   value,
-  icon,
+  Icon,
 }) => {
   let input = null;
 
@@ -82,7 +82,6 @@ const ModalInput = ({
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
       file.type === "image/jpeg" ||
       file.type === "image/png";
-    console.log(file);
     if (!isJpgOrPng) {
       message.error("You can only upload JPG/PNG file!");
     }
@@ -91,7 +90,6 @@ const ModalInput = ({
   }
 
   const handleChange = (info) => {
-    console.log(info);
     if (info.file.status === "uploading") {
       setLoading({ loading: true });
       return;
@@ -106,6 +104,8 @@ const ModalInput = ({
     }
     setPdfFile(info.file);
   };
+
+  const { loading, imageUrl } = loadingi;
 
   switch (type) {
     case STRING:
@@ -167,7 +167,6 @@ const ModalInput = ({
           {option &&
             option?.map((option) => (
               <Option value={option?.value} key={option?.key}>
-                {" "}
                 {option.value}
               </Option>
             ))}
@@ -276,6 +275,8 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
+            width: "100% !important",
+            textAlign: "center"
           }}
           htmlFor="file-uploder"
         >
@@ -291,34 +292,41 @@ const ModalInput = ({
             showUploadList={false}
             // value={values}
           >
+            {Icon && <Icon />}
             {pdfFile?.name ? (
               pdfFile?.name
             ) : (
               <div
                 style={{
                   height: height,
-                  border: "1px solid black",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                {/* <span className="file-uploader__icon">{icon && icon}</span> */}
                 {pdfFile.name ? (
                   pdfFile.name
                 ) : (
-                  <span style={{ border: "1px solid red", height: "100%" }}>
+                  <span
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                    }}
+                  >
                     {placeholder + " yuklash"}
                   </span>
                 )}
-                {/* {} */}
               </div>
             )}
           </Upload>
         </label>
       );
       break;
-    // case IMAGE:
+    
+    
+    
+    
+      // case IMAGE:
     //   input = (
     // <Input
     //   alt="yuq"

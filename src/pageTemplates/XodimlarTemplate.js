@@ -23,8 +23,8 @@ const XodimlarTemplate = {
   form: [
     {
       grid: {
-        columns: "repeat(20, 1fr)",
-        rows:"repeat(6, 1fr)",
+        columns: "repeat(20, 100fr)",
+        rows: "repeat(6, 1fr)",
       },
 
       inputs: [
@@ -124,8 +124,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5 ,
-          icon: UploadFilePasport,
-          // value: "",
+          Icon: UploadFilePasport,
         },
         {
           name: "oilasi",
@@ -135,8 +134,7 @@ const XodimlarTemplate = {
           gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
-          icon: UploadFileOilasi,
-          // value: "",
+          Icon: UploadFileOilasi,
         },
         {
           name: "hozirgi turgan joyi",
@@ -152,7 +150,7 @@ const XodimlarTemplate = {
           name: "rasmi",
           type: UPLOAD,
           required: true,
-          placeholder: "rasmi",
+          placeholder: "",
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,

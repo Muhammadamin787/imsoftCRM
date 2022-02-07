@@ -25,8 +25,8 @@ const ServicePage = ({ page }) => {
               onClick={() => handleTab(section)}
             >
               <div className="body-item-meaning">
-                {section.icon}
-                <span>{section.text}</span>
+                {section?.icon}
+                <span>{section?.text}</span>
               </div>
             </Button>
           </Link>

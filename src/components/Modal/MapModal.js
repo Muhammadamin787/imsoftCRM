@@ -21,7 +21,6 @@ export default class MapModal extends Component {
   onMapClick = (e) => {
     const coords = e.get("coords");
     this.setState({ coords: coords });
-    console.log(coords);
   };
 
   render() {

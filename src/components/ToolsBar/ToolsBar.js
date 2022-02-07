@@ -13,7 +13,7 @@ import { MacRed, MacGreen, MacGray,  AddItem,
   TransferFolder,
   MacYellow, } from "../../assets/icons/icons";
 import GlobalTable from "../Table/GlobalTable";
-import GlobalModal from "../Modal/GlobalModal";
+// import GlobalModal from "../Modal/GlobalModal";
 import {useSelector, useDispatch } from "react-redux";
 import { toggleModal, setCurrentPage, changePanes,removeTableItem } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";

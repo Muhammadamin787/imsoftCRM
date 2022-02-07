@@ -22,12 +22,10 @@ const Avatar = ({gridColumn, gridRow, height}) => {
       file.type === 'image/jpeg' ||
       file.type === 'image/png';
 
-      // console.log(isJpgOrPng);
     if (!isJpgOrPng) {
       message.error("You can only upload JPG/PNG file!");
     }
     setPdfFile(file);
-    // console.log(file);
 
     return isJpgOrPng;
   }
@@ -46,10 +44,8 @@ const Avatar = ({gridColumn, gridRow, height}) => {
       );
     }
     setPdfFile(info.file);
-    console.log(info.file);
   };
 
-  console.log(pdfFile.name);
 
   const { loading, imageUrl } = loadingi;
   // const uploadButton = (

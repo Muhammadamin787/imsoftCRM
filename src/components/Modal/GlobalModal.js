@@ -31,9 +31,11 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     e.preventDefault();
+  const handleCancel = () => {
     setIsModalVisible(false);
     dispatch(toggleModal(false));
   };
+}
 
   const handleSubmit = (e) => {
 
@@ -55,7 +57,7 @@ const GlobalModal = () => {
                    footer={null}
                    visible={isModalVisible}
                    closable={false}>
-                <div className="modal-header" style={sty}>
+                <div className="modal-header">
                     <span>{currentPage?.text}</span>
                     <div>
                         <div className="modal-header__buttons">
