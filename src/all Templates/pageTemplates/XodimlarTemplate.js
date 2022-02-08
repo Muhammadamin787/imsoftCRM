@@ -1,11 +1,11 @@
 import React from "react";
-import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
+import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import {
   Xodimlar,
   UploadFileOilasi,
   UploadFilePasport,
-} from "../assets/icons/icons";
+} from "../../assets/icons/icons";
 import {
   STRING,
   DATE,
@@ -16,9 +16,9 @@ import {
   UPLOAD,
   MAP,
   IMAGE,
-} from "../components/Modal/ModalInputTypes";
-import { inputDeafultHeght } from "../constant/deafultStyle";
-import image from "../assets/images/Ellipse 3.png";
+} from "../../components/Modal/ModalInputTypes";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
+import image from "../../assets/images/Ellipse 3.png";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";

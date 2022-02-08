@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addNewTab } from "../../redux/tabs_reducer";
 import {setCurrentPage} from "../../redux/tabs_reducer"
-import {AllServiceChildPages} from '../../pageTemplates/index';
+import {AllServiceChildPages} from '../../all Templates/pageTemplates/index'
 const ServicePage = ({ page }) => {
   const sections = page?.sections;
   const dispatch = useDispatch();

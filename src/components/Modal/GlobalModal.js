@@ -37,7 +37,7 @@ const GlobalModal = () => {
 }
 
   const handleSubmit = (e) => {
-
+    console.log(e);
     e.preventDefault();
       setIsModalVisible(false);
       dispatch(toggleModal(false));
