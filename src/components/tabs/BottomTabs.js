@@ -6,6 +6,8 @@ import { removeTab, setCurrentPage } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
 import iconArr from "../../assets/icons/icons.js"
 
+import {findIcon} from "../../assets/icons/icons"
+
 const { TabPane } = Tabs;
 
 const BottomTabs = () => {
@@ -15,8 +17,12 @@ const BottomTabs = () => {
   const dispatch = useDispatch();
   const { pathname } = window.location;
 
-  const [activeKey, setActiveKey] = useState(Panes && Panes[0]?.key);
+  const [panes, setPanes] = useState(Panes);
+  const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
 
+  useEffect(() => {
+    setPanes(Panes);
+  }, [Panes, pathname]);
 
   const onChange = (activeKey) => {
     console.log(activeKey);
@@ -27,13 +33,13 @@ const BottomTabs = () => {
 
   const onEdit = (targetKey, action) => {
     if (action === "remove") {
-      if (Panes?.length === 1) {
+      if (panes?.length === 1) {
         navigate("/servis");
-      } else if (Panes[+targetKey]?.text === currentPage?.text) {
-        if (Panes?.length - 1 > targetKey) {
-          dispatch(setCurrentPage(Panes[+targetKey + 1]));
+      } else if (panes[+targetKey]?.text === currentPage?.text) {
+        if (panes?.length - 1 > targetKey) {
+          dispatch(setCurrentPage(panes[+targetKey + 1]));
         } else {
-          dispatch(setCurrentPage(Panes[+targetKey - 1]));
+          dispatch(setCurrentPage(panes[+targetKey - 1]));
         }
       }
       dispatch(removeTab(targetKey));
@@ -55,7 +61,7 @@ const BottomTabs = () => {
           <TabPane
               tab={
                 <div className="site-footer__tab" onClick={() => onChange(i)}>
-                  <span>{pane?.text}</span> 
+                  <span>{pane?.text}</span>
                 </div>
               }
               key={i}

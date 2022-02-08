@@ -6,7 +6,7 @@ export default class MapModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coords: this.props.value.length == 2 ? this.props.value : [],
+      coords: this.props.value?.length == 2 ? this.props.value : [],
       mapState: {
         center: [40.382352644806545, 71.77953969910632],
         zoom: 6,

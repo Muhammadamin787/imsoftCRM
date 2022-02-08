@@ -1,14 +1,13 @@
 import React from "react";
 import { REGIONLAR_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { SELECT, STRING } from "../../components/Modal/ModalInputTypes";
-import { AimOutlined, FieldNumberOutlined } from "@ant-design/icons";
-import {Regionlar} from '../../assets/icons/icons'
+import { SELECT, STRING } from "../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
+
 const RegionlarTemplate = {
   text: "Regionlar",
   path: REGIONLAR_PATH,
-  icon: "re",
-  // icon: <Regionlar />,
+  icon: "Regionlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [
@@ -20,13 +19,11 @@ const RegionlarTemplate = {
           type: STRING,
           required: true,
           placeholder:"Viloyat",
-          value: "",
         },
         {
           name: "Map bulishi  kk",
           type: SELECT,
           required: true,
-          value: "",
           placeholder:"map bulishi kk",
         },
         {
@@ -40,7 +37,6 @@ const RegionlarTemplate = {
             { value: "custom value 3", key: "custom value 3" },
             { value: "custom value 4", key: "custom value 5" },
           ],
-          value: "",
         },
         
       ],

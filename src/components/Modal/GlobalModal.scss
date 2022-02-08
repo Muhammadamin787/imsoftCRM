@@ -1,9 +1,16 @@
 .ant-modal-mask {
   bottom: 100px !important;
   height: 90.7% !important;
+  //border: 2px solid red;
+  background-color: transparent !important;
+}
+.ant-modal {
+  //border: 2px solid red;
+
 }
 .ant-modal-wrap {
-  border: 2px solid red;
+  //border: 2px solid red;
+  //background-color: transparent !important;
   height: 90.7% !important;
 }
 
@@ -35,7 +42,6 @@
     width: 70px;
     display: flex;
     align-items: center;
-    background-color: none;
     justify-content: flex-end;
     .modal-header__button {
       background-color: #4447e2;
@@ -141,7 +147,7 @@
       align-items: center;
     }
     .ant-select-selector {
-      background-color: red;
+      //background-color: red;
       background-color: #f1f4f8;
       border: none;
       outline: none;
