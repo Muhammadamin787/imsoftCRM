@@ -2,7 +2,6 @@ import { Link, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
-import BottomTabs from "../../components/Tabs/BottomTabs";
 import { Footer } from "antd/es/layout/layout";
 import {
   CompanyLogo,
@@ -11,13 +10,17 @@ import {
   TelegramIcon,
 } from "../../assets/icons/icons";
 import moment from "moment";
-import { AllPages, AllServiceChildPages } from "../../pageTemplates";
+import {
+  AllPages,
+  AllServiceChildPages,
+} from "../../all Templates/pageTemplates";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
+import BottomTabs from "../../components/Tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 
@@ -35,9 +38,7 @@ const MainPage = () => {
   const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
   const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
 
-  const handleChangeSelect = () =>{
-
-  }
+  const handleChangeSelect = () => {};
   useEffect(() => {
     dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
     dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
@@ -52,7 +53,7 @@ const MainPage = () => {
         <Menu
           className="header__navigation"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["0"]}
         >
           {AllPages.map((menu, i) =>
             menu.submenus ? (
@@ -67,7 +68,7 @@ const MainPage = () => {
               <Item key={i}>
                 <Link to={menu.path}>
                   <span style={{marginRight: "10px", marginTop: "10px"}}> {findIcon(menu?.icon)}</span>
-                  <span>{menu.text}</span> 
+                  <span>{menu.text}</span>
                 </Link>
               </Item>
             )
@@ -86,16 +87,18 @@ const MainPage = () => {
         </div>
       </Header>
       <Content className="site-layout" style={{ marginTop: 64 }}>
-        <div
-        >
+        <div>
           <Routes>
             {[...AllPages, ...AllServiceChildPages].map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (
-                  <Route
-                    path={sub.path}
-                    element={<PageController page={sub} key={sub?.path} />}
-                  />
+                  <>
+                  {console.log(sub)}
+                    <Route
+                      path={sub.path}
+                      element={<PageController page={sub} key={sub?.path} />}
+                    />
+                  </>
                 ))
               ) : (
                 <Route
@@ -109,7 +112,7 @@ const MainPage = () => {
         <GlobalModal />
       </Content>
       <Footer className="site-footer">
-        <BottomTabs />
+        {document.location.pathname === "/customers" ? "" : <BottomTabs />}
         <div className="site-footer__content">
           <div className="site-footer__icons">
             <GlobusIcon2 />

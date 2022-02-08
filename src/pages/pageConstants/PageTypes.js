@@ -6,5 +6,5 @@ export const REPORT_PAGE = "REPORT_PAGE";
 
 
 // page of service pages
-export const REKLAMALAR_PAGE = "REKLAMALAR_PAGE"
-export const SERVIS_CHILD_PAGES = "SERVIS_CHILD_PAGES"
+export const REKLAMALAR_PAGE = "REKLAMALAR_PAGE";
+export const SERVIS_CHILD_PAGES = "SERVIS_CHILD_PAGES";

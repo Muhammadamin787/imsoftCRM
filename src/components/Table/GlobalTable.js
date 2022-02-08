@@ -22,7 +22,6 @@ const GlobalTable = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      // console.log( selectedRows);
       dispatch(setTableItem(selectedRows[0]))
     },
     getCheckboxProps: (record) => ({
@@ -36,10 +35,7 @@ const GlobalTable = () => {
 
   return (
     <>
-
-
-
-        <Table
+      <Table
           bordered
           columns={filteredColumns}
           className="main-table"

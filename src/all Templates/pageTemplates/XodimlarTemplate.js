@@ -1,14 +1,12 @@
 import React from "react";
-import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { Xodimlar, UploadFileOilasi, UploadFilePasport } from "../assets/icons/icons";
-import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/InputTypes";
-import {inputDeafultHeght,} from "../constant/deafultStyle"
-import image from "../assets/images/Ellipse 3.png"
+import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
+import { STRING,DATE, SELECT,TEXTAREA,PHONE,UPLOAD,MAP ,IMAGE} from "../../components/Modal/InputTypes";
+import {inputDeafultHeght,} from "../../constant/deafultStyle"
 import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
 
 const align = "center";
 const XodimlarTemplate = {
@@ -58,7 +56,7 @@ const XodimlarTemplate = {
           ],
         },
         {
-          name: "yunalishi",
+          name: "Yo'nalishi",
           type: SELECT,
           required: true,
           placeholder: "Yo'nalishi",
@@ -149,9 +147,7 @@ const XodimlarTemplate = {
       ],
     },
   ],
-  filters: [
-    "yunalishi"
-  ],
+  filters: ["yonalish"],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -217,7 +213,7 @@ const XodimlarTemplate = {
         return (
           <Zoom zoomMargin={10}>
             <picture>
-              <source media="(max-width: 800px)" srcSet={record.rasmi} />
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
               <img
                 alt="img"
                 src={record.rasmi}

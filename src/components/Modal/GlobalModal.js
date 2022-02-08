@@ -4,7 +4,7 @@ import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleModal } from "../../redux/tabs_reducer";
-import { MacRed, MacGreen, MacYellow } from "../../assets/icons/icons";
+import {MacRed, MacGreen, MacYellow} from "../../assets/icons/icons";
 
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state.tabs_reducer);
