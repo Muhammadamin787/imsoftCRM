@@ -19,13 +19,11 @@ const RegionlarTemplate = {
           type: STRING,
           required: true,
           placeholder:"Viloyat",
-          value: "",
         },
         {
           name: "Map bulishi  kk",
           type: SELECT,
           required: true,
-          value: "",
           placeholder:"map bulishi kk",
         },
         {
@@ -39,7 +37,6 @@ const RegionlarTemplate = {
             { value: "custom value 3", key: "custom value 3" },
             { value: "custom value 4", key: "custom value 5" },
           ],
-          value: "",
         },
         
       ],

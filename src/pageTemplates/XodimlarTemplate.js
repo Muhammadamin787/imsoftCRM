@@ -35,7 +35,6 @@ const XodimlarTemplate = {
           placeholder: "F.I.SH",
           gridColumn: "1 / 10",
           gridRow: "1 / 2",
-          value: "Abdusattor",
         },
         {
           name: "tugilgan_sana",
@@ -44,7 +43,6 @@ const XodimlarTemplate = {
           placeholder: "Tug'ilgan sana",
           gridColumn: "1 / 5",
           gridRow: "2 / 3",
-          // value: "",
         },
         {
           name: "viloyat",
@@ -53,7 +51,6 @@ const XodimlarTemplate = {
           placeholder: "viloyat",
           gridColumn: "1 / 5",
           gridRow: "3 / 4",
-          value: "Andijon",
           option: [
             { value: "Qashqadaryo", key: "Qashqadaroy"},
             { value: "Andijon", key: "Andijon"},
@@ -67,7 +64,6 @@ const XodimlarTemplate = {
           placeholder: "Yo'nalishi",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
-          value: "Dasturchi Web (Frontend)",
           option: [
             { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
             { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
@@ -81,7 +77,6 @@ const XodimlarTemplate = {
           placeholder: "Shahar",
           gridColumn: "5 / 10",
           gridRow: "3 / 4",
-          value: "Qo'qon",
           option: [
             { value: "Olti ariq", key: "Olti ariq"},
             { value: "Qo'qon", key: "Qo'qon"},
@@ -96,7 +91,6 @@ const XodimlarTemplate = {
           placeholder: "Manzil",
           gridColumn: "1 / 10",
           gridRow: "4 / 5",
-          value: "Olti ariq",
         },
         {
           name: "qushimcha_malumot",
@@ -105,7 +99,6 @@ const XodimlarTemplate = {
           placeholder: "Qo'shimcha malumot",
           gridColumn: "1 / 10",
           gridRow: "5 / 7",
-          value: "yaxshi",
         },
         {
           name: "telifon",
@@ -114,7 +107,6 @@ const XodimlarTemplate = {
           placeholder: "Telifon",
           gridColumn: "10 / 16",
           gridRow: "1 / 2",
-          value: "998992348569",
         },
         {
           name: "pasport",
@@ -144,7 +136,6 @@ const XodimlarTemplate = {
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 3.2,
-          value: [40.34721024644568, 71.81948986127864],
         },
         {
           name: "rasmi",
@@ -154,12 +145,6 @@ const XodimlarTemplate = {
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
-          value: {
-            uid: '-1',
-            name: 'image.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          },
         },
       ],
     },

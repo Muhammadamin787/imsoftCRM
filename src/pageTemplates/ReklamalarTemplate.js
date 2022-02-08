@@ -18,7 +18,6 @@ const ReklamalarTemplate = {
           name: "reklamalar",
           type: STRING,
           required: true,
-          value: "",
           placeholder:"Reklamalar",
         },
       ],

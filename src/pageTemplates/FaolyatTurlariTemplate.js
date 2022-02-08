@@ -20,7 +20,6 @@ const FaolyatTurlaiTemplate = {
           type: STRING,
           required: true,
           placeholder: "Faolyat turi nomi",
-          value: ""
         },
       ],
     },

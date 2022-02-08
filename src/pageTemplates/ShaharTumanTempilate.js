@@ -19,7 +19,6 @@ const ShaharTumanTemplate = {
           name: "viloyat",
           type: STRING,
           required: true,
-          value: "",
           placeholder:"Viloyat",
         },
         {
@@ -29,7 +28,6 @@ const ShaharTumanTemplate = {
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",
-          value: "",
           option: [
             { value: "Olti ariq", key: "Olti ariq"},
             { value: "Qo'qon", key: "Qo'qon"},
