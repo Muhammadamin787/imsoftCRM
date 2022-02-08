@@ -6,7 +6,7 @@ import {ProfileIcon} from "../assets/icons/icons";
 const CustomersTemplate = {
 	text: "Mijozlar Ro'yxati",
 	path: CUSTOMERS_PATH,
-	icon: <ProfileIcon/>,
+	icon: "ProfileIcon",
 	type: CUSTOMERS_PAGE,
 	// sections: [],
 	columns: [

@@ -2,7 +2,7 @@ import React from "react";
 import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
 import { Xodimlar, UploadFileOilasi, UploadFilePasport } from "../assets/icons/icons";
-import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/ModalInputTypes";
+import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/InputTypes";
 import {inputDeafultHeght,} from "../constant/deafultStyle"
 import image from "../assets/images/Ellipse 3.png"
 import { FieldNumberOutlined } from "@ant-design/icons";
@@ -14,7 +14,7 @@ const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
   path: XODIMLAR_PATH,
-  icon: <Xodimlar />,
+  icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   modal:{
@@ -124,7 +124,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5 ,
-          Icon: UploadFilePasport,
+          Iconic: UploadFilePasport,
         },
         {
           name: "oilasi",
@@ -134,7 +134,7 @@ const XodimlarTemplate = {
           gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
-          Icon: UploadFileOilasi,
+          Iconic: UploadFileOilasi,
         },
         {
           name: "hozirgi_yashash_joyi",
@@ -148,7 +148,7 @@ const XodimlarTemplate = {
         },
         {
           name: "rasmi",
-          type: UPLOAD,
+          type: IMAGE,
           required: true,
           placeholder: "",
           gridColumn: "16 / 21",
@@ -277,6 +277,7 @@ const XodimlarTemplate = {
   data: [
     {
       number: "1",
+      key: 1,
       full_name: "Hojiakbar Anorboyev",
       telifon: "998992348569",
       viloyat: "Farg'ona",
@@ -284,30 +285,27 @@ const XodimlarTemplate = {
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
       yunalishi: "Frontend Dasturchi",
-      rasmi:
-        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
+      hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
+      rasmi:"rasmichasi",
       pasport: "",
       oilasi:"",
-      hozirgi_yashash_joyi: "",
-      qushimcha_malumot: "",
-      key: 1,
     },
     {
       number: "2",
+      key: 2,
       full_name: "Ravshanbek Fayziyev",
       telifon: "998992349999",
       viloyat: "Farg'ona",
       shahar: "Andijon",
       manzil: "Galatoy 82 A",
-      oilasi:"",
       tugilgan_sana: "09/09/2000",
       yunalishi: "BAckend Dasturchi",
-      rasmi:
-        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+      hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
+      qushimcha_malumot: "yaxshi bola",
+      rasmi:"rasm",
+      oilasi:"",
       pasport: "",
-      hozirgi_yashash_joyi: "",
-      qushimcha_malumot: "",
-      key: 2,
     },
   ],
   scroll: { x: 1500, y: 380 },

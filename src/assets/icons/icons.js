@@ -382,3 +382,8 @@ export default iconArr;
 
 
 
+export const findIcon = (name) =>{
+	  const ic = iconArr.find( icon => icon.name === name);
+
+	  return ic()
+}

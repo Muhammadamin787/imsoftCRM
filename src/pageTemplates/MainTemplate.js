@@ -6,7 +6,7 @@ import {MainIcon} from "../assets/icons/icons";
 const MainTemplate = {
 	text: "Asosiy Oyna",
 	path: MAIN_PATH,
-	icon: <MainIcon/>,
+	icon: "MainIcon",
 	type: MAIN_PAGE,
 	// sections: [],
 };

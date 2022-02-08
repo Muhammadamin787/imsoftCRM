@@ -16,7 +16,7 @@ import GlobalTable from "../Table/GlobalTable";
 import {useSelector, useDispatch } from "react-redux";
 import { toggleModal, setCurrentPage, changePanes,removeTableItem } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
-
+import {findIcon} from "../../assets/icons/icons"
 import { Popconfirm, message } from 'antd';
 
 
@@ -41,7 +41,7 @@ const ToolsBar = ({ page }) => {
   
   const removeCurrentPage = (type = null) => {
     let position = null;
-    Panes?.length > 0 && Panes?.forEach((item, i) =>{
+    Panes?.length > 0 && Panes?.forEach((item, i) => {
       if(item?.text === currentPage?.text){
         position = i;
         !type && dispatch(changePanes(i));
@@ -60,14 +60,23 @@ const ToolsBar = ({ page }) => {
   
   const text = "malumotni o'chirmoqchimisiz !";
 
+  function IsExistConform(confirm) {
+    if (tableItem == {}) {
+      return message.info('Qatorni belgilang.');
+    } else {
+      confirm()
+    }
+  }
+
   function confirm() {
     console.log(tableItem);
+    if (tableItem == {}) {
+     return  message.info('Qatorni belgilang.');
+    }
     if (tableItem) {
       dispatch(removeTableItem(tableItem))
       message.info('Malumot uchirildi.');
-    } else {
-      message.info('Qatorni belgilang.');
-    }
+    } 
   }
   
 
@@ -84,7 +93,7 @@ const ToolsBar = ({ page }) => {
       <div className="child-header">
         <div className="child-page__header">
           <div className="child-page__iconTitle">
-            {/* <span> { currentPage?.icon} </span> */}
+            <span> { findIcon(currentPage?.icon)} </span>
             <span>{currentPage?.text}</span>
           </div>
           <div className="child-page__tools">
@@ -112,7 +121,7 @@ const ToolsBar = ({ page }) => {
             <Button>
               <AntennaReceive />
             </Button>
-            <Popconfirm placement="top" title={text} onConfirm={confirm} okText="Ha" cancelText="Yo'q">
+            <Popconfirm placement="top" title={text} onConfirm={() => IsExistConform(confirm)} okText="Ha" cancelText="Yo'q">
               <Button> <SignallessAntenna /> </Button>
             </Popconfirm>
             <Button>

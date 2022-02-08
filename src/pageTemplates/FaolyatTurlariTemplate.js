@@ -1,14 +1,14 @@
 import React from "react";
 import { FAOLYAT_TURLARI_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { STRING } from "../components/Modal/ModalInputTypes";
+import { STRING } from "../components/Modal/InputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import { Faoliyat } from "../assets/icons/icons";
 
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
   path: FAOLYAT_TURLARI_PATH,
-  icon: <Faoliyat />,
+  icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

@@ -6,7 +6,7 @@ import {VectorIcon} from "../assets/icons/icons";
 const ProgrammsTemplate = {
 	text: "Dasturlar",
 	path: PROGRAMMES_PATH,
-	icon: <VectorIcon/>,
+	icon: "VectorIcon",
 	type: PROGRAMMES_PAGE,
 	// sections: [],
 	// submenus: [

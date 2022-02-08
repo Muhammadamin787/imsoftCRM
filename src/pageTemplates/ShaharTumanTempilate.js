@@ -1,14 +1,14 @@
 import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { STRING, SELECT } from "../components/Modal/ModalInputTypes";
+import { STRING, SELECT } from "../components/Modal/InputTypes";
 import { FieldNumberOutlined } from '@ant-design/icons';
 import { City } from "../assets/icons/icons";
 
 const ShaharTumanTemplate = {
   text: "Shahar Tuman",
   path: SHAHAR_TUMAN_PATH,
-  icon: <City />,
+  icon: "City",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

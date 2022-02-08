@@ -15,7 +15,7 @@ import ShaharTumanTemplate from "./ShaharTumanTempilate"
 const ServiceTemplate = {
   text: "Servis",
   path: SERVIS_PATH,
-  icon: <ServiceIcon />,
+  icon: "ServiceIcon",
   type: SERVIS_PAGE,
   sections: 
   [

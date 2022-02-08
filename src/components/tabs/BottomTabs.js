@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Tabs, Avatar, Badge } from "antd";
 import { removeTab, setCurrentPage } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
-import iconArr from "../../assets/icons/icons.js"
+import {findIcon} from "../../assets/icons/icons"
 
 const { TabPane } = Tabs;
 
@@ -61,7 +61,8 @@ const BottomTabs = () => {
           key={pane?.path}
             tab={
               <div className="site-footer__tab" onClick={() => onChange(i)}>
-                <span>{pane?.text}</span> 
+                {findIcon(pane?.icon)} <span>{pane?.text}</span> 
+                
               </div>
             }
             key={i}
