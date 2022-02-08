@@ -2,7 +2,6 @@ import { Link, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
-import BottomTabs from "../../components/Tabs/BottomTabs";
 import { Footer } from "antd/es/layout/layout";
 import {
   CompanyLogo,
@@ -18,6 +17,7 @@ import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
+import BottomTabs from "../../components/tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 

@@ -27,7 +27,6 @@ import {
     removeTableItem,
 } from "../../redux/tabs_reducer";
 import {useNavigate} from "react-router-dom";
-import {Popconfirm, message} from "antd";
 import MacActions from "./MacActions/MacActions";
 import Actions from "./Actions/Actions";
 import {findIcon} from "../../assets/icons/icons"
