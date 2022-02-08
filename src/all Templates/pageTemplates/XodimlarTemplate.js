@@ -1,24 +1,9 @@
 import React from "react";
 import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import {
-  Xodimlar,
-  UploadFileOilasi,
-  UploadFilePasport,
-} from "../../assets/icons/icons";
-import {
-  STRING,
-  DATE,
-  SELECT,
-  TEXTAREA,
-  NUMBER,
-  PHONE,
-  UPLOAD,
-  MAP,
-  IMAGE,
-} from "../../components/Modal/ModalInputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
-import image from "../../assets/images/Ellipse 3.png";
+import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
+import { STRING,DATE, SELECT,TEXTAREA,PHONE,UPLOAD,MAP ,IMAGE} from "../../components/Modal/InputTypes";
+import {inputDeafultHeght,} from "../../constant/deafultStyle"
 import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
@@ -27,11 +12,11 @@ const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
   path: XODIMLAR_PATH,
-  icon: "as",
+  icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  modal: {
-    width: 1000,
+  modal:{
+    width:1000,
   },
   form: [
     {
@@ -48,7 +33,6 @@ const XodimlarTemplate = {
           placeholder: "F.I.SH",
           gridColumn: "1 / 10",
           gridRow: "1 / 2",
-          value: "Abdusattor",
         },
         {
           name: "tugilgan_sana",
@@ -57,7 +41,6 @@ const XodimlarTemplate = {
           placeholder: "Tug'ilgan sana",
           gridColumn: "1 / 5",
           gridRow: "2 / 3",
-          // value: "",
         },
         {
           name: "viloyat",
@@ -66,25 +49,23 @@ const XodimlarTemplate = {
           placeholder: "viloyat",
           gridColumn: "1 / 5",
           gridRow: "3 / 4",
-          value: "Andijon",
           option: [
-            { value: "Qashqadaryo", key: "Qashqadaroy" },
-            { value: "Andijon", key: "Andijon" },
-            { value: "Farg'ona", key: "Farg'ona" },
+            { value: "Qashqadaryo", key: "Qashqadaroy"},
+            { value: "Andijon", key: "Andijon"},
+            { value: "Farg'ona", key: "Farg'ona"},
           ],
         },
         {
-          name: "yunalishi",
+          name: "Yo'nalishi",
           type: SELECT,
           required: true,
           placeholder: "Yo'nalishi",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
-          value: "Dasturchi Web (Frontend)",
           option: [
-            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)" },
-            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)" },
-            { value: "Dasturchi Web (Backend)", key: "Web (Backend)" },
+            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
+            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
+            { value: "Dasturchi Web (Backend)", key: "Web (Backend)"},
           ],
         },
         {
@@ -94,12 +75,11 @@ const XodimlarTemplate = {
           placeholder: "Shahar",
           gridColumn: "5 / 10",
           gridRow: "3 / 4",
-          value: "Qo'qon",
           option: [
-            { value: "Olti ariq", key: "Olti ariq" },
-            { value: "Qo'qon", key: "Qo'qon" },
-            { value: "Marg'ilon", key: "Marg'ilon" },
-            { value: "Qarshi", key: "Qarshi" },
+            { value: "Olti ariq", key: "Olti ariq"},
+            { value: "Qo'qon", key: "Qo'qon"},
+            { value: "Marg'ilon", key: "Marg'ilon"},
+            { value: "Qarshi", key: "Qarshi"},
           ],
         },
         {
@@ -109,7 +89,6 @@ const XodimlarTemplate = {
           placeholder: "Manzil",
           gridColumn: "1 / 10",
           gridRow: "4 / 5",
-          value: "Olti ariq",
         },
         {
           name: "qushimcha_malumot",
@@ -118,7 +97,6 @@ const XodimlarTemplate = {
           placeholder: "Qo'shimcha malumot",
           gridColumn: "1 / 10",
           gridRow: "5 / 7",
-          value: "yaxshi",
         },
         {
           name: "telifon",
@@ -127,7 +105,6 @@ const XodimlarTemplate = {
           placeholder: "Telifon",
           gridColumn: "10 / 16",
           gridRow: "1 / 2",
-          value: "998992348569",
         },
         {
           name: "pasport",
@@ -136,8 +113,8 @@ const XodimlarTemplate = {
           placeholder: "pasport",
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
-          height: inputDeafultHeght * 2.5,
-          Icon: UploadFilePasport,
+          height: inputDeafultHeght * 2.5 ,
+          Iconic: UploadFilePasport,
         },
         {
           name: "oilasi",
@@ -147,7 +124,7 @@ const XodimlarTemplate = {
           gridColumn: "13 / 16",
           gridRow: "2 / 5",
           height: inputDeafultHeght * 2.5,
-          Icon: UploadFileOilasi,
+          Iconic: UploadFileOilasi,
         },
         {
           name: "hozirgi_yashash_joyi",
@@ -157,22 +134,15 @@ const XodimlarTemplate = {
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 3.2,
-          value: [40.34721024644568, 71.81948986127864],
         },
         {
           name: "rasmi",
-          type: UPLOAD,
+          type: IMAGE,
           required: true,
           placeholder: "",
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
-          value: {
-            uid: "-1",
-            name: "image.png",
-            status: "done",
-            url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-          },
         },
       ],
     },

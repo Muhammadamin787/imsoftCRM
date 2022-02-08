@@ -1,15 +1,13 @@
 import React from "react";
-import { STRING } from "../../components/Modal/ModalInputTypes";
+import { FAOLYAT_TURLARI_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
-import {FAOLYAT_TURLARI_PATH} from '../../pages/pageConstants/PageRoutes'
-import {SERVIS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes'
-import {Faoliyat} from "../../assets/icons/icons";
+import {STRING} from "../../components/Modal/InputTypes";
 
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
   path: FAOLYAT_TURLARI_PATH,
-  // icon: <Faoliyat />,
-  icon: "fa",
+  icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [
@@ -21,7 +19,6 @@ const FaolyatTurlaiTemplate = {
           type: STRING,
           required: true,
           placeholder: "Faolyat turi nomi",
-          value: ""
         },
       ],
     },

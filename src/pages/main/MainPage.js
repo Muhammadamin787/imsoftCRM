@@ -2,10 +2,10 @@ import { Link, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
-import BottomTabs from "../../components/tabs/BottomTabs";
 import { Footer } from "antd/es/layout/layout";
 import {
   CompanyLogo,
+  findIcon,
   GlobusIcon2,
   TelegramIcon,
 } from "../../assets/icons/icons";
@@ -20,6 +20,7 @@ import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
+import BottomTabs from "../../components/tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 
@@ -56,17 +57,18 @@ const MainPage = () => {
         >
           {AllPages.map((menu, i) =>
             menu.submenus ? (
-              <SubMenu key={i} icon={menu.icon} title={menu.text}>
+              <SubMenu key={i}  title={menu.text}>
                 {menu.submenus.map((sub, k) => (
                   <Item key={"sub" + k}>
-                    <Link to={sub.path}>{sub.text}</Link>
+                    <Link to={sub.path}>{sub.text}{findIcon(menu?.icon)}</Link>
                   </Item>
                 ))}
               </SubMenu>
             ) : (
-              <Item key={i} icon={menu.icon}>
-                <Link to={menu.path} style={{ marginLeft: "10px" }}>
-                  {menu.text}
+              <Item key={i}>
+                <Link to={menu.path}>
+                  <span style={{marginRight: "10px", marginTop: "10px"}}> {findIcon(menu?.icon)}</span>
+                  <span>{menu.text}</span>
                 </Link>
               </Item>
             )

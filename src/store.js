@@ -6,10 +6,13 @@ import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMer
 
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel1,
+  // whiteList: ["nimadurReducer"],
+  // blacklist:["nimadurReducer"]
 };
+
 const reducers = combineReducers({
   tabs_reducer: tabs_reducer
 });
@@ -21,7 +24,14 @@ export const store = configureStore({
   middleware: getDefaultMiddleware({
     serializableCheck: {
       /* ignore persistance actions */
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActions: [
+        FLUSH,
+        REHYDRATE,
+        PAUSE,
+        PERSIST,
+        PURGE,
+        REGISTER
+      ],
     },
   }),
 });

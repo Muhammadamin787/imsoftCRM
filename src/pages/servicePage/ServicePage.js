@@ -4,26 +4,29 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addNewTab } from "../../redux/tabs_reducer";
 import {setCurrentPage} from "../../redux/tabs_reducer"
-import {AllServiceChildPages} from '../../all Templates/pageTemplates/index'
+import { findIcon } from "../../assets/icons/icons";
+
 const ServicePage = ({ page }) => {
   const sections = page?.sections;
   const dispatch = useDispatch();
+
   const handleTab = (section) => {
     dispatch(addNewTab(section));
     dispatch(setCurrentPage(section));
+
   };
 
   return (
     <div className="first-page">
       <div className="site-layout__body">
-        {AllServiceChildPages.map((section, i) => (
+        {sections.map((section, i) => (
           <Link to={section.path} key={section?.path}>
             <Button
               className={"site-layout__body-items"}
               onClick={() => handleTab(section)}
             >
               <div className="body-item-meaning">
-                {section?.icon}
+                {findIcon(section?.icon)}
                 <span>{section?.text}</span>
               </div>
             </Button>
