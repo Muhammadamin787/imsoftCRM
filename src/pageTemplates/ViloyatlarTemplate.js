@@ -7,7 +7,8 @@ import {Group} from '../assets/icons/icons';
 const ViloyatlarTemplate = {
   text: "Viloyatlar",
   path: VILOYATLAR_PATH,
-  icon: <Group />,
+  icon: "gr",
+  // icon: <Group />,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

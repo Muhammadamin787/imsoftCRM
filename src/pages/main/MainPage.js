@@ -39,6 +39,7 @@ const MainPage = () => {
   }
   useEffect(() => {
     dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
+    console.log(currentPage);
     dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
   }, []); // [] 👈 qachonki brovser yangilanganda
 
@@ -51,7 +52,7 @@ const MainPage = () => {
         <Menu
           className="header__navigation"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["0"]}
         >
           {AllPages.map((menu, i) =>
             menu.submenus ? (

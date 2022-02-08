@@ -8,7 +8,8 @@ import { Faoliyat } from "../assets/icons/icons";
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
   path: FAOLYAT_TURLARI_PATH,
-  icon: <Faoliyat />,
+  // icon: <Faoliyat />,
+  icon: "fa",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

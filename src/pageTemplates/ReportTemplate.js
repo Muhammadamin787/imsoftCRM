@@ -23,8 +23,6 @@ const ReportTemplate = {
 		  ],
 		},
 	  ],
-
-
 };
 
 export default ReportTemplate;

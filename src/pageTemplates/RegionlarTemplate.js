@@ -7,7 +7,8 @@ import {Regionlar} from '../assets/icons/icons'
 const RegionlarTemplate = {
   text: "Regionlar",
   path: REGIONLAR_PATH,
-  icon: <Regionlar />,
+  icon: "re",
+  // icon: <Regionlar />,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

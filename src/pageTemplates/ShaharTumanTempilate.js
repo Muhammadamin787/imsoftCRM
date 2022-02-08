@@ -8,7 +8,8 @@ import { City } from "../assets/icons/icons";
 const ShaharTumanTemplate = {
   text: "Shahar Tuman",
   path: SHAHAR_TUMAN_PATH,
-  icon: <City />,
+  icon: "ci",
+  // icon: <City />,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

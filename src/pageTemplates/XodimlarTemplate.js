@@ -1,24 +1,37 @@
 import React from "react";
 import { XODIMLAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { Xodimlar, UploadFileOilasi, UploadFilePasport } from "../assets/icons/icons";
-import { STRING,DATE, SELECT,TEXTAREA,NUMBER,PHONE,UPLOAD,MAP ,IMAGE} from "../components/Modal/ModalInputTypes";
-import {inputDeafultHeght,} from "../constant/deafultStyle"
-import image from "../assets/images/Ellipse 3.png"
+import {
+  Xodimlar,
+  UploadFileOilasi,
+  UploadFilePasport,
+} from "../assets/icons/icons";
+import {
+  STRING,
+  DATE,
+  SELECT,
+  TEXTAREA,
+  NUMBER,
+  PHONE,
+  UPLOAD,
+  MAP,
+  IMAGE,
+} from "../components/Modal/ModalInputTypes";
+import { inputDeafultHeght } from "../constant/deafultStyle";
+import image from "../assets/images/Ellipse 3.png";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
 
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
   path: XODIMLAR_PATH,
-  icon: <Xodimlar />,
+  icon: "as",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  modal:{
-    width:1000,
+  modal: {
+    width: 1000,
   },
   form: [
     {
@@ -55,9 +68,9 @@ const XodimlarTemplate = {
           gridRow: "3 / 4",
           value: "Andijon",
           option: [
-            { value: "Qashqadaryo", key: "Qashqadaroy"},
-            { value: "Andijon", key: "Andijon"},
-            { value: "Farg'ona", key: "Farg'ona"},
+            { value: "Qashqadaryo", key: "Qashqadaroy" },
+            { value: "Andijon", key: "Andijon" },
+            { value: "Farg'ona", key: "Farg'ona" },
           ],
         },
         {
@@ -69,9 +82,9 @@ const XodimlarTemplate = {
           gridRow: "2 / 3",
           value: "Dasturchi Web (Frontend)",
           option: [
-            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
-            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
-            { value: "Dasturchi Web (Backend)", key: "Web (Backend)"},
+            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)" },
+            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)" },
+            { value: "Dasturchi Web (Backend)", key: "Web (Backend)" },
           ],
         },
         {
@@ -83,10 +96,10 @@ const XodimlarTemplate = {
           gridRow: "3 / 4",
           value: "Qo'qon",
           option: [
-            { value: "Olti ariq", key: "Olti ariq"},
-            { value: "Qo'qon", key: "Qo'qon"},
-            { value: "Marg'ilon", key: "Marg'ilon"},
-            { value: "Qarshi", key: "Qarshi"},
+            { value: "Olti ariq", key: "Olti ariq" },
+            { value: "Qo'qon", key: "Qo'qon" },
+            { value: "Marg'ilon", key: "Marg'ilon" },
+            { value: "Qarshi", key: "Qarshi" },
           ],
         },
         {
@@ -123,7 +136,7 @@ const XodimlarTemplate = {
           placeholder: "pasport",
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
-          height: inputDeafultHeght * 2.5 ,
+          height: inputDeafultHeght * 2.5,
           Icon: UploadFilePasport,
         },
         {
@@ -155,18 +168,16 @@ const XodimlarTemplate = {
           gridRow: "1 / 7",
           height: inputDeafultHeght * 7.7,
           value: {
-            uid: '-1',
-            name: 'image.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+            uid: "-1",
+            name: "image.png",
+            status: "done",
+            url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
           },
         },
       ],
     },
   ],
-  filters: [
-    "yonalish"
-  ],
+  filters: ["yonalish"],
   columns: [
     {
       title: <FieldNumberOutlined />,

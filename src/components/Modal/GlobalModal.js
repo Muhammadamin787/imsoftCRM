@@ -10,7 +10,6 @@ const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state.tabs_reducer);
     // const tabs = useSelector((state) => state);
 
-    // console.log(currentPage);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();

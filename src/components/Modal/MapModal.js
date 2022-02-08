@@ -12,7 +12,6 @@ export default class MapModal extends Component {
         zoom: 6,
       },
     };
-    // console.log(this.props.value)
   }
 
 // value quyish erak

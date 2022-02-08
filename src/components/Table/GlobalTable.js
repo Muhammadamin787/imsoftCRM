@@ -23,7 +23,6 @@ const GlobalTable = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      // console.log( selectedRows);
       dispatch(setTableItem(selectedRows[0]))
     },
     getCheckboxProps: (record) => ({

@@ -262,7 +262,6 @@ const ModalInput = ({
               },
             };
             handleChangeValue(e);
-            console.log(values);
           }}
         />
       );

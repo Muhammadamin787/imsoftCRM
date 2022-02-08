@@ -15,7 +15,6 @@ import {store} from "./store"
 
 // const data = useSelector(state => state)
 
-// console.log(data);
 
 ReactDOM.render(
   <React.StrictMode>

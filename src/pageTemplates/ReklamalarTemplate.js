@@ -7,7 +7,8 @@ import { FieldNumberOutlined } from "@ant-design/icons";
 const ReklamalarTemplate = {
   text: "Reklamalar",
   path: REKLAMALAR_PATH,
-  icon: <Reklamalar />,
+  icon: "re",
+  // icon: <Reklamalar />,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [

@@ -13,29 +13,23 @@ const BottomTabs = () => {
   const dispatch = useDispatch();
   const { pathname } = window.location;
 
-  const [panes, setPanes] = useState(Panes);
-  const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
+  const [activeKey, setActiveKey] = useState(Panes && Panes[0]?.key);
 
-  useEffect(() => {
-    setPanes(Panes);
-  }, [Panes, pathname]);
 
   const onChange = (activeKey) => {
     setActiveKey(activeKey);
-    const active = Panes[activeKey]?.path;
-    navigate(active, { replace: true });
     dispatch(setCurrentPage(Panes[activeKey]));
   };
 
   const onEdit = (targetKey, action) => {
     if (action === "remove") {
-      if (panes?.length === 1) {
+      if (Panes?.length === 1) {
         navigate("/servis");
-      } else if (panes[+targetKey]?.text === currentPage?.text) {
-        if (panes?.length - 1 > targetKey) {
-          dispatch(setCurrentPage(panes[+targetKey + 1]));
+      } else if (Panes[+targetKey]?.text === currentPage?.text) {
+        if (Panes?.length - 1 > targetKey) {
+          dispatch(setCurrentPage(Panes[+targetKey + 1]));
         } else {
-          dispatch(setCurrentPage(panes[+targetKey - 1]));
+          dispatch(setCurrentPage(Panes[+targetKey - 1]));
         }
       }
       dispatch(removeTab(targetKey));
@@ -50,8 +44,8 @@ const BottomTabs = () => {
       onEdit={onEdit}
       className="site-footer__tabs"
     >
-      {panes &&
-        panes?.map((pane, i) => (
+      {Panes &&
+        Panes?.map((pane, i) => (
           <TabPane
           key={pane?.path}
             tab={

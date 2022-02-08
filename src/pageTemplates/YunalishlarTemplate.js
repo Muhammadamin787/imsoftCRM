@@ -8,7 +8,8 @@ import { Yunalishlar } from "../assets/icons/icons";
 const YunalishlarTemplate = {
   text: "Yunalishlar",
   path: YUNALISHLAR_PATH,
-  icon: <Yunalishlar />,
+  // icon: <Yunalishlar />,
+  icon: "yo",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [
