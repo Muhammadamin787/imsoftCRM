@@ -66,7 +66,8 @@ const MainPage = () => {
             ) : (
               <Item key={i}>
                 <Link to={menu.path}>
-                  <span>{menu.text}</span> <span style={{marginLeft: "10px", marginTop: "10px"}}> {findIcon(menu?.icon)}</span>
+                  <span style={{marginRight: "10px", marginTop: "10px"}}> {findIcon(menu?.icon)}</span>
+                  <span>{menu.text}</span> 
                 </Link>
               </Item>
             )
