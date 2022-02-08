@@ -36,10 +36,7 @@ const GlobalTable = () => {
 
   return (
     <>
-
-
-
-        <Table
+      <Table
           bordered
           columns={filteredColumns}
           className="main-table"

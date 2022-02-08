@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import {AllServiceChildPages} from '../pageTemplates/index';
+
 export const counterSlice = createSlice({
   name: "tabs_data",
   initialState: {
