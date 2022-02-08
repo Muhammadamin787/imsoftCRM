@@ -341,3 +341,49 @@ export {
 	UploadFileOilasi
 }
 
+
+ const iconArr = [
+	CompanyLogo,
+	MainIcon,
+	DiagrammIcon,
+	GlobusIcon,
+	GlobusIcon2,
+	TelegramIcon,
+	ServiceIcon,
+	CloseIconSmall,
+	ProfileIcon,
+	VectorIcon,
+	City,
+	Arrow,
+	Group,
+	Faoliyat,
+	Yunalishlar,
+	Xodimlar,
+	Regionlar,
+	Reklamalar,
+	AddItem,
+	AddFile,
+	AddFolder,
+	CopyFolder,
+	TransferFolder,
+	EditFile,
+	Antenna,
+	AntennaReceive,
+	SignallessAntenna,
+	Circle,
+	MacRed,
+	MacGreen,
+	MacYellow,
+	UploadFilePasport,
+	UploadFileOilasi
+]
+
+export default iconArr;
+
+
+
+export const findIcon = (name) =>{
+	  const ic = iconArr.find( icon => icon.name === name);
+
+	  return ic()
+}

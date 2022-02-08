@@ -1,14 +1,13 @@
 import React from "react";
 import { REKLAMALAR_PATH } from "../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { STRING } from "../components/Modal/ModalInputTypes";
+import { STRING } from "../components/Modal/InputTypes";
 import { Reklamalar } from "../assets/icons/icons";
 import { FieldNumberOutlined } from "@ant-design/icons";
 const ReklamalarTemplate = {
   text: "Reklamalar",
   path: REKLAMALAR_PATH,
-  icon: "re",
-  // icon: <Reklamalar />,
+  icon: "Reklamalar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   form: [
@@ -19,7 +18,6 @@ const ReklamalarTemplate = {
           name: "reklamalar",
           type: STRING,
           required: true,
-          value: "",
           placeholder:"Reklamalar",
         },
       ],

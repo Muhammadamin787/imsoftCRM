@@ -27,10 +27,20 @@ import {
     removeTableItem,
 } from "../../redux/tabs_reducer";
 import {useNavigate} from "react-router-dom";
-
 import {Popconfirm, message} from "antd";
 import MacActions from "./MacActions/MacActions";
 import Actions from "./Actions/Actions";
+import {findIcon} from "../../assets/icons/icons"
+import { Popconfirm, message } from 'antd';
+
+
+
+
+
+
+
+
+
 
 const ToolsBar = ({page}) => {
     const dispatch = useDispatch();
@@ -62,12 +72,12 @@ const ToolsBar = ({page}) => {
                 <Actions tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>
             </div>
 
-            {/* Global Table */}
-            <div className="child-body">
-                <GlobalTable/>
-            </div>
-        </div>
-    );
+
+      <div className="child-body">
+        <GlobalTable />
+      </div>
+    </div>
+  );
 };
 
 export default ToolsBar;

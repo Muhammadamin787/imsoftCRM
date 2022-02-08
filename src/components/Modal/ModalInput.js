@@ -1,14 +1,4 @@
-import {
-  Button,
-  Input,
-  InputNumber,
-  Radio,
-  DatePicker,
-  Select,
-  Upload,
-  Icon,
-  message,
-} from "antd";
+import { Input, InputNumber, DatePicker, Select } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -20,25 +10,16 @@ import {
   NUMBER,
   TEXTAREA,
   PHONE,
-  RADIO,
   SELECT,
   STRING,
   UPLOAD,
-} from "./ModalInputTypes";
+} from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import moment from "moment";
-import {
-  YMaps,
-  Map,
-  ZoomControl,
-  FullscreenControl,
-  SearchControl,
-  GeolocationControl,
-  Placemark,
-} from "react-yandex-maps";
-import Avatar from "./upLoadInput";
 import MapModal from "./MapModal";
+import UpLoadFile from "./UpLoadFile";
+import UpLoadJPG from "./UpLoadJPG";
 
 const { TextArea } = Input;
 
@@ -50,9 +31,8 @@ const ModalInput = ({
   type,
   option,
   height,
-  width,
   value,
-  Icon,
+  Iconic,
 }) => {
   let input = null;
 
@@ -61,51 +41,6 @@ const ModalInput = ({
   const handleChangeValue = (e) => {
     setValues(e.target.value);
   };
-
-  const dateFormat = "YYYY/MM/DD";
-
-  // pdf doc img, jpg png yuklash kodlari
-  const [pdfFile, setPdfFile] = useState({});
-  const [loadingi, setLoading] = useState({ loading: false });
-
-  function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader?.result));
-    reader.readAsDataURL(img);
-  }
-
-  function beforeUpload(file) {
-    const isJpgOrPng =
-      file.type === "application/pdf" ||
-      file.type === "application/msword" ||
-      file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-      file.type === "image/jpeg" ||
-      file.type === "image/png";
-    if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
-    }
-    setPdfFile(file);
-    return isJpgOrPng;
-  }
-
-  const handleChange = (info) => {
-    if (info.file.status === "uploading") {
-      setLoading({ loading: true });
-      return;
-    }
-    if (info.file.status === "done") {
-      getBase64(info.file.originFileObj, (imageUrl) =>
-        setLoading({
-          imageUrl,
-          loading: false,
-        })
-      );
-    }
-    setPdfFile(info.file);
-  };
-
-  const { loading, imageUrl } = loadingi;
 
   switch (type) {
     case STRING:
@@ -133,7 +68,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // width: width && width ? width + "px" : inputDeafultWidth + "px",
           }}
           placeholder={placeholder}
           onChange={(e) => handleChangeValue(e)}
@@ -141,6 +75,7 @@ const ModalInput = ({
         />
       );
       break;
+
     case SELECT:
       input = (
         <Select
@@ -173,6 +108,7 @@ const ModalInput = ({
         </Select>
       );
       break;
+
     case MAP:
       input = (
         <MapModal
@@ -183,6 +119,7 @@ const ModalInput = ({
         />
       );
       break;
+
     case DATE:
       input = (
         <DatePicker
@@ -194,7 +131,7 @@ const ModalInput = ({
           }}
           format="DD.MM.YYYY"
           allowClear={false}
-          defaultValue={moment("2015/01/01", dateFormat)}
+          defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
           onChange={(e) => handleChangeValue(e)}
           value={values}
 
@@ -220,6 +157,7 @@ const ModalInput = ({
         />
       );
       break;
+
     case TEXTAREA:
       input = (
         <TextArea
@@ -235,6 +173,7 @@ const ModalInput = ({
         />
       );
       break;
+
     case PHONE:
       input = (
         <PhoneInput
@@ -266,91 +205,36 @@ const ModalInput = ({
         />
       );
       break;
+
     case UPLOAD:
       input = (
-        <label
-          className="file-uploader-label"
-          style={{
-            gridColumn: gridColumn,
-            gridRow: gridRow,
-            height: height ? height + "px" : inputDeafultHeght + "px",
-            width: "100% !important",
-            textAlign: "center"
-          }}
-          htmlFor="file-uploder"
-        >
-          <Upload
-            id="file-uploder"
-            name={name}
-            placeholder={placeholder}
-            alt="file"
-            beforeUpload={beforeUpload}
-            onClick={handleChange}
-            type="file"
-            maxCount={1}
-            showUploadList={false}
-            // value={values}
-          >
-            {Icon && <Icon />}
-            {pdfFile?.name ? (
-              pdfFile?.name
-            ) : (
-              <div
-                style={{
-                  height: height,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {pdfFile.name ? (
-                  pdfFile.name
-                ) : (
-                  <span
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                    }}
-                  >
-                    {placeholder + " yuklash"}
-                  </span>
-                )}
-              </div>
-            )}
-          </Upload>
-        </label>
+        <UpLoadFile
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          value={values}
+          Iconic={Iconic}
+        />
       );
       break;
-    
-    
-    
-    
-      // case IMAGE:
-    //   input = (
-    // <Input
-    //   alt="yuq"
-    //   type="file"
-    //   required
-    //   onChange={(e) => handlePdfFileChange(e)}
-    //   style={{
-    //     gridColumn: gridColumn,
-    //     gridRow: gridRow,
-    //     height: height ? height + "px" : inputDeafultHeght + "px",
-    //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
-    //     backgroundColor: "red",
-    //   }}
-    // />
-    // <Avatar
-    //   style={{
-    //     gridColumn: gridColumn,
-    //     gridRow: gridRow + "!important",
-    //     // height: height ? height + "px" : inputDeafultHeght + "px",
-    //     // width: width && width ? width + "px" : inputDeafultWidth + "px",
-    //     backgroundColor: "red",
-    //   }}
-    // />
-    // );
-    // break;
+
+    case IMAGE:
+      input = (
+        <UpLoadJPG
+          id="imge-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          value={values}
+          Iconic={Iconic}
+        />
+      );
+      break;
     default:
       break;
   }

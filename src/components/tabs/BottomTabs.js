@@ -4,37 +4,47 @@ import { useSelector, useDispatch } from "react-redux";
 import { Tabs, Avatar, Badge } from "antd";
 import { removeTab, setCurrentPage } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
+import {findIcon} from "../../assets/icons/icons"
+
 const { TabPane } = Tabs;
 
 const BottomTabs = () => {
-  const { Panes, currentPage } = useSelector((state) => state.tabs_reducer);
+  const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = window.location;
 
-  const [activeKey, setActiveKey] = useState(Panes && Panes[0]?.key);
+  const [panes, setPanes] = useState(Panes);
+  const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
 
+  useEffect(() => {
+    setPanes(Panes);
+  }, [Panes, pathname]);
 
   const onChange = (activeKey) => {
     setActiveKey(activeKey);
+    const active = Panes[activeKey]?.path;
+    navigate(active, { replace: true });
     dispatch(setCurrentPage(Panes[activeKey]));
   };
 
   const onEdit = (targetKey, action) => {
     if (action === "remove") {
-      if (Panes?.length === 1) {
+      if (panes?.length === 1) {
         navigate("/servis");
-      } else if (Panes[+targetKey]?.text === currentPage?.text) {
-        if (Panes?.length - 1 > targetKey) {
-          dispatch(setCurrentPage(Panes[+targetKey + 1]));
+      } else if (panes[+targetKey]?.text === currentPage?.text) {
+        if (panes?.length - 1 > targetKey) {
+          dispatch(setCurrentPage(panes[+targetKey + 1]));
         } else {
-          dispatch(setCurrentPage(Panes[+targetKey - 1]));
+          dispatch(setCurrentPage(panes[+targetKey - 1]));
         }
       }
       dispatch(removeTab(targetKey));
     }
   };
+
+
 
   return (
     <Tabs
@@ -44,13 +54,15 @@ const BottomTabs = () => {
       onEdit={onEdit}
       className="site-footer__tabs"
     >
-      {Panes &&
-        Panes?.map((pane, i) => (
+      {panes &&
+        panes?.map((pane, i) => (
+
           <TabPane
           key={pane?.path}
             tab={
               <div className="site-footer__tab" onClick={() => onChange(i)}>
-                {pane?.icon} <span>{pane?.text}</span>
+                {findIcon(pane?.icon)} <span>{pane?.text}</span>
+
               </div>
             }
             key={i}
