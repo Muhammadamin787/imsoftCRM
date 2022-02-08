@@ -10,7 +10,7 @@ import {
   TelegramIcon,
 } from "../../assets/icons/icons";
 import moment from "moment";
-import { AllPages, AllServiceChildPages } from "../../pageTemplates";
+import { AllPages, AllServiceChildPages } from "../../all Templates/pageTemplates";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
@@ -40,7 +40,6 @@ const MainPage = () => {
   }
   useEffect(() => {
     dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
-    console.log(currentPage);
     dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
   }, []); // [] 👈 qachonki brovser yangilanganda
 
@@ -109,7 +108,7 @@ const MainPage = () => {
         <GlobalModal />
       </Content>
       <Footer className="site-footer">
-        <BottomTabs />
+        {document.location.pathname === '/customers' ? "": <BottomTabs />}
         <div className="site-footer__content">
           <div className="site-footer__icons">
             <GlobusIcon2 />

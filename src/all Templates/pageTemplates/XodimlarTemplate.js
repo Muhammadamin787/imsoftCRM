@@ -58,7 +58,7 @@ const XodimlarTemplate = {
           ],
         },
         {
-          name: "yunalishi",
+          name: "Yo'nalishi",
           type: SELECT,
           required: true,
           placeholder: "Yo'nalishi",
@@ -149,9 +149,7 @@ const XodimlarTemplate = {
       ],
     },
   ],
-  filters: [
-    "yunalishi"
-  ],
+  filters: ["yonalish"],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -217,7 +215,7 @@ const XodimlarTemplate = {
         return (
           <Zoom zoomMargin={10}>
             <picture>
-              <source media="(max-width: 800px)" srcSet={record.rasmi} />
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
               <img
                 alt="img"
                 src={record.rasmi}
@@ -262,7 +260,6 @@ const XodimlarTemplate = {
   data: [
     {
       number: "1",
-      key: 1,
       full_name: "Hojiakbar Anorboyev",
       telifon: "998992348569",
       viloyat: "Farg'ona",
@@ -270,27 +267,30 @@ const XodimlarTemplate = {
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
       yunalishi: "Frontend Dasturchi",
-      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
-      hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
-      rasmi:"rasmichasi",
+      rasmi:
+        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
       pasport: "",
       oilasi:"",
+      hozirgi_yashash_joyi: "",
+      qushimcha_malumot: "",
+      key: 1,
     },
     {
       number: "2",
-      key: 2,
       full_name: "Ravshanbek Fayziyev",
       telifon: "998992349999",
       viloyat: "Farg'ona",
       shahar: "Andijon",
       manzil: "Galatoy 82 A",
+      oilasi:"",
       tugilgan_sana: "09/09/2000",
       yunalishi: "BAckend Dasturchi",
-      hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
-      qushimcha_malumot: "yaxshi bola",
-      rasmi:"rasm",
-      oilasi:"",
+      rasmi:
+        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
       pasport: "",
+      hozirgi_yashash_joyi: "",
+      qushimcha_malumot: "",
+      key: 2,
     },
   ],
   scroll: { x: 1500, y: 380 },
