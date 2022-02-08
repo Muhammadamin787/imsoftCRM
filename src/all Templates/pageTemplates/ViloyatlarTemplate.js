@@ -1,9 +1,9 @@
 import React from "react";
-import { VILOYATLAR_PATH } from "../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { STRING } from "../components/Modal/ModalInputTypes";
+import { VILOYATLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { STRING } from "../../components/Modal/ModalInputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
-import {Group} from '../assets/icons/icons';
+import {Group} from '../../assets/icons/icons';
 const ViloyatlarTemplate = {
   text: "Viloyatlar",
   path: VILOYATLAR_PATH,

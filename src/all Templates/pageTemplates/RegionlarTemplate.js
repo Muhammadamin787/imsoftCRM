@@ -1,9 +1,9 @@
 import React from "react";
-import { REGIONLAR_PATH } from "../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../pages/pageConstants/PageTypes";
-import { SELECT, STRING } from "../components/Modal/ModalInputTypes";
+import { REGIONLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { SELECT, STRING } from "../../components/Modal/ModalInputTypes";
 import { AimOutlined, FieldNumberOutlined } from "@ant-design/icons";
-import {Regionlar} from '../assets/icons/icons'
+import {Regionlar} from '../../assets/icons/icons'
 const RegionlarTemplate = {
   text: "Regionlar",
   path: REGIONLAR_PATH,
