@@ -6,11 +6,13 @@
 *::-webkit-scrollbar {
   width: 8px;
 }
+
 *::-webkit-scrollbar-thumb {
   background-color: #1890ff;
   background-color: rgba(90, 90, 90, 0.3);
   border-radius: 3px;
 }
+
 // __________________________Scroll-bar end
 
 .site-container {
@@ -52,18 +54,21 @@
 
         svg {
           position: relative;
-          // top: 2px;
+          top: 2px;
+
           path {
             transition: 0.3s;
             fill: #bac8dc;
           }
         }
       }
+
       .ant-menu-item-active,
       .ant-menu-item-selected {
         a {
           color: #1890ff;
         }
+
         svg {
           path {
             fill: #1890ff;
@@ -81,6 +86,7 @@
       padding: 0 20px;
       display: flex;
       align-items: center;
+
       .user-profile-search {
         display: block;
         background: rgba(186, 200, 220, 0.2);
@@ -88,6 +94,7 @@
         outline: none;
         border: none;
       }
+
       .user-profile-image {
         transform: translate(10px, -5px);
       }
@@ -121,9 +128,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .site-footer__icons{
+
+      .site-footer__icons {
         padding-top: 5px;
       }
+
       .site-footer__text {
         color: #9dbeef;
         font-size: 1.1em;
