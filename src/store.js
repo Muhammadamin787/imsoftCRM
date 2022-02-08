@@ -1,22 +1,9 @@
 import tabs_reducer from "./redux/tabs_reducer";
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist';
+import storage from 'reduxjs-toolkit-persist/lib/storage'
+import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1';
 
-import {
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
-import {
-  persistReducer,
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "reduxjs-toolkit-persist";
-import storage from "reduxjs-toolkit-persist/lib/storage";
-import autoMergeLevel1 from "reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1";
 
 const persistConfig = {
   key: "root",
@@ -24,7 +11,7 @@ const persistConfig = {
   stateReconciler: autoMergeLevel1,
 };
 const reducers = combineReducers({
-  tabs_reducer: tabs_reducer,
+  tabs_reducer: tabs_reducer
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);
@@ -38,3 +25,5 @@ export const store = configureStore({
     },
   }),
 });
+
+

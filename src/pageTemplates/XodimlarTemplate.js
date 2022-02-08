@@ -42,7 +42,7 @@ const XodimlarTemplate = {
 
       inputs: [
         {
-          name: "full name",
+          name: "full_name",
           type: STRING,
           required: true,
           placeholder: "F.I.SH",
@@ -51,7 +51,7 @@ const XodimlarTemplate = {
           value: "Abdusattor",
         },
         {
-          name: "Tug'ilgan sana",
+          name: "tugilgan_sana",
           type: DATE,
           required: true,
           placeholder: "Tug'ilgan sana",
@@ -60,7 +60,7 @@ const XodimlarTemplate = {
           // value: "",
         },
         {
-          name: "Viloyat",
+          name: "viloyat",
           type: SELECT,
           required: true,
           placeholder: "viloyat",
@@ -74,7 +74,7 @@ const XodimlarTemplate = {
           ],
         },
         {
-          name: "Yo'nalishi",
+          name: "yunalishi",
           type: SELECT,
           required: true,
           placeholder: "Yo'nalishi",
@@ -88,7 +88,7 @@ const XodimlarTemplate = {
           ],
         },
         {
-          name: "Shahar",
+          name: "shahar",
           type: SELECT,
           required: true,
           placeholder: "Shahar",
@@ -112,7 +112,7 @@ const XodimlarTemplate = {
           value: "Olti ariq",
         },
         {
-          name: "qo'shimcha malumot",
+          name: "qushimcha_malumot",
           type: TEXTAREA,
           required: true,
           placeholder: "Qo'shimcha malumot",
@@ -150,7 +150,7 @@ const XodimlarTemplate = {
           Icon: UploadFileOilasi,
         },
         {
-          name: "hozirgi turgan joyi",
+          name: "hozirgi_yashash_joyi",
           type: MAP,
           required: true,
           placeholder: "hozirgi turgan joyi (map quyiladi)",
@@ -188,14 +188,14 @@ const XodimlarTemplate = {
     },
     {
       title: "F.I.Sh",
-      dataIndex: "fish",
-      key: "FISh",
+      dataIndex: "full_name",
+      key: "full_name",
       width: "40%",
     },
     {
       title: "Telefon",
       dataIndex: "telefon",
-      key: "Telefon",
+      key: "telifon",
       width: "20%",
       align,
     },
@@ -222,15 +222,15 @@ const XodimlarTemplate = {
     {
       title: "Tug'ilgan sana",
       dataIndex: "tugilgan_sana",
-      key: "tugilgan sana",
+      key: "tugilgan_sana",
       width: "30%",
       align,
     },
     {
       title: "Yo'nalish",
-      dataIndex: "yonalish",
-      key: "yonalish",
-      onFilter: (value, record) => record.yonalish.indexOf(value) === 0,
+      dataIndex: "yunalishi",
+      key: "yunalishi",
+      onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
       width: "35%",
     },
     {
@@ -243,7 +243,7 @@ const XodimlarTemplate = {
         return (
           <Zoom zoomMargin={10}>
             <picture>
-              <source media="(max-width: 800px)" srcSet={record.rasmi} />
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
               <img
                 alt="img"
                 src={record.rasmi}
@@ -272,15 +272,15 @@ const XodimlarTemplate = {
     },
     {
       title: "Xarita",
-      dataIndex: "xarita",
-      key: "xarita",
+      dataIndex: "hozirgi_yashash_joyi",
+      key: "hozirgi_yashash_joyi",
       width: "15%",
       align,
     },
     {
       title: "Qo'shimcha ma'lumot",
-      dataIndex: "malumot",
-      key: "malumot",
+      dataIndex: "qushimcha_malumot",
+      key: "qushimcha_malumot",
       width: "35%",
       align,
     },
@@ -288,51 +288,37 @@ const XodimlarTemplate = {
   data: [
     {
       number: "1",
-      fish: "Hojiakbar Anorboyev",
-      telefon: "90 532 35 45",
+      full_name: "Hojiakbar Anorboyev",
+      telifon: "998992348569",
       viloyat: "Farg'ona",
       shahar: "Marg'ilon",
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
-      yonalish: "Frontend Dasturchi",
+      yunalishi: "Frontend Dasturchi",
       rasmi:
         "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
       pasport: "",
-      xarita: "",
-      malumot: "",
+      oilasi:"",
+      hozirgi_yashash_joyi: "",
+      qushimcha_malumot: "",
       key: 1,
     },
     {
       number: "2",
-      fish: "Ravshanbek Fayziyev",
-      telefon: "90 532 27 71",
+      full_name: "Ravshanbek Fayziyev",
+      telifon: "998992349999",
       viloyat: "Farg'ona",
       shahar: "Andijon",
       manzil: "Galatoy 82 A",
-      tugilgan_sana: "01/21/2005",
-      yonalish: "BAckend Dasturchi",
+      oilasi:"",
+      tugilgan_sana: "09/09/2000",
+      yunalishi: "BAckend Dasturchi",
       rasmi:
         "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
       pasport: "",
-      xarita: "",
-      malumot: "",
+      hozirgi_yashash_joyi: "",
+      qushimcha_malumot: "",
       key: 2,
-    },
-    {
-      number: "3",
-      fish: "baxodir",
-      telefon: "90 532 27 71",
-      viloyat: "Farg'ona",
-      shahar: "Andijon",
-      manzil: "Galatoy 82 A",
-      tugilgan_sana: "01/21/2005",
-      yonalish: "BAckend Dasturchi",
-      rasmi:
-        "https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-      pasport: "",
-      xarita: "",
-      malumot: "",
-      key: 3,
     },
   ],
   scroll: { x: 1500, y: 380 },

@@ -7,9 +7,8 @@ import {setTableItem, editTableItem} from "../../redux/tabs_reducer"
 
 
 const GlobalTable = () => {
-  const { currentPage } = useSelector((store) => store.tabs_reducer);
+  const { currentPage } = useSelector((state) => state?.tabs_reducer);
 
-  const tabs = useSelector(store => store)
   const dispatch = useDispatch()
 
   
