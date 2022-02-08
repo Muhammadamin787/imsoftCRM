@@ -1,9 +1,7 @@
 import React from 'react';
-import {PROGRAMMES_PATH} from "../pages/pageConstants/PageRoutes";
-import {PROGRAMMES_PAGE} from "../pages/pageConstants/PageTypes";
-import {VectorIcon} from "../assets/icons/icons";
 import {FieldNumberOutlined} from "@ant-design/icons";
-import Zoom from "react-medium-image-zoom";
+import {PROGRAMMES_PATH} from "../../pages/pageConstants/PageRoutes";
+import {PROGRAMMES_PAGE} from "../../pages/pageConstants/PageTypes";
 
 const ProgrammsTemplate = {
 	text: "Dasturlar",

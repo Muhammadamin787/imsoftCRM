@@ -1,6 +1,5 @@
 import React from 'react';
 import "./programmesPage.scss"
-import GlobalModal from '../../components/Modal/GlobalModal';
 import GlobalTable from "../../components/Table/GlobalTable";
 
 
