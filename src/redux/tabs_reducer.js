@@ -10,7 +10,7 @@ export const counterSlice = createSlice({
   },
   reducers: {
     uploadAllData: (state, { payload }) => {
-      state.Panes = payload.Panes;
+      state.Panes = payload.tabs_reducer.Panes?payload.tabs_reducer.Panes:[];
     },
     addNewTab: (state, {payload}) => {
       state.Panes = _.uniqBy([...state?.Panes, payload], "path");

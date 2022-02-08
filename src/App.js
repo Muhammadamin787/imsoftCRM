@@ -10,6 +10,15 @@ function App() {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   const allData = JSON.parse(localStorage.getItem("allData"));
+  //   dispatch(uploadAllData(allData));
+  // }, []);
+
+  // window.onbeforeunload = function () {
+  //   const string = JSON.stringify(data);
+  //   localStorage.setItem("allData", string);
+  // };
   return (
     <>
       <MainPage />
