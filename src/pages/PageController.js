@@ -8,7 +8,7 @@ import ReportPage from "./reportPage/ReportPage";
 import ChildServicePages from "../components/ToolsBar/ToolsBar"
 
 export const PageController = ({page}) => {
-
+	console.log(page);
 	switch (page.type) {
 		case MAIN_PAGE:
 			return <FirstPage page={page}/>;
