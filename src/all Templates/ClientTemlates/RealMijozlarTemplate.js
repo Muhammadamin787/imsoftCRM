@@ -1,12 +1,12 @@
 import React from "react";
-import { STRING } from "../../components/Modal/ModalInputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 // import { Yunalishlar } from "../assets/icons/icons";
-import {Real_Mijozlar} from '../../pages/customersPage/urlAndControl';
+import {Real_Mijozlar} from './index';
+
 const RealClientPage = {
   text: "Real mijozlar",
   path: "real-mijozlar",
-  type: Real_Mijozlar,
+//   type: Real_Mijozlar,
   isOpenModal: false,
   //   form: [
   //     {

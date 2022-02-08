@@ -1,13 +1,12 @@
 import React from "react";
-import { STRING } from "../../components/Modal/ModalInputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 // import { Yunalishlar } from "../assets/icons/icons";
-import {Potensial_Mijozlar} from '../../pages/customersPage/urlAndControl';
+// import {Potensial_Mijozlar} from './index';
 
 const PotentsialClientPage = {
   text: "Potensial mijozlar",
   path: "potensial-mijozlar",
-  type: Potensial_Mijozlar,
+//   type: Potensial_Mijozlar,
   isOpenModal: false,
 //   form: [
 //     {
