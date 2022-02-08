@@ -7,7 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 function SearchInput() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const state = useSelector((state) => state.tabs_reducer);
+  const state = useSelector((state) => state?.tabs_reducer);
   const dispatch = useDispatch();
 
   /* ------------------------------------ / ----------------------------------- */
