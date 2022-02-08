@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button,
-  Input,
-  InputNumber,
-  Radio,
-  DatePicker,
-  Select,
   Upload,
-  // Icon,
   message,
 } from "antd";
 import "./GlobalModal.scss"

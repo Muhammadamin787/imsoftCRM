@@ -28,7 +28,7 @@ const UpLoadFile = ({placeholder, value, gridColumn, gridRow, height, name, Icon
 
 
     if (!isJpgOrPng) {
-      message.error("File turi mos kelmadi. Siz faqat pdf, msword, doc, jpeg yoki png file kirita olasiz!");
+      message.error("File turi mos kelmadi. Siz faqat pdf, msword, doc, png, jpeg!");
     }
     setImgFile(file);
     return isJpgOrPng;
