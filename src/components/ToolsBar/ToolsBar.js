@@ -13,7 +13,6 @@ import { MacRed, MacGreen, MacGray,  AddItem,
   TransferFolder,
   MacYellow, } from "../../assets/icons/icons";
 import GlobalTable from "../Table/GlobalTable";
-// import GlobalModal from "../Modal/GlobalModal";
 import {useSelector, useDispatch } from "react-redux";
 import { toggleModal, setCurrentPage, changePanes,removeTableItem } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +30,7 @@ import { Popconfirm, message } from 'antd';
 
 const ToolsBar = ({ page }) => {
   const dispatch = useDispatch();
-  const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
+  const {Panes, currentPage, tableItem} = useSelector((state) => state?.tabs_reducer);
   const navigate = useNavigate();
 
 
@@ -42,7 +41,7 @@ const ToolsBar = ({ page }) => {
   
   const removeCurrentPage = (type = null) => {
     let position = null;
-    Panes?.forEach((item, i) =>{
+    Panes?.length > 0 && Panes?.forEach((item, i) =>{
       if(item?.text === currentPage?.text){
         position = i;
         !type && dispatch(changePanes(i));
@@ -59,29 +58,25 @@ const ToolsBar = ({ page }) => {
     }
   }
   
-  // console.log(currentPage?.data[tableItem.number-1]);
-  // console.log(tableItem);
   const text = "malumotni o'chirmoqchimisiz !";
 
   function confirm() {
-    dispatch(removeTableItem(tableItem))
-    message.info('Malumot uchirildi.');
+    console.log(tableItem);
+    if (tableItem) {
+      dispatch(removeTableItem(tableItem))
+      message.info('Malumot uchirildi.');
+    } else {
+      message.info('Qatorni belgilang.');
+    }
   }
   
 
   const handleTableItem = () => {
-    const item = currentPage.data.find(data => data.number === tableItem.number);
-    dispatch(toggleModal(true));
-
-    console.log(item);
-    console.log(currentPage.data[item.number]);
-
-
-    if(item) {
-        currentPage.data[item.number] = item
-      }
-
-      // console.log(state.currentPage);
+    // let item = currentPage.data.find(data => data.number === tableItem.number);
+    if (Panes?.length > 0 && tableItem) {
+      dispatch(toggleModal(true));
+      currentPage.data = [...tableItem]
+    }
   }
 
   return (
@@ -89,7 +84,7 @@ const ToolsBar = ({ page }) => {
       <div className="child-header">
         <div className="child-page__header">
           <div className="child-page__iconTitle">
-            {currentPage?.icon}
+            {/* <span> { currentPage?.icon} </span> */}
             <span>{currentPage?.text}</span>
           </div>
           <div className="child-page__tools">
@@ -138,7 +133,7 @@ const ToolsBar = ({ page }) => {
         </div>
       </div>
 
-      {/* Global Table */}
+       
       <div className="child-body">
         <GlobalTable />
       </div>

@@ -8,24 +8,20 @@ import { Provider } from "react-redux";
 import { PersistGate } from "reduxjs-toolkit-persist/integration/react";
 import { persistStore } from "redux-persist";
 import {store} from "./store"
-// import {useSelector} from "react-redux"
 
 
-// // let persistor = persistStore(store);
+let persistor = persistStore(store);
 
-// const data = useSelector(state => state)
-
-// console.log(data);
 
 ReactDOM.render(
   <React.StrictMode>
     <ConfigProvider locale={ruRu}>
       <Provider store={store}>
-          {/* <PersistGate loading={"... loading"} persistor={persistor}> */}
+          <PersistGate loading={"... loading"} persistor={persistor}>
             <Router>
               <App />
             </Router>
-          {/* </PersistGate> */}
+          </PersistGate>
       </Provider>
     </ConfigProvider>
   </React.StrictMode>,

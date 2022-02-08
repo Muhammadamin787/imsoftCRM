@@ -194,7 +194,7 @@ const ModalInput = ({
           }}
           format="DD.MM.YYYY"
           allowClear={false}
-          defaultValue={moment("2015/01/01", dateFormat)}
+          defaultValue={moment("2020/01/01", dateFormat)}
           onChange={(e) => handleChangeValue(e)}
           value={values}
 

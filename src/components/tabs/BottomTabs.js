@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Tabs, Avatar, Badge } from "antd";
 import { removeTab, setCurrentPage } from "../../redux/tabs_reducer";
 import { useNavigate } from "react-router-dom";
+import iconArr from "../../assets/icons/icons.js"
+
 const { TabPane } = Tabs;
 
 const BottomTabs = () => {
-  const { Panes, currentPage } = useSelector((state) => state.tabs_reducer);
+  const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,6 +44,8 @@ const BottomTabs = () => {
     }
   };
 
+
+
   return (
     <Tabs
       hideAdd
@@ -52,11 +56,12 @@ const BottomTabs = () => {
     >
       {panes &&
         panes?.map((pane, i) => (
+          
           <TabPane
           key={pane?.path}
             tab={
               <div className="site-footer__tab" onClick={() => onChange(i)}>
-                {pane?.icon} <span>{pane?.text}</span>
+                <span>{pane?.text}</span> 
               </div>
             }
             key={i}

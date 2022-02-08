@@ -24,6 +24,8 @@ export const counterSlice = createSlice({
 
       state.Panes = _.uniqBy([...state?.Panes, action.payload], 'path');
 
+      // console.log(action.payload);
+
       // state.Panes = arr;
 
       // if (!isExsist) {
