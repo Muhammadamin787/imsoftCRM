@@ -1,11 +1,11 @@
 import React from "react";
-import { STRING } from "../../components/Modal/ModalInputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 // import { Yunalishlar } from "../assets/icons/icons";
-
+// import {Inkor_Mijozlar} from './index';
 const RejactClientPage = {
   text: "Inkor qilgan mijozlar",
   path: "inkor-mijozlar",
+//   type: Inkor_Mijozlar,
   isOpenModal: false,
   //   form: [
   //     {
