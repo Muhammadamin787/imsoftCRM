@@ -1,8 +1,8 @@
 export const MAIN_PATH = "/asosiy";
 export const SERVIS_PATH = "/servis";
-export const CUSTOMERS_PATH = "/customers"
-export const PROGRAMMES_PATH = "/programmes"
-export const REPORT_PATH = "/report"
+export const CLINETS_PATH = "/customers";
+export const PROGRAMMES_PATH = "/programmes";
+export const REPORT_PATH = "/report";
 
 // paths of service pages
 export const REKLAMALAR_PATH = "/servis/reklamalar";

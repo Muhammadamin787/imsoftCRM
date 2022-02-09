@@ -1,5 +1,5 @@
 // Main templates imports
-import CustomersTemplate from "./CustomersTemplate";
+import ClientTemplate from "./ClientTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
 import MainTemplate from "./MainTemplate";
 import ServiceTemplate from "./ServiceTemplate";
@@ -16,14 +16,14 @@ import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
 import MijozlarTempalte from "../servisChildTemplates/MijozlarTempalte"
 
 /* ----------------------- customers child Page import ---------------------- */
-import PotentsialClientPage from "../ClientTemlates/PotensialMijozlarTemplate";
-import RealClientPage from "../ClientTemlates/RealMijozlarTemplate";
-import RejactClientPage from "../ClientTemlates/InkorQilganMijozlarTemplate";
+import PotentsialClientPage from "../ClientTemlates/PotensialClientTemplate";
+import RealClientPage from "../ClientTemlates/RealClientTemplate";
+import RejactClientPage from "../ClientTemlates/RejactClientTemplate";
 
 // Basic routes templates
 export const AllPages = [
   MainTemplate,
-  CustomersTemplate,
+  ClientTemplate,
   ProgrammsTemplate,
   ServiceTemplate,
   ReportTemplate,
@@ -41,7 +41,7 @@ export const AllServiceChildPages = [
   MijozlarTempalte
 ];
 
-export const AllCustomerChildPages = [
+export const AllClinetChildPages = [
   PotentsialClientPage,
   RealClientPage,
   RejactClientPage,

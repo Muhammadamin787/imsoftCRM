@@ -1,13 +1,12 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import {REAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
-import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
+import {CLINETS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 
-console.log("sdfghjkl;");
-const RealClientPage = {
+const RealClientTemplate = {
   text: "Real mijozlar",
   path: REAL_MIJOZLAR,
-  type: CUSTOMERS_CHILD_PAGES,
+  type: CLINETS_CHILD_PAGES,
   isOpenModal: false,
   //   form: [
   //     {
@@ -50,4 +49,4 @@ const RealClientPage = {
   ],
 };
 
-export default RealClientPage;
+export default RealClientTemplate;
