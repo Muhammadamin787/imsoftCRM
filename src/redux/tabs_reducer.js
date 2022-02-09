@@ -14,6 +14,7 @@ export const counterSlice = createSlice({
             Panes: [],
             currentPage: {},
             tableItem: {},
+            values: {}
         },
         reducers: {
 
@@ -38,9 +39,7 @@ export const counterSlice = createSlice({
                 }
             },
             changeCurrentPageData: (state, {payload}) => {
-                if (state.currentPage) {
-                    state.currentPage.data = payload;
-                }
+                state.currentPage.data = payload;
             },
             setTableItem: (state, {payload}) => {
                 state.tableItem = payload;
@@ -51,14 +50,12 @@ export const counterSlice = createSlice({
             },
             editTableItem: (state, {payload}) => {
                 const www = state.currentPage.data.find(data => data.number === state.tableItem.number);
-
-                console.log(www);
-                console.log(state.currentPage);
                 if (www) {
                     state.currentPage[www.number] = www
                 }
-
-                console.log(state.currentPage);
+            },
+            addValuesData: (state, {payload}) => {
+                state.values = {...state.values, ...payload}
             }
         },
 

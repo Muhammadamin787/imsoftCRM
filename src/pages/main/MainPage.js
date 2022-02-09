@@ -17,7 +17,7 @@ import GlobalModal from "../../components/Modal/GlobalModal";
 import {useDispatch} from "react-redux";
 import {setCurrentPage, addNewTab} from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
-import BottomTabs from "../../components/tabs/BottomTabs";
+import BottomTabs from "../../components/Tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -25,14 +25,14 @@ const MainPage = () => {
         moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
     );
 
-    const {Header, Content} = Layout;
-    const {Option} = Select;
-    const {SubMenu, Item} = Menu;
-    const dispatch = useDispatch();
+  const { Header, Content } = Layout;
+  const { Option } = Select;
+  const { SubMenu, Item } = Menu;
+  const dispatch = useDispatch();
 
-    const pathname = window.location.pathname; // hozirgi(joriy) uril
-    const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
-    const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
+  const pathname = window.location.pathname; // hozirgi(joriy) uril
+  const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
+  const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
 
     const handleChangeSelect = () => {
     }
