@@ -3,6 +3,7 @@ import { FieldNumberOutlined } from "@ant-design/icons";
 import {REAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
 import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 
+console.log("sdfghjkl;");
 const RealClientPage = {
   text: "Real mijozlar",
   path: REAL_MIJOZLAR,
