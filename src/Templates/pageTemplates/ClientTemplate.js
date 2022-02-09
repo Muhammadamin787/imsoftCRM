@@ -1,0 +1,25 @@
+import React from 'react';
+import {CLINETS_PATH} from "../../pages/pageConstants/PageRoutes";
+import {CLINETS_PAGE} from "../../pages/pageConstants/PageTypes";
+import PotensialClientTemplate from '../ClientTemlates/PotensialClientTemplate';
+import RealClientTemplate from '../ClientTemlates/RealClientTemplate';
+import RejactClientTemplate from '../ClientTemlates/RejactClientTemplate'
+
+
+import {ProfileIcon} from "../../assets/icons/icons";
+import CommentsTemplate from '../ClientTemlates/ClientModalTabs/CommentsTabTemplate';
+import ContactsTemplate from '../ClientTemlates/ClientModalTabs/ContactsTemplate';
+import CommonTemplate from '../ClientTemlates/ClientModalTabs/CommonTemplate';
+
+const ClientTemplate = {
+	text: "Mijozlar Ro'yxati",
+	path: CLINETS_PATH,
+	icon: "ProfileIcon",
+	type: CLINETS_PAGE,
+	modalTabs:[CommentsTemplate, ContactsTemplate, CommonTemplate],
+	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
+	columns: [
+	]
+};
+
+export default ClientTemplate;

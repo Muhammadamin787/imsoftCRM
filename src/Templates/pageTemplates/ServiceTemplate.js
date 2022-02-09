@@ -9,6 +9,7 @@ import RegionlarTemplate from "../servisChildTemplates/RegionlarTemplate";
 import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate"
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate"
+import MijozlarTempalte from "../servisChildTemplates/MijozlarTempalte"
 
 
 const ServiceTemplate = {
@@ -25,6 +26,7 @@ const ServiceTemplate = {
     ReklamalarTemplate,
     ViloyatlarTemplate,
     ShaharTumanTemplate,
+    MijozlarTempalte,
   ],
 };
 
