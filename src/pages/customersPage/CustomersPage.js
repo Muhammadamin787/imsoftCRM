@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "./customersPage.scss";
 import GlobalModal from "../../components/Modal/GlobalModal";
-import clientPageRoute from "../../all Templates/ClientTemlates/index";
+import { AllCustomerChildPages } from "../../all Templates/pageTemplates/index";
 /* ------------------------------ module import ----------------------------- */
 import { Layout, Tabs } from "antd";
-import {Link, Route} from 'react-router-dom';
+import { Link, Route, Routes } from "react-router-dom";
+import { PageController } from "../PageController";
 const { TabPane } = Tabs;
 
 const CustomersPage = () => {
@@ -22,19 +23,24 @@ const CustomersPage = () => {
           onChange={callback}
           className="customers__tabs"
         >
-          {clientPageRoute.map((item, i) => (
-            <TabPane tab={
-						<Link to={item.path}>{item.text}</Link>
-						} key="1">
+          {AllCustomerChildPages.map((item, i) => (
+            <TabPane
+              tab={<Link to={item.path}>{item.text}</Link>}
+              key={i}
+            >
+              {console.log(item.type)}
             </TabPane>
           ))}
+
+          <Routes>
+            {AllCustomerChildPages.map((item, i) => (
+              <>
+                {console.log(item.path)}
+                <Route path={item.path} element={<PageController page={item}/>} key={i}/>
+              </>
+            ))}
+          </Routes>
         </Tabs>
-		{/* {clientPageRoute.map((item, i) => (
-			<Route
-				path={sub.path}
-				element={<PageController page={sub} key={sub?.path} />}
-		  />
-		))} */}
       </Layout>
     </div>
   );

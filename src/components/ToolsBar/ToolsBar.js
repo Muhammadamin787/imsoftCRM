@@ -32,20 +32,11 @@ import Actions from "./Actions/Actions";
 import {findIcon} from "../../assets/icons/icons"
 import { Popconfirm, message } from 'antd';
 
-
-
-
-
-
-
-
-
-
 const ToolsBar = ({page}) => {
     const dispatch = useDispatch();
     const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
     const navigate = useNavigate();
-
+    console.log(page);
     const removeCurrentPage = (type = null) => {
         let position = null;
         Panes?.forEach((item, i) => {
@@ -64,17 +55,16 @@ const ToolsBar = ({page}) => {
             dispatch(setCurrentPage(Panes[position - 1]));
         }
     };
-
+    console.log(page);
     return (
         <div className="child-page">
             <div className="child-header">
                 <Actions tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>
             </div>
 
-
-      <div className="child-body">
-        <GlobalTable />
-      </div>
+            <div className="child-body">
+                <GlobalTable />
+            </div>
     </div>
   );
 };

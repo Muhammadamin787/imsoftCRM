@@ -11,6 +11,7 @@ import {
 } from "../../assets/icons/icons";
 import moment from "moment";
 import {
+  AllCustomerChildPages,
   AllPages,
   AllServiceChildPages,
 } from "../../all Templates/pageTemplates";
@@ -112,7 +113,7 @@ const MainPage = () => {
         <GlobalModal />
       </Content>
       <Footer className="site-footer">
-        {document.location.pathname === "/customers" ? "" : <BottomTabs />}
+        <BottomTabs />
         <div className="site-footer__content">
           <div className="site-footer__icons">
             <GlobusIcon2 />
