@@ -3,16 +3,16 @@ import CustomersTemplate from "./CustomersTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
 import MainTemplate from "./MainTemplate";
 import ServiceTemplate from "./ServiceTemplate";
-import ReportTemplate from "./ReportTemplate";
+import ReportTemplate from "../servisChildTemplates/ReportTemplate";
 
 // service template imports
-import FaolyatTurlariTemplate from "./FaolyatTurlariTemplate";
-import XodimlarTemplate from "./XodimlarTemplate";
-import ReklamalarTemplate from "./ReklamalarTemplate";
-import RegionlarTemplate from "./RegionlarTemplate";
-import ViloyatlarTemplate from "./ViloyatlarTemplate";
-import ShaharTumanTemplate from "./ShaharTumanTempilate";
-import YunalishlarTemplate from "./YunalishlarTemplate";
+import FaolyatTurlariTemplate from "../servisChildTemplates/FaolyatTurlariTemplate";
+import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
+import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
+import RegionlarTemplate from "../servisChildTemplates/RegionlarTemplate";
+import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate";
+import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
+import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
 
 /* ----------------------- customers child Page import ---------------------- */
 import PotentsialClientPage from "../ClientTemlates/PotentsialClientTemplate";
@@ -28,6 +28,7 @@ export const AllPages = [
   ReportTemplate,
 ];
 
+// child of service pages templates
 export const AllServiceChildPages = [
   FaolyatTurlariTemplate,
   XodimlarTemplate,

@@ -18,7 +18,6 @@ export default class MapModal extends Component {
   onMapClick = (e) => {
     const coords = e.get("coords");
     this.setState({ coords: coords });
-    // console.log();
     const target = {
       name:this.props.name,
       value:this.state.coords
