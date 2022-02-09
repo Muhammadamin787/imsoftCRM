@@ -16,4 +16,4 @@ export const SHAHAR_TUMAN_PATH = "/servis/shahar_tuman";
 /* ------------------------- paths of customer pages ------------------------ */
 export const INKOR_MIJOZLAR = "/customers/inkor_mijozlar";
 export const REAL_MIJOZLAR = "/customers/real_mijozlar";
-export const POTENSIAL_MIJOZLAR = "/customers/potensial_mijozlar";
+export const POTENSIAL_MIJOZLAR = "tensial_mijozlar";

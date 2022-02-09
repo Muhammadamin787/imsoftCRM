@@ -1,6 +1,10 @@
 import React from 'react';
 import {CUSTOMERS_PATH} from "../../pages/pageConstants/PageRoutes";
 import {CUSTOMERS_PAGE} from "../../pages/pageConstants/PageTypes";
+import PotentsialClientTemplate from '../ClientTemlates/PotentsialClientTemplate';
+import RealClientTemplate from '../ClientTemlates/RealClientTemplate';
+import RejactClientTemplate from '../ClientTemlates/RejactClientTemplate';
+
 
 import {ProfileIcon} from "../../assets/icons/icons";
 
@@ -9,27 +13,9 @@ const CustomersTemplate = {
 	path: CUSTOMERS_PATH,
 	icon: "ProfileIcon",
 	type: CUSTOMERS_PAGE,
-	// sections: [],
+	tabs: [PotentsialClientTemplate, RealClientTemplate, RejactClientTemplate],
 	columns: [
-		{
-			title: 'Name',
-			dataIndex: 'name',
-			key: 'name',
-		},
-		{
-			title: 'Age',
-			dataIndex: 'age',
-			key: 'age',
-		},
-		{
-			title: 'Address',
-			dataIndex: 'address',
-			key: 'address',
-		},
 	]
-	// submenus: [
-	// 	// Service2,
-	// ]
 };
 
 export default CustomersTemplate;

@@ -1,47 +1,35 @@
 import { useState } from "react";
 import "./customersPage.scss";
 import GlobalModal from "../../components/Modal/GlobalModal";
-import { AllCustomerChildPages } from "../../all Templates/pageTemplates/index";
 /* ------------------------------ module import ----------------------------- */
 import { Layout, Tabs } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
-import { PageController } from "../PageController";
+import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
+import CustomersTemplate from "../../all Templates/pageTemplates/CustomersTemplate";
 const { TabPane } = Tabs;
 
-const CustomersPage = () => {
+const CustomersPage = ({ page }) => {
   const [activeTab, setActiveKey] = useState(0);
 
   function callback(key) {
-    console.log(key);
+    // console.log(key);
   }
 
-  return (
-    <div className="customers-page">
-      <Layout className="layout">
-        <Tabs
-          defaultActiveKey={activeTab}
-          onChange={callback}
-          className="customers__tabs"
-        >
-          {AllCustomerChildPages.map((item, i) => (
-            <TabPane
-              tab={<Link to={item.path}>{item.text}</Link>}
-              key={i}
-            >
-              {console.log(item.type)}
-            </TabPane>
-          ))}
+  console.log(CustomersTemplate);
 
-          <Routes>
-            {AllCustomerChildPages.map((item, i) => (
-              <>
-                {console.log(item.path)}
-                <Route path={item.path} element={<PageController page={item}/>} key={i}/>
-              </>
-            ))}
-          </Routes>
-        </Tabs>
-      </Layout>
+  return (
+    <div className="">
+      <Toolbar currentPage={page} />
+      <Tabs
+        defaultActiveKey={activeTab}
+        onChange={callback}
+        className="customers__tabs"
+      ></Tabs>
+      <Routes>
+        {CustomersTemplate.map((item) => (
+          <Route path={} />
+        ))}
+      </Routes>
     </div>
   );
 };

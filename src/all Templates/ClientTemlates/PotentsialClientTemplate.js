@@ -1,30 +1,29 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
-import {REAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
+import {POTENSIAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
 import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
-
-const RealClientPage = {
-  text: "Real mijozlar",
-  path: REAL_MIJOZLAR,
+const PotentsialClientTemplate = {
+  text: "Potensial mijozlar",
+  path: POTENSIAL_MIJOZLAR,
   type: CUSTOMERS_CHILD_PAGES,
   isOpenModal: false,
-  //   form: [
-  //     {
-  //       grid: "1fr",
-  //       inputs: [
-  //         {
-  //           name: "Yunalishlar",
-  //           type: STRING,
-  //           required: true,
-  //           name: "Yo'nalishlar",
-  //           type: STRING,
-  //           required: true,
-  //           placeholder: "Yo'nalishlar",
-  //           value: "",
-  //         },
-  //       ],
-  //     },
-  //   ],
+//   form: [
+//     {
+//       grid: "1fr",
+//       inputs: [
+//         {
+//           name: "Yunalishlar",
+//           type: STRING,
+//           required: true,
+//           name: "Yo'nalishlar",
+//           type: STRING,
+//           required: true,
+//           placeholder: "Yo'nalishlar",
+//           value: "",
+//         },
+//       ],
+//     },
+//   ],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -49,4 +48,4 @@ const RealClientPage = {
   ],
 };
 
-export default RealClientPage;
+export default PotentsialClientTemplate;

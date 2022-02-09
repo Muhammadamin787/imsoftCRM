@@ -15,9 +15,9 @@ import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
 
 /* ----------------------- customers child Page import ---------------------- */
-import PotentsialClientPage from "../ClientTemlates/PotensialMijozlarTemplate";
-import RealClientPage from "../ClientTemlates/RealMijozlarTemplate";
-import RejactClientPage from "../ClientTemlates/InkorQilganMijozlarTemplate";
+import PotentsialClientPage from "../ClientTemlates/PotentsialClientTemplate";
+import RealClientPage from "../ClientTemlates/RealClientTemplate";
+import RejactClientPage from "../ClientTemlates/RejactClientTemplate";
 
 // Basic routes templates
 export const AllPages = [

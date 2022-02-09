@@ -3,7 +3,7 @@ import { FieldNumberOutlined } from "@ant-design/icons";
 import {INKOR_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
 import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 
-const RejactClientPage = {
+const RejactClientTemplate = {
   text: "Inkor qilgan mijozlar",
   path: INKOR_MIJOZLAR,
   type: CUSTOMERS_CHILD_PAGES,
@@ -49,4 +49,4 @@ const RejactClientPage = {
   ],
 };
 
-export default RejactClientPage;
+export default RejactClientTemplate;

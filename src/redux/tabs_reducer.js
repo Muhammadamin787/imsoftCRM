@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from 'lodash';
-import {AllServiceChildPages, AllCustomerChildPages} from '../all Templates/pageTemplates/index'
+import {AllServiceChildPages} from '../all Templates/pageTemplates/index'
 
 // const initialState = {
 //   Panes:  [], 
@@ -20,7 +20,7 @@ export const counterSlice = createSlice({
 
             addNewTab: (state, {payload}) => {
               if (AllServiceChildPages) {
-                const bool = [...AllServiceChildPages, ...AllCustomerChildPages]?.find((a) =>
+                const bool = [...AllServiceChildPages]?.find((a) =>
                   a?.path === payload?.path ? true : false
                 );
                 if (bool) {
