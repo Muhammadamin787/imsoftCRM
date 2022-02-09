@@ -28,7 +28,7 @@ const MacActions = ({Panes, currentPage}) => {
     };
 
     return (
-        <div className="child-page__buttons">
+        <div className="toolbar__buttons">
             <button className="child-page__button" onClick={() => removeCurrentPage("minimize")}>
                 <MacGreen/>
             </button>
