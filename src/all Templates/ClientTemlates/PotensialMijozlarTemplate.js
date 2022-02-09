@@ -1,12 +1,12 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
-// import { Yunalishlar } from "../assets/icons/icons";
-// import {Potensial_Mijozlar} from './index';
+import {POTENSIAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
+import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 
 const PotentsialClientPage = {
   text: "Potensial mijozlar",
-  path: "potensial-mijozlar",
-//   type: Potensial_Mijozlar,
+  path: POTENSIAL_MIJOZLAR,
+  type: CUSTOMERS_CHILD_PAGES,
   isOpenModal: false,
 //   form: [
 //     {

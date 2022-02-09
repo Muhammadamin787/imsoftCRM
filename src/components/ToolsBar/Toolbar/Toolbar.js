@@ -72,8 +72,7 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
                             okText="Ha"
                             cancelText="Yo'q">
                     <Button>
-                        {" "}
-                        <SignallessAntenna/>{" "}
+                        <SignallessAntenna/>
                     </Button>
                 </Popconfirm>
                 <Button>

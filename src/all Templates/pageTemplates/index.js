@@ -14,6 +14,11 @@ import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
 
+/* ----------------------- customers child Page import ---------------------- */
+import PotentsialClientPage from "../ClientTemlates/PotensialMijozlarTemplate";
+import RealClientPage from "../ClientTemlates/RealMijozlarTemplate";
+import RejactClientPage from "../ClientTemlates/InkorQilganMijozlarTemplate";
+
 // Basic routes templates
 export const AllPages = [
   MainTemplate,
@@ -30,5 +35,11 @@ export const AllServiceChildPages = [
   ReklamalarTemplate,
   ViloyatlarTemplate,
   ShaharTumanTemplate,
-  YunalishlarTemplate
+  YunalishlarTemplate,
+];
+
+export const AllCustomerChildPages = [
+  PotentsialClientPage,
+  RealClientPage,
+  RejactClientPage,
 ];

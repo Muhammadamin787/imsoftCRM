@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from 'lodash';
-
+import {AllServiceChildPages, AllCustomerChildPages} from '../all Templates/pageTemplates/index'
 
 // const initialState = {
 //   Panes:  [], 
@@ -18,8 +18,15 @@ export const counterSlice = createSlice({
         },
         reducers: {
 
-            addNewTab: (state, action) => {
-                state.Panes = _.uniqBy([...state?.Panes, action.payload], 'path');
+            addNewTab: (state, {payload}) => {
+              if (AllServiceChildPages) {
+                const bool = [...AllServiceChildPages, ...AllCustomerChildPages]?.find((a) =>
+                  a?.path === payload?.path ? true : false
+                );
+                if (bool) {
+                  state.Panes = _.uniqBy([...state?.Panes, payload], "path");
+                }
+              }
             },
             removeTab: (state, action) => {
                 state.Panes.splice(action.payload, 1);
@@ -39,7 +46,9 @@ export const counterSlice = createSlice({
                 }
             },
             changeCurrentPageData: (state, {payload}) => {
-                state.currentPage.data = payload;
+                if(payload){
+                  state.currentPage.data = payload;
+                }
             },
             setTableItem: (state, {payload}) => {
                 state.tableItem = payload;
@@ -76,4 +85,3 @@ export const {
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
-

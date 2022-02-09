@@ -1,12 +1,12 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
-// import { Yunalishlar } from "../assets/icons/icons";
-import {Real_Mijozlar} from './index';
+import {REAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
+import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 
 const RealClientPage = {
   text: "Real mijozlar",
-  path: "real-mijozlar",
-//   type: Real_Mijozlar,
+  path: REAL_MIJOZLAR,
+  type: CUSTOMERS_CHILD_PAGES,
   isOpenModal: false,
   //   form: [
   //     {
