@@ -22,6 +22,9 @@ import UpLoadFile from "./UpLoadFile";
 import UpLoadJPG from "./UpLoadJPG";
 import { addValuesData } from "../../redux/tabs_reducer";
 import { useDispatch } from "react-redux";
+import AvatarUpload from "./AvatarUpload"
+
+
 
 const { TextArea } = Input;
 
@@ -42,9 +45,15 @@ const ModalInput = ({
   const dispatch = useDispatch();
 
   const handleChangeValue = (e) => {
-    // e.preventDefault();
-    console.log(e);
-    // dispatch(addValuesData({}))
+    
+    
+    const setInputData = {
+      [e.name]: e.value,
+    }
+
+    // dispatch(addValuesData(setInputData))
+
+    console.log(setInputData);
   };
 
   switch (type) {
@@ -83,13 +92,12 @@ const ModalInput = ({
           placeholder={placeholder}
           showSearch
           // value={value}
-          onChange={(data) => {
-            const e = {
-              name: data,
+          onChange={(e) => {
+            const target = {
+              name: e.target.name,
+              value: e.target.value,
             };
-
-            console.log(e);
-            handleChangeValue(e);
+            handleChangeValue(target);
           }}
         />
       );
@@ -107,17 +115,19 @@ const ModalInput = ({
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
           // value={value}
-          onChange={(data) => {
-            const e = {
-              name: data,
+          onSelect={(event) => {
+            const target = {
+              name: name,
+              value: event, 
+              
             };
 
-            handleChangeValue(e);
+            handleChangeValue(target);
           }}
         >
           {option &&
-            option?.map((option) => (
-              <Option value={option?.value} key={option?.key}>
+            option?.map((option,i) => (
+              <Option value={option.value} key={i}>
                 {option.value}
               </Option>
             ))}
@@ -132,11 +142,11 @@ const ModalInput = ({
           gridRow={gridRow}
           height={height}
           name={name}
-          // value={value}
           handleChangeValue={handleChangeValue}
         />
       );
       break;
+
     case DATE:
       input = (
         <DatePicker
@@ -151,31 +161,12 @@ const ModalInput = ({
           // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
           // value={value}
           onChange={(_, dateString) => {
-            const e = {
-              name: dateString,
+            const target = {
+              name: name,
+              value: dateString
             };
-            handleChangeValue(e);
+            handleChangeValue(target);
           }}
-
-          // showTime
-          // value={
-          //   values[name]
-          //     ? moment(values[name])
-          //     : secondDate
-          //     ? moment().set("hour", 23).set("minute", 59)
-          //     : moment().set("hour", 0).set("minute", 1)
-          // }
-          // locale={locale}
-          // onChange={(v) => {
-          //   const e = {
-          //     target: {
-          //       name: name,
-          //       value: moment(v).format("YYYY-MM-DD HH:mm:ss"),
-          //     },
-          //   };
-
-          //   onChange(e);
-          // }}
         />
       );
       break;
@@ -192,10 +183,12 @@ const ModalInput = ({
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
           onChange={(data) => {
-            const e = {
-              name: data,
+            const target = {
+              name: name,
+              value: data.target.value
             };
-            handleChangeValue(e);
+
+            handleChangeValue(target);
           }}
         />
       );
@@ -221,7 +214,8 @@ const ModalInput = ({
           // value={valuess[name] ? values[name] : "+998"}
           onChange={(data) => {
             const e = {
-              name: data,
+              name: name,
+              value: data
             };
             handleChangeValue(e);
           }}
@@ -231,7 +225,23 @@ const ModalInput = ({
 
     case UPLOAD:
       input = (
-        <UpLoadFile
+        // <UpLoadFile
+        //   id="file-uploder"
+        //   name={name}
+        //   placeholder={placeholder}
+        //   gridColumn={gridColumn}
+        //   gridRow={gridRow}
+        //   height={height}
+        //   Iconic={Iconic}
+        //   // value={value}
+        //   onChange={(data) => {
+        //     const e = {
+        //       name: data,
+        //     };
+        //     handleChangeValue(e);
+        //   }}
+        // />
+        <AvatarUpload 
           id="file-uploder"
           name={name}
           placeholder={placeholder}
@@ -239,13 +249,7 @@ const ModalInput = ({
           gridRow={gridRow}
           height={height}
           Iconic={Iconic}
-          // value={value}
-          onChange={(data) => {
-            const e = {
-              name: data,
-            };
-            handleChangeValue(e);
-          }}
+
         />
       );
       break;
@@ -263,8 +267,10 @@ const ModalInput = ({
           // value={value}
           onChange={(data) => {
             const e = {
-              name: data,
+              name: name,
+              value: data.target.file,
             };
+            console.log(data);
             handleChangeValue(e);
           }}
         />

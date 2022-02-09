@@ -26,7 +26,7 @@ const UpLoadFile = ({placeholder, value, gridColumn, gridRow, height, name, Icon
       file.type === "image/jpeg" ||
       file.type === "image/png";
 
-
+// console.log(file);
     if (!isJpgOrPng) {
       message.error("File turi mos kelmadi. Siz faqat pdf, msword, doc, png, jpeg!");
     }

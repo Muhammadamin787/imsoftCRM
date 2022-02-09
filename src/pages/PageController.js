@@ -16,7 +16,7 @@ import ReportPage from "./reportPage/ReportPage";
 import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
 import CustomTemplateRead from '../pages/customersPage/CustomerTemplatePagelarniOqiladiganFolder/CustomTemplateRead';
 export const PageController = ({page}) => {
-	console.log(page);
+	
 	switch (page.type) {
 		case MAIN_PAGE:
 			return <FirstPage page={page}/>;

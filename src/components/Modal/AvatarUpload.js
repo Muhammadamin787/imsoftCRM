@@ -13,6 +13,9 @@ function getBase64(img, callback) {
 
 function beforeUpload(file) {
   const isJpgOrPng =
+      file.type === "application/pdf" ||
+      file.type === "application/msword" ||
+      file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
       file.type === "image/jpeg" ||
       file.type === "image/png";
 
@@ -22,7 +25,7 @@ function beforeUpload(file) {
   return isJpgOrPng;
 }
 
-class UpLoadJPG extends React.Component {
+class AvatarUpload extends React.Component {
   state = {
     loading: false,
     imageUrl: "",
@@ -75,20 +78,13 @@ class UpLoadJPG extends React.Component {
     placeholder={this.props.placeholder}
     alt="file"
     beforeUpload={beforeUpload}
-    accept=".txt"
-    // onClick={this.props.handleChange}
+    onClick={this.props.handleChange}
     type="file"
     maxCount={1}
     showUploadList={false}
-    onChange={this.handleChange}
-    listType="picture-card"
-      className="avatar-uploader"
-    //   action="https://192.168.30.67/malina/filialphoto"
-      // value={values}
-      
+    // value={values}
   >
     {this.props.Iconic && <this.props.Iconic  />}
-    Yuklanmagan
     {/* {imgFile?.name ? (
       imgFile?.name
     ) : (
@@ -133,8 +129,4 @@ class UpLoadJPG extends React.Component {
 }
 
 
-export default UpLoadJPG;
-
-
-
-
+export default AvatarUpload;
