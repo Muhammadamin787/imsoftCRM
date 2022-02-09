@@ -75,17 +75,18 @@ class UpLoadJPG extends React.Component {
     placeholder={this.props.placeholder}
     alt="file"
     beforeUpload={beforeUpload}
-    accept=".txt"
+    // accept=".txt"
     // onClick={this.props.handleChange}
     type="file"
     maxCount={1}
     showUploadList={false}
-    onChange={this.handleChange}
-    listType="picture-card"
-      className="avatar-uploader"
     //   action="https://192.168.30.67/malina/filialphoto"
-      // value={values}
+      onChange={this.handleChange}
+
       
+    listType="picture-card"
+    // value={values}
+      //   className="avatar-uploader"
   >
     {this.props.Iconic && <this.props.Iconic  />}
     Yuklanmagan

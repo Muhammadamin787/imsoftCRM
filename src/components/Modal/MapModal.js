@@ -42,6 +42,7 @@ export default class MapModal extends Component {
             height: this.props.height
               ? this.props.height + "px"
               : inputDeafultHeght + "px",
+              borderRadius: "7px",
           }}
         >
           {this.state.coords ? (
