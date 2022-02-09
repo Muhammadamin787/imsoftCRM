@@ -56,7 +56,7 @@ const GlobalModal = () => {
             </div>
           </div>
         </div>
-        <form className="modal-form">
+        <Form className="modal-form">
           {currentPage?.form?.map((form) => (
             <div
               className="modal-grid__form"
@@ -87,7 +87,7 @@ const GlobalModal = () => {
               Saqlash
             </Button>
           </div>
-        </form>
+        </Form>
       </Modal>
     </>
   );

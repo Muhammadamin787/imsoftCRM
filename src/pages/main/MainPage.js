@@ -112,7 +112,8 @@ const MainPage = () => {
         <GlobalModal />
       </Content>
       <Footer className="site-footer">
-        {document.location.pathname === "/customers" ? "" : <BottomTabs />}
+        {/* {document.location.pathname === "/customers" ? "" : <BottomTabs />} */}
+        <BottomTabs />
         <div className="site-footer__content">
           <div className="site-footer__icons">
             <GlobusIcon2 />
