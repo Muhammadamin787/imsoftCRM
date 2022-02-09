@@ -1,51 +1,19 @@
 import React from "react";
-import "./ToolsBar.scss";
-import {Button} from "antd";
-import {
-    MacRed,
-    MacGreen,
-    MacGray,
-    AddItem,
-    AddFile,
-    Antenna,
-    Circle,
-    SignallessAntenna,
-    AntennaReceive,
-    AddFolder,
-    EditFile,
-    CopyFolder,
-    TransferFolder,
-    MacYellow,
-} from "../../assets/icons/icons";
-import GlobalTable from "../Table/GlobalTable";
-// import GlobalModal from "../Modal/GlobalModal";
+import "./servicePageChild.scss";
+import GlobalTable from "../../../components/Table/GlobalTable";
 import {useSelector, useDispatch} from "react-redux";
 import {
-    toggleModal,
     setCurrentPage,
     changePanes,
-    removeTableItem,
-} from "../../redux/tabs_reducer";
+} from "../../../redux/tabs_reducer";
 import {useNavigate} from "react-router-dom";
-import MacActions from "./MacActions/MacActions";
-import Actions from "./Actions/Actions";
-import {findIcon} from "../../assets/icons/icons"
-import { Popconfirm, message } from 'antd';
+import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
 
-
-
-
-
-
-
-
-
-
-const ToolsBar = ({page}) => {
+const ServicePageChild = ({page}) => {
     const dispatch = useDispatch();
     const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
     const navigate = useNavigate();
-
+    console.log(page);
     const removeCurrentPage = (type = null) => {
         let position = null;
         Panes?.forEach((item, i) => {
@@ -64,19 +32,15 @@ const ToolsBar = ({page}) => {
             dispatch(setCurrentPage(Panes[position - 1]));
         }
     };
-
+    console.log(page);
     return (
         <div className="child-page">
-            <div className="child-header">
-                <Actions tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>
+            <Toolbar tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>
+            <div className="child-body">
+                <GlobalTable/>
             </div>
-
-
-      <div className="child-body">
-        <GlobalTable />
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default ToolsBar;
+export default ServicePageChild;

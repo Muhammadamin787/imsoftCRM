@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import _ from 'lodash';
-
+import {AllServiceChildPages, AllCustomerChildPages} from '../all Templates/pageTemplates/index'
 
 // const initialState = {
 //   Panes:  [], 
@@ -9,71 +9,79 @@ import _ from 'lodash';
 
 
 export const counterSlice = createSlice({
-  name: "tabs_data",
-  initialState:{
-    Panes:  [], 
-    currentPage: {},
-    tableItem: {},
-    values:{}
-  },
-  reducers: {
+        name: "tabs_data",
+        initialState: {
+            Panes: [],
+            currentPage: {},
+            tableItem: {},
+            values: {}
+        },
+        reducers: {
 
-    addNewTab: (state, action) => {
-      // const isExsist = state?.Panes.find(obj => obj.path == action.payload.path);
+            addNewTab: (state, {payload}) => {
+              if (AllServiceChildPages) {
+                const bool = [...AllServiceChildPages, ...AllCustomerChildPages]?.find((a) =>
+                  a?.path === payload?.path ? true : false
+                );
+                if (bool) {
+                  state.Panes = _.uniqBy([...state?.Panes, payload], "path");
+                }
+              }
+            },
+            removeTab: (state, action) => {
+                state.Panes.splice(action.payload, 1);
+            },
+            changePanes: (state, {payload}) => {
+                state.Panes.splice(payload, 1);
+            },
+            toggleModal: (state, {payload}) => {
+                state.currentPage.isOpenModal = payload;
+            },
+            setCurrentPage: (state, {payload}) => {
+                if (!payload?.sections) {
+                    // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
+                    state.currentPage = payload
+                } else {
+                    state.currentPage = {}
+                }
+            },
+            changeCurrentPageData: (state, {payload}) => {
+                if(payload){
+                  state.currentPage.data = payload;
+                }
+            },
+            setTableItem: (state, {payload}) => {
+                state.tableItem = payload;
+                console.log(state.tableItem);
+            },
+            removeTableItem: (state, {payload}) => {
+                state.currentPage.data = state.currentPage?.data?.filter(el => el.number != payload.number)
+            },
+            editTableItem: (state, {payload}) => {
+                const www = state.currentPage.data.find(data => data.number === state.tableItem.number);
+                if (www) {
+                    state.currentPage[www.number] = www
+                }
+            },
+            addValuesData: (state, {payload}) => {
+                state.values = {...state.values, ...payload}
+            }
+        },
 
-      // const newPanes = [...state?.Panes, action.payload];
-
-      state.Panes = _.uniqBy([...state?.Panes, action.payload], 'path');
-
-      // console.log(action.payload);
-
-      // state.Panes = arr;
-
-      // if (!isExsist) {
-      //   state.Panes.push(action.payload)
-      // }
-
-    },
-    removeTab: (state, action) => {
-      state.Panes.splice(action.payload, 1);
-    },
-    changePanes: (state, {payload}) => {
-      state.Panes.splice(payload, 1);
-    },
-    toggleModal: (state, {payload}) => {
-      state.currentPage.isOpenModal = payload;
-    },
-    setCurrentPage: (state, {payload}) => {
-      state.currentPage = payload
-    },
-    changeCurrentPageData: (state, {payload}) =>{
-      state.currentPage.data = payload;
-    },
-    setTableItem: (state, {payload}) =>{
-      state.tableItem = payload;
-      console.log(state.tableItem);
-    },
-    removeTableItem: (state, {payload}) =>{
-     state.currentPage.data = state.currentPage?.data?.filter(el => el.number != payload.number) 
-    },
-    editTableItem: (state, {payload}) =>{
-      const www = state.currentPage.data.find(data => data.number === state.tableItem.number);
-      if(www) {
-        state.currentPage[www.number] = www
-      }
-    },
-
-    addValuesData: (state, {payload}) => {
-      state.values = {...state.values, ...payload}
     }
-  },
-
-}
-
 );
 
 
-export const { addNewTab, removeTab, toggleModal ,setCurrentPage, changeCurrentPageData, changePanes, setTableItem, removeTableItem,editTableItem,addValuesData} = counterSlice.actions;
+export const {
+    addNewTab,
+    removeTab,
+    toggleModal,
+    setCurrentPage,
+    changeCurrentPageData,
+    changePanes,
+    setTableItem,
+    removeTableItem,
+    editTableItem
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
-

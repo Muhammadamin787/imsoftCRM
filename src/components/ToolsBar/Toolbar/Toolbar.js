@@ -4,18 +4,16 @@ import {
     AddFolder,
     AddItem, Antenna, AntennaReceive, Circle,
     CopyFolder, EditFile,
-    MacGreen,
-    MacRed,
-    MacYellow, SignallessAntenna,
+    SignallessAntenna,
     TransferFolder
 } from "../../../assets/icons/icons";
-import {changePanes, removeTableItem, setCurrentPage, toggleModal} from "../../../redux/tabs_reducer";
-import {useNavigate} from "react-router-dom";
+import {removeTableItem, toggleModal} from "../../../redux/tabs_reducer";
 import {useDispatch} from "react-redux";
 import {Button, message, Popconfirm} from "antd";
 import MacActions from "../MacActions/MacActions";
+import "./toolBar.scss";
 
-const Actions = ({Panes, currentPage, tableItem}) => {
+const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
 
     const handleModalClick = () => {
@@ -39,11 +37,11 @@ const Actions = ({Panes, currentPage, tableItem}) => {
     const text = "malumotni o'chirmoqchimisiz !";
 
     return (
-        <div className="child-page__header">
-            <div className="child-page__iconTitle">
+        <div className="toolbar">
+            <div className="toolbar__iconTitle">
                 <span>{currentPage?.text}</span>
             </div>
-            <div className="child-page__tools">
+            <div className="toolbar__tools">
                 <Button onClick={() => handleModalClick()}>
                     <AddItem/>
                 </Button>
@@ -68,15 +66,13 @@ const Actions = ({Panes, currentPage, tableItem}) => {
                 <Button>
                     <AntennaReceive/>
                 </Button>
-                <Popconfirm
-                    placement="top"
-                    title={text}
-                    onConfirm={confirm}
-                    okText="Ha"
-                    cancelText="Yo'q">
+                <Popconfirm placement="top"
+                            title={text}
+                            onConfirm={confirm}
+                            okText="Ha"
+                            cancelText="Yo'q">
                     <Button>
-                        {" "}
-                        <SignallessAntenna/>{" "}
+                        <SignallessAntenna/>
                     </Button>
                 </Popconfirm>
                 <Button>
@@ -88,4 +84,4 @@ const Actions = ({Panes, currentPage, tableItem}) => {
     );
 };
 
-export default Actions;
+export default Toolbar;

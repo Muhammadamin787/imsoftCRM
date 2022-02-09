@@ -1,11 +1,12 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
-// import { Yunalishlar } from "../assets/icons/icons";
-// import {Inkor_Mijozlar} from './index';
+import {INKOR_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
+import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
+
 const RejactClientPage = {
   text: "Inkor qilgan mijozlar",
-  path: "inkor-mijozlar",
-//   type: Inkor_Mijozlar,
+  path: INKOR_MIJOZLAR,
+  type: CUSTOMERS_CHILD_PAGES,
   isOpenModal: false,
   //   form: [
   //     {
