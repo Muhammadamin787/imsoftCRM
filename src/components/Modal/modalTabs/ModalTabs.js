@@ -6,7 +6,7 @@ const ModalTabs = ({tabs}) => {
         <Tabs defaultActiveKey={[0]}
               className="customers__tabs">
             {
-                tabs.map((tab, i) =>
+                tabs?.map((tab, i) =>
                     <Tabs.TabPane tab={tab.text} key={i}>
                         <Table bordered
                                columns={tab.columns}
