@@ -15,7 +15,7 @@ import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
 import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
 
 /* ----------------------- customers child Page import ---------------------- */
-import PotentsialClientPage from "../ClientTemlates/PotentsialClientTemplate";
+import PotentsialClientPage from "../ClientTemlates/PotensialClientTemplate";
 import RealClientPage from "../ClientTemlates/RealClientTemplate";
 import RejactClientPage from "../ClientTemlates/RejactClientTemplate";
 

@@ -10,23 +10,18 @@ import {
   TelegramIcon,
 } from "../../assets/icons/icons";
 import moment from "moment";
-<<<<<<< HEAD
 import {
-  AllCustomerChildPages,
   AllPages,
   AllServiceChildPages,
-} from "../../all Templates/pageTemplates";
+  AllCustomerChildPages,
+} from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
-=======
-import {AllPages, AllServiceChildPages} from "../../Templates/pageTemplates/index";
-import {PageController} from "../PageController";
->>>>>>> a4325fc79dcbfde6b96ad1a2d0dedf26086c9f6c
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
-import BottomTabs from "../../components/Tabs/BottomTabs";
+import BottomTabs from "../../components/tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -106,7 +101,7 @@ const MainPage = () => {
             {[
               ...AllPages,
               ...AllServiceChildPages,
-              ...AllCustomerChildPages
+              ...AllCustomerChildPages,
             ].map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (
@@ -127,7 +122,7 @@ const MainPage = () => {
         <GlobalModal />
       </Content>
       <Footer className="site-footer">
-        {document.location.pathname === "/customers" ? "" : <BottomTabs />}
+        <BottomTabs />
         <div className="site-footer__content">
           <div className="site-footer__icons">
             <GlobusIcon2 />
