@@ -5,7 +5,7 @@ import CustomersPage from "./customersPage/CustomersPage";
 import ProgrammesPage from "./programmesPage/ProgrammesPage";
 import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
-import ChildServicePages from "../components/ToolsBar/ToolsBar"
+import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
 
 export const PageController = ({page}) => {
 
@@ -23,7 +23,7 @@ export const PageController = ({page}) => {
 			return <ReportPage page={page}/>;
 		}
 		case SERVIS_CHILD_PAGES:
-			return <ChildServicePages page={page}/>;
+			return <ServicePageChild page={page}/>;
 		default:
 			return <h1>Not found</h1>;
 	}
