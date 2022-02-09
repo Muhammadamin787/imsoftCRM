@@ -1,17 +1,10 @@
 import React from 'react';
-import {
-    AddFile,
-    AddFolder,
-    AddItem, Antenna, AntennaReceive, Circle,
-    CopyFolder, EditFile,
-    SignallessAntenna,
-    TransferFolder
-} from "../../../assets/icons/icons";
 import {removeTableItem, toggleModal} from "../../../redux/tabs_reducer";
 import {useDispatch} from "react-redux";
 import {Button, message, Popconfirm} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
+import { findIcon } from '../../../assets/icons/icons';
 
 const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
@@ -39,32 +32,33 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
     return (
         <div className="toolbar">
             <div className="toolbar__iconTitle">
+                {findIcon(currentPage?.icon)}
                 <span>{currentPage?.text}</span>
             </div>
             <div className="toolbar__tools">
                 <Button onClick={() => handleModalClick()}>
-                    <AddItem/>
+                    {findIcon("AddItem")}
                 </Button>
                 <Button>
-                    <AddFolder/>
+                    {findIcon("AddFolder")}
                 </Button>
                 <Button>
-                    <AddFile/>
+                    {findIcon("AddFile")}
                 </Button>
                 <Button>
-                    <CopyFolder/>
+                    {findIcon("CopyFolder")}
                 </Button>
                 <Button>
-                    <TransferFolder/>
+                    {findIcon("TransferFolder")}
                 </Button>
                 <Button onClick={() => handleTableItem()}>
-                    <EditFile/>
+                    {findIcon("EditFile")}
                 </Button>
                 <Button>
-                    <Antenna/>
+                    {findIcon("Antenna")}
                 </Button>
                 <Button>
-                    <AntennaReceive/>
+                    {findIcon("AntennaReceive")}
                 </Button>
                 <Popconfirm placement="top"
                             title={text}
@@ -72,11 +66,11 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
                             okText="Ha"
                             cancelText="Yo'q">
                     <Button>
-                        <SignallessAntenna/>
+                        {findIcon("SignallessAntenna")}
                     </Button>
                 </Popconfirm>
                 <Button>
-                    <Circle/>
+                    {findIcon("Circle")}
                 </Button>
             </div>
             <MacActions Panes={Panes} currentPage={currentPage}/>

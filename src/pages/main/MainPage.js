@@ -10,7 +10,7 @@ import {
     TelegramIcon,
 } from "../../assets/icons/icons";
 import moment from "moment";
-import {AllPages, AllServiceChildPages} from "../../all Templates/pageTemplates";
+import {AllPages, AllServiceChildPages} from "../../Templates/pageTemplates/index";
 import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";

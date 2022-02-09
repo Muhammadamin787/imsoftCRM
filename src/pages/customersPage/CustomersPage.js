@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./customersPage.scss";
 import GlobalModal from "../../components/Modal/GlobalModal";
-import { AllCustomerChildPages } from "../../all Templates/pageTemplates/index";
+import { AllCustomerChildPages } from "../../Templates/pageTemplates/index";
 /* ------------------------------ module import ----------------------------- */
 import { Layout, Tabs } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
