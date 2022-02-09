@@ -1,9 +1,9 @@
-import { Table, Tag, Space ,Radio, Divider} from "antd";
-import React, { useState, useEffect } from "react";
+import { Table} from "antd";
+import React from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';
-import {setTableItem, editTableItem} from "../../redux/tabs_reducer"
+import {setTableItem} from "../../redux/tabs_reducer"
 
 
 const GlobalTable = () => {
@@ -11,7 +11,6 @@ const GlobalTable = () => {
 
   const dispatch = useDispatch()
 
-  
   let filteredColumns = [];
   if(currentPage?.filters){
     filteredColumns = FilterColumns(currentPage?.filters, currentPage?.columns, currentPage?.data);
@@ -34,7 +33,6 @@ const GlobalTable = () => {
 
 
   return (
-    <>
       <Table
           bordered
           columns={filteredColumns}
@@ -48,7 +46,6 @@ const GlobalTable = () => {
             ...rowSelection,
           }}
         />
-      </>
   );
 };
 
