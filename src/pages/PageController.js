@@ -13,30 +13,29 @@ import CustomersPage from "./customersPage/CustomersPage";
 import ProgrammesPage from "./programmesPage/ProgrammesPage";
 import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
-import ChildServicePages from "../components/ToolsBar/ToolsBar";
-import CustomTemplateRead from './customersPage/CustomerTemplatePagelarniOqiladiganFolder/CustomTemplateRead'
-export const PageController = ({ page }) => {
-  switch (page.type) {
-    case MAIN_PAGE:
-      return <FirstPage page={page} />;
-    case CUSTOMERS_PAGE:
-      return <CustomersPage page={page} />;
-    case PROGRAMMES_PAGE:
-      return <ProgrammesPage page={page} />;
-    case SERVIS_PAGE: {
-      return <ServicePage page={page} />;
-    }
-    case REPORT_PAGE: {
-      return <ReportPage page={page} />;
-    }
-    case SERVIS_CHILD_PAGES:
-      return <ChildServicePages page={page} />;
-
-    case CUSTOMERS_CHILD_PAGES:
+import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
+import CustomTemplateRead from '../pages/customersPage/CustomerTemplatePagelarniOqiladiganFolder/CustomTemplateRead';
+export const PageController = ({page}) => {
+	console.log(page);
+	switch (page.type) {
+		case MAIN_PAGE:
+			return <FirstPage page={page}/>;
+		case CUSTOMERS_PAGE:
+			return <CustomersPage page={page}/>;
+		case PROGRAMMES_PAGE:
+			return <ProgrammesPage page={page}/>;
+		case SERVIS_PAGE:{
+			return <ServicePage page={page}/>;
+		}
+		case REPORT_PAGE:{
+			return <ReportPage page={page}/>;
+		}
+		case SERVIS_CHILD_PAGES:
+			return <ServicePageChild page={page}/>;
+      case CUSTOMERS_CHILD_PAGES:
         // console.log(page);
         return <CustomTemplateRead page={page} />;
-    
-    default:
-      return <h1>Not found</h1>;
-  }
-};
+		default:
+			return <h1>Not found</h1>;
+	}
+}
