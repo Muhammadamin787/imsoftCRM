@@ -74,7 +74,6 @@ const MainPage = () => {
               <Item key={i} onClick={onChangePage}>
                 <Link to={menu.path}>
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
-                    {" "}
                     {findIcon(menu?.icon)}
                   </span>
                   <span>{menu.text}</span>

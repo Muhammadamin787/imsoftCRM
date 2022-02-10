@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./customersPage.scss";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { PageController } from "../../pages/PageController";
@@ -7,29 +7,36 @@ import { Layout, Tabs } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
 import CustomersTemplate from "../../Templates/pageTemplates/CustomersTemplate";
+import {useSelector, useDispatch} from 'react-redux';
+import GlobalTable from "../../components/Table/GlobalTable";
+import {setCurrentPage, addNewTab} from '../../redux/tabs_reducer';
 
 const { TabPane } = Tabs;
 
-const CustomersPage = ({ page }) => {
-  const [activeTab, setActiveKey] = useState(0);
-
-  function callback(key) {
-    // console.log(key);
+const CustomersPage = ({ page, activeKey }) => {
+  const currentPage = useSelector(s => s.tabs_reducer.currentPage);
+  const dispatch = useDispatch();
+  const handleTab = (page) =>{
+    dispatch(setCurrentPage(page));
+    dispatch(addNewTab(page));
   }
-
-  console.log(CustomersTemplate);
 
   return (
     <div className="">
-      <Toolbar currentPage={page} />
+      <Toolbar currentPage="Mijozlar Ro'yhati" />
       <Tabs
-        defaultActiveKey={activeTab}
-        onChange={callback}
+        defaultActiveKey={activeKey}
         className="customers__tabs"
-      ></Tabs>
-      {CustomersTemplate?.tabs?.map((item) => (
-        <Link to={item.path}>{item.text}</Link>
-      ))}
+      >  
+        {CustomersTemplate?.tabs?.map((item) => (
+          <TabPane tab={
+            <Link to={item.path} onClick={() => handleTab(item)}>{item.text}</Link>
+          } key={item.key}>
+
+          </TabPane>
+        ))}
+      </Tabs>
+      <GlobalTable />
     </div>
   );
 };

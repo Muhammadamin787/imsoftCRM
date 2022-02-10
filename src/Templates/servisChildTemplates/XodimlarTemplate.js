@@ -15,9 +15,11 @@ const XodimlarTemplate = {
   icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
+  
   modal:{
     width:1000,
   },
+
   form: [
     {
       grid: {
@@ -147,7 +149,9 @@ const XodimlarTemplate = {
       ],
     },
   ],
-  filters: ["yonalish"],
+
+  filters: ["yunalishi"],
+
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -255,42 +259,44 @@ const XodimlarTemplate = {
       align,
     },
   ],
+  
   data: [
-    // {
-    //   number: "1",
-    //   key: 1,
-    //   full_name: "Hojiakbar Anorboyev",
-    //   telifon: "998992348569",
-    //   viloyat: "Farg'ona",
-    //   shahar: "Marg'ilon",
-    //   manzil: "Galatoy 82 A",
-    //   tugilgan_sana: "01/21/2005",
-    //   yunalishi: "Frontend Dasturchi",
-    //   qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
-    //   hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
-    //   rasmi:"rasmichasi",
-    //   pasport: "",
-    //   oilasi:"",
-    //   value: ""
-    // },
-    // {
-    //   number: "2",
-    //   key: 2,
-    //   full_name: "Ravshanbek Fayziyev",
-    //   telifon: "998992349999",
-    //   viloyat: "Farg'ona",
-    //   shahar: "Andijon",
-    //   manzil: "Galatoy 82 A",
-    //   tugilgan_sana: "09/09/2000",
-    //   yunalishi: "BAckend Dasturchi",
-    //   hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
-    //   qushimcha_malumot: "yaxshi bola",
-    //   rasmi:"rasm",
-    //   oilasi:"",
-    //   pasport: "",
-    //   value: ""
-    // },
+    {
+      number: "1",
+      key: 1,
+      full_name: "Hojiakbar Anorboyev",
+      telifon: "998992348569",
+      viloyat: "Farg'ona",
+      shahar: "Marg'ilon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "01/21/2005",
+      yunalishi: "Frontend Dasturchi",
+      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
+      hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
+      rasmi:"rasmichasi",
+      pasport: "",
+      oilasi:"",
+      value: ""
+    },
+    {
+      number: "2",
+      key: 2,
+      full_name: "Ravshanbek Fayziyev",
+      telifon: "998992349999",
+      viloyat: "Farg'ona",
+      shahar: "Andijon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "09/09/2000",
+      yunalishi: "BAckend Dasturchi",
+      hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
+      qushimcha_malumot: "yaxshi bola",
+      rasmi:"rasm",
+      oilasi:"",
+      pasport: "",
+      value: ""
+    },
   ],
+
   scroll: { x: 1500, y: 380 },
 };
 

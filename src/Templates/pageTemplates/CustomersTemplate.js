@@ -14,8 +14,7 @@ const CustomersTemplate = {
 	icon: "ProfileIcon",
 	type: CUSTOMERS_PAGE,
 	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
-	columns: [
-	]
+	
 };
 
 export default CustomersTemplate;

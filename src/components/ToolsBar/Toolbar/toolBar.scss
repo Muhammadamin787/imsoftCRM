@@ -70,16 +70,29 @@
     width: 80px;
 
     .child-page__button {
-      cursor: pointer;
-      width: 10px;
-      background: none;
-      outline: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: none;
-
-      svg {
-        width: 20px;
-        height: 20px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 600;
+      color: transparent;
+      &:hover{
+        color: #ffffff;
       }
+    }
+    .green_btn{
+      background-color: #24C33D;
+    }
+    .yellow_btn{
+      background-color: #F7B629;
+    }
+    .red_btn{
+      background-color: #F65951;
     }
   }
 }

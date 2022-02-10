@@ -16,7 +16,6 @@ import ReportPage from "./reportPage/ReportPage";
 import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
 import CustomersPageChild from "./customersPage/CustomersPageChild/CustomersPageChild";
 export const PageController = ({ page }) => {
-  console.log(page);
   switch (page.type) {
     case MAIN_PAGE:
       return <FirstPage page={page} />;
