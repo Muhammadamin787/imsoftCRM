@@ -75,31 +75,29 @@
     height: 100%;
 
     .child-page__button {
-      cursor: pointer;
-      background: none;
-      border: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
       display: flex;
+      justify-content: center;
       align-items: center;
-
-      &.exit-child-btn {
-        span {
-          visibility: hidden;
-          position: absolute;
-          right: 14.6px;
-          top: 120.6px;
-          //font-size: 1.2em;
-        }
+      border: none;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 600;
+      color: transparent;
+      &:hover{
+        color: #ffffff;
       }
-      &.exit-child-btn:hover {
-        span {
-          visibility: visible;
-        }
-      }
-
-      svg {
-        width: 19px;
-        height: 19px;
-      }
+    }
+    .green_btn{
+      background-color: #24C33D;
+    }
+    .yellow_btn{
+      background-color: #F7B629;
+    }
+    .red_btn{
+      background-color: #F65951;
     }
   }
 }
