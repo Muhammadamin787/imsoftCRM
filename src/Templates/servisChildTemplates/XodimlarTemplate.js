@@ -32,6 +32,7 @@ const XodimlarTemplate = {
                     placeholder: "F.I.SH",
                     gridColumn: "1 / 10",
                     gridRow: "1 / 2",
+                    label: "F.I.SH",
                 },
                 {
                     name: "tugilgan_sana",
@@ -40,6 +41,7 @@ const XodimlarTemplate = {
                     placeholder: "Tug'ilgan sana",
                     gridColumn: "1 / 5",
                     gridRow: "2 / 3",
+                    label: "Tug'ilgan sana",
                 },
                 {
                     name: "viloyat",
@@ -47,6 +49,7 @@ const XodimlarTemplate = {
                     required: true,
                     placeholder: "viloyat",
                     gridColumn: "1 / 5",
+                    label: "Viloyat",
                     gridRow: "3 / 4",
                     option: [
                         {value: "Qashqadaryo", key: "Qashqadaroy"},
@@ -59,6 +62,7 @@ const XodimlarTemplate = {
                     type: SELECT,
                     required: true,
                     placeholder: "Yo'nalishi",
+                    label: "Yo'nalish",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
                     option: [
@@ -72,6 +76,7 @@ const XodimlarTemplate = {
                     type: SELECT,
                     required: true,
                     placeholder: "Shahar",
+                    label: "Shahar",
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
                     option: [
@@ -88,6 +93,7 @@ const XodimlarTemplate = {
                     placeholder: "Manzil",
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
+                    label: "Manzil",
                 },
                 {
                     name: "qushimcha_malumot",
@@ -96,6 +102,7 @@ const XodimlarTemplate = {
                     placeholder: "Qo'shimcha malumot",
                     gridColumn: "1 / 10",
                     gridRow: "5 / 7",
+                    label: "Qo'shimcha malumot",
                 },
                 {
                     name: "telifon",
@@ -104,6 +111,7 @@ const XodimlarTemplate = {
                     placeholder: "Telifon",
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
+                    label: "Telifon",
                 },
                 {
                     name: "pasport",
@@ -114,6 +122,7 @@ const XodimlarTemplate = {
                     gridRow: "2 / 5",
                     height: inputDeafultHeght * 2.5,
                     Iconic: UploadFilePasport,
+                    label: "pasport",
                 },
                 {
                     name: "oilasi",
@@ -124,6 +133,7 @@ const XodimlarTemplate = {
                     gridRow: "2 / 5",
                     height: inputDeafultHeght * 2.5,
                     Iconic: UploadFileOilasi,
+                    label: "oilasi",
                 },
                 {
                     name: "hozirgi_yashash_joyi",
