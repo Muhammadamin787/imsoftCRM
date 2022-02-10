@@ -9,7 +9,6 @@ export const counterSlice = createSlice({
             Panes: [],
             currentPage: {},
             tableItem: {},
-            values: {}
         },
         reducers: {
 
@@ -61,7 +60,7 @@ export const counterSlice = createSlice({
             },
             addValuesData: (state, {payload}) => {
                 state.values = {...state.values, ...payload}
-            }
+            },
         },
 
     }
@@ -77,7 +76,7 @@ export const {
     changePanes,
     setTableItem,
     removeTableItem,
-    editTableItem
+    editTableItem,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -11,6 +11,8 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
     const page = useSelector(state => state.tabs_reducer.currentPage);
 
+    // console.log(currentPage);
+
     const handleModalClick = () => {
         dispatch(toggleModal(!page.isOpenModal));
     };
