@@ -16,8 +16,11 @@ const ClientTemplate = {
 	type: CLIENTS_PAGE,
 	modal:{
 		width:1200,
+		tabs:[
+			CommonTemplate, ContactsTemplate, CommentsTemplate
+		]
 	  },
-	modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
+	// modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
 	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
 	columns: [
 	]

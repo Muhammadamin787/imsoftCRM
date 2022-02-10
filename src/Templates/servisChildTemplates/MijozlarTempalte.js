@@ -30,6 +30,7 @@ const MijozlarTempalte = {
           placeholder: "Raxbar",
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
+          label: "Raxbar",
         },
         {
           name: "rahbar_telifon",
@@ -38,6 +39,7 @@ const MijozlarTempalte = {
           placeholder: "Telifon",
           gridColumn: "6 / 10",
           gridRow: "1 / 2",
+          label: "Telifon"
         },
         {
           name: "opirator",
@@ -46,6 +48,7 @@ const MijozlarTempalte = {
           placeholder: "Opirator",
           gridColumn: "1 / 6",
           gridRow: "2 / 3",
+          label: "Opirator"
         },
         {
             name: "opirator_telifon",
@@ -54,6 +57,7 @@ const MijozlarTempalte = {
             placeholder: "Telifon",
             gridColumn: "6 / 10",
             gridRow: "2 / 3",
+            label: "Telifon"
           },
           {
             name: "foto1",
@@ -63,6 +67,7 @@ const MijozlarTempalte = {
             gridColumn: "1 / 4",
             gridRow: "3 / 6",
             height: inputDeafultHeght * 3,
+            label: "Foto"
           },
           {
             name: "foto2",

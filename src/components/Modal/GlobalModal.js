@@ -1,51 +1,57 @@
-import React, {useState, useEffect, useRef} from "react";
-import {Modal, Button, Form} from "antd";
+import React, { useState, useEffect, useRef } from "react";
+import { Modal, Button, Form, Tabs, Table } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
-import {useSelector, useDispatch} from "react-redux";
-import {toggleModal} from "../../redux/tabs_reducer";
-import {MacRed, MacGreen, MacYellow} from "../../assets/icons/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModal } from "../../redux/tabs_reducer";
+import { MacRed, MacGreen, MacYellow } from "../../assets/icons/icons";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 
 const GlobalModal = () => {
-    const {currentPage} = useSelector((state) => state.tabs_reducer);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [bounds, setBounds] = useState({left: 0, top: 0, bottom: 0, right: 0});
-    const [disabled, setDisabled] = useState(true);
-    const dispatch = useDispatch();
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
 
-    useEffect(() => {
-        // if (currentPage?.isOpenModal) {
-            setIsModalVisible(currentPage?.isOpenModal);
-        // }
-    }, [currentPage]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [bounds, setBounds] = useState({
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+  });
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
 
-    const handleCancel = (e) => {
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
-    };
+  useEffect(() => {
+    // if (currentPage?.isOpenModal) {
+    setIsModalVisible(currentPage?.isOpenModal);
+    // }
+  }, [currentPage]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
-    };
-    const draggleRef = useRef("s");
+  const handleCancel = (e) => {
+    setIsModalVisible(false);
+    dispatch(toggleModal(false));
+  };
 
-    const onStart = (event, uiData) => {
-        const {clientWidth, clientHeight} = window.document.documentElement;
-        const targetRect = draggleRef.current?.getBoundingClientRect();
-        if (!targetRect) {
-            return;
-        }
-        setBounds({
-            left: -targetRect.left + uiData.x,
-            right: clientWidth - (targetRect.right - uiData.x),
-            top: -targetRect.top + uiData.y,
-            bottom: clientHeight - (targetRect.bottom - uiData.y),
-        })
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsModalVisible(false);
+    dispatch(toggleModal(false));
+  };
+  const draggleRef = useRef("s");
+
+  const onStart = (event, uiData) => {
+    const { clientWidth, clientHeight } = window.document.documentElement;
+    const targetRect = draggleRef.current?.getBoundingClientRect();
+    if (!targetRect) {
+      return;
+    }
+    setBounds({
+      left: -targetRect.left + uiData.x,
+      right: clientWidth - (targetRect.right - uiData.x),
+      top: -targetRect.top + uiData.y,
+      bottom: clientHeight - (targetRect.bottom - uiData.y),
+    });
+  };
 
     return (
         <Modal style={{...currentPage?.modal?.style}}
