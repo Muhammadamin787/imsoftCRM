@@ -30,7 +30,7 @@ const CommetsTabTemplate = {
       title: <FieldNumberOutlined />,
       dataIndex: "number",
       key: "number",
-      width: "10%",
+      width: "5%",
       align,
     },
     {
@@ -43,19 +43,19 @@ const CommetsTabTemplate = {
       title: "Fayl",
       dataIndex: "fayl",
       key: "fayl",
-      width: "40%",
+      width: "15%",
     },
     {
       title: "Xodim",
       dataIndex: "xodim",
       key: "xodim",
-      width: "40%",
+      width: "25%",
     },
     {
       title: "Vaqti",
       dataIndex: "vaqti",
       key: "vaqti",
-      width: "40%",
+      width: "15%",
     },
   ],
   data: [

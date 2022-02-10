@@ -7,7 +7,6 @@ import { toggleModal } from "../../redux/tabs_reducer";
 import { MacRed, MacGreen, MacYellow } from "../../assets/icons/icons";
 import ModalTabs from "./modalTabs/ModalTabs";
 
-
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state.tabs_reducer);
 
@@ -34,8 +33,7 @@ const GlobalModal = () => {
     dispatch(toggleModal(false));
   };
 
-
-//   console.log(currentPage.modalTabs.map((tabe) => tabe.form[0].grid.columns));
+  //   console.log(currentPage.modalTabs.map((tabe) => tabe.form[0].grid.columns));
 
   return (
     <>
@@ -63,32 +61,42 @@ const GlobalModal = () => {
         </div>
 
         <Form className="modal-form">
-            <Tabs className="customers__tabs" >
-          {currentPage?.modalTabs && currentPage?.modalTabs?.map((tabe) => (
-
-                  <Tabs.TabPane tab={tabe?.text} key={tabe?.text}>
-                    {tabe?.form?.map((forma, i) => (
-                            <div
-                                className="modal-grid__form" key={forma?.grid} style={{gridTemplateColumns: forma.grid?.columns,gridAutoRows: forma.grid?.rows,}}>
-                                {forma?.inputs?.map((input) => (
-                                    <>
-                                    <ModalInput {...input} key={input?.name} />
-                                    {tabe?.columns && 
-                                        <Table bordered
-                                            columns={tabe?.columns}
-                                            className="inner-table"
-                                            dataSource={tabe?.data}
-                                            size={"small"}
-                                            scroll={tabe?.scroll ? {...tabe?.scroll} : {y: 380}}
-                                            pagination={{position: ["bottomCenter"]}}
-                                        />}
-                                    </>
-                                ))}
-                            </div>
-                    ))}
-                    </Tabs.TabPane>
-          ))}
-            </Tabs>
+          <Tabs className="customers__tabs">
+            {currentPage?.modalTabs &&
+              currentPage?.modalTabs?.map((tabe) => (
+                <Tabs.TabPane tab={tabe?.text} key={tabe?.text}>
+                  {tabe?.form?.map((forma, i) => (
+                    <div
+                      className="modal-grid__form"
+                      key={forma?.grid}
+                      style={{
+                        gridTemplateColumns: forma.grid?.columns,
+                        gridAutoRows: forma.grid?.rows,
+                      }}
+                    >
+                      {forma?.inputs?.map((input) => (
+                        <>
+                          <ModalInput {...input} key={input?.name} />
+                          {tabe?.columns && (
+                            <Table
+                              bordered
+                              columns={tabe?.columns}
+                              className="inner-table"
+                              dataSource={tabe?.data}
+                              size={"small"}
+                              scroll={
+                                tabe?.scroll ? { ...tabe?.scroll } : { y: 380 }
+                              }
+                              pagination={{ position: ["bottomCenter"] }}
+                            />
+                          )}
+                        </>
+                      ))}
+                    </div>
+                  ))}
+                </Tabs.TabPane>
+              ))}
+          </Tabs>
 
           {currentPage?.form?.map((form) => (
             <div
