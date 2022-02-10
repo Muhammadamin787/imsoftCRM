@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, Form } from "antd";
+import { Modal, Button, Form, Tabs, Table } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,8 +9,9 @@ import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 
 const GlobalModal = () => {
-  const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
@@ -19,12 +20,21 @@ const GlobalModal = () => {
   });
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // if (currentPage?.isOpenModal) {
+    setIsModalVisible(currentPage?.isOpenModal);
+    // }
+  }, [currentPage]);
+
   const handleCancel = (e) => {
+    setIsModalVisible(false);
     dispatch(toggleModal(false));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsModalVisible(false);
     dispatch(toggleModal(false));
   };
   const draggleRef = useRef("s");
@@ -43,29 +53,15 @@ const GlobalModal = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(Panes);
-  }, [Panes]);
-
   return (
     <Modal
-      width={currentPage?.modal?.width}
+      style={{ ...currentPage?.modal?.style }}
+      width={currentPage?.modal?.style?.width}
       footer={null}
-      visible={currentPage.isOpenModal}
-      closable={false}
-      modalRender={(modal) => (
-        <Draggable
-          disabled={disabled}
-          bounds={bounds}
-          onStart={(event, uiData) => onStart(event, uiData)}
-        >
-          <div ref={draggleRef}>{modal}</div>
-        </Draggable>
-      )}
       title={
         <div
           style={{
-            width: "100%",
+            width: currentPage?.modal?.style?.width,
             cursor: "move",
           }}
           onMouseOver={() => {
@@ -89,6 +85,17 @@ const GlobalModal = () => {
           </div>
         </div>
       }
+      visible={currentPage.isOpenModal}
+      closable={false}
+      modalRender={(modal) => (
+        <Draggable
+          disabled={disabled}
+          bounds={bounds}
+          onStart={(event, uiData) => onStart(event, uiData)}
+        >
+          <div ref={draggleRef}>{modal}</div>
+        </Draggable>
+      )}
     >
       <Form className="modal-form">
         {currentPage?.form?.map((form) => (

@@ -22,6 +22,7 @@ const ContactsTemplate = {
           placeholder: "Raxbar",
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
+          label: "Raxbar",
         },
         {
           name: "rahbar_telifon",
@@ -30,6 +31,7 @@ const ContactsTemplate = {
           placeholder: "Telifon",
           gridColumn: "6 / 10",
           gridRow: "1 / 2",
+          label: "Telifon 1",
         },
         {
           name: "opirator",
@@ -38,6 +40,7 @@ const ContactsTemplate = {
           placeholder: "Opirator",
           gridColumn: "1 / 6",
           gridRow: "2 / 3",
+          label: "Opirator",
         },
         {
             name: "opirator_telifon",
@@ -46,6 +49,7 @@ const ContactsTemplate = {
             placeholder: "Telifon",
             gridColumn: "6 / 10",
             gridRow: "2 / 3",
+            label:"Telifon 1"
           },
           {
             name: "foto1",
@@ -55,6 +59,7 @@ const ContactsTemplate = {
             gridColumn: "1 / 4",
             gridRow: "3 / 6",
             height: inputDeafultHeght * 3,
+            label:"Foto"
           },
           {
             name: "foto2",
@@ -81,6 +86,7 @@ const ContactsTemplate = {
             placeholder: "Telifon",
             gridColumn: "10 / 15",
             gridRow: "1 / 2",
+            label: "Telifon 2"
           },
           {
             name: "opirator_telifon2",
@@ -89,6 +95,7 @@ const ContactsTemplate = {
             placeholder: "Telifon",
             gridColumn: "10 / 15",
             gridRow: "2 / 3",
+            label: "Telifon 2"
           },
           {
             name: "rahbar_tugilgan_sana",
@@ -97,14 +104,16 @@ const ContactsTemplate = {
             placeholder: "Tug'ilgan Sana",
             gridColumn: "15 / 19",
             gridRow: "1 / 2",
+            label: "Tug'ilgan Sana"
           },
           {
-            name: "rahbar_tugilgan_sana",
+            name: "opirator_tugilgan_sana",
             type: DATE,
             required: true,
             placeholder: "Tug'ilgan Sana",
             gridColumn: "15 / 19",
             gridRow: "2 / 3",
+            label: "Tug'ilgan Sana"
           },
           {
             name: "client_addres",

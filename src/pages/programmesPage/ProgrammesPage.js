@@ -2,6 +2,7 @@ import React from 'react';
 import "./programmesPage.scss"
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
 import {Table, Tabs} from 'antd';
+import InnerTable from "../../components/Table/innerTable/InnerTable";
 
 
 const ProgrammesPage = ({page}) => {
@@ -17,14 +18,7 @@ const ProgrammesPage = ({page}) => {
                 {
                     page?.tabs?.map((tab,i) =>
                         <TabPane tab={tab.text} key={i}>
-                            <Table bordered
-                                   columns={tab.columns}
-                                   className="inner-table"
-                                   dataSource={tab?.data}
-                                   size={"small"}
-                                   scroll={tab?.scroll ? {...tab?.scroll} : {y: 380}}
-                                   pagination={{position: ["bottomCenter"]}}
-                            />
+                            <InnerTable innerTable={tab}/>
                         </TabPane>
                     )
                 }

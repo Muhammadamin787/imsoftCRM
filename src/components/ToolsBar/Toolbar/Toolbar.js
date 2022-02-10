@@ -16,6 +16,7 @@ const Toolbar = ({tableItem}) => {
         // dispatch(toggleModal(!page.isOpenModal));
         const newPanes = Panes.map(page => page.path === currentPage.path?{...page, isOpenModal: !currentPage.isOpenModal}:page);
         const newCurrentPage = {...currentPage, isOpenModal: !currentPage.isOpenModal};
+        console.log(newCurrentPage);
         dispatch(changePanesModal({panes: newPanes, currentPage: newCurrentPage}))
     };
 

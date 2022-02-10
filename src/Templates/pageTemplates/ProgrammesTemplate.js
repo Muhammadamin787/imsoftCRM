@@ -32,7 +32,10 @@ const ProgrammsTemplate = {
     ],
     isOpenModal: false,
     modal: {
-        width: 1100,
+        style: {
+            width: 1000,
+            marginTop: "-70px"
+        },
         tabs: [
             ProgrammSpecifications,
             ProgrammPerformers,
@@ -53,6 +56,7 @@ const ProgrammsTemplate = {
                     placeholder: "Mijoz",
                     gridColumn: "1 / 10",
                     gridRow: "1 / 2",
+                    label: "Mijoz"
                 },
                 {
                     name: "order_start_date",
@@ -61,14 +65,16 @@ const ProgrammsTemplate = {
                     placeholder: "Buyurtma sana:",
                     gridColumn: "10 / 15",
                     gridRow: "1 / 2",
+                    label: "Buyurtma sana"
                 },
                 {
                     name: "order_finish_date",
-                    type: STRING,
+                    type: DATE,
                     required: true,
                     placeholder: "Topshirilgan sana:",
                     gridColumn: "15 / 20",
                     gridRow: "1 / 2",
+                    label: "Topshiriligan sana"
                 },
                 {
                     name: "comment",
@@ -77,6 +83,7 @@ const ProgrammsTemplate = {
                     placeholder: "Umumiy tafsiflar",
                     gridColumn: "1 / 10",
                     gridRow: "2 / 3",
+                    label: "Umumiy tafsiflar"
                 },
                 {
                     name: "telifon",
@@ -85,6 +92,7 @@ const ProgrammsTemplate = {
                     placeholder: "Qabul qilgan xodim:",
                     gridColumn: "10 / 15",
                     gridRow: "2 / 3",
+                    label: "Qabul qilgan xodim"
                 },
                 {
                     name: "telifon",
@@ -93,6 +101,7 @@ const ProgrammsTemplate = {
                     placeholder: "Xolati:",
                     gridColumn: "15 / 20",
                     gridRow: "2 / 3",
+                    label: "xolati"
                 },
             ],
             innerTable: []

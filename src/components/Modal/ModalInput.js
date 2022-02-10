@@ -50,15 +50,17 @@ const ModalInput = ({
     switch (type) {
         case STRING:
             input = (
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    border: "1px solid red",
+                }}
+                >{label && label}
                 <Input
-                    addonBefore={label}
                     name={name}
                     placeholder={placeholder}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
                     // value={value}
                     onChange={(e) => {
                         const target = {
@@ -68,6 +70,7 @@ const ModalInput = ({
                         handleChangeValue(target);
                     }}
                 />
+                </label>
             );
             break;
 
@@ -98,16 +101,25 @@ const ModalInput = ({
 
         case SELECT:
             input = (
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    border: "1px solid red",
+                }}
+                >{label && label}
                 <Select
                     addonBefore={label}
+                    
                     size="small"
                     name={name}
                     placeholder={placeholder}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
+                    // style={{
+                    //     gridColumn: gridColumn,
+                    //     gridRow: gridRow,
+                    //     height: height ? height + "px" : inputDeafultHeght + "px",
+                    // }}
                     // value={value}
                     onSelect={(event) => {
                         const target = {
@@ -126,12 +138,14 @@ const ModalInput = ({
                             </Option>
                         ))}
                 </Select>
+                </label>
             );
             break;
 
         case MAP:
             input = (
                 <MapModal
+
                     gridColumn={gridColumn}
                     gridRow={gridRow}
                     height={height}
@@ -143,13 +157,21 @@ const ModalInput = ({
 
         case DATE:
             input = (
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    border: "1px solid red",
+                }}
+                >{label && label}    
                 <DatePicker
                     placeholder={placeholder}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
+                    // style={{
+                    //     gridColumn: gridColumn,
+                    //     gridRow: gridRow,
+                    //     height: height ? height + "px" : inputDeafultHeght + "px",
+                    // }}
                     format="DD.MM.YYYY"
                     allowClear={false}
                     // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
@@ -162,20 +184,23 @@ const ModalInput = ({
                         handleChangeValue(target);
                     }}
                 />
+                </label>
             );
             break;
 
         case TEXTAREA:
             input = (
+                
                 <TextArea
                     placeholder={placeholder}
                     autoSize={{minRows: 3, maxRows: 3}}
+                    
                     // value={value}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
+                    // style={{
+                    //     gridColumn: gridColumn,
+                    //     gridRow: gridRow,
+                    //     height: height ? height + "px" : inputDeafultHeght + "px",
+                    // }}
                     onChange={(data) => {
                         const target = {
                             name: name,
@@ -190,13 +215,21 @@ const ModalInput = ({
 
         case PHONE:
             input = (
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    border: "1px solid red",
+                }}
+                >{label && label}    
                 <PhoneInput
                     country={"uz"}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
+                    // style={{
+                    //     gridColumn: gridColumn,
+                    //     gridRow: gridRow,
+                    //     height: height ? height + "px" : inputDeafultHeght + "px",
+                    // }}
                     specialLabel={false}
                     disableDropdown={true}
                     countryCodeEditable={false}
@@ -214,6 +247,7 @@ const ModalInput = ({
                         handleChangeValue(e);
                     }}
                 />
+                </label>
             );
             break;
 
@@ -250,6 +284,14 @@ const ModalInput = ({
 
         case IMAGE:
             input = (
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    border: "1px solid red",
+                }}
+                >{label && label}    
                 <UpLoadJPG
                     id="file-uploder"
                     name={name}
@@ -267,6 +309,7 @@ const ModalInput = ({
                         handleChangeValue(e);
                     }}
                 />
+                </label>
             );
             break;
 

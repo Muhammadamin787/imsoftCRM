@@ -5,7 +5,6 @@ import { MAP, SELECT, STRING } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import {inputDeafultHeght,} from "../../constant/deafultStyle"
 
-
 const RegionlarTemplate = {
   text: "Regionlar",
   path: REGIONLAR_PATH,
