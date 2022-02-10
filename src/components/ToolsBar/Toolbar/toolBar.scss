@@ -4,27 +4,34 @@
   width: 100%;
   color: #ffffff;
   display: flex;
+  margin-top: 1px;
   justify-content: space-between;
   align-items: center;
 
-  .toolbar__iconTitle {
+  .toolbar__title {
     display: flex;
     padding: 0 10px;
-    // border: 1px solid red;
+    height: 95%;
+    cursor: pointer;
+    //border: 1px solid red;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
 
     svg {
       color: #ffffff;
       width: 21px;
+      margin-top: 4.6px;
       height: 21px;
+
+      path {
+        fill: #fff;
+      }
     }
 
-    span {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 20px;
-      margin-left: 13px;
+    .toolbar__title-text {
+      font-size: 1.1em;
+      margin-left: 9px;
     }
   }
 
@@ -64,21 +71,34 @@
 
   .toolbar__buttons {
     display: flex;
-    padding-right: 15px;
-    justify-content: space-around;
-    align-items: center;
-    width: 80px;
+    padding-right: 5px;
+    height: 100%;
 
     .child-page__button {
       cursor: pointer;
-      width: 10px;
       background: none;
-      outline: none;
       border: none;
+      display: flex;
+      align-items: center;
+
+      &.exit-child-btn {
+        span {
+          visibility: hidden;
+          position: absolute;
+          right: 14.6px;
+          top: 120.6px;
+          //font-size: 1.2em;
+        }
+      }
+      &.exit-child-btn:hover {
+        span {
+          visibility: visible;
+        }
+      }
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 19px;
+        height: 19px;
       }
     }
   }
