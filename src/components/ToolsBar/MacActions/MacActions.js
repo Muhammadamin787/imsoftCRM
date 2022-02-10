@@ -13,6 +13,7 @@ const MacActions = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentPage, Panes } = useSelector((s) => s.tabs_reducer);
+
   const removeCurrentPage = (type = null) => {
     let position = null;
     Panes?.forEach((item, i) => {
@@ -31,26 +32,17 @@ const MacActions = () => {
       dispatch(setCurrentPage(Panes[position - 1]));
     }
   };
-  const elem = document.documentElement;
-  function openFullscreen() {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
-    }
-  }
   
-  function closeFullscreen() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
-      document.msExitFullscreen();
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
     }
   }
+
   return (
     <div className="toolbar__buttons">
       <button
@@ -59,7 +51,7 @@ const MacActions = () => {
       >
         <LineOutlined />
       </button>
-      <button className="child-page__button yellow_btn">
+      <button className="child-page__button yellow_btn" onClick={toggleFullScreen}>
         <FullscreenExitOutlined />
       </button>
       <button

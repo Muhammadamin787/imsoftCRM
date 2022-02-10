@@ -13,7 +13,7 @@ import moment from "moment";
 import {
   AllPages,
   AllServiceChildPages,
-  AllCustomerChildPages,
+  AllClientChildPages,
 } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
@@ -21,7 +21,8 @@ import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
-import BottomTabs from "../../components/tabs/BottomTabs";
+// import BottomTabs from "../../components/Tabs/BottomTabs";
+import BottomTabs from '../../components/tabs/BottomTabs';
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -34,19 +35,9 @@ const MainPage = () => {
   const { SubMenu, Item } = Menu;
   const dispatch = useDispatch();
 
-  const pathname = window.location.pathname; // hozirgi(joriy) uril
-  const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
-  const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
-
-  const handleChangeSelect = () => {};
-
-  const onChangePage = () => {};
-
-  useEffect(() => {
-    dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
-    dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
-  }, []); // [] 👈 qachonki brovser yangilanganda
-
+  const handleSetCurrentPage = (currentPage) => {
+    dispatch(setCurrentPage(currentPage));
+  };
   return (
     <Layout className="site-container">
       <Header className="site-header">
@@ -71,9 +62,10 @@ const MainPage = () => {
                 ))}
               </SubMenu>
             ) : (
-              <Item key={i} onClick={onChangePage}>
+              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
                 <Link to={menu.path}>
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
+                    {" "}
                     {findIcon(menu?.icon)}
                   </span>
                   <span>{menu.text}</span>
@@ -89,7 +81,7 @@ const MainPage = () => {
             src={AccountPNG}
             alt="Foydalanuvchi rasmi"
           />
-          <Select onChange={handleChangeSelect} bordered={false}>
+          <Select bordered={false}>
             <Option value="Jack">Jack</Option>
           </Select>
         </div>
@@ -97,24 +89,21 @@ const MainPage = () => {
       <Content className="site-layout" style={{ marginTop: 64 }}>
         <div>
           <Routes>
-            {[
-              ...AllPages,
-              ...AllServiceChildPages,
-              ...AllCustomerChildPages,
-            ].map((page, i) =>
-              page.submenus ? (
-                page.submenus.map((sub, k) => (
+            {[...AllPages, ...AllServiceChildPages, ...AllClientChildPages].map(
+              (page, i) =>
+                page.submenus ? (
+                  page.submenus.map((sub, k) => (
+                    <Route
+                      path={sub.path}
+                      element={<PageController page={sub} key={sub?.path} />}
+                    />
+                  ))
+                ) : (
                   <Route
-                    path={sub.path}
-                    element={<PageController page={sub} key={sub?.path} />}
+                    path={page.path}
+                    element={<PageController page={page} key={page?.path} />}
                   />
-                ))
-              ) : (
-                <Route
-                  path={page.path}
-                  element={<PageController page={page} key={page?.path} />}
-                />
-              )
+                )
             )}
           </Routes>
         </div>

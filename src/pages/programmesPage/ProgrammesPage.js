@@ -1,32 +1,34 @@
 import React from 'react';
 import "./programmesPage.scss"
-import GlobalTable from "../../components/Table/GlobalTable";
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
-import {Tabs} from 'antd';
+import {Table, Tabs} from 'antd';
 
 
 const ProgrammesPage = ({page}) => {
     const {TabPane} = Tabs;
 
     function callback(key) {
-        console.log(key);
     }
 
     return (
         <div className='programmes-page'>
             <Toolbar currentPage={page}/>
-            <Tabs defaultActiveKey="1" onChange={callback}>
-                <TabPane tab="Tab 1" key="1">
-                    Content of Tab Pane 1
-                </TabPane>
-                <TabPane tab="Tab 2" key="2">
-                    Content of Tab Pane 2
-                </TabPane>
-                <TabPane tab="Tab 3" key="3">
-                    Content of Tab Pane 3
-                </TabPane>
+            <Tabs defaultActiveKey="0" onChange={callback} className="programmes-tabs">
+                {
+                    page?.tabs?.map((tab,i) =>
+                        <TabPane tab={tab.text} key={i}>
+                            <Table bordered
+                                   columns={tab.columns}
+                                   className="inner-table"
+                                   dataSource={tab?.data}
+                                   size={"small"}
+                                   scroll={tab?.scroll ? {...tab?.scroll} : {y: 380}}
+                                   pagination={{position: ["bottomCenter"]}}
+                            />
+                        </TabPane>
+                    )
+                }
             </Tabs>
-            <GlobalTable/>
         </div>
     );
 };

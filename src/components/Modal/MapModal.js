@@ -28,7 +28,6 @@ export default class MapModal extends Component {
   };
 
   render() {
-  // console.log(this.props.name);
     return (
       <YMaps onChange={() => this.onMapClick}>
         <Map
@@ -42,6 +41,7 @@ export default class MapModal extends Component {
             height: this.props.height
               ? this.props.height + "px"
               : inputDeafultHeght + "px",
+              borderRadius: "7px",
           }}
         >
           {this.state.coords ? (

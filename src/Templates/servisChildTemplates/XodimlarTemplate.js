@@ -2,8 +2,17 @@ import React from "react";
 import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
-import { STRING,DATE, SELECT,TEXTAREA,PHONE,UPLOAD,MAP ,IMAGE} from "../../components/Modal/InputTypes";
-import {inputDeafultHeght,} from "../../constant/deafultStyle"
+import {
+  STRING,
+  DATE,
+  SELECT,
+  TEXTAREA,
+  PHONE,
+  UPLOAD,
+  MAP,
+  IMAGE,
+} from "../../components/Modal/InputTypes";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
@@ -15,18 +24,15 @@ const XodimlarTemplate = {
   icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  
-  modal:{
-    width:1000,
+  modal: {
+    width: 1000,
   },
-
   form: [
     {
       grid: {
         columns: "repeat(20, 100fr)",
         rows: "repeat(6, 1fr)",
       },
-
       inputs: [
         {
           name: "full_name",
@@ -52,9 +58,9 @@ const XodimlarTemplate = {
           gridColumn: "1 / 5",
           gridRow: "3 / 4",
           option: [
-            { value: "Qashqadaryo", key: "Qashqadaroy"},
-            { value: "Andijon", key: "Andijon"},
-            { value: "Farg'ona", key: "Farg'ona"},
+            { value: "Qashqadaryo", key: "Qashqadaroy" },
+            { value: "Andijon", key: "Andijon" },
+            { value: "Farg'ona", key: "Farg'ona" },
           ],
         },
         {
@@ -65,9 +71,9 @@ const XodimlarTemplate = {
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
           option: [
-            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
-            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
-            { value: "Dasturchi Web (Backend)", key: "Web (Backend)"},
+            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)" },
+            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)" },
+            { value: "Dasturchi Web (Backend)", key: "Web (Backend)" },
           ],
         },
         {
@@ -78,10 +84,10 @@ const XodimlarTemplate = {
           gridColumn: "5 / 10",
           gridRow: "3 / 4",
           option: [
-            { value: "Olti ariq", key: "Olti ariq"},
-            { value: "Qo'qon", key: "Qo'qon"},
-            { value: "Marg'ilon", key: "Marg'ilon"},
-            { value: "Qarshi", key: "Qarshi"},
+            { value: "Olti ariq", key: "Olti ariq" },
+            { value: "Qo'qon", key: "Qo'qon" },
+            { value: "Marg'ilon", key: "Marg'ilon" },
+            { value: "Qarshi", key: "Qarshi" },
           ],
         },
         {
@@ -115,7 +121,7 @@ const XodimlarTemplate = {
           placeholder: "pasport",
           gridColumn: "10 / 13",
           gridRow: "2 / 5",
-          height: inputDeafultHeght * 2.5 ,
+          height: inputDeafultHeght * 2.5,
           Iconic: UploadFilePasport,
         },
         {
@@ -149,9 +155,7 @@ const XodimlarTemplate = {
       ],
     },
   ],
-
-  filters: ["yunalishi"],
-
+  filters: ["yonalish"],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -259,7 +263,6 @@ const XodimlarTemplate = {
       align,
     },
   ],
-  
   data: [
     {
       number: "1",
@@ -273,10 +276,10 @@ const XodimlarTemplate = {
       yunalishi: "Frontend Dasturchi",
       qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
       hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
-      rasmi:"rasmichasi",
+      rasmi: "rasmichasi",
       pasport: "",
-      oilasi:"",
-      value: ""
+      oilasi: "",
+      value: "",
     },
     {
       number: "2",
@@ -290,13 +293,12 @@ const XodimlarTemplate = {
       yunalishi: "BAckend Dasturchi",
       hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
       qushimcha_malumot: "yaxshi bola",
-      rasmi:"rasm",
-      oilasi:"",
+      rasmi: "rasm",
+      oilasi: "",
       pasport: "",
-      value: ""
+      value: "",
     },
   ],
-
   scroll: { x: 1500, y: 380 },
 };
 
