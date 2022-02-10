@@ -8,7 +8,7 @@ const ProgrammesPage = ({page}) => {
     const {TabPane} = Tabs;
 
     function callback(key) {
-        console.log(key);
+        // console.log(key);
     }
 
     return (
