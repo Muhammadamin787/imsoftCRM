@@ -1,6 +1,6 @@
 export const MAIN_PATH = "/asosiy";
 export const SERVIS_PATH = "/servis";
-export const CLINETS_PATH = "/customers";
+export const CLIENTS_PATH = "/clients";
 export const PROGRAMMES_PATH = "/programmes";
 export const REPORT_PATH = "/report";
 
@@ -14,7 +14,7 @@ export const YUNALISHLAR_PATH = "/servis/yunalishlar";
 export const SHAHAR_TUMAN_PATH = "/servis/shahar_tuman";
 export const TEST_PATH = "/servis/test";
 
-/* ------------------------- paths of customer pages ------------------------ */
-export const INKOR_MIJOZLAR = "/customers/inkor_mijozlar";
-export const REAL_MIJOZLAR = "/customers/real_mijozlar";
-export const POTENSIAL_MIJOZLAR = "/customers/potensial_mijozlar";
+/* ------------------------- paths of client pages ------------------------ */
+export const INKOR_MIJOZLAR = "/clients/inkor_mijozlar";
+export const REAL_MIJOZLAR = "/clients/real_mijozlar";
+export const POTENSIAL_MIJOZLAR = "/clients/potensial_mijozlar";
