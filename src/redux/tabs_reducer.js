@@ -9,7 +9,7 @@ export const counterSlice = createSlice({
             Panes: [],
             currentPage: {},
             tableItem: {},
-            values: {}
+            currentTabsModal: {},
         },
         reducers: {
 

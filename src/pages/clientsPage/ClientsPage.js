@@ -24,7 +24,7 @@ const ClientsPage = ({ page }) => {
   return (
     <div className="">
       <Toolbar currentPage={page} />
-      {/* <TabsModal /> */}
+      <TabsModal />
       {/* {page.map(item => {
         console.log(item);
         // <Tabs  >{item.modalTabs.tetx}</Tabs>
