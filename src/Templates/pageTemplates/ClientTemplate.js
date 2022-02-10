@@ -10,20 +10,22 @@ import ContactsTemplate from '../ClientTemlates/ClientModalTabs/ContactsTemplate
 import CommonTemplate from '../ClientTemlates/ClientModalTabs/CommonTemplate';
 
 const ClientTemplate = {
-	text: "Mijozlar Ro'yxati",
-	path: CLIENTS_PATH,
-	icon: "ProfileIcon",
-	type: CLIENTS_PAGE,
-	modal:{
-		width:1200,
-		tabs:[
-			CommonTemplate, ContactsTemplate, CommentsTemplate
-		]
-	  },
-	// modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
-	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
-	columns: [
-	]
+    text: "Mijozlar Ro'yxati",
+    path: CLIENTS_PATH,
+    icon: "ProfileIcon",
+    type: CLIENTS_PAGE,
+    modal: {
+        style: {
+            width: 1200,
+            marginTop: "-70px"
+        },
+        tabs: [
+            CommonTemplate, ContactsTemplate, CommentsTemplate
+        ]
+    },
+    // modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
+    tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
+    columns: []
 };
 
 export default ClientTemplate;
