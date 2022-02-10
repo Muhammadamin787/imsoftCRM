@@ -28,7 +28,6 @@ export default class MapModal extends Component {
   };
 
   render() {
-  // console.log(this.props.name);
     return (
       <YMaps onChange={() => this.onMapClick}>
         <Map

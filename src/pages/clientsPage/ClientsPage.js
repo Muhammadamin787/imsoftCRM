@@ -9,8 +9,7 @@ import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 
 const {TabPane} = Tabs;
 
-const ClientsPage = ({page, activeKey}) => {
-    const currentPage = useSelector(s => s.tabs_reducer.currentPage);
+const ClientsPage = ({activeKey}) => {
     const dispatch = useDispatch();
     const handleTab = (page) => {
         dispatch(setCurrentPage(page));
@@ -29,7 +28,7 @@ const ClientsPage = ({page, activeKey}) => {
                     </TabPane>
                 ))}
             </Tabs>
-            <GlobalTable/>
+            <GlobalTable />
         </div>
     );
 };

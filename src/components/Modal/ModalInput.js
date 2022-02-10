@@ -306,7 +306,6 @@ const ModalInput = ({
                             name: name,
                             value: data.target.file,
                         };
-                        console.log(data);
                         handleChangeValue(e);
                     }}
                 />

@@ -44,7 +44,6 @@ class UpLoadJPG extends React.Component {
       );
     }
 
-    console.log(info.file.status);
   };
 
   render() {

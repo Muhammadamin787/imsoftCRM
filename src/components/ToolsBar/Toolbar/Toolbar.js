@@ -1,5 +1,5 @@
 import React from 'react';
-import {removeTableItem, toggleModal} from "../../../redux/tabs_reducer";
+import {removeTableItem, toggleModal, changePanesModal} from "../../../redux/tabs_reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Button, message, Popconfirm} from "antd";
 import MacActions from "../MacActions/MacActions";
@@ -7,14 +7,17 @@ import "./toolBar.scss";
 import {findIcon} from '../../../assets/icons/icons';
 import useSelection from "antd/es/table/hooks/useSelection";
 
-const Toolbar = ({Panes, currentPage, tableItem}) => {
+const Toolbar = ({tableItem}) => {
     const dispatch = useDispatch();
-    const page = useSelector(state => state.tabs_reducer.currentPage);
+    const {currentPage, Panes} = useSelector(state => state.tabs_reducer);
 
-    // console.log(currentPage);
 
     const handleModalClick = () => {
-        dispatch(toggleModal(!page.isOpenModal));
+        // dispatch(toggleModal(!page.isOpenModal));
+        const newPanes = Panes.map(page => page.path === currentPage.path?{...page, isOpenModal: !currentPage.isOpenModal}:page);
+        const newCurrentPage = {...currentPage, isOpenModal: !currentPage.isOpenModal};
+        console.log(newCurrentPage);
+        dispatch(changePanesModal({panes: newPanes, currentPage: newCurrentPage}))
     };
 
     const onConfirm = () => {
@@ -73,7 +76,7 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
                     )
                 }
             </div>
-            <MacActions Panes={Panes} currentPage={currentPage}/>
+            <MacActions />
         </div>
     );
 };

@@ -24,7 +24,6 @@ const BottomTabs = () => {
     }, [Panes, pathname]);
 
     const onChange = (activeKey) => {
-        console.log(activeKey);
         navigate(Panes[activeKey].path);
         setActiveKey(activeKey);
         dispatch(setCurrentPage(Panes[activeKey]));

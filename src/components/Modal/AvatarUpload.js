@@ -47,7 +47,6 @@ class AvatarUpload extends React.Component {
       );
     }
 
-    console.log(info.file.status);
   };
 
   render() {
