@@ -42,7 +42,7 @@ const GlobalTable = () => {
           scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
           pagination={{ position: ["bottomCenter"] }}
           rowSelection={{
-            type: "radio",
+            type: "checkbox",
             ...rowSelection,
           }}
         />
