@@ -19,7 +19,6 @@ const ModalTabs = ({tabs}) => {
                     </Tabs.TabPane>
                 )
             }
-            ))}
         </Tabs>
     );
 };

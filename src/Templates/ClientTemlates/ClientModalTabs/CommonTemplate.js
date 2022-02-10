@@ -4,12 +4,13 @@ import { STRING } from "../../../components/Modal/InputTypes";
 
 
 const CommonTabTemplate = {
-	text: "Common ",
+	text: "Umumiy",
+  isOpenModal: false,
 	form :[
         {
           grid: {
-            columns: "repeat(20, 100fr)",
-            rows: "repeat(6, 1fr)",
+            columns: "repeat(7, 1fr)",
+            rows: "repeat(5, 1fr)",
           },
     
           inputs: [

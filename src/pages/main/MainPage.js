@@ -34,18 +34,20 @@ const MainPage = () => {
   const { SubMenu, Item } = Menu;
   const dispatch = useDispatch();
 
-  const pathname = window.location.pathname; // hozirgi(joriy) uril
-  const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
-  const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
+  // const pathname = window.location.pathname; // hozirgi(joriy) uril
+  // const allPages = [...AllServiceChildPages, ...AllPages]; // barcha templatelar (pagelar)
+  // const currentPage = allPages.find((allPage) => allPage.path === pathname); // hamma templatelardan urilga teng bulgan templatni topib olish
 
-  const handleChangeSelect = () => {};
 
-  const onChangePage = () => {};
+  // useEffect(() => {
+  //   dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
+  //   dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
+  // }, []); // [] 👈 qachonki brovser yangilanganda
 
-  useEffect(() => {
-    dispatch(setCurrentPage(currentPage)); // // brovser yangilanganda reducerdagi currentPagega hozirgi urilga teng bo'lgan templateni qushadi
-    dispatch(addNewTab(currentPage)); // brovser yangilanganda reducerdagi Pannse massiviga hozirgi urilga teng bo'lgan templateni qushadi
-  }, []); // [] 👈 qachonki brovser yangilanganda
+
+  const handleSetCurrentPage = (currentPage) =>{
+    dispatch(setCurrentPage(currentPage))
+  }
 
   return (
     <Layout className="site-container">
@@ -71,7 +73,7 @@ const MainPage = () => {
                 ))}
               </SubMenu>
             ) : (
-              <Item key={i} onClick={onChangePage}>
+              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
                 <Link to={menu.path}>
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {" "}
@@ -90,7 +92,7 @@ const MainPage = () => {
             src={AccountPNG}
             alt="Foydalanuvchi rasmi"
           />
-          <Select onChange={handleChangeSelect} bordered={false}>
+          <Select  bordered={false}>
             <Option value="Jack">Jack</Option>
           </Select>
         </div>

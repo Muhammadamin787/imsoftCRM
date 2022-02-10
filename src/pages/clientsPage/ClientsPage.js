@@ -7,7 +7,6 @@ import { Layout, Tabs } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
 import ClientTabTemplate from "../../Templates/pageTemplates/ClientTemplate";
-import TabsModal from "../../components/Modal/TabsModal";
 
 const { TabPane } = Tabs;
 
@@ -24,7 +23,6 @@ const ClientsPage = ({ page }) => {
   return (
     <div className="">
       <Toolbar currentPage={page} />
-      <TabsModal />
       {/* {page.map(item => {
         console.log(item);
         // <Tabs  >{item.modalTabs.tetx}</Tabs>
