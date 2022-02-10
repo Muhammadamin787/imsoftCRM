@@ -3,7 +3,7 @@ import React from "react";
 
 export const NewProgrammsTemplate = {
     text: "Yangi dasturlar",
-    columns: [
+    columns: [  
         {
             title: <FieldNumberOutlined/>,
             dataIndex: "number",

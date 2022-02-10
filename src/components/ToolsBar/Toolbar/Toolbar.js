@@ -1,18 +1,20 @@
 import React from 'react';
 import {removeTableItem, toggleModal} from "../../../redux/tabs_reducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button, message, Popconfirm} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import {findIcon} from '../../../assets/icons/icons';
+import useSelection from "antd/es/table/hooks/useSelection";
 
 const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
+    const page = useSelector(state => state.tabs_reducer.currentPage);
 
     // console.log(currentPage);
 
     const handleModalClick = () => {
-        dispatch(toggleModal(true));
+        dispatch(toggleModal(!page.isOpenModal));
     };
 
     const onConfirm = () => {
