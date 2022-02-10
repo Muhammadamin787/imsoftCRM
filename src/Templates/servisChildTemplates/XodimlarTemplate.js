@@ -9,6 +9,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 const align = "center";
+
 const XodimlarTemplate = {
     text: "Xodimlar",
     path: XODIMLAR_PATH,

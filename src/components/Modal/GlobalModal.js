@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form, Tabs } from "antd";
+import { Modal, Button, Form, Tabs, Table } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -71,7 +71,18 @@ const GlobalModal = () => {
                             <div
                                 className="modal-grid__form" key={forma?.grid} style={{gridTemplateColumns: forma.grid?.columns,gridAutoRows: forma.grid?.rows,}}>
                                 {forma?.inputs?.map((input) => (
+                                    <>
                                     <ModalInput {...input} key={input?.name} />
+                                    {tabe?.columns && 
+                                        <Table bordered
+                                            columns={tabe?.columns}
+                                            className="inner-table"
+                                            dataSource={tabe?.data}
+                                            size={"small"}
+                                            scroll={tabe?.scroll ? {...tabe?.scroll} : {y: 380}}
+                                            pagination={{position: ["bottomCenter"]}}
+                                        />}
+                                    </>
                                 ))}
                             </div>
                     ))}

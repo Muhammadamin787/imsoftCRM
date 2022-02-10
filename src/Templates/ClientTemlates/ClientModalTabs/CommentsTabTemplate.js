@@ -1,46 +1,81 @@
 import { STRING } from "../../../components/Modal/InputTypes";
+import {FieldNumberOutlined} from "@ant-design/icons";
 
-
-
+const align = "center";
 
 const CommetsTabTemplate = {
-	text: "Izohlar",
+  text: "Izohlar",
   isOpenModal: false,
-	form :[
+  form: [
+    {
+      grid: {
+        columns: "repeat(1, 1fr)",
+        rows: "repeat(1, 1fr)",
+      },
+
+      inputs: [
         {
-          grid: {
-            columns: "repeat(8, 1fr)",
-            rows: "repeat(1, 1fr)",
-          },
-    
-          inputs: [
-            {
-              name: "full_name",
-              type: STRING,
-              required: true,
-              placeholder: "F.I.SH",
-              gridColumn: "1 / 3",
-              gridRow: "1 / 2",
-            },
-            {
-              name: "ismi",
-              type: STRING,
-              required: true,
-              placeholder: "ismi",
-              gridColumn: "3 / 6",
-              gridRow: "1 / 2",
-            },
-            {
-              name: "familyasi",
-              type: STRING,
-              required: true,
-              placeholder: "familyasi",
-              gridColumn: "6 / 9",
-              gridRow: "1 / 2",
-            },
-          ],
+          name: "umumiy_izoxlar",
+          type: STRING,
+          required: true,
+          placeholder: "Umumiy izoxlar",
+          gridColumn: "1 / 1",
+          gridRow: "1 / 2",
         },
       ],
+    },
+  ],
+  columns: [
+    {
+      title: <FieldNumberOutlined />,
+      dataIndex: "number",
+      key: "number",
+      width: "10%",
+      align,
+    },
+    {
+      title: "Izox",
+      dataIndex: "izox",
+      key: "izox",
+      width: "40%",
+    },
+    {
+      title: "Fayl",
+      dataIndex: "fayl",
+      key: "fayl",
+      width: "40%",
+    },
+    {
+      title: "Xodim",
+      dataIndex: "xodim",
+      key: "xodim",
+      width: "40%",
+    },
+    {
+      title: "Vaqti",
+      dataIndex: "vaqti",
+      key: "vaqti",
+      width: "40%",
+    },
+  ],
+  data: [
+    {
+      number: "1",
+      key: 1,
+      izox:"yaxshi table",
+      fayl: "no fayl",
+      xodim: "Uroq",
+      vaqti: "2020/12/15",
+    },
+    {
+      number: "2",
+      key: 2,
+      izox:"dastur mukammal ishlangan 👍",
+      fayl: "no fayl",
+      xodim: "Tovar",
+      vaqti: "2021/17/15",
+    },
+  ]
 };
 
 export default CommetsTabTemplate;
