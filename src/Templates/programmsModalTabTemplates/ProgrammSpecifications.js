@@ -8,7 +8,7 @@ export const ProgrammSpecifications = {
             title: <FieldNumberOutlined/>,
             dataIndex: "number",
             key: "number",
-            width: "7%",
+            width: "10px",
             align: "center"
         },
         {

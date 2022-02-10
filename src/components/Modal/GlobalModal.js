@@ -10,7 +10,6 @@ import Draggable from "react-draggable";
 
 const GlobalModal = () => {
     const {currentPage} = useSelector((state) => state.tabs_reducer);
-
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [bounds, setBounds] = useState({left: 0, top: 0, bottom: 0, right: 0});
     const [disabled, setDisabled] = useState(true);
@@ -49,11 +48,12 @@ const GlobalModal = () => {
     };
 
     return (
-        <Modal width={currentPage?.modal?.width}
+        <Modal style={{...currentPage?.modal?.style}}
+               width={currentPage?.modal?.style?.width}
                footer={null}
                title={
                    <div style={{
-                       width: '100%',
+                       width: currentPage?.modal?.style?.width,
                        cursor: 'move',
                    }}
                         onMouseOver={() => {
