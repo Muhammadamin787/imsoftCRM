@@ -73,7 +73,7 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
                     {findIcon("Circle")}
                 </Button>
             </div>
-            <MacActions Panes={Panes} currentPage={currentPage}/>
+            <MacActions />
         </div>
     );
 };

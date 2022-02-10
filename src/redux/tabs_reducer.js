@@ -32,9 +32,8 @@ export const counterSlice = createSlice({
       state.currentPage.isOpenModal = payload;
     },
     setCurrentPage: (state, { payload }) => {
-      console.log(payload);
       if (!payload?.sections) {
-        // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
+        // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni 
         state.currentPage = payload;
       } else {
         state.currentPage = {};
