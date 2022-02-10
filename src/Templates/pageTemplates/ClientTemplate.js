@@ -16,7 +16,10 @@ const ClientTemplate = {
 	path: CLIENTS_PATH,
 	icon: "ProfileIcon",
 	type: CLIENTS_PAGE,
-	modalTabs:[CommentsTemplate, ContactsTemplate, CommonTemplate],
+	modal:{
+		width:1200,
+	  },
+	modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
 	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
 	columns: [
 	]

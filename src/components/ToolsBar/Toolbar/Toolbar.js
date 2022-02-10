@@ -9,6 +9,8 @@ import {findIcon} from '../../../assets/icons/icons';
 const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
 
+    // console.log(currentPage);
+
     const handleModalClick = () => {
         dispatch(toggleModal(true));
     };
