@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {Button, message, Popconfirm} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
-import { findIcon } from '../../../assets/icons/icons';
+import {findIcon} from '../../../assets/icons/icons';
 
 const Toolbar = ({Panes, currentPage, tableItem}) => {
     const dispatch = useDispatch();
@@ -13,65 +13,61 @@ const Toolbar = ({Panes, currentPage, tableItem}) => {
         dispatch(toggleModal(true));
     };
 
-    const confirm = () => {
+    const onConfirm = () => {
         dispatch(removeTableItem(tableItem));
         message.info("Malumot uchirildi.");
     }
 
     const handleTableItem = () => {
-        const item = currentPage.data.find(data => data.number === tableItem.number);
         dispatch(toggleModal(true));
-
+        const item = currentPage.data.find(data => data.number === tableItem.number);
         if (item) {
             currentPage.data[item.number] = item;
         }
     };
 
-    const text = "malumotni o'chirmoqchimisiz !";
+    const currentPageIcon = findIcon(currentPage?.icon);
 
+    const ToolBarButtons = [
+        {icon: findIcon("AddItem"), onClick: handleModalClick},
+        {icon: findIcon("AddFolder"),},
+        {icon: findIcon("AddFile"),},
+        // {icon: findIcon("CopyFolder"),},
+        // {icon: findIcon("TransferFolder"),},
+        // {icon: findIcon("EditFile"), onClick: handleTableItem},
+        // {icon: findIcon("Antenna"),},
+        // {icon: findIcon("AntennaReceive"),},
+        // {
+        //     icon: findIcon("SignallessAntenna"),
+        //     pop: {
+        //         placement: "top",
+        //         title: "Malumotni o'chirmoqchimisiz!",
+        //         onConfirm: onConfirm,
+        //         okText: "Ha",
+        //         cancelText: "Yo'q"
+        //     }
+        // },
+        // {icon: findIcon("Circle"),},
+    ]
     return (
         <div className="toolbar">
-            <div className="toolbar__iconTitle">
-                {findIcon(currentPage?.icon)}
-                <span>{currentPage?.text}</span>
+            <div className="toolbar__title">
+                <span>{currentPageIcon}</span>
+                <span className="toolbar__title-text">{currentPage?.text}</span>
             </div>
             <div className="toolbar__tools">
-                <Button onClick={() => handleModalClick()}>
-                    {findIcon("AddItem")}
-                </Button>
-                <Button>
-                    {findIcon("AddFolder")}
-                </Button>
-                <Button>
-                    {findIcon("AddFile")}
-                </Button>
-                <Button>
-                    {findIcon("CopyFolder")}
-                </Button>
-                <Button>
-                    {findIcon("TransferFolder")}
-                </Button>
-                <Button onClick={() => handleTableItem()}>
-                    {findIcon("EditFile")}
-                </Button>
-                <Button>
-                    {findIcon("Antenna")}
-                </Button>
-                <Button>
-                    {findIcon("AntennaReceive")}
-                </Button>
-                <Popconfirm placement="top"
-                            title={text}
-                            onConfirm={confirm}
-                            okText="Ha"
-                            cancelText="Yo'q">
-                    <Button>
-                        {findIcon("SignallessAntenna")}
-                    </Button>
-                </Popconfirm>
-                <Button>
-                    {findIcon("Circle")}
-                </Button>
+                {
+                    ToolBarButtons?.map(button =>
+                        button.pop ?
+                            <Popconfirm {...button.pop}>
+                                <Button>{button.icon}</Button>
+                            </Popconfirm>
+                            :
+                            <Button onClick={() => button.onClick()}>
+                                {button.icon}
+                            </Button>
+                    )
+                }
             </div>
             <MacActions Panes={Panes} currentPage={currentPage}/>
         </div>
