@@ -1,42 +1,37 @@
-import { useState } from "react";
-import "./customersPage.scss";
-import GlobalModal from "../../components/Modal/GlobalModal";
-import { PageController } from "../PageController";
-/* ------------------------------ module import ----------------------------- */
-import { Layout, Tabs } from "antd";
-import { Link, Route, Routes } from "react-router-dom";
+import "./clientsPage.scss";
+import {Tabs} from "antd";
+import {Link} from "react-router-dom";
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
-import ClientTabTemplate from "../../Templates/pageTemplates/ClientTemplate";
+import {useSelector, useDispatch} from 'react-redux';
+import GlobalTable from "../../components/Table/GlobalTable";
+import {setCurrentPage, addNewTab} from '../../redux/tabs_reducer';
+import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 
-const { TabPane } = Tabs;
+const {TabPane} = Tabs;
 
-const ClientsPage = ({ page }) => {
-  const [activeTab, setActiveKey] = useState(0);
+const ClientsPage = ({page, activeKey}) => {
+    const currentPage = useSelector(s => s.tabs_reducer.currentPage);
+    const dispatch = useDispatch();
+    const handleTab = (page) => {
+        dispatch(setCurrentPage(page));
+        dispatch(addNewTab(page));
+    }
 
-  function callback(key) {
-    // console.log(key);
-  }
+    return (
+        <div>
+            <Toolbar currentPage="Mijozlar Ro'yhati"/>
+            <Tabs defaultActiveKey={activeKey}>
+                {ClientTemplate?.tabs?.map((item) => (
+                    <TabPane tab={
+                        <Link to={item.path} onClick={() => handleTab(item)}>{item.text}</Link>
+                    } key={item.key}>
 
-  // console.log(ClientTabTemplate);
-  // console.log(page.modalTabs.map(el => el.form.map(it => it.input)));
-
-  return (
-    <div className="">
-      <Toolbar currentPage={page} />
-      {/* {page.map(item => {
-        console.log(item);
-        // <Tabs  >{item.modalTabs.tetx}</Tabs>
-      })} */}
-      <Tabs
-        defaultActiveKey={activeTab}
-        onChange={callback}
-        className="customers__tabs"
-      ></Tabs>
-      {ClientTabTemplate?.tabs?.map((item) => (
-        <Link to={item.path}>{item.text}</Link>
-      ))}
-    </div>
-  );
+                    </TabPane>
+                ))}
+            </Tabs>
+            <GlobalTable/>
+        </div>
+    );
 };
 
 export default ClientsPage;

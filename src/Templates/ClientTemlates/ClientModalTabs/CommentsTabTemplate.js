@@ -19,6 +19,7 @@ const CommetsTabTemplate = {
           type: STRING,
           required: true,
           placeholder: "Umumiy izoxlar",
+          label: "Umumiy izoxlar",
           gridColumn: "1 / 1",
           gridRow: "1 / 2",
         },

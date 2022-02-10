@@ -21,11 +21,13 @@ const CommonTabTemplate = {
               placeholder: "Korxona nomi",
               gridColumn: "1 / 6",
               gridRow: "1 / 2",
+              label:"Korxona nomi",
             },
             {
               name: "yunalish_turi",
               type: SELECT,
               required: true,
+              label: "Yunalish turi",
               placeholder: "Yo'nalishlar turi",
               gridColumn: "1 / 3",
               gridRow: "2 / 3",
@@ -38,6 +40,7 @@ const CommonTabTemplate = {
               type: SELECT,
               required: true,
               placeholder: "viloyat",
+              label:"Viloyat",
               gridColumn: "1 / 3",
               gridRow: "3 / 4",
               option: [{ value:"Farg'ona"},{ value:"Savdo"},]
@@ -49,6 +52,7 @@ const CommonTabTemplate = {
               placeholder: "Manzil",
               gridColumn: "1 / 9",
               gridRow: "4 / 5",
+              label: "Manzil",
             },
             {
               name: "kelish_turi",
@@ -57,6 +61,7 @@ const CommonTabTemplate = {
               placeholder: "Kelish turi",
               gridColumn: "6 / 9",
               gridRow: "2 / 3",
+              label: "Kelish turi",
               option:[{ value:"Qandaydur savdo"},{ value:"Savdo"},]
             },
             {
@@ -64,6 +69,7 @@ const CommonTabTemplate = {
               type: SELECT,
               required: true,
               placeholder: "Faoliyat turi",
+              label: "Faoliyat turi",
               gridColumn: "3 / 6",
               gridRow: "2 / 3",
               option: [{ value:"Savdo"},{ value:"Savdo2"}, ]
@@ -73,6 +79,7 @@ const CommonTabTemplate = {
               type: SELECT,
               required: true,
               placeholder: "xudud",
+              label: "Xudud",
               gridColumn: "6 / 9",
               gridRow: "3 / 4",
               option: [ {value:"Eshonguzar"}, {value:"guzar"}]
@@ -81,6 +88,7 @@ const CommonTabTemplate = {
               name: "shahar_tuman",
               type: SELECT,
               required: true,
+              label: "Shahar/Tuman",
               placeholder: "Shahar/Tuman",
               gridColumn: "3 / 6",
               gridRow: "3 / 4",
@@ -91,6 +99,7 @@ const CommonTabTemplate = {
               type: SELECT,
               required: true,
               placeholder: "xolati",
+              label:"Xolati",
               gridColumn: "6 / 9",
               gridRow: "1 / 2",
               option: [ {value:"Alo"}, {value:"o'rtacha"}]

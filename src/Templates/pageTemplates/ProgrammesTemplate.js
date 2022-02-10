@@ -53,6 +53,7 @@ const ProgrammsTemplate = {
                     placeholder: "Mijoz",
                     gridColumn: "1 / 10",
                     gridRow: "1 / 2",
+                    label: "Mijoz"
                 },
                 {
                     name: "order_start_date",
@@ -61,6 +62,7 @@ const ProgrammsTemplate = {
                     placeholder: "Buyurtma sana:",
                     gridColumn: "10 / 15",
                     gridRow: "1 / 2",
+                    label: "Buyurtma sana"
                 },
                 {
                     name: "order_finish_date",
@@ -69,6 +71,7 @@ const ProgrammsTemplate = {
                     placeholder: "Topshirilgan sana:",
                     gridColumn: "15 / 20",
                     gridRow: "1 / 2",
+                    label: "Topshiriligan sana"
                 },
                 {
                     name: "comment",
@@ -77,6 +80,7 @@ const ProgrammsTemplate = {
                     placeholder: "Umumiy tafsiflar",
                     gridColumn: "1 / 10",
                     gridRow: "2 / 3",
+                    label: "Umumiy tafsiflar"
                 },
                 {
                     name: "telifon",
@@ -85,6 +89,7 @@ const ProgrammsTemplate = {
                     placeholder: "Qabul qilgan xodim:",
                     gridColumn: "10 / 15",
                     gridRow: "2 / 3",
+                    label: "Qabul qilgan xodim"
                 },
                 {
                     name: "telifon",
@@ -93,6 +98,7 @@ const ProgrammsTemplate = {
                     placeholder: "Xolati:",
                     gridColumn: "15 / 20",
                     gridRow: "2 / 3",
+                    label: "xolati"
                 },
             ],
             innerTable: []
