@@ -41,7 +41,7 @@ export const AllServiceChildPages = [
   MijozlarTempalte
 ];
 
-export const AllClinetChildPages = [
+export const AllClientChildPages = [
   PotentsialClientPage,
   RealClientPage,
   RejactClientPage,

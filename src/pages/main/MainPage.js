@@ -13,7 +13,7 @@ import moment from "moment";
 import {
   AllPages,
   AllServiceChildPages,
-  AllClinetChildPages,
+  AllClientChildPages,
 } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
@@ -101,7 +101,7 @@ const MainPage = () => {
             {[
               ...AllPages,
               ...AllServiceChildPages,
-              ...AllClinetChildPages,
+              ...AllClientChildPages,
             ].map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (

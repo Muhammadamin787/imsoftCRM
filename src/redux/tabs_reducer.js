@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from 'lodash';
-import {AllServiceChildPages, AllClinetChildPages} from '../Templates/pageTemplates/index'
+import {AllServiceChildPages, AllClientChildPages} from '../Templates/pageTemplates/index'
 
 
 export const counterSlice = createSlice({

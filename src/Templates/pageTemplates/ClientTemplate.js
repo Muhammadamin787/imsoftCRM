@@ -1,6 +1,6 @@
 import React from 'react';
-import {CLINETS_PATH} from "../../pages/pageConstants/PageRoutes";
-import {CLINETS_PAGE} from "../../pages/pageConstants/PageTypes";
+import {CLIENTS_PATH} from "../../pages/pageConstants/PageRoutes";
+import {CLIENTS_PAGE} from "../../pages/pageConstants/PageTypes";
 import PotensialClientTemplate from '../ClientTemlates/PotensialClientTemplate';
 import RealClientTemplate from '../ClientTemlates/RealClientTemplate';
 import RejactClientTemplate from '../ClientTemlates/RejactClientTemplate'
@@ -13,9 +13,9 @@ import CommonTemplate from '../ClientTemlates/ClientModalTabs/CommonTemplate';
 
 const ClientTemplate = {
 	text: "Mijozlar Ro'yxati",
-	path: CLINETS_PATH,
+	path: CLIENTS_PATH,
 	icon: "ProfileIcon",
-	type: CLINETS_PAGE,
+	type: CLIENTS_PAGE,
 	modalTabs:[CommentsTemplate, ContactsTemplate, CommonTemplate],
 	tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
 	columns: [
