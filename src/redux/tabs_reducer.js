@@ -30,6 +30,7 @@ export const counterSlice = createSlice({
                 state.Panes.splice(payload, 1);
             },
             toggleModal: (state, {payload}) => {
+                console.log(payload)
                 state.currentPage.isOpenModal = payload;
             },
             setCurrentPage: (state, {payload}) => {
