@@ -1,37 +1,38 @@
 import React from "react";
 import {
-  SERVIS_PAGE,
-  CUSTOMERS_PAGE,
-  MAIN_PAGE,
-  PROGRAMMES_PAGE,
-  REPORT_PAGE,
-  SERVIS_CHILD_PAGES,
-  CUSTOMERS_CHILD_PAGES,
+    SERVIS_PAGE,
+    MAIN_PAGE,
+    PROGRAMMES_PAGE,
+    REPORT_PAGE,
+    SERVIS_CHILD_PAGES,
+    CLIENTS_CHILD_PAGES,
+    CLIENTS_PAGE
 } from "./pageConstants/PageTypes";
 import FirstPage from "./mainPage/FirstPage";
-import CustomersPage from "./customersPage/CustomersPage";
 import ProgrammesPage from "./programmesPage/ProgrammesPage";
 import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
 import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
-import CustomersPageChild from "./customersPage/CustomersPageChild/CustomersPageChild";
-export const PageController = ({ page }) => {
-  switch (page.type) {
-    case MAIN_PAGE:
-      return <FirstPage page={page} />;
-    case CUSTOMERS_PAGE:
-      return <CustomersPage page={page} />;
-    case PROGRAMMES_PAGE:
-      return <ProgrammesPage page={page} />;
-    case SERVIS_PAGE:
-      return <ServicePage page={page} />;
-    case REPORT_PAGE:
-      return <ReportPage page={page} />;
-    case SERVIS_CHILD_PAGES:
-      return <ServicePageChild page={page} />;
-    case CUSTOMERS_CHILD_PAGES:
-      return <CustomersPageChild page={page} />;
-    default:
-      return <h1>Not found</h1>;
-  }
+import ClientsPage from "./clientsPage/ClientsPage";
+import ClientPageChild from "./clientsPage/clientPageChild/ClientPageChild";
+
+export const PageController = ({page}) => {
+    switch (page.type) {
+        case MAIN_PAGE:
+            return <FirstPage page={page}/>;
+        case CLIENTS_PAGE:
+            return <ClientsPage page={page}/>;
+        case PROGRAMMES_PAGE:
+            return <ProgrammesPage page={page}/>;
+        case SERVIS_PAGE:
+            return <ServicePage page={page}/>;
+        case REPORT_PAGE:
+            return <ReportPage page={page}/>;
+        case SERVIS_CHILD_PAGES:
+            return <ServicePageChild page={page}/>;
+        case CLIENTS_CHILD_PAGES:
+            return <ClientPageChild page={page}/>;
+        default:
+            return <h1>Not found</h1>;
+    }
 };

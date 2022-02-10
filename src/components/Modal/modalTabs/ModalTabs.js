@@ -3,7 +3,7 @@ import {Table, Tabs} from "antd";
 
 const ModalTabs = ({tabs}) => {
     return (
-        <Tabs defaultActiveKey={[0]} className="customers__tabs">
+        <Tabs defaultActiveKey={[0]}>
             {
                 tabs?.map((tab, i) =>
                     <Tabs.TabPane tab={tab.text} key={i}>

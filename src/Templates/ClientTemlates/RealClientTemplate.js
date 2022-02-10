@@ -1,16 +1,14 @@
 import React from "react";
-import { FieldNumberOutlined } from "@ant-design/icons";
 import {REAL_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
-import {CUSTOMERS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
+import {CLIENTS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 import PotensialClientTemplate from './PotensialClientTemplate';
-import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 const RealClientTemplate = {
   text: "Real mijozlar",
   path: REAL_MIJOZLAR,
   key: "1",
-  type: CUSTOMERS_CHILD_PAGES,
+  type: CLIENTS_CHILD_PAGES,
   isOpenModal: false,
   //   form: [
   //     {

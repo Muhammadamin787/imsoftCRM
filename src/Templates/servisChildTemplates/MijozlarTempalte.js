@@ -115,10 +115,10 @@ const MijozlarTempalte = {
             gridRow: "2 / 3",
           },
           {
-            name: "customer_addres",
+            name: "client_addres",
             type: MAP,
             required: true,
-            placeholder: "Customer Addres",
+            placeholder: "Client Addres",
             gridColumn: "10 / 19",
             gridRow: "3 / 6",
             height: inputDeafultHeght * 3,
