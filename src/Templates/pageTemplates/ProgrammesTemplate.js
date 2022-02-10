@@ -32,7 +32,10 @@ const ProgrammsTemplate = {
     ],
     isOpenModal: false,
     modal: {
-        width: 1100,
+        style: {
+            width: 1000,
+            marginTop: "-70px"
+        },
         tabs: [
             ProgrammSpecifications,
             ProgrammPerformers,
@@ -66,7 +69,7 @@ const ProgrammsTemplate = {
                 },
                 {
                     name: "order_finish_date",
-                    type: STRING,
+                    type: DATE,
                     required: true,
                     placeholder: "Topshirilgan sana:",
                     gridColumn: "15 / 20",
