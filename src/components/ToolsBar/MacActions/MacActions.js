@@ -35,7 +35,8 @@ const MacActions = ({Panes, currentPage}) => {
             <button className="child-page__button">
                 <MacYellow/>
             </button>
-            <button className="child-page__button" onClick={() => removeCurrentPage()}>
+            <button className="child-page__button exit-child-btn" onClick={() => removeCurrentPage()}>
+                <span>&times;</span>
                 <MacRed/>
             </button>
         </div>
