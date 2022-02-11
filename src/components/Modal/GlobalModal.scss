@@ -28,7 +28,7 @@
 }
 
 .ant-modal-title {
-  background-color: #4447E2;
+  background-color: var(----main-color);
 }
 
 .ant-modal-content {
@@ -55,7 +55,7 @@
     //border-top-left-radius: 15px;
     //border-top-right-radius: 15px;
     width: 100%;
-    background-color: #4447e2;
+    background-color: var(--main-color);
     height: 40px;
     padding: 0 15px 0 15px;
     display: flex;
@@ -71,7 +71,7 @@
       justify-content: flex-end;
 
       .modal-header__button {
-        background-color: #4447e2;
+        background-color: var(--main-color);
         outline: none;
         border: none;
         height: 15px;
@@ -264,13 +264,13 @@
     }
 
     .qaytish {
-      border: 1px solid #4447e2;
-      color: #4447e2;
+      border: 1px solid var(--main-color);
+      color: var(--main-color);
     }
 
     .saqlash {
       color: #ffffff;
-      background-color: #4447e2;
+      background-color: var(--main-color);
     }
   }
 }
