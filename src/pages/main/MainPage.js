@@ -22,7 +22,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 // import BottomTabs from "../../components/Tabs/BottomTabs";
-import BottomTabs from '../../components/tabs/BottomTabs';
+import BottomTabs from '../../components/Tabs/BottomTabs';
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
