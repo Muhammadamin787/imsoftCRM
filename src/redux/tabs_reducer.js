@@ -66,6 +66,7 @@ export const counterSlice = createSlice({
         addValuesData: (state, {payload}) => {
             state.values = {...state.values, ...payload};
         },
+
     },
 });
 
@@ -79,7 +80,8 @@ export const {
     setTableItem,
     removeTableItem,
     editTableItem,
-    changePanesModal
+    changePanesModal,
+    toggleTableType
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -22,7 +22,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 // import BottomTabs from "../../components/Tabs/BottomTabs";
-import BottomTabs from '../../components/Tabs/BottomTabs';
+import BottomTabs from "../../components/Tabs/BottomTabs";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -39,13 +39,6 @@ const MainPage = () => {
     dispatch(setCurrentPage(currentPage));
   };
 
-
-
-
-  let activeStyle = {
-    borderBottom: '2px solid #1890ff',
-    paddingBottom:"16px"
-  };
 
 
   return (
@@ -72,10 +65,12 @@ const MainPage = () => {
                 ))}
               </SubMenu>
             ) : (
-              <Item key={i}  onClick={() => handleSetCurrentPage(menu)}>
-                <NavLink to={menu.path} key={i} style={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            } >
+              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
+                <NavLink
+                  to={menu.path}
+                  key={i}
+                  className={({ isActive }) => (isActive ? "activeStyle" : "")}
+                >
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {" "}
                     {findIcon(menu?.icon)}
