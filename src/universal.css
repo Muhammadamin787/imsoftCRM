@@ -1,0 +1,10 @@
+:root {
+  --main-color: #000C17;
+  --second-color: #1890FF;
+  --global-background-color: #E5E5E5;
+}
+
+.site-layout__body {
+  overflow: scroll;
+}
+/*# sourceMappingURL=universal.css.map */

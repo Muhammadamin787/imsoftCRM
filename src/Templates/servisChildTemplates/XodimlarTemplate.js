@@ -1,10 +1,19 @@
 import React from "react";
-import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {UploadFileOilasi, UploadFilePasport} from "../../assets/icons/icons";
-import {STRING, DATE, SELECT, TEXTAREA, PHONE, UPLOAD, MAP, IMAGE} from "../../components/Modal/InputTypes";
-import {inputDeafultHeght,} from "../../constant/deafultStyle"
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
+import {
+  STRING,
+  DATE,
+  SELECT,
+  TEXTAREA,
+  PHONE,
+  UPLOAD,
+  MAP,
+  IMAGE,
+} from "../../components/Modal/InputTypes";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
@@ -162,151 +171,152 @@ const XodimlarTemplate = {
             ],
         },
     ],
-    filters: ["yonalish"],
-    columns: [
-        {
-            title: <FieldNumberOutlined/>,
-            dataIndex: "number",
-            key: "number",
-            width: "10%",
-            align,
-        },
-        {
-            title: "F.I.Sh",
-            dataIndex: "full_name",
-            key: "full_name",
-            width: "40%",
-        },
-        {
-            title: "Telefon",
-            dataIndex: "telefon",
-            key: "telifon",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Viloyat",
-            dataIndex: "viloyat",
-            key: "viloyat",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Shahar",
-            dataIndex: "shahar",
-            key: "shahar",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Manzil",
-            dataIndex: "manzil",
-            key: "manzil",
-            width: "40%",
-        },
-        {
-            title: "Tug'ilgan sana",
-            dataIndex: "tugilgan_sana",
-            key: "tugilgan_sana",
-            width: "30%",
-            align,
-        },
-        {
-            title: "Yo'nalish",
-            dataIndex: "yunalishi",
-            key: "yunalishi",
-            onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
-            width: "35%",
-        },
-        {
-            title: "Rasmi",
-            dataIndex: "rasmi",
-            key: "rasmi",
-            width: "15%",
-            align,
-            render: (_, record) => {
-                return (
-                    <Zoom zoomMargin={10}>
-                        <picture>
-                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-                            <img
-                                alt="img"
-                                src={record.rasmi}
-                                width="30"
-                                height="30"
-                                style={{objectFit: "contain"}}
-                            />
-                        </picture>
-                    </Zoom>
-                );
-            },
-        },
-        {
-            title: "Pasport",
-            dataIndex: "pasport",
-            key: "pasport",
-            width: "15%",
-            align,
-        },
-        {
-            title: "Oilasi",
-            dataIndex: "oilasi",
-            key: "oilasi",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Xarita",
-            dataIndex: "hozirgi_yashash_joyi",
-            key: "hozirgi_yashash_joyi",
-            width: "15%",
-            align,
-        },
-        {
-            title: "Qo'shimcha ma'lumot",
-            dataIndex: "qushimcha_malumot",
-            key: "qushimcha_malumot",
-            width: "35%",
-            align,
-        },
-    ],
-    data: [
-        // {
-        //   number: "1",
-        //   key: 1,
-        //   full_name: "Hojiakbar Anorboyev",
-        //   telifon: "998992348569",
-        //   viloyat: "Farg'ona",
-        //   shahar: "Marg'ilon",
-        //   manzil: "Galatoy 82 A",
-        //   tugilgan_sana: "01/21/2005",
-        //   yunalishi: "Frontend Dasturchi",
-        //   qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
-        //   hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
-        //   rasmi:"rasmichasi",
-        //   pasport: "",
-        //   oilasi:"",
-        //   value: ""
-        // },
-        // {
-        //   number: "2",
-        //   key: 2,
-        //   full_name: "Ravshanbek Fayziyev",
-        //   telifon: "998992349999",
-        //   viloyat: "Farg'ona",
-        //   shahar: "Andijon",
-        //   manzil: "Galatoy 82 A",
-        //   tugilgan_sana: "09/09/2000",
-        //   yunalishi: "BAckend Dasturchi",
-        //   hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
-        //   qushimcha_malumot: "yaxshi bola",
-        //   rasmi:"rasm",
-        //   oilasi:"",
-        //   pasport: "",
-        //   value: ""
-        // },
-    ],
-    scroll: {x: 1500, y: 380},
+
+  filters: ["yonalish"],
+  columns: [
+    {
+      title: <FieldNumberOutlined />,
+      dataIndex: "number",
+      key: "number",
+      width: "10%",
+      align,
+    },
+    {
+      title: "F.I.Sh",
+      dataIndex: "full_name",
+      key: "full_name",
+      width: "40%",
+    },
+    {
+      title: "Telefon",
+      dataIndex: "telefon",
+      key: "telifon",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Viloyat",
+      dataIndex: "viloyat",
+      key: "viloyat",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Shahar",
+      dataIndex: "shahar",
+      key: "shahar",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Manzil",
+      dataIndex: "manzil",
+      key: "manzil",
+      width: "40%",
+    },
+    {
+      title: "Tug'ilgan sana",
+      dataIndex: "tugilgan_sana",
+      key: "tugilgan_sana",
+      width: "30%",
+      align,
+    },
+    {
+      title: "Yo'nalish",
+      dataIndex: "yunalishi",
+      key: "yunalishi",
+      onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
+      width: "35%",
+    },
+    {
+      title: "Rasmi",
+      dataIndex: "rasmi",
+      key: "rasmi",
+      width: "15%",
+      align,
+      render: (_, record) => {
+        return (
+          <Zoom zoomMargin={10}>
+            <picture>
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+              <img
+                alt="img"
+                src={record.rasmi}
+                width="30"
+                height="30"
+                style={{ objectFit: "contain" }}
+              />
+            </picture>
+          </Zoom>
+        );
+      },
+    },
+    {
+      title: "Pasport",
+      dataIndex: "pasport",
+      key: "pasport",
+      width: "15%",
+      align,
+    },
+    {
+      title: "Oilasi",
+      dataIndex: "oilasi",
+      key: "oilasi",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Xarita",
+      dataIndex: "hozirgi_yashash_joyi",
+      key: "hozirgi_yashash_joyi",
+      width: "15%",
+      align,
+    },
+    {
+      title: "Qo'shimcha ma'lumot",
+      dataIndex: "qushimcha_malumot",
+      key: "qushimcha_malumot",
+      width: "35%",
+      align,
+    },
+  ],
+  data: [
+    {
+      number: "1",
+      key: 1,
+      full_name: "Hojiakbar Anorboyev",
+      telifon: "998992348569",
+      viloyat: "Farg'ona",
+      shahar: "Marg'ilon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "01/21/2005",
+      yunalishi: "Frontend Dasturchi",
+      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
+      hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
+      rasmi: "rasmichasi",
+      pasport: "",
+      oilasi: "",
+      value: "",
+    },
+    {
+      number: "2",
+      key: 2,
+      full_name: "Ravshanbek Fayziyev",
+      telifon: "998992349999",
+      viloyat: "Farg'ona",
+      shahar: "Andijon",
+      manzil: "Galatoy 82 A",
+      tugilgan_sana: "09/09/2000",
+      yunalishi: "BAckend Dasturchi",
+      hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
+      qushimcha_malumot: "yaxshi bola",
+      rasmi: "rasm",
+      oilasi: "",
+      pasport: "",
+      value: "",
+    },
+  ],
+  scroll: { x: 1500, y: 380 },
 };
 
 export default XodimlarTemplate;

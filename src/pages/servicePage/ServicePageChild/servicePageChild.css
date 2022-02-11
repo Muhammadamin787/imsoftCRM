@@ -1,0 +1,66 @@
+.child-page {
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.child-page .child-body {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+.child-page .main-table {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  overflow: auto;
+}
+
+.data_change_sections {
+  background-color: #f1f4f8;
+  padding: 0 20px 0 20px;
+}
+
+.data_change_sections .child-page__forms {
+  height: 40px;
+}
+
+.data_change_sections .child-page__tools {
+  height: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.data_change_sections .child-page__tools button {
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+  padding: 0;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.data_change_sections .child-page__tools button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.data_change_sections .child-page__tools button:nth-child(6) {
+  height: 17px;
+}
+
+.hodimlar {
+  background-image: url("../../../assets/icons/staff.svg");
+}
+/*# sourceMappingURL=servicePageChild.css.map */

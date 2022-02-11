@@ -13,7 +13,6 @@ const ServicePageChild = ({page}) => {
     const dispatch = useDispatch();
     const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
     const navigate = useNavigate();
-    // console.log(page);
     const removeCurrentPage = (type = null) => {
         let position = null;
         Panes?.forEach((item, i) => {

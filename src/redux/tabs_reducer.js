@@ -4,7 +4,6 @@ import {
     AllClientChildPages,
     AllServiceChildPages,
 } from "../Templates/pageTemplates/index";
-
 export const counterSlice = createSlice({
     name: "tabs_data",
     initialState: {
@@ -24,6 +23,10 @@ export const counterSlice = createSlice({
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
+        },
+        changePanesModal: (s, {payload}) =>{
+            s.Panes = payload.panes;
+            s.currentPage = payload.currentPage;
         },
         changePanes: (state, {payload}) => {
             state.Panes.splice(payload, 1);
@@ -76,6 +79,7 @@ export const {
     setTableItem,
     removeTableItem,
     editTableItem,
+    changePanesModal
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

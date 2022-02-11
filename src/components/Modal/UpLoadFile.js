@@ -31,7 +31,10 @@ const UpLoadFile = ({
       file.type === "image/jpeg" ||
       file.type === "image/png";
 
+<<<<<<< HEAD
     // console.log(file);
+=======
+>>>>>>> f168d00ecd0469d285efb47add5f25e334d88a6c
     if (!isJpgOrPng) {
       message.error(
         "File turi mos kelmadi. Siz faqat pdf, msword, doc, png, jpeg!"
