@@ -56,6 +56,8 @@ const ModalInput = ({
                     gridRow: gridRow,
                     height: height ? height + "px" : inputDeafultHeght + "px",
                     border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column"
                 }}
                 >{label && label}
                 <Input
@@ -84,6 +86,9 @@ const ModalInput = ({
                         gridColumn: gridColumn,
                         gridRow: gridRow,
                         height: height ? height + "px" : inputDeafultHeght + "px",
+                        border: "1px solid red",
+                        display: "flex",
+                        flexDirection: "column"
                     }}
                     placeholder={placeholder}
                     showSearch
@@ -107,6 +112,8 @@ const ModalInput = ({
                     gridRow: gridRow,
                     height: height ? height + "px" : inputDeafultHeght + "px",
                     border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column"
                 }}
                 >{label && label}
                 <Select
@@ -163,6 +170,8 @@ const ModalInput = ({
                     gridRow: gridRow,
                     height: height ? height + "px" : inputDeafultHeght + "px",
                     border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column"
                 }}
                 >{label && label}    
                 <DatePicker
@@ -190,7 +199,17 @@ const ModalInput = ({
 
         case TEXTAREA:
             input = (
-                
+                <label 
+                style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                    // height: "100%",
+                    border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column"
+                }}
+                >{label && label} 
                 <TextArea
                     placeholder={placeholder}
                     autoSize={{minRows: 3, maxRows: 3}}
@@ -210,6 +229,7 @@ const ModalInput = ({
                         handleChangeValue(target);
                     }}
                 />
+                </label>
             );
             break;
 
@@ -277,7 +297,7 @@ const ModalInput = ({
                     gridRow={gridRow}
                     height={height}
                     Iconic={Iconic}
-
+                    label={label}
                 />
             );
             break;
@@ -306,6 +326,7 @@ const ModalInput = ({
                             name: name,
                             value: data.target.file,
                         };
+                        console.log(data);
                         handleChangeValue(e);
                     }}
                 />

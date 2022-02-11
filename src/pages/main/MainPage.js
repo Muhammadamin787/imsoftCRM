@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
@@ -38,6 +38,16 @@ const MainPage = () => {
   const handleSetCurrentPage = (currentPage) => {
     dispatch(setCurrentPage(currentPage));
   };
+
+
+
+
+  let activeStyle = {
+    borderBottom: '2px solid #1890ff',
+    paddingBottom:"16px"
+  };
+
+
   return (
     <Layout className="site-container">
       <Header className="site-header">
@@ -62,14 +72,16 @@ const MainPage = () => {
                 ))}
               </SubMenu>
             ) : (
-              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
-                <Link to={menu.path}>
+              <Item key={i}  onClick={() => handleSetCurrentPage(menu)}>
+                <NavLink to={menu.path} key={i} style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            } >
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {" "}
                     {findIcon(menu?.icon)}
                   </span>
                   <span>{menu.text}</span>
-                </Link>
+                </NavLink>
               </Item>
             )
           )}
