@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAEQ,WAFG,CACP,cAAc,CACV,EAAE,CAAA;EACE,OAAO,EAAE,wBAAwB;CACpC",
-    "sources": [
-        "GlobalTable.scss"
-    ],
-    "names": [],
-    "file": "GlobalTable.css"
-}

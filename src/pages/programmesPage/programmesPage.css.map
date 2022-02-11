@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAGE,gBAHc,CAGd,aAAa,CAAC;EAEZ,OAAO,EAAE,MAAM;CACd",
-    "sources": [
-        "programmesPage.scss"
-    ],
-    "names": [],
-    "file": "programmesPage.css"
-}

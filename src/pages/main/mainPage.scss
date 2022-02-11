@@ -148,6 +148,7 @@
   // __________________________Site Footer end
 }
 
-.underline{
-  border: 1px solid green;
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after{
+  border-bottom: none !important;
 }

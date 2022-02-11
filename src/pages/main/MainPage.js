@@ -43,13 +43,9 @@ const MainPage = () => {
 
 
   let activeStyle = {
-    border: '1px solid red'
+    borderBottom: '2px solid #1890ff',
+    paddingBottom:"16px"
   };
-
-  let activeClassName = "underline"
-
-
-
 
 
   return (
@@ -77,7 +73,9 @@ const MainPage = () => {
               </SubMenu>
             ) : (
               <Item key={i}  onClick={() => handleSetCurrentPage(menu)}>
-                <NavLink to={menu.path} key={i}  >
+                <NavLink to={menu.path} key={i} style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            } >
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {" "}
                     {findIcon(menu?.icon)}
