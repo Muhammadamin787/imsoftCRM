@@ -297,7 +297,7 @@ const ModalInput = ({
                     gridRow={gridRow}
                     height={height}
                     Iconic={Iconic}
-
+                    label={label}
                 />
             );
             break;

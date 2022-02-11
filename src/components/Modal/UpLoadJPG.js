@@ -68,7 +68,7 @@ class UpLoadJPG extends React.Component {
     textAlign: "center"
   }}
   htmlFor="file-uploder"
->
+> {this.props.label && this.props.label}
   <Upload
     id="file-uploder"
     name={this.props.name}

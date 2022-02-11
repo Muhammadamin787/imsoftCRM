@@ -16,7 +16,10 @@ const XodimlarTemplate = {
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
     modal: {
-        width: 1000,
+        style: {
+            width: 1000,
+            marginTop: "-70px"
+        }
     },
     form: [
         {
@@ -42,6 +45,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 5",
                     gridRow: "2 / 3",
                     label: "Tug'ilgan sana",
+                    height: inputDeafultHeght ,
                 },
                 {
                     name: "viloyat",
@@ -103,6 +107,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "5 / 7",
                     label: "Qo'shimcha malumot",
+                    height: inputDeafultHeght *1.4,
                 },
                 {
                     name: "telifon",
@@ -148,10 +153,11 @@ const XodimlarTemplate = {
                     name: "rasmi",
                     type: IMAGE,
                     required: true,
-                    placeholder: "",
+                    placeholder: "rasmi",
+                    label: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
-                    height: inputDeafultHeght * 7.7,
+                    height: inputDeafultHeght * 7.1,
                 },
             ],
         },

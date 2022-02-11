@@ -32,7 +32,6 @@ const ServicePageChild = ({page}) => {
             dispatch(setCurrentPage(Panes[position - 1]));
         }
     };
-    console.log(page);
     return (
         <div className="child-page">
             <Toolbar tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>

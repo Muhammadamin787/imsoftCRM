@@ -5,7 +5,7 @@ import InnerTable from "../../Table/innerTable/InnerTable";
 
 const ModalTabs = ({tabs}) => {
     return (
-        <Tabs defaultActiveKey={[0]}>
+        <Tabs defaultActiveKey={[0]} key={tabs.text}>
             {tabs?.map((tab, i) => (
                 <Tabs.TabPane tab={tab.text} key={i}>
                     {tab.form?.map((forma, i) => (

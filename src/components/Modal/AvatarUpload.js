@@ -71,11 +71,12 @@ class AvatarUpload extends React.Component {
     textAlign: "center"
   }}
   htmlFor="file-uploder"
->
+> 
+{this.props.label && this.props.label}
   <Upload
     id="file-uploder"
     name={this.props.name}
-    placeholder={this.props.placeholder}
+    // placeholder={this.props.placeholder}
     alt="file"
     beforeUpload={beforeUpload}
     onClick={this.props.handleChange}
