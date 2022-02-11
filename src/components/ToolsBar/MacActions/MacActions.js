@@ -1,10 +1,11 @@
-import React from "react";
+import {useState} from "react";
 import { MacGreen, MacRed, MacYellow } from "../../../assets/icons/icons";
 import { changePanes, setCurrentPage } from "../../../redux/tabs_reducer";
 import {
   LineOutlined,
   CloseOutlined,
   FullscreenExitOutlined,
+  FullscreenOutlined
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,7 @@ const MacActions = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentPage, Panes } = useSelector((s) => s.tabs_reducer);
+  const [full, setFull] = useState(false);
 
   const removeCurrentPage = (type = null) => {
     let position = null;
@@ -34,6 +36,7 @@ const MacActions = () => {
   };
   
   function toggleFullScreen() {
+    setFull(document.fullscreenElement)
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
     } else {
@@ -52,7 +55,8 @@ const MacActions = () => {
         <LineOutlined />
       </button>
       <button className="child-page__button yellow_btn" onClick={toggleFullScreen}>
-        <FullscreenExitOutlined />
+        {full?<FullscreenOutlined />:<FullscreenExitOutlined /> }
+        
       </button>
       <button
         className="child-page__button red_btn"
