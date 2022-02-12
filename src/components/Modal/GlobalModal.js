@@ -149,65 +149,61 @@ const GlobalModal = () => {
             (form) =>
               // <>
               form.inputs.map((input) => (
-                <Form.Item
-                  label={input.label}
-                  name={input.name}
-                  style={{
-                    gridColumn: input.gridColumn,
-                    gridRow: input.gridRow,
-                  }}
-                >
-                  <ReturnInput type={input.type} />
-                  {/* <ModalInput {...input} /> */}
-                  {/* <Input /> */}
+                <ModalInput {...input} />
+                // <Form.Item
+                //   label={input.label}
+                //   name={input.name}
+                //   style={{
+                //     gridColumn: input.gridColumn,
+                //     gridRow: input.gridRow,
+                //   }}
+                // >
+                //   <ReturnInput type={input.type} />
+                //   {/* <ModalInput {...input} /> */}
+                //   {/* <Input /> */}
 
-                  {/* {input.type === STRING && (
-                    <Input
-                      placeholder={input.placeholder}
-                      className={"modal_input"}
-                    />
-                  )}
+                //   {/* {input.type === STRING && (
+                //     <Input
+                //       placeholder={input.placeholder}
+                //       className={"modal_input"}
+                //     />
+                //   )}
 
-                  {input.type === NUMBER && (
-                    <InputNumber className="modal_input" />
-                  )} */}
+                //   {input.type === NUMBER && (
+                //     <InputNumber className="modal_input" />
+                //   )} */}
 
-                  {/* {input.type === SELECT && (
-                    <Select
-                      className="modal_input"
-                    >
-                      {input?.option &&
-                        input?.option?.map((option, i) => (
-                          <Option value={option.value} key={i}>
-                            {option.value}
-                          </Option>
-                        ))}
-                    </Select>
-                  )} */}
-                </Form.Item>
+                //   {/* {input.type === SELECT && (
+                //     <Select
+                //       className="modal_input"
+                //     >
+                //       {input?.option &&
+                //         input?.option?.map((option, i) => (
+                //           <Option value={option.value} key={i}>
+                //             {option.value}
+                //           </Option>
+                //         ))}
+                //     </Select>
+                //   )} */}
+                // </Form.Item>
               ))
             // </>
           )}
 
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            {/* <Button
-              type="submit"
-              className="modal-form__button qaytish"
-              // onClick={(e) => handleCancel(e)}
-            >
-              Orqaga
-            </Button>
-            <Button
-              type="submit"
-              className="modal-form__button saqlash"
-              // onClick={(e) => handleSubmit(e)}
-            >
-              Saqlash
-            </Button> */}
-          </Form.Item>
+          <Button
+            type="submit"
+            className="modal-form__button qaytish"
+            onClick={(e) => handleCancel(e)}
+          >
+            Orqaga
+          </Button>
+          <Button
+            type="submit"
+            className="modal-form__button saqlash"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Saqlash
+          </Button>
         </Form>
       </Modal>
     </div>

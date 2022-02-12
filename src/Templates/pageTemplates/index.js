@@ -13,7 +13,6 @@ import RegionlarTemplate from "../servisChildTemplates/RegionlarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
 import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
-import MijozlarTempalte from "../servisChildTemplates/MijozlarTempalte"
 
 /* ----------------------- client child Page import ---------------------- */
 import PotentsialClientPage from "../ClientTemlates/PotensialClientTemplate";
@@ -38,7 +37,6 @@ export const AllServiceChildPages = [
   ViloyatlarTemplate,
   ShaharTumanTemplate,
   YunalishlarTemplate,
-  MijozlarTempalte
 ];
 
 export const AllClientChildPages = [

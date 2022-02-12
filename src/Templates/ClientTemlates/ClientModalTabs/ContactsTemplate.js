@@ -69,6 +69,7 @@ const ContactsTemplate = {
             gridColumn: "4 / 7",
             gridRow: "3 / 6",
             height: inputDeafultHeght * 3,
+            label: " "
           },
           {
             name: "foto3",
@@ -78,6 +79,7 @@ const ContactsTemplate = {
             gridColumn: "7 / 10",
             gridRow: "3 / 6",
             height: inputDeafultHeght * 3,
+            label: " "
           },
           {
             name: "rahbar_telifon2",
