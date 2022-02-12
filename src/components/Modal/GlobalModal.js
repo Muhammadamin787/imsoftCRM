@@ -53,6 +53,9 @@ const GlobalModal = () => {
     });
   };
 
+  console.log("global modalga uzgartirish kiriting");
+
+
   return (
     <Modal
       style={{ ...currentPage?.modal?.style }}
