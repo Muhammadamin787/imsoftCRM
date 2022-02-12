@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, Form, Tabs, Table } from "antd";
+import {
+  Modal,
+  Button,
+  Form,
+  Tabs,
+  Table,
+  Input,
+  Space,
+  InputNumber,
+  Select,
+} from "antd";
+import { Option } from "antd/lib/mentions";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,9 +18,22 @@ import { toggleModal } from "../../redux/tabs_reducer";
 import { MacRed, MacGreen, MacYellow } from "../../assets/icons/icons";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
+import {
+  DATE,
+  IMAGE,
+  MAP,
+  NUMBER,
+  TEXTAREA,
+  PHONE,
+  SELECT,
+  STRING,
+  UPLOAD,
+} from "./InputTypes";
+import ReturnInput from "./ReturnInput";
 
 const GlobalModal = () => {
   const { currentPage } = useSelector((state) => state.tabs_reducer);
+  const [form] = Form.useForm();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [bounds, setBounds] = useState({
@@ -53,84 +77,140 @@ const GlobalModal = () => {
     });
   };
 
+  /* ------------------------------------ / ----------------------------------- */
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
-    <Modal
-      style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
-      footer={null}
-      title={
-        <div
-          style={{
-            width: currentPage?.modal?.style?.width,
-            cursor: "move",
-          }}
-          onMouseOver={() => {
-            disabled && setDisabled(false);
-          }}
-          onMouseOut={() => setDisabled(true)}
-        >
-          <div className="modal-header">
-            <span>{currentPage?.text}</span>
-            <div className="modal-header__buttons">
-              <Button className="modal-header__button">
-                <MacYellow />
-              </Button>
-              <Button className="modal-header__button">
-                <MacRed />
-              </Button>
-              <Button className="modal-header__button">
-                <MacGreen />
-              </Button>
+    <div>
+      <Modal
+        style={{ ...currentPage?.modal?.style }}
+        width={currentPage?.modal?.style?.width}
+        footer={null}
+        title={
+          <div
+            style={{
+              width: currentPage?.modal?.style?.width,
+              cursor: "move",
+            }}
+            onMouseOver={() => {
+              disabled && setDisabled(false);
+            }}
+            onMouseOut={() => setDisabled(true)}
+          >
+            <div className="modal-header">
+              <span>{currentPage?.text}</span>
+              <div className="modal-header__buttons">
+                <Button className="modal-header__button">
+                  <MacYellow />
+                </Button>
+                <Button className="modal-header__button">
+                  <MacGreen />
+                </Button>
+                <Button className="modal-header__button">
+                  <MacRed />
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      }
-      visible={currentPage.isOpenModal}
-      closable={false}
-      modalRender={(modal) => (
-        <Draggable
-          disabled={disabled}
-          bounds={bounds}
-          onStart={(event, uiData) => onStart(event, uiData)}
+        }
+        visible={currentPage.isOpenModal}
+        closable={false}
+        modalRender={(modal) => (
+          <Draggable
+            disabled={disabled}
+            bounds={bounds}
+            onStart={(event, uiData) => onStart(event, uiData)}
+          >
+            <div ref={draggleRef}>{modal}</div>
+          </Draggable>
+        )}
+      >
+        <Form
+          style={{
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns:
+              currentPage?.form && currentPage?.form[0].grid.columns,
+            gridTemplateRow:
+              currentPage?.form && currentPage?.form[0].grid.rows,
+          }}
+          // form={form}
+          onFinish={onFinish}
+          className="modal__form"
         >
-          <div ref={draggleRef}>{modal}</div>
-        </Draggable>
-      )}
-    >
-      <Form className="modal-form">
-        {currentPage?.form?.map((form) => (
-          <div
-            className="modal-grid__form"
-            key={form?.grid}
-            style={{
-              gridTemplateColumns: form.grid?.columns,
-              gridAutoRows: form.grid?.rows,
-            }}
-          >
-            {form?.inputs?.map((input) => (
-              <ModalInput {...input} key={input?.name} />
-            ))}
-          </div>
-        ))}
-        <ModalTabs tabs={currentPage?.modal?.tabs} />
-        <div className="modal-form_buttons">
-          <Button
-            type="submit"
-            className="modal-form__button qaytish"
-            onClick={(e) => handleCancel(e)}
-          >
-            Orqaga
-          </Button>
-          <Button
-            type="submit"
-            className="modal-form__button saqlash"
-            onClick={(e) => handleSubmit(e)}
-          >
-            Saqlash
-          </Button>
-        </div>
-      </Form>
-    </Modal>
+          {currentPage?.form?.map(
+            (form) =>
+              // <>
+              form.inputs.map((input) => (
+                <Form.Item
+                  label={input.label}
+                  name={input.name}
+                  style={{
+                    gridColumn: input.gridColumn,
+                    gridRow: input.gridRow,
+                  }}
+                >
+                  <ReturnInput type={input.type} />
+                  {/* <ModalInput {...input} /> */}
+                  {/* <Input /> */}
+
+                  {/* {input.type === STRING && (
+                    <Input
+                      placeholder={input.placeholder}
+                      className={"modal_input"}
+                    />
+                  )}
+
+                  {input.type === NUMBER && (
+                    <InputNumber className="modal_input" />
+                  )} */}
+
+                  {/* {input.type === SELECT && (
+                    <Select
+                      className="modal_input"
+                    >
+                      {input?.option &&
+                        input?.option?.map((option, i) => (
+                          <Option value={option.value} key={i}>
+                            {option.value}
+                          </Option>
+                        ))}
+                    </Select>
+                  )} */}
+                </Form.Item>
+              ))
+            // </>
+          )}
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            {/* <Button
+              type="submit"
+              className="modal-form__button qaytish"
+              // onClick={(e) => handleCancel(e)}
+            >
+              Orqaga
+            </Button>
+            <Button
+              type="submit"
+              className="modal-form__button saqlash"
+              // onClick={(e) => handleSubmit(e)}
+            >
+              Saqlash
+            </Button> */}
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
   );
 };
 

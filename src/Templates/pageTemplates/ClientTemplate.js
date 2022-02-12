@@ -4,7 +4,6 @@ import PotensialClientTemplate from '../ClientTemlates/PotensialClientTemplate';
 import RealClientTemplate from '../ClientTemlates/RealClientTemplate';
 import RejactClientTemplate from '../ClientTemlates/RejactClientTemplate'
 
-import {ProfileIcon} from "../../assets/icons/icons";
 import CommentsTemplate from '../ClientTemlates/ClientModalTabs/CommentsTabTemplate';
 import ContactsTemplate from '../ClientTemlates/ClientModalTabs/ContactsTemplate';
 import CommonTemplate from '../ClientTemlates/ClientModalTabs/CommonTemplate';
@@ -25,7 +24,10 @@ const ClientTemplate = {
     },
     // modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
     tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
-    columns: []
+    columns: [...PotensialClientTemplate.columns],
+    filters: [...PotensialClientTemplate.filters],
+    data: [...PotensialClientTemplate.data],
+    // scroll: [...PotensialClientTemplate.scroll],
 };
 
 export default ClientTemplate;

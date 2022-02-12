@@ -25,7 +25,10 @@ const XodimlarTemplate = {
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   modal: {
-    width: 1000,
+    style: {
+      width: 1000,
+      marginTop: "-70px"
+    }
   },
   form: [
     {
