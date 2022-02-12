@@ -1,28 +1,28 @@
-import { Input, InputNumber, DatePicker, Select, Upload } from "antd";
-import { Option } from "antd/lib/mentions";
+import {Input, InputNumber, DatePicker, Select} from "antd";
+import {Option} from "antd/lib/mentions";
 import React from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-  DATE,
-  IMAGE,
-  MAP,
-  NUMBER,
-  TEXTAREA,
-  PHONE,
-  SELECT,
-  STRING,
-  UPLOAD,
+    DATE,
+    IMAGE,
+    MAP,
+    NUMBER,
+    TEXTAREA,
+    PHONE,
+    SELECT,
+    STRING,
+    UPLOAD,
 } from "./InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import UpLoadFile from "./UpLoadFile";
-import { useDispatch } from "react-redux";
-import AvatarUpload from "./AvatarUpload";
+import {useDispatch} from "react-redux";
+import AvatarUpload from "./AvatarUpload"
 
-const { TextArea } = Input;
+
+const {TextArea} = Input;
 
 const ModalInput = ({
                         placeholder,
