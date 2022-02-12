@@ -303,7 +303,7 @@ function AntennaReceive() {
 
 }
 
-function SignallessAntenna() {
+function DeleteItem() {
     return <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M4.61933 0.343353L14.0467 9.77135L13.104 10.714L10.5553 8.16602L9.33333 10V14.6667H6.66667V10L2.66667 4.00002H2V2.66669H5.05667L3.67667 1.28602L4.61933 0.343353ZM14 2.66669V4.00002H13.3333L12.0567 5.91469L8.80867 2.66669H14Z"
@@ -391,7 +391,7 @@ export {
     EditFile,
     Antenna,
     AntennaReceive,
-    SignallessAntenna,
+    DeleteItem,
     Circle,
     MacRed,
     MacGreen,
@@ -428,7 +428,7 @@ const iconArr = [
     EditFile,
     Antenna,
     AntennaReceive,
-    SignallessAntenna,
+    DeleteItem,
     Circle,
     MacRed,
     MacGreen,

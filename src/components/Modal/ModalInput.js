@@ -45,6 +45,8 @@ const ModalInput = ({
             [e.name]: e.value,
         }
         // dispatch(addValuesData(setInputData))
+
+        console.log(setInputData);
     };
 
     switch (type) {
@@ -66,8 +68,8 @@ const ModalInput = ({
                     // value={value}
                     onChange={(e) => {
                         const target = {
-                            name: e.target.name,
-                            value: e.target.value,
+                            [name]: e.target.value,
+                            // value: e.target.value,
                         };
                         handleChangeValue(target);
                     }}
