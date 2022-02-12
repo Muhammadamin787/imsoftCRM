@@ -22,6 +22,12 @@ const YunalishlarTemplate = {
       ],
     },
   ],
+  modal: {
+    style: {
+      width: 500,
+      marginTop: "-70px"
+    }
+  },
   columns: [
     {
       title: <FieldNumberOutlined />,

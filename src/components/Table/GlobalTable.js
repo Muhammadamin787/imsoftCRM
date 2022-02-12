@@ -21,7 +21,7 @@ const GlobalTable = () => {
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      dispatch(setTableItem(selectedRows[0]))
+      dispatch(setTableItem(selectedRows))
     },
     getCheckboxProps: (record) => ({
       disabled: record.name === 'Disabled User',
