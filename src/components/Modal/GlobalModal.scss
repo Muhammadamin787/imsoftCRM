@@ -11,7 +11,6 @@
   padding: 0 !important;
 }
 
-
 .ant-modal-wrap {
   //border: 2px solid green;
   width: 100%;
@@ -21,7 +20,6 @@
 }
 
 .ant-modal {
-
   display: flex !important;
   justify-content: center;
   //border: 2px solid blue;
@@ -128,7 +126,7 @@
         background-color: transparent !important;
         border: none;
         width: 100%;
-        font-size: .98em;
+        font-size: 0.98em;
         text-align: left;
         margin-bottom: 2px;
         padding-left: 0;
@@ -136,7 +134,7 @@
     }
 
     .modal-inputs__label {
-      font-size: .98em;
+      font-size: 0.98em;
       //border: 1px solid red;
       height: 100% !important;
       //width: auto !important;
@@ -170,9 +168,6 @@
       // overflow: hidden;
       cursor: pointer;
 
-      span{
-        
-      }
 
       p{
         color: black !important;
@@ -320,19 +315,18 @@
   }
 }
 
-
-.modal_input{
+.modal_input {
   width: 95% !important;
   display: block !important;
   margin: 0 auto !important;
 }
-.modal__form{
+.modal__form {
   width: 95% !important;
   margin: 0 auto;
   margin-top: 20px;
 }
-.phone_input{
-  input{
+.phone_input {
+  input {
     width: 95%;
     padding: 4px 11px;
     color: rgba(0, 0, 0, 0.85);
@@ -343,11 +337,11 @@
     border: 1px solid #d9d9d9;
     border-radius: 2px;
     transition: all 0.3s;
-    &:hover{
-      border: 1px solid #40a9ff;;
+    &:hover {
+      border: 1px solid #40a9ff;
     }
-    &:focus{
-      outline: 1px solid #40a9ff;;
+    &:focus {
+      outline: 1px solid #40a9ff;
     }
   }
 }
