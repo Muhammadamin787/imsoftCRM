@@ -61,7 +61,7 @@ const Toolbar = ({ tableItem }) => {
     {
       icon: findIcon("EditFile"),
       onClick: tableItem?.length == 1 && onEdit,
-      pop: (tableItem?.length > 1 || tableItem?.length == 0) && noPopEdit?.pop,
+      pop: ((tableItem?.length > 1) || (tableItem?.length == 0) || (tableItem == {})) && noPopEdit?.pop,
     },
 
     {

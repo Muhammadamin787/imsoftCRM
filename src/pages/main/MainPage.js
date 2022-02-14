@@ -15,14 +15,19 @@ import {
 } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
-import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from '../../components/Tabs/BottomTabs';
+import GlobalModal from "../../components/Modal/GlobalModal";
+import { useSelector } from "react-redux";
+import axios from "../../functions/axios"
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
+
+  const {currentPage} = useSelector((state) => state.tabs_reducer)
+
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
   );
@@ -35,6 +40,21 @@ const MainPage = () => {
   const handleSetCurrentPage = (currentPage) => {
     dispatch(setCurrentPage(currentPage));
   };
+
+
+  useEffect(() => {
+    // if (currentPage?.isOpenModal) {
+    // setIsModalVisible(currentPage?.isOpenModal);
+    // }
+    if (currentPage?.allData && currentPage.allData[0]) {
+      const data =  axios(currentPage?.allData[0]);
+
+      dispatch()
+      console.log(data);
+    }
+
+}, [currentPage]);
+
 
 
 
@@ -111,7 +131,9 @@ const MainPage = () => {
             )}
           </Routes>
         </div>
-        <GlobalModal />
+        <GlobalModal/>
+        {/* <GlobalModal2 /> */}
+        {/* <AntdHookForm /> */}
       </Content>
       <Footer className="site-footer">
         <BottomTabs />

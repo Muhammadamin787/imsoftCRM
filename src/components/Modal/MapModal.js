@@ -19,8 +19,7 @@ export default class MapModal extends Component {
     const coords = e.get("coords");
     this.setState({ coords: coords });
     const target = {
-      name:this.props.name,
-      value:this.state.coords
+      [this.props.name]:this.state.coords,
     }
 
     this.props.handleChangeValue(target);
@@ -42,6 +41,7 @@ export default class MapModal extends Component {
               ? this.props.height + "px"
               : inputDeafultHeght + "px",
               borderRadius: "7px",
+              marginTop: "22px"
           }}
         >
           {this.state.coords ? (
