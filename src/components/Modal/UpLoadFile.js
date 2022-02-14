@@ -50,12 +50,12 @@ class UploadFile extends React.Component {
   render() {
     const { loading, imageUrl } = this.state;
 
-    const uploadButton = (
-      <div>
-        {loading ? <LoadingOutlined /> : <PlusOutlined />}
-        <div style={{ marginTop: 8 }}>Upload</div>
-      </div>
-    );
+    // const uploadButton = (
+    //   <div>
+    //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
+    //     <div style={{ marginTop: 8 }}>Upload</div>
+    //   </div>
+    // );
 
     return (
     
@@ -69,7 +69,8 @@ class UploadFile extends React.Component {
               ? this.props.height + "px"
               : inputDeafultHeght + "px",
             width: "100% !important",
-            // textAlign: "center"
+            textAlign: "center",
+            border: "1px solid black",
           }}
         > <p>{this.props.label}</p>
           <Upload

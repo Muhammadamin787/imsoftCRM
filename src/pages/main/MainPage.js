@@ -1,4 +1,4 @@
-import {Link, Route, Routes, NavLink} from "react-router-dom";
+import {Link, Route, Routes, NavLink, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Layout, Menu, Select} from "antd";
 import "./mainPage.scss";
@@ -9,9 +9,7 @@ import {
 } from "../../assets/icons/icons";
 import moment from "moment";
 import {
-    AllPages,
-    AllServiceChildPages,
-    AllClientChildPages,
+  AllPages,
 } from "../../Templates/pageTemplates/index";
 import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
@@ -19,9 +17,12 @@ import {useDispatch} from "react-redux";
 import {setCurrentPage,} from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from '../../components/Tabs/BottomTabs';
-import GlobalModal from "../../components/Modal/GlobalModal";
-import {useSelector} from "react-redux";
-import axios from "../../functions/axios"
+import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
+import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
+import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
+import { useSelector } from "react-redux";
+import axios from '../../functions/axios';
+import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData} from "../../redux/tabs_reducer"
 
 // Bismillahir rohmanyir rohiym!
@@ -42,22 +43,21 @@ const MainPage = ({setCurrentPage}) => {
         dispatch(setCurrentPage(currentPage));
     };
 
+    const {pathname} = useLocation();
 
-  useEffect(() => {
-  
-    if (currentPage?.allData && currentPage.allData[0]) {
-      const data =  axios(currentPage?.allData[0]);
-      data.then(res=>{
-        try {
-          // console.log(res.data.data);
-          dispatch(setData(res.data.data))
-        } catch (e) {
-          console.log(e);
+    useEffect(() => {
+        if (currentPage?.allData && currentPage.allData[0]) {
+            const data = axios(currentPage?.allData[0]);
+            data.then(res => {
+                try {
+                    dispatch(setData(res.data.data))
+                } catch (e) {
+                    console.log(e);
+                }
+            })
         }
-      })
-    }
 
-    }, [currentPage]);
+    }, [currentPage, pathname]);
 
 
     return (
@@ -115,7 +115,7 @@ const MainPage = ({setCurrentPage}) => {
             <Content className="site-layout" style={{marginTop: 64}}>
                 <div>
                     <Routes>
-                        {[...AllPages, ...AllServiceChildPages, ...AllClientChildPages].map(
+                        {[...AllPages, ...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ClientTemplate?.tabs].map(
                             (page, i) =>
                                 page.submenus ? (
                                     page.submenus.map((sub, k) => (

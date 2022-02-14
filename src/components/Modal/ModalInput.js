@@ -20,6 +20,9 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch } from "react-redux";
 import UploadFile from "./UploadFile";
+import {addValuesData} from "../../redux/tabs_reducer"
+
+
 
 const { TextArea } = Input;
 
@@ -40,11 +43,14 @@ const ModalInput = ({
   const dispatch = useDispatch();
 
   const handleChangeValue = (e) => {
-    const setInputData = {
-      [name]: e.value,
-    };
-    // dispatch(addValuesData(setInputData))
+
+    
+
+
     console.log(e);
+    
+    dispatch(addValuesData(e))
+    
   };
 
   switch (type) {
@@ -69,6 +75,9 @@ const ModalInput = ({
               const target = {
                 [name]: e.target.value,
               };
+
+              // console.log(e);
+
               handleChangeValue(target);
             }}
           />
@@ -94,9 +103,11 @@ const ModalInput = ({
           showSearch
           // value={value}
           onChange={(e) => {
+            console.log(e);
             const target = {
-              [name]: e.target.value,
+              [name]: e,
             };
+
             handleChangeValue(target);
           }}
         />
@@ -128,10 +139,10 @@ const ModalInput = ({
             // }}
             // value={value}
             onChange={(e) => {
-              // console.log();
               const target = {
-                [name]: e.target.value,
+                [name]: e,
               };
+              console.log(target);
               handleChangeValue(target);
             }}
           >
@@ -237,11 +248,13 @@ const ModalInput = ({
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
             // border: "1px solid red",
+            // height:"65px !important"
           }}
         >
           {label && label}
           <PhoneInput
             country={"uz"}
+            style={{height: "65px !important"}}
             // style={{
             //     gridColumn: gridColumn,
             //     gridRow: gridRow,
@@ -285,15 +298,15 @@ const ModalInput = ({
 
     case IMAGE:
         input = (
-            <label
-            style={{
-                gridColumn: gridColumn,
-                gridRow: gridRow,
-                height: height ? height + "px !important" : inputDeafultHeght + "px",
-                // border: "1px solid red",
-            }}
-            className="image-input"
-            >
+            // <label
+            // style={{
+            //     gridColumn: gridColumn,
+            //     gridRow: gridRow,
+            //     height: height ? height + "px !important" : inputDeafultHeght + "px",
+            //     // border: "1px solid red",
+            // }}
+            // className="image-input"
+            // >
             <UpLoadJPG
                 id="file-uploder"
                 name={name}
@@ -302,16 +315,8 @@ const ModalInput = ({
                 gridRow={gridRow}
                 height={height}
                 Iconic={Iconic}
-                // value={value}
-                onChange={(data) => {
-                    const target = {
-                        [name]: data.target.file
-                    };
-                    console.log(data);
-                    handleChangeValue(target);
-                }}
             />
-            </label>
+            // </label>
         );
         break;
 

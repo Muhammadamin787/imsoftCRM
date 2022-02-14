@@ -23,12 +23,10 @@ const ClientTemplate = {
             CommonTemplate, ContactsTemplate, CommentsTemplate
         ]
     },
-    // modalTabs:[CommonTemplate, ContactsTemplate, CommentsTemplate],
     tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
     columns: [...PotensialClientTemplate.columns],
     filters: [...PotensialClientTemplate.filters],
     data: [...PotensialClientTemplate.data],
-    // scroll: [...PotensialClientTemplate.scroll],
 };
 
 export default ClientTemplate;

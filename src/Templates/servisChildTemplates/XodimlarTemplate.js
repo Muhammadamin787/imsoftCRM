@@ -108,6 +108,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
                     label: "Manzil",
+                    // height: "40px"
                 },
                 {
                     name: "qushimcha_malumot",
@@ -127,6 +128,7 @@ const XodimlarTemplate = {
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
                     label: "Telifon",
+                    
                 },
                 {
                     name: "pasport",
@@ -166,7 +168,8 @@ const XodimlarTemplate = {
                     placeholder: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
-                    height: inputDeafultHeght * 6,
+                    // height: inputDeafultHeght * 6,
+                    label: "rasmi"
                 },
             ],
         },
@@ -291,7 +294,7 @@ const XodimlarTemplate = {
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
       yunalishi: "Frontend Dasturchi",
-      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
+      qushimcha_malumot: "Izlanuvchan, xatolar ustida yaxshi ishlay oladi",
       hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
       rasmi: "rasmichasi",
       pasport: "",
@@ -316,7 +319,7 @@ const XodimlarTemplate = {
       value: "",
     },
   ],
-  scroll: { x: 1500, y: 380 },
+  scroll: { x: 2000, y: 380 },
 };
 
 export default XodimlarTemplate;

@@ -3,14 +3,16 @@ import {Modal, Button, Form,} from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import {useSelector, useDispatch} from "react-redux";
-import {toggleModal} from "../../redux/tabs_reducer";
+import {toggleModal,addValuesData,setData} from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 
+
 const GlobalModal = () => {
-    const {currentPage} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
+    
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [bounds, setBounds] = useState({
@@ -22,17 +24,6 @@ const GlobalModal = () => {
     const [disabled, setDisabled] = useState(true);
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     // if (currentPage?.isOpenModal) {
-    //     setIsModalVisible(currentPage?.isOpenModal);
-    //     // }
-    //     if (currentPage?.allData && currentPage.allData[0]) {
-    //       const data =  axios(currentPage?.allData[0]);
-
-    //       console.log(data);
-    //     }
-
-    // }, [currentPage]);
 
     const handleCancel = (e) => {
         setIsModalVisible(false);
@@ -45,6 +36,14 @@ const GlobalModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        const data = axios(currentPage?.allData[0],"POST", values);
+        
+        data.then(res => {
+            dispatch(setData(res.data.data))
+        })
+        
+
         setIsModalVisible(false);
         dispatch(toggleModal(false));
     };
@@ -100,7 +99,7 @@ const GlobalModal = () => {
                 </Draggable>
             )}
         >
-            <Form className="modal-form">
+            <Form className="modal-form" >
                 {currentPage?.form?.map((form) => (
                     <div
                         className="modal-grid__form"

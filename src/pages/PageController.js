@@ -6,7 +6,8 @@ import {
     REPORT_PAGE,
     SERVIS_CHILD_PAGES,
     CLIENTS_CHILD_PAGES,
-    CLIENTS_PAGE
+    CLIENTS_PAGE,
+    PROGRAMMERS_CHILD_PAGES,
 } from "./pageConstants/PageTypes";
 import FirstPage from "./mainPage/FirstPage";
 import ProgrammesPage from "./programmesPage/ProgrammesPage";
@@ -14,7 +15,7 @@ import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
 import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
 import ClientsPage from "./clientsPage/ClientsPage";
-import ClientPageChild from "./clientsPage/clientPageChild/ClientPageChild";
+
 
 export const PageController = ({page}) => {
     switch (page.type) {
@@ -31,7 +32,9 @@ export const PageController = ({page}) => {
         case SERVIS_CHILD_PAGES:
             return <ServicePageChild page={page}/>;
         case CLIENTS_CHILD_PAGES:
-            return <ClientPageChild page={page}/>;
+            return <ClientsPage page={page}/>;
+        case PROGRAMMERS_CHILD_PAGES:
+            return <ProgrammesPage page={page}/>;
         default:
             return <h1>Not found</h1>;
     }

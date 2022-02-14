@@ -9,14 +9,14 @@ const ViloyatlarTemplate = {
   path: VILOYATLAR_PATH,
   icon: "Group",
   type: SERVIS_CHILD_PAGES,
-  allData:["/states"],
+  allData:["/states/"],
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "Viloyatlar",
+          name: "name",
           type: STRING,
           required: true,
           placeholder:"Viloyatlar",

@@ -1,10 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from "lodash";
-import axios from "../functions/axios";
-import {
-    AllClientChildPages,
-    AllServiceChildPages,
-} from "../Templates/pageTemplates/index";
+import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
+import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
+import ServiceTemplate from '../Templates/pageTemplates/ServiceTemplate'
+import axios from "../functions/axios"
+
+
 export const counterSlice = createSlice({
     name: "tabs_data",
     initialState: {
@@ -16,12 +17,16 @@ export const counterSlice = createSlice({
     },
     reducers: {
         addNewTab: (state, {payload}) => {
-            const bool = [...AllServiceChildPages, ...AllClientChildPages]?.find((a) =>
+            const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
+            console.log(bool);
             if (bool) {
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
+        },
+        clearPanes: (state, {payload}) =>{
+            state.Panes = payload;
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
@@ -54,10 +59,16 @@ export const counterSlice = createSlice({
         },
         removeTableItem: (state, {payload}) => {
 
-             state.tableItem.map((el) => {          
-                 console.log(el.number);       
-                axios(`${state.currentPage?.allData}/${el.number}`, "DELETE")
+             state.tableItem.map((el) => {               
+                axios(`${state.currentPage?.allData[0]}${el.number}`, "DELETE")
             })
+
+            const data = axios(state.currentPage?.allData[0])
+
+            data.then((res) => {
+                state.data = res.data.data
+            })
+
 
 
         },
@@ -71,11 +82,12 @@ export const counterSlice = createSlice({
         },
         addValuesData: (state, {payload}) => {
             state.values = {...state.values, ...payload};
+
         },
 
         setData: (state, {payload}) => {
             state.data = payload;
-            console.log(payload);
+            // console.log(payload);
         }
 
     },
@@ -93,7 +105,9 @@ export const {
     editTableItem,
     changePanesModal,
     toggleTableType,
-    setData
+    clearPanes,
+    setData,
+    addValuesData
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
