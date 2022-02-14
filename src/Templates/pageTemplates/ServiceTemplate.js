@@ -19,12 +19,15 @@ const ServiceTemplate = {
   sections: 
   [
     FaoliyatTurlariTemplate,
+    ViloyatlarTemplate,
+    // states
+    ShaharTumanTemplate,
+    // cites
+    RegionlarTemplate,
+    // discret
     YunalishlarTemplate,
     XodimlarTemplate,
-    RegionlarTemplate,
     ReklamalarTemplate,
-    ViloyatlarTemplate,
-    ShaharTumanTemplate,
   ],
 };
 
