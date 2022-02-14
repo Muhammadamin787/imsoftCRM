@@ -10,6 +10,7 @@ const FaolyatTurlaiTemplate = {
   icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
+  allData:["/activity-types"],
   form: [
     {
       grid: "1fr",

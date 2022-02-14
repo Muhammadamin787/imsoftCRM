@@ -1,4 +1,4 @@
-import {Link, Route, Routes, NavLink} from "react-router-dom";
+import {Link, Route, Routes, NavLink, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Layout, Menu, Select} from "antd";
 import "./mainPage.scss";
@@ -23,6 +23,8 @@ import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
 import { useSelector } from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
+import {setData} from "../../redux/tabs_reducer"
+
 // Bismillahir rohmanyir rohiym!
 const MainPage = ({setCurrentPage}) => {
 
@@ -41,19 +43,22 @@ const MainPage = ({setCurrentPage}) => {
         dispatch(setCurrentPage(currentPage));
     };
 
+    const {pathname} = useLocation();
 
     useEffect(() => {
-        // if (currentPage?.isOpenModal) {
-        // setIsModalVisible(currentPage?.isOpenModal);
-        // }
         if (currentPage?.allData && currentPage.allData[0]) {
             const data = axios(currentPage?.allData[0]);
-
-            // dispatch()
-            console.log(data);
+            data.then(res => {
+                try {
+                    console.log(res.data.data);
+                    dispatch(setData(res.data.data))
+                } catch (e) {
+                    console.log(e);
+                }
+            })
         }
 
-    }, [currentPage]);
+    }, [currentPage, pathname]);
 
 
     return (

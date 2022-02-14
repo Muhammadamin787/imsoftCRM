@@ -73,6 +73,7 @@ export const counterSlice = createSlice({
 
         setData: (state, {payload}) => {
             state.data = payload;
+            console.log(payload);
         }
 
     },
@@ -90,7 +91,8 @@ export const {
     editTableItem,
     changePanesModal,
     toggleTableType,
-    clearPanes
+    clearPanes,
+    setData
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

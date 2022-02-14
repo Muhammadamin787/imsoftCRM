@@ -24,6 +24,7 @@ const XodimlarTemplate = {
     icon: "Xodimlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
+    allData:["/workers"],
     modal: {
         style: {
             width: 1000,
