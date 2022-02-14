@@ -9,6 +9,7 @@ const ShaharTumanTemplate = {
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
+  allData:["/cities"],
   isOpenModal: false,
   form: [
     {

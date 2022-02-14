@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from "lodash";
+import axios from "../functions/axios";
 import {
     AllClientChildPages,
     AllServiceChildPages,
@@ -52,9 +53,13 @@ export const counterSlice = createSlice({
             state.tableItem = payload;
         },
         removeTableItem: (state, {payload}) => {
-            state.currentPage.data = state.currentPage?.data?.filter(
-                (el) => el.number != payload.number
-            );
+
+             state.tableItem.map((el) => {          
+                 console.log(el.number);       
+                axios(`${state.currentPage?.allData}/${el.number}`, "DELETE")
+            })
+
+
         },
         editTableItem: (state, {payload}) => {
             const www = state.currentPage.data.find(

@@ -31,8 +31,9 @@ const Toolbar = ({ tableItem }) => {
   };
 
   const onRemove = () => {
-    dispatch(removeTableItem(tableItem));
-    message.info("Malumot uchirildi.");
+    dispatch(removeTableItem());
+    console.log(tableItem);
+    // message.info("Malumot uchirildi.");
   };
 
   const onEdit = () => {

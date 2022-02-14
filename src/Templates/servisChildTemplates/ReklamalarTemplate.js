@@ -9,6 +9,7 @@ const ReklamalarTemplate = {
   path: REKLAMALAR_PATH,
   icon: "Reklamalar",
   type: SERVIS_CHILD_PAGES,
+	allData:["/reklams"],
   isOpenModal: false,
   form: [
     {

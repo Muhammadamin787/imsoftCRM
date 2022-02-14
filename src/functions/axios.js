@@ -24,5 +24,3 @@ export default async (url, method = "GET", data = null, id = null) => {
 };
 
 
-// axios()
-
