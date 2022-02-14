@@ -1,30 +1,25 @@
-import React from 'react';
-import "./programmesPage.scss"
+import { useState } from "react";
+import "./programmesPage.scss";
 import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
-import {Table, Tabs} from 'antd';
+import { Layout } from "antd";
 import InnerTable from "../../components/Table/innerTable/InnerTable";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
+import ProgrammesPageChild from "./programmesPageChild/ProgrammesPageChild";
 
+const ProgrammesPage = ({ page }) => {
+  console.log(page);
+  const dispatch = useDispatch();
 
-const ProgrammesPage = ({page}) => {
-    const {TabPane} = Tabs;
-
-    function callback(key) {
-    }
-
-    return (
-        <div className='programmes-page'>
-            <Toolbar currentPage={page}/>
-            <Tabs defaultActiveKey="0" onChange={callback} className="programmes-tabs">
-                {
-                    page?.tabs?.map((tab,i) =>
-                        <TabPane tab={tab.text} key={i}>
-                            <InnerTable innerTable={tab}/>
-                        </TabPane>
-                    )
-                }
-            </Tabs>
-        </div>
-    );
+  dispatch(setCurrentPage(page));
+  return (
+    <div className="">
+      <Layout>
+        <ProgrammesPageChild activeKey={page.key} />
+      </Layout>
+    </div>
+  );
 };
 
 export default ProgrammesPage;

@@ -118,11 +118,8 @@
   .site-footer {
     background-color: #fff;
     padding: 0;
-    // border: 1px solid red;
-    height: 64px;
-
     .site-footer__content {
-      padding: 0px 40px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -138,7 +135,7 @@
 
       .site-footer-clock {
         font-size: 1.2em;
-        color: #4447e2;
+        color: var(--main-color);
         font-weight: 600;
       }
     }

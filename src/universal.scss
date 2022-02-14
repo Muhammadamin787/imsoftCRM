@@ -1,9 +1,11 @@
 :root {
-  --main-color: #000C17;
+  --main-color: #4447e2;
   --second-color: #1890FF;
-  --global-background-color: #E5E5E5;
 }
 
-.site-layout__body{
+.site-layout__body {
   overflow: scroll;
+}
+.ant__loyout{
+  // width: 95%;
 }

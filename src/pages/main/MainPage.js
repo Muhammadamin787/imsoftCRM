@@ -12,8 +12,6 @@ import {
 import moment from "moment";
 import {
   AllPages,
-  AllServiceChildPages,
-  AllClientChildPages,
 } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
@@ -21,7 +19,10 @@ import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
 import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
-import BottomTabs from '../../components/Tabs/BottomTabs'
+import BottomTabs from '../../components/Tabs/BottomTabs';
+import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
+import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
+import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const [currentTime, setCurrentTime] = useState(
@@ -94,7 +95,7 @@ const MainPage = () => {
       <Content className="site-layout" style={{ marginTop: 64 }}>
         <div>
           <Routes>
-            {[...AllPages, ...AllServiceChildPages, ...AllClientChildPages].map(
+            {[...AllPages, ...ServiceTemplate?.sections, ...ProgrammsTemplate.tabs, ...ClientTemplate?.tabs].map(
               (page, i) =>
                 page.submenus ? (
                   page.submenus.map((sub, k) => (

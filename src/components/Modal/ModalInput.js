@@ -20,7 +20,7 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import {useDispatch} from "react-redux";
 import AvatarUpload from "./AvatarUpload"
-
+import UpLoadFile from './UpLoadFile';
 
 const {TextArea} = Input;
 
@@ -275,32 +275,32 @@ const ModalInput = ({
 
         case UPLOAD:
             input = (
-                // <UpLoadFile
-                //   id="file-uploder"
-                //   name={name}
-                //   placeholder={placeholder}
-                //   gridColumn={gridColumn}
-                //   gridRow={gridRow}
-                //   height={height}
-                //   Iconic={Iconic}
-                //   // value={value}
-                //   onChange={(data) => {
-                //     const e = {
-                //       name: data,
-                //     };
-                //     handleChangeValue(e);
-                //   }}
-                // />
-                <AvatarUpload
-                    id="file-uploder"
-                    name={name}
-                    placeholder={placeholder}
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    Iconic={Iconic}
-                    label={label}
+                <UpLoadFile
+                  id="file-uploder"
+                  name={name}
+                  placeholder={placeholder}
+                  gridColumn={gridColumn}
+                  gridRow={gridRow}
+                  height={height}
+                  Iconic={Iconic}
+                  // value={value}
+                  onChange={(data) => {
+                    const e = {
+                      name: data,
+                    };
+                    handleChangeValue(e);
+                  }}
                 />
+                // <AvatarUpload
+                //     id="file-uploder"
+                //     name={name}
+                //     placeholder={placeholder}
+                //     gridColumn={gridColumn}
+                //     gridRow={gridRow}
+                //     height={height}
+                //     Iconic={Iconic}
+                //     label={label}
+                // />
             );
             break;
 

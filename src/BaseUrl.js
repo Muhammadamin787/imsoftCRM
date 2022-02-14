@@ -1,1 +1,1 @@
-export const BaseUrl = "/uroq"
+export const BaseUrl = "http://farruhrg.beget.tech/api"

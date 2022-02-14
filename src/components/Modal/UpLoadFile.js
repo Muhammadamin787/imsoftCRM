@@ -55,60 +55,62 @@ const UpLoadFile = ({
     }
     setImgFile(info.file);
   };
-
+console.log(name);
   return (
-    <label
-      className="file-uploader-label"
-      style={{
-        gridColumn: gridColumn,
-        gridRow: gridRow,
-        height: height ? height + "px" : inputDeafultHeght + "px",
-        width: "100% !important",
-        textAlign: "center",
-      }}
-      htmlFor="file-uploder"
-    >
-      
-      <Upload
-        id="file-uploder"
-        name={name}
-        placeholder={placeholder}
-        alt="file"
-        beforeUpload={beforeUpload}
-        onClick={handleChange}
-        type="file"
-        maxCount={1}
-        showUploadList={false}
-        // value={values}
+      <label
+        className="file-uploader-label"
+        style={{
+          gridColumn: gridColumn,
+          gridRow: gridRow,
+          height: height ? height + "px" : inputDeafultHeght + "px",
+          width: "100% !important",
+          textAlign: "center",
+        }}
+        htmlFor="file-uploder"
       >
-        {Iconic  && <Iconic />}
-        {imgFile?.name ? (
-          imgFile?.name
-        ) : (
-          <div
-            style={{
-              height: height,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {imgFile.name ? (
-              imgFile.name
-            ) : (
-              <span
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                {placeholder + " yuklash"}
-              </span>
-            )}
-          </div>
-        )}
-      </Upload>
-    </label>
+        <Upload
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          alt="file"
+          beforeUpload={beforeUpload}
+          onClick={handleChange}
+          type="file"
+          maxCount={1}
+          showUploadList={false}
+          // value={values}
+        >
+          {Iconic && <Iconic />}
+          {imgFile?.name ? (
+            imgFile?.name
+          ) : (
+            <div
+              style={{
+                height: height,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "relative"
+              }}
+            >
+              {imgFile.name ? (
+                imgFile.name
+              ) : (
+                <span
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    position: "absolute",
+                    overflow: "unset"
+                  }}
+                >
+                  {placeholder + " yuklash"}
+                </span>
+              )}
+            </div>
+          )}
+        </Upload>
+      </label>
   );
 };
 

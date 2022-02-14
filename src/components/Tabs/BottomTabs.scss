@@ -1,8 +1,19 @@
+.bottom__tabs_relative{
+  position: relative;
+  .clear__all{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+  }
+}
 .site-footer__tabs {
   display: flex;
-  background-color: #4447e2;
-  height: 30px;
-
+  background-color: var(--main-color);
+  height: 31px;
   .site-footer__tab {
     background: #5154ff !important;
     border-radius: 5px;

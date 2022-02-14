@@ -18,3 +18,11 @@ export const TEST_PATH = "/servis/test";
 export const INKOR_MIJOZLAR = "/clients/inkor_mijozlar";
 export const REAL_MIJOZLAR = "/clients/real_mijozlar";
 export const POTENSIAL_MIJOZLAR = "/clients/potensial_mijozlar";
+
+/* ------------------------ path of programmers pages ----------------------- */
+
+export const YANGI_DASTURLAR = '/programmers/yangi_dasturlar';
+export const JARAYONDAGI = '/programmers/jarayondagi';
+export const OQITILAYOTGAN = '/programmers/oqitilayotgan';
+export const TOPSHIRILGAN = '/programmers/topshirilgan';
+export const BEKOR_QILINGAN = '/programmers/bekor_qilingan';

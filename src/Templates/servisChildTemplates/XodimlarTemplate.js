@@ -155,7 +155,7 @@ const XodimlarTemplate = {
                     required: true,
                     placeholder: "hozirgi turgan joyi (map quyiladi)",
                     gridColumn: "10 / 16",
-                    gridRow: "4 / 7",
+                    gridRow: "4 / 6",
                     height: inputDeafultHeght * 3.2,
                 },
                 {
@@ -291,7 +291,7 @@ const XodimlarTemplate = {
       manzil: "Galatoy 82 A",
       tugilgan_sana: "01/21/2005",
       yunalishi: "Frontend Dasturchi",
-      qushimcha_malumot: "Izlanuvchan,xatolar ustida yaxshi ishlay oladi",
+      qushimcha_malumot: "Izlanuvchan, xatolar ustida yaxshi ishlay oladi",
       hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
       rasmi: "rasmichasi",
       pasport: "",
@@ -316,7 +316,7 @@ const XodimlarTemplate = {
       value: "",
     },
   ],
-  scroll: { x: 1500, y: 380 },
+  scroll: { x: 2000, y: 380 },
 };
 
 export default XodimlarTemplate;

@@ -11,7 +11,6 @@
   padding: 0 !important;
 }
 
-
 .ant-modal-wrap {
   //border: 2px solid green;
   width: 100%;
@@ -21,14 +20,13 @@
 }
 
 .ant-modal {
-
   display: flex !important;
   justify-content: center;
   //border: 2px solid blue;
 }
 
 .ant-modal-title {
-  background-color: #4447E2;
+  background-color: var(----main-color);
 }
 
 .ant-modal-content {
@@ -55,7 +53,7 @@
     //border-top-left-radius: 15px;
     //border-top-right-radius: 15px;
     width: 100%;
-    background-color: #4447e2;
+    background-color: var(--main-color);
     height: 40px;
     padding: 0 15px 0 15px;
     display: flex;
@@ -71,7 +69,7 @@
       justify-content: flex-end;
 
       .modal-header__button {
-        background-color: #4447e2;
+        background-color: var(--main-color);
         outline: none;
         border: none;
         height: 15px;
@@ -129,7 +127,7 @@
         border: none;
         //border: 1px solid #ccc;
         width: 100%;
-        font-size: .98em;
+        font-size: 0.98em;
         text-align: left;
         margin-bottom: 2px;
         padding-left: 0;
@@ -137,7 +135,7 @@
     }
 
     .modal-inputs__label {
-      font-size: .98em;
+      font-size: 0.98em;
       //border: 1px solid red;
       height: 100% !important;
       //width: auto !important;
@@ -178,7 +176,6 @@
     #file-uploder {
       display: none;
     }
-
 
     .ant-input-number {
       background-color: #f1f4f8;
@@ -266,13 +263,13 @@
     }
 
     .qaytish {
-      border: 1px solid #4447e2;
-      color: #4447e2;
+      border: 1px solid var(--main-color);
+      color: var(--main-color);
     }
 
     .saqlash {
       color: #ffffff;
-      background-color: #4447e2;
+      background-color: var(--main-color);
     }
   }
 }
@@ -293,19 +290,18 @@
   }
 }
 
-
-.modal_input{
+.modal_input {
   width: 95% !important;
   display: block !important;
   margin: 0 auto !important;
 }
-.modal__form{
+.modal__form {
   width: 95% !important;
   margin: 0 auto;
   margin-top: 20px;
 }
-.phone_input{
-  input{
+.phone_input {
+  input {
     width: 95%;
     padding: 4px 11px;
     color: rgba(0, 0, 0, 0.85);
@@ -316,11 +312,11 @@
     border: 1px solid #d9d9d9;
     border-radius: 2px;
     transition: all 0.3s;
-    &:hover{
-      border: 1px solid #40a9ff;;
+    &:hover {
+      border: 1px solid #40a9ff;
     }
-    &:focus{
-      outline: 1px solid #40a9ff;;
+    &:focus {
+      outline: 1px solid #40a9ff;
     }
   }
 }

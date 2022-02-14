@@ -1,5 +1,5 @@
 .toolbar {
-  background-color: #4447e2;
+  background-color: var(--main-color);
   height: 35px;
   width: 100%;
   color: #ffffff;
@@ -69,38 +69,4 @@
     }
   }
 
-  .toolbar__buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding-right: 5px;
-    height: 100%;
-    width: 70px;
-
-    .child-page__button {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      cursor: pointer;
-      font-size: 10px;
-      font-weight: 600;
-      color: transparent;
-      &:hover{
-        color: #ffffff;
-      }
-    }
-    .green_btn{
-      background-color: #24C33D;
-    }
-    .yellow_btn{
-      background-color: #F7B629;
-    }
-    .red_btn{
-      background-color: #F65951;
-    }
-  }
 }
