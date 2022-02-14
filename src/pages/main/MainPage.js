@@ -111,7 +111,7 @@ const MainPage = ({setCurrentPage}) => {
             <Content className="site-layout" style={{marginTop: 64}}>
                 <div>
                     <Routes>
-                        {[...AllPages, ...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ClientTemplate?.tabs].map(
+                        {[...AllPages, ...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs].map(
                             (page, i) =>
                                 page.submenus ? (
                                     page.submenus.map((sub, k) => (
