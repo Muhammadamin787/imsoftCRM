@@ -5,31 +5,16 @@ import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSp
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import { NewProgrammsTemplate } from "../programmsTabTemplates/NewProgrammsTemplate";
+import { LearningProgrammesTemplate } from "../programmsTabTemplates/LearningProgrammesTemplate";
+import { ProcessProgrammesTemplate } from "../programmsTabTemplates/ProcessProgrammesTemplate";
+import { RejactProgrammesTemplate } from "../programmsTabTemplates/RejactProgrammesTemplate";
+import { SubmittedProgrammesTemplate } from "../programmsTabTemplates/SubmittedProgrammesTemplate";
 
 const ProgrammsTemplate = {
   text: "Dasturlar",
   path: PROGRAMMES_PATH,
   icon: "VectorIcon",
   type: PROGRAMMES_PAGE,
-  tabs: [
-    NewProgrammsTemplate,
-    {
-      text: "Jarayondagi",
-      columns: NewProgrammsTemplate.columns,
-    },
-    {
-      text: "O’qitilayotgan",
-      columns: NewProgrammsTemplate.columns,
-    },
-    {
-      text: "Topshiriligan",
-      columns: NewProgrammsTemplate.columns,
-    },
-    {
-      text: "Bekor qilingan",
-      columns: NewProgrammsTemplate.columns,
-    },
-  ],
   isOpenModal: false,
   modal: {
     style: {
@@ -52,7 +37,7 @@ const ProgrammsTemplate = {
           placeholder: "Mijoz",
           gridColumn: "1 / 10",
           gridRow: "1 / 2",
-          label: " ",
+          label: "Mijoz",
         },
         {
           name: "order_start_date",
@@ -103,6 +88,7 @@ const ProgrammsTemplate = {
       innerTable: [],
     },
   ],
+  columns: [...NewProgrammsTemplate.columns],
   data: [
     {
       number: 22,
@@ -124,6 +110,13 @@ const ProgrammsTemplate = {
       by_client: "Qurbonali",
       staff: "Komilbek",
     },
+  ],
+  tabs: [
+    NewProgrammsTemplate,
+    ProcessProgrammesTemplate,
+    LearningProgrammesTemplate,
+    SubmittedProgrammesTemplate,
+    RejactProgrammesTemplate,
   ],
 };
 

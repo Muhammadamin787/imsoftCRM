@@ -1,43 +1,45 @@
 import React, {useState, useEffect, useRef} from "react";
-import {Modal, Button, Form, Tabs, Table} from "antd";
+import {Modal, Button, Form,} from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleModal } from "../../redux/tabs_reducer";
-import { MacRed, MacGreen, MacYellow } from "../../assets/icons/icons";
+import {useSelector, useDispatch} from "react-redux";
+import {toggleModal} from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 
 const GlobalModal = () => {
-  const { currentPage } = useSelector((state) => state.tabs_reducer);
+    const {currentPage} = useSelector((state) => state.tabs_reducer);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [bounds, setBounds] = useState({
-    left: 0,
-    top: 0,
-    bottom: 0,
-    right: 0,
-  });
-  const [disabled, setDisabled] = useState(true);
-  const dispatch = useDispatch();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [bounds, setBounds] = useState({
+        left: 0,
+        top: 0,
+        bottom: 0,
+        right: 0,
+    });
+    const [disabled, setDisabled] = useState(true);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        // if (currentPage?.isOpenModal) {
-        setIsModalVisible(currentPage?.isOpenModal);
-        // }
-        if (currentPage?.allData && currentPage.allData[0]) {
-            axios(currentPage?.allData[0]);
-        }
-    }, [currentPage]);
+    // useEffect(() => {
+    //     // if (currentPage?.isOpenModal) {
+    //     setIsModalVisible(currentPage?.isOpenModal);
+    //     // }
+    //     if (currentPage?.allData && currentPage.allData[0]) {
+    //       const data =  axios(currentPage?.allData[0]);
+
+    //       console.log(data);
+    //     }
+
+    // }, [currentPage]);
 
     const handleCancel = (e) => {
         setIsModalVisible(false);
         dispatch(toggleModal(false));
     };
 
-    const resizeModal = (e) => {
+    const resizeModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
@@ -48,19 +50,19 @@ const GlobalModal = () => {
     };
     const draggleRef = useRef("s");
 
-  const onStart = (event, uiData) => {
-    const { clientWidth, clientHeight } = window.document.documentElement;
-    const targetRect = draggleRef.current?.getBoundingClientRect();
-    if (!targetRect) {
-      return;
-    }
-    setBounds({
-      left: -targetRect.left + uiData.x,
-      right: clientWidth - (targetRect.right - uiData.x),
-      top: -targetRect.top + uiData.y,
-      bottom: clientHeight - (targetRect.bottom - uiData.y),
-    });
-  };
+    const onStart = (event, uiData) => {
+        const {clientWidth, clientHeight} = window.document.documentElement;
+        const targetRect = draggleRef.current?.getBoundingClientRect();
+        if (!targetRect) {
+            return;
+        }
+        setBounds({
+            left: -targetRect.left + uiData.x,
+            right: clientWidth - (targetRect.right - uiData.x),
+            top: -targetRect.top + uiData.y,
+            bottom: clientHeight - (targetRect.bottom - uiData.y),
+        });
+    };
 
     return (
         <Modal

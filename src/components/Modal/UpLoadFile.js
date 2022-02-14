@@ -1,115 +1,94 @@
-import React, { useState } from "react";
 import { Upload, message } from "antd";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import React from "react";
 import "./GlobalModal.scss";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 
-const UpLoadFile = ({
-  placeholder,
-  value,
-  gridColumn,
-  gridRow,
-  height,
-  name,
-  Iconic,
-  label,
-}) => {
-  const [imgFile, setImgFile] = useState({});
-  const [wait, setLoading] = useState({ loading: false });
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
 
-  function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => callback(reader?.result));
-    reader.readAsDataURL(img);
+function beforeUpload(file) {
+  const isJpgOrPng =
+    file.type === "application/pdf" ||
+    file.type === "application/msword" ||
+    file.type ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    file.type === "image/jpeg" ||
+    file.type === "image/png";
+
+  if (!isJpgOrPng) {
+    message.error("You can only upload JPG/PNG file!");
   }
+  return isJpgOrPng;
+}
 
-  function beforeUpload(file) {
-    const isJpgOrPng =
-      file.type === "application/pdf" ||
-      file.type === "application/msword" ||
-      file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-      file.type === "image/jpeg" ||
-      file.type === "image/png";
+class UploadFile extends React.Component {
+  state = {
+    loading: false,
+    imageUrl: ""
+  };
 
-    if (!isJpgOrPng) {
-      message.error(
-        "File turi mos kelmadi. Siz faqat pdf, msword, doc, png, jpeg!"
-      );
-    }
-    setImgFile(file);
-    return isJpgOrPng;
-  }
-
-  const handleChange = (info) => {
-    if (info.file.status === "uploading") {
-      setLoading({ loading: true });
-      return;
-    }
+  handleChange = (info) => {
+    // if (info.file.status === 'uploading') {
+    //   this.setState({ loading: true });
+    //   return;
+    // }
     if (info.file.status === "done") {
+      // Get this url from response in real world.
       getBase64(info.file.originFileObj, (imageUrl) =>
-        setLoading({
-          imageUrl,
-          loading: false,
+        this.setState({
+          imageUrl
+          // loading: false,
         })
       );
     }
-    setImgFile(info.file);
   };
 
-  return (
-    <label
-      className="file-uploader-label"
-      style={{
-        gridColumn: gridColumn,
-        gridRow: gridRow,
-        height: height ? height + "px" : inputDeafultHeght + "px",
-        width: "100% !important",
-        textAlign: "center",
-      }}
-      htmlFor="file-uploder"
-    >
-      
-      <Upload
-        id="file-uploder"
-        name={name}
-        placeholder={placeholder}
-        alt="file"
-        beforeUpload={beforeUpload}
-        onClick={handleChange}
-        type="file"
-        maxCount={1}
-        showUploadList={false}
-        // value={values}
-      >
-        {Iconic  && <Iconic />}
-        {imgFile?.name ? (
-          imgFile?.name
-        ) : (
-          <div
-            style={{
-              height: height,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {imgFile.name ? (
-              imgFile.name
-            ) : (
-              <span
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                {placeholder + " yuklash"}
-              </span>
-            )}
-          </div>
-        )}
-      </Upload>
-    </label>
-  );
-};
+  render() {
+    const { loading, imageUrl } = this.state;
 
-export default UpLoadFile;
+    const uploadButton = (
+      <div>
+        {loading ? <LoadingOutlined /> : <PlusOutlined />}
+        <div style={{ marginTop: 8 }}>Upload</div>
+      </div>
+    );
+
+    return (
+    
+        <label
+          className="file-uploader-label"
+          htmlFor="file-uploder"
+          style={{
+            gridColumn: this.props.gridColumn,
+            gridRow: this.props.gridRow,
+            height: this.props.height
+              ? this.props.height + "px"
+              : inputDeafultHeght + "px",
+            width: "100% !important",
+            // textAlign: "center"
+          }}
+        > <p>{this.props.label}</p>
+          <Upload
+            id="file-uploder"
+            name={this.props.name}
+            placeholder={this.props.placeholder}
+            alt="file"
+            beforeUpload={beforeUpload}
+            onClick={this.props.handleChange}
+            type="file"
+            maxCount={1}
+            showUploadList={false}
+            // value={values}
+          >
+            {this.props.Iconic && <this.props.Iconic />}
+          </Upload>
+        </label>
+    );
+  }
+}
+
+export default UploadFile;

@@ -10,6 +10,7 @@ const YunalishlarTemplate = {
   icon:  "Yunalishlar" ,
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
+  allData:["/directions"],
   form: [
     {
       grid: "1fr",

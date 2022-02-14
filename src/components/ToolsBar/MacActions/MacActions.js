@@ -1,11 +1,8 @@
 import {useState} from "react";
-import { MacGreen, MacRed, MacYellow } from "../../../assets/icons/icons";
+import {CloseIcon, DashIcon,} from "../../../assets/icons/icons";
 import { changePanes, setCurrentPage } from "../../../redux/tabs_reducer";
 import {
-  LineOutlined,
-  CloseOutlined,
-  FullscreenExitOutlined,
-  FullscreenOutlined
+    FullscreenExitOutlined,
 } from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -49,7 +46,7 @@ const MacActions = ({onResize, onHide, onExit}) => {
 
     const macButtons = [
         {
-            icon: <LineOutlined/>,
+            icon: <DashIcon/>,
             className: "green_btn",
             onClick: onHide ? onHide : () => removeCurrentPage("minimize")
         },
@@ -59,7 +56,7 @@ const MacActions = ({onResize, onHide, onExit}) => {
             onClick: onResize || toggleFullScreen
         },
         {
-            icon: <CloseOutlined/>,
+            icon: <CloseIcon/>,
             className: "red_btn",
             onClick: onExit ? onExit :   () => removeCurrentPage()
         },

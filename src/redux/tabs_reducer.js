@@ -1,25 +1,29 @@
 import {createSlice} from "@reduxjs/toolkit";
 import _ from "lodash";
-import {
-    AllClientChildPages,
-    AllServiceChildPages,
-} from "../Templates/pageTemplates/index";
+import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
+import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
+import ServiceTemplate from '../Templates/pageTemplates/ServiceTemplate'
 export const counterSlice = createSlice({
     name: "tabs_data",
     initialState: {
         Panes: [],
         currentPage: {},
+        data:[],
         tableItem: {},
         values: {},
     },
     reducers: {
         addNewTab: (state, {payload}) => {
-            const bool = [...AllServiceChildPages, ...AllClientChildPages]?.find((a) =>
+            const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
+            console.log(bool);
             if (bool) {
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
+        },
+        clearPanes: (state, {payload}) =>{
+            state.Panes = payload;
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
@@ -67,6 +71,11 @@ export const counterSlice = createSlice({
             state.values = {...state.values, ...payload};
         },
 
+        setData: (state, {payload}) => {
+            state.data = payload;
+            console.log(payload);
+        }
+
     },
 });
 
@@ -81,7 +90,9 @@ export const {
     removeTableItem,
     editTableItem,
     changePanesModal,
-    toggleTableType
+    toggleTableType,
+    clearPanes,
+    setData
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

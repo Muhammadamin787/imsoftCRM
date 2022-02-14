@@ -11,7 +11,6 @@
   padding: 0 !important;
 }
 
-
 .ant-modal-wrap {
   //border: 2px solid green;
   width: 100%;
@@ -21,7 +20,6 @@
 }
 
 .ant-modal {
-
   display: flex !important;
   justify-content: center;
   //border: 2px solid blue;
@@ -56,7 +54,7 @@
     //border-top-right-radius: 15px;
     width: 100%;
     background-color: var(--main-color);
-    height: 40px;
+    height: 35px;
     padding: 0 15px 0 15px;
     display: flex;
     justify-content: space-between;
@@ -100,14 +98,14 @@
   .modal-grid__form {
     width: 100%;
     display: grid;
-    grid-gap: 20px 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    grid-gap: 10px 20px;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
 
     .ant-input {
       background-color: #f1f4f8;
       width: 100%;
-      height: 40px;
+      height: 35px;
       padding-left: 10px;
       font-weight: 400;
       border-radius: 7px;
@@ -127,9 +125,8 @@
       .ant-input-group-addon {
         background-color: transparent !important;
         border: none;
-        //border: 1px solid #ccc;
         width: 100%;
-        font-size: .98em;
+        font-size: 0.98em;
         text-align: left;
         margin-bottom: 2px;
         padding-left: 0;
@@ -137,7 +134,7 @@
     }
 
     .modal-inputs__label {
-      font-size: .98em;
+      font-size: 0.98em;
       //border: 1px solid red;
       height: 100% !important;
       //width: auto !important;
@@ -153,11 +150,13 @@
       line-height: 20px;
       border: none;
       outline: none;
+      margin-top: 20px;
+
     }
 
     .file-uploader-label {
       // padding: 10px 0 0 0;
-      cursor: pointer;
+      margin-top: 22px;
       background-color: #f1f4f8;
       width: 100% !important;
       font-weight: 400;
@@ -166,17 +165,40 @@
       line-height: 20px;
       border: none;
       outline: none;
-      overflow: hidden;
-      border: 2px solid green;
+      // overflow: hidden;
+      cursor: pointer;
 
+
+      p{
+        color: black !important;
+        // border: 1px solid red;
+        // display: block;
+        // padding-bottom: 10px;
+        transform: translateY(-22px);
+        text-align: start;
+        font-size:14px;
+        // font-style: unset;
+        // font-weight: 12px;
+      }
+      
       .file-uploader__icon {
-        width: 20px;
-        height: 20px;
+        // width: 10px;
+        height: 5px;
+        // margin-left: 10px;
+        // border: 1px solid green;
+        // svg{
+        //   border: 1px solid red;
+        // }
       }
     }
 
     #file-uploder {
       display: none;
+    }
+
+    .image-input{
+      // height: 30px;
+      margin-top: 22px;
     }
 
 
@@ -198,7 +220,7 @@
 
     .ant-select-single {
       background-color: #f1f4f8;
-      height: 40px;
+      height: 35px;
       width: 100%;
       font-weight: 400;
       border-radius: 7px;
@@ -218,7 +240,7 @@
     .ant-picker {
       background-color: #f1f4f8;
       width: 100%;
-      height: 40px;
+      height: 35px;
       padding-left: 10px;
       font-weight: 400;
       border-radius: 7px;
@@ -230,7 +252,7 @@
     .react-tel-input {
       background-color: #f1f4f8;
       width: 100%;
-      height: 40px;
+      height: 35px;
       font-weight: 400;
       border-radius: 7px;
       font-size: 12px;
@@ -259,7 +281,7 @@
     .modal-form__button {
       width: 150px;
       border-radius: 7px;
-      height: 40px;
+      height: 35px;
       font-weight: 400;
       font-size: 13px;
       line-height: 20px;
@@ -293,19 +315,18 @@
   }
 }
 
-
-.modal_input{
+.modal_input {
   width: 95% !important;
   display: block !important;
   margin: 0 auto !important;
 }
-.modal__form{
+.modal__form {
   width: 95% !important;
   margin: 0 auto;
   margin-top: 20px;
 }
-.phone_input{
-  input{
+.phone_input {
+  input {
     width: 95%;
     padding: 4px 11px;
     color: rgba(0, 0, 0, 0.85);
@@ -316,11 +337,11 @@
     border: 1px solid #d9d9d9;
     border-radius: 2px;
     transition: all 0.3s;
-    &:hover{
-      border: 1px solid #40a9ff;;
+    &:hover {
+      border: 1px solid #40a9ff;
     }
-    &:focus{
-      outline: 1px solid #40a9ff;;
+    &:focus {
+      outline: 1px solid #40a9ff;
     }
   }
 }

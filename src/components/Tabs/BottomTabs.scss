@@ -1,11 +1,22 @@
+.bottom__tabs_relative{
+  position: relative;
+  .clear__all{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+  }
+}
 .site-footer__tabs {
   display: flex;
   background-color: var(--main-color);
-  height: 30px;
-
+  height: 31px;
   .site-footer__tab {
     background: #5154ff !important;
-    border-radius: 5px;
+    //border-radius: 5px;
     color: #ffffff;
     display: flex;
     justify-content: center;
@@ -28,14 +39,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 0;
-    font-size: 14px;
+    //padding: 12px 0;
+    //font-size: 14px;
     background: transparent;
     border: 0;
     height: 30px;
     min-width: 100px;
     outline: none;
     cursor: pointer;
+
     .anticon-close {
       position: absolute;
       right: 5px;
@@ -51,6 +63,7 @@
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   background: #5154ff;
-  border-radius: 5px;
-  color: #ffffff;
+  //background: red;
+  //border-radius: 5px;
+  //color: #ffffff;
 }
