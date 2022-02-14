@@ -1,4 +1,4 @@
-import {Link, Route, Routes, NavLink} from "react-router-dom";
+import {Link, Route, Routes, NavLink, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Layout, Menu, Select} from "antd";
 import "./mainPage.scss";
@@ -42,22 +42,22 @@ const MainPage = ({setCurrentPage}) => {
         dispatch(setCurrentPage(currentPage));
     };
 
+    const {pathname} = useLocation();
 
-  useEffect(() => {
-  
-    if (currentPage?.allData && currentPage.allData[0]) {
-      const data =  axios(currentPage?.allData[0]);
-      data.then(res=>{
-        try {
-          // console.log(res.data.data);
-          dispatch(setData(res.data.data))
-        } catch (e) {
-          console.log(e);
+    useEffect(() => {
+        if (currentPage?.allData && currentPage.allData[0]) {
+            const data = axios(currentPage?.allData[0]);
+            data.then(res => {
+                try {
+                    console.log(res.data.data);
+                    dispatch(setData(res.data.data))
+                } catch (e) {
+                    console.log(e);
+                }
+            })
         }
-      })
-    }
 
-    }, [currentPage]);
+    }, [currentPage, pathname]);
 
 
     return (

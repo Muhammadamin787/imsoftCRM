@@ -19,7 +19,7 @@ import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch } from "react-redux";
-import UploadFile from "./UploadFile";
+import UploadFile from "./UpLoadFile";
 
 const { TextArea } = Input;
 

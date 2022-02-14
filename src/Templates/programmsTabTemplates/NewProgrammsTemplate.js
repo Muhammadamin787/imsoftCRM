@@ -1,8 +1,15 @@
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
+import {CLIENTS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
+import {POTENSIAL_MIJOZLAR} from "../../pages/pageConstants/PageRoutes";
 
 export const NewProgrammsTemplate = {
     text: "Yangi dasturlar",
+    key: "0",
+    path: "/newProgramms",
+    allData: ["/projects"],
+    type: CLIENTS_CHILD_PAGES,
+
     columns: [  
         {
             title: <FieldNumberOutlined/>,
