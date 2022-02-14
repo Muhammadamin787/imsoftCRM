@@ -25,6 +25,7 @@ import BottomTabs from '../../components/Tabs/BottomTabs';
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useSelector } from "react-redux";
 import axios from "../../functions/axios"
+import {setData} from "../../redux/tabs_reducer"
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -46,14 +47,17 @@ const MainPage = () => {
 
 
   useEffect(() => {
-    // if (currentPage?.isOpenModal) {
-    // setIsModalVisible(currentPage?.isOpenModal);
-    // }
+  
     if (currentPage?.allData && currentPage.allData[0]) {
       const data =  axios(currentPage?.allData[0]);
-
-      dispatch()
-      console.log(data);
+      data.then(res=>{
+        try {
+          // console.log(res.data.data);
+          dispatch(setData(res.data.data))
+        } catch (e) {
+          console.log(e);
+        }
+      })
     }
 
 }, [currentPage]);
