@@ -11,7 +11,9 @@ const RegionlarTemplate = {
     icon: "Regionlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    allData: ["/regions"],
+    allData: [
+        "/regions"
+    ],
     form: [
         {
             grid: {

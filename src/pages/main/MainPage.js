@@ -1,13 +1,11 @@
 import { Link, Route, Routes, NavLink } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Select } from "antd";
 import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
 import {
   CompanyLogo,
   findIcon,
-  GlobusIcon2,
-  TelegramIcon,
 } from "../../assets/icons/icons";
 import moment from "moment";
 import {
@@ -19,9 +17,8 @@ import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import { useDispatch } from "react-redux";
-import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
+import { setCurrentPage, } from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
-// import BottomTabs from "../../components/Tabs/BottomTabs";
 import BottomTabs from '../../components/Tabs/BottomTabs';
 
 // Bismillahir rohmanyir rohiym!
@@ -118,16 +115,16 @@ const MainPage = () => {
       </Content>
       <Footer className="site-footer">
         <BottomTabs />
-        <div className="site-footer__content">
-          <div className="site-footer__icons">
-            <GlobusIcon2 />
-            <TelegramIcon />
-          </div>
-          <div className="site-footer__text">
-            © 2021 - Барча ҳуқуқлар ҳимояланган
-          </div>
-          <div className="site-footer-clock">{currentTime}</div>
-        </div>
+        {/*<div className="site-footer__content">*/}
+        {/*  <div className="site-footer__icons">*/}
+        {/*    <GlobusIcon2 />*/}
+        {/*    <TelegramIcon />*/}
+        {/*  </div>*/}
+        {/*  <div className="site-footer__text">*/}
+        {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
+        {/*  </div>*/}
+        {/*  <div className="site-footer-clock">{currentTime}</div>*/}
+        {/*</div>*/}
       </Footer>
     </Layout>
   );

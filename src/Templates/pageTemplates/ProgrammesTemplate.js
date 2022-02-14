@@ -52,7 +52,7 @@ const ProgrammsTemplate = {
           placeholder: "Mijoz",
           gridColumn: "1 / 10",
           gridRow: "1 / 2",
-          label: " ",
+          label: "Mijoz",
         },
         {
           name: "order_start_date",
