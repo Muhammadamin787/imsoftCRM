@@ -9,6 +9,7 @@ export const counterSlice = createSlice({
     initialState: {
         Panes: [],
         currentPage: {},
+        data:[],
         tableItem: {},
         values: {},
     },
@@ -66,6 +67,10 @@ export const counterSlice = createSlice({
         addValuesData: (state, {payload}) => {
             state.values = {...state.values, ...payload};
         },
+
+        setData: (state, {payload}) => {
+            state.data = payload;
+        }
 
     },
 });

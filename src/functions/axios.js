@@ -1,5 +1,6 @@
 import {message} from "antd";
 import axios from "axios";
+import { useEffect } from "react";
 import {BaseUrl} from "../BaseUrl";
 
 const key = "error";
@@ -19,3 +20,6 @@ export default async (url, method = "GET", data = null, id = null) => {
 		}
 	}
 };
+
+
+

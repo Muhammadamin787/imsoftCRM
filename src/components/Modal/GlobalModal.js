@@ -23,14 +23,17 @@ const GlobalModal = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-    useEffect(() => {
-        // if (currentPage?.isOpenModal) {
-        setIsModalVisible(currentPage?.isOpenModal);
-        // }
-        if (currentPage?.allData && currentPage.allData[0]) {
-            axios(currentPage?.allData[0]);
-        }
-    }, [currentPage]);
+    // useEffect(() => {
+    //     // if (currentPage?.isOpenModal) {
+    //     setIsModalVisible(currentPage?.isOpenModal);
+    //     // }
+    //     if (currentPage?.allData && currentPage.allData[0]) {
+    //       const data =  axios(currentPage?.allData[0]);
+
+    //       console.log(data);
+    //     }
+
+    // }, [currentPage]);
 
     const handleCancel = (e) => {
         setIsModalVisible(false);
