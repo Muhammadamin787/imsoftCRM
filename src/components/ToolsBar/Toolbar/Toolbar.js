@@ -9,7 +9,6 @@ import {Button, message, Popconfirm, Tooltip} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import {findIcon} from "../../../assets/icons/icons";
-import useSelection from "antd/es/table/hooks/useSelection";
 
 const Toolbar = ({tableItem}) => {
     const dispatch = useDispatch();
