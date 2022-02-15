@@ -47,7 +47,7 @@ const ModalInput = ({
     
 
 
-    console.log(e);
+    // console.log(e);
     
     dispatch(addValuesData(e))
     

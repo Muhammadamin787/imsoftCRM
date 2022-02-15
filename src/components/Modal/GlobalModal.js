@@ -45,7 +45,8 @@ const GlobalModal = () => {
         data.then(res => {
             dispatch(setData(res.data.data))
         })
-        
+
+        console.log(data)
 
     };
     const draggleRef = useRef("s");
