@@ -9,8 +9,8 @@ const persistConfig = {
   key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel1,
-  // whiteList: ["nimadurReducer"],
-  // blacklist:["nimadurReducer"]
+  // whiteList: ["tabs_reducer"],
+  blacklist:["tabs_reducer"]
 };
 
 const reducers = combineReducers({

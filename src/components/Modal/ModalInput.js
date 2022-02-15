@@ -1,6 +1,6 @@
-import { Input, InputNumber, DatePicker, Select } from "antd";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
 import { Option } from "antd/lib/mentions";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -18,10 +18,10 @@ import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
-import {addValuesData} from "../../redux/tabs_reducer"
-
+import { addValuesData } from "../../redux/tabs_reducer"
+import axios from "../../functions/axios"
 
 
 const { TextArea } = Input;
@@ -33,24 +33,27 @@ const ModalInput = ({
   gridColumn,
   label,
   type,
-  option,
   height,
-  width,
   Iconic,
+  path
 }) => {
   let input = null;
-
   const dispatch = useDispatch();
+  const { currentPage } = useSelector((state) => state.tabs_reducer)
+
+
+  const [options, setOptions] = useState("")
+
+  useEffect(() => {
+      const data = axios(path);
+      data.then((res) => {
+        setOptions(res?.data?.data)
+      });
+  }, [currentPage])
+
 
   const handleChangeValue = (e) => {
-
-    
-
-
-    // console.log(e);
-    
     dispatch(addValuesData(e))
-    
   };
 
   switch (type) {
@@ -146,10 +149,10 @@ const ModalInput = ({
               handleChangeValue(target);
             }}
           >
-            {option &&
-              option?.map((option, i) => (
-                <Option value={option.value} key={i}>
-                  {option.value}
+            {options &&
+              options?.map((option, i) => (
+                <Option value={option.id} key={option.id}>
+                  {option.name}
                 </Option>
               ))}
           </Select>
@@ -158,17 +161,17 @@ const ModalInput = ({
       break;
 
     case MAP:
-        input = (
-            <MapModal
+      input = (
+        <MapModal
 
-                gridColumn={gridColumn}
-                gridRow={gridRow}
-                height={height}
-                name={name}
-                handleChangeValue={handleChangeValue}
-            />
-        );
-        break;
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          name={name}
+          handleChangeValue={handleChangeValue}
+        />
+      );
+      break;
 
     case DATE:
       input = (
@@ -254,7 +257,7 @@ const ModalInput = ({
           {label && label}
           <PhoneInput
             country={"uz"}
-            style={{height: "65px !important"}}
+            style={{ height: "65px !important" }}
             // style={{
             //     gridColumn: gridColumn,
             //     gridRow: gridRow,
@@ -283,43 +286,43 @@ const ModalInput = ({
     case UPLOAD:
 
       input = (
-          <UploadFile
-            id="file-uploder"
-            name={name}
-            placeholder={placeholder}
-            gridColumn={gridColumn}
-            gridRow={gridRow}
-            height={height}
-            Iconic={Iconic}
-            label={label}
-          />
+        <UploadFile
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+        />
       );
       break;
 
     case IMAGE:
-        input = (
-            // <label
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px !important" : inputDeafultHeght + "px",
-            //     // border: "1px solid red",
-            // }}
-            // className="image-input"
-            // >
-            <UpLoadJPG
-                id="file-uploder"
-                name={name}
-                placeholder={placeholder}
-                gridColumn={gridColumn}
-                gridRow={gridRow}
-                height={height}
-                Iconic={Iconic}
-                label={label}
-            />
-            // </label>
-        );
-        break;
+      input = (
+        // <label
+        // style={{
+        //     gridColumn: gridColumn,
+        //     gridRow: gridRow,
+        //     height: height ? height + "px !important" : inputDeafultHeght + "px",
+        //     // border: "1px solid red",
+        // }}
+        // className="image-input"
+        // >
+        <UpLoadJPG
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+        />
+        // </label>
+      );
+      break;
 
     default:
       break;

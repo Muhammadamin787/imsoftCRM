@@ -3,11 +3,12 @@ import React from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';
-import {setTableItem} from "../../redux/tabs_reducer"
+import {setTableItem} from "../../redux/tabs_reducer";
+import { message } from "antd";
 
 
 const GlobalTable = () => {
-  const { currentPage } = useSelector((state) => state?.tabs_reducer);
+  const { currentPage, data } = useSelector((state) => state?.tabs_reducer);
 
   const dispatch = useDispatch()
 
@@ -29,7 +30,9 @@ const GlobalTable = () => {
       name: record.name,
     }),
   };
-    
+
+    // console.log(currentPage?.data);
+    console.log(data);
 
 
   return (
@@ -37,7 +40,7 @@ const GlobalTable = () => {
           bordered
           columns={filteredColumns}
           className="main-table"
-          dataSource={currentPage?.data}
+          dataSource={data}
           size={"small"}
           scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
           pagination={{ position: ["bottomCenter"] }}
