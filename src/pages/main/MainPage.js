@@ -9,18 +9,18 @@ import {
 } from "../../assets/icons/icons";
 import moment from "moment";
 import {
-  AllPages,
+    AllPages,
 } from "../../Templates/pageTemplates/index";
 import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import {useDispatch} from "react-redux";
-import {setCurrentPage,} from "../../redux/tabs_reducer";
+import {setCurrentPage, startLoading, stopLoading,} from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from '../../components/Tabs/BottomTabs';
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData} from "../../redux/tabs_reducer"
@@ -46,18 +46,18 @@ const MainPage = ({setCurrentPage}) => {
     const {pathname} = useLocation();
 
     useEffect(() => {
+        dispatch(setData([]));
         if (currentPage?.allData && currentPage.allData[0]) {
+            dispatch(startLoading());
             const data = axios(currentPage?.allData[0]);
             data.then(res => {
-                try {
-                    dispatch(setData(res.data.data))
-                } catch (e) {
-                    // console.log(e);
-                }
+                dispatch(setData(res.data.data))
+            }).then(r => {
+                dispatch(stopLoading());
             })
         }
 
-    }, [currentPage, pathname]);
+    }, [pathname]);
 
 
     return (

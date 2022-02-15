@@ -11,7 +11,8 @@ export const counterSlice = createSlice({
     initialState: {
         Panes: [],
         currentPage: {},
-        data:[],
+        mainData: [],
+        loading: false,
         tableItem: {},
         values: {},
     },
@@ -25,13 +26,13 @@ export const counterSlice = createSlice({
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
         },
-        clearPanes: (state, {payload}) =>{
+        clearPanes: (state, {payload}) => {
             state.Panes = payload;
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
         },
-        changePanesModal: (s, {payload}) =>{
+        changePanesModal: (s, {payload}) => {
             s.Panes = payload.panes;
             s.currentPage = payload.currentPage;
         },
@@ -59,16 +60,15 @@ export const counterSlice = createSlice({
         },
         removeTableItem: (state, {payload}) => {
 
-             state.tableItem.map((el) => {               
+            state.tableItem.map((el) => {
                 axios(`${state.currentPage?.allData[0]}${el.number}`, "DELETE")
             })
 
             const data = axios(state.currentPage?.allData[0])
 
             data.then((res) => {
-                state.data = res.data.data
+                state.mainData = res.data.data
             })
-
 
 
         },
@@ -84,10 +84,15 @@ export const counterSlice = createSlice({
             state.values = {...state.values, ...payload};
 
         },
-
         setData: (state, {payload}) => {
-            state.data = payload;
+            state.mainData = payload;
             // console.log(payload);
+        },
+        startLoading: (state) => {
+            state.loading = true;
+        },
+        stopLoading: (state) => {
+            state.loading = false;
         }
 
     },
@@ -107,6 +112,8 @@ export const {
     toggleTableType,
     clearPanes,
     setData,
+    stopLoading,
+    startLoading,
     addValuesData
 } = counterSlice.actions;
 
