@@ -33,6 +33,7 @@ const FaolyatTurlaiTemplate = {
       key: "id",
       width: "10%",
       align: "center",
+      render: (text, data, index) => ++index,
     },
     {
       title: "Faoliyat turi",

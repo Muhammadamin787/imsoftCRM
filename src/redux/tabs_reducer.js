@@ -94,7 +94,6 @@ export const counterSlice = createSlice({
         },
         setData: (state, { payload }) => {
             state.mainData = payload;
-            // console.log(payload);
         },
         startLoading: (state) => {
             state.loading = true;

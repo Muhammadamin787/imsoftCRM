@@ -32,6 +32,7 @@ const ReklamalarTemplate = {
       key: "id",
       width: "5%",
       align: "center",
+      render: (text, data, i) => ++i
     },
     {
       title: "Reklama Nomi",
