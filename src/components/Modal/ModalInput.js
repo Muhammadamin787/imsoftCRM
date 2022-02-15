@@ -1,6 +1,6 @@
-import { Input, InputNumber, DatePicker, Select } from "antd";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
 import { Option } from "antd/lib/mentions";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -18,9 +18,11 @@ import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
-import { addValuesData } from "../../redux/tabs_reducer";
+import { addValuesData } from "../../redux/tabs_reducer"
+import axios from "../../functions/axios"
+
 
 const { TextArea } = Input;
 
@@ -31,17 +33,27 @@ const ModalInput = ({
   gridColumn,
   label,
   type,
-  option,
   height,
-  width,
   Iconic,
+  path
 }) => {
   let input = null;
-
   const dispatch = useDispatch();
+  const { currentPage } = useSelector((state) => state.tabs_reducer)
+
+
+  const [options, setOptions] = useState("")
+
+  useEffect(() => {
+      const data = axios(path);
+      data.then((res) => {
+        setOptions(res?.data?.data)
+      });
+  }, [currentPage])
+
 
   const handleChangeValue = (e) => {
-    dispatch(addValuesData(e));
+    dispatch(addValuesData(e))
   };
 
   switch (type) {
@@ -136,10 +148,10 @@ const ModalInput = ({
               handleChangeValue(target);
             }}
           >
-            {option &&
-              option?.map((option, i) => (
-                <Option value={option.value} key={i}>
-                  {option.value}
+            {options &&
+              options?.map((option, i) => (
+                <Option value={option.id} key={option.id}>
+                  {option.name}
                 </Option>
               ))}
           </Select>
@@ -155,7 +167,6 @@ const ModalInput = ({
           height={height}
           name={name}
           handleChangeValue={handleChangeValue}
-          required
         />
       );
       break;
@@ -284,7 +295,6 @@ const ModalInput = ({
           height={height}
           Iconic={Iconic}
           label={label}
-          required
         />
       );
       break;
@@ -308,7 +318,6 @@ const ModalInput = ({
           gridRow={gridRow}
           height={height}
           Iconic={Iconic}
-          required
           label={label}
         />
         // </label>

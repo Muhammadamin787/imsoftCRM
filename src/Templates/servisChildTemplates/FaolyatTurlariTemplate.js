@@ -22,14 +22,6 @@ const FaolyatTurlaiTemplate = {
           placeholder: "Faolyat turi nomi",
           label: "Faolyat turi"
         },
-        {
-          name: "category_id",
-          type: STRING,
-          required: true,
-          placeholder: "Category",
-          label: "category",
-
-        },
       ],
     },
   ],

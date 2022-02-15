@@ -15,6 +15,7 @@ export const counterSlice = createSlice({
         loading: false,
         tableItem: {},
         values: {},
+        allData:[]
     },
     reducers: {
         addNewTab: (state, {payload}) => {
