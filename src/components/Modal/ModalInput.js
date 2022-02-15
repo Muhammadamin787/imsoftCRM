@@ -283,7 +283,6 @@ const ModalInput = ({
           height={height}
           Iconic={Iconic}
           label={label}
-          required
         />
       );
       break;
@@ -307,7 +306,6 @@ const ModalInput = ({
           gridRow={gridRow}
           height={height}
           Iconic={Iconic}
-          required
           label={label}
         />
         // </label>
