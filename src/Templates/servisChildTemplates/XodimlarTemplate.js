@@ -1,7 +1,7 @@
 import React from "react";
 import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {UploadFileOilasi, UploadFilePasport} from "../../assets/icons/icons";
+import {FileBlueIcon, UploadFileOilasi, UploadFilePasport} from "../../assets/icons/icons";
 import {
     STRING,
     DATE,
@@ -237,7 +237,7 @@ const XodimlarTemplate = {
             title: "Rasmi",
             dataIndex: "developer_photo",
             key: "developer_photo",
-            width: "15%",
+            width: "10%",
             align,
             render: (_, record) => {
                 return (
@@ -260,7 +260,7 @@ const XodimlarTemplate = {
             title: "Passport",
             dataIndex: "passport",
             key: "passport",
-            width: "15%",
+            width: "11%",
             align,
             render: (_, record) => {
                 return (
@@ -283,8 +283,9 @@ const XodimlarTemplate = {
             title: "Oilasi",
             dataIndex: "family",
             key: "family",
-            width: "20%",
+            width: "8%",
             align,
+            render: (text => <FileBlueIcon/>)
         },
         {
             title: "Xarita",
@@ -297,8 +298,16 @@ const XodimlarTemplate = {
             title: "Qo'shimcha ma'lumot",
             dataIndex: "about",
             key: "about",
-            width: "35%",
+            width: "45%",
             align,
+            render: (text => <div style={{
+                height: "50px",
+                overflow: "scroll",
+                fontSize: ".9em",
+                margin: "-2px 0",
+                padding: 0,
+                border: "1px solid red"
+            }}>{text}</div>)
         },
     ],
     scroll: {x: 2000, y: 380},
