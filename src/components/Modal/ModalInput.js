@@ -35,21 +35,13 @@ const ModalInput = ({
   type,
   height,
   Iconic,
-  path
+  options,
 }) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state) => state.tabs_reducer)
+  const { currentPage, allData } = useSelector((state) => state.tabs_reducer);
 
 
-  const [options, setOptions] = useState("")
-
-  useEffect(() => {
-      const data = axios(path);
-      data.then((res) => {
-        setOptions(res?.data?.data)
-      });
-  }, [currentPage])
 
 
   const handleChangeValue = (e) => {
@@ -149,12 +141,11 @@ const ModalInput = ({
               handleChangeValue(target);
             }}
           >
-            {options &&
-              options?.map((option, i) => (
-                <Option value={option.id} key={option.id}>
-                  {option.name}
-                </Option>
-              ))}
+            {allData && allData[options]?.map((option, i) => (
+              <Option value={option.id} key={option.id}>
+                {option.name}
+              </Option>
+            ))}
           </Select>
         </label>
       );

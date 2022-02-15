@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
@@ -15,10 +15,17 @@ export const counterSlice = createSlice({
         loading: false,
         tableItem: {},
         values: {},
-        allData:[]
+        allData: {
+            states: [
+                {id:"22",name:"eee"},
+                {id:"23",name:"gj"},
+                {id:"24",name:"rty"},
+                 
+            ],
+        }
     },
     reducers: {
-        addNewTab: (state, {payload}) => {
+        addNewTab: (state, { payload }) => {
             const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
@@ -27,23 +34,23 @@ export const counterSlice = createSlice({
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
         },
-        clearPanes: (state, {payload}) => {
+        clearPanes: (state, { payload }) => {
             state.Panes = payload;
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
         },
-        changePanesModal: (s, {payload}) => {
+        changePanesModal: (s, { payload }) => {
             s.Panes = payload.panes;
             s.currentPage = payload.currentPage;
         },
-        changePanes: (state, {payload}) => {
+        changePanes: (state, { payload }) => {
             state.Panes.splice(payload, 1);
         },
-        toggleModal: (state, {payload}) => {
+        toggleModal: (state, { payload }) => {
             state.currentPage.isOpenModal = payload;
         },
-        setCurrentPage: (state, {payload}) => {
+        setCurrentPage: (state, { payload }) => {
             if (!payload?.sections) {
                 // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
                 state.currentPage = payload;
@@ -51,15 +58,15 @@ export const counterSlice = createSlice({
                 state.currentPage = {};
             }
         },
-        changeCurrentPageData: (state, {payload}) => {
+        changeCurrentPageData: (state, { payload }) => {
             if (payload) {
                 state.currentPage.data = payload;
             }
         },
-        setTableItem: (state, {payload}) => {
+        setTableItem: (state, { payload }) => {
             state.tableItem = payload;
         },
-        removeTableItem: (state, {payload}) => {
+        removeTableItem: (state, { payload }) => {
 
             state.tableItem.map((el) => {
                 axios(`${state.currentPage?.mainUrl}/${el.number}`, "DELETE")
@@ -73,7 +80,7 @@ export const counterSlice = createSlice({
 
 
         },
-        editTableItem: (state, {payload}) => {
+        editTableItem: (state, { payload }) => {
             const www = state.currentPage.data.find(
                 (data) => data.number === state.tableItem.number
             );
@@ -81,11 +88,11 @@ export const counterSlice = createSlice({
                 state.currentPage[www.number] = www;
             }
         },
-        addValuesData: (state, {payload}) => {
-            state.values = {...state.values, ...payload};
+        addValuesData: (state, { payload }) => {
+            state.values = { ...state.values, ...payload };
 
         },
-        setData: (state, {payload}) => {
+        setData: (state, { payload }) => {
             state.mainData = payload;
             // console.log(payload);
         },
@@ -94,7 +101,10 @@ export const counterSlice = createSlice({
         },
         stopLoading: (state) => {
             state.loading = false;
-        }
+        },
+        setAllData: (state, { payload }) => {
+            state.allData = { ...state.allData, payload };
+        },
 
     },
 });
@@ -115,7 +125,8 @@ export const {
     setData,
     stopLoading,
     startLoading,
-    addValuesData
+    addValuesData,
+    setAllData
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

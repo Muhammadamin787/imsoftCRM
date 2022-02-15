@@ -10,6 +10,8 @@ import { message } from "antd";
 const GlobalTable = () => {
   const {currentPage, mainData, loading} = useSelector((state) => state?.tabs_reducer);
 
+  console.log(mainData);
+
   const dispatch = useDispatch()
 
   let filteredColumns = [];
