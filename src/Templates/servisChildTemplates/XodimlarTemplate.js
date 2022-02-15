@@ -223,7 +223,7 @@ const XodimlarTemplate = {
             title: "Tug'ilgan sana",
             dataIndex: "born_date",
             key: "born_date",
-            width: "30%",
+            width: "26%",
             align,
         },
         {
@@ -246,7 +246,7 @@ const XodimlarTemplate = {
                             {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
                             <img
                                 alt="img"
-                                src={record.rasmi}
+                                src={record.developer_photo}
                                 width="30"
                                 height="30"
                                 style={{objectFit: "contain"}}
@@ -262,6 +262,22 @@ const XodimlarTemplate = {
             key: "passport",
             width: "15%",
             align,
+            render: (_, record) => {
+                return (
+                    <Zoom zoomMargin={10}>
+                        <picture>
+                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+                            <img
+                                alt="img"
+                                src={record.passport}
+                                width="30"
+                                height="30"
+                                style={{objectFit: "contain"}}
+                            />
+                        </picture>
+                    </Zoom>
+                );
+            },
         },
         {
             title: "Oilasi",
