@@ -14,7 +14,7 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  tabs_reducer: tabs_reducer
+  tabs_reducer
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

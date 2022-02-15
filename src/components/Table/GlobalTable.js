@@ -7,7 +7,7 @@ import {setTableItem} from "../../redux/tabs_reducer"
 
 
 const GlobalTable = () => {
-  const { currentPage } = useSelector((state) => state?.tabs_reducer);
+  const {currentPage, mainData, loading} = useSelector((state) => state?.tabs_reducer);
 
   const dispatch = useDispatch()
 
@@ -17,7 +17,6 @@ const GlobalTable = () => {
   }else{
     filteredColumns = currentPage?.columns;
   }
-
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -35,9 +34,10 @@ const GlobalTable = () => {
   return (
       <Table
           bordered
+          loading={loading}
           columns={filteredColumns}
           className="main-table"
-          dataSource={currentPage?.data}
+          dataSource={mainData}
           size={"small"}
           scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
           pagination={{ position: ["bottomCenter"] }}
