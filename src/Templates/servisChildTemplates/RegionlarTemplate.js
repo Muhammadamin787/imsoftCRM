@@ -11,9 +11,10 @@ const RegionlarTemplate = {
     icon: "Regionlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: true,
-    allData: [
-        "/districts"
-    ],
+    mainUrl:"/districts",
+    // allData: [
+    //     "/districts"
+    // ],
     form: [
         {
             grid: {

@@ -13,8 +13,9 @@ const ClientTemplate = {
     path: CLIENTS_PATH,
     icon: "ProfileIcon",
     type: CLIENTS_PAGE,
+    mainUrl:"/clients",
     isOpenModal: false,
-    allData: ["/clients"],
+    // allData: ["/clients"],
     modal: {
         style: {
             width: 1200,

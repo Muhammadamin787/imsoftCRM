@@ -47,9 +47,9 @@ const MainPage = ({setCurrentPage}) => {
 
     useEffect(() => {
         dispatch(setData([]));
-        if (currentPage?.allData && currentPage.allData[0]) {
+        if (currentPage?.mainUrl && currentPage.mainUrl) {
             dispatch(startLoading());
-            const data = axios(currentPage?.allData[0]);
+            const data = axios(currentPage?.mainUrl);
             data.then(res => {
                 dispatch(setData(res.data.data))
             }).then(r => {

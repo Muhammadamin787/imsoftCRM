@@ -9,7 +9,8 @@ const ShaharTumanTemplate = {
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
-  allData:["/cities", "/states"],
+  mainUrl:"/cities",
+  allData:["/states"],
   // allData: {
   //   cities: "/cities",
   //   states: "/states",

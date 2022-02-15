@@ -44,12 +44,12 @@ const GlobalModal = () => {
         dispatch(toggleModal(false));
 
         try {
-            const data = axios(currentPage?.allData[0], "POST", values);
+            const data = axios(currentPage?.mainUrl, "POST", values);
             data.then((res) => {
                 message.success({ content: res.data.data, key: e });
             });
 
-            const newGetData = axios(currentPage?.allData[0]);
+            const newGetData = axios(currentPage?.mainUrl);
 
             newGetData.then((res) => {
                 dispatch(setData(res.data.data))

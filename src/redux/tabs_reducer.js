@@ -62,10 +62,10 @@ export const counterSlice = createSlice({
         removeTableItem: (state, {payload}) => {
 
             state.tableItem.map((el) => {
-                axios(`${state.currentPage?.allData[0]}${el.number}`, "DELETE")
+                axios(`${state.currentPage?.mainUrl}/${el.number}`, "DELETE")
             })
 
-            const data = axios(state.currentPage?.allData[0])
+            const data = axios(state.currentPage?.mainUrl)
 
             data.then((res) => {
                 state.mainData = res.data.data
