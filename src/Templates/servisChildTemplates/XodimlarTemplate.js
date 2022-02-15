@@ -3,17 +3,17 @@ import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {FileBlueIcon, UploadFileOilasi, UploadFilePasport} from "../../assets/icons/icons";
 import {
-    STRING,
-    DATE,
-    SELECT,
-    TEXTAREA,
-    PHONE,
-    UPLOAD,
-    MAP,
-    IMAGE,
+  STRING,
+  DATE,
+  SELECT,
+  TEXTAREA,
+  PHONE,
+  UPLOAD,
+  MAP,
+  IMAGE,
 } from "../../components/Modal/InputTypes";
-import {inputDeafultHeght} from "../../constant/deafultStyle";
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
@@ -24,7 +24,8 @@ const XodimlarTemplate = {
     icon: "Xodimlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    allData: ["/workers"],
+    mainUrl:"/workers",
+    // allData: ["/workers"],
     modal: {
         style: {
             width: 1000,
@@ -175,7 +176,7 @@ const XodimlarTemplate = {
         },
     ],
 
-    filters: ["yonalish"],
+    filters: ["type_id"],
     columns: [
         {
             title: "№",
@@ -230,7 +231,9 @@ const XodimlarTemplate = {
             title: "Yo'nalish",
             dataIndex: "type_id",
             key: "type_id",
-            onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
+            onFilter: (value, record) => {
+                return record.type_id.indexOf(value) === 0;
+            },
             width: "35%",
         },
         {

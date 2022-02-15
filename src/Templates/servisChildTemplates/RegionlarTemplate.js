@@ -11,9 +11,10 @@ const RegionlarTemplate = {
     icon: "Regionlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: true,
-    allData: [
-        "/districts"
-    ],
+    mainUrl:"/districts",
+    // allData: [
+    //     "/districts"
+    // ],
     form: [
         {
             grid: {
@@ -59,21 +60,21 @@ const RegionlarTemplate = {
     columns: [
         {
             title: <FieldNumberOutlined/>,
-            dataIndex: "number",
-            key: "number",
+            dataIndex: "id",
+            key: "id",
             width: "5%",
             align: "center",
         },
         {
             title: "Shahar nomi",
-            dataIndex: "shahar_nomi",
+            dataIndex: "name",
             key: "Shahar nomi",
             width: "40%",
         },
         {
             title: "Viloyat nomi",
-            dataIndex: "viloyat_nomi",
-            key: "Viloyat nomi",
+            dataIndex: "region_id",
+            key: "region_id",
             width: "40%",
         },
         {

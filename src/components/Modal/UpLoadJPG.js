@@ -55,7 +55,6 @@ class UpLoadJPG extends React.Component {
     //     <div style={{ marginTop: 8 }}>Upload</div>
     //   </div>
     // );
-    console.log(this.props.label);
 
     return (
       <label

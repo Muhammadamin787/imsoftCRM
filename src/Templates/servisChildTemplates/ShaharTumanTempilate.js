@@ -9,11 +9,11 @@ const ShaharTumanTemplate = {
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
-  allData:["/cities", "/states"],
-  // allData: {
-  //   cities: "/cities",
-  //   states: "/states",
-  // },
+  mainUrl:"/cities",
+  allData: {
+     states:"/states",
+    //  nimadur:"/nimadur",
+  },
   isOpenModal: false,
   form: [
     {
@@ -24,13 +24,8 @@ const ShaharTumanTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Viloyat",
-          path: "/states",
-          option: [
-            { value: "qui", key: "qui" },
-            { value: "Farg'ona", key: "Qo'qon" },
-            { value: "Andijon", key: "Marg'ilon" },
-          ],
-
+          options: "states",
+          bor:"nimadur"
         },
         {
           name: "name",

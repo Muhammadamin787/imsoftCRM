@@ -35,25 +35,14 @@ const ModalInput = ({
   type,
   height,
   Iconic,
-  path
+  options,
 }) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state) => state.tabs_reducer)
-
-
-  const [options, setOptions] = useState("")
-
-  useEffect(() => {
-      const data = axios(path);
-      data.then((res) => {
-        setOptions(res?.data?.data)
-      });
-  }, [currentPage])
-
+  const { currentPage, allData } = useSelector((state) => state.tabs_reducer);
 
   const handleChangeValue = (e) => {
-    dispatch(addValuesData(e))
+    dispatch(addValuesData(e));
   };
 
   switch (type) {
@@ -74,13 +63,11 @@ const ModalInput = ({
             name={name}
             placeholder={placeholder}
             // value={value}
+            required={true}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
               };
-
-              // console.log(e);
-
               handleChangeValue(target);
             }}
           />
@@ -94,11 +81,11 @@ const ModalInput = ({
           addonBefore={label}
           type="number"
           name={name}
+          required
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // border: "1px solid red",
             display: "flex",
             flexDirection: "column",
           }}
@@ -135,6 +122,7 @@ const ModalInput = ({
             size="small"
             name={name}
             placeholder={placeholder}
+            required
             // style={{
             //     gridColumn: gridColumn,
             //     gridRow: gridRow,
@@ -149,12 +137,11 @@ const ModalInput = ({
               handleChangeValue(target);
             }}
           >
-            {options &&
-              options?.map((option, i) => (
-                <Option value={option.id} key={option.id}>
-                  {option.name}
-                </Option>
-              ))}
+            {allData && allData[options]?.map((option, i) => (
+              <Option value={option.id} key={option.id}>
+                {option.name}
+              </Option>
+            ))}
           </Select>
         </label>
       );
@@ -163,7 +150,6 @@ const ModalInput = ({
     case MAP:
       input = (
         <MapModal
-
           gridColumn={gridColumn}
           gridRow={gridRow}
           height={height}
@@ -197,6 +183,7 @@ const ModalInput = ({
             allowClear={false}
             // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
             // value={value}
+            required
             onChange={(_, dateString) => {
               const target = {
                 [name]: dateString,
@@ -224,6 +211,7 @@ const ModalInput = ({
           {label && label}
           <TextArea
             placeholder={placeholder}
+            required
             autoSize={{ minRows: 3, maxRows: 3 }}
             // value={value}
             // style={{
@@ -266,6 +254,7 @@ const ModalInput = ({
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
+            required
             areaCodes={{
               uz: ["+998"],
             }}
@@ -284,7 +273,6 @@ const ModalInput = ({
       break;
 
     case UPLOAD:
-
       input = (
         <UploadFile
           id="file-uploder"

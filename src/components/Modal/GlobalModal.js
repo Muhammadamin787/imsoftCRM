@@ -3,7 +3,7 @@ import { Modal, Button, Form, message } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleModal, addValuesData, setData } from "../../redux/tabs_reducer";
+import { toggleModal, addValuesData, setData, setAllData } from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
@@ -23,6 +23,17 @@ const GlobalModal = () => {
     const [url, setUrl] = useState("/")
     const dispatch = useDispatch();
 
+// console.log(currentPage?.allData["states"]);
+
+    useEffect(() => {
+        if (currentPage && currentPage.isOpenModal) {
+            let currentData = currentPage?.allData;
+            for (const url in currentData) {
+                let res = axios(currentData[url]);
+                dispatch(setAllData(res.data));
+            }
+        }
+    }, [currentPage.isOpenModal])
     const handleCancel = (e) => {
         setIsModalVisible(false);
         dispatch(toggleModal(false));
@@ -32,24 +43,18 @@ const GlobalModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
-
-    const [ur, setUr] = useState("/");
-    
-    
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsModalVisible(false);
         dispatch(toggleModal(false));
 
         try {
-            const data = axios(currentPage?.allData[0], "POST", values);
+            const data = axios(currentPage?.mainUrl, "POST", values);
             data.then((res) => {
                 message.success({ content: res.data.data, key: e });
             });
 
-            const newGetData = axios(currentPage?.allData[0]);
+            const newGetData = axios(currentPage?.mainUrl);
 
             newGetData.then((res) => {
                 dispatch(setData(res.data.data))
