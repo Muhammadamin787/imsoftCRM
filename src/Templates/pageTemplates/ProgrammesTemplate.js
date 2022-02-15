@@ -16,13 +16,6 @@ const ProgrammsTemplate = {
   icon: "VectorIcon",
   type: PROGRAMMES_PAGE,
   isOpenModal: false,
-  modal: {
-    style: {
-      width: 1000,
-      marginTop: "-70px",
-    },
-    tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
-  },
   form: [
     {
       grid: {
@@ -86,29 +79,6 @@ const ProgrammsTemplate = {
         },
       ],
       innerTable: [],
-    },
-  ],
-  columns: [...NewProgrammsTemplate.columns],
-  data: [
-    {
-      number: 22,
-      fish: "Teshabek",
-      programm_name: "Bolta CRM",
-      izoh: "izoh",
-      start_time: "12.05.2022",
-      finish_time: "30.05.2022",
-      by_client: "jaloliddin",
-      staff: "Komilbek",
-    },
-    {
-      number: 23,
-      fish: "Ketmonbek",
-      programm_name: "Bolda tizim",
-      izoh: "izohcha",
-      start_time: "12.03.2022",
-      finish_time: "15.04.2022",
-      by_client: "Qurbonali",
-      staff: "Komilbek",
     },
   ],
   tabs: [

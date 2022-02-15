@@ -10,17 +10,25 @@ const FaolyatTurlaiTemplate = {
   icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  allData:["/activity-types"],
+  allData:["/activity-types/"],
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "Faolyat turlari",
+          name: "name",
           type: STRING,
           required: true,
           placeholder: "Faolyat turi nomi",
           label: "Faolyat turi"
+        },
+        {
+          name: "category_id",
+          type: STRING,
+          required: true,
+          placeholder: "Category",
+          label: "category",
+
         },
       ],
     },
@@ -42,83 +50,83 @@ const FaolyatTurlaiTemplate = {
   ],
   data: [
     {
-      number: "1",
-      faoliyat_turi: "O'yin Faoliyati",
+      number: "21",
+      faoliyat_turi: "O'yin Faoliyati11",
       key: 1,
     },
     {
-      number: "2",
+      number: "22",
       faoliyat_turi: "Mehnat Faoliyati",
       color: "red",
       key: 2,
     },
     {
-      number: "3",
+      number: "23",
       faoliyat_turi: "O'qish Faoliyati",
       key: 3,
     },
     {
-      number: "4",
+      number: "24",
       faoliyat_turi: "O'yin Faoliyati",
       key: 4,
     },
     {
-      number: "5",
+      number: "25",
       faoliyat_turi: "O'yin Faoliyati",
       key: 5,
     },
     {
-      number: "6",
+      number: "26",
       faoliyat_turi: "O'yin Faoliyati",
       key: 6,
     },
     {
-      number: "7",
+      number: "27",
       faoliyat_turi: "O'yin Faoliyati",
       key: 7,
     },
     {
-      number: "8",
+      number: "28",
       faoliyat_turi: "O'yin Faoliyati",
       key: 8,
     },
     {
-      number: "9",
+      number: "29",
       faoliyat_turi: "O'yin Faoliyati",
       key: 9,
     },
     {
-      number: "10",
+      number: "20",
       faoliyat_turi: "O'yin Faoliyati",
       key: 10,
     },
     {
-      number: "11",
+      number: "21",
       faoliyat_turi: "O'yin Faoliyati",
       key: 11,
     },
     {
-      number: "12",
+      number: "22",
       faoliyat_turi: "O'yin Faoliyati",
       key: 12,
     },
     {
-      number: "13",
+      number: "23",
       faoliyat_turi: "O'yin Faoliyati",
       key: 13,
     },
     {
-      number: "14",
+      number: "24",
       faoliyat_turi: "O'yin Faoliyati",
       key: 14,
     },
     {
-      number: "15",
+      number: "25",
       faoliyat_turi: "O'yin Faoliyati",
       key: 15,
     },
     {
-      number: "16",
+      number: "26",
       faoliyat_turi: "O'yin Faoliyati",
       key: 16,
     },

@@ -9,13 +9,14 @@ const ReklamalarTemplate = {
   path: REKLAMALAR_PATH,
   icon: "Reklamalar",
   type: SERVIS_CHILD_PAGES,
+	allData:["/reklams"],
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "reklamalar",
+          name: "description",
           type: STRING,
           required: true,
           placeholder:"Reklamalar",

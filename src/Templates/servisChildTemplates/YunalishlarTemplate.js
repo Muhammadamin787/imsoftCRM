@@ -7,16 +7,16 @@ import { FieldNumberOutlined } from "@ant-design/icons";
 const YunalishlarTemplate = {
   text: "Yunalishlar",
   path: YUNALISHLAR_PATH,
-  icon:  "Yunalishlar" ,
+  icon:  "Yunalishlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  allData:["/directions"],
+  allData:["/directions/"],
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "Yunalishlar",
+          name: "name",
           type: STRING,
           placeholder: "Yo'nalishlar",
         },

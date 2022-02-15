@@ -15,24 +15,28 @@ const Toolbar = ({tableItem}) => {
     const {currentPage, Panes} = useSelector((state) => state.tabs_reducer);
 
     const handleModalClick = () => {
-        const newPanes = Panes.map((page) =>
-            page.path === currentPage.path
-                ? {...page, isOpenModal: !currentPage.isOpenModal}
+        
+        const newPanes = Panes?.map((page) =>
+            page?.path === currentPage?.path
+                ? {...page, isOpenModal: !currentPage?.isOpenModal}
                 : page
         );
         const newCurrentPage = {
             ...currentPage,
-            isOpenModal: !currentPage.isOpenModal,
+            isOpenModal: !currentPage?.isOpenModal,
         };
+        // console.log(newCurrentPage);
         dispatch(
             changePanesModal({panes: newPanes, currentPage: newCurrentPage})
         );
     };
 
-    const onRemove = () => {
-        dispatch(removeTableItem(tableItem));
-        message.info("Malumot uchirildi.");
-    };
+  const onRemove = () => {
+    dispatch(removeTableItem());
+    // console.log(tableItem);
+    // message.info("Malumot uchirildi.");
+  };
+
 
     const onEdit = () => {
         dispatch(dispatch(toggleModal(true)));

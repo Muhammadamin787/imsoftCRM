@@ -108,6 +108,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
                     label: "Manzil",
+                    // height: "40px"
                 },
                 {
                     name: "qushimcha_malumot",
@@ -127,6 +128,7 @@ const XodimlarTemplate = {
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
                     label: "Telifon",
+                    
                 },
                 {
                     name: "pasport",
@@ -166,7 +168,8 @@ const XodimlarTemplate = {
                     placeholder: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
-                    height: inputDeafultHeght * 6,
+                    // height: inputDeafultHeght * 6,
+                    label: "Oilasi",
                 },
             ],
         },

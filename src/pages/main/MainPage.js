@@ -39,19 +39,19 @@ const MainPage = ({ setCurrentPage }) => {
 
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    if (currentPage?.allData && currentPage.allData[0]) {
-      const data = axios(currentPage?.allData[0]);
-      data.then((res) => {
-        try {
-          console.log(res.data.data);
-          dispatch(setData(res.data.data));
-        } catch (e) {
-          console.log(e);
+
+    useEffect(() => {
+        if (currentPage?.allData && currentPage.allData[0]) {
+            const data = axios(currentPage?.allData[0]);
+            data.then(res => {
+                try {
+                    dispatch(setData(res.data.data))
+                } catch (e) {
+                    // console.log(e);
+                }
+            })
         }
-      });
-    }
-  }, [currentPage, pathname]);
+    }, [currentPage, pathname]);
 
   return (
     <Layout className="site-container">

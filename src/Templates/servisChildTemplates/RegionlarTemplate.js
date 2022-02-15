@@ -12,7 +12,7 @@ const RegionlarTemplate = {
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
     allData: [
-        "/regions"
+        "/districts"
     ],
     form: [
         {

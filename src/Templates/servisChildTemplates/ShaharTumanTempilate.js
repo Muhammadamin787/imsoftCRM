@@ -1,7 +1,7 @@
 import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { STRING, SELECT } from "../../components/Modal/InputTypes";
+import { STRING, SELECT, NUMBER } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from '@ant-design/icons';
 
 const ShaharTumanTemplate = {
@@ -9,30 +9,31 @@ const ShaharTumanTemplate = {
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
+  allData:["/cities"],
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "viloyat",
-          type: STRING,
+          name: "name",
+          type: SELECT,
           required: true,
           placeholder:"Viloyat",
+          option: [
+            { value: "qui", key: "qui"},
+            { value: "Farg'ona", key: "Qo'qon"},
+            { value: "Andijon", key: "Marg'ilon"},
+          ],
+
         },
         {
-          name: "Shahar/Tuman",
-          type: SELECT,
+          name: "state_id",
+          type: STRING,
           required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",
-          option: [
-            { value: "Olti ariq", key: "Olti ariq"},
-            { value: "Qo'qon", key: "Qo'qon"},
-            { value: "Marg'ilon", key: "Marg'ilon"},
-            { value: "Farg'ona", key: "Farg'ona"},
-          ],
 
         },
       ],

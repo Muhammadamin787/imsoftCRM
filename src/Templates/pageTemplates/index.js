@@ -3,7 +3,7 @@ import ClientTemplate from "./ClientTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
 import MainTemplate from "./MainTemplate";
 import ServiceTemplate from "./ServiceTemplate";
-import ReportTemplate from "../servisChildTemplates/ReportTemplate";
+import ReportTemplate from "./ReportTemplate";
 
 
 // Basic routes templates

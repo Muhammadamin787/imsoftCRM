@@ -23,6 +23,8 @@ const BottomTabs = () => {
     setPanes(Panes);
   }, [Panes, pathname]);
 
+
+
   const onChange = (activeKey) => {
     navigate(Panes[activeKey].path);
     setActiveKey(activeKey);

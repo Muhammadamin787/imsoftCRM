@@ -7,5 +7,6 @@ export const RejactProgrammesTemplate = {
   path: BEKOR_QILINGAN,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "5",
+  modal: {...NewProgrammsTemplate.modal},
   columns: [...NewProgrammsTemplate.columns],
 };
