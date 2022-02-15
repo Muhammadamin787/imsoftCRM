@@ -10,7 +10,7 @@ const RegionlarTemplate = {
     path: REGIONLAR_PATH,
     icon: "Regionlar",
     type: SERVIS_CHILD_PAGES,
-    isOpenModal: false,
+    isOpenModal: true,
     allData: [
         "/districts"
     ],

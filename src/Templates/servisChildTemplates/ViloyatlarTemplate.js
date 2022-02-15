@@ -10,7 +10,7 @@ const ViloyatlarTemplate = {
   icon: "Group",
   type: SERVIS_CHILD_PAGES,
   allData:["/states/"],
-  isOpenModal: false,
+  isOpenModal: true,
   form: [
     {
       grid: "1fr",
