@@ -52,7 +52,7 @@ const MainPage = ({setCurrentPage}) => {
                 try {
                     dispatch(setData(res.data.data))
                 } catch (e) {
-                    console.log(e);
+                    // console.log(e);
                 }
             })
         }

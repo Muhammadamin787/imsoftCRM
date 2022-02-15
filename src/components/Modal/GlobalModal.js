@@ -24,6 +24,7 @@ const GlobalModal = () => {
     const [disabled, setDisabled] = useState(true);
     const dispatch = useDispatch();
 
+    // setIsModalVisible(true)
 
     const handleCancel = (e) => {
         setIsModalVisible(false);
@@ -36,6 +37,8 @@ const GlobalModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsModalVisible(false);
+        dispatch(toggleModal(false));
         
         const data = axios(currentPage?.allData[0],"POST", values);
         
@@ -44,8 +47,6 @@ const GlobalModal = () => {
         })
         
 
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
     };
     const draggleRef = useRef("s");
 

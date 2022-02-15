@@ -12,7 +12,7 @@ const ProgrammesPage = ({ page }) => {
   console.log(page);
   const dispatch = useDispatch();
 
-  dispatch(setCurrentPage(page));
+  // dispatch(setCurrentPage(page));
   return (
     <div className="">
       <Layout>

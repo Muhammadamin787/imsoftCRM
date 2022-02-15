@@ -7,6 +7,7 @@ export const NewProgrammsTemplate = {
   path: YANGI_DASTURLAR,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "1",
+  isOpenModal: false,
   columns: [
     {
       title: <FieldNumberOutlined />,
