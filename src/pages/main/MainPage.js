@@ -5,13 +5,6 @@ import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
 import { CompanyLogo, findIcon } from "../../assets/icons/icons";
 import moment from "moment";
-<<<<<<< HEAD
-import { AllPages } from "../../Templates/pageTemplates/index";
-import { PageController } from "../PageController";
-import AccountPNG from "../../assets/images/Ellipse 3.png";
-import { useDispatch } from "react-redux";
-import { setCurrentPage } from "../../redux/tabs_reducer";
-=======
 import {
     AllPages,
 } from "../../Templates/pageTemplates/index";
@@ -19,23 +12,15 @@ import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import {useDispatch} from "react-redux";
 import {setCurrentPage, startLoading, stopLoading,} from "../../redux/tabs_reducer";
->>>>>>> 7ef81f39d65110f18b680c5b5df2982141f16bbd
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
-<<<<<<< HEAD
-import { useSelector } from "react-redux";
-import axios from "../../functions/axios";
-import GlobalModal from "../../components/Modal/GlobalModal";
-import { setData } from "../../redux/tabs_reducer";
-=======
 import {useSelector} from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData} from "../../redux/tabs_reducer"
->>>>>>> 7ef81f39d65110f18b680c5b5df2982141f16bbd
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = ({ setCurrentPage }) => {
@@ -68,12 +53,8 @@ const MainPage = ({ setCurrentPage }) => {
                 dispatch(stopLoading());
             })
         }
-<<<<<<< HEAD
-    }, [currentPage, pathname]);
-=======
 
     }, [pathname]);
->>>>>>> 7ef81f39d65110f18b680c5b5df2982141f16bbd
 
   return (
     <Layout className="site-container">
@@ -172,7 +153,7 @@ const MainPage = ({ setCurrentPage }) => {
         {/*<div className="site-footer__content">*/}
         {/*  <div className="site-footer__icons">*/}
         {/*    <GlobusIcon2 />*/}
-        {/*    <TelegramIcon />*/}
+        {/*    <TelegramIcon />*/}     
         {/*  </div>*/}
         {/*  <div className="site-footer__text">*/}
         {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
