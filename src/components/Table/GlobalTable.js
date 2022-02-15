@@ -1,5 +1,5 @@
 import { Table} from "antd";
-import React from "react";
+import {useEffect} from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';
@@ -13,7 +13,7 @@ const GlobalTable = () => {
 
   let filteredColumns = [];
   if(currentPage?.filters){
-    filteredColumns = FilterColumns(currentPage?.filters, currentPage?.columns, currentPage?.data);
+    filteredColumns = FilterColumns(currentPage?.filters, currentPage?.columns, mainData);
   }else{
     filteredColumns = currentPage?.columns;
   }
@@ -24,20 +24,17 @@ const GlobalTable = () => {
     },
     getCheckboxProps: (record) => ({
       disabled: record.name === 'Disabled User',
-      // Column configuration not to be checked
       name: record.name,
     }),
   };
-    
-
-
+    const filteredData = mainData.filter();
   return (
       <Table
           bordered
           loading={loading}
           columns={filteredColumns}
           className="main-table"
-          dataSource={mainData}
+          dataSource={filteredData}
           size={"small"}
           scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
           pagination={{ position: ["bottomCenter"] }}

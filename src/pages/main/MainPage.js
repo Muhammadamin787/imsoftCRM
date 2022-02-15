@@ -108,7 +108,10 @@ const MainPage = ({ setCurrentPage }) => {
                 <h3>Hojiakbar</h3>
               </div>
             }
-            content={<Button color="danger" style={{width: "100%"}}>Log out</Button>}
+            content={<div>
+              <Button color="danger" style={{width: "100%"}}>Log out</Button>
+              <Button onClick={() => localStorage.clear()}>Local</Button>
+            </div>}
             trigger="click"
           >
             <img

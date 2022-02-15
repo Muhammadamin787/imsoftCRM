@@ -23,7 +23,7 @@ const ProgrammesPageChild = ({ activeKey }) => {
         {ProgrammsTemplate?.tabs?.map((item) => (
           <TabPane
             tab={
-              <Link to={item.path} onClick={() => handleTab(item)}>
+              <Link to={item.path} onClick={() => handleTab(item)} style={{width: '100%', height: '100%', display: 'block'}}>
                 {item.text}
               </Link>
             }

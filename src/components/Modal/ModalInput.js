@@ -20,9 +20,7 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch } from "react-redux";
 import UploadFile from "./UpLoadFile";
-import {addValuesData} from "../../redux/tabs_reducer"
-
-
+import { addValuesData } from "../../redux/tabs_reducer";
 
 const { TextArea } = Input;
 
@@ -43,14 +41,7 @@ const ModalInput = ({
   const dispatch = useDispatch();
 
   const handleChangeValue = (e) => {
-
-    
-
-
-    console.log(e);
-    
-    dispatch(addValuesData(e))
-    
+    dispatch(addValuesData(e));
   };
 
   switch (type) {
@@ -71,13 +62,11 @@ const ModalInput = ({
             name={name}
             placeholder={placeholder}
             // value={value}
+            required={true}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
               };
-
-              // console.log(e);
-
               handleChangeValue(target);
             }}
           />
@@ -91,11 +80,11 @@ const ModalInput = ({
           addonBefore={label}
           type="number"
           name={name}
+          required
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // border: "1px solid red",
             display: "flex",
             flexDirection: "column",
           }}
@@ -132,6 +121,7 @@ const ModalInput = ({
             size="small"
             name={name}
             placeholder={placeholder}
+            required
             // style={{
             //     gridColumn: gridColumn,
             //     gridRow: gridRow,
@@ -158,17 +148,17 @@ const ModalInput = ({
       break;
 
     case MAP:
-        input = (
-            <MapModal
-
-                gridColumn={gridColumn}
-                gridRow={gridRow}
-                height={height}
-                name={name}
-                handleChangeValue={handleChangeValue}
-            />
-        );
-        break;
+      input = (
+        <MapModal
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          name={name}
+          handleChangeValue={handleChangeValue}
+          required
+        />
+      );
+      break;
 
     case DATE:
       input = (
@@ -194,6 +184,7 @@ const ModalInput = ({
             allowClear={false}
             // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
             // value={value}
+            required
             onChange={(_, dateString) => {
               const target = {
                 [name]: dateString,
@@ -221,6 +212,7 @@ const ModalInput = ({
           {label && label}
           <TextArea
             placeholder={placeholder}
+            required
             autoSize={{ minRows: 3, maxRows: 3 }}
             // value={value}
             // style={{
@@ -254,7 +246,7 @@ const ModalInput = ({
           {label && label}
           <PhoneInput
             country={"uz"}
-            style={{height: "65px !important"}}
+            style={{ height: "65px !important" }}
             // style={{
             //     gridColumn: gridColumn,
             //     gridRow: gridRow,
@@ -263,6 +255,7 @@ const ModalInput = ({
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
+            required
             areaCodes={{
               uz: ["+998"],
             }}
@@ -281,45 +274,46 @@ const ModalInput = ({
       break;
 
     case UPLOAD:
-
       input = (
-          <UploadFile
-            id="file-uploder"
-            name={name}
-            placeholder={placeholder}
-            gridColumn={gridColumn}
-            gridRow={gridRow}
-            height={height}
-            Iconic={Iconic}
-            label={label}
-          />
+        <UploadFile
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+          required
+        />
       );
       break;
 
     case IMAGE:
-        input = (
-            // <label
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px !important" : inputDeafultHeght + "px",
-            //     // border: "1px solid red",
-            // }}
-            // className="image-input"
-            // >
-            <UpLoadJPG
-                id="file-uploder"
-                name={name}
-                placeholder={placeholder}
-                gridColumn={gridColumn}
-                gridRow={gridRow}
-                height={height}
-                Iconic={Iconic}
-                label={label}
-            />
-            // </label>
-        );
-        break;
+      input = (
+        // <label
+        // style={{
+        //     gridColumn: gridColumn,
+        //     gridRow: gridRow,
+        //     height: height ? height + "px !important" : inputDeafultHeght + "px",
+        //     // border: "1px solid red",
+        // }}
+        // className="image-input"
+        // >
+        <UpLoadJPG
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          required
+          label={label}
+        />
+        // </label>
+      );
+      break;
 
     default:
       break;

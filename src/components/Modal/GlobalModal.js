@@ -39,15 +39,14 @@ const GlobalModal = () => {
         e.preventDefault();
         setIsModalVisible(false);
         dispatch(toggleModal(false));
+        console.log(e);
+        // const data = axios(currentPage?.allData[0],"POST", values);
         
-        const data = axios(currentPage?.allData[0],"POST", values);
-        
-        data.then(res => {
-            dispatch(setData(res.data.data))
-        })
-        
-
+        // data.then(res => {
+        //     dispatch(setData(res.data.data))
+        // })       
     };
+
     const draggleRef = useRef("s");
 
     const onStart = (event, uiData) => {
@@ -100,7 +99,7 @@ const GlobalModal = () => {
                 </Draggable>
             )}
         >
-            <Form className="modal-form" >
+            <form className="modal-form" >
                 {currentPage?.form?.map((form) => (
                     <div
                         className="modal-grid__form"
@@ -111,7 +110,7 @@ const GlobalModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name}/>
+                            <ModalInput {...input} key={input?.name} required/>
                         ))}
                     </div>
                 ))}
@@ -132,7 +131,7 @@ const GlobalModal = () => {
                         Saqlash
                     </Button>
                 </div>
-            </Form>
+            </form>
         </Modal>
     );
 };
