@@ -5,8 +5,8 @@ import { Layout } from "antd";
 import ClientPageChild from "./clientPageChild/ClientPageChild";
 
 const ClientsPage = ({ page }) => {
-  const dispatch = useDispatch();
-  dispatch(setCurrentPage(page));
+  // const dispatch = useDispatch();
+  // dispatch(setCurrentPage(page));
 
   return (
     <div>

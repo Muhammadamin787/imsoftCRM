@@ -7,5 +7,6 @@ export const SubmittedProgrammesTemplate = {
   path: TOPSHIRILGAN,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "4",
+  modal: {...NewProgrammsTemplate.modal},
   columns: [...NewProgrammsTemplate.columns],
 };
