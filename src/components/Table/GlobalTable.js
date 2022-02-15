@@ -3,7 +3,8 @@ import React from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';
-import {setTableItem} from "../../redux/tabs_reducer"
+import {setTableItem} from "../../redux/tabs_reducer";
+import { message } from "antd";
 
 
 const GlobalTable = () => {
