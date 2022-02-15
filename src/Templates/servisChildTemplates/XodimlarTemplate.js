@@ -169,7 +169,7 @@ const XodimlarTemplate = {
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
                     // height: inputDeafultHeght * 6,
-                    label: "rasmi"
+                    label: "Oilasi",
                 },
             ],
         },

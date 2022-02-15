@@ -20,7 +20,6 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch } from "react-redux";
 import UploadFile from "./UpLoadFile";
-
 import {addValuesData} from "../../redux/tabs_reducer"
 
 
@@ -316,6 +315,7 @@ const ModalInput = ({
                 gridRow={gridRow}
                 height={height}
                 Iconic={Iconic}
+                label={label}
             />
             // </label>
         );

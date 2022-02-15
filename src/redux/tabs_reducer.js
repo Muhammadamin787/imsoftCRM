@@ -20,7 +20,7 @@ export const counterSlice = createSlice({
             const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
-            console.log(bool);
+            // console.log(bool);
             if (bool) {
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }

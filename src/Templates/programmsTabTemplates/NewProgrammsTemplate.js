@@ -17,6 +17,7 @@ export const NewProgrammsTemplate = {
     },
     tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
   },
+  isOpenModal: false,
   columns: [
     {
       title: <FieldNumberOutlined />,

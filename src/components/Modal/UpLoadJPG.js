@@ -55,6 +55,7 @@ class UpLoadJPG extends React.Component {
     //     <div style={{ marginTop: 8 }}>Upload</div>
     //   </div>
     // );
+    console.log(this.props.label);
 
     return (
       <label
@@ -67,7 +68,9 @@ class UpLoadJPG extends React.Component {
               ? this.props.height + "px"
               : inputDeafultHeght + "px",
             width: "100% !important",
-            textAlign: "center",
+            // textAlign: "center",
+            // backgroundColor:"red",
+            
             border: "1px solid black",
           }}
         > <p>{this.props?.label}</p>

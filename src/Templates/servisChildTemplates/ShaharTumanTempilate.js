@@ -17,23 +17,23 @@ const ShaharTumanTemplate = {
       inputs: [
         {
           name: "name",
-          type: STRING,
+          type: SELECT,
           required: true,
           placeholder:"Viloyat",
+          option: [
+            { value: "qui", key: "qui"},
+            { value: "Farg'ona", key: "Qo'qon"},
+            { value: "Andijon", key: "Marg'ilon"},
+          ],
+
         },
         {
           name: "state_id",
-          type: NUMBER,
+          type: STRING,
           required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",
-          option: [
-            { value: "qui", key: "Olti ariq"},
-            { value: "2", key: "Qo'qon"},
-            { value: "3", key: "Marg'ilon"},
-            { value: "3", key: "Farg'ona"},
-          ],
 
         },
       ],

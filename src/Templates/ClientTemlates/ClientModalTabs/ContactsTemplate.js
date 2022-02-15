@@ -58,7 +58,7 @@ const ContactsTemplate = {
             placeholder: "Foto",
             gridColumn: "1 / 4",
             gridRow: "3 / 6",
-            height: inputDeafultHeght * 3,
+            height: inputDeafultHeght * 7,
             label:"Foto"
           },
           {
@@ -68,7 +68,7 @@ const ContactsTemplate = {
             placeholder: "Foto",
             gridColumn: "4 / 7",
             gridRow: "3 / 6",
-            height: inputDeafultHeght * 3,
+            height: inputDeafultHeght * 7,
             label: " "
           },
           {
@@ -78,7 +78,7 @@ const ContactsTemplate = {
             placeholder: "Foto",
             gridColumn: "7 / 10",
             gridRow: "3 / 6",
-            height: inputDeafultHeght * 3,
+            height: inputDeafultHeght * 7 ,
             label: " "
           },
           {
