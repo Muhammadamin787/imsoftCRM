@@ -2,18 +2,18 @@ import React from "react";
 import {
     removeTableItem,
     toggleModal,
-    changePanesModal, setValues,
+    changePanesModal, setValues, setData,
 } from "../../../redux/tabs_reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Button, message, Popconfirm, Tooltip} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import {findIcon} from "../../../assets/icons/icons";
-import {GET} from "../../../functions/Methods";
+import {DELETE, GET, POST} from "../../../functions/Methods";
 
 const Toolbar = ({tableItem}) => {
     const dispatch = useDispatch();
-    const {currentPage, values, Panes} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, loading, Panes} = useSelector((state) => state.tabs_reducer);
 
     const handleModalClick = () => {
         const newPanes = Panes?.map((page) =>
@@ -29,8 +29,17 @@ const Toolbar = ({tableItem}) => {
         dispatch(changePanesModal({panes: newPanes, currentPage: newCurrentPage}));
     };
 
-    const onRemove = async () => {
-        dispatch(removeTableItem());
+    const onRemove = () => {
+        // dispatch(removeTableItem());
+        let ids = tableItem.map(row => {
+            return row.id;
+        });
+        DELETE(currentPage?.mainUrl + "/delete", ids).then(res => {
+            GET(currentPage?.mainUrl).then(res2 => {
+                console.log(res2.data);
+                setData(res2.data);
+            });
+        });
 
         // console.log(tableItem);
         // message.info("Malumot uchirildi.");

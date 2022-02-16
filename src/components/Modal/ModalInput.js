@@ -65,6 +65,7 @@ const ModalInput = ({
           {label && label}
           <Input
             name={name}
+            value={values && values[name]}
             placeholder={placeholder}
             required={true}
             onChange={(e) => {

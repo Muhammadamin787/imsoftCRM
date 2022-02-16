@@ -4,7 +4,7 @@ import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from '../Templates/pageTemplates/ServiceTemplate'
 import axios from "../functions/axios"
-import {DELETE, GET} from "../functions/Methods";
+import {DELETE, GET, POST} from "../functions/Methods";
 
 
 export const counterSlice = createSlice({
@@ -21,7 +21,6 @@ export const counterSlice = createSlice({
                 {id: "22", name: "eee"},
                 {id: "23", name: "gj"},
                 {id: "24", name: "rty"},
-
             ],
         }
     },
@@ -68,10 +67,10 @@ export const counterSlice = createSlice({
             state.tableItem = payload;
         },
         removeTableItem: (state, {payload}) => {
-            state.tableItem.map(async (row, i) => {
-                await DELETE(`${state.currentPage?.mainUrl}/${row.id}`)
-                GET(state.currentPage?.mainUrl);
+            let ids = state.tableItem.map(row => {
+                return row.id;
             });
+            return POST(state.currentPage?.mainUrl + "/delete", ids);
         },
         editTableItem: (state, {payload}) => {
             const www = state.currentPage.data.find(

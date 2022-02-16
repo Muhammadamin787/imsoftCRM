@@ -309,7 +309,7 @@ const XodimlarTemplate = {
                 fontSize: ".9em",
                 margin: "-2px 0",
                 padding: 0,
-                border: "1px solid red"
+                // border: "1px solid red"
             }}>{text}</div>)
         },
     ],
