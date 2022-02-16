@@ -22,6 +22,7 @@ import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
 import {setValues} from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
+import { findIcon } from "../../assets/icons/icons";
 
 
 const {TextArea} = Input;
@@ -45,277 +46,242 @@ const ModalInput = ({
         dispatch(setValues({...values, ...e}));
     };
 
-    switch (type) {
-        case STRING:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        // border: "1px solid red",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <Input
-                        name={name}
-                        placeholder={placeholder}
-                        value={values && values[name]}
-                        required={true}
-                        onChange={(e) => {
-                            const target = {
-                                [name]: e.target.value,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
+  const handleSelectAdd = (e) => {
 
-        case NUMBER:
-            input = (
-                <InputNumber
-                    addonBefore={label}
-                    type="number"
-                    name={name}
-                    required
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                    placeholder={placeholder}
-                    showSearch
-                    // value={value}
-                    onChange={(e) => {
-                        const target = {
-                            [name]: e,
-                        };
+  }
 
-                        handleChangeValue(target);
-                    }}
-                />
-            );
-            break;
+  switch (type) {
+    case STRING:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {label && label}
+          <Input
+            name={name}
+            placeholder={placeholder}
+            required={true}
+            onChange={(e) => {
+              const target = {
+                [name]: e.target.value,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
 
-        case SELECT:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        // border: "1px solid red",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <Select
-                        addonBefore={label}
-                        size="small"
-                        name={name}
-                        placeholder={placeholder}
-                        required
-                        // style={{
-                        //     gridColumn: gridColumn,
-                        //     gridRow: gridRow,
-                        //     height: height ? height + "px" : inputDeafultHeght + "px",
-                        // }}
-                        // value={value}
-                        onChange={(e) => {
-                            const target = {
-                                [name]: e,
-                            };
-                            console.log(target);
-                            handleChangeValue(target);
-                        }}
-                    >
-                        {allData && allData[options]?.map((option, i) => (
-                            <Option value={option.id} key={option.id}>
-                                {option.name}
-                            </Option>
-                        ))}
-                    </Select>
-                </label>
-            );
-            break;
+    case NUMBER:
+      input = (
+        <InputNumber
+          addonBefore={label}
+          type="number"
+          name={name}
+          required
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          placeholder={placeholder}
+          showSearch
+          onChange={(e) => {
+            console.log(e);
+            const target = {
+              [name]: e,
+            };
 
-        case MAP:
-            input = (
-                <MapModal
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    name={name}
-                    handleChangeValue={handleChangeValue}
-                />
-            );
-            break;
+            handleChangeValue(target);
+          }}
+        />
+      );
+      break;
 
-        case DATE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        // border: "1px solid red",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <DatePicker
-                        placeholder={placeholder}
-                        // style={{
-                        //     gridColumn: gridColumn,
-                        //     gridRow: gridRow,
-                        //     height: height ? height + "px" : inputDeafultHeght + "px",
-                        // }}
-                        format="DD.MM.YYYY"
-                        allowClear={false}
-                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
-                        // value={value}
-                        required
-                        onChange={(_, dateString) => {
-                            const target = {
-                                [name]: dateString,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
+    case SELECT:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            // border: "1px solid red",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          className="select-label"
+        >
+          {label && label}
+          <div className="option-add" onClick={() => handleSelectAdd()}>{findIcon("Plus")}</div>
+          <Select
+            addonBefore={label}
+            size="small"
+            name={name}
+            placeholder={placeholder}
+            required
+            onChange={(e) => {
+              const target = {
+                [name]: e,
+              };
+              console.log(target);
+              handleChangeValue(target);
+            }}
+          >
+            {allData && allData[options]?.map((option, i) => (
+              <Option value={option.id} key={option.id}>
+                {option.name}
+              </Option>
+            ))}
+          </Select>
+        </label>
+      );
+      break;
 
-        case TEXTAREA:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        // height: "100%",
-                        // border: "1px solid red",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <TextArea
-                        placeholder={placeholder}
-                        required
-                        autoSize={{minRows: 3, maxRows: 3}}
-                        // value={value}
-                        // style={{
-                        //     gridColumn: gridColumn,
-                        //     gridRow: gridRow,
-                        //     height: height ? height + "px" : inputDeafultHeght + "px",
-                        // }}
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data.target.value,
-                            };
+    case MAP:
+      input = (
+        <MapModal
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          name={name}
+          handleChangeValue={handleChangeValue}
+        />
+      );
+      break;
 
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
+    case DATE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {label && label}
+          <DatePicker
+            placeholder={placeholder}
+            format="DD.MM.YYYY"
+            allowClear={false}
+            // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+            required
+            onChange={(_, dateString) => {
+              const target = {
+                [name]: dateString,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
 
-        case PHONE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        // border: "1px solid red",
-                        // height:"65px !important"
-                    }}
-                >
-                    {label && label}
-                    <PhoneInput
-                        country={"uz"}
-                        style={{height: "65px !important"}}
-                        // style={{
-                        //     gridColumn: gridColumn,
-                        //     gridRow: gridRow,
-                        //     height: height ? height + "px" : inputDeafultHeght + "px",
-                        // }}
-                        specialLabel={false}
-                        disableDropdown={true}
-                        countryCodeEditable={false}
-                        required
-                        areaCodes={{
-                            uz: ["+998"],
-                        }}
-                        masks={{uz: "(..) ...-..-.."}}
-                        prefix="+"
-                        // value={valuess[name] ? values[name] : "+998"}
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
+    case TEXTAREA:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {label && label}
+          <TextArea
+            placeholder={placeholder}
+            required
+            autoSize={{ minRows: 3, maxRows: 3 }}
+            onChange={(data) => {
+              const target = {
+                [name]: data.target.value,
+              };
 
-        case UPLOAD:
-            input = (
-                <UploadFile
-                    id="file-uploder"
-                    name={name}
-                    placeholder={placeholder}
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    Iconic={Iconic}
-                    label={label}
-                />
-            );
-            break;
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
 
-        case IMAGE:
-            input = (
-                // <label
-                // style={{
-                //     gridColumn: gridColumn,
-                //     gridRow: gridRow,
-                //     height: height ? height + "px !important" : inputDeafultHeght + "px",
-                //     // border: "1px solid red",
-                // }}
-                // className="image-input"
-                // >
-                <UpLoadJPG
-                    id="file-uploder"
-                    name={name}
-                    placeholder={placeholder}
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    Iconic={Iconic}
-                    label={label}
-                />
-                // </label>
-            );
-            break;
+    case PHONE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
+          <PhoneInput
+            country={"uz"}
+            style={{ height: "65px !important" }}
+            specialLabel={false}
+            disableDropdown={true}
+            countryCodeEditable={false}
+            required
+            areaCodes={{
+              uz: ["+998"],
+            }}
+            masks={{ uz: "(..) ...-..-.." }}
+            prefix="+"
+            onChange={(data) => {
+              const target = {
+                [name]: data,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
 
-        default:
-            break;
-    }
+    case UPLOAD:
+      input = (
+        <UploadFile
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+        />
+      );
+      break;
 
-    return input;
+    case IMAGE:
+      input = (
+        <UpLoadJPG
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+        />
+      );
+      break;
+
+    default:
+      break;
+  }
+
+  return input;
 };
 
 export default ModalInput;

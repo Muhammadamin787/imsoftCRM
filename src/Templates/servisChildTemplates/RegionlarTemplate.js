@@ -29,6 +29,7 @@ const RegionlarTemplate = {
                     placeholder: "Viloyat",
                     gridColumn: "1 / 2",
                     gridRow: "1 / 2",
+                    label: "Viloyat",
                 },
                 {
                     name: "shahar/tuman",
@@ -37,6 +38,7 @@ const RegionlarTemplate = {
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 2",
                     gridRow: "2 / 3",
+                    label: "Shahar/Tuman",
                     options: [
                         {value: "custom value 1", key: "custom value 1"},
                         {value: "custom value 2", key: "custom value 2"},
