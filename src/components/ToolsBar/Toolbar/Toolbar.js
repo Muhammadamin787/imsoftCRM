@@ -16,6 +16,7 @@ const Toolbar = ({tableItem}) => {
     const {currentPage, values, Panes} = useSelector((state) => state.tabs_reducer);
 
     const handleModalClick = () => {
+        
         const newPanes = Panes?.map((page) =>
             page?.path === currentPage?.path
                 ? {...page, isOpenModal: !currentPage?.isOpenModal}

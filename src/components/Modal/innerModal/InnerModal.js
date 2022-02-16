@@ -1,67 +1,72 @@
-import React from 'react';
-import {Table,} from "antd";
+import React, {useState, useEffect, useRef} from 'react'
+import '../GlobalModal.scss'
+import {Modal, Button, Form, message} from "antd";
+import ModalInput from "../ModalInput";
+import {useSelector, useDispatch} from "react-redux";
+import {toggleInnerModal, setData, setAllData, setValues, setTableItem} from "../../../redux/tabs_reducer";
+import ModalTabs from "../modalTabs/ModalTabs";
+import Draggable from "react-draggable";
+import MacActions from "../../ToolsBar/MacActions/MacActions";
+import axios from "../../../functions/axios";
+import {GET, POST} from "../../../functions/Methods";
 
-const InnerModal = ({innerModal}) => {
+// ❗ hard code boldi, Global modaldagi codelar takrollandi 
 
-    const { currentPage, data, values } = useSelector((state) => state.tabs_reducer);
+const InnerModal = () => {
+    const {currentPage, data, values, innerModal} = useSelector((state) => state.tabs_reducer);
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    console.log(currentPage);
+    console.log(innerModal);
+
     const [bounds, setBounds] = useState({
-        left: 0,
-        top: 0,
-        bottom: 0,
-        right: 0
+        left: 0, top: 0, bottom: 0, right: 0
     });
     const [disabled, setDisabled] = useState(true);
-    const [url, setUrl] = useState("/")
     const dispatch = useDispatch();
 
-// console.log(currentPage?.allData["states"]);
-
     useEffect(() => {
-        if (currentPage && currentPage.isOpenModal) {
-            let currentData = currentPage?.allData;
+        if (innerModal && innerModal.isOpenModal) {
+            let currentData = innerModal?.allData;
             for (const url in currentData) {
                 let res = axios(currentData[url]);
-                dispatch(setAllData(res.data));
+                res.then(res => {
+                    dispatch(setAllData({[url]: res.data.data}));
+                });
             }
         }
-    }, [currentPage.isOpenModal])
+    }, [innerModal, currentPage]);
+
+
     const handleCancel = (e) => {
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
+        dispatch(toggleInnerModal(false));
+        dispatch(setValues({}));
     };
+
 
     const resizeModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsModalVisible(false);
-        dispatch(toggleModal(false));
 
-        try {
-            const data = axios(currentPage?.mainUrl, "POST", values);
-            data.then((res) => {
-                message.success({ content: res.data.data, key: e });
-            });
-
-            const newGetData = axios(currentPage?.mainUrl);
-
-            newGetData.then((res) => {
+        const url = innerModal?.mainUrl;
+        POST(url, values).then(res => {
+            message.success({content: res.data.data, key: e});
+            dispatch(toggleInnerModal(false));
+            dispatch(setValues({}));
+            dispatch(setTableItem([]))
+            GET(url).then(res => {
                 dispatch(setData(res.data.data))
             });
-
-        } catch (e) {
-            message.error({ content: values.data, key: e });
-        }
-    }
+        });
+    }   
 
     const draggleRef = useRef("s");
 
     const onStart = (event, uiData) => {
-        const { clientWidth, clientHeight } = window.document.documentElement;
+        const {clientWidth, clientHeight} = window.document.documentElement;
         const targetRect = draggleRef.current?.getBoundingClientRect();
         if (!targetRect) {
             return;
@@ -74,15 +79,16 @@ const InnerModal = ({innerModal}) => {
         });
     };
 
+
     return (
         <Modal
-            style={{ ...currentPage?.modal?.style }}
-            width={currentPage?.modal?.style?.width}
+            style={{...innerModal?.modal?.style}}
+            width={innerModal?.modal?.style?.width}
             footer={null}
             title={
                 <div
                     style={{
-                        width: currentPage?.modal?.style?.width,
+                        width: innerModal?.modal?.style?.width,
                         cursor: "move"
                     }}
                     onMouseOver={() => {
@@ -91,14 +97,14 @@ const InnerModal = ({innerModal}) => {
                     onMouseOut={() => setDisabled(true)}
                 >
                     <div className="modal-header">
-                        <span>{currentPage?.text}</span>
+                        <span>{innerModal?.text}</span>
                         <div className="modal-header__buttons">
-                            <MacActions onExit={handleCancel} onResize={resizeModal} />
+                            <MacActions onExit={handleCancel} onResize={resizeModal}/>
                         </div>
                     </div>
                 </div>
             }
-            visible={currentPage.isOpenModal}
+            visible={innerModal?.isOpenModal}
             closable={false}
             modalRender={(modal) => (
                 <Draggable
@@ -111,7 +117,8 @@ const InnerModal = ({innerModal}) => {
             )}
         >
             <Form className="modal-form">
-                {currentPage?.form?.map((form) => (
+                {/* <InnerModal /> */}
+                {innerModal?.form?.map((form) => (
                     <div
                         className="modal-grid__form"
                         key={form?.grid}
@@ -121,11 +128,11 @@ const InnerModal = ({innerModal}) => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name} />
+                            <ModalInput {...input} key={input?.name}/>
                         ))}
                     </div>
                 ))}
-                <ModalTabs tabs={currentPage?.modal?.tabs} />
+                {/* <ModalTabs tabs={innerModal?.modal?.tabs}/> */}
                 <div className="modal-form_buttons">
                     <Button
                         type="submit"
@@ -144,8 +151,7 @@ const InnerModal = ({innerModal}) => {
                 </div>
             </Form>
         </Modal>
+    )
+}
 
-    );
-};
-
-export default InnerModal;
+export default InnerModal

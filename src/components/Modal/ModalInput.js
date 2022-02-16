@@ -20,7 +20,7 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
-import {setValues} from "../../redux/tabs_reducer"
+import {setValues,setInnerModel, toggleModal, toggleInnerModal} from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
 import { findIcon } from "../../assets/icons/icons";
 
@@ -37,6 +37,7 @@ const ModalInput = ({
                         height,
                         Iconic,
                         options,
+                        template
                     }) => {
     let input = null;
     const dispatch = useDispatch();
@@ -46,9 +47,12 @@ const ModalInput = ({
         dispatch(setValues({...values, ...e}));
     };
 
-  const handleSelectAdd = (e) => {
-
+  const handleSelectAdd = (template) => {
+      dispatch(setInnerModel(template))
+      dispatch(toggleInnerModal(true))
+      console.log(template);
   }
+
 
   switch (type) {
     case STRING:
@@ -120,9 +124,8 @@ const ModalInput = ({
           className="select-label"
         >
           {label && label}
-          <div className="option-add" onClick={() => handleSelectAdd()}>{findIcon("Plus")}</div>
+          <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
           <Select
-            addonBefore={label}
             size="small"
             name={name}
             placeholder={placeholder}

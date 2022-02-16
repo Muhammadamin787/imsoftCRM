@@ -21,6 +21,8 @@ import {useSelector} from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData} from "../../redux/tabs_reducer"
+import InnerModal from "../../components/Modal/innerModal/InnerModal";
+
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = ({ setCurrentPage }) => {
@@ -148,6 +150,7 @@ const MainPage = ({ setCurrentPage }) => {
           </Routes>
         </div>
         <GlobalModal />
+        <InnerModal />
         {/* <GlobalModal2 /> */}
         {/* <AntdHookForm /> */}
       </Content>

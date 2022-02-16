@@ -9,6 +9,7 @@ import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import {GET, POST} from "../../functions/Methods";
+import InnerModal from "./innerModal/InnerModal";
 
 const GlobalModal = () => {
     const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
@@ -22,12 +23,16 @@ const GlobalModal = () => {
     useEffect(() => {
         if (currentPage && currentPage.isOpenModal) {
             let currentData = currentPage?.allData;
+            // console.log(currentData);
             for (const url in currentData) {
                 let res = axios(currentData[url]);
-                dispatch(setAllData(res.data));
+                res.then(res => {
+                    dispatch(setAllData(res.data.data));
+                });
+
             }
         }
-    }, [currentPage.isOpenModal])
+    }, [currentPage])
 
     const handleCancel = (e) => {
         dispatch(toggleModal(false));
@@ -106,6 +111,7 @@ const GlobalModal = () => {
             )}
         >
             <Form className="modal-form">
+                {/* <InnerModal /> */}
                 {currentPage?.form?.map((form) => (
                     <div
                         className="modal-grid__form"

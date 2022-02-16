@@ -512,7 +512,8 @@ const iconArr = [
     MacGreen,
     MacYellow,
     UploadFilePasport,
-    UploadFileOilasi
+    UploadFileOilasi,
+    Plus
 ]
 export default iconArr;
 

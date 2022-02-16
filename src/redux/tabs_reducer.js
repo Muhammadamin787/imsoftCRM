@@ -17,13 +17,8 @@ export const counterSlice = createSlice({
         tableItem: [],
         values: {},
         allData: {
-            states: [
-                {id: "22", name: "eee"},
-                {id: "23", name: "gj"},
-                {id: "24", name: "rty"},
-
-            ],
-        }
+        },
+        innerModal:{},
     },
     reducers: {
         addNewTab: (state, {payload}) => {
@@ -50,6 +45,9 @@ export const counterSlice = createSlice({
         },
         toggleModal: (state, {payload}) => {
             state.currentPage.isOpenModal = payload;
+        },
+        toggleInnerModal:(state, {payload}) => {
+            state.innerModal.isOpenModal = payload
         },
         setCurrentPage: (state, {payload}) => {
             if (!payload?.sections) {
@@ -98,8 +96,13 @@ export const counterSlice = createSlice({
             state.loading = false;
         },
         setAllData: (state, {payload}) => {
-            state.allData = {...state.allData, payload};
+            state.allData = {...state?.allData, ...payload};
         },
+
+        setInnerModel: (state, {payload}) => {
+            state.innerModal =  payload;
+            // console.log(payload);
+        }
 
     },
 });
@@ -121,7 +124,9 @@ export const {
     stopLoading,
     startLoading,
     setValues,
-    setAllData
+    setAllData,
+    setInnerModel,
+    toggleInnerModal
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
