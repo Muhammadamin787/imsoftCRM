@@ -4,17 +4,20 @@ import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {MAP, SELECT, STRING} from "../../components/Modal/InputTypes";
 import {FieldNumberOutlined} from "@ant-design/icons";
 import {inputDeafultHeght,} from "../../constant/deafultStyle"
+import ShaharTumanTemplate from "./ShaharTumanTempilate";
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 const RegionlarTemplate = {
     text: "Regionlar",
     path: REGIONLAR_PATH,
     icon: "Regionlar",
     type: SERVIS_CHILD_PAGES,
-    isOpenModal: true,
+    isOpenModal: false,
     mainUrl:"/districts",
-    // allData: [
-    //     "/districts"
-    // ],
+    allData: {
+        states:"/states/all",
+        cities:"/cities/all",
+     },
     form: [
         {
             grid: {
@@ -24,12 +27,14 @@ const RegionlarTemplate = {
             inputs: [
                 {
                     name: "viloyat",
-                    type: STRING,
+                    type: SELECT,
                     required: true,
                     placeholder: "Viloyat",
                     gridColumn: "1 / 2",
                     gridRow: "1 / 2",
                     label: "Viloyat",
+                    options: "states",
+                    template: ViloyatlarTemplate
                 },
                 {
                     name: "shahar/tuman",
@@ -39,12 +44,8 @@ const RegionlarTemplate = {
                     gridColumn: "1 / 2",
                     gridRow: "2 / 3",
                     label: "Shahar/Tuman",
-                    options: [
-                        {value: "custom value 1", key: "custom value 1"},
-                        {value: "custom value 2", key: "custom value 2"},
-                        {value: "custom value 3", key: "custom value 3"},
-                        {value: "custom value 4", key: "custom value 5"},
-                    ],
+                    options: "cities",
+                    template:ShaharTumanTemplate    
                 },
                 {
                     name: "Map bulishi  kk",
