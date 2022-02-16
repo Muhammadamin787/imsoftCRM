@@ -96,7 +96,7 @@ export const counterSlice = createSlice({
             state.loading = false;
         },
         setAllData: (state, {payload}) => {
-            state.allData = {...state?.allData, ...payload};
+            state.allData = {...state.allData, ...payload};
         },
 
         setInnerModel: (state, {payload}) => {

@@ -15,8 +15,6 @@ import {GET, POST} from "../../../functions/Methods";
 const InnerModal = () => {
     const {currentPage, data, values, innerModal} = useSelector((state) => state.tabs_reducer);
 
-    console.log(currentPage);
-    console.log(innerModal);
 
     const [bounds, setBounds] = useState({
         left: 0, top: 0, bottom: 0, right: 0
@@ -24,11 +22,12 @@ const InnerModal = () => {
     const [disabled, setDisabled] = useState(true);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        if (innerModal && innerModal.isOpenModal) {
-            let currentData = innerModal?.allData;
+        if (currentPage && currentPage.isOpenModal) {
+            let currentData = currentPage?.allData;
             for (const url in currentData) {
-                let res = axios(currentData[url]);
+                let res = axios(currentData[url])
                 res.then(res => {
                     dispatch(setAllData({[url]: res.data.data}));
                 });

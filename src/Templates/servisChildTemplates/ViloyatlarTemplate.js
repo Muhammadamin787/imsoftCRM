@@ -11,7 +11,7 @@ const ViloyatlarTemplate = {
   type: SERVIS_CHILD_PAGES,
   mainUrl:"/states",
   // allData:["/states/"],
-  isOpenModal: true,
+  isOpenModal: false,
   form: [
     {
       grid: "1fr",
