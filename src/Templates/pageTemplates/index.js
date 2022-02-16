@@ -19,7 +19,7 @@ export const AllPages = [
   ClientTemplate,
   ProgrammsTemplate,
   ServiceTemplate,
-  ReportTemplate,
+  // ReportTemplate,
 ];
 
 // child of service pages templates

@@ -8,6 +8,6 @@ export const POST = (url, data) => {
 export const GET = (url) => {
     return axios(url, "GET");
 }
-export const DELETE = (url) => {
-    return axios(url, "DELETE");
+export const DELETE = (url, data) => {
+    return axios(url, "DELETE", data);
 }
