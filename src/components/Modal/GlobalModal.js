@@ -10,7 +10,7 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 
 const GlobalModal = () => {
-    const { currentPage, data, values } = useSelector((state) => state.tabs_reducer);
+    const { currentPage, data, values, filteredMainData } = useSelector((state) => state.tabs_reducer);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [bounds, setBounds] = useState({

@@ -25,7 +25,6 @@ const Toolbar = ({tableItem}) => {
             ...currentPage,
             isOpenModal: !currentPage?.isOpenModal,
         };
-        // console.log(newCurrentPage);
         dispatch(
             changePanesModal({panes: newPanes, currentPage: newCurrentPage})
         );
@@ -33,8 +32,6 @@ const Toolbar = ({tableItem}) => {
 
   const onRemove = () => {
     dispatch(removeTableItem());
-    // console.log(tableItem);
-    // message.info("Malumot uchirildi.");
   };
 
 

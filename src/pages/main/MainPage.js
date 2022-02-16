@@ -21,6 +21,7 @@ import {useSelector} from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData, setFilteredMainData} from "../../redux/tabs_reducer"
+import NewSearch from "../../components/SearchInput/NewSearch";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = ({ setCurrentPage }) => {
@@ -100,7 +101,8 @@ const MainPage = ({ setCurrentPage }) => {
           )}
         </Menu>
         <div className="header__user-profile">
-          <SearchInput />
+          {/* <SearchInput /> */}
+          <NewSearch />
           <Popover
             placement="bottomRight"
             title={<div style={{ textAlign: "center" }}>

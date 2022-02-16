@@ -6,6 +6,9 @@
 .site-layout__body {
   overflow: scroll;
 }
-.ant__loyout{
-  // width: 95%;
+.ant-table-tbody{
+  .undefined {
+    background-color: rgb(236, 151, 119) !important;
+    padding: 0 3px;
+  }
 }

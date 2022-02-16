@@ -104,7 +104,6 @@ const ModalInput = ({
           showSearch
           // value={value}
           onChange={(e) => {
-            console.log(e);
             const target = {
               [name]: e,
             };
@@ -144,7 +143,6 @@ const ModalInput = ({
               const target = {
                 [name]: e,
               };
-              console.log(target);
               handleChangeValue(target);
             }}
           >

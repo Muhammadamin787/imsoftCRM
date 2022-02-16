@@ -16,14 +16,14 @@ export const counterSlice = createSlice({
         tableItem: {},
         values: {},
         allData:[],
-        filteredMainData: []
+        filteredMainData: [],
+        serachInputValue: ""
     },
     reducers: {
         addNewTab: (state, {payload}) => {
             const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
-            // console.log(bool);
             if (bool) {
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
@@ -97,6 +97,9 @@ export const counterSlice = createSlice({
         },
         setFilteredMainData: (state, {payload}) => {
             state.filteredMainData = payload;
+        },
+        setSearchInputValue: (state, {payload}) => {
+            state.serachInputValue = payload;
         }
     },
 });
@@ -118,7 +121,8 @@ export const {
     stopLoading,
     startLoading,
     addValuesData,
-    setFilteredMainData
+    setFilteredMainData,
+    setSearchInputValue
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
