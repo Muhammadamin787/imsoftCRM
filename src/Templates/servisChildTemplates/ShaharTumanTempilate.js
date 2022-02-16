@@ -24,10 +24,10 @@ const ShaharTumanTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Viloyat",
-          options: "states",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",
           label: "Viloyat",
+          options: "states",
           template:ViloyatlarTemplate
         },
         {
