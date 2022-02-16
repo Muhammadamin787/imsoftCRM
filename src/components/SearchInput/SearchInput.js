@@ -6,7 +6,6 @@ import { SearchOutlined } from "@ant-design/icons";
 
 function SearchInput() {
   const [search, setSearch] = useState("");
-  const [currentData, setCurrentData] = useState([]);
   const state = useSelector((state) => state?.tabs_reducer);
   const dispatch = useDispatch();
   const [allData, setAllData] = useState([]);
@@ -19,18 +18,19 @@ function SearchInput() {
   /* ------------------------------------ / ----------------------------------- */
 
   useEffect(() => {
-    dispatch(setData(search));
+    // dispatch(setData(search));
+    console.log(search);
   }, [search]);
 
   useEffect(() => {
     setAllData(state?.mainData);
-  }, [state?.currentPage]);
+  }, [state?.mainData]);
 
   return (
     <>
       <SearchTableInput
         columns={state?.currentPage?.columns ? state?.currentPage?.columns : []}
-        dataSource={allData}
+        dataSource={state?.mainData?state?.mainData:[]}
         setDataSource={setSearch}
         inputProps={{
           placeholder: "Qidiruv...",

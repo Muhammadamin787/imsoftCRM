@@ -15,7 +15,8 @@ export const counterSlice = createSlice({
         loading: false,
         tableItem: {},
         values: {},
-        allData:[]
+        allData:[],
+        filteredMainData: []
     },
     reducers: {
         addNewTab: (state, {payload}) => {
@@ -93,8 +94,10 @@ export const counterSlice = createSlice({
         },
         stopLoading: (state) => {
             state.loading = false;
+        },
+        setFilteredMainData: (state, {payload}) => {
+            state.filteredMainData = payload;
         }
-
     },
 });
 
@@ -114,7 +117,8 @@ export const {
     setData,
     stopLoading,
     startLoading,
-    addValuesData
+    addValuesData,
+    setFilteredMainData
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

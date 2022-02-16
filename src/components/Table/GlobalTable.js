@@ -28,14 +28,13 @@ const GlobalTable = () => {
       name: record.name,
     }),
   };
-    const filteredData = mainData.filter();
   return (
       <Table
           bordered
           loading={loading}
           columns={filteredColumns}
           className="main-table"
-          dataSource={filteredData}
+          dataSource={mainData?mainData:[]}
           size={"small"}
           scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
           pagination={{ position: ["bottomCenter"] }}

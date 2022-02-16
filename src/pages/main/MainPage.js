@@ -20,11 +20,11 @@ import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
 import {useSelector} from "react-redux";
 import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
-import {setData} from "../../redux/tabs_reducer"
+import {setData, setFilteredMainData} from "../../redux/tabs_reducer"
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = ({ setCurrentPage }) => {
-  const { currentPage } = useSelector((state) => state.tabs_reducer);
+  const { currentPage, mainData } = useSelector((state) => state.tabs_reducer);
 
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
@@ -55,6 +55,10 @@ const MainPage = ({ setCurrentPage }) => {
         }
 
     }, [pathname]);
+
+    useEffect(() => {
+      setFilteredMainData(mainData);
+    }, [mainData]);
 
   return (
     <Layout className="site-container">
