@@ -9,7 +9,7 @@ import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate";
 import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
-import RegionlarTemplate from "../servisChildTemplates/RegionlarTemplate";
+import HududTemplate from "../servisChildTemplates/HududTemplate";
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
 
 
@@ -30,6 +30,6 @@ export const AllServiceChildPages =[
   YunalishlarTemplate,
   ViloyatlarTemplate,
   ReklamalarTemplate, 
-  RegionlarTemplate,
+  HududTemplate,
   ShaharTumanTemplate
 ]

@@ -1,5 +1,5 @@
 import React from "react";
-import {REGIONLAR_PATH} from "../../pages/pageConstants/PageRoutes";
+import {HUDUD_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {MAP, SELECT, STRING} from "../../components/Modal/InputTypes";
 import {FieldNumberOutlined} from "@ant-design/icons";
@@ -7,10 +7,10 @@ import {inputDeafultHeght,} from "../../constant/deafultStyle"
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
-const RegionlarTemplate = {
-    text: "Regionlar",
-    path: REGIONLAR_PATH,
-    icon: "Regionlar",
+const HududTemplate = {
+    text: "Hudud",
+    path: HUDUD_PATH,
+    icon: "Hudud",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
     mainUrl:"/districts",
@@ -22,40 +22,51 @@ const RegionlarTemplate = {
         {
             grid: {
                 columns: "1fr 1fr",
-                rows: "1fr 1fr",
+                // rows: "1fr 1fr",
             },
             inputs: [
                 {
-                    name: "viloyat",
+                    name: "state_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Viloyat",
-                    gridColumn: "1 / 2",
+                    gridColumn: "1 / 3",
                     gridRow: "1 / 2",
                     label: "Viloyat",
                     options: "states",
-                    template: ViloyatlarTemplate
+                    template: ViloyatlarTemplate,
+                    dontPost: true
                 },
                 {
-                    name: "shahar/tuman",
+                    name: "region_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Shahar/Tuman",
-                    gridColumn: "1 / 2",
+                    gridColumn: "1 / 3",
                     gridRow: "2 / 3",
                     label: "Shahar/Tuman",
                     options: "cities",
                     template:ShaharTumanTemplate    
                 },
                 {
-                    name: "Map bulishi  kk",
-                    type: MAP,
+                    name: "name",
+                    type: STRING,
                     required: true,
-                    placeholder: "map bulishi kk",
-                    gridColumn: "2 / 3",
-                    gridRow: "1 / 3",
-                    height: inputDeafultHeght * 2.5,
-                },
+                    placeholder: "Hudud",
+                    gridColumn: "1 / 3",
+                    gridRow: "3 / 4",
+                    label: "Hudud",
+                }
+
+                // {
+                //     name: "Map bulishi  kk",
+                //     type: MAP,
+                //     required: true,
+                //     placeholder: "map bulishi kk",
+                //     gridColumn: "2 / 3",
+                //     gridRow: "1 / 3",
+                //     height: inputDeafultHeght * 2.5,
+                // },
 
             ],
         },
@@ -69,21 +80,21 @@ const RegionlarTemplate = {
             align: "center",
         },
         {
-            title: "Shahar nomi",
+            title: "Nomi",
             dataIndex: "name",
-            key: "Shahar nomi",
+            key: "Hudud nomi",
+            width: "40%",
+        },
+        {
+            title: "Shahar nomi",
+            dataIndex: "city_name",
+            key: "Hudud nomi",
             width: "40%",
         },
         {
             title: "Viloyat nomi",
-            dataIndex: "region_id",
-            key: "region_id",
-            width: "40%",
-        },
-        {
-            title: "Lokatsiya",
-            dataIndex: "lokatsiya",
-            key: "Lokatsiya",
+            dataIndex: "state_name",
+            key: "Viloyat nomi",
             width: "15%",
             align: "center",
         },
@@ -99,4 +110,4 @@ const RegionlarTemplate = {
     ],
 };
 
-export default RegionlarTemplate;
+export default HududTemplate;

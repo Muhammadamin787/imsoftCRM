@@ -117,9 +117,6 @@
 
     // label uchun start
     .select-label{
-      // border: 1px solid red;
-      // background-color:red;
-      // display: flex;
       position: relative;
       
       .option-add{
@@ -226,7 +223,6 @@
 
 
     .ant-input-number {
-      // background-color: #f1f4f8;
       width: 100%;
       display: flex;
       align-items: center;
@@ -235,8 +231,9 @@
       font-size: 12px;
       line-height: 20px;
       // border: none;
-
+      
       .ant-input-number-handler {
+        // background-color: #f1f4f8 !important;
         // background-color: #f1f4f8;
       }
     }

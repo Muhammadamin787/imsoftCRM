@@ -1,56 +1,58 @@
-import {Input, InputNumber, DatePicker, Select, message} from "antd";
-import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState} from "react";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
+import { Option } from "antd/lib/mentions";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-    DATE,
-    IMAGE,
-    MAP,
-    NUMBER,
-    TEXTAREA,
-    PHONE,
-    SELECT,
-    STRING,
-    UPLOAD,
+  DATE,
+  IMAGE,
+  MAP,
+  NUMBER,
+  TEXTAREA,
+  PHONE,
+  SELECT,
+  STRING,
+  UPLOAD,
 } from "./InputTypes";
-import {inputDeafultHeght} from "../../constant/deafultStyle";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
-import {setValues,setInnerModel, toggleModal, toggleInnerModal} from "../../redux/tabs_reducer"
+import { setValues, setInnerModel, toggleModal, toggleInnerModal, setAllData } from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
 import { findIcon } from "../../assets/icons/icons";
 
 
-const {TextArea} = Input;
+const { TextArea } = Input;
 
 const ModalInput = ({
-                        placeholder,
-                        name,
-                        gridRow,
-                        gridColumn,
-                        label,
-                        type,
-                        height,
-                        Iconic,
-                        options,
-                        template
-                    }) => {
-    let input = null;
-    const dispatch = useDispatch();
-    const {currentPage, values, allData} = useSelector((state) => state.tabs_reducer);
+  placeholder,
+  name,
+  gridRow,
+  gridColumn,
+  label,
+  type,
+  height,
+  Iconic,
+  options,
+  template,
+  dontPost
+}) => {
+  let input = null;
+  const dispatch = useDispatch();
+  const { currentPage, values, allData } = useSelector((state) => state.tabs_reducer);
 
-    const handleChangeValue = (e) => {
-        dispatch(setValues({...values, ...e}));
-    };
+  const handleChangeValue = (e) => {
+
+    dispatch(setValues({ ...values, ...e }));
+  };
 
   const handleSelectAdd = (template) => {
-      dispatch(setInnerModel(template))
-      dispatch(toggleInnerModal(true))
-      console.log(template);
+    dispatch(setInnerModel(template))
+    dispatch(toggleInnerModal(true))
+    // console.log(template);
   }
 
 
@@ -135,7 +137,25 @@ const ModalInput = ({
               const target = {
                 [name]: e,
               };
-              console.log(target);
+
+              // {region_id: 98}
+              // {state_id: 162}
+
+              let currentData = currentPage?.allData;
+              
+              for (const url in currentData) {
+      
+                let res = axios(`${currentData[url]}/${e}`)
+
+                res.then(res => {
+                  // dispatch(setAllData(res.data.data))
+                  console.log(res.data.data);
+                });
+              }
+
+
+
+
               handleChangeValue(target);
             }}
           >
