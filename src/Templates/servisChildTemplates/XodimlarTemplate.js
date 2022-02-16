@@ -13,7 +13,6 @@ import {
   IMAGE,
 } from "../../components/Modal/InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
-import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
@@ -29,7 +28,7 @@ const XodimlarTemplate = {
     modal: {
         style: {
             width: 1000,
-            marginTop: "-70px"
+            marginTop: "-80px"
         }
     },
     form: [
@@ -122,17 +121,17 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght * 1.4,
                 },
                 {
-                    name: "telifon",
+                    name: "telefon",
                     type: PHONE,
                     required: true,
-                    placeholder: "Telifon",
+                    placeholder: "Telefon",
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
-                    label: "Telifon",
+                    label: "Telefon",
 
                 },
                 {
-                    name: "pasport",
+                    name: "passport",
                     type: UPLOAD,
                     required: true,
                     placeholder: "Yo'nalish",
@@ -140,7 +139,7 @@ const XodimlarTemplate = {
                     gridRow: "2 / 4",
                     // height: inputDeafultHeght * 1.2,
                     Iconic: UploadFilePasport,
-                    label: "Pasport",
+                    label: "Passport",
                 },
                 {
                     name: "oilasi",
@@ -163,14 +162,13 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght * 2,
                 },
                 {
+                    label: " ",
                     name: "rasmi",
                     type: IMAGE,
                     required: true,
-                    placeholder: "rasmi",
+                    // placeholder: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
-                    // height: inputDeafultHeght * 6,
-                    label: "Oilasi",
                 },
             ],
         },
