@@ -2,20 +2,20 @@ import React from "react";
 import {
     removeTableItem,
     toggleModal,
-    changePanesModal,
+    changePanesModal, setValues,
 } from "../../../redux/tabs_reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Button, message, Popconfirm, Tooltip} from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import {findIcon} from "../../../assets/icons/icons";
+import {GET} from "../../../functions/Methods";
 
 const Toolbar = ({tableItem}) => {
     const dispatch = useDispatch();
-    const {currentPage, Panes} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, values, Panes} = useSelector((state) => state.tabs_reducer);
 
     const handleModalClick = () => {
-        
         const newPanes = Panes?.map((page) =>
             page?.path === currentPage?.path
                 ? {...page, isOpenModal: !currentPage?.isOpenModal}
@@ -26,20 +26,22 @@ const Toolbar = ({tableItem}) => {
             isOpenModal: !currentPage?.isOpenModal,
         };
         // console.log(newCurrentPage);
-        dispatch(
-            changePanesModal({panes: newPanes, currentPage: newCurrentPage})
-        );
+        dispatch(changePanesModal({panes: newPanes, currentPage: newCurrentPage}));
     };
 
-  const onRemove = () => {
-    dispatch(removeTableItem());
-    // console.log(tableItem);
-    // message.info("Malumot uchirildi.");
-  };
+    const onRemove = async () => {
+        dispatch(removeTableItem());
+
+        // console.log(tableItem);
+        // message.info("Malumot uchirildi.");
+    };
 
 
     const onEdit = () => {
-        dispatch(dispatch(toggleModal(true)));
+        if (tableItem.length === 1) {
+            dispatch(setValues(...tableItem));
+        }
+        dispatch(toggleModal(true));
     };
 
     const currentPageIcon = findIcon(currentPage?.icon);
@@ -64,8 +66,8 @@ const Toolbar = ({tableItem}) => {
         },
         {
             icon: findIcon("EditIcon"),
-            onClick: tableItem?.length == 1 && onEdit,
-            pop: ((tableItem?.length > 1) || (tableItem?.length == 0) || (tableItem == {})) && noPopEdit?.pop,
+            onClick: tableItem?.length === 1 && onEdit,
+            pop: ((tableItem?.length > 1) || (tableItem?.length === 0)) && noPopEdit?.pop,
             tooltip: {
                 placement: "bottom",
                 text: "Taxrirlash",
