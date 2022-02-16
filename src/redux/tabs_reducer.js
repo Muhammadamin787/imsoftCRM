@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import _ from "lodash";
 import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from '../Templates/pageTemplates/ServiceTemplate'
 import axios from "../functions/axios"
+import {DELETE, GET} from "../functions/Methods";
 
 
 export const counterSlice = createSlice({
@@ -13,19 +14,19 @@ export const counterSlice = createSlice({
         currentPage: {},
         mainData: [],
         loading: false,
-        tableItem: {},
+        tableItem: [],
         values: {},
         allData: {
             states: [
-                {id:"22",name:"eee"},
-                {id:"23",name:"gj"},
-                {id:"24",name:"rty"},
-                 
+                {id: "22", name: "eee"},
+                {id: "23", name: "gj"},
+                {id: "24", name: "rty"},
+
             ],
         }
     },
     reducers: {
-        addNewTab: (state, { payload }) => {
+        addNewTab: (state, {payload}) => {
             const bool = [...ServiceTemplate?.sections, ...ProgrammsTemplate?.tabs, ...ClientTemplate?.tabs]?.find((a) =>
                 a?.path === payload?.path ? true : false
             );
@@ -34,23 +35,23 @@ export const counterSlice = createSlice({
                 state.Panes = _.uniqBy([...state?.Panes, payload], "path");
             }
         },
-        clearPanes: (state, { payload }) => {
+        clearPanes: (state, {payload}) => {
             state.Panes = payload;
         },
         removeTab: (state, action) => {
             state.Panes.splice(action.payload, 1);
         },
-        changePanesModal: (s, { payload }) => {
+        changePanesModal: (s, {payload}) => {
             s.Panes = payload.panes;
             s.currentPage = payload.currentPage;
         },
-        changePanes: (state, { payload }) => {
+        changePanes: (state, {payload}) => {
             state.Panes.splice(payload, 1);
         },
-        toggleModal: (state, { payload }) => {
+        toggleModal: (state, {payload}) => {
             state.currentPage.isOpenModal = payload;
         },
-        setCurrentPage: (state, { payload }) => {
+        setCurrentPage: (state, {payload}) => {
             if (!payload?.sections) {
                 // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
                 state.currentPage = payload;
@@ -58,29 +59,21 @@ export const counterSlice = createSlice({
                 state.currentPage = {};
             }
         },
-        changeCurrentPageData: (state, { payload }) => {
+        changeCurrentPageData: (state, {payload}) => {
             if (payload) {
                 state.currentPage.data = payload;
             }
         },
-        setTableItem: (state, { payload }) => {
+        setTableItem: (state, {payload}) => {
             state.tableItem = payload;
         },
-        removeTableItem: (state, { payload }) => {
-
-            state.tableItem.map((el) => {
-                axios(`${state.currentPage?.mainUrl}/${el.number}`, "DELETE")
-            })
-
-            const data = axios(state.currentPage?.mainUrl)
-
-            data.then((res) => {
-                state.mainData = res.data.data
-            })
-
-
+        removeTableItem: (state, {payload}) => {
+            state.tableItem.map(async (row, i) => {
+                await DELETE(`${state.currentPage?.mainUrl}/${row.id}`)
+                GET(state.currentPage?.mainUrl);
+            });
         },
-        editTableItem: (state, { payload }) => {
+        editTableItem: (state, {payload}) => {
             const www = state.currentPage.data.find(
                 (data) => data.number === state.tableItem.number
             );
@@ -88,12 +81,15 @@ export const counterSlice = createSlice({
                 state.currentPage[www.number] = www;
             }
         },
-        addValuesData: (state, { payload }) => {
-            state.values = { ...state.values, ...payload };
-
+        setValues: (state, {payload}) => {
+            state.values = payload;
         },
-        setData: (state, { payload }) => {
-            state.mainData = payload;
+        setData: (state, {payload}) => {
+            let arrayWithKeys = [];
+            payload && payload?.forEach((item, key) => {
+                arrayWithKeys.push({...item, key})
+            });
+            state.mainData = arrayWithKeys;
         },
         startLoading: (state) => {
             state.loading = true;
@@ -101,8 +97,8 @@ export const counterSlice = createSlice({
         stopLoading: (state) => {
             state.loading = false;
         },
-        setAllData: (state, { payload }) => {
-            state.allData = { ...state.allData, payload };
+        setAllData: (state, {payload}) => {
+            state.allData = {...state.allData, payload};
         },
 
     },
@@ -124,7 +120,7 @@ export const {
     setData,
     stopLoading,
     startLoading,
-    addValuesData,
+    setValues,
     setAllData
 } = counterSlice.actions;
 

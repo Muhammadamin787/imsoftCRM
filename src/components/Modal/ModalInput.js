@@ -1,53 +1,53 @@
-import { Input, InputNumber, DatePicker, Select, message } from "antd";
-import { Option } from "antd/lib/mentions";
-import React, { useEffect, useState } from "react";
+import {Input, InputNumber, DatePicker, Select, message} from "antd";
+import {Option} from "antd/lib/mentions";
+import React, {useEffect, useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-  DATE,
-  IMAGE,
-  MAP,
-  NUMBER,
-  TEXTAREA,
-  PHONE,
-  SELECT,
-  STRING,
-  UPLOAD,
+    DATE,
+    IMAGE,
+    MAP,
+    NUMBER,
+    TEXTAREA,
+    PHONE,
+    SELECT,
+    STRING,
+    UPLOAD,
 } from "./InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
-import { addValuesData } from "../../redux/tabs_reducer"
+import {setValues} from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
 import { findIcon } from "../../assets/icons/icons";
 
 
-const { TextArea } = Input;
+const {TextArea} = Input;
 
 const ModalInput = ({
-  placeholder,
-  name,
-  gridRow,
-  gridColumn,
-  label,
-  type,
-  height,
-  Iconic,
-  options,
-}) => {
-  let input = null;
-  const dispatch = useDispatch();
-  const { currentPage, allData } = useSelector((state) => state.tabs_reducer);
+                        placeholder,
+                        name,
+                        gridRow,
+                        gridColumn,
+                        label,
+                        type,
+                        height,
+                        Iconic,
+                        options,
+                    }) => {
+    let input = null;
+    const dispatch = useDispatch();
+    const {currentPage, values, allData} = useSelector((state) => state.tabs_reducer);
 
-  const handleChangeValue = (e) => {
-    dispatch(addValuesData(e));
-  };
+    const handleChangeValue = (e) => {
+        dispatch(setValues({...values, ...e}));
+    };
 
   const handleSelectAdd = (e) => {
-    
+
   }
 
   switch (type) {

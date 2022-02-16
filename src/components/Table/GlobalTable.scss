@@ -1,7 +1,17 @@
-.main-table{
-    .ant-table-row{
-        td{
-            padding: 2px 0 2px 4px !important;
+.main-table {
+  .ant-table {
+    .ant-table-container {
+      .ant-table-body {
+        .ant-table-row.ant-table-row {
+          max-height: 30px !important;
+          height: 30px !important;
+
+          .ant-table-cell.ant-table-cell {
+            padding: 2px 4px !important;
+            max-height: 30px !important;
+          }
         }
+      }
     }
+  }
 }
