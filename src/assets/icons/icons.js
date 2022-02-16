@@ -397,6 +397,13 @@ function UploadFileOilasi() {
 
 }
 
+
+function Plus(){
+    return <svg width="12px" height="12px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.99967 14.6668V8.00016M7.99967 8.00016V1.3335M7.99967 8.00016H14.6663M7.99967 8.00016H1.33301" stroke="#d9d9d9" stroke-width="1.66667" stroke-linecap="round" />
+    </svg>    
+}
+
 export {
     CompanyLogo,
     MainIcon,
@@ -432,7 +439,8 @@ export {
     MacYellow,
     DashIcon,
     UploadFilePasport,
-    UploadFileOilasi
+    UploadFileOilasi,
+    Plus
 }
 
 
@@ -470,7 +478,8 @@ const iconArr = [
     MacGreen,
     MacYellow,
     UploadFilePasport,
-    UploadFileOilasi
+    UploadFileOilasi,
+    Plus
 ]
 export default iconArr;
 

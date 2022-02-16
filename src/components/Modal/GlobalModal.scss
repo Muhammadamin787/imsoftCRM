@@ -116,6 +116,25 @@
     }
 
     // label uchun start
+    .select-label{
+      // border: 1px solid red;
+      // background-color:red;
+      // display: flex;
+      position: relative;
+      
+      .option-add{
+        border:1px solid #d9d9d9;
+        border-bottom: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 33px;
+        height: 22px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+      }
+    }
 
     .ant-input-group {
       //border: 1px solid green;
@@ -135,7 +154,6 @@
 
     .modal-inputs__label {
       font-size: 0.98em;
-      //border: 1px solid red;
       height: 100% !important;
       //width: auto !important;
     }
@@ -224,7 +242,7 @@
     }
 
     .ant-select-single {
-      // background-color: #f1f4f8;
+      // background-color: red;
       height: 35px;
       width: 100%;
       font-weight: 400;
@@ -238,7 +256,7 @@
     
     .ant-select-selector {
       height: 35px !important;
-      //background-color: red;
+      // background-color: red;
       // background-color: #f1f4f8;
       // border: none;
       display: flex;
