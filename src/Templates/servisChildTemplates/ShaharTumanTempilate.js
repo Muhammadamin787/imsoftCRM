@@ -3,17 +3,17 @@ import { SHAHAR_TUMAN_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { STRING, SELECT, NUMBER } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from '@ant-design/icons';
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 const ShaharTumanTemplate = {
   text: "Shahar Tuman",
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
-  allData:["/cities", "/states"],
-  // allData: {
-  //   cities: "/cities",
-  //   states: "/states",
-  // },
+  mainUrl:"/cities",
+  allData: {
+     states:"/states/all",
+  },
   isOpenModal: false,
   form: [
     {
@@ -24,13 +24,11 @@ const ShaharTumanTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Viloyat",
-          path: "/states",
-          option: [
-            { value: "qui", key: "qui" },
-            { value: "Farg'ona", key: "Qo'qon" },
-            { value: "Andijon", key: "Marg'ilon" },
-          ],
-
+          gridColumn: "1 / 2",
+          gridRow: "2 / 3",
+          label: "Viloyat",
+          options: "states",
+          template:ViloyatlarTemplate
         },
         {
           name: "name",
@@ -38,7 +36,8 @@ const ShaharTumanTemplate = {
           required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
-          gridRow: "2 / 3",
+          gridRow: "1 / 2",
+          label: "Shahar/Tuman"
 
         },
       ],

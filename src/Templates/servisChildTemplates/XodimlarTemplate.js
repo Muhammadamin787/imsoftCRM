@@ -1,7 +1,11 @@
 import React from "react";
 import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
+import {
+  FileBlueIcon,
+  UploadFileOilasi,
+  UploadFilePasport,
+} from "../../assets/icons/icons";
 import {
   STRING,
   DATE,
@@ -13,10 +17,9 @@ import {
   IMAGE,
 } from "../../components/Modal/InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
-import { FieldNumberOutlined } from "@ant-design/icons";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
+import { Popover, Button } from "antd";
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -24,15 +27,14 @@ const XodimlarTemplate = {
   icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  allData: ["/workers"],
-
+  mainUrl: "/workers",
+  // allData: ["/workers"],
   modal: {
     style: {
       width: 1000,
-      marginTop: "-70px",
+      marginTop: "-80px",
     },
   },
-
   form: [
     {
       grid: {
@@ -123,16 +125,16 @@ const XodimlarTemplate = {
           height: inputDeafultHeght * 1.4,
         },
         {
-          name: "telifon",
+          name: "telefon",
           type: PHONE,
           required: true,
-          placeholder: "Telifon",
+          placeholder: "Telefon",
           gridColumn: "10 / 16",
           gridRow: "1 / 2",
-          label: "Telifon",
+          label: "Telefon",
         },
         {
-          name: "pasport",
+          name: "passport",
           type: UPLOAD,
           required: true,
           placeholder: "Yo'nalish",
@@ -140,7 +142,7 @@ const XodimlarTemplate = {
           gridRow: "2 / 4",
           // height: inputDeafultHeght * 1.2,
           Iconic: UploadFilePasport,
-          label: "Pasport",
+          label: "Passport",
         },
         {
           name: "oilasi",
@@ -163,21 +165,19 @@ const XodimlarTemplate = {
           height: inputDeafultHeght * 2,
         },
         {
+          label: " ",
           name: "rasmi",
           type: IMAGE,
           required: true,
-          placeholder: "rasmi",
+          // placeholder: "rasmi",
           gridColumn: "16 / 21",
           gridRow: "1 / 7",
-          // height: inputDeafultHeght * 6,
-          label: "Oilasi",
         },
       ],
     },
   ],
 
   filters: ["type_id"],
-
   columns: [
     {
       title: "№",
@@ -231,16 +231,14 @@ const XodimlarTemplate = {
       title: "Yo'nalish",
       dataIndex: "type_id",
       key: "type_id",
-      onFilter: (value, record) => {
-        return record.type_id.indexOf(value) === 0;
-      },
+      onFilter: (value, record) => record.type_id.indexOf(value) === 0,
       width: "35%",
     },
     {
       title: "Rasmi",
       dataIndex: "developer_photo",
       key: "developer_photo",
-      width: "15%",
+      width: "10%",
       align,
       render: (_, record) => {
         return (
@@ -263,13 +261,13 @@ const XodimlarTemplate = {
       title: "Passport",
       dataIndex: "passport",
       key: "passport",
-      width: "15%",
+      width: "20%",
       align,
       render: (_, record) => {
         return (
           <Zoom zoomMargin={10}>
             <picture>
-              <source media="(max-width: 800px)" srcSet={record.rasmi} />
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
               <img
                 alt="img"
                 src={record.passport}
@@ -286,24 +284,9 @@ const XodimlarTemplate = {
       title: "Oilasi",
       dataIndex: "family",
       key: "family",
-      width: "20%",
+      width: "10%",
       align,
-      render: (_, record) => {
-        return (
-          <Zoom zoomMargin={10}>
-            <picture>
-              <source media="(max-width: 800px)" srcSet={record.rasmi} />
-              <img
-                alt="img"
-                src={record.passport}
-                width="30"
-                height="30"
-                style={{ objectFit: "contain" }}
-              />
-            </picture>
-          </Zoom>
-        );
-      },
+      render: (text) => <FileBlueIcon />,
     },
     {
       title: "Xarita",
@@ -316,8 +299,52 @@ const XodimlarTemplate = {
       title: "Qo'shimcha ma'lumot",
       dataIndex: "about",
       key: "about",
-      width: "35%",
+      width: "45%",
       align,
+      render: (text) => {
+        let content = (
+          <div style={{ width: "400px" }}>
+            <p>{text}</p>
+          </div>
+        );
+        return (
+          <Popover placement="leftTop" content={content}>
+            <div
+              style={{
+                height: "50px",
+                overflow: "hidden",
+                fontSize: ".9em",
+              }}
+            >
+              {text}
+            </div>
+          </Popover>
+        );
+      },
+      //   render: (text) => (
+      //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
+      //       <div
+      //         style={{
+      //           height: "50px",
+      //           overflow: "scroll",
+      //           fontSize: ".9em",
+      //           margin: "-2px 0",
+      //           padding: 0,
+      //           // border: "1px solid red"
+      //         }}
+      //       >
+      //         {text}
+      //       </div>
+      //     </Popover>
+      //   ),
+      // render: (text => <div style={{
+      //     height: "50px",
+      //     overflow: "scroll",
+      //     fontSize: ".9em",
+      //     margin: "-2px 0",
+      //     padding: 0,
+      //     // border: "1px solid red"
+      // }}>{text}</div>)
     },
   ],
   scroll: { x: 2000, y: 500 },

@@ -7,7 +7,7 @@ export const REPORT_PATH = "/report";
 // paths of service pages
 export const REKLAMALAR_PATH = "/servis/reklamalar";
 export const FAOLYAT_TURLARI_PATH = "/servis/faoliyat_turlari";
-export const REGIONLAR_PATH = "/servis/regionlar";
+export const HUDUD_PATH = "/servis/hudud";
 export const XODIMLAR_PATH = "/servis/xodimlar";
 export const VILOYATLAR_PATH = "/servis/viloyatlar";
 export const YUNALISHLAR_PATH = "/servis/yunalishlar";

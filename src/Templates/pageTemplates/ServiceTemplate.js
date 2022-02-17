@@ -5,7 +5,7 @@ import {SERVIS_PAGE} from "../../pages/pageConstants/PageTypes";
 import FaoliyatTurlariTemplate from "../servisChildTemplates/FaolyatTurlariTemplate";
 import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
-import RegionlarTemplate from "../servisChildTemplates/RegionlarTemplate";
+import HududTemplate from "../servisChildTemplates/HududTemplate";
 import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate"
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate"
@@ -23,7 +23,7 @@ const ServiceTemplate = {
     YunalishlarTemplate,
     ViloyatlarTemplate,
     ShaharTumanTemplate,
-    RegionlarTemplate,
+    HududTemplate,
     ReklamalarTemplate,
   ],
 };

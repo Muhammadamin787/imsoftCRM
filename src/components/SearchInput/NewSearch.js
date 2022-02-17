@@ -12,7 +12,7 @@ const filterqidirmaydiganTamlateDataIndex = [
   "passport",
   "family",
   "hozirgi_yashash_joyi",
-  "number"
+  "number",
 ];
 const { Search } = Input;
 const NewSearch = () => {
@@ -47,14 +47,37 @@ const NewSearch = () => {
       if (!filterqidirmaydiganTamlateDataIndex.includes(item.dataIndex)) {
         return {
           ...item,
-          render: (text, _, i) => (
-            <Highlighter
-              highlightClassName={{ backgroundColor: "#000", padding: 15 }}
-              searchWords={[`${value}`]}
-              autoEscape={true}
-              textToHighlight={text}
-            />
+          render: (text) => (
+            <div
+              style={
+                item.dataIndex !== "about"
+                  ? {}
+                  : {
+                      height: "50px",
+                      overflowY: "scroll",
+                      fontSize: ".9em",
+                      margin: "-2px 0",
+                      padding: 0,
+                      // border: "1px solid red"
+                    }
+              }
+            >
+              <Highlighter
+                highlightClassName={{ backgroundColor: "#000", padding: 15 }}
+                searchWords={[`${value}`]}
+                autoEscape={true}
+                textToHighlight={text}
+              />
+            </div>
           ),
+          // render: (text, _, i) => (
+          //   <Highlighter
+          //     highlightClassName={{ backgroundColor: "#000", padding: 15 }}
+          //     searchWords={[`${value}`]}
+          //     autoEscape={true}
+          //     textToHighlight={text}
+          //   />
+          // ),
         };
       } else {
         return item;
@@ -66,13 +89,12 @@ const NewSearch = () => {
     dispatch(setFilteredMainData(filter));
   }, [value]);
   return (
-      <Search
-        placeholder="Search..."
-        value={value}
-        // onSearch={() => {}}
-        allowClear
-        onChange={(e) => setValue(e.target.value)}
-      />
+    <Search
+      placeholder="Search..."
+      value={value}
+      allowClear
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 };
 

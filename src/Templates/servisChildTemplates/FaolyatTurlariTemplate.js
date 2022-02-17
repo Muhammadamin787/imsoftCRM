@@ -10,7 +10,8 @@ const FaolyatTurlaiTemplate = {
   icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  allData:["/activity-types/"],
+  mainUrl:"/activity-types",
+  // allData:["/activity-types/"],
   form: [
     {
       grid: "1fr",
@@ -28,8 +29,8 @@ const FaolyatTurlaiTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "10%",
       align: "center",
       render: (text, data, index) => ++index,
@@ -37,7 +38,7 @@ const FaolyatTurlaiTemplate = {
     {
       title: "Faoliyat turi",
       dataIndex: "name",
-      key: "name",
+      key: "Faoliyat turi",
       width: "100%",
     },
   ],

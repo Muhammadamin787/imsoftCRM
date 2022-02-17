@@ -20,8 +20,9 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
-import { addValuesData } from "../../redux/tabs_reducer"
+import { setValues, setInnerModel, toggleModal, toggleInnerModal, setAllData } from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
+import { findIcon } from "../../assets/icons/icons";
 
 
 const { TextArea } = Input;
@@ -35,26 +36,25 @@ const ModalInput = ({
   type,
   height,
   Iconic,
-  path
+  options,
+  template,
+  dontPost
 }) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state) => state.tabs_reducer)
-
-
-  const [options, setOptions] = useState("")
-
-  useEffect(() => {
-      const data = axios(path);
-      data.then((res) => {
-        setOptions(res?.data?.data)
-      });
-  }, [currentPage])
-
+  const { currentPage, values, allData } = useSelector((state) => state.tabs_reducer);
 
   const handleChangeValue = (e) => {
-    dispatch(addValuesData(e))
+
+    dispatch(setValues({ ...values, ...e }));
   };
+
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template))
+    dispatch(toggleInnerModal(true))
+    // console.log(template);
+  }
+
 
   switch (type) {
     case STRING:
@@ -64,7 +64,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // border: "1px solid red",
             display: "flex",
             flexDirection: "column",
           }}
@@ -72,8 +71,8 @@ const ModalInput = ({
           {label && label}
           <Input
             name={name}
+            value={values && values[name]}
             placeholder={placeholder}
-            // value={value}
             required={true}
             onChange={(e) => {
               const target = {
@@ -102,7 +101,6 @@ const ModalInput = ({
           }}
           placeholder={placeholder}
           showSearch
-          // value={value}
           onChange={(e) => {
             const target = {
               [name]: e,
@@ -125,33 +123,46 @@ const ModalInput = ({
             display: "flex",
             flexDirection: "column",
           }}
+          className="select-label"
         >
           {label && label}
+          <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
           <Select
-            addonBefore={label}
             size="small"
             name={name}
             placeholder={placeholder}
             required
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px" : inputDeafultHeght + "px",
-            // }}
-            // value={value}
             onChange={(e) => {
               const target = {
                 [name]: e,
               };
+
+              // {region_id: 98}
+              // {state_id: 162}
+
+              let currentData = currentPage?.allData;
+
+              for (const url in currentData) {
+
+                let res = axios(`${currentData[url]}/${e}`)
+
+                res.then(res => {
+                  // dispatch(setAllData(res.data.data))
+                  console.log(res.data.data);
+                });
+              }
+
+
+
+
               handleChangeValue(target);
             }}
           >
-            {options &&
-              options?.map((option, i) => (
-                <Option value={option.id} key={option.id}>
-                  {option.name}
-                </Option>
-              ))}
+            {allData && allData[options]?.map((option, i) => (
+              <Option value={option.id} key={option.id}>
+                {option.name}
+              </Option>
+            ))}
           </Select>
         </label>
       );
@@ -176,7 +187,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // border: "1px solid red",
             display: "flex",
             flexDirection: "column",
           }}
@@ -184,15 +194,9 @@ const ModalInput = ({
           {label && label}
           <DatePicker
             placeholder={placeholder}
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px" : inputDeafultHeght + "px",
-            // }}
             format="DD.MM.YYYY"
             allowClear={false}
             // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
-            // value={value}
             required
             onChange={(_, dateString) => {
               const target = {
@@ -212,8 +216,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // height: "100%",
-            // border: "1px solid red",
             display: "flex",
             flexDirection: "column",
           }}
@@ -223,12 +225,6 @@ const ModalInput = ({
             placeholder={placeholder}
             required
             autoSize={{ minRows: 3, maxRows: 3 }}
-            // value={value}
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px" : inputDeafultHeght + "px",
-            // }}
             onChange={(data) => {
               const target = {
                 [name]: data.target.value,
@@ -248,19 +244,12 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            // border: "1px solid red",
-            // height:"65px !important"
           }}
         >
           {label && label}
           <PhoneInput
             country={"uz"}
             style={{ height: "65px !important" }}
-            // style={{
-            //     gridColumn: gridColumn,
-            //     gridRow: gridRow,
-            //     height: height ? height + "px" : inputDeafultHeght + "px",
-            // }}
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
@@ -270,7 +259,6 @@ const ModalInput = ({
             }}
             masks={{ uz: "(..) ...-..-.." }}
             prefix="+"
-            // value={valuess[name] ? values[name] : "+998"}
             onChange={(data) => {
               const target = {
                 [name]: data,
@@ -299,15 +287,6 @@ const ModalInput = ({
 
     case IMAGE:
       input = (
-        // <label
-        // style={{
-        //     gridColumn: gridColumn,
-        //     gridRow: gridRow,
-        //     height: height ? height + "px !important" : inputDeafultHeght + "px",
-        //     // border: "1px solid red",
-        // }}
-        // className="image-input"
-        // >
         <UpLoadJPG
           id="file-uploder"
           name={name}
@@ -318,7 +297,6 @@ const ModalInput = ({
           Iconic={Iconic}
           label={label}
         />
-        // </label>
       );
       break;
 

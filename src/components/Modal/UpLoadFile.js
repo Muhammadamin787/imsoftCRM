@@ -69,7 +69,7 @@ class UploadFile extends React.Component {
               : inputDeafultHeght + "px",
             width: "100% !important",
             textAlign: "center",
-            border: "1px solid black",
+            border: "1px solid #D9D9D9",
           }}
         > <p>{this.props.label}</p>
           <Upload

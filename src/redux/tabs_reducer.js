@@ -4,6 +4,7 @@ import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from '../Templates/pageTemplates/ServiceTemplate'
 import axios from "../functions/axios"
+import {DELETE, GET, POST} from "../functions/Methods";
 
 
 export const counterSlice = createSlice({
@@ -13,11 +14,14 @@ export const counterSlice = createSlice({
         currentPage: {},
         mainData: [],
         loading: false,
-        tableItem: {},
+        tableItem: [],
         values: {},
         allData:[],
         filteredMainData: [],
-        serachInputValue: ""
+        serachInputValue: "",
+        allData: {
+        },
+        innerModal:{},
     },
     reducers: {
         addNewTab: (state, {payload}) => {
@@ -44,6 +48,9 @@ export const counterSlice = createSlice({
         toggleModal: (state, {payload}) => {
             state.currentPage.isOpenModal = payload;
         },
+        toggleInnerModal:(state, {payload}) => {
+            state.innerModal.isOpenModal = payload
+        },
         setCurrentPage: (state, {payload}) => {
             if (!payload?.sections) {
                 // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
@@ -61,18 +68,10 @@ export const counterSlice = createSlice({
             state.tableItem = payload;
         },
         removeTableItem: (state, {payload}) => {
-
-            state.tableItem.map((el) => {
-                axios(`${state.currentPage?.allData[0]}${el.number}`, "DELETE")
-            })
-
-            const data = axios(state.currentPage?.allData[0])
-
-            data.then((res) => {
-                state.mainData = res.data.data
-            })
-
-
+            let ids = state.tableItem.map(row => {
+                return row.id;
+            });
+            return POST(state.currentPage?.mainUrl + "/delete", ids);
         },
         editTableItem: (state, {payload}) => {
             const www = state.currentPage.data.find(
@@ -82,12 +81,15 @@ export const counterSlice = createSlice({
                 state.currentPage[www.number] = www;
             }
         },
-        addValuesData: (state, {payload}) => {
-            state.values = {...state.values, ...payload};
-
+        setValues: (state, {payload}) => {
+            state.values = payload;
         },
         setData: (state, {payload}) => {
-            state.mainData = payload;
+            let arrayWithKeys = [];
+            payload && payload?.forEach((item, key) => {
+                arrayWithKeys.push({...item, key})
+            });
+            state.mainData = arrayWithKeys;
         },
         startLoading: (state) => {
             state.loading = true;
@@ -100,6 +102,14 @@ export const counterSlice = createSlice({
         },
         setSearchInputValue: (state, {payload}) => {
             state.serachInputValue = payload;
+        },
+        setAllData: (state, {payload}) => {
+            state.allData = {...state.allData, ...payload};
+        },
+
+        setInnerModel: (state, {payload}) => {
+            state.innerModal =  payload;
+            // console.log(payload);
         }
     },
 });
@@ -122,7 +132,11 @@ export const {
     startLoading,
     addValuesData,
     setFilteredMainData,
-    setSearchInputValue
+    setSearchInputValue,
+    setValues,
+    setAllData,
+    setInnerModel,
+    toggleInnerModal
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

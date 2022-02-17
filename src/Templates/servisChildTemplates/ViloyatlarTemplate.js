@@ -9,8 +9,9 @@ const ViloyatlarTemplate = {
   path: VILOYATLAR_PATH,
   icon: "Group",
   type: SERVIS_CHILD_PAGES,
-  allData:["/states/"],
-  isOpenModal: true,
+  mainUrl:"/states",
+  // allData:["/states/"],
+  isOpenModal: false,
   form: [
     {
       grid: "1fr",

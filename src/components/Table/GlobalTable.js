@@ -7,10 +7,9 @@ import { setTableItem } from "../../redux/tabs_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
-  const { currentPage, mainData, loading, filteredMainData, serachInputValue } = useSelector(
-    (state) => state?.tabs_reducer
-  );
+  const { currentPage, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
   const dispatch = useDispatch();
+  const {filters, columns} = currentPage;
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -22,31 +21,31 @@ const GlobalTable = () => {
     }),
   };
 
-  useEffect(() => {
+  function filterAdd() {
     let filteredColumns = [];
-    if (currentPage?.filters) {
+    if (filters) {
       filteredColumns = FilterColumns(
-        currentPage?.filters,
-        currentPage?.columns,
+        filters,
+        columns,
         mainData
       );
-    } 
-    else {
-      filteredColumns = currentPage?.columns;
+    } else {
+      filteredColumns = columns;
     }
     setNewColumns(filteredColumns);
-  }, [mainData]);
+  }
 
   useEffect(() => {
-    setNewColumns(currentPage?.columns);
-  }, [currentPage]);
+    filterAdd();
+  }, [currentPage, mainData]);
+
   return (
     <Table
       bordered
       loading={loading}
       columns={newColumns}
       className="main-table"
-      dataSource={serachInputValue?filteredMainData:mainData}
+      dataSource={serachInputValue ? filteredMainData : mainData}
       size={"small"}
       scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
       pagination={{ position: ["bottomCenter"] }}

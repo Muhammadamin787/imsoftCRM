@@ -9,7 +9,8 @@ const ReklamalarTemplate = {
   path: REKLAMALAR_PATH,
   icon: "Reklamalar",
   type: SERVIS_CHILD_PAGES,
-	allData:["/reklams"],
+  mainUrl:"/reklams",
+	// allData:["/reklams"],
   isOpenModal: false,
   form: [
     {
@@ -27,16 +28,16 @@ const ReklamalarTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
       align: "center",
       render: (text, data, i) => ++i
     },
     {
       title: "Reklama Nomi",
-      dataIndex: "reklama_nomi",
-      key: "Reklama",
+      dataIndex: "description",
+      key: "description",
       width: "95%",
     },
   ],
