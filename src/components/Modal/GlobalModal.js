@@ -3,7 +3,7 @@ import { Modal, Button, Form, message } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleModal, addValuesData, setData } from "../../redux/tabs_reducer";
+import {toggleModal, addValuesData, setData, setAllData, setValues, setTableItem} from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";

@@ -11,7 +11,7 @@ import {
 import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import {useDispatch} from "react-redux";
-import {setCurrentPage, startLoading, stopLoading,} from "../../redux/tabs_reducer";
+import {setCurrentPage, setFilteredMainData, startLoading, stopLoading,} from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -26,7 +26,7 @@ import NewSearch from "../../components/SearchInput/NewSearch";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
-    const {currentPage} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, mainData} = useSelector((state) => state.tabs_reducer);
 
     const [currentTime, setCurrentTime] = useState(
         moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
@@ -49,7 +49,7 @@ const MainPage = () => {
             ...ProgrammsTemplate?.tabs,
             ...ClientTemplate?.tabs,
         ].find(page => page.path === document.location.pathname);
-            setCurrentPage(a);
+        setCurrentPage(a);
     }, [])
 
     useEffect(() => {
@@ -66,40 +66,40 @@ const MainPage = () => {
     }, [pathname]);
 
     useEffect(() => {
-      setFilteredMainData(mainData);
+        setFilteredMainData(mainData);
     }, [mainData]);
 
-  return (
-    <Layout className="site-container">
-      <Header className="site-header">
-        <div className="header__logo">
-          <CompanyLogo />
-        </div>
-        <Menu
-          className="header__navigation"
-          mode="horizontal"
-          defaultSelectedKeys={["0"]}
-        >
-          {AllPages.map((menu, i) =>
-            menu.submenus ? (
-              <SubMenu key={i} title={menu.text}>
-                {menu.submenus.map((sub, k) => (
-                  <Item key={"sub" + k}>
-                    <Link to={sub.path}>
-                      {sub.text}
-                      {findIcon(menu?.icon)}
-                    </Link>
-                  </Item>
-                ))}
-              </SubMenu>
-            ) : (
-              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
-                <NavLink
-                  to={menu.path}
-                  key={i}
-                  className={({ isActive }) => (isActive ? "activeStyle" : "")}
+    return (
+        <Layout className="site-container">
+            <Header className="site-header">
+                <div className="header__logo">
+                    <CompanyLogo/>
+                </div>
+                <Menu
+                    className="header__navigation"
+                    mode="horizontal"
+                    defaultSelectedKeys={["0"]}
                 >
-                  <span style={{ marginRight: "10px", marginTop: "10px" }}>
+                    {AllPages.map((menu, i) =>
+                            menu.submenus ? (
+                                <SubMenu key={i} title={menu.text}>
+                                    {menu.submenus.map((sub, k) => (
+                                        <Item key={"sub" + k}>
+                                            <Link to={sub.path}>
+                                                {sub.text}
+                                                {findIcon(menu?.icon)}
+                                            </Link>
+                                        </Item>
+                                    ))}
+                                </SubMenu>
+                            ) : (
+                                <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
+                                    <NavLink
+                                        to={menu.path}
+                                        key={i}
+                                        className={({isActive}) => (isActive ? "activeStyle" : "")}
+                                    >
+                  <span style={{marginRight: "10px", marginTop: "10px"}}>
                     {findIcon(menu?.icon)}
                   </span>
                                         <span>{menu.text}</span>

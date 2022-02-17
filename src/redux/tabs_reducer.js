@@ -132,7 +132,7 @@ export const {
     setValues,
     setAllData,
     setInnerModel,
-    toggleInnerModal
+    toggleInnerModal,
     addValuesData,
     setFilteredMainData,
     setSearchInputValue
