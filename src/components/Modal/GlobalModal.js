@@ -23,7 +23,7 @@ const GlobalModal = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (currentPage && currentPage.isOpenModal) {
+        if (currentPage && currentPage?.isOpenModal) {
             let currentData = currentPage?.allData;
             // console.log(currentData);
             for (const url in currentData) {
@@ -31,7 +31,6 @@ const GlobalModal = () => {
                 res.then(res => {
                     dispatch(setAllData({ [url] : res.data.data }));
                 });
-
             }
         }
     }, [currentPage])
@@ -104,7 +103,7 @@ const GlobalModal = () => {
                     </div>
                 </div>
             }
-            visible={currentPage.isOpenModal}
+            visible={currentPage?.isOpenModal}
             closable={false}
             modalRender={(modal) => (
                 <Draggable

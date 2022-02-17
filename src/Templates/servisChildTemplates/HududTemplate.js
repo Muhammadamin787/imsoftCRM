@@ -1,9 +1,8 @@
 import React from "react";
-import { HUDUD_PATH } from "../../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { MAP, SELECT, STRING } from "../../components/Modal/InputTypes";
-import { FieldNumberOutlined } from "@ant-design/icons";
-import { inputDeafultHeght, } from "../../constant/deafultStyle"
+import {HUDUD_PATH} from "../../pages/pageConstants/PageRoutes";
+import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
+import {MAP, SELECT, STRING} from "../../components/Modal/InputTypes";
+import {FieldNumberOutlined} from "@ant-design/icons";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
@@ -26,39 +25,37 @@ const HududTemplate = {
             },
             inputs: [
                 {
-                    name: "state_id",
-                    type: SELECT,
-                    required: true,
-                    placeholder: "Viloyat",
-                    gridColumn: "1 / 3",
-                    gridRow: "1 / 2",
-                    label: "Viloyat",
-                    options: "states",
-                    changeOtherSelect: "cities",
-                    template: ViloyatlarTemplate,
-                },
-                {
-                    name: "region_id",
-                    type: SELECT,
-                    required: true,
-                    placeholder: "Shahar/Tuman",
-                    gridColumn: "1 / 3",
-                    gridRow: "2 / 3",
-                    label: "Shahar/Tuman",
-                    options: "cities",
-                    changeOtherSelect:"states",
-                    template: ShaharTumanTemplate
-                },
-                {
+                    label: "Hudud",
                     name: "name",
                     type: STRING,
                     required: true,
                     placeholder: "Hudud",
                     gridColumn: "1 / 3",
+                    gridRow: "1 / 2",
+                },
+                {
+                    label: "Shahar/Tuman",
+                    name: "city_id",
+                    type: SELECT,
+                    options: "cities",
+                    required: true,
+                    placeholder: "Shahar/Tuman",
+                    gridColumn: "1 / 3",
+                    gridRow: "2 / 3",
+                    autoSelect: [
+                        "state_id"
+                    ]
+                },
+                {
+                    label: "Viloyat",
+                    name: "state_id",
+                    type: SELECT,
+                    required: true,
+                    options: "states",
+                    placeholder: "Viloyat",
+                    gridColumn: "1 / 3",
                     gridRow: "3 / 4",
-                    label: "Hudud",
-                }
-
+                },
                 // {
                 //     name: "Map bulishi  kk",
                 //     type: MAP,
@@ -74,7 +71,7 @@ const HududTemplate = {
     ],
     columns: [
         {
-            title: <FieldNumberOutlined />,
+            title: <FieldNumberOutlined/>,
             dataIndex: "id",
             key: "id",
             width: "5%",
