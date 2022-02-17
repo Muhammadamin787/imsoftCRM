@@ -133,7 +133,6 @@ export const {
     setAllData,
     setInnerModel,
     toggleInnerModal,
-    addValuesData,
     setFilteredMainData,
     setSearchInputValue
 } = counterSlice.actions;
