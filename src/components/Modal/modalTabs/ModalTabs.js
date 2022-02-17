@@ -5,7 +5,6 @@ import InnerTable from "../../Table/innerTable/InnerTable";
 import "./ModalTabs.scss"
 
 const ModalTabs = ({tabs,i}) => {
-    
     return (
         <Tabs defaultActiveKey={[0]}>
         {tabs?.map((tab, i) => (

@@ -9,7 +9,6 @@ export const LearningProgrammesTemplate = {
   path: OQITILAYOTGAN,
   key: "3",
   type: PROGRAMMERS_CHILD_PAGES,
-  columns: [
-      ...NewProgrammsTemplate.columns
-  ],
+  modal: {...NewProgrammsTemplate.modal},
+  columns: [...NewProgrammsTemplate.columns],
 };

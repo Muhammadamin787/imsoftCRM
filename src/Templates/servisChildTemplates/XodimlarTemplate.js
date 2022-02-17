@@ -1,21 +1,27 @@
 import React from "react";
-import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { UploadFileOilasi, UploadFilePasport } from "../../assets/icons/icons";
+import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
+import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {
-  STRING,
-  DATE,
-  SELECT,
-  TEXTAREA,
-  PHONE,
-  UPLOAD,
-  MAP,
-  IMAGE,
+    FileBlueIcon,
+    UploadFileOilasi,
+    UploadFilePasport,
+} from "../../assets/icons/icons";
+import {
+    STRING,
+    DATE,
+    SELECT,
+    TEXTAREA,
+    PHONE,
+    UPLOAD,
+    MAP,
+    IMAGE,
 } from "../../components/Modal/InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
-import { FieldNumberOutlined } from "@ant-design/icons";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import {Popover, Button} from "antd";
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
+import ShaharTumanTemplate from "./ShaharTumanTempilate";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -24,12 +30,16 @@ const XodimlarTemplate = {
     icon: "Xodimlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    allData:["/workers"],
+    mainUrl: "/workers",
+    allData: {
+        states: "/states/all",
+        cities: "/cities/all",
+    },
     modal: {
         style: {
             width: 1000,
-            marginTop: "-70px"
-        }
+            marginTop: "-80px",
+        },
     },
     form: [
         {
@@ -55,21 +65,18 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 5",
                     gridRow: "2 / 3",
                     label: "Tug'ilgan sana",
-                    height: inputDeafultHeght ,
+                    height: inputDeafultHeght,
                 },
                 {
+                    label: "Viloyat",
                     name: "viloyat",
                     type: SELECT,
                     required: true,
                     placeholder: "viloyat",
                     gridColumn: "1 / 5",
-                    label: "Viloyat",
                     gridRow: "3 / 4",
-                    option: [
-                        {value: "Qashqadaryo", key: "Qashqadaroy"},
-                        {value: "Andijon", key: "Andijon"},
-                        {value: "Farg'ona", key: "Farg'ona"},
-                    ],
+                    options: "states",
+                    template: ViloyatlarTemplate
                 },
                 {
                     name: "Yo'nalishi",
@@ -79,11 +86,8 @@ const XodimlarTemplate = {
                     label: "Yo'nalish",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
-                    option: [
-                        {value: "Dasturchi Web (Frontend)", key: "Web (Frontend)"},
-                        {value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)"},
-                        {value: "Dasturchi Web (Backend)", key: "Web (Backend)"},
-                    ],
+                    template: ShaharTumanTemplate,
+                    options: "cities",
                 },
                 {
                     name: "shahar",
@@ -108,6 +112,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
                     label: "Manzil",
+                    // height: "40px"
                 },
                 {
                     name: "qushimcha_malumot",
@@ -117,19 +122,19 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "5 / 7",
                     label: "Qo'shimcha malumot",
-                    height: inputDeafultHeght *1.4,
+                    height: inputDeafultHeght * 1.4,
                 },
                 {
-                    name: "telifon",
+                    name: "telefon",
                     type: PHONE,
                     required: true,
-                    placeholder: "Telifon",
+                    placeholder: "Telefon",
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
-                    label: "Telifon",
+                    label: "Telefon",
                 },
                 {
-                    name: "pasport",
+                    name: "passport",
                     type: UPLOAD,
                     required: true,
                     placeholder: "Yo'nalish",
@@ -137,7 +142,7 @@ const XodimlarTemplate = {
                     gridRow: "2 / 4",
                     // height: inputDeafultHeght * 1.2,
                     Iconic: UploadFilePasport,
-                    label: "Pasport",
+                    label: "Passport",
                 },
                 {
                     name: "oilasi",
@@ -158,165 +163,187 @@ const XodimlarTemplate = {
                     gridColumn: "10 / 16",
                     gridRow: "4 / 7",
                     height: inputDeafultHeght * 2,
+                    label: " "
                 },
                 {
+                    label: " ",
                     name: "rasmi",
                     type: IMAGE,
                     required: true,
-                    placeholder: "rasmi",
+                    // placeholder: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
-                    height: inputDeafultHeght * 6,
                 },
             ],
         },
     ],
 
-  filters: ["yonalish"],
-  columns: [
-    {
-      title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
-      width: "10%",
-      align,
-    },
-    {
-      title: "F.I.Sh",
-      dataIndex: "full_name",
-      key: "full_name",
-      width: "40%",
-    },
-    {
-      title: "Telefon",
-      dataIndex: "telefon",
-      key: "telifon",
-      width: "20%",
-      align,
-    },
-    {
-      title: "Viloyat",
-      dataIndex: "viloyat",
-      key: "viloyat",
-      width: "20%",
-      align,
-    },
-    {
-      title: "Shahar",
-      dataIndex: "shahar",
-      key: "shahar",
-      width: "20%",
-      align,
-    },
-    {
-      title: "Manzil",
-      dataIndex: "manzil",
-      key: "manzil",
-      width: "40%",
-    },
-    {
-      title: "Tug'ilgan sana",
-      dataIndex: "tugilgan_sana",
-      key: "tugilgan_sana",
-      width: "30%",
-      align,
-    },
-    {
-      title: "Yo'nalish",
-      dataIndex: "yunalishi",
-      key: "yunalishi",
-      onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
-      width: "35%",
-    },
-    {
-      title: "Rasmi",
-      dataIndex: "rasmi",
-      key: "rasmi",
-      width: "15%",
-      align,
-      render: (_, record) => {
-        return (
-          <Zoom zoomMargin={10}>
-            <picture>
-              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-              <img
-                alt="img"
-                src={record.rasmi}
-                width="30"
-                height="30"
-                style={{ objectFit: "contain" }}
-              />
-            </picture>
-          </Zoom>
-        );
-      },
-    },
-    {
-      title: "Pasport",
-      dataIndex: "pasport",
-      key: "pasport",
-      width: "15%",
-      align,
-    },
-    {
-      title: "Oilasi",
-      dataIndex: "oilasi",
-      key: "oilasi",
-      width: "20%",
-      align,
-    },
-    {
-      title: "Xarita",
-      dataIndex: "hozirgi_yashash_joyi",
-      key: "hozirgi_yashash_joyi",
-      width: "15%",
-      align,
-    },
-    {
-      title: "Qo'shimcha ma'lumot",
-      dataIndex: "qushimcha_malumot",
-      key: "qushimcha_malumot",
-      width: "35%",
-      align,
-    },
-  ],
-  data: [
-    {
-      number: "1",
-      key: 1,
-      full_name: "Hojiakbar Anorboyev",
-      telifon: "998992348569",
-      viloyat: "Farg'ona",
-      shahar: "Marg'ilon",
-      manzil: "Galatoy 82 A",
-      tugilgan_sana: "01/21/2005",
-      yunalishi: "Frontend Dasturchi",
-      qushimcha_malumot: "Izlanuvchan, xatolar ustida yaxshi ishlay oladi",
-      hozirgi_yashash_joyi: [43.34721024644568, 69.81948986127864],
-      rasmi: "rasmichasi",
-      pasport: "",
-      oilasi: "",
-      value: "",
-    },
-    {
-      number: "2",
-      key: 2,
-      full_name: "Ravshanbek Fayziyev",
-      telifon: "998992349999",
-      viloyat: "Farg'ona",
-      shahar: "Andijon",
-      manzil: "Galatoy 82 A",
-      tugilgan_sana: "09/09/2000",
-      yunalishi: "BAckend Dasturchi",
-      hozirgi_yashash_joyi: [40.34721024644568, 71.81948986127864],
-      qushimcha_malumot: "yaxshi bola",
-      rasmi: "rasm",
-      oilasi: "",
-      pasport: "",
-      value: "",
-    },
-  ],
-  scroll: { x: 2000, y: 380 },
+    filters: ["type_id"],
+    columns: [
+        {
+            title: "№",
+            dataIndex: "number",
+            key: "number",
+            width: "10%",
+            align,
+            render: (text, data, index) => ++index,
+        },
+        {
+            title: "F.I.Sh",
+            dataIndex: "name",
+            key: "name",
+            width: "40%",
+        },
+        {
+            title: "Telefon",
+            dataIndex: "phone_number",
+            key: "phone_number",
+            width: "20%",
+            align,
+        },
+        {
+            title: "Viloyat",
+            dataIndex: "state_id",
+            key: "state_id",
+            width: "20%",
+            align,
+        },
+        {
+            title: "Shahar",
+            dataIndex: "region_id",
+            key: "region_id",
+            width: "20%",
+            align,
+        },
+        {
+            title: "Manzil",
+            dataIndex: "address",
+            key: "address",
+            width: "40%",
+        },
+        {
+            title: "Tug'ilgan sana",
+            dataIndex: "born_date",
+            key: "born_date",
+            width: "26%",
+            align,
+        },
+        {
+            title: "Yo'nalish",
+            dataIndex: "type_id",
+            key: "type_id",
+            onFilter: (value, record) => record.type_id.indexOf(value) === 0,
+            width: "35%",
+        },
+        {
+            title: "Rasmi",
+            dataIndex: "developer_photo",
+            key: "developer_photo",
+            width: "10%",
+            align,
+            render: (_, record) => {
+                return (
+                    <Zoom zoomMargin={10}>
+                        <picture>
+                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+                            <img
+                                alt="img"
+                                src={record.developer_photo}
+                                width="30"
+                                height="30"
+                                style={{objectFit: "contain"}}
+                            />
+                        </picture>
+                    </Zoom>
+                );
+            },
+        },
+        {
+            title: "Passport",
+            dataIndex: "passport",
+            key: "passport",
+            width: "20%",
+            align,
+            render: (_, record) => {
+                return (
+                    <Zoom zoomMargin={10}>
+                        <picture>
+                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+                            <img
+                                alt="img"
+                                src={record.passport}
+                                width="30"
+                                height="30"
+                                style={{objectFit: "contain"}}
+                            />
+                        </picture>
+                    </Zoom>
+                );
+            },
+        },
+        {
+            title: "Oilasi",
+            dataIndex: "family",
+            key: "family",
+            width: "10%",
+            align,
+            render: (text) => <FileBlueIcon/>,
+        },
+        {
+            title: "Xarita",
+            dataIndex: "hozirgi_yashash_joyi",
+            key: "hozirgi_yashash_joyi",
+            width: "15%",
+            align,
+        },
+        {
+            title: "Qo'shimcha ma'lumot",
+            dataIndex: "about",
+            key: "about",
+            width: "45%",
+            align,
+            render: (text) => {
+                let content = (
+                    <div style={{width: "400px"}}>
+                        <p>{text}</p>
+                    </div>
+                );
+                return (
+                    <Popover placement="leftTop" content={content}>
+                        <div className="hodim-template">
+                            <div className="box-shadow"></div>
+                            {text}
+                        </div>
+                    </Popover>
+                );
+            },
+            //   render: (text) => (
+            //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
+            //       <div
+            //         style={{
+            //           height: "50px",
+            //           overflow: "scroll",
+            //           fontSize: ".9em",
+            //           margin: "-2px 0",
+            //           padding: 0,
+            //           // border: "1px solid red"
+            //         }}
+            //       >
+            //         {text}
+            //       </div>
+            //     </Popover>
+            //   ),
+            // render: (text => <div style={{
+            //     height: "50px",
+            //     overflow: "scroll",
+            //     fontSize: ".9em",
+            //     margin: "-2px 0",
+            //     padding: 0,
+            //     // border: "1px solid red"
+            // }}>{text}</div>)
+        },
+    ],
+    scroll: {x: 2000, y: 500},
 };
 
 export default XodimlarTemplate;

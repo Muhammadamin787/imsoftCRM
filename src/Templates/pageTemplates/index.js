@@ -3,7 +3,14 @@ import ClientTemplate from "./ClientTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
 import MainTemplate from "./MainTemplate";
 import ServiceTemplate from "./ServiceTemplate";
-import ReportTemplate from "../servisChildTemplates/ReportTemplate";
+import ReportTemplate from "./ReportTemplate";
+import FaolyatTurlaiTemplate from "../servisChildTemplates/FaolyatTurlariTemplate";
+import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
+import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
+import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate";
+import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
+import HududTemplate from "../servisChildTemplates/HududTemplate";
+import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
 
 
 // Basic routes templates
@@ -12,8 +19,17 @@ export const AllPages = [
   ClientTemplate,
   ProgrammsTemplate,
   ServiceTemplate,
-  ReportTemplate,
+  // ReportTemplate,
 ];
 
 // child of service pages templates
 
+export const AllServiceChildPages =[
+  // FaolyatTurlaiTemplate,
+  // XodimlarTemplate,
+  // YunalishlarTemplate,
+  // ViloyatlarTemplate,
+  // ReklamalarTemplate, 
+  // HududTemplate,
+  // ShaharTumanTemplate
+]

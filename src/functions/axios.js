@@ -17,13 +17,10 @@ export default async (url, method = "GET", data = null, id = null) => {
 	} catch (error) {
 		if (error.message.includes("500")) {
 			message.error({content: "Formani to'ldiring!", key: key});
-		} else {
-			console.log(error);
-			message.error({content: "Internet bilan aloqa yo'q", key: key});
+		} else if (error.message.includes("422")){
+			message.error({content: error.message, key: key});
 		}
 	}
 };
 
-
-// axios()
 

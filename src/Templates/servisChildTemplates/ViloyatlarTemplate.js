@@ -9,17 +9,19 @@ const ViloyatlarTemplate = {
   path: VILOYATLAR_PATH,
   icon: "Group",
   type: SERVIS_CHILD_PAGES,
-  allData:["/states"],
+  mainUrl:"/states",
+  // allData:["/states/"],
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "Viloyatlar",
+          name: "name",
           type: STRING,
           required: true,
           placeholder:"Viloyatlar",
+          label: "Viloyat"
         },
       ],
     },
@@ -27,23 +29,22 @@ const ViloyatlarTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
       align: "center",
     },
     {
       title: "Viloyat Nomi",
-      dataIndex: "viloyat",
-      key: "Viloyat",
+      dataIndex: "name",
+      key: "name",
       width: "95%",
     },
   ],
   data: [
     {
-      number: "1",
-      viloyat: "Farg'ona",
-      key: 1,
+      id: "1",
+      name: "Farg'ona",
     },
   ],
 };

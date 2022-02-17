@@ -1,51 +1,60 @@
-import { Table} from "antd";
-import React from "react";
+import { Table } from "antd";
+import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
-import FilterColumns from '../../constant/FilterColumns';
-import {setTableItem} from "../../redux/tabs_reducer"
-
+import FilterColumns from "../../constant/FilterColumns";
+import { setTableItem } from "../../redux/tabs_reducer";
 
 const GlobalTable = () => {
-  const { currentPage } = useSelector((state) => state?.tabs_reducer);
-
-  const dispatch = useDispatch()
-
-  let filteredColumns = [];
-  if(currentPage?.filters){
-    filteredColumns = FilterColumns(currentPage?.filters, currentPage?.columns, currentPage?.data);
-  }else{
-    filteredColumns = currentPage?.columns;
-  }
-
+  const [newColumns, setNewColumns] = useState([]);
+  const { currentPage,tableItem, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
+  const dispatch = useDispatch();
+  const {filters, columns} = currentPage;
 
   const rowSelection = {
+    selectedRowKeys: tableItem.map(row => row.key),
     onChange: (selectedRowKeys, selectedRows) => {
-      dispatch(setTableItem(selectedRows))
+        dispatch(setTableItem(selectedRows))
     },
     getCheckboxProps: (record) => ({
-      disabled: record.name === 'Disabled User',
-      // Column configuration not to be checked
-      name: record.name,
+        disabled: record.name === 'Disabled User',
+        name: record.name,
     }),
-  };
-    
+};
 
+  function filterAdd() {
+    let filteredColumns = [];
+    if (filters) {
+      filteredColumns = FilterColumns(
+        filters,
+        columns,
+        mainData
+      );
+    } else {
+      filteredColumns = columns;
+    }
+    setNewColumns(filteredColumns);
+  }
+
+  useEffect(() => {
+    filterAdd();
+  }, [currentPage, mainData]);
 
   return (
-      <Table
-          bordered
-          columns={filteredColumns}
-          className="main-table"
-          dataSource={currentPage?.data}
-          size={"small"}
-          scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
-          pagination={{ position: ["bottomCenter"] }}
-          rowSelection={{
-            type: "checkbox",
-            ...rowSelection,
-          }}
-        />
+    <Table
+      bordered
+      loading={loading}
+      columns={newColumns}
+      className="main-table"
+      dataSource={serachInputValue ? filteredMainData : mainData}
+      size={"small"}
+      scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
+      pagination={{ position: ["bottomCenter"] }}
+      rowSelection={{
+        type: "checkbox",
+        ...rowSelection,
+      }}
+    />
   );
 };
 

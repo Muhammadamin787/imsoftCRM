@@ -1,39 +1,43 @@
 import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { STRING, SELECT } from "../../components/Modal/InputTypes";
+import { STRING, SELECT, NUMBER } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from '@ant-design/icons';
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 const ShaharTumanTemplate = {
   text: "Shahar Tuman",
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
+  mainUrl: "/cities",
+  allData: {
+    states: "/states/all",
+  },
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
         {
-          name: "viloyat",
+          name: "name",
           type: STRING,
-          required: true,
-          placeholder:"Viloyat",
-        },
-        {
-          name: "Shahar/Tuman",
-          type: SELECT,
           required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
+          gridRow: "1 / 2",
+          label: "Shahar/Tuman"
+        },
+        {
+          name: "state_id",
+          type: SELECT,
+          required: true,
+          placeholder: "Viloyat",
+          gridColumn: "1 / 2",
           gridRow: "2 / 3",
-          option: [
-            { value: "Olti ariq", key: "Olti ariq"},
-            { value: "Qo'qon", key: "Qo'qon"},
-            { value: "Marg'ilon", key: "Marg'ilon"},
-            { value: "Farg'ona", key: "Farg'ona"},
-          ],
-
+          label: "Viloyat",
+          options: "states",
+          template: ViloyatlarTemplate
         },
       ],
     },
@@ -41,22 +45,23 @@ const ShaharTumanTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "5%",
       align: "center",
     },
     {
       title: "Shahar nomi",
-      dataIndex: "shahar",
+      dataIndex: "name",
       key: "Shahar",
       width: "47%",
     },
     {
       title: "Viloyat nomi",
-      dataIndex: "viloyat",
-      key: "Viloyat",
+      dataIndex: "state_name",
+      key: "/states/",
       width: "47%",
+
     },
   ],
   data: [

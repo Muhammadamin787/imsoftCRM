@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, Form, message } from "antd";
-import "./GlobalModal.scss";
-import ModalInput from "./ModalInput";
-import { useSelector, useDispatch } from "react-redux";
-import {toggleModal, addValuesData, setData, setAllData, setValues, setTableItem} from "../../redux/tabs_reducer";
-import ModalTabs from "./modalTabs/ModalTabs";
+import React, {useState, useEffect, useRef} from 'react'
+import '../GlobalModal.scss'
+import {Modal, Button, Form, message} from "antd";
+import ModalInput from "../ModalInput";
+import {useSelector, useDispatch} from "react-redux";
+import {toggleInnerModal, setData, setAllData, setValues, setTableItem} from "../../../redux/tabs_reducer";
+import ModalTabs from "../modalTabs/ModalTabs";
 import Draggable from "react-draggable";
-import MacActions from "../ToolsBar/MacActions/MacActions";
-import axios from "../../functions/axios";
-import {GET, POST} from "../../functions/Methods";
-import InnerModal from "./innerModal/InnerModal";
+import MacActions from "../../ToolsBar/MacActions/MacActions";
+import axios from "../../../functions/axios";
+import {GET, POST} from "../../../functions/Methods";
 
+// ❗ hard code boldi, Global modaldagi codelar takrollandi 
 
+const InnerModal = () => {
+    const {currentPage, data, values, innerModal} = useSelector((state) => state.tabs_reducer);
 
-const GlobalModal = () => {
-    const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
 
     const [bounds, setBounds] = useState({
         left: 0, top: 0, bottom: 0, right: 0
@@ -22,46 +22,45 @@ const GlobalModal = () => {
     const [disabled, setDisabled] = useState(true);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        if (currentPage && currentPage?.isOpenModal) {
+        if (currentPage && currentPage.isOpenModal) {
             let currentData = currentPage?.allData;
-            // console.log(currentData);
             for (const url in currentData) {
-                let res = axios(currentData[url]);
+                let res = axios(currentData[url])
                 res.then(res => {
-                    dispatch(setAllData({ [url] : res.data.data }));
+                    dispatch(setAllData({[url]: res.data.data}));
                 });
             }
         }
-    }, [currentPage])
+    }, [innerModal, currentPage]);
+
 
     const handleCancel = (e) => {
-        dispatch(toggleModal(false));
+        dispatch(toggleInnerModal(false));
         dispatch(setValues({}));
     };
+
 
     const resizeModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
-    const handleChangeValue = (e) => {
-        dispatch(setValues({ ...values, ...e }));
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleChangeValue();
-        const url = currentPage?.mainUrl;
+
+        const url = innerModal?.mainUrl;
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
-            dispatch(toggleModal(false));
+            dispatch(toggleInnerModal(false));
             dispatch(setValues({}));
             dispatch(setTableItem([]))
             GET(url).then(res => {
                 dispatch(setData(res.data.data))
             });
         });
-    }
+    }   
 
     const draggleRef = useRef("s");
 
@@ -79,15 +78,16 @@ const GlobalModal = () => {
         });
     };
 
+
     return (
         <Modal
-            style={{...currentPage?.modal?.style}}
-            width={currentPage?.modal?.style?.width}
+            style={{...innerModal?.modal?.style}}
+            width={innerModal?.modal?.style?.width}
             footer={null}
             title={
                 <div
                     style={{
-                        width: currentPage?.modal?.style?.width,
+                        width: innerModal?.modal?.style?.width,
                         cursor: "move"
                     }}
                     onMouseOver={() => {
@@ -96,14 +96,14 @@ const GlobalModal = () => {
                     onMouseOut={() => setDisabled(true)}
                 >
                     <div className="modal-header">
-                        <span>{currentPage?.text}</span>
+                        <span>{innerModal?.text}</span>
                         <div className="modal-header__buttons">
                             <MacActions onExit={handleCancel} onResize={resizeModal}/>
                         </div>
                     </div>
                 </div>
             }
-            visible={currentPage?.isOpenModal}
+            visible={innerModal?.isOpenModal}
             closable={false}
             modalRender={(modal) => (
                 <Draggable
@@ -115,9 +115,9 @@ const GlobalModal = () => {
                 </Draggable>
             )}
         >
-            <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
+            <Form className="modal-form">
                 {/* <InnerModal /> */}
-                {currentPage?.form?.map((form) => (
+                {innerModal?.form?.map((form) => (
                     <div
                         className="modal-grid__form"
                         key={form?.grid}
@@ -127,11 +127,11 @@ const GlobalModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
+                            <ModalInput {...input} key={input?.name}/>
                         ))}
                     </div>
                 ))}
-                <ModalTabs tabs={currentPage?.modal?.tabs}/>
+                {/* <ModalTabs tabs={innerModal?.modal?.tabs}/> */}
                 <div className="modal-form_buttons">
                     <Button
                         type="submit"
@@ -140,17 +140,17 @@ const GlobalModal = () => {
                     >
                         Orqaga
                     </Button>
-                    <button 
+                    <Button
                         type="submit"
                         className="modal-form__button saqlash"
                         onClick={(e) => handleSubmit(e)}
                     >
                         Saqlash
-                    </button>
+                    </Button>
                 </div>
-            </form>
+            </Form>
         </Modal>
-    );
-};
+    )
+}
 
-export default GlobalModal;
+export default InnerModal
