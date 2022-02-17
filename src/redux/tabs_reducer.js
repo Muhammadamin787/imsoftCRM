@@ -105,11 +105,8 @@ export const counterSlice = createSlice({
     },
     setAllData: (state, {payload}) => {
         // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
-        const aa = state.allData
-            state.allData = { ...aa,...payload};
-        // console.log(payload.name);
 
-        // state.allData[payload.name] = payload.data
+            state.allData = { ...state.allData,...payload};
 
 
 

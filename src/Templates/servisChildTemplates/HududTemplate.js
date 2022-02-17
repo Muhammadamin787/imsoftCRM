@@ -1,9 +1,9 @@
 import React from "react";
-import {HUDUD_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {MAP, SELECT, STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
-import {inputDeafultHeght,} from "../../constant/deafultStyle"
+import { HUDUD_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { MAP, SELECT, STRING } from "../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
+import { inputDeafultHeght, } from "../../constant/deafultStyle"
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
@@ -13,11 +13,11 @@ const HududTemplate = {
     icon: "Hudud",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    mainUrl:"/districts",
+    mainUrl: "/districts",
     allData: {
-        states:"/states/all",
-        cities:"/cities/all",
-     },
+        states: "/states/all",
+        cities: "/cities/all",
+    },
     form: [
         {
             grid: {
@@ -34,6 +34,7 @@ const HududTemplate = {
                     gridRow: "1 / 2",
                     label: "Viloyat",
                     options: "states",
+                    changeOtherSelect: "cities",
                     template: ViloyatlarTemplate,
                 },
                 {
@@ -45,7 +46,8 @@ const HududTemplate = {
                     gridRow: "2 / 3",
                     label: "Shahar/Tuman",
                     options: "cities",
-                    template:ShaharTumanTemplate    
+                    changeOtherSelect:"states",
+                    template: ShaharTumanTemplate
                 },
                 {
                     name: "name",
@@ -72,7 +74,7 @@ const HududTemplate = {
     ],
     columns: [
         {
-            title: <FieldNumberOutlined/>,
+            title: <FieldNumberOutlined />,
             dataIndex: "id",
             key: "id",
             width: "5%",
