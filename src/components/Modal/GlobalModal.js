@@ -10,7 +10,7 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import {GET, POST} from "../../functions/Methods";
 import InnerModal from "./innerModal/InnerModal";
-import {inputDeafultHeght} from "../../constant/deafultStyle"
+
 
 
 const GlobalModal = () => {
@@ -50,7 +50,7 @@ const GlobalModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleChangeValue()
+        handleChangeValue();
         const url = currentPage?.mainUrl;
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
@@ -127,17 +127,7 @@ const GlobalModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <Form.Item
-                            style={{
-                                gridColumn: input.gridColumn,
-                                gridRow: input.gridRow,
-                                height: input.height ? input.height + "px" : inputDeafultHeght + "px",
-                                display: "flex",
-                                flexDirection: "column",
-                            }}
-                            >
-                                <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
-                            </Form.Item>
+                            <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
                         ))}
                     </div>
                 ))}

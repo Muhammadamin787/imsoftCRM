@@ -165,6 +165,7 @@ const XodimlarTemplate = {
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
           height: inputDeafultHeght * 2,
+          label: " "
         },
         {
           label: " ",

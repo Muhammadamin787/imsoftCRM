@@ -1,6 +1,6 @@
-import {Input, InputNumber, DatePicker, Select, message, Form} from "antd";
-import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState} from "react";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
+import { Option } from "antd/lib/mentions";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -60,55 +60,58 @@ const ModalInput = ({
     }
 
 
-    switch (type) {
-        case STRING:
-            input = (
-                <label
-                    // style={{
-                    //   gridColumn: gridColumn,
-                    //   gridRow: gridRow,
-                    //   height: height ? height + "px" : inputDeafultHeght + "px",
-                    //   display: "flex",
-                    //   flexDirection: "column",
-                    // }}
-                >
-                    {/* {label && label} */}
-                    <Input
-                        name={name}
-                        value={values && values[name]}
-                        placeholder={placeholder}
-                        required
-                        onChange={(e) => {
-                            const target = {
-                                [name]: e.target.value,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
 
-        case NUMBER:
-            input = (
-                <InputNumber
-                    addonBefore={label}
-                    type="number"
-                    name={name}
-                    required
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                    placeholder={placeholder}
-                    showSearch
-                    onChange={(e) => {
-                        const target = {
-                            [name]: e,
-                        };
+
+  switch (type) {
+    case STRING:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          required={required}
+        >
+          {label && label}
+          <Input
+            name={name}
+            value={values && values[name]}
+            placeholder={placeholder}
+            required={required}
+            onChange={(e) => {
+              const target = {
+                [name]: e.target.value,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
+
+    case NUMBER:
+      input = (
+        <InputNumber
+          addonBefore={label}
+          type="number"
+          name={name}
+          required
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          placeholder={placeholder}
+          showSearch
+          onChange={(e) => {
+            const target = {
+              [name]: e,
+            };
 
                         handleChangeValue(target);
                     }}
@@ -144,40 +147,70 @@ const ModalInput = ({
             );
             break;
 
-        case MAP:
-            input = (
-                <MapModal
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    name={name}
-                    handleChangeValue={handleChangeValue}
-                />
-            );
-            break;
+    case MAP:
+      input = (
+        <MapModal
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          name={name}
+          handleChangeValue={handleChangeValue}
+          required={required}
+        />
+      );
+      break;
 
-        case DATE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <DatePicker
-                        placeholder={placeholder}
-                        format="DD.MM.YYYY"
-                        allowClear={false}
-                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
-                        required
-                        onChange={(_, dateString) => {
-                            const target = {
-                                [name]: dateString,
-                            };
+    case DATE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          >
+          {label && label}
+          <DatePicker
+            placeholder={placeholder}
+            format="DD.MM.YYYY"
+            allowClear={false}
+            // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+            required={required}
+            onChange={(_, dateString) => {
+              const target = {
+                [name]: dateString,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
+
+    case TEXTAREA:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+
+        >
+          {label && label}
+          <TextArea
+            placeholder={placeholder}
+            required={required}
+            autoSize={{ minRows: 3, maxRows: 3 }}
+            onChange={(data) => {
+              const target = {
+                [name]: data.target.value,
+              };
+
                             handleChangeValue(target);
                         }}
                     />
@@ -185,66 +218,38 @@ const ModalInput = ({
             );
             break;
 
-        case TEXTAREA:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {label && label}
-                    <TextArea
-                        placeholder={placeholder}
-                        required
-                        autoSize={{minRows: 3, maxRows: 3}}
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data.target.value,
-                            };
-
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
-
-        case PHONE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                >
-                    {label && label}
-                    <PhoneInput
-                        country={"uz"}
-                        style={{height: "65px !important"}}
-                        specialLabel={false}
-                        disableDropdown={true}
-                        countryCodeEditable={false}
-                        required
-                        areaCodes={{
-                            uz: ["+998"],
-                        }}
-                        masks={{uz: "(..) ...-..-.."}}
-                        prefix="+"
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
+    case PHONE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
+          <PhoneInput
+            country={"uz"}
+            style={{ height: "65px !important" }}
+            specialLabel={false}
+            disableDropdown={true}
+            countryCodeEditable={false}
+            required={required}
+            areaCodes={{
+              uz: ["+998"],
+            }}
+            masks={{ uz: "(..) ...-..-.." }}
+            prefix="+"
+            onChange={(data) => {
+              const target = {
+                [name]: data,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
 
         case UPLOAD:
             input = (
