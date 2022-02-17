@@ -35,7 +35,7 @@ const HududTemplate = {
                 },
                 {
                     label: "Shahar/Tuman",
-                    name: "city_id",
+                    name: "region_id",
                     type: SELECT,
                     options: "cities",
                     required: true,
