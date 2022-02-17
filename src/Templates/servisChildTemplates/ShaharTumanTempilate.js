@@ -20,6 +20,15 @@ const ShaharTumanTemplate = {
       grid: "1fr",
       inputs: [
         {
+          name: "name",
+          type: STRING,
+          required: true,
+          placeholder: "Shahar/Tuman",
+          gridColumn: "1 / 2",
+          gridRow: "1 / 2",
+          label: "Shahar/Tuman"
+        },
+        {
           name: "state_id",
           type: SELECT,
           required: true,
@@ -29,15 +38,6 @@ const ShaharTumanTemplate = {
           label: "Viloyat",
           options: "states",
           template: ViloyatlarTemplate
-        },
-        {
-          name: "name",
-          type: STRING,
-          required: true,
-          placeholder: "Shahar/Tuman",
-          gridColumn: "1 / 2",
-          gridRow: "1 / 2",
-          label: "Shahar/Tuman"
         },
       ],
     },
@@ -58,7 +58,7 @@ const ShaharTumanTemplate = {
     },
     {
       title: "Viloyat nomi",
-      dataIndex: "name",
+      dataIndex: "state_name",
       key: "/states/",
       width: "47%",
 

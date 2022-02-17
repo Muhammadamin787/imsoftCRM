@@ -51,6 +51,7 @@ export const counterSlice = createSlice({
       state.innerModal.isOpenModal = payload;
     },
     setCurrentPage: (state, { payload }) => {
+      console.log(payload)
       if (!payload?.sections) {
         // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
         state.currentPage = payload;
