@@ -25,11 +25,11 @@ export const AllPages = [
 // child of service pages templates
 
 export const AllServiceChildPages =[
-  FaolyatTurlaiTemplate,
-  XodimlarTemplate,
-  YunalishlarTemplate,
-  ViloyatlarTemplate,
-  ReklamalarTemplate, 
-  HududTemplate,
-  ShaharTumanTemplate
+  // FaolyatTurlaiTemplate,
+  // XodimlarTemplate,
+  // YunalishlarTemplate,
+  // ViloyatlarTemplate,
+  // ReklamalarTemplate, 
+  // HududTemplate,
+  // ShaharTumanTemplate
 ]

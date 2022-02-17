@@ -18,7 +18,6 @@ export default async (url, method = "GET", data = null, id = null) => {
 		if (error.message.includes("500")) {
 			message.error({content: "Formani to'ldiring!", key: key});
 		} else if (error.message.includes("422")){
-			console.log(error.message);
 			message.error({content: error.message, key: key});
 		}
 	}

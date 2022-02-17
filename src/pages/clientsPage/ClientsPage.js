@@ -7,7 +7,6 @@ import ClientPageChild from "./clientPageChild/ClientPageChild";
 const ClientsPage = ({ page }) => {
   const dispatch = useDispatch();
   // dispatch(setCurrentPage(page);
-    // console.log(page.tabs[0])
 
   return (
     <div>

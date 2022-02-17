@@ -9,7 +9,6 @@ import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
 import ProgrammesPageChild from "./programmesPageChild/ProgrammesPageChild";
 
 const ProgrammesPage = ({ page }) => {
-  console.log(page);
   const dispatch = useDispatch();
 
   // dispatch(setCurrentPage(page));

@@ -5,28 +5,30 @@ import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
 import { CompanyLogo, findIcon } from "../../assets/icons/icons";
 import moment from "moment";
-import {
-    AllPages,
-} from "../../Templates/pageTemplates/index";
-import {PageController} from "../PageController";
+import { AllPages } from "../../Templates/pageTemplates/index";
+import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
-import {useDispatch} from "react-redux";
-import {setCurrentPage, startLoading, stopLoading,} from "../../redux/tabs_reducer";
+import { useDispatch } from "react-redux";
+import {
+  setCurrentPage,
+  setData,
+  startLoading,
+  stopLoading,
+} from "../../redux/tabs_reducer";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from "../../Templates/pageTemplates/ServiceTemplate";
-import {useSelector} from "react-redux";
-import axios from '../../functions/axios';
-import GlobalModal from '../../components/Modal/GlobalModal';
-import {setData} from "../../redux/tabs_reducer"
+import { useSelector } from "react-redux";
+import axios from "../../functions/axios";
+import GlobalModal from "../../components/Modal/GlobalModal";
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
-
+import NewSearch from "../../components/SearchInput/NewSearch";
 
 // Bismillahir rohmanyir rohiym!
-const MainPage = ({ setCurrentPage }) => {
-  const { currentPage } = useSelector((state) => state.tabs_reducer);
+const MainPage = () => {
+  const { currentPage, mainData } = useSelector((state) => state.tabs_reducer);
 
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
@@ -43,20 +45,30 @@ const MainPage = ({ setCurrentPage }) => {
 
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    let a = [
+      ...AllPages,
+      ...ServiceTemplate?.sections,
+      ...ProgrammsTemplate?.tabs,
+      ...ClientTemplate?.tabs,
+    ].find((page) => page.path === document.location.pathname);
+    setCurrentPage(a);
+  }, []);
 
-    useEffect(() => {
-        dispatch(setData([]));
-        if (currentPage?.mainUrl && currentPage.mainUrl) {
-            dispatch(startLoading());
-            const data = axios(currentPage?.mainUrl);
-            data.then(res => {
-                dispatch(setData(res.data.data))
-            }).then(r => {
-                dispatch(stopLoading());
-            })
-        }
-
-    }, [pathname]);
+  useEffect(() => {
+    dispatch(setData([]));
+    if (currentPage?.mainUrl && currentPage.mainUrl) {
+      dispatch(startLoading());
+      const data = axios(currentPage?.mainUrl);
+      data
+        .then((res) => {
+          dispatch(setData(res.data.data));
+        })
+        .then((r) => {
+          dispatch(stopLoading());
+        });
+    }
+  }, [pathname]);
 
   return (
     <Layout className="site-container">
@@ -98,10 +110,12 @@ const MainPage = ({ setCurrentPage }) => {
           )}
         </Menu>
         <div className="header__user-profile">
-          <SearchInput />
+          {/* <SearchInput/> */}
+          <NewSearch />
           <Popover
             placement="bottomRight"
-            title={<div style={{ textAlign: "center" }}>
+            title={
+              <div style={{ textAlign: "center" }}>
                 <img
                   className="user-profile-image"
                   src={AccountPNG}
@@ -110,10 +124,14 @@ const MainPage = ({ setCurrentPage }) => {
                 <h3>Hojiakbar</h3>
               </div>
             }
-            content={<div>
-              <Button color="danger" style={{width: "100%"}}>Log out</Button>
-              <Button onClick={() => localStorage.clear()}>Local</Button>
-            </div>}
+            content={
+              <div>
+                <Button color="danger" style={{ width: "100%" }}>
+                  Log out
+                </Button>
+                <Button onClick={() => localStorage.clear()}>Local</Button>
+              </div>
+            }
             trigger="click"
           >
             <img
@@ -159,7 +177,7 @@ const MainPage = ({ setCurrentPage }) => {
         {/*<div className="site-footer__content">*/}
         {/*  <div className="site-footer__icons">*/}
         {/*    <GlobusIcon2 />*/}
-        {/*    <TelegramIcon />*/}     
+        {/*    <TelegramIcon />*/}
         {/*  </div>*/}
         {/*  <div className="site-footer__text">*/}
         {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}

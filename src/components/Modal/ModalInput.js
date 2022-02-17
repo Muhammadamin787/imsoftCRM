@@ -102,7 +102,6 @@ const ModalInput = ({
           placeholder={placeholder}
           showSearch
           onChange={(e) => {
-            console.log(e);
             const target = {
               [name]: e,
             };
@@ -141,7 +140,6 @@ const ModalInput = ({
               let currentData = currentPage?.allData;
 
               for (const url in currentData) {
-                console.log(url);
                 let res = axios(`${currentData[url]}/${e}`)
 
                 res.then(res => {

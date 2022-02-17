@@ -1,11 +1,29 @@
 :root {
   --main-color: #4447e2;
-  --second-color: #1890FF;
+  --second-color: #1890ff;
 }
 
 .site-layout__body {
   overflow: scroll;
 }
-.ant__loyout{
-  // width: 95%;
+.ant-table-tbody {
+  .undefined {
+    background-color: rgb(236, 151, 119) !important;
+    padding: 0 3px;
+  }
+}
+.hodim-template {
+  height: 50px;
+  overflow: hidden;
+  font-size: 0.9em;
+  box-shadow: 0px 3px 5px #aaaaaa;
+  position: relative;
+}
+.hodim-template > .box-shadow {
+  position: absolute;
+  bottom: 0;
+  height: 10px;
+  width: 100%;
+  z-index: 5;
+  background-color: red;
 }
