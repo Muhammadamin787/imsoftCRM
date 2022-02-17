@@ -1,4 +1,4 @@
-import { Input, InputNumber, DatePicker, Select, message, Form} from "antd";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -39,18 +39,16 @@ const ModalInput = ({
   Iconic,
   options,
   template,
-  dontPost,
-  required,
-  handleChangeValue
+  required
 }) => {
   let input = null;
   const dispatch = useDispatch();
   const { currentPage, values, allData } = useSelector((state) => state.tabs_reducer);
 
-  // const handleChangeValue = (e) => {
+  const handleChangeValue = (e) => {
 
-  //   dispatch(setValues({ ...values, ...e }));
-  // };
+    dispatch(setValues({ ...values, ...e }));
+  };
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template))
@@ -58,34 +56,35 @@ const ModalInput = ({
 
   }
 
-
+  
 
 
   switch (type) {
     case STRING:
       input = (
         <label
-          // style={{
-          //   gridColumn: gridColumn,
-          //   gridRow: gridRow,
-          //   height: height ? height + "px" : inputDeafultHeght + "px",
-          //   display: "flex",
-          //   flexDirection: "column",
-          // }}
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          required={required}
         >
-           {/* {label && label} */}
+          {label && label}
           <Input
             name={name}
             value={values && values[name]}
             placeholder={placeholder}
-            required
+            required={required}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
               };
               handleChangeValue(target);
             }}
-            />
+          />
         </label>
       );
       break;
@@ -96,7 +95,7 @@ const ModalInput = ({
           addonBefore={label}
           type="number"
           name={name}
-          required
+          required={required}
           style={{
             gridColumn: gridColumn,
             gridRow: gridRow,
@@ -119,33 +118,24 @@ const ModalInput = ({
 
     case SELECT:
       input = (
-        // <label
-        //   style={{
-        //     gridColumn: gridColumn,
-        //     gridRow: gridRow,
-        //     height: height ? height + "px" : inputDeafultHeght + "px",
-        //     // border: "1px solid red",
-        //     display: "flex",
-        //     flexDirection: "column",
-        //   }}
-        //   className="select-label"
-        // >
-        //   {label && label}
-        // <Form.Item name={name} label={label} rules={[{ required: required,message: 'malumotni kiriting'}]} 
-        // style={{
-        //       gridColumn: gridColumn,
-        //       gridRow: gridRow,
-        //       height: height ? height + "px" : inputDeafultHeght + "px",
-        //       display: "flex",
-        //       flexDirection: "column",
-        //     }} >
-
-          // <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          required={required}
+          className="select-label"
+        >
+          {label && label}
+          <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
           <Select
             size="small"
             name={name}
             placeholder={placeholder}
-            required
+            required={required}
             onChange={(e) => {
               const target = {
                 [name]: e,
@@ -153,24 +143,24 @@ const ModalInput = ({
               let currentData = currentPage?.allData;
               for (const url in currentData) {
                 let res = axios(`${currentData[url]}/${e}`);
-                
+                console.log(changeOtherSelect);
                 res.then(res => {
                   dispatch(setAllData({ [changeOtherSelect]: res.data.data }));
                 });
               }
-              
+
+
               handleChangeValue(target);
 
             }}
-            >
+          >
             {allData && allData[options]?.map((option, i) => (
               <Option value={option.id} key={option.id}>
                 {option.name}
               </Option>
             ))}
           </Select>
-            // </Form.Item>
-        // </label>
+        </label>
       );
       break;
 
@@ -182,6 +172,7 @@ const ModalInput = ({
           height={height}
           name={name}
           handleChangeValue={handleChangeValue}
+          required={required}
         />
       );
       break;
@@ -196,14 +187,14 @@ const ModalInput = ({
             display: "flex",
             flexDirection: "column",
           }}
-        >
+          >
           {label && label}
           <DatePicker
             placeholder={placeholder}
             format="DD.MM.YYYY"
             allowClear={false}
             // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
-            required
+            required={required}
             onChange={(_, dateString) => {
               const target = {
                 [name]: dateString,
@@ -225,11 +216,12 @@ const ModalInput = ({
             display: "flex",
             flexDirection: "column",
           }}
+          
         >
           {label && label}
           <TextArea
             placeholder={placeholder}
-            required
+            required={required}
             autoSize={{ minRows: 3, maxRows: 3 }}
             onChange={(data) => {
               const target = {
@@ -259,7 +251,7 @@ const ModalInput = ({
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
-            required
+            required={required}
             areaCodes={{
               uz: ["+998"],
             }}
