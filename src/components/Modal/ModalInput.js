@@ -28,6 +28,7 @@ import {findIcon} from "../../assets/icons/icons";
 const {TextArea} = Input;
 
 const ModalInput = ({
+
                         autoSelect,
                         placeholder,
                         name,
