@@ -90,7 +90,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case NUMBER:
             input = (
                 <InputNumber
@@ -130,6 +129,7 @@ const ModalInput = ({
                     className="select-label"
                 >
                     {label && label}
+
                     <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
                     <Select
                         size="small"
@@ -138,6 +138,7 @@ const ModalInput = ({
                         required={required}
                         value={values[name]}
                         onChange={(e) => {
+
                             if (autoSelect) {
                                 let selectedValues = {[name]: e};
                                 autoSelect.forEach(el => {
@@ -171,7 +172,6 @@ const ModalInput = ({
                 />
             );
             break;
-
         case DATE:
             input = (
                 <label
@@ -200,7 +200,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case TEXTAREA:
             input = (
                 <label
@@ -229,7 +228,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case PHONE:
             input = (
                 <label
@@ -262,7 +260,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case UPLOAD:
             input = (
                 <UploadFile
@@ -277,7 +274,6 @@ const ModalInput = ({
                 />
             );
             break;
-
         case IMAGE:
             input = (
                 <UpLoadJPG
@@ -292,7 +288,6 @@ const ModalInput = ({
                 />
             );
             break;
-
         default:
             break;
     }
