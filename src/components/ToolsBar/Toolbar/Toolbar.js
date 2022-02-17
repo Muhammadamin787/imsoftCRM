@@ -51,6 +51,9 @@ const Toolbar = ({ tableItem }) => {
     // message.info("Malumot uchirildi.");
   };
 
+  // console.log(tableItem);
+  // message.info("Malumot uchirildi.");
+
   const onEdit = () => {
     if (tableItem.length === 1) {
       dispatch(setValues(...tableItem));

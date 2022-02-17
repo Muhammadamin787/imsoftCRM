@@ -309,13 +309,8 @@ const XodimlarTemplate = {
         );
         return (
           <Popover placement="leftTop" content={content}>
-            <div
-              style={{
-                height: "50px",
-                overflow: "hidden",
-                fontSize: ".9em",
-              }}
-            >
+            <div className="hodim-template">
+              <div className="box-shadow"></div>
               {text}
             </div>
           </Popover>

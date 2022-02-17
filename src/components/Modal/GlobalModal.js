@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
-import {Modal, Button, Form, message} from "antd";
+import React, { useState, useEffect, useRef } from "react";
+import { Modal, Button, Form, message } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
-import {useSelector, useDispatch} from "react-redux";
-import {toggleModal, setData, setAllData, setValues, setTableItem} from "../../redux/tabs_reducer";
+import { useSelector, useDispatch } from "react-redux";
+import {toggleModal, addValuesData, setData, setAllData, setValues, setTableItem} from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";

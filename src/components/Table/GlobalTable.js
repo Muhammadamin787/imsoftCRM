@@ -7,19 +7,20 @@ import { setTableItem } from "../../redux/tabs_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
-  const { currentPage, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
+  const { currentPage,tableItem, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
   const dispatch = useDispatch();
   const {filters, columns} = currentPage;
 
   const rowSelection = {
+    selectedRowKeys: tableItem.map(row => row.key),
     onChange: (selectedRowKeys, selectedRows) => {
-      dispatch(setTableItem(selectedRows));
+        dispatch(setTableItem(selectedRows))
     },
     getCheckboxProps: (record) => ({
-      disabled: record.name === "Disabled User",
-      name: record.name,
+        disabled: record.name === 'Disabled User',
+        name: record.name,
     }),
-  };
+};
 
   function filterAdd() {
     let filteredColumns = [];
