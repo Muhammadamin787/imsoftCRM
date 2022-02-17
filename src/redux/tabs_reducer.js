@@ -16,8 +16,7 @@ export const counterSlice = createSlice({
         loading: false,
         tableItem: [],
         values: {},
-        allData: {
-        },
+        allData: {},
         innerModal:{},
     },
     reducers: {
@@ -96,7 +95,15 @@ export const counterSlice = createSlice({
             state.loading = false;
         },
         setAllData: (state, {payload}) => {
-            state.allData = {...state.allData, ...payload};
+            // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
+            const aa = state.allData
+                state.allData = { ...aa,...payload};
+            // console.log(payload.name);
+
+            state.allData[payload.name] = payload.data
+
+
+
         },
 
         setInnerModel: (state, {payload}) => {
