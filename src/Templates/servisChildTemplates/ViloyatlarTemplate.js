@@ -21,6 +21,7 @@ const ViloyatlarTemplate = {
           type: STRING,
           required: true,
           placeholder:"Viloyatlar",
+          label: "Viloyat"
         },
       ],
     },

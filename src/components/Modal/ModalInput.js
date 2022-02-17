@@ -136,26 +136,35 @@ const ModalInput = ({
               const target = {
                 [name]: e,
               };
-
-              // {region_id: 98}
-              // {state_id: 162}
-
+              console.log(e);
               let currentData = currentPage?.allData;
 
               for (const url in currentData) {
-
                 let res = axios(`${currentData[url]}/${e}`)
 
                 res.then(res => {
-                  // dispatch(setAllData(res.data.data))
                   console.log(res.data.data);
+                  dispatch(setAllData({ [url] : res.data.data }))
+
+                  // dispatch(setAllData({ name:url, data:res.data.data }))
+
+                  // {
+                  //   name:url,
+                  //   [url]:res.data.data
+                  // }
+
+                  // allData:{
+                  //   cities:[
+                  //     {id:"123", name:"viloyatga tegishli shaxat"}
+                  //   ]
+                  // }
+
                 });
               }
 
 
-
-
               handleChangeValue(target);
+
             }}
           >
             {allData && allData[options]?.map((option, i) => (

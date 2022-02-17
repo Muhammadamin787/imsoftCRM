@@ -12,7 +12,7 @@ import {GET, POST} from "../../functions/Methods";
 import InnerModal from "./innerModal/InnerModal";
 
 const GlobalModal = () => {
-    const { currentPage, data, values, filteredMainData } = useSelector((state) => state.tabs_reducer);
+    const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
 
     const [bounds, setBounds] = useState({
         left: 0, top: 0, bottom: 0, right: 0

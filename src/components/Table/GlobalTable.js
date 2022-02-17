@@ -1,47 +1,61 @@
 import { Table } from "antd";
 import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
-import {useSelector, useDispatch} from "react-redux";
-import FilterColumns from '../../constant/FilterColumns';
-import {setTableItem, setValues} from "../../redux/tabs_reducer";
-import {message} from "antd";
-
+import { useSelector, useDispatch } from "react-redux";
+import FilterColumns from "../../constant/FilterColumns";
+import { setTableItem } from "../../redux/tabs_reducer";
 
 const GlobalTable = () => {
-    const {currentPage, mainData, tableItem, loading} = useSelector((state) => state?.tabs_reducer);
-    const dispatch = useDispatch()
+  const [newColumns, setNewColumns] = useState([]);
+  const { currentPage,tableItem, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
+  const dispatch = useDispatch();
+  const {filters, columns} = currentPage;
 
-    const columns = currentPage?.columns;
-    const filters = currentPage?.filters;
-    let filteredColumns = filters ? FilterColumns(filters, columns, mainData) : columns;
+  const rowSelection = {
+    selectedRowKeys: tableItem.map(row => row.key),
+    onChange: (selectedRowKeys, selectedRows) => {
+        dispatch(setTableItem(selectedRows))
+    },
+    getCheckboxProps: (record) => ({
+        disabled: record.name === 'Disabled User',
+        name: record.name,
+    }),
+};
 
-    const rowSelection = {
-        selectedRowKeys: tableItem.map(row => row.key),
-        onChange: (selectedRowKeys, selectedRows) => {
-            dispatch(setTableItem(selectedRows))
-        },
-        getCheckboxProps: (record) => ({
-            disabled: record.name === 'Disabled User',
-            name: record.name,
-        }),
-    };
+  function filterAdd() {
+    let filteredColumns = [];
+    if (filters) {
+      filteredColumns = FilterColumns(
+        filters,
+        columns,
+        mainData
+      );
+    } else {
+      filteredColumns = columns;
+    }
+    setNewColumns(filteredColumns);
+  }
 
-    return (
-        <Table
-            bordered
-            loading={loading}
-            columns={filteredColumns}
-            className="main-table"
-            dataSource={mainData}
-            size={"small"}
-            scroll={currentPage?.scroll ? {...currentPage?.scroll} : {y: 380}}
-            pagination={{position: ["bottomCenter"]}}
-            rowSelection={{
-                type: "checkbox",
-                ...rowSelection,
-            }}
-        />
-    );
+  useEffect(() => {
+    filterAdd();
+  }, [currentPage, mainData]);
+
+  return (
+    <Table
+      bordered
+      loading={loading}
+      columns={newColumns}
+      className="main-table"
+      dataSource={serachInputValue ? filteredMainData : mainData}
+      size={"small"}
+      scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
+      pagination={{ position: ["bottomCenter"] }}
+      rowSelection={{
+        type: "checkbox",
+        ...rowSelection,
+      }}
+    />
+  );
 };
 
 export default GlobalTable;

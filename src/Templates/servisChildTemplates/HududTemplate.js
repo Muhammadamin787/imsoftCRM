@@ -35,7 +35,6 @@ const HududTemplate = {
                     label: "Viloyat",
                     options: "states",
                     template: ViloyatlarTemplate,
-                    dontPost: true
                 },
                 {
                     name: "region_id",
