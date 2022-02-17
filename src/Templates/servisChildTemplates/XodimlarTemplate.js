@@ -22,6 +22,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import {Popover, Button} from "antd";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
+import YunalishlarTemplate from "./YunalishlarTemplate";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -86,7 +87,7 @@ const XodimlarTemplate = {
                     label: "Yo'nalish",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
-                    template: ShaharTumanTemplate,
+                    template: YunalishlarTemplate,
                     options: "cities",
                 },
                 {
@@ -95,6 +96,7 @@ const XodimlarTemplate = {
                     required: true,
                     placeholder: "Shahar",
                     label: "Shahar",
+                    template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
                     option: [

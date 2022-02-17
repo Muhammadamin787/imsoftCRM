@@ -28,23 +28,26 @@ import { findIcon } from "../../assets/icons/icons";
 const { TextArea } = Input;
 
 const ModalInput = ({
-  placeholder,
-  name,
-  gridRow,
-  changeOtherSelect,
-  gridColumn,
-  label,
-  type,
-  height,
-  Iconic,
-  options,
-  template,
-  required,
-  handleChangeValue
-}) => {
-  let input = null;
-  const dispatch = useDispatch();
-  const { currentPage, values, allData } = useSelector((state) => state.tabs_reducer);
+
+                        autoSelect,
+                        placeholder,
+                        name,
+                        gridRow,
+                        changeOtherSelect,
+                        gridColumn,
+                        label,
+                        type,
+                        height,
+                        Iconic,
+                        options,
+                        template,
+                        dontPost,
+                        required,
+                        handleChangeValue
+                    }) => {
+    let input = null;
+    const dispatch = useDispatch();
+    const {currentPage, values, allData} = useSelector((state) => state.tabs_reducer);
 
   // const handleChangeValue = (e) => {
 
