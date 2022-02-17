@@ -10,6 +10,8 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import {GET, POST} from "../../functions/Methods";
 import InnerModal from "./innerModal/InnerModal";
+import {inputDeafultHeght} from "../../constant/deafultStyle"
+
 
 const GlobalModal = () => {
     const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
@@ -27,7 +29,7 @@ const GlobalModal = () => {
             for (const url in currentData) {
                 let res = axios(currentData[url]);
                 res.then(res => {
-                    dispatch(setAllData(res.data.data));
+                    dispatch(setAllData({ [url] : res.data.data }));
                 });
 
             }
@@ -43,9 +45,13 @@ const GlobalModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
+    const handleChangeValue = (e) => {
+        dispatch(setValues({ ...values, ...e }));
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        handleChangeValue()
         const url = currentPage?.mainUrl;
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
@@ -110,7 +116,7 @@ const GlobalModal = () => {
                 </Draggable>
             )}
         >
-            <Form className="modal-form">
+            <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
                 {/* <InnerModal /> */}
                 {currentPage?.form?.map((form) => (
                     <div
@@ -122,7 +128,17 @@ const GlobalModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name}/>
+                            <Form.Item
+                            style={{
+                                gridColumn: input.gridColumn,
+                                gridRow: input.gridRow,
+                                height: input.height ? input.height + "px" : inputDeafultHeght + "px",
+                                display: "flex",
+                                flexDirection: "column",
+                            }}
+                            >
+                                <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
+                            </Form.Item>
                         ))}
                     </div>
                 ))}
@@ -135,15 +151,15 @@ const GlobalModal = () => {
                     >
                         Orqaga
                     </Button>
-                    <Button
+                    <button 
                         type="submit"
                         className="modal-form__button saqlash"
                         onClick={(e) => handleSubmit(e)}
                     >
                         Saqlash
-                    </Button>
+                    </button>
                 </div>
-            </Form>
+            </form>
         </Modal>
     );
 };

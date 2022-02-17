@@ -20,6 +20,11 @@ import { inputDeafultHeght } from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { Popover, Button } from "antd";
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
+import ShaharTumanTemplate from "./ShaharTumanTempilate";
+
+
+
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -28,7 +33,10 @@ const XodimlarTemplate = {
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   mainUrl: "/workers",
-  // allData: ["/workers"],
+  allData: {
+    states:"/states/all",
+    cities:"/cities/all",
+ },
   modal: {
     style: {
       width: 1000,
@@ -69,11 +77,8 @@ const XodimlarTemplate = {
           gridColumn: "1 / 5",
           label: "Viloyat",
           gridRow: "3 / 4",
-          option: [
-            { value: "Qashqadaryo", key: "Qashqadaroy" },
-            { value: "Andijon", key: "Andijon" },
-            { value: "Farg'ona", key: "Farg'ona" },
-          ],
+          options: "states",
+          template:ViloyatlarTemplate
         },
         {
           name: "Yo'nalishi",
@@ -83,11 +88,8 @@ const XodimlarTemplate = {
           label: "Yo'nalish",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
-          option: [
-            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)" },
-            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)" },
-            { value: "Dasturchi Web (Backend)", key: "Web (Backend)" },
-          ],
+          template:ShaharTumanTemplate,
+          options: "cities",
         },
         {
           name: "shahar",

@@ -15,7 +15,6 @@ import {
   startLoading,
   stopLoading,
 } from "../../redux/tabs_reducer";
-import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
