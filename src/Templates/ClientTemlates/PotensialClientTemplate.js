@@ -1,16 +1,20 @@
 import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import { POTENSIAL_MIJOZLAR } from "../../pages/pageConstants/PageRoutes";
-import {CLIENTS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
+import { CLIENTS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
+import { Popover } from "antd";
+import BigLength from "../../components/BigLength/BigLength";
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
   key: "0",
+  icon: "ProfileIcon",
   path: POTENSIAL_MIJOZLAR,
   type: CLIENTS_CHILD_PAGES,
   isOpenModal: false,
+  mainUrl: "/clients/status/1",
+  allData: [],
   //   form: [
   //     {
   //       grid: "1fr",
@@ -28,16 +32,18 @@ const PotensialClientTemplate = {
   //       ],
   //     },
   //   ],
+
   filters: [
-    "location",
-    "vaqt",
-    "faoliyat",
-    "manzil",
-    "xudud",
-    "shahar_and_tuman",
-    "viloyat",
-    "yunalishi",
+    "latitude",
+    "order_time",
+    "type_name",
+    "home_address",
+    "address_name",
+    "state_name",
+    "region_name",
+    "category_id",
   ],
+  
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -45,52 +51,54 @@ const PotensialClientTemplate = {
       key: "number",
       width: "15%",
       align: "center",
+      render: (text, _, i) => ++i,
     },
 
     {
       title: "Kim orqali",
-      dataIndex: "kim_orqali",
-      key: "Kim orqali",
+      dataIndex: "enterprise_name",
+      key: "enterprise_name",
       width: "60%",
       align: "center",
     },
 
     {
       title: "F.I.O",
-      dataIndex: "fio",
-      key: "F.I.O",
+      dataIndex: "client_name",
+      key: "client_name",
       width: "80%",
       align: "center",
     },
 
     {
       title: "Korxona nomi",
-      dataIndex: "korxona_nomi",
-      key: "Korxona nomi",
-      width: "40%",
+      dataIndex: "enterprise_name",
+      key: "enterprise_name",
+      width: "50%",
       align: "center",
     },
 
     {
       title: "Telefon",
-      dataIndex: "phone",
-      key: "Telefon",
+      dataIndex: "operator_phone_number",
+      key: "operator_phone_number",
       width: "50%",
       align: "center",
     },
 
     {
       title: "Izox",
-      dataIndex: "izoh",
-      key: "Izoh",
-      width: "20%",
+      dataIndex: "general_info",
+      key: "general_info",
+      width: "60%",
       align: "center",
+      render: (text) => <BigLength text={text} />,
     },
 
     {
       title: "Rasm",
-      dataIndex: "rasm",
-      key: "Rasm",
+      dataIndex: "file",
+      key: "file",
       width: "40%",
       render: (_, record) => {
         return (
@@ -99,7 +107,9 @@ const PotensialClientTemplate = {
               {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
               <img
                 alt="img"
-                src={record.rasmi}
+                src={
+                  "https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI="
+                }
                 width="30"
                 height="30"
                 style={{ objectFit: "contain" }}
@@ -112,106 +122,85 @@ const PotensialClientTemplate = {
     },
     {
       title: "Location",
-      dataIndex: "location",
-      key: "Location",
+      dataIndex: "latitude",
+      key: "latitude",
       width: "40%",
       align: "center",
-      onFilter: (value, record) => record.location.indexOf(value) === 0,
+      // onFilter: (value, record) => record.location.indexOf(value) === 0,
     },
     {
       title: "Yo’nalishi",
-      dataIndex: "yunalishi",
-      key: "Yonalish",
+      dataIndex: "category_id",
+      key: "category_id",
       width: "40%",
-      onFilter: (value, record) => record.yunalishi.indexOf(value) === 0,
+      onFilter: (value, record) => record.category_id.indexOf(value) === 0,
       align: "center",
     },
     {
       title: "Viloyat",
-      dataIndex: "viloyat",
-      key: "Viloyat",
+      dataIndex: "state_name",
+      key: "state_name",
       width: 100,
       align: "center",
-      onFilter: (value, record) => record.viloyat.indexOf(value) === 0,
+      onFilter: (value, record) => record.state_name.indexOf(value) === 0,
     },
     {
       title: "Shahar/Tuman",
-      dataIndex: "shahar_and_tuman",
-      key: "shaharAndTuman",
+      dataIndex: "region_name",
+      key: "region_name",
       width: "50%",
       align: "center",
-      onFilter: (value, record) => record.shahar_and_tuman.indexOf(value) === 0,
+      onFilter: (value, record) => record.region_name.indexOf(value) === 0,
     },
     {
       title: "Xudud",
-      dataIndex: "xudud",
-      key: "Xudud",
+      dataIndex: "address_name",
+      key: "address_name",
       width: "40%",
       align: "center",
-      onFilter: (value, record) => record.xudud.indexOf(value) === 0,
+      onFilter: (value, record) => record.address_name.indexOf(value) === 0,
     },
     {
       title: "Manzil",
-      dataIndex: "manzil",
-      key: "Manzil",
+      dataIndex: "home_address",
+      key: "home_address",
       width: "50%",
       align: "center",
-      onFilter: (value, record) => record.manzil.indexOf(value) === 0,
+      onFilter: (value, record) => record.home_address.indexOf(value) === 0,
+      render: (text) => <BigLength text={text} />,
     },
     {
       title: "Faoliyat",
-      dataIndex: "faoliyat",
-      key: "Faoliyat",
+      dataIndex: "type_name",
+      key: "type_name",
       width: "40%",
       align: "center",
-      onFilter: (value, record) => record.faoliyat.indexOf(value) === 0,
+      onFilter: (value, record) => record.type_name.indexOf(value) === 0,
     },
     {
       title: "Qo’shilgan Vaqti",
-      dataIndex: "vaqt",
-      key: "Vaqt",
+      dataIndex: "order_time",
+      key: "order_time",
       width: "60%",
       align: "center",
       onFilter: (value, record) => record.vaqt.indexOf(value) === 0,
     },
   ],
-  data: [
-    {
-      number: 0,
-      kim_orqali: "@username",
-      fio: "Abdusalomov Abdusalombek",
-      korxona_nomi: "ABS MChJ",
-      phone: "+998 99 999-99-99",
-      izoh: "Oson",
-      rasmi: "https://images.unsplash.com/photo-1532532890956-d1af80180c0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-      location: "sasd",
-      yunalishi: "Dasturchi",
-      viloyat: "Farg'ona",
-      shahar_and_tuman: "Marg'ilon Marg'ilon",
-      xudud: "O'zbekiston",
-      manzil: "Majnuntol To'yxonasi",
-      faoliyat: "Frontend Dasturchisi",
-      vaqt: "09/02/2022"
-    },
-    {
-      number: 1,
-      kim_orqali: "@hojiakbar",
-      fio: "Hojiakbar Anorboyev",
-      korxona_nomi: "Sokin diyor",
-      phone: "+998 90 532-27-71",
-      izoh: "Qiyin",
-      rasmi: "https://images.unsplash.com/photo-1463316127144-58d3a7571c6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
-      location: "bbb",
-      yunalishi: "Dizayner",
-      viloyat: "Toshkent",
-      shahar_and_tuman: "Toshkent",
-      xudud: "O'zbekiston",
-      manzil: "jzncl",
-      faoliyat: "Dizayner",
-      vaqt: "09/03/2022"
-    },
-  ],
-  scroll: { x: 2200, y: 1500 },
+  scroll: { x: 2500, y: 1500 },
 };
 
 export default PotensialClientTemplate;
+/*
+enterprise_name: korhona nomi,
+client_name: fio,
+operator_phone_number: telefon,
+genaral_info: izox,
+lacation: longtitude, latitude,
+state_name: viloyat,
+region_name: shahar/tuman,
+address_name: hudud,
+home_address: manzil,
+activity_type_name: faoliyat,
+order_time: qo'shilgan vaqt,
+category_id: yo'nalish
+*/

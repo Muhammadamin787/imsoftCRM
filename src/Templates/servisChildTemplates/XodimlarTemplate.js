@@ -19,7 +19,8 @@ import {
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import { Popover, Button } from "antd";
+import { Popover } from "antd";
+import BigLength from "../../components/BigLength/BigLength";
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -301,21 +302,7 @@ const XodimlarTemplate = {
       key: "about",
       width: "45%",
       align,
-      render: (text) => {
-        let content = (
-          <div style={{ width: "400px" }}>
-            <p>{text}</p>
-          </div>
-        );
-        return (
-          <Popover placement="leftTop" content={content}>
-            <div className="hodim-template">
-              <div className="box-shadow"></div>
-              {text}
-            </div>
-          </Popover>
-        );
-      },
+      render: (text) => <BigLength text={text} />,
       //   render: (text) => (
       //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
       //       <div

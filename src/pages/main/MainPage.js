@@ -15,7 +15,6 @@ import {
   startLoading,
   stopLoading,
 } from "../../redux/tabs_reducer";
-import SearchInput from "../../components/SearchInput/SearchInput";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
@@ -24,7 +23,7 @@ import { useSelector } from "react-redux";
 import axios from "../../functions/axios";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
-import NewSearch from "../../components/SearchInput/NewSearch";
+import NewSearch from "../../components/SearchInput/SearchInput";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -129,7 +128,6 @@ const MainPage = () => {
                 <Button color="danger" style={{ width: "100%" }}>
                   Log out
                 </Button>
-                <Button onClick={() => localStorage.clear()}>Local</Button>
               </div>
             }
             trigger="click"

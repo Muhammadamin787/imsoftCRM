@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import {
   removeTableItem,
   toggleModal,
@@ -12,8 +12,22 @@ import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import { findIcon } from "../../../assets/icons/icons";
 import { DELETE, GET, POST } from "../../../functions/Methods";
+import {
+  JARAYONDAGI,
+  BEKOR_QILINGAN,
+  TOPSHIRILGAN,
+  OQITILAYOTGAN,
+} from "../../../pages/pageConstants/PageRoutes";
+
+const addButtonIsDisabled = [
+  JARAYONDAGI,
+  BEKOR_QILINGAN,
+  TOPSHIRILGAN,
+  OQITILAYOTGAN,
+];
 
 const Toolbar = ({ tableItem }) => {
+  const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
   const { currentPage, loading, Panes } = useSelector(
     (state) => state.tabs_reducer
@@ -50,9 +64,6 @@ const Toolbar = ({ tableItem }) => {
     // console.log(tableItem);
     // message.info("Malumot uchirildi.");
   };
-
-  // console.log(tableItem);
-  // message.info("Malumot uchirildi.");
 
   const onEdit = () => {
     if (tableItem.length === 1) {
@@ -108,6 +119,10 @@ const Toolbar = ({ tableItem }) => {
     },
   ];
 
+  useEffect(() => {
+    setCurrentPagePath(currentPage.path);
+  }, [currentPage]);
+
   return (
     <div className="toolbar">
       <div className="toolbar__title">
@@ -132,7 +147,7 @@ const Toolbar = ({ tableItem }) => {
               key={i}
               title={button?.tooltip?.text}
             >
-              <Button onClick={() => button.onClick()}>{button.icon}</Button>
+              <Button onClick={() => button.onClick()} disabled={addButtonIsDisabled.includes(currentPagePath)}>{button.icon}</Button>
             </Tooltip>
           )
         )}

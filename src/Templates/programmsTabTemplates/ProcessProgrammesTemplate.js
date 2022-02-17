@@ -6,10 +6,12 @@ import {ProgrammPerformers} from "../programmsModalTabTemplates/ProgrammPerforme
 import {ProgrammFilesList} from "../programmsModalTabTemplates/ProgrammFilesList";
 
 export const ProcessProgrammesTemplate = {
+  ...NewProgrammsTemplate,
   text: "Jarayondagi",
   path: JARAYONDAGI,
   key: "2",
   type: PROGRAMMERS_CHILD_PAGES,
-  modal: {...NewProgrammsTemplate.modal},
-  columns: [...NewProgrammsTemplate.columns],
+  mainUrl:"/projects/status/2",
+  // modal: {...NewProgrammsTemplate.modal},
+  // columns: [...NewProgrammsTemplate.columns],
 };
