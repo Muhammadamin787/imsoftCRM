@@ -100,7 +100,7 @@ export const counterSlice = createSlice({
                 state.allData = { ...aa,...payload};
             // console.log(payload.name);
 
-            state.allData[payload.name] = payload.data
+            // state.allData[payload.name] = payload.data
 
 
 

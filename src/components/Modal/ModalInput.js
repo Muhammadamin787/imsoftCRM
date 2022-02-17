@@ -137,7 +137,7 @@ const ModalInput = ({
               const target = {
                 [name]: e,
               };
-console.log(e);
+              console.log(e);
               let currentData = currentPage?.allData;
 
               for (const url in currentData) {
@@ -145,10 +145,10 @@ console.log(e);
                 let res = axios(`${currentData[url]}/${e}`)
 
                 res.then(res => {
-                  dispatch(setAllData({ [url] : res.data.data }))
                   console.log(res.data.data);
+                  dispatch(setAllData({ [url] : res.data.data }))
 
-                  dispatch(setAllData({ name:url, data:res.data.data }))
+                  // dispatch(setAllData({ name:url, data:res.data.data }))
 
                   // {
                   //   name:url,
