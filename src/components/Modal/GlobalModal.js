@@ -3,18 +3,17 @@ import { Modal, Button, Form, message } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
-import {toggleModal, addValuesData, setData, setAllData, setValues, setTableItem} from "../../redux/tabs_reducer";
+import { toggleModal, addValuesData, setData, setAllData, setValues, setTableItem } from "../../redux/tabs_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
-import {GET, POST} from "../../functions/Methods";
-import InnerModal from "./innerModal/InnerModal";
+import { GET, POST } from "../../functions/Methods";
 
 
 
 const GlobalModal = () => {
-    const {currentPage, data, values} = useSelector((state) => state.tabs_reducer);
+    const { currentPage, data, values } = useSelector((state) => state.tabs_reducer);
 
     const [bounds, setBounds] = useState({
         left: 0, top: 0, bottom: 0, right: 0
@@ -29,7 +28,7 @@ const GlobalModal = () => {
             for (const url in currentData) {
                 let res = axios(currentData[url]);
                 res.then(res => {
-                    dispatch(setAllData({ [url] : res.data.data }));
+                    dispatch(setAllData({ [url]: res.data.data }));
                 });
             }
         }
@@ -53,7 +52,7 @@ const GlobalModal = () => {
         handleChangeValue();
         const url = currentPage?.mainUrl;
         POST(url, values).then(res => {
-            message.success({content: res.data.data, key: e});
+            message.success({ content: res.data.data, key: e });
             dispatch(toggleModal(false));
             dispatch(setValues({}));
             dispatch(setTableItem([]))
@@ -66,7 +65,7 @@ const GlobalModal = () => {
     const draggleRef = useRef("s");
 
     const onStart = (event, uiData) => {
-        const {clientWidth, clientHeight} = window.document.documentElement;
+        const { clientWidth, clientHeight } = window.document.documentElement;
         const targetRect = draggleRef.current?.getBoundingClientRect();
         if (!targetRect) {
             return;
@@ -81,7 +80,7 @@ const GlobalModal = () => {
 
     return (
         <Modal
-            style={{...currentPage?.modal?.style}}
+            style={{ ...currentPage?.modal?.style }}
             width={currentPage?.modal?.style?.width}
             footer={null}
             title={
@@ -98,7 +97,7 @@ const GlobalModal = () => {
                     <div className="modal-header">
                         <span>{currentPage?.text}</span>
                         <div className="modal-header__buttons">
-                            <MacActions onExit={handleCancel} onResize={resizeModal}/>
+                            <MacActions onExit={handleCancel} onResize={resizeModal} />
                         </div>
                     </div>
                 </div>
@@ -126,11 +125,11 @@ const GlobalModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
+                            <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue} />
                         ))}
                     </div>
                 ))}
-                <ModalTabs tabs={currentPage?.modal?.tabs}/>
+                <ModalTabs tabs={currentPage?.modal?.tabs} />
                 <div className="modal-form_buttons">
                     <Button
                         type="submit"
@@ -139,7 +138,7 @@ const GlobalModal = () => {
                     >
                         Orqaga
                     </Button>
-                    <button 
+                    <button
                         type="submit"
                         className="modal-form__button saqlash"
                         onClick={(e) => handleSubmit(e)}

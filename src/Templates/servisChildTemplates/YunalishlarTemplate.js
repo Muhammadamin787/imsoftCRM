@@ -12,6 +12,12 @@ const YunalishlarTemplate = {
     isOpenModal: false,
     mainUrl:"/directions",
     // allData: ["/directions/"],
+    modal: {
+        style: {
+            // width: 500,
+            // marginTop: "-70px"
+        }
+    },
     form: [
         {
             grid: "1fr",
@@ -25,12 +31,6 @@ const YunalishlarTemplate = {
             ],
         },
     ],
-    modal: {
-        style: {
-            width: 500,
-            marginTop: "-70px"
-        }
-    },
     columns: [
         {
             title: "№",

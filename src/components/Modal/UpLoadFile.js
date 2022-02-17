@@ -2,6 +2,8 @@ import { Upload, message } from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { findIcon } from "../../assets/icons/icons";
+
 
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -73,6 +75,7 @@ class UploadFile extends React.Component {
           }}
         > <p>{this.props.label}</p>
           <Upload
+          
             id="file-uploder"
             name={this.props.name}
             placeholder={this.props.placeholder}
@@ -83,9 +86,10 @@ class UploadFile extends React.Component {
             maxCount={1}
             showUploadList={false}
             // value={values}
-          >
-            {this.props.Iconic && <this.props.Iconic />}
+
+          >{" "}
           </Upload>
+          {this.props.Iconic && findIcon(this.props.Iconic)}
         </label>
     );
   }

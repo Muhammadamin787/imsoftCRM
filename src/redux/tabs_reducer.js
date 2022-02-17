@@ -16,7 +16,7 @@ export const counterSlice = createSlice({
     tableItem: [],
     values: {},
     allData: {},
-    innerModal: {},
+    innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
   },
@@ -49,9 +49,10 @@ export const counterSlice = createSlice({
     },
     toggleInnerModal: (state, { payload }) => {
       state.innerModal.isOpenModal = payload;
+      // state.innerModal = ""
     },
     setCurrentPage: (state, { payload }) => {
-      console.log(payload)
+      // console.log(payload)
       if (!payload?.sections) {
         // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
         state.currentPage = payload;
@@ -106,16 +107,14 @@ export const counterSlice = createSlice({
     },
     setAllData: (state, {payload}) => {
         // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
-
             state.allData = { ...state.allData,...payload};
-
-
-
     },
-
     setInnerModel: (state, {payload}) => {
         state.innerModal =  payload;
         // console.log(payload);
+    },
+    setOffInnerModel: (state, {payload}) => {
+      state.innerModal = ""
     }
   },
 });
@@ -143,6 +142,7 @@ export const {
   setInnerModel,
   toggleInnerModal,
   setFilteredMainData,
+  setOffInnerModel
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

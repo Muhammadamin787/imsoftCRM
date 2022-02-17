@@ -143,7 +143,7 @@ const XodimlarTemplate = {
                     gridColumn: "10 / 13",
                     gridRow: "2 / 4",
                     // height: inputDeafultHeght * 1.2,
-                    Iconic: UploadFilePasport,
+                    Iconic: "UploadFilePasport",
                     label: "Passport",
                 },
                 {
@@ -154,7 +154,7 @@ const XodimlarTemplate = {
                     gridColumn: "13 / 16",
                     gridRow: "2 / 4",
                     // height: inputDeafultHeght * 1.2,
-                    Iconic: UploadFileOilasi,
+                    Iconic: "UploadFileOilasi",
                     label: "Oilasi",
                 },
                 {
@@ -164,7 +164,7 @@ const XodimlarTemplate = {
                     placeholder: "hozirgi turgan joyi (map quyiladi)",
                     gridColumn: "10 / 16",
                     gridRow: "4 / 7",
-                    height: inputDeafultHeght * 2,
+                    // height: inputDeafultHeght,
                     label: " "
                 },
                 {

@@ -29,7 +29,6 @@ const Toolbar = ({ tableItem }) => {
       ...currentPage,
       isOpenModal: !currentPage?.isOpenModal,
     };
-    // console.log(newCurrentPage);
     dispatch(
       changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
@@ -42,17 +41,11 @@ const Toolbar = ({ tableItem }) => {
     });
     DELETE(currentPage?.mainUrl + "/delete", ids).then((res) => {
       GET(currentPage?.mainUrl).then((res2) => {
-        console.log(res2.data);
-        setData(res2.data);
+        console.log(res2.data.data);
+        setData(res2.data.data);
       });
     });
-
-    // console.log(tableItem);
-    // message.info("Malumot uchirildi.");
   };
-
-  // console.log(tableItem);
-  // message.info("Malumot uchirildi.");
 
   const onEdit = () => {
     if (tableItem.length === 1) {
