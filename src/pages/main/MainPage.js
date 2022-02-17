@@ -22,7 +22,7 @@ import axios from '../../functions/axios';
 import GlobalModal from '../../components/Modal/GlobalModal';
 import {setData} from "../../redux/tabs_reducer"
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
-
+import NewSearch from "../../components/SearchInput/NewSearch";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -65,37 +65,41 @@ const MainPage = () => {
         }
     }, [pathname]);
 
-    return (
-        <Layout className="site-container">
-            <Header className="site-header">
-                <div className="header__logo">
-                    <CompanyLogo/>
-                </div>
-                <Menu
-                    className="header__navigation"
-                    mode="horizontal"
-                    defaultSelectedKeys={["0"]}
+    useEffect(() => {
+      setFilteredMainData(mainData);
+    }, [mainData]);
+
+  return (
+    <Layout className="site-container">
+      <Header className="site-header">
+        <div className="header__logo">
+          <CompanyLogo />
+        </div>
+        <Menu
+          className="header__navigation"
+          mode="horizontal"
+          defaultSelectedKeys={["0"]}
+        >
+          {AllPages.map((menu, i) =>
+            menu.submenus ? (
+              <SubMenu key={i} title={menu.text}>
+                {menu.submenus.map((sub, k) => (
+                  <Item key={"sub" + k}>
+                    <Link to={sub.path}>
+                      {sub.text}
+                      {findIcon(menu?.icon)}
+                    </Link>
+                  </Item>
+                ))}
+              </SubMenu>
+            ) : (
+              <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
+                <NavLink
+                  to={menu.path}
+                  key={i}
+                  className={({ isActive }) => (isActive ? "activeStyle" : "")}
                 >
-                    {AllPages.map((menu, i) =>
-                            menu.submenus ? (
-                                <SubMenu key={i} title={menu.text}>
-                                    {menu.submenus.map((sub, k) => (
-                                        <Item key={"sub" + k}>
-                                            <Link to={sub.path}>
-                                                {sub.text}
-                                                {findIcon(menu?.icon)}
-                                            </Link>
-                                        </Item>
-                                    ))}
-                                </SubMenu>
-                            ) : (
-                                <Item key={i} onClick={() => handleSetCurrentPage(menu)}>
-                                    <NavLink
-                                        to={menu.path}
-                                        key={i}
-                                        className={({isActive}) => (isActive ? "activeStyle" : "")}
-                                    >
-                  <span style={{marginRight: "10px", marginTop: "10px"}}>
+                  <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {findIcon(menu?.icon)}
                   </span>
                                         <span>{menu.text}</span>

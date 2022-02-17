@@ -1,5 +1,5 @@
-import {Table} from "antd";
-import {useEffect} from "react";
+import { Table } from "antd";
+import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
 import {useSelector, useDispatch} from "react-redux";
 import FilterColumns from '../../constant/FilterColumns';

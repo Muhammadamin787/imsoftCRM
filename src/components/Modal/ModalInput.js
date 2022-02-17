@@ -102,7 +102,6 @@ const ModalInput = ({
           placeholder={placeholder}
           showSearch
           onChange={(e) => {
-            console.log(e);
             const target = {
               [name]: e,
             };

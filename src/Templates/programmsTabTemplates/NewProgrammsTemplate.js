@@ -1,9 +1,10 @@
 import { FieldNumberOutlined } from "@ant-design/icons";
 import { YANGI_DASTURLAR } from "../../pages/pageConstants/PageRoutes";
 import { PROGRAMMERS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import {ProgrammSpecifications} from "../programmsModalTabTemplates/ProgrammSpecifications";
-import {ProgrammPerformers} from "../programmsModalTabTemplates/ProgrammPerformers";
-import {ProgrammFilesList} from "../programmsModalTabTemplates/ProgrammFilesList";
+import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSpecifications";
+import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
+import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
+
 
 export const NewProgrammsTemplate = {
   text: "Yangi dasturlar",
@@ -27,7 +28,7 @@ export const NewProgrammsTemplate = {
       key: "number",
       width: "10%",
       align: "center",
-      render: (text, data, index) => ++index, 
+      render: (text, data, index) => ++index,
     },
     {
       title: "Mijoz F.I.O",

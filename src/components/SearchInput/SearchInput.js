@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeCurrentPageData, setData } from "../../redux/tabs_reducer";
+import { setFilteredMainData } from "../../redux/tabs_reducer";
 import { SearchTableInput } from "ant-table-extensions";
 import { SearchOutlined } from "@ant-design/icons";
 
 function SearchInput() {
   const [search, setSearch] = useState("");
-  const [currentData, setCurrentData] = useState([]);
   const state = useSelector((state) => state?.tabs_reducer);
   const dispatch = useDispatch();
   const [allData, setAllData] = useState([]);
@@ -19,24 +18,26 @@ function SearchInput() {
   /* ------------------------------------ / ----------------------------------- */
 
   useEffect(() => {
-    dispatch(setData(search));
+    dispatch(setFilteredMainData(search));
   }, [search]);
 
   useEffect(() => {
     setAllData(state?.mainData);
-  }, [state?.currentPage]);
+  }, [state?.mainData]);
 
   return (
     <>
-      <SearchTableInput
+      {/* <SearchTableInput
         columns={state?.currentPage?.columns ? state?.currentPage?.columns : []}
-        dataSource={allData}
+        dataSource={state?.mainData ? state?.mainData : []}
         setDataSource={setSearch}
+        fuzzySearch={true}
+        fuseProps={{ threshold: 0.6 }}
         inputProps={{
           placeholder: "Qidiruv...",
           prefix: <SearchOutlined />,
         }}
-      />
+      /> */}
     </>
   );
 }
