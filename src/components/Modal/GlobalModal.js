@@ -117,7 +117,6 @@ const GlobalModal = () => {
             )}
         >
             <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
-                {/* <InnerModal /> */}
                 {currentPage?.form?.map((form) => (
                     <div
                         className="modal-grid__form"

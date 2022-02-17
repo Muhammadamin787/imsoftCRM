@@ -39,16 +39,17 @@ const ModalInput = ({
   Iconic,
   options,
   template,
-  required
+  required,
+  handleChangeValue
 }) => {
   let input = null;
   const dispatch = useDispatch();
   const { currentPage, values, allData } = useSelector((state) => state.tabs_reducer);
 
-  const handleChangeValue = (e) => {
+  // const handleChangeValue = (e) => {
 
-    dispatch(setValues({ ...values, ...e }));
-  };
+  //   dispatch(setValues({ ...values, ...e }));
+  // };
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template))
@@ -90,7 +91,19 @@ const ModalInput = ({
       break;
 
     case NUMBER:
+
       input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          required={required}
+        >
+          {label && label}
         <InputNumber
           addonBefore={label}
           type="number"
@@ -113,6 +126,7 @@ const ModalInput = ({
             handleChangeValue(target);
           }}
         />
+        </label>
       );
       break;
 
