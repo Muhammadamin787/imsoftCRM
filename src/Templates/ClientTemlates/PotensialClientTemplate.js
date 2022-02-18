@@ -29,7 +29,6 @@ const PotensialClientTemplate = {
     tabs: [CommonTemplate, ContactsTemplate, CommentsTemplate],
   },
   filters: [
-    "latitude",
     "order_time",
     "type_name",
     "home_address",
@@ -121,14 +120,12 @@ const PotensialClientTemplate = {
       key: "latitude",
       width: "40%",
       align: "center",
-      // onFilter: (value, record) => record.location.indexOf(value) === 0,
     },
     {
       title: "Yo’nalishi",
       dataIndex: "category_id",
       key: "category_id",
       width: "40%",
-      onFilter: (value, record) => record.category_id.indexOf(value) === 0,
       align: "center",
     },
     {
@@ -137,7 +134,6 @@ const PotensialClientTemplate = {
       key: "state_name",
       width: 100,
       align: "center",
-      onFilter: (value, record) => record.state_name.indexOf(value) === 0,
     },
     {
       title: "Shahar/Tuman",
@@ -145,7 +141,6 @@ const PotensialClientTemplate = {
       key: "region_name",
       width: "50%",
       align: "center",
-      onFilter: (value, record) => record.region_name.indexOf(value) === 0,
     },
     {
       title: "Xudud",
@@ -153,7 +148,6 @@ const PotensialClientTemplate = {
       key: "address_name",
       width: "40%",
       align: "center",
-      onFilter: (value, record) => record.address_name.indexOf(value) === 0,
     },
     {
       title: "Manzil",
@@ -161,7 +155,6 @@ const PotensialClientTemplate = {
       key: "home_address",
       width: "50%",
       align: "center",
-      onFilter: (value, record) => record.home_address.indexOf(value) === 0,
       render: (text) => <BigLength text={text} />,
     },
     {
@@ -170,7 +163,6 @@ const PotensialClientTemplate = {
       key: "type_name",
       width: "40%",
       align: "center",
-      onFilter: (value, record) => record.type_name.indexOf(value) === 0,
     },
     {
       title: "Qo’shilgan Vaqti",
@@ -178,10 +170,6 @@ const PotensialClientTemplate = {
       key: "order_time",
       width: "60%",
       align: "center",
-      onFilter: (value, record) => {
-        console.log(record);
-        return record.order_time.indexOf(value) === 0;
-      },
     },
   ],
   scroll: { x: 2500, y: 400 },

@@ -6,7 +6,15 @@ import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerfor
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
-import {STRING, DATE,MAP, NUMBER, SELECT, UPLOAD, IMAGE} from "../../components/Modal/InputTypes"
+import {
+  STRING,
+  DATE,
+  MAP,
+  NUMBER,
+  SELECT,
+  UPLOAD,
+  IMAGE,
+} from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
 export const NewProgrammsTemplate = {
@@ -14,8 +22,8 @@ export const NewProgrammsTemplate = {
   path: YANGI_DASTURLAR,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "1",
-  allData:{
-    workers:"/workers/all"
+  allData: {
+    workers: "/workers/all",
   },
   modal: {
     style: {
@@ -75,8 +83,8 @@ export const NewProgrammsTemplate = {
           gridColumn: "1 / 5",
           gridRow: "3 / 4",
           label: "Qabul qilgan xodim",
-          options:"workers",
-          template: XodimlarTemplate
+          options: "workers",
+          template: XodimlarTemplate,
         },
         {
           name: "status",
@@ -86,7 +94,7 @@ export const NewProgrammsTemplate = {
           gridColumn: "5 / 7",
           gridRow: "3 / 4",
           label: "xolati",
-          options:"status"
+          options: "status",
         },
       ],
       innerTable: [],
@@ -154,11 +162,9 @@ export const NewProgrammsTemplate = {
       key: "developer_id",
       width: "30%",
       align: "center",
-      onFilter: (value, record) => record.developer_id.indexOf(value) === 0,
     },
   ],
 };
-
 
 // "id": 10,
 // "project_name": "Christina O'Hara",

@@ -228,7 +228,6 @@ const XodimlarTemplate = {
       title: "Yo'nalish",
       dataIndex: "type_id",
       key: "type_id",
-      onFilter: (value, record) => record.type_id.indexOf(value) === 0,
       width: "35%",
     },
     {
