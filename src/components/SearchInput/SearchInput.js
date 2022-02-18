@@ -7,15 +7,29 @@ import {
 } from "../../redux/tabs_reducer";
 import { useDispatch, useSelector } from "react-redux";
 import Highlighter from "react-highlight-words";
-const filterqidirmaydiganTamlateDataIndex = [
+import { Popover } from "antd";
+import PaintBackground from "../PaintBackground/PaintBackground";
+
+// ! Template dagi dataIndex agar rasim yoki string && number dan boshqa typedagi ma'lumot bo'ladigan bolsa shu arrayni 👇
+// ! ichiga qaysi dataIndex larini o'qimasligini yozib qo'yishingiz talab qiliniadi aks holda projact da hatoli yoki
+// ! tushunmovchilik kuzatilishi mumkin 👨‍🏫👨‍🏫👨‍🏫
+
+const dontFilterTamlateDataIndex = [
   "developer_photo",
   "passport",
   "family",
   "hozirgi_yashash_joyi",
   "number",
 ];
+
+// ! Template dagi dataIndex keladigan ma'lumotlarning length kotta bo'lib ketadigan bo'lsa u holda table buzilib ketadi
+// ! buzilishini oldini olish uchun popover chiqarish kerak qaysi dataIndex ga chiqishini yozing 👨‍🏫👨‍🏫👨‍🏫
+
+const popoverTrue = ["about", "general_info", "home_address"];
+
 const { Search } = Input;
-const NewSearch = () => {
+
+const SearchInput = () => {
   const [value, setValue] = useState("");
   const { mainData, currentPage } = useSelector((s) => s.tabs_reducer);
   const [keys, setKeys] = useState([]);
@@ -44,40 +58,26 @@ const NewSearch = () => {
       }
     });
     let newColumn = currentPage?.columns?.map((item) => {
-      if (!filterqidirmaydiganTamlateDataIndex.includes(item.dataIndex)) {
+      if (!dontFilterTamlateDataIndex.includes(item.dataIndex)) {
         return {
           ...item,
-          render: (text) => (
-            <div
-              style={
-                item.dataIndex !== "about"
-                  ? {}
-                  : {
-                      height: "50px",
-                      overflowY: "scroll",
-                      fontSize: ".9em",
-                      margin: "-2px 0",
-                      padding: 0,
-                      // border: "1px solid red"
-                    }
-              }
-            >
-              <Highlighter
-                highlightClassName={{ backgroundColor: "#000", padding: 15 }}
-                searchWords={[`${value}`]}
-                autoEscape={true}
-                textToHighlight={text}
-              />
-            </div>
-          ),
-          // render: (text, _, i) => (
-          //   <Highlighter
-          //     highlightClassName={{ backgroundColor: "#000", padding: 15 }}
-          //     searchWords={[`${value}`]}
-          //     autoEscape={true}
-          //     textToHighlight={text}
-          //   />
-          // ),
+          render: (text) => {
+            let content = (
+              <div style={{ width: "400px" }}>
+                <PaintBackground text={text} value={value} />
+              </div>
+            );
+            return popoverTrue.includes(item.dataIndex) ? (
+              <Popover placement="leftTop" content={content}>
+                <div className="hodim-template">
+                  <div className={"box-shadow"}></div>
+                  <PaintBackground text={text} value={value} />
+                </div>
+              </Popover>
+            ) : (
+              <PaintBackground text={text} value={value} />
+            );
+          },
         };
       } else {
         return item;
@@ -88,6 +88,7 @@ const NewSearch = () => {
     }
     dispatch(setFilteredMainData(filter));
   }, [value]);
+
   return (
     <Search
       placeholder="Search..."
@@ -98,4 +99,4 @@ const NewSearch = () => {
   );
 };
 
-export default NewSearch;
+export default SearchInput;

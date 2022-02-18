@@ -17,10 +17,11 @@ import {
 import {inputDeafultHeght} from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import {Popover, Button} from "antd";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
+import { Popover } from "antd";
+import BigLength from "../../components/BigLength/BigLength";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -178,172 +179,160 @@ const XodimlarTemplate = {
         },
     ],
 
-    filters: ["type_id"],
-    columns: [
-        {
-            title: "№",
-            dataIndex: "number",
-            key: "number",
-            width: "10%",
-            align,
-            render: (text, data, index) => ++index,
-        },
-        {
-            title: "F.I.Sh",
-            dataIndex: "name",
-            key: "name",
-            width: "40%",
-        },
-        {
-            title: "Telefon",
-            dataIndex: "phone_number",
-            key: "phone_number",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Viloyat",
-            dataIndex: "state_id",
-            key: "state_id",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Shahar",
-            dataIndex: "region_id",
-            key: "region_id",
-            width: "20%",
-            align,
-        },
-        {
-            title: "Manzil",
-            dataIndex: "address",
-            key: "address",
-            width: "40%",
-        },
-        {
-            title: "Tug'ilgan sana",
-            dataIndex: "born_date",
-            key: "born_date",
-            width: "26%",
-            align,
-        },
-        {
-            title: "Yo'nalish",
-            dataIndex: "type_id",
-            key: "type_id",
-            onFilter: (value, record) => record.type_id.indexOf(value) === 0,
-            width: "35%",
-        },
-        {
-            title: "Rasmi",
-            dataIndex: "developer_photo",
-            key: "developer_photo",
-            width: "10%",
-            align,
-            render: (_, record) => {
-                return (
-                    <Zoom zoomMargin={10}>
-                        <picture>
-                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-                            <img
-                                alt="img"
-                                src={record.developer_photo}
-                                width="30"
-                                height="30"
-                                style={{objectFit: "contain"}}
-                            />
-                        </picture>
-                    </Zoom>
-                );
-            },
-        },
-        {
-            title: "Passport",
-            dataIndex: "passport",
-            key: "passport",
-            width: "20%",
-            align,
-            render: (_, record) => {
-                return (
-                    <Zoom zoomMargin={10}>
-                        <picture>
-                            {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-                            <img
-                                alt="img"
-                                src={record.passport}
-                                width="30"
-                                height="30"
-                                style={{objectFit: "contain"}}
-                            />
-                        </picture>
-                    </Zoom>
-                );
-            },
-        },
-        {
-            title: "Oilasi",
-            dataIndex: "family",
-            key: "family",
-            width: "10%",
-            align,
-            render: (text) => <FileBlueIcon/>,
-        },
-        {
-            title: "Xarita",
-            dataIndex: "hozirgi_yashash_joyi",
-            key: "hozirgi_yashash_joyi",
-            width: "15%",
-            align,
-        },
-        {
-            title: "Qo'shimcha ma'lumot",
-            dataIndex: "about",
-            key: "about",
-            width: "45%",
-            align,
-            render: (text) => {
-                let content = (
-                    <div style={{width: "400px"}}>
-                        <p>{text}</p>
-                    </div>
-                );
-                return (
-                    <Popover placement="leftTop" content={content}>
-                        <div className="hodim-template">
-                            <div className="box-shadow"></div>
-                            {text}
-                        </div>
-                    </Popover>
-                );
-            },
-            //   render: (text) => (
-            //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
-            //       <div
-            //         style={{
-            //           height: "50px",
-            //           overflow: "scroll",
-            //           fontSize: ".9em",
-            //           margin: "-2px 0",
-            //           padding: 0,
-            //           // border: "1px solid red"
-            //         }}
-            //       >
-            //         {text}
-            //       </div>
-            //     </Popover>
-            //   ),
-            // render: (text => <div style={{
-            //     height: "50px",
-            //     overflow: "scroll",
-            //     fontSize: ".9em",
-            //     margin: "-2px 0",
-            //     padding: 0,
-            //     // border: "1px solid red"
-            // }}>{text}</div>)
-        },
-    ],
-    scroll: {x: 2000, y: 500},
+    
+
+  filters: ["type_id"],
+  columns: [
+    {
+      title: "№",
+      dataIndex: "number",
+      key: "number",
+      width: "10%",
+      align,
+      render: (text, data, index) => ++index,
+    },
+    {
+      title: "F.I.Sh",
+      dataIndex: "name",
+      key: "name",
+      width: "40%",
+    },
+    {
+      title: "Telefon",
+      dataIndex: "phone_number",
+      key: "phone_number",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Viloyat",
+      dataIndex: "state_id",
+      key: "state_id",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Shahar",
+      dataIndex: "region_id",
+      key: "region_id",
+      width: "20%",
+      align,
+    },
+    {
+      title: "Manzil",
+      dataIndex: "address",
+      key: "address",
+      width: "40%",
+    },
+    {
+      title: "Tug'ilgan sana",
+      dataIndex: "born_date",
+      key: "born_date",
+      width: "26%",
+      align,
+    },
+    {
+      title: "Yo'nalish",
+      dataIndex: "type_id",
+      key: "type_id",
+      onFilter: (value, record) => record.type_id.indexOf(value) === 0,
+      width: "35%",
+    },
+    {
+      title: "Rasmi",
+      dataIndex: "developer_photo",
+      key: "developer_photo",
+      width: "10%",
+      align,
+      render: (_, record) => {
+        return (
+          <Zoom zoomMargin={10}>
+            <picture>
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+              <img
+                alt="img"
+                src={record.developer_photo}
+                width="30"
+                height="30"
+                style={{ objectFit: "contain" }}
+              />
+            </picture>
+          </Zoom>
+        );
+      },
+    },
+    {
+      title: "Passport",
+      dataIndex: "passport",
+      key: "passport",
+      width: "20%",
+      align,
+      render: (_, record) => {
+        return (
+          <Zoom zoomMargin={10}>
+            <picture>
+              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
+              <img
+                alt="img"
+                src={record.passport}
+                width="30"
+                height="30"
+                style={{ objectFit: "contain" }}
+              />
+            </picture>
+          </Zoom>
+        );
+      },
+    },
+    {
+      title: "Oilasi",
+      dataIndex: "family",
+      key: "family",
+      width: "10%",
+      align,
+      render: (text) => <FileBlueIcon />,
+    },
+    {
+      title: "Xarita",
+      dataIndex: "hozirgi_yashash_joyi",
+      key: "hozirgi_yashash_joyi",
+      width: "15%",
+      align,
+    },
+    {
+      title: "Qo'shimcha ma'lumot",
+      dataIndex: "about",
+      key: "about",
+      width: "45%",
+      align,
+      render: (text) => <BigLength text={text} />,
+      //   render: (text) => (
+      //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
+      //       <div
+      //         style={{
+      //           height: "50px",
+      //           overflow: "scroll",
+      //           fontSize: ".9em",
+      //           margin: "-2px 0",
+      //           padding: 0,
+      //           // border: "1px solid red"
+      //         }}
+      //       >
+      //         {text}
+      //       </div>
+      //     </Popover>
+      //   ),
+      // render: (text => <div style={{
+      //     height: "50px",
+      //     overflow: "scroll",
+      //     fontSize: ".9em",
+      //     margin: "-2px 0",
+      //     padding: 0,
+      //     // border: "1px solid red"
+      // }}>{text}</div>)
+    },
+  ],
+  scroll: { x: 2000, y: 500 },
 };
 
 export default XodimlarTemplate;

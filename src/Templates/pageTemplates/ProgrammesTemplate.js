@@ -11,11 +11,12 @@ import { RejactProgrammesTemplate } from "../programmsTabTemplates/RejactProgram
 import { SubmittedProgrammesTemplate } from "../programmsTabTemplates/SubmittedProgrammesTemplate";
 
 const ProgrammsTemplate = {
+  ...NewProgrammsTemplate,
   text: "Dasturlar",
-  path: PROGRAMMES_PATH,
+  // path: PROGRAMMES_PATH,
   icon: "VectorIcon",
-  type: PROGRAMMES_PAGE,
-  isOpenModal: false,
+  // type: PROGRAMMES_PAGE,
+  // isOpenModal: false,
   form: [
     {
       grid: {

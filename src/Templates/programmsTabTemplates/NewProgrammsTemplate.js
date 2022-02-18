@@ -4,6 +4,7 @@ import { PROGRAMMERS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSpecifications";
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
+import BigLength from "../../components/BigLength/BigLength";
 
 
 export const NewProgrammsTemplate = {
@@ -19,7 +20,8 @@ export const NewProgrammsTemplate = {
     tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
   },
   isOpenModal: false,
-  allData: ["/projects"],
+  mainUrl:"/projects/status/1",
+  // allData: ["/projects"],
   filters: ["developer_id"],
   columns: [
     {
@@ -50,6 +52,7 @@ export const NewProgrammsTemplate = {
       key: "general_info",
       width: "50%",
       align: "center",
+      render: (text) => <BigLength text={text} />,
     },
     {
       title: "Ish olingan vaqti",
@@ -76,24 +79,23 @@ export const NewProgrammsTemplate = {
       title: "Hodim",
       dataIndex: "developer_id",
       key: "developer_id",
-      onFilter: (value, record) => record.developer_id.indexOf(value) === 0,
       width: "30%",
       align: "center",
+      onFilter: (value, record) => record.developer_id.indexOf(value) === 0,
     },
   ],
 };
 
-/*
-  id(pin):1
-project_name(pin):"Prof. Loyce Predovic"
-general_info(pin):"Sed quia praesentium voluptatem et et. Voluptas ea aliquam accusantium architecto nostrum eligendi. Velit voluptas qui voluptatibus autem dolores. Porro velit assumenda laudantium. Et voluptatem cum aut quia dignissimos occaecati quae possimus. Amet accusantium voluptas error vero qui eaque. Atque fugiat et non. Vel provident ratione rerum sunt. Magni quia velit esse perspiciatis qui sint ea quis. Qui corporis reiciendis temporibus aliquid."
-general_file(pin):"https://via.placeholder.com/500x500.png/0088ee?text=IMSOFT+aliquid"
-status_id(pin):"expedita"
-developer_id(pin):"Prof. Harold Hayes DVM"
-developer_info(pin):"Laborum ullam inventore illum impedit dolor corrupti est. Provident et est aperiam pariatur doloribus eum officia excepturi."
-start_date(pin):"2018-08-27 15:00:31"
-dedline_date(pin):null
-finish_date(pin):"1998-05-16 09:46:16"
-about_file(pin):null
-project_file(pin):"https://via.placeholder.com/500x500.png/0077ff?text=IMSOFT+quas"
-*/
+// "id": 10,
+// "project_name": "Christina O'Hara",
+// "general_info": "Quaerat excepturi necessitatibus sit quia consequatur est. Voluptas explicabo similique ut et illum natus. Ut pariatur illum et magnam placeat. Perferendis et repellat natus aut omnis mollitia. Architecto nulla veniam at recusandae consequatur. Voluptates possimus qui et neque quae aut aliquam. Atque dolor vitae ut error. Quo voluptate at aliquam tempora. Est autem eum qui atque ut occaecati. Corporis laborum nihil facere rerum. Fuga et fugit accusamus rem quia recusandae.",
+// "general_file": "https://via.placeholder.com/500x500.png/009944?text=IMSOFT+vel",
+// "status_id": 2,
+// "developer_id": "Prof. Roosevelt Schaden",
+// "developer_info": "Quia id eos possimus quis deserunt quam beatae. Ipsum asperiores ducimus ut voluptatem aliquid. Qui reprehenderit dolores ipsam nostrum aliquid enim vitae similique.",
+// "start_date": "1985-05-20 07:14:12",
+// "dedline_date": "1987-05-08 08:00:54",
+// "finish_date": "2013-05-28 20:29:22",
+// "about_file": "Earum aut cupiditate possimus. Sint aut commodi odit deleniti officia. Deleniti iste quam placeat vero dolores. Aut in sit rerum iusto. Eveniet modi veniam atque magni veniam delectus fugiat nisi. Non ab odit rerum aut ea ut. Assumenda dolor aut libero molestias consequuntur. Molestiae provident ea velit. Numquam dolorem voluptas aliquam odio ut. Est autem molestias voluptates placeat similique dolorum ut. Ipsam sit vel voluptatem nesciunt rerum. Ad et dolorem maiores natus voluptates vel voluptate aut. Earum tempore ut voluptatum. Velit enim aut dolore est. Qui vel quis vel rerum neque.",
+// "project_file": "https://via.placeholder.com/500x500.png/000088?text=IMSOFT+cupiditate",
+// "client_id": "Ross Von"
