@@ -22,7 +22,8 @@ const ClientTemplate = {
             marginTop: "-70px"
         },
         tabs: [
-            CommonTemplate, ContactsTemplate, CommentsTemplate
+            CommonTemplate,
+             ContactsTemplate, CommentsTemplate
         ]
     },
     tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],

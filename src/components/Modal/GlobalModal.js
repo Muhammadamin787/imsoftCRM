@@ -9,7 +9,7 @@ import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
-
+import {inputDeafultHeght} from "../../constant/deafultStyle"
 
 
 const GlobalModal = () => {
@@ -121,11 +121,22 @@ const GlobalModal = () => {
                         key={form?.grid}
                         style={{
                             gridTemplateColumns: form.grid?.columns,
-                            gridAutoRows: form.grid?.rows
+                            gridAutoRows: form.grid?.rows,
                         }}
                     >
                         {form?.inputs?.map((input) => (
+                            // <label
+                            // style={{
+                            //   gridColumn: input.gridColumn,
+                            //   gridRow: input.gridRow,
+                            //   height: input.height ? input.height + "px" : inputDeafultHeght + "px",
+                            //   border: "1px solid black"
+                            // }}
+                            // className="select-label"
+                        //   >
+                        //     {input?.label}
                             <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue} />
+                            //  </label>
                         ))}
                     </div>
                 ))}

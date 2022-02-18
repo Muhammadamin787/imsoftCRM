@@ -15,7 +15,7 @@ import { DELETE, GET, POST } from "../../../functions/Methods";
 
 const Toolbar = ({ tableItem }) => {
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes } = useSelector(
+  const { currentPage, loading, Panes,MainData } = useSelector(
     (state) => state.tabs_reducer
   );
 
@@ -43,6 +43,7 @@ const Toolbar = ({ tableItem }) => {
       GET(currentPage?.mainUrl).then((res2) => {
         console.log(res2.data.data);
         setData(res2.data.data);
+        console.log(MainData);
       });
     });
   };

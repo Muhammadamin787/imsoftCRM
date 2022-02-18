@@ -73,9 +73,10 @@ class UploadFile extends React.Component {
             textAlign: "center",
             border: "1px solid #D9D9D9",
           }}
-        > <p>{this.props.label}</p>
+        >
+           <p>{this.props.label}</p>
+        <>
           <Upload
-          
             id="file-uploder"
             name={this.props.name}
             placeholder={this.props.placeholder}
@@ -86,11 +87,12 @@ class UploadFile extends React.Component {
             maxCount={1}
             showUploadList={false}
             // value={values}
-
-          >{" "}
+            
+            >{" "}
           </Upload>
           {this.props.Iconic && findIcon(this.props.Iconic)}
-        </label>
+            </>
+         </label>
     );
   }
 }

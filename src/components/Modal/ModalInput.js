@@ -63,8 +63,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            display: "flex",
-            flexDirection: "column",
           }}
           required={required}
         >
@@ -118,8 +116,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            display: "flex",
-            flexDirection: "column",
           }}
           required={required}
           className="select-label"
@@ -177,8 +173,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
           {label && label}
@@ -206,8 +200,6 @@ const ModalInput = ({
             gridColumn: gridColumn,
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
-            display: "flex",
-            flexDirection: "column",
           }}
 
         >

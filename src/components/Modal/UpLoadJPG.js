@@ -72,7 +72,8 @@ class UpLoadJPG extends React.Component {
                     // backgroundColor:"red",
                     border: "1px solid #D9D9D9",
                 }}
-            ><p>{this.props?.label}</p>
+            >
+                <p>{this.props?.label}</p>
                 <Upload
                     id="file-uploder"
                     name={this.props.name}
@@ -85,7 +86,7 @@ class UpLoadJPG extends React.Component {
                     showUploadList={false}
                     className="upppp"
                     // value={values}
-                >{" "}
+                    >{" "}
                 </Upload>
                     {this.props.Iconic && findIcon(this.props.Iconic)}
             </label>

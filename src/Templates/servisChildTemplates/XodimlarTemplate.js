@@ -3,8 +3,6 @@ import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {
     FileBlueIcon,
-    UploadFileOilasi,
-    UploadFilePasport,
 } from "../../assets/icons/icons";
 import {
     STRING,
@@ -69,17 +67,6 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght,
                 },
                 {
-                    label: "Viloyat",
-                    name: "viloyat",
-                    type: SELECT,
-                    required: true,
-                    placeholder: "viloyat",
-                    gridColumn: "1 / 5",
-                    gridRow: "3 / 4",
-                    options: "states",
-                    template: ViloyatlarTemplate
-                },
-                {
                     name: "Yo'nalishi",
                     type: SELECT,
                     required: true,
@@ -89,6 +76,17 @@ const XodimlarTemplate = {
                     gridRow: "2 / 3",
                     template: YunalishlarTemplate,
                     options: "cities",
+                },
+                {
+                    label: "Viloyat",
+                    name: "viloyat",
+                    type: SELECT,
+                    required: true,
+                    placeholder: "viloyat",
+                    gridColumn: "1 / 5",
+                    gridRow: "3 / 4",
+                    options: "states",
+                    template: ViloyatlarTemplate
                 },
                 {
                     name: "shahar",

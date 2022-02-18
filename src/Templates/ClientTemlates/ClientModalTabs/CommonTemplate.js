@@ -1,5 +1,5 @@
 import { STRING, SELECT,MAP, NUMBER, UPLOAD, IMAGE,DATE} from "../../../components/Modal/InputTypes";
-
+import {inputDeafultHeght} from "../../../constant/deafultStyle"
 
 
 
@@ -31,9 +31,6 @@ const CommonTabTemplate = {
               placeholder: "Yo'nalishlar turi",
               gridColumn: "1 / 3",
               gridRow: "2 / 3",
-              option: [
-                { value:"savdo"},{ value:"nimadur"}
-              ]
             },
             {
               name: "viloyat",
@@ -43,7 +40,6 @@ const CommonTabTemplate = {
               label:"Viloyat",
               gridColumn: "1 / 3",
               gridRow: "3 / 4",
-              option: [{ value:"Farg'ona"},{ value:"Savdo"},]
             },
             {
               name: "manzil",
@@ -62,7 +58,6 @@ const CommonTabTemplate = {
               gridColumn: "6 / 9",
               gridRow: "2 / 3",
               label: "Kelish turi",
-              option:[{ value:"Qandaydur savdo"},{ value:"Savdo"},]
             },
             {
               name: "faoliyat_turi",
@@ -72,7 +67,6 @@ const CommonTabTemplate = {
               label: "Faoliyat turi",
               gridColumn: "3 / 6",
               gridRow: "2 / 3",
-              option: [{ value:"Savdo"},{ value:"Savdo2"}, ]
             },
             {
               name: "xudud",
@@ -82,7 +76,6 @@ const CommonTabTemplate = {
               label: "Xudud",
               gridColumn: "6 / 9",
               gridRow: "3 / 4",
-              option: [ {value:"Eshonguzar"}, {value:"guzar"}]
             },
             {
               name: "shahar_tuman",
@@ -92,7 +85,6 @@ const CommonTabTemplate = {
               placeholder: "Shahar/Tuman",
               gridColumn: "3 / 6",
               gridRow: "3 / 4",
-              option: [{ value:"Marg'ilon"},{ value:"Savdo2"}, ]
             },
             {
               name: "xolati",
@@ -102,7 +94,6 @@ const CommonTabTemplate = {
               label:"Xolati",
               gridColumn: "6 / 9",
               gridRow: "1 / 2",
-              option: [ {value:"Alo"}, {value:"o'rtacha"}]
             },
           ],
         },
