@@ -4,35 +4,27 @@ import { POTENSIAL_MIJOZLAR } from "../../pages/pageConstants/PageRoutes";
 import { CLIENTS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import { Popover } from "antd";
 import BigLength from "../../components/BigLength/BigLength";
+import { ClientTemplateApi } from "../../constant/apiLine/apiLine";
+import CommonTemplate from './ClientModalTabs/CommonTemplate'
+import ContactsTemplate from './ClientModalTabs/ContactsTemplate';
+import CommentsTemplate from './ClientModalTabs/CommentsTabTemplate'
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
-  key: "0",
+  key: "1",
   icon: "ProfileIcon",
   path: POTENSIAL_MIJOZLAR,
   type: CLIENTS_CHILD_PAGES,
   isOpenModal: false,
-  mainUrl: "/clients/status/1",
+  mainUrl: ClientTemplateApi,
   allData: [],
-  //   form: [
-  //     {
-  //       grid: "1fr",
-  //       inputs: [
-  //         {
-  //           name: "Yunalishlar",
-  //           type: STRING,
-  //           required: true,
-  //           name: "Yo'nalishlar",
-  //           type: STRING,
-  //           required: true,
-  //           placeholder: "Yo'nalishlar",
-  //           value: "",
-  //         },
-  //       ],
-  //     },
-  //   ],
-
+  modal: {
+    style: {
+      width: 1200,
+      marginTop: "-70px",
+    },
+    tabs: [CommonTemplate, ContactsTemplate, CommentsTemplate],
+  },
   filters: [
     "latitude",
     "order_time",
@@ -43,7 +35,7 @@ const PotensialClientTemplate = {
     "region_name",
     "category_id",
   ],
-  
+
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -183,24 +175,13 @@ const PotensialClientTemplate = {
       key: "order_time",
       width: "60%",
       align: "center",
-      onFilter: (value, record) => record.vaqt.indexOf(value) === 0,
+      onFilter: (value, record) => {
+        console.log(record);
+        return record.order_time.indexOf(value) === 0
+      },
     },
   ],
-  scroll: { x: 2500, y: 1500 },
+  scroll: { x: 2500, y: 400 },
 };
 
 export default PotensialClientTemplate;
-/*
-enterprise_name: korhona nomi,
-client_name: fio,
-operator_phone_number: telefon,
-genaral_info: izox,
-lacation: longtitude, latitude,
-state_name: viloyat,
-region_name: shahar/tuman,
-address_name: hudud,
-home_address: manzil,
-activity_type_name: faoliyat,
-order_time: qo'shilgan vaqt,
-category_id: yo'nalish
-*/

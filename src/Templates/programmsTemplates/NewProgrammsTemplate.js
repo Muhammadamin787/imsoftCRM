@@ -5,6 +5,7 @@ import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSp
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
+import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 
 
 export const NewProgrammsTemplate = {
@@ -20,7 +21,7 @@ export const NewProgrammsTemplate = {
     tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
   },
   isOpenModal: false,
-  mainUrl:"/projects/status/1",
+  mainUrl: ProgrammsTemplateApi,
   // allData: ["/projects"],
   filters: ["developer_id"],
   columns: [

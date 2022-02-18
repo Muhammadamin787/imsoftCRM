@@ -19,7 +19,6 @@ import {
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import { Popover } from "antd";
 import BigLength from "../../components/BigLength/BigLength";
 const align = "center";
 const XodimlarTemplate = {
@@ -303,30 +302,6 @@ const XodimlarTemplate = {
       width: "45%",
       align,
       render: (text) => <BigLength text={text} />,
-      //   render: (text) => (
-      //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
-      //       <div
-      //         style={{
-      //           height: "50px",
-      //           overflow: "scroll",
-      //           fontSize: ".9em",
-      //           margin: "-2px 0",
-      //           padding: 0,
-      //           // border: "1px solid red"
-      //         }}
-      //       >
-      //         {text}
-      //       </div>
-      //     </Popover>
-      //   ),
-      // render: (text => <div style={{
-      //     height: "50px",
-      //     overflow: "scroll",
-      //     fontSize: ".9em",
-      //     margin: "-2px 0",
-      //     padding: 0,
-      //     // border: "1px solid red"
-      // }}>{text}</div>)
     },
   ],
   scroll: { x: 2000, y: 500 },

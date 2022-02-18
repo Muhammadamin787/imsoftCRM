@@ -23,7 +23,6 @@ const GlobalModal = () => {
     useEffect(() => {
         if (currentPage && currentPage.isOpenModal) {
             let currentData = currentPage?.allData;
-            // console.log(currentData);
             for (const url in currentData) {
                 let res = axios(currentData[url]);
                 res.then(res => {

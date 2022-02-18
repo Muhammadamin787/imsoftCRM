@@ -1,14 +1,14 @@
-import { BEKOR_QILINGAN } from "../../pages/pageConstants/PageRoutes";
+import { TOPSHIRILGAN } from "../../pages/pageConstants/PageRoutes";
 import { PROGRAMMERS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { NewProgrammsTemplate } from "./NewProgrammsTemplate";
-
-export const RejactProgrammesTemplate = {
+import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
+export const SubmittedProgrammesTemplate = {
   ...NewProgrammsTemplate,
-  text: "Bekor qilingan",
-  path: BEKOR_QILINGAN,
+  text: "Topshirilgan",
+  path: TOPSHIRILGAN,
   type: PROGRAMMERS_CHILD_PAGES,
-  key: "5",
-  mainUrl:"/projects/status/5",
+  key: "4",
+  mainUrl: ProgrammsTemplateApi,
   // modal: {...NewProgrammsTemplate.modal},
   // columns: [...NewProgrammsTemplate.columns],
 };

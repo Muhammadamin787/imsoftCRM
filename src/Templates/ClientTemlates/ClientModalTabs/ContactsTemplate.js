@@ -11,7 +11,7 @@ const ContactsTemplate = {
     {
       grid: {
         columns: "repeat(18, 1fr)",
-        rows: "repeat(5, 1fr)",
+        rows: "repeat(20, 1fr)",
       },
 
       inputs: [
@@ -57,7 +57,7 @@ const ContactsTemplate = {
             required: true,
             placeholder: "Foto",
             gridColumn: "1 / 4",
-            gridRow: "3 / 6",
+            gridRow: "3 / 20",
             height: inputDeafultHeght * 7,
             label:"Foto"
           },
@@ -67,7 +67,7 @@ const ContactsTemplate = {
             required: true,
             placeholder: "Foto",
             gridColumn: "4 / 7",
-            gridRow: "3 / 6",
+            gridRow: "3 / 20",
             height: inputDeafultHeght * 7,
             label: " "
           },
@@ -77,7 +77,7 @@ const ContactsTemplate = {
             required: true,
             placeholder: "Foto",
             gridColumn: "7 / 10",
-            gridRow: "3 / 6",
+            gridRow: "3 / 20",
             height: inputDeafultHeght * 7 ,
             label: " "
           },
@@ -123,7 +123,7 @@ const ContactsTemplate = {
             required: true,
             placeholder: "Client Addres",
             gridColumn: "10 / 19",
-            gridRow: "3 / 6",
+            gridRow: "3 / 20",
             height: inputDeafultHeght * 3,
           },
       ],

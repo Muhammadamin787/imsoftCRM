@@ -52,7 +52,6 @@ const ModalInput = ({
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template))
     dispatch(toggleInnerModal(true))
-    // console.log(template);
   }
 
 
@@ -148,7 +147,6 @@ const ModalInput = ({
 
                 res.then(res => {
                   // dispatch(setAllData(res.data.data))
-                  console.log(res.data.data);
                 });
               }
 

@@ -9,20 +9,10 @@ import ContactsTemplate from '../ClientTemlates/ClientModalTabs/ContactsTemplate
 import CommonTemplate from '../ClientTemlates/ClientModalTabs/CommonTemplate';
 const ClientTemplate = {
     ...PotensialClientTemplate,
-    text: "Mijozlar",
-    modal: {
-        style: {
-            width: 1200,
-            marginTop: "-70px"
-        },
-        tabs: [
-            CommonTemplate, ContactsTemplate, CommentsTemplate
-        ]
-    },
     tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
 
     
-    // text: "Mijozlar Ro'yxati",
+    text: "Mijozlar Ro'yxati",
     // path: POTENSIAL_MIJOZLAR,
     // icon: "ProfileIcon",
     // type: CLIENTS_CHILD_PAGES,

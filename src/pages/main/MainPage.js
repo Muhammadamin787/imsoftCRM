@@ -24,6 +24,7 @@ import axios from "../../functions/axios";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import NewSearch from "../../components/SearchInput/SearchInput";
+import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
@@ -54,13 +55,16 @@ const MainPage = () => {
     setCurrentPage(a);
   }, []);
 
+
   useEffect(() => {
+    const url = currentPage?.mainUrl;
     dispatch(setData([]));
-    if (currentPage?.mainUrl && currentPage.mainUrl) {
+    if (url) {
       dispatch(startLoading());
-      const data = axios(currentPage?.mainUrl);
+      const data = axios(removeApiStatusLines.includes(url)?`${url}/${currentPage?.key}`: url);
       data
         .then((res) => {
+          console.log(res);
           dispatch(setData(res.data.data));
         })
         .then((r) => {
