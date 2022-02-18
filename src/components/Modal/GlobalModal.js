@@ -44,7 +44,8 @@ const GlobalModal = () => {
     };
 
     const handleChangeValue = (e) => {
-        dispatch(setValues({ ...values, ...e }));
+        console.log(e);
+        // dispatch(setValues({ ...values, ...e }));
     }
 
     const handleSubmit = (e) => {
@@ -80,6 +81,7 @@ const GlobalModal = () => {
 
     return (
         <Modal
+            className="global-modal"
             style={{ ...currentPage?.modal?.style }}
             width={currentPage?.modal?.style?.width}
             footer={null}

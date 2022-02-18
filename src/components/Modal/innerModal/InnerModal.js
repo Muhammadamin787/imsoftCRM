@@ -83,6 +83,7 @@ const InnerModal = () => {
 
     return (
         <Modal
+            className="inner-modal"
             style={{...innerModal?.modal?.style}}
             width={innerModal?.modal?.style?.width}
             footer={null}

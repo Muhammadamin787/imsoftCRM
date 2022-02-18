@@ -66,8 +66,8 @@ const MainPage = () => {
             dispatch(startLoading());
             const data = axios(currentPage?.mainUrl);
             data.then((res) => {
-                    dispatch(setData(res.data.data));
-                })
+                dispatch(setData(res.data.data));
+            })
                 .then((r) => {
                     dispatch(stopLoading());
                 });
@@ -107,89 +107,89 @@ const MainPage = () => {
                   <span style={{marginRight: "10px", marginTop: "10px"}}>
                     {findIcon(menu?.icon)}
                   </span>
-                  <span>{menu.text}</span>
-                </NavLink>
-              </Item>
-            )
-          )}
-        </Menu>
-        <div className="header__user-profile">
-          {/* <SearchInput/> */}
-          <SearchInput />
-          <Popover
-            placement="bottomRight"
-            title={
-              <div style={{ textAlign: "center" }}>
-                <img
-                  className="user-profile-image"
-                  src={AccountPNG}
-                  alt="Foydalanuvchi rasmi"
-                />
-                <h3>Hojiakbar</h3>
-              </div>
-            }
-            content={
-              <div>
-                <Button color="danger" style={{ width: "100%" }}>
-                  Log out
-                </Button>
-              </div>
-            }
-            trigger="click"
-          >
-            <img
-              className="user-profile-image"
-              src={AccountPNG}
-              alt="Foydalanuvchi rasmi"
-            />
-          </Popover>
-        </div>
-      </Header>
-      <Content className="site-layout" style={{ marginTop: 64 }}>
-        <div>
-          <Routes>
-            {[
-              ...AllPages,
-              ...ServiceTemplate?.sections,
-              ...ProgrammsTemplate?.tabs,
-              ...ClientTemplate?.tabs,
-            ].map((page, i) =>
-              page.submenus ? (
-                page.submenus.map((sub, k) => (
-                  <Route
-                    path={sub.path}
-                    element={<PageController page={sub} key={sub?.path} />}
-                  />
-                ))
-              ) : (
-                <Route
-                  path={page.path}
-                  element={<PageController page={page} key={page?.path} />}
-                />
-              )
-            )}
-          </Routes>
-        </div>
-        <GlobalModal />
-        <InnerModal />
-        {/* <GlobalModal2 /> */}
-        {/* <AntdHookForm /> */}
-      </Content>
-      <Footer className="site-footer">
-        <BottomTabs />
-        {/*<div className="site-footer__content">*/}
-        {/*  <div className="site-footer__icons">*/}
-        {/*    <GlobusIcon2 />*/}
-        {/*    <TelegramIcon />*/}
-        {/*  </div>*/}
-        {/*  <div className="site-footer__text">*/}
-        {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
-        {/*  </div>*/}
-        {/*  <div className="site-footer-clock">{currentTime}</div>*/}
-        {/*</div>*/}
-      </Footer>
-    </Layout>
-  );
+                                        <span>{menu.text}</span>
+                                    </NavLink>
+                                </Item>
+                            )
+                    )}
+                </Menu>
+                <div className="header__user-profile">
+                    {/* <SearchInput/> */}
+                    <SearchInput/>
+                    <Popover
+                        placement="bottomRight"
+                        title={
+                            <div style={{textAlign: "center"}}>
+                                <img
+                                    className="user-profile-image"
+                                    src={AccountPNG}
+                                    alt="Foydalanuvchi rasmi"
+                                />
+                                <h3>Hojiakbar</h3>
+                            </div>
+                        }
+                        content={
+                            <div>
+                                <Button color="danger" style={{width: "100%"}}>
+                                    Log out
+                                </Button>
+                            </div>
+                        }
+                        trigger="click"
+                    >
+                        <img
+                            className="user-profile-image"
+                            src={AccountPNG}
+                            alt="Foydalanuvchi rasmi"
+                        />
+                    </Popover>
+                </div>
+            </Header>
+            <Content className="site-layout" style={{marginTop: 64}}>
+                <div>
+                    <Routes>
+                        {[
+                            ...AllPages,
+                            ...ServiceTemplate?.sections,
+                            ...ProgrammsTemplate?.tabs,
+                            ...ClientTemplate?.tabs,
+                        ].map((page, i) =>
+                            page.submenus ? (
+                                page.submenus.map((sub, k) => (
+                                    <Route
+                                        path={sub.path}
+                                        element={<PageController page={sub} key={sub?.path}/>}
+                                    />
+                                ))
+                            ) : (
+                                <Route
+                                    path={page.path}
+                                    element={<PageController page={page} key={page?.path}/>}
+                                />
+                            )
+                        )}
+                    </Routes>
+                </div>
+                <GlobalModal/>
+                <InnerModal/>
+                {/* <GlobalModal2 /> */}
+                {/* <AntdHookForm /> */}
+            </Content>
+            <Footer className="site-footer">
+                <BottomTabs/>
+                {/*<div className="site-footer__content">*/}
+                {/*  <div className="site-footer__icons">*/}
+                {/*    <GlobusIcon2 />*/}
+                {/*    <TelegramIcon />*/}
+                {/*  </div>*/}
+                {/*  <div className="site-footer__text">*/}
+                {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
+                {/*  </div>*/}
+                {/*  <div className="site-footer-clock">{currentTime}</div>*/}
+                {/*</div>*/}
+            </Footer>
+        </Layout>
+    );
 };
 
 export default MainPage;

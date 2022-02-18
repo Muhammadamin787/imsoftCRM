@@ -41,6 +41,7 @@ const HududTemplate = {
                     required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",
+                    template: ShaharTumanTemplate,
                     gridRow: "2 / 3",
                     autoSelect: [
                         "state_id"
@@ -53,6 +54,7 @@ const HududTemplate = {
                     required: true,
                     options: "states",
                     placeholder: "Viloyat",
+                    template: ViloyatlarTemplate,
                     gridColumn: "1 / 3",
                     gridRow: "3 / 4",
                 },

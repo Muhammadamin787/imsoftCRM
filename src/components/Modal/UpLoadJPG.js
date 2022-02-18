@@ -3,7 +3,7 @@ import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import React from 'react'
 import "./GlobalModal.scss"
 import {inputDeafultHeght} from "../../constant/deafultStyle"
-import { findIcon } from '../../assets/icons/icons';
+import {findIcon} from '../../assets/icons/icons';
 
 
 function getBase64(img, callback) {
@@ -29,7 +29,7 @@ class UpLoadJPG extends React.Component {
         imageUrl: "",
     };
 
-    handleChange = (info,e) => {
+    handleChange = (info, e) => {
         console.log(info)
         console.log(e)
         // if (info.file.status === 'uploading') {
@@ -52,10 +52,10 @@ class UpLoadJPG extends React.Component {
         const {loading, imageUrl} = this.state;
 
         const uploadButton = (
-          <div>
-            {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            <div style={{ marginTop: 8 }}>Upload</div>
-          </div>
+            <div>
+                {loading ? <LoadingOutlined/> : <PlusOutlined/>}
+                <div style={{marginTop: 8}}>Upload</div>
+            </div>
         );
 
         return (
@@ -73,21 +73,18 @@ class UpLoadJPG extends React.Component {
                 }}
             >
                 <p>{this.props?.label}</p>
-                <Upload
-                    id="file-uploder"
-                    name={this.props.name}
-                    placeholder={this.props.placeholder}
-                    alt="file"
-                    beforeUpload={beforeUpload}
-                    onChange={this.handleChange}
-                    type="file"
-                    maxCount={1}
-                    showUploadList={false}
-                    className="upppp"
-                    // value={values}
-                    >{" "}
+                <Upload id="file-uploder"
+                        name={this.props.name}
+                        placeholder={this.props.placeholder}
+                        alt="file"
+                        beforeUpload={beforeUpload}
+                        onChange={this.handleChange}
+                        type="file"
+                        maxCount={1}
+                        showUploadList={false}
+                >{"  "}
                 </Upload>
-                    {this.props.Iconic && findIcon(this.props.Iconic)}
+                {this.props.Iconic && findIcon(this.props.Iconic)}
             </label>
         );
     }
