@@ -47,7 +47,7 @@ export default class MapModal extends Component {
           {this.state.coords ? (
             <Placemark geometry={this.state.coords} />
           ) : null}
-          <FullscreenControl />
+          {/* <FullscreenControl /> */}
         </Map>
       </YMaps>
     );

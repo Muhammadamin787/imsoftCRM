@@ -11,16 +11,17 @@ import { RejactProgrammesTemplate } from "../programmsTabTemplates/RejactProgram
 import { SubmittedProgrammesTemplate } from "../programmsTabTemplates/SubmittedProgrammesTemplate";
 
 const ProgrammsTemplate = {
+  ...NewProgrammsTemplate,
   text: "Dasturlar",
-  path: PROGRAMMES_PATH,
+  // path: PROGRAMMES_PATH,
   icon: "VectorIcon",
-  type: PROGRAMMES_PAGE,
-  isOpenModal: false,
+  // type: PROGRAMMES_PAGE,
+  // isOpenModal: false,
   form: [
     {
       grid: {
-        columns: "repeat(20, 200fr)",
-        rows: "repeat(6, 2fr)",
+        columns: "repeat(1, 8fr)",
+        rows: "repeat(1, 3fr)",
       },
       inputs: [
         {
@@ -28,7 +29,7 @@ const ProgrammsTemplate = {
           type: STRING,
           required: true,
           placeholder: "Mijoz",
-          gridColumn: "1 / 10",
+          gridColumn: "1 / 5",
           gridRow: "1 / 2",
           label: "Mijoz",
         },
@@ -37,7 +38,7 @@ const ProgrammsTemplate = {
           type: DATE,
           required: true,
           placeholder: "Buyurtma sana:",
-          gridColumn: "10 / 15",
+          gridColumn: "5 / 7",
           gridRow: "1 / 2",
           label: "Buyurtma sana",
         },
@@ -46,7 +47,7 @@ const ProgrammsTemplate = {
           type: DATE,
           required: true,
           placeholder: "Topshirilgan sana:",
-          gridColumn: "15 / 20",
+          gridColumn: "7 / 9",
           gridRow: "1 / 2",
           label: "Topshiriligan sana",
         },
@@ -55,7 +56,7 @@ const ProgrammsTemplate = {
           type: STRING,
           required: true,
           placeholder: "Umumiy tafsiflar",
-          gridColumn: "1 / 10",
+          gridColumn: "1 / 9",
           gridRow: "2 / 3",
           label: "Umumiy tafsiflar",
         },
@@ -64,8 +65,8 @@ const ProgrammsTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Qabul qilgan xodim:",
-          gridColumn: "10 / 15",
-          gridRow: "2 / 3",
+          gridColumn: "1 / 5",
+          gridRow: "3 / 4",
           label: "Qabul qilgan xodim",
         },
         {
@@ -73,8 +74,8 @@ const ProgrammsTemplate = {
           type: SELECT,
           required: true,
           placeholder: "Xolati:",
-          gridColumn: "15 / 20",
-          gridRow: "2 / 3",
+          gridColumn: "5 / 7",
+          gridRow: "3 / 4",
           label: "xolati",
         },
       ],
