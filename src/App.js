@@ -4,9 +4,6 @@ import MainPage from "./pages/main/MainPage";
 import useFetch from "./functions/axios"
 
 function App() {
-
-    
-
     return (
         <MainPage/>
     );

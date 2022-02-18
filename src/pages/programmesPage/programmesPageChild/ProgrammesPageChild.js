@@ -16,9 +16,7 @@ const ProgrammesPageChild = ({ activeKey }) => {
     dispatch(setCurrentPage(page));
     dispatch(addNewTab(page));
   };
-  useEffect(() => {
-    console.log(currentPage);
-  }, []);
+
   return (
     <div>
       <Toolbar />

@@ -49,7 +49,7 @@ const InnerModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
         const url = innerModal?.mainUrl;
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
@@ -83,6 +83,7 @@ const InnerModal = () => {
 
     return (
         <Modal
+            className="inner-modal"
             style={{...innerModal?.modal?.style}}
             width={innerModal?.modal?.style?.width}
             footer={null}

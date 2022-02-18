@@ -5,10 +5,9 @@ import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSp
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
+import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {STRING, DATE,MAP, NUMBER, SELECT, UPLOAD, IMAGE} from "../../components/Modal/InputTypes"
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
-
-
 
 export const NewProgrammsTemplate = {
   text: "Yangi dasturlar",
@@ -94,7 +93,7 @@ export const NewProgrammsTemplate = {
     },
   ],
   isOpenModal: false,
-  mainUrl:"/projects/status/1",
+  mainUrl: ProgrammsTemplateApi,
   // allData: ["/projects"],
   filters: ["developer_id"],
   columns: [
