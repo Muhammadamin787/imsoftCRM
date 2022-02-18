@@ -4,6 +4,7 @@ import ModalInput from "../ModalInput";
 import InnerTable from "../../Table/innerTable/InnerTable";
 import "./ModalTabs.scss"
 
+
 const ModalTabs = ({tabs,i}) => {
     return (
         <Tabs defaultActiveKey={[0]}>
