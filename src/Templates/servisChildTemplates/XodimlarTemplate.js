@@ -98,12 +98,6 @@ const XodimlarTemplate = {
                     template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
-                    option: [
-                        {value: "Olti ariq", key: "Olti ariq"},
-                        {value: "Qo'qon", key: "Qo'qon"},
-                        {value: "Marg'ilon", key: "Marg'ilon"},
-                        {value: "Qarshi", key: "Qarshi"},
-                    ],
                 },
                 {
                     name: "manzil",

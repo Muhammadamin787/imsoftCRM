@@ -3,6 +3,8 @@ import {Table, Tabs} from "antd";
 import ModalInput from "../ModalInput";
 import InnerTable from "../../Table/innerTable/InnerTable";
 import "./ModalTabs.scss"
+import AddTableRow from "../../Table/addTableRow/AddTableRow"
+
 
 const ModalTabs = ({tabs,i}) => {
     return (
@@ -21,6 +23,7 @@ const ModalTabs = ({tabs,i}) => {
                         ))}
                     </div>
                 ))}
+                {/* {tab?.columns && <AddTableRow />} */}
                 {tab?.columns && <InnerTable innerTable={tab}/>}
             </Tabs.TabPane>
         ))}

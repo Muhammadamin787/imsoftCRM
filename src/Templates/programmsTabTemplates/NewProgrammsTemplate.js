@@ -5,6 +5,9 @@ import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSp
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
+import {STRING, DATE,MAP, NUMBER, SELECT, UPLOAD, IMAGE} from "../../components/Modal/InputTypes"
+import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
+
 
 
 export const NewProgrammsTemplate = {
@@ -12,6 +15,9 @@ export const NewProgrammsTemplate = {
   path: YANGI_DASTURLAR,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "1",
+  allData:{
+    workers:"/workers/all"
+  },
   modal: {
     style: {
       width: 1000,
@@ -19,6 +25,74 @@ export const NewProgrammsTemplate = {
     },
     tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
   },
+  form: [
+    {
+      grid: {
+        columns: "repeat(1, 8fr)",
+        rows: "repeat(1, 3fr)",
+      },
+      inputs: [
+        {
+          name: "client_name",
+          type: STRING,
+          required: true,
+          placeholder: "Mijoz",
+          gridColumn: "1 / 5",
+          gridRow: "1 / 2",
+          label: "Mijoz",
+        },
+        {
+          name: "start_date",
+          type: DATE,
+          required: true,
+          placeholder: "Buyurtma sana:",
+          gridColumn: "5 / 7",
+          gridRow: "1 / 2",
+          label: "Buyurtma sana",
+        },
+        {
+          name: "finish_date",
+          type: DATE,
+          required: true,
+          placeholder: "Topshirilgan sana:",
+          gridColumn: "7 / 9",
+          gridRow: "1 / 2",
+          label: "Topshiriligan sana",
+        },
+        {
+          name: "general_info",
+          type: STRING,
+          required: true,
+          placeholder: "Umumiy tafsiflar",
+          gridColumn: "1 / 9",
+          gridRow: "2 / 3",
+          label: "Umumiy tafsiflar",
+        },
+        {
+          name: "developer_name",
+          type: SELECT,
+          required: true,
+          placeholder: "Qabul qilgan xodim:",
+          gridColumn: "1 / 5",
+          gridRow: "3 / 4",
+          label: "Qabul qilgan xodim",
+          options:"workers",
+          template: XodimlarTemplate
+        },
+        {
+          name: "status",
+          type: SELECT,
+          required: true,
+          placeholder: "Xolati:",
+          gridColumn: "5 / 7",
+          gridRow: "3 / 4",
+          label: "xolati",
+          options:"status"
+        },
+      ],
+      innerTable: [],
+    },
+  ],
   isOpenModal: false,
   mainUrl:"/projects/status/1",
   // allData: ["/projects"],
@@ -85,6 +159,7 @@ export const NewProgrammsTemplate = {
     },
   ],
 };
+
 
 // "id": 10,
 // "project_name": "Christina O'Hara",
