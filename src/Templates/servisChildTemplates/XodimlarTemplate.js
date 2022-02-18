@@ -248,8 +248,7 @@ const XodimlarTemplate = {
                     <Zoom zoomMargin={10}>
                         <picture>
                             {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-                            <img
-                                alt="img"
+                            <img alt="img"
                                 src={record.developer_photo}
                                 width="30"
                                 height="30"
@@ -313,8 +312,7 @@ const XodimlarTemplate = {
                 return (
                     <Popover placement="leftTop" content={content}>
                         <div className="hodim-template">
-                            <div className="box-shadow"></div>
-                            {text}
+                            <div className="box-shadow"/>{text}
                         </div>
                     </Popover>
                 );
