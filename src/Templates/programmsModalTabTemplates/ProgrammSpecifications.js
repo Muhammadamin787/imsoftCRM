@@ -11,7 +11,7 @@ export const ProgrammSpecifications = {
             dataIndex: "number",
             key: "number",
             width: "5%",
-            align: "center"
+            align: "center",
         },
         {
             title: "Nomi",

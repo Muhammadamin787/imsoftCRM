@@ -1,25 +1,31 @@
-import React from 'react';
-import { Table, Form,Button } from "antd";
+import React, { useState, useEffect } from 'react';
+import { Table, Form, Button } from "antd";
 import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
+import { setValues } from '../../../redux/tabs_reducer';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const InnerTable = ({ innerTable }) => {
+    const dispatch = useDispatch()
 
-    const colT = innerTable.columns.map(col => col.dataIndex);
+    // const [objKey, setObjKey] = useState({})
+    // useEffect(() => {
+    //     const colT = innerTable.columns.map(col => setObjKey({col}));
 
-    console.log(colT);
+    // })
+
 
     return (
         <>
-                <Button onClick={() => console.log(innerTable)}>+</Button>
-                <Table bordered
-                    columns={innerTable.columns}
-                    className="inner-table"
-                    dataSource={innerTable?.data}
-                    size={"small"}
-                    scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
-                    pagination={{ position: ["bottomCenter"] }}
-                />
+            <Button onClick={() => console.log(innerTable)}>+</Button>
+            <Table bordered
+                columns={innerTable.columns}
+                className="inner-table"
+                dataSource={innerTable?.data}
+                size={"small"}
+                scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
+                pagination={{ position: ["bottomCenter"] }}
+            />
         </>
     );
 };
