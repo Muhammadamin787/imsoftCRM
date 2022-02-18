@@ -1,181 +1,178 @@
 import React from "react";
-import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
-import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
+import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {
-  FileBlueIcon,
-  UploadFileOilasi,
-  UploadFilePasport,
+    FileBlueIcon,
 } from "../../assets/icons/icons";
 import {
-  STRING,
-  DATE,
-  SELECT,
-  TEXTAREA,
-  PHONE,
-  UPLOAD,
-  MAP,
-  IMAGE,
+    STRING,
+    DATE,
+    SELECT,
+    TEXTAREA,
+    PHONE,
+    UPLOAD,
+    MAP,
+    IMAGE,
 } from "../../components/Modal/InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import ViloyatlarTemplate from "./ViloyatlarTemplate";
+import ShaharTumanTemplate from "./ShaharTumanTempilate";
+import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
+
 const align = "center";
 const XodimlarTemplate = {
-  text: "Xodimlar",
-  path: XODIMLAR_PATH,
-  icon: "Xodimlar",
-  type: SERVIS_CHILD_PAGES,
-  isOpenModal: false,
-  mainUrl: "/workers",
-  // allData: ["/workers"],
-  modal: {
-    style: {
-      width: 1000,
-      marginTop: "-80px",
+    text: "Xodimlar",
+    path: XODIMLAR_PATH,
+    icon: "Xodimlar",
+    type: SERVIS_CHILD_PAGES,
+    isOpenModal: false,
+    mainUrl: "/workers",
+    allData: {
+        states: "/states/all",
+        cities: "/cities/all",
     },
-  },
-  form: [
-    {
-      grid: {
-        columns: "repeat(20, 100fr)",
-        rows: "repeat(6, 1fr)",
-      },
-      inputs: [
-        {
-          name: "full_name",
-          type: STRING,
-          required: true,
-          placeholder: "F.I.SH",
-          gridColumn: "1 / 10",
-          gridRow: "1 / 2",
-          label: "F.I.SH",
+    modal: {
+        style: {
+            width: 1000,
+            marginTop: "-80px",
         },
-        {
-          name: "tugilgan_sana",
-          type: DATE,
-          required: true,
-          placeholder: "Tug'ilgan sana",
-          gridColumn: "1 / 5",
-          gridRow: "2 / 3",
-          label: "Tug'ilgan sana",
-          height: inputDeafultHeght,
-        },
-        {
-          name: "viloyat",
-          type: SELECT,
-          required: true,
-          placeholder: "viloyat",
-          gridColumn: "1 / 5",
-          label: "Viloyat",
-          gridRow: "3 / 4",
-          option: [
-            { value: "Qashqadaryo", key: "Qashqadaroy" },
-            { value: "Andijon", key: "Andijon" },
-            { value: "Farg'ona", key: "Farg'ona" },
-          ],
-        },
-        {
-          name: "Yo'nalishi",
-          type: SELECT,
-          required: true,
-          placeholder: "Yo'nalishi",
-          label: "Yo'nalish",
-          gridColumn: "5 / 10",
-          gridRow: "2 / 3",
-          option: [
-            { value: "Dasturchi Web (Frontend)", key: "Web (Frontend)" },
-            { value: "Dasturchi Mobil (Andiroid)", key: "Mobil (Andiroid)" },
-            { value: "Dasturchi Web (Backend)", key: "Web (Backend)" },
-          ],
-        },
-        {
-          name: "shahar",
-          type: SELECT,
-          required: true,
-          placeholder: "Shahar",
-          label: "Shahar",
-          gridColumn: "5 / 10",
-          gridRow: "3 / 4",
-          option: [
-            { value: "Olti ariq", key: "Olti ariq" },
-            { value: "Qo'qon", key: "Qo'qon" },
-            { value: "Marg'ilon", key: "Marg'ilon" },
-            { value: "Qarshi", key: "Qarshi" },
-          ],
-        },
-        {
-          name: "manzil",
-          type: STRING,
-          required: true,
-          placeholder: "Manzil",
-          gridColumn: "1 / 10",
-          gridRow: "4 / 5",
-          label: "Manzil",
-          // height: "40px"
-        },
-        {
-          name: "qushimcha_malumot",
-          type: TEXTAREA,
-          required: true,
-          placeholder: "Qo'shimcha malumot",
-          gridColumn: "1 / 10",
-          gridRow: "5 / 7",
-          label: "Qo'shimcha malumot",
-          height: inputDeafultHeght * 1.4,
-        },
-        {
-          name: "telefon",
-          type: PHONE,
-          required: true,
-          placeholder: "Telefon",
-          gridColumn: "10 / 16",
-          gridRow: "1 / 2",
-          label: "Telefon",
-        },
-        {
-          name: "passport",
-          type: UPLOAD,
-          required: true,
-          placeholder: "Yo'nalish",
-          gridColumn: "10 / 13",
-          gridRow: "2 / 4",
-          // height: inputDeafultHeght * 1.2,
-          Iconic: UploadFilePasport,
-          label: "Passport",
-        },
-        {
-          name: "oilasi",
-          type: UPLOAD,
-          required: true,
-          placeholder: "Oilasi",
-          gridColumn: "13 / 16",
-          gridRow: "2 / 4",
-          // height: inputDeafultHeght * 1.2,
-          Iconic: UploadFileOilasi,
-          label: "Oilasi",
-        },
-        {
-          name: "hozirgi_yashash_joyi",
-          type: MAP,
-          required: true,
-          placeholder: "hozirgi turgan joyi (map quyiladi)",
-          gridColumn: "10 / 16",
-          gridRow: "4 / 7",
-          height: inputDeafultHeght * 2,
-        },
-        {
-          label: " ",
-          name: "rasmi",
-          type: IMAGE,
-          required: true,
-          // placeholder: "rasmi",
-          gridColumn: "16 / 21",
-          gridRow: "1 / 7",
-        },
-      ],
     },
-  ],
+    form: [
+        {
+            grid: {
+                columns: "repeat(20, 100fr)",
+                rows: "repeat(6, 1fr)",
+            },
+            inputs: [
+                {
+                    name: "full_name",
+                    type: STRING,
+                    required: true,
+                    placeholder: "F.I.SH",
+                    gridColumn: "1 / 10",
+                    gridRow: "1 / 2",
+                    label: "F.I.SH",
+                },
+                {
+                    name: "tugilgan_sana",
+                    type: DATE,
+                    required: true,
+                    placeholder: "Tug'ilgan sana",
+                    gridColumn: "1 / 5",
+                    gridRow: "2 / 3",
+                    label: "Tug'ilgan sana",
+                    height: inputDeafultHeght,
+                },
+                {
+                    name: "Yo'nalishi",
+                    type: SELECT,
+                    required: true,
+                    placeholder: "Yo'nalishi",
+                    label: "Yo'nalish",
+                    gridColumn: "5 / 10",
+                    gridRow: "2 / 3",
+                    template: YunalishlarTemplate,
+                    options: "cities",
+                },
+                {
+                    label: "Viloyat",
+                    name: "viloyat",
+                    type: SELECT,
+                    required: true,
+                    placeholder: "viloyat",
+                    gridColumn: "1 / 5",
+                    gridRow: "3 / 4",
+                    options: "states",
+                    template: ViloyatlarTemplate
+                },
+                {
+                    name: "shahar",
+                    type: SELECT,
+                    required: true,
+                    placeholder: "Shahar",
+                    label: "Shahar",
+                    template: ShaharTumanTemplate,
+                    gridColumn: "5 / 10",
+                    gridRow: "3 / 4",
+                },
+                {
+                    name: "manzil",
+                    type: STRING,
+                    required: true,
+                    placeholder: "Manzil",
+                    gridColumn: "1 / 10",
+                    gridRow: "4 / 5",
+                    label: "Manzil",
+                    // height: "40px"
+                },
+                {
+                    name: "qushimcha_malumot",
+                    type: TEXTAREA,
+                    required: true,
+                    placeholder: "Qo'shimcha malumot",
+                    gridColumn: "1 / 10",
+                    gridRow: "5 / 7",
+                    label: "Qo'shimcha malumot",
+                    height: inputDeafultHeght * 1.4,
+                },
+                {
+                    name: "telefon",
+                    type: PHONE,
+                    required: true,
+                    placeholder: "Telefon",
+                    gridColumn: "10 / 16",
+                    gridRow: "1 / 2",
+                    label: "Telefon",
+                },
+                {
+                    name: "passport",
+                    type: UPLOAD,
+                    required: true,
+                    placeholder: "Yo'nalish",
+                    gridColumn: "10 / 13",
+                    gridRow: "2 / 4",
+                    // height: inputDeafultHeght * 1.2,
+                    Iconic: "UploadFilePasport",
+                    label: "Passport",
+                },
+                {
+                    name: "oilasi",
+                    type: UPLOAD,
+                    required: true,
+                    placeholder: "Oilasi",
+                    gridColumn: "13 / 16",
+                    gridRow: "2 / 4",
+                    // height: inputDeafultHeght * 1.2,
+                    Iconic: "UploadFileOilasi",
+                    label: "Oilasi",
+                },
+                {
+                    name: "hozirgi_yashash_joyi",
+                    type: MAP,
+                    required: true,
+                    placeholder: "hozirgi turgan joyi (map quyiladi)",
+                    gridColumn: "10 / 16",
+                    gridRow: "4 / 7",
+                    // height: inputDeafultHeght,
+                    label: " "
+                },
+                {
+                    label: " ",
+                    name: "rasmi",
+                    type: IMAGE,
+                    required: true,
+                    // placeholder: "rasmi",
+                    gridColumn: "16 / 21",
+                    gridRow: "1 / 7",
+                },
+            ],
+        },
+    ],
+
+    
 
   filters: ["type_id"],
   columns: [

@@ -23,9 +23,9 @@ import { useSelector } from "react-redux";
 import axios from "../../functions/axios";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
-import NewSearch from "../../components/SearchInput/SearchInput";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
-
+import { GET } from "../../functions/Methods";
+import SearchInput from '../../components/SearchInput/SearchInput'
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, mainData } = useSelector((state) => state.tabs_reducer);
@@ -46,22 +46,13 @@ const MainPage = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    let a = [
-      ...AllPages,
-      ...ServiceTemplate?.sections,
-      ...ProgrammsTemplate?.tabs,
-      ...ClientTemplate?.tabs,
-    ].find((page) => page.path === document.location.pathname);
-    setCurrentPage(a);
-  }, []);
-
-
-  useEffect(() => {
     const url = currentPage?.mainUrl;
     dispatch(setData([]));
     if (url) {
       dispatch(startLoading());
-      const data = axios(removeApiStatusLines.includes(url)?`${url}/${currentPage?.key}`: url);
+      const data = axios(
+        removeApiStatusLines.includes(url) ? `${url}/status/${currentPage?.key}` : url
+      );
       data
         .then((res) => {
           console.log(res);
@@ -113,8 +104,7 @@ const MainPage = () => {
           )}
         </Menu>
         <div className="header__user-profile">
-          {/* <SearchInput/> */}
-          <NewSearch />
+          <SearchInput />
           <Popover
             placement="bottomRight"
             title={

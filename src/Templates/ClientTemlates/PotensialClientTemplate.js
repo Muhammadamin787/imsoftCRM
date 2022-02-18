@@ -6,9 +6,9 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import BigLength from "../../components/BigLength/BigLength";
 import { ClientTemplateApi } from "../../constant/apiLine/apiLine";
-import CommonTemplate from './ClientModalTabs/CommonTemplate'
-import ContactsTemplate from './ClientModalTabs/ContactsTemplate';
-import CommentsTemplate from './ClientModalTabs/CommentsTabTemplate'
+import CommonTemplate from "./ClientModalTabs/CommonTemplate";
+import ContactsTemplate from "./ClientModalTabs/ContactsTemplate";
+import CommentsTemplate from "./ClientModalTabs/CommentsTabTemplate";
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
   key: "1",
@@ -17,7 +17,10 @@ const PotensialClientTemplate = {
   type: CLIENTS_CHILD_PAGES,
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
-  allData: [],
+  allData: {
+    states: "/states/all",
+    cities: "/cities/all",
+  },
   modal: {
     style: {
       width: 1200,
@@ -177,7 +180,7 @@ const PotensialClientTemplate = {
       align: "center",
       onFilter: (value, record) => {
         console.log(record);
-        return record.order_time.indexOf(value) === 0
+        return record.order_time.indexOf(value) === 0;
       },
     },
   ],

@@ -7,6 +7,7 @@ import {inputDeafultHeght} from "../../../constant/deafultStyle"
 const ContactsTemplate = {
 	text: "Kontaktlar",
   isOpenModal: false,
+  
   form: [
     {
       grid: {

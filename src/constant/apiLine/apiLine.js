@@ -1,7 +1,7 @@
 /* ---------------------------- programmes api lines ---------------------------- */
-export const ProgrammsTemplateApi = '/projects/status';
+export const ProgrammsTemplateApi = '/projects';
 
 /* ---------------------------- clients api line ---------------------------- */
-export const ClientTemplateApi = '/clients/status';
+export const ClientTemplateApi = '/clients';
 
 export const removeApiStatusLines = [ProgrammsTemplateApi, ClientTemplateApi];

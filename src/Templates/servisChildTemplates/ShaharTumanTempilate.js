@@ -10,15 +10,24 @@ const ShaharTumanTemplate = {
   path: SHAHAR_TUMAN_PATH,
   icon: "City",
   type: SERVIS_CHILD_PAGES,
-  mainUrl:"/cities",
+  mainUrl: "/cities",
   allData: {
-     states:"/states/all",
+    states: "/states/all",
   },
   isOpenModal: false,
   form: [
     {
       grid: "1fr",
       inputs: [
+        {
+          name: "name",
+          type: STRING,
+          required: true,
+          placeholder: "Shahar/Tuman",
+          gridColumn: "1 / 2",
+          gridRow: "1 / 2",
+          label: "Shahar/Tuman"
+        },
         {
           name: "state_id",
           type: SELECT,
@@ -28,17 +37,7 @@ const ShaharTumanTemplate = {
           gridRow: "2 / 3",
           label: "Viloyat",
           options: "states",
-          template:ViloyatlarTemplate
-        },
-        {
-          name: "name",
-          type: STRING,
-          required: true,
-          placeholder: "Shahar/Tuman",
-          gridColumn: "1 / 2",
-          gridRow: "1 / 2",
-          label: "Shahar/Tuman"
-
+          template: ViloyatlarTemplate
         },
       ],
     },
@@ -59,7 +58,7 @@ const ShaharTumanTemplate = {
     },
     {
       title: "Viloyat nomi",
-      dataIndex: "name",
+      dataIndex: "state_name",
       key: "/states/",
       width: "47%",
 

@@ -29,7 +29,7 @@ const addButtonIsDisabled = [
 const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes } = useSelector(
+  const { currentPage, loading, Panes,MainData } = useSelector(
     (state) => state.tabs_reducer
   );
 
@@ -57,13 +57,10 @@ const Toolbar = ({ tableItem }) => {
     });
     
     DELETE(url + "/delete", ids).then((res) => {
-      GET(removeApiStatusLines.includes(url)?`${url}/${currentPage?.key}`: url).then((res2) => {
+      GET(removeApiStatusLines.includes(url)?`${url}/status/${currentPage?.key}`: url).then((res2) => {
         setData(res2.data);
       });
     });
-
-    // console.log(tableItem);
-    // message.info("Malumot uchirildi.");
   };
 
   const onEdit = () => {

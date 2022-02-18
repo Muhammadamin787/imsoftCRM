@@ -21,6 +21,7 @@ const ReklamalarTemplate = {
           type: STRING,
           required: true,
           placeholder:"Reklamalar",
+          label: "Reklamalar"
         },
       ],
     },

@@ -3,6 +3,7 @@ import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import React from 'react'
 import "./GlobalModal.scss"
 import {inputDeafultHeght} from "../../constant/deafultStyle"
+import { findIcon } from '../../assets/icons/icons';
 
 
 function getBase64(img, callback) {
@@ -71,7 +72,8 @@ class UpLoadJPG extends React.Component {
                     // backgroundColor:"red",
                     border: "1px solid #D9D9D9",
                 }}
-            ><p>{this.props?.label}</p>
+            >
+                <p>{this.props?.label}</p>
                 <Upload
                     id="file-uploder"
                     name={this.props.name}
@@ -84,9 +86,9 @@ class UpLoadJPG extends React.Component {
                     showUploadList={false}
                     className="upppp"
                     // value={values}
-                >
-                    {this.props.Iconic && <this.props.Iconic/>}
+                    >{" "}
                 </Upload>
+                    {this.props.Iconic && findIcon(this.props.Iconic)}
             </label>
         );
     }
