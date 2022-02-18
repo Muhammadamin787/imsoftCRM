@@ -83,6 +83,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
+      console.log(payload);
       state.values = payload;
     },
     setData: (state, { payload }) => {
@@ -111,7 +112,6 @@ export const counterSlice = createSlice({
     },
     setInnerModel: (state, {payload}) => {
         state.innerModal =  payload;
-        // console.log(payload);
     },
     setOffInnerModel: (state, {payload}) => {
       state.innerModal = ""

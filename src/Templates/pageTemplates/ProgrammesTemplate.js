@@ -4,11 +4,11 @@ import { DATE, SELECT, STRING } from "../../components/Modal/InputTypes";
 import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSpecifications";
 import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
-import { NewProgrammsTemplate } from "../programmsTabTemplates/NewProgrammsTemplate";
-import { LearningProgrammesTemplate } from "../programmsTabTemplates/LearningProgrammesTemplate";
-import { ProcessProgrammesTemplate } from "../programmsTabTemplates/ProcessProgrammesTemplate";
-import { RejactProgrammesTemplate } from "../programmsTabTemplates/RejactProgrammesTemplate";
-import { SubmittedProgrammesTemplate } from "../programmsTabTemplates/SubmittedProgrammesTemplate";
+import { NewProgrammsTemplate } from "../programmsTemplates/NewProgrammsTemplate";
+import { LearningProgrammesTemplate } from "../programmsTemplates/LearningProgrammesTemplate";
+import { ProcessProgrammesTemplate } from "../programmsTemplates/ProcessProgrammesTemplate";
+import { RejactProgrammesTemplate } from "../programmsTemplates/RejactProgrammesTemplate";
+import { SubmittedProgrammesTemplate } from "../programmsTemplates/SubmittedProgrammesTemplate";
 
 const ProgrammsTemplate = {
   ...NewProgrammsTemplate,

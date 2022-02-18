@@ -158,7 +158,7 @@ const XodimlarTemplate = {
                     label: " "
                 },
                 {
-                    label: "sd ",
+                    label: " ",
                     name: "developer_photo",
                     type: PICTURE_WALL,
                     required: true,

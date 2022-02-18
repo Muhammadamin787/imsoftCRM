@@ -49,11 +49,11 @@ const ModalInput = ({
     const {currentPage, values, allData, innerModal} = useSelector((state) => state.tabs_reducer);
 
 
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template))
-        dispatch(toggleInnerModal(true))
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template))
+    dispatch(toggleInnerModal(true))
 
-    }
+  }
 
 
     switch (type) {

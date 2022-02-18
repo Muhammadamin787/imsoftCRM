@@ -23,7 +23,7 @@ const ClientTemplate = {
     tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
 
     
-    // text: "Mijozlar Ro'yxati",
+    text: "Mijozlar Ro'yxati",
     // path: POTENSIAL_MIJOZLAR,
     // icon: "ProfileIcon",
     // type: CLIENTS_CHILD_PAGES,

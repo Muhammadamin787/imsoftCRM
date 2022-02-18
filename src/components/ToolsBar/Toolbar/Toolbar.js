@@ -18,7 +18,7 @@ import {
   TOPSHIRILGAN,
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
-
+import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
 const addButtonIsDisabled = [
   JARAYONDAGI,
   BEKOR_QILINGAN,
@@ -43,21 +43,22 @@ const Toolbar = ({ tableItem }) => {
       ...currentPage,
       isOpenModal: !currentPage?.isOpenModal,
     };
+    
     dispatch(
       changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
   };
 
   const onRemove = () => {
-    // dispatch(removeTableItem());
+    const url = currentPage?.mainUrl;
+
     let ids = tableItem.map((row) => {
       return row.id;
     });
-    DELETE(currentPage?.mainUrl + "/delete", ids).then((res) => {
-      GET(currentPage?.mainUrl).then((res2) => {
-        console.log(res2.data.data);
-        setData(res2.data.data);
-        console.log(MainData);
+    
+    DELETE(url + "/delete", ids).then((res) => {
+      GET(removeApiStatusLines.includes(url)?`${url}/status/${currentPage?.key}`: url).then((res2) => {
+        setData(res2.data);
       });
     });
   };
