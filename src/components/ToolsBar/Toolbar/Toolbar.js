@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import {
   removeTableItem,
   toggleModal,
@@ -12,10 +12,24 @@ import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import { findIcon } from "../../../assets/icons/icons";
 import { DELETE, GET, POST } from "../../../functions/Methods";
+import {
+  JARAYONDAGI,
+  BEKOR_QILINGAN,
+  TOPSHIRILGAN,
+  OQITILAYOTGAN,
+} from "../../../pages/pageConstants/PageRoutes";
+import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
+const addButtonIsDisabled = [
+  JARAYONDAGI,
+  BEKOR_QILINGAN,
+  TOPSHIRILGAN,
+  OQITILAYOTGAN,
+];
 
 const Toolbar = ({ tableItem }) => {
+  const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes } = useSelector(
+  const { currentPage, loading, Panes,MainData } = useSelector(
     (state) => state.tabs_reducer
   );
 
@@ -29,30 +43,25 @@ const Toolbar = ({ tableItem }) => {
       ...currentPage,
       isOpenModal: !currentPage?.isOpenModal,
     };
-    // console.log(newCurrentPage);
+    
     dispatch(
       changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
   };
 
   const onRemove = () => {
-    // dispatch(removeTableItem());
+    const url = currentPage?.mainUrl;
+
     let ids = tableItem.map((row) => {
       return row.id;
     });
-    DELETE(currentPage?.mainUrl + "/delete", ids).then((res) => {
-      GET(currentPage?.mainUrl).then((res2) => {
-        console.log(res2.data);
+    
+    DELETE(url + "/delete", ids).then((res) => {
+      GET(removeApiStatusLines.includes(url)?`${url}/status/${currentPage?.key}`: url).then((res2) => {
         setData(res2.data);
       });
     });
-
-    // console.log(tableItem);
-    // message.info("Malumot uchirildi.");
   };
-
-  // console.log(tableItem);
-  // message.info("Malumot uchirildi.");
 
   const onEdit = () => {
     if (tableItem.length === 1) {
@@ -108,6 +117,10 @@ const Toolbar = ({ tableItem }) => {
     },
   ];
 
+  useEffect(() => {
+    setCurrentPagePath(currentPage.path);
+  }, [currentPage]);
+
   return (
     <div className="toolbar">
       <div className="toolbar__title">
@@ -132,7 +145,7 @@ const Toolbar = ({ tableItem }) => {
               key={i}
               title={button?.tooltip?.text}
             >
-              <Button onClick={() => button.onClick()}>{button.icon}</Button>
+              <Button onClick={() => button.onClick()} disabled={addButtonIsDisabled.includes(currentPagePath)}>{button.icon}</Button>
             </Tooltip>
           )
         )}

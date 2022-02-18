@@ -6,6 +6,8 @@ import {FieldNumberOutlined} from "@ant-design/icons";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
+
+
 const HududTemplate = {
     text: "Hudud",
     path: HUDUD_PATH,
@@ -41,7 +43,9 @@ const HududTemplate = {
                     required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",
+                    template: ShaharTumanTemplate,
                     gridRow: "2 / 3",
+                    template: ShaharTumanTemplate,
                     autoSelect: [
                         "state_id"
                     ]
@@ -53,8 +57,11 @@ const HududTemplate = {
                     required: true,
                     options: "states",
                     placeholder: "Viloyat",
+                    template: ViloyatlarTemplate,
                     gridColumn: "1 / 3",
                     gridRow: "3 / 4",
+                    template: ViloyatlarTemplate
+
                 },
                 // {
                 //     name: "Map bulishi  kk",

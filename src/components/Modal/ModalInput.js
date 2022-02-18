@@ -12,7 +12,7 @@ import {
     PHONE,
     SELECT,
     STRING,
-    UPLOAD,
+    UPLOAD, PICTURE_WALL,
 } from "./InputTypes";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -23,16 +23,17 @@ import UploadFile from "./UpLoadFile";
 import {setValues, setInnerModel, toggleModal, toggleInnerModal, setAllData} from "../../redux/tabs_reducer"
 import axios from "../../functions/axios"
 import {findIcon} from "../../assets/icons/icons";
+import {PicturesWall} from "./PicturesWall/PicturesWall";
 
 
 const {TextArea} = Input;
 
 const ModalInput = ({
+
                         autoSelect,
                         placeholder,
                         name,
                         gridRow,
-                        changeOtherSelect,
                         gridColumn,
                         label,
                         type,
@@ -40,24 +41,19 @@ const ModalInput = ({
                         Iconic,
                         options,
                         template,
-                        dontPost,
                         required,
                         handleChangeValue
                     }) => {
     let input = null;
     const dispatch = useDispatch();
-    const {currentPage, values, allData} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, values, allData, innerModal} = useSelector((state) => state.tabs_reducer);
 
-    // const handleChangeValue = (e) => {
 
-    //   dispatch(setValues({ ...values, ...e }));
-    // };
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template))
+    dispatch(toggleInnerModal(true))
 
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template))
-        dispatch(toggleInnerModal(true))
-
-    }
+  }
 
 
     switch (type) {
@@ -68,14 +64,13 @@ const ModalInput = ({
                         gridColumn: gridColumn,
                         gridRow: gridRow,
                         height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
                     }}
                     required={required}
                 >
                     {label && label}
                     <Input
                         name={name}
+                        autoFocus
                         value={values && values[name]}
                         placeholder={placeholder}
                         required={required}
@@ -89,12 +84,12 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case NUMBER:
             input = (
                 <InputNumber
                     addonBefore={label}
                     type="number"
+                    autoFocus
                     name={name}
                     required
                     style={{
@@ -122,39 +117,42 @@ const ModalInput = ({
                         gridColumn: gridColumn,
                         gridRow: gridRow,
                         height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
                     }}
                     required={required}
                     className="select-label"
                 >
                     {label && label}
-                    <div className="option-add" onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div>
-                    <Select
-                        size="small"
-                        name={name}
-                        placeholder={placeholder}
-                        required={required}
-                        value={values[name]}
-                        onChange={(e) => {
-                            if (autoSelect) {
-                                let selectedValues = {[name]: e};
-                                autoSelect.forEach(el => {
-                                    let thisObj = allData[options].find(item => item["id"] === e);
-                                    selectedValues = {...selectedValues, [el]: thisObj[el]};
-                                });
-                                console.log(selectedValues)
-                                handleChangeValue(selectedValues);
-                            } else {
-                                handleChangeValue({[name]: e});
-                            }
-                        }}>
-                        {allData && allData[options]?.map((option, i) => (
-                            <Option value={option.id} key={option.id}>
-                                {option.name}
-                            </Option>
-                        ))}
-                    </Select>
+                    <div className="select-add__option">
+                        <Select
+                            size="small"
+                            name={name}
+                            autoFocus
+                            placeholder={placeholder}
+                            required={required}
+                            value={values[name]}
+                            onChange={(e) => {
+
+                                if (autoSelect) {
+                                    let selectedValues = {[name]: e};
+                                    autoSelect.forEach(el => {
+                                        let thisObj = allData[options].find(item => item["id"] === e);
+                                        selectedValues = {...selectedValues, [el]: thisObj[el]};
+                                    });
+                                    console.log(selectedValues)
+                                    handleChangeValue(selectedValues);
+                                } else {
+                                    handleChangeValue({[name]: e});
+                                }
+                            }}>
+                            {allData && allData[options]?.map((option, i) => (
+                                <Option value={option.id} key={option.id}>
+                                    {option.name}
+                                </Option>
+                            ))}
+                        </Select>
+                        {innerModal == "" ? <div className="option-add"
+                                                 onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div> : null}
+                    </div>
                 </label>
             );
             break;
@@ -170,7 +168,6 @@ const ModalInput = ({
                 />
             );
             break;
-
         case DATE:
             input = (
                 <label
@@ -178,8 +175,6 @@ const ModalInput = ({
                         gridColumn: gridColumn,
                         gridRow: gridRow,
                         height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
                     }}
                 >
                     {label && label}
@@ -187,6 +182,7 @@ const ModalInput = ({
                         placeholder={placeholder}
                         format="DD.MM.YYYY"
                         allowClear={false}
+                        autoFocus
                         // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
                         required={required}
                         onChange={(_, dateString) => {
@@ -199,7 +195,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case TEXTAREA:
             input = (
                 <label
@@ -207,14 +202,13 @@ const ModalInput = ({
                         gridColumn: gridColumn,
                         gridRow: gridRow,
                         height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
                     }}
 
                 >
                     {label && label}
                     <TextArea
                         placeholder={placeholder}
+                        autoFocus
                         required={required}
                         autoSize={{minRows: 3, maxRows: 3}}
                         onChange={(data) => {
@@ -228,7 +222,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case PHONE:
             input = (
                 <label
@@ -243,6 +236,7 @@ const ModalInput = ({
                         country={"uz"}
                         style={{height: "65px !important"}}
                         specialLabel={false}
+                        // autoFormat
                         disableDropdown={true}
                         countryCodeEditable={false}
                         required={required}
@@ -261,7 +255,6 @@ const ModalInput = ({
                 </label>
             );
             break;
-
         case UPLOAD:
             input = (
                 <UploadFile
@@ -271,12 +264,12 @@ const ModalInput = ({
                     gridColumn={gridColumn}
                     gridRow={gridRow}
                     height={height}
+                    handleChange={handleChangeValue}
                     Iconic={Iconic}
                     label={label}
                 />
             );
             break;
-
         case IMAGE:
             input = (
                 <UpLoadJPG
@@ -291,9 +284,15 @@ const ModalInput = ({
                 />
             );
             break;
-
+        case PICTURE_WALL:
+            input = (
+                <PicturesWall gridColumn={gridColumn}
+                              gridRow={gridRow}/>
+            );
+            break;
         default:
             break;
+
     }
 
     return input;

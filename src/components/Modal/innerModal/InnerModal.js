@@ -3,8 +3,7 @@ import '../GlobalModal.scss'
 import {Modal, Button, Form, message} from "antd";
 import ModalInput from "../ModalInput";
 import {useSelector, useDispatch} from "react-redux";
-import {toggleInnerModal, setData, setAllData, setValues, setTableItem} from "../../../redux/tabs_reducer";
-import ModalTabs from "../modalTabs/ModalTabs";
+import {toggleInnerModal, setData, setAllData, setValues, setTableItem, setOffInnerModel} from "../../../redux/tabs_reducer";
 import Draggable from "react-draggable";
 import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
@@ -37,6 +36,7 @@ const InnerModal = () => {
 
 
     const handleCancel = (e) => {
+        dispatch(setOffInnerModel())
         dispatch(toggleInnerModal(false));
         dispatch(setValues({}));
     };
@@ -49,7 +49,7 @@ const InnerModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
         const url = innerModal?.mainUrl;
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
@@ -60,6 +60,8 @@ const InnerModal = () => {
                 dispatch(setData(res.data.data))
             });
         });
+        dispatch(setOffInnerModel())
+
     }   
 
     const draggleRef = useRef("s");
@@ -81,6 +83,7 @@ const InnerModal = () => {
 
     return (
         <Modal
+            className="inner-modal"
             style={{...innerModal?.modal?.style}}
             width={innerModal?.modal?.style?.width}
             footer={null}
@@ -116,7 +119,6 @@ const InnerModal = () => {
             )}
         >
             <Form className="modal-form">
-                {/* <InnerModal /> */}
                 {innerModal?.form?.map((form) => (
                     <div
                         className="modal-grid__form"
@@ -131,7 +133,6 @@ const InnerModal = () => {
                         ))}
                     </div>
                 ))}
-                {/* <ModalTabs tabs={innerModal?.modal?.tabs}/> */}
                 <div className="modal-form_buttons">
                     <Button
                         type="submit"

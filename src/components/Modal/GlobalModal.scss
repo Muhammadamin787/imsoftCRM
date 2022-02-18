@@ -1,402 +1,397 @@
-.ant-modal-mask {
-  //bottom: 100px !important;
-  //height: 90.7% !important;
-  //border: 2px solid red;
-  //z-index: 9999;
-  background-color: transparent !important;
-  margin: 290px;
-  height: 0;
-  width: 0;
-  overflow: visible;
-  padding: 0 !important;
-}
+.global-modal,
+.inner-modal {
+  .ant-modal-mask {
+    background-color: transparent !important;
+    margin: 290px;
+    height: 0;
+    width: 0;
+    overflow: visible;
+    padding: 0 !important;
+  }
 
-.ant-modal-wrap {
-  //border: 2px solid green;
-  width: 100%;
-  height: 0;
-  overflow: visible;
-  padding: 0 !important;
-}
-
-.ant-modal {
-  display: flex !important;
-  justify-content: center;
-  //border: 2px solid blue;
-}
-
-.ant-modal-title {
-  background-color: var(----main-color);
-}
-
-.ant-modal-content {
-  //border: 2px solid red;
-  //position: absolute !important;
-  border-radius: 15px;
-  margin: 0 !important;
-}
-
-.ant-modal-body {
-  padding: 0;
-  padding-bottom: 1px;
-  margin: auto 0;
-}
-
-.ant-modal-header {
-  //border: 1px solid red;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  padding: 0 !important;
-  overflow: hidden;
-
-  .modal-header {
-    //border-top-left-radius: 15px;
-    //border-top-right-radius: 15px;
+  .ant-modal-wrap {
     width: 100%;
-    background-color: var(--main-color);
-    height: 35px;
-    padding: 0 15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #ffffff;
+    height: 0;
+    overflow: visible;
+    padding: 0 !important;
+  }
 
-    .modal-header__buttons {
-      height: 20px;
-      width: 70px;
+  .ant-modal {
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .ant-modal-title {
+    background-color: var(----main-color);
+  }
+
+  .ant-modal-content {
+    border-radius: 15px;
+    margin: 0 !important;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+    padding-bottom: 1px;
+    margin: auto 0;
+  }
+
+  .ant-modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0 !important;
+    overflow: hidden;
+
+    .modal-header {
+      width: 100%;
+      background-color: var(--main-color);
+      height: 35px;
+      padding: 0 15px 0 15px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: flex-end;
+      color: #ffffff;
 
-      .modal-header__button {
-        background-color: var(--main-color);
-        outline: none;
-        // border: none;
-        height: 15px;
-        width: 15px;
-        padding: 0;
-        position: relative;
-        margin-left: 5px;
+      .modal-header__buttons {
+        height: 20px;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-        svg {
-          margin: 0;
+        .modal-header__button {
+          background-color: var(--main-color);
+          outline: none;
+          height: 15px;
+          width: 15px;
           padding: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
+          position: relative;
+          margin-left: 5px;
+
+          svg {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
         }
       }
     }
   }
-}
 
-.modal-form {
-  align-items: center;
-  justify-content: center;
-  margin: 30px;
-
-  .ant-form-item{
-    margin: 0;
-    
-    .ant-form-item-label{
-      // border: 1px solid blue;
-      text-align: start;
-      label{
-        height: 0;
-      }
-    }
-  }
-
-  .modal-grid__form {
-    width: 100%;
-    display: grid;
-    grid-gap: 10px 20px;
-    // margin-top: 20px;
-    // margin-bottom: 20px;
-
-    .ant-input {
-      // background-color: #f1f4f8;
-      width: 100%;
-      height: 35px;
-      padding-left: 10px;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-      outline: none;
-    }
-
-    // label uchun start
-    .select-label{
-      position: relative;
-      
-
-      .option-add {
-        border: 1px solid #d9d9d9;
-        border-bottom: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 33px;
-        height: 22px;
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-      }
-    }
-
-    .ant-input-group {
-      //border: 1px solid green;
-      display: flex !important;
-      flex-direction: column;
-
-      .ant-input-group-addon {
-        background-color: transparent !important;
-        // border: none;
-        width: 100%;
-        font-size: 0.98em;
-        text-align: left;
-        margin-bottom: 2px;
-        padding-left: 0;
-      }
-    }
-
-    .modal-inputs__label {
-      font-size: 0.98em;
-      height: 100% !important;
-      //width: auto !important;
-    }
-
-    // label uchun end
-    .avatar-uploader {
-      // background-color: #f1f4f8;
-      width: 100% !important;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-      outline: none;
-      margin-top: 20px;
-
-    }
-
-    .ant-upload {
-      width: 100% !important;
-      // height: 100% !important;
-    }
-
-    .file-uploader-label {
-      // padding: 10px 0 0 0;
-      margin-top: 22px;
-      // background-color: #f1f4f8;
-      width: 100% !important;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-      outline: none;
-      // overflow: hidden;
-      cursor: pointer;
-
-
-      p {
-        color: black !important;
-        // border: 1px solid red;
-        // display: block;
-        padding-bottom: 10px;
-        transform: translateY(-22px);
-        text-align: start;
-        font-size: 14px;
-        // font-style: unset;
-        // font-weight: 12px;
-      }
-
-      .file-uploader__icon {
-        // width: 10px;
-        height: 5px;
-        // margin-left: 10px;
-        // border: 1px solid green;
-        // svg{
-        //   border: 1px solid red;
-        // }
-      }
-    }
-
-    #file-uploder {
-      display: none;
-    }
-
-    .image-input {
-      // height: 30px;
-      margin-top: 22px;
-    }
-
-
-    .ant-input-number {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-
-      .ant-input-number-handler {
-        // background-color: #f1f4f8 !important;
-        // background-color: #f1f4f8;
-      }
-    }
-
-    .ant-select-single {
-      // background-color: red;
-      height: 35px;
-      width: 100%;
-      font-weight: 400;
-      // border-radius: 7px;
-      display: flex;
-      font-size: 13px;
-      line-height: 20px;
-      display: flex;
-      align-items: center;
-    }
-
-    .ant-select-selector {
-      height: 35px !important;
-      // background-color: red;
-      // background-color: #f1f4f8;
-      // border: none;
-      display: flex;
-      align-items: center;
-      outline: none;
-    }
-
-    .ant-picker {
-      // background-color: #f1f4f8;
-      width: 100%;
-      height: 35px;
-      padding-left: 10px;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-    }
-
-    .upppp {
-      //background-origin: padding-box;
-    }
-
-    .react-tel-input {
-      // background-color: #f1f4f8;
-      width: 100%;
-      height: 35px !important;
-      font-weight: 400;
-      // border-radius: 7px;
-      font-size: 12px;
-      line-height: 20px;
-      // border: none;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-
-      .form-control {
-        width: 100%;
-        // background-color: #f1f4f8;
-        // border: none;
-        height: 35px;
-        outline: none;
-        padding-left: 10px;
-      }
-    }
-  }
-
-  .modal-form_buttons {
-    display: flex;
+  .modal-form {
     align-items: center;
-    justify-content: space-evenly;
-    margin-top: 30px;
+    justify-content: center;
+    margin: 30px;
 
-    .modal-form__button {
-      width: 150px;
-      // border-radius: 7px;
-      border: none;
-      outline: none;
-      height: 35px;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 20px;
+    .ant-form-item {
+      margin: 0;
+
+      .ant-form-item-label {
+        text-align: start;
+
+        label {
+          height: 0;
+        }
+      }
     }
 
-    .qaytish {
-      border: 1px solid var(--main-color);
-      color: var(--main-color);
+    .modal-grid__form {
+      width: 100%;
+      display: grid;
+      grid-gap: 10px 20px;
+
+      .ant-input {
+        width: 100%;
+        height: 35px;
+        padding-left: 10px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        outline: none;
+      }
+
+      // label uchun start
+      // .select-label{
+      .select-add__option {
+        display: flex;
+
+
+        .option-add {
+          border: 1px solid #d9d9d9;
+          border-left: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 33px;
+          right: 0;
+          cursor: pointer;
+        }
+      }
+
+      // }
+
+      .ant-input-group {
+        display: flex !important;
+        flex-direction: column;
+
+        .ant-input-group-addon {
+          background-color: transparent !important;
+          width: 100%;
+          font-size: 0.98em;
+          text-align: left;
+          margin-bottom: 2px;
+          padding-left: 0;
+        }
+      }
+
+      .modal-inputs__label {
+        font-size: 0.98em;
+        height: 100% !important;
+      }
+
+      // label uchun end
+      .avatar-uploader {
+        width: 100% !important;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        outline: none;
+        margin-top: 20px;
+
+      }
+
+      .ant-upload {
+        width: 100% !important;
+      }
+
+      .file-uploader-label {
+        margin-top: 22px;
+        width: 100% !important;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        outline: none;
+        cursor: pointer;
+        &:hover {
+          border: 1px dashed #888 !important;
+        }
+        .ant-upload-picture-card-wrapper {
+          height: 100%;
+
+          .ant-upload-list {
+            height: 100%;
+
+            .ant-upload {
+              height: 100%;
+            }
+
+            .ant-upload-list-picture-card-container {
+              height: 100%;
+              width: 100%;
+
+              .ant-tooltip {
+                display: none !important;
+              }
+            }
+          }
+        }
+
+
+        p {
+          color: black !important;
+          padding-bottom: 10px;
+          transform: translateY(-22px);
+          text-align: start;
+          font-size: 14px;
+        }
+
+        .file-uploader__icon {
+          height: 5px;
+        }
+      }
+
+      #file-uploder {
+        display: none;
+      }
+
+      .image-input {
+        margin-top: 22px;
+      }
+
+
+      .ant-input-number {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        // border: none;
+
+        .ant-input-number-handler {
+          // background-color: #f1f4f8 !important;
+          // background-color: #f1f4f8;
+        }
+      }
+
+      .ant-select-single {
+        height: 35px;
+        width: 100%;
+        font-weight: 400;
+        display: flex;
+        font-size: 13px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .ant-select-selector {
+        height: 35px !important;
+        display: flex;
+        align-items: center;
+        outline: none;
+      }
+
+      .ant-picker {
+        width: 100%;
+        height: 35px;
+        padding-left: 10px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      .react-tel-input {
+        width: 100%;
+        height: 35px !important;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .form-control {
+          width: 100%;
+          height: 35px;
+          outline: none;
+          padding-left: 10px;
+        }
+      }
     }
 
-    .saqlash {
-      color: #ffffff;
-      background-color: var(--main-color);
+    .modal-form_buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 30px;
+
+      .modal-form__button {
+        width: 150px;
+        border: none;
+        outline: none;
+        height: 35px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 20px;
+      }
+
+      .qaytish {
+        border: 1px solid var(--main-color);
+        color: var(--main-color);
+      }
+
+      .saqlash {
+        color: #ffffff;
+        background-color: var(--main-color);
+      }
+    }
+  }
+
+  // map
+
+  .ymaps-2-1-79-events-pane .ymaps-2-1-79-user-selection-none {
+    border: 1px solid red !important;
+  }
+
+  .ymaps-2-1-79-map-copyrights-promo {
+    display: none;
+  }
+
+  .file-uploader-label {
+    .ant-upload-select-text {
+      display: block;
+    }
+  }
+
+  .modal_input {
+    width: 95% !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+  .modal__form {
+    width: 95% !important;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .phone_input {
+    input {
+      width: 95%;
+      padding: 4px 11px;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 14px;
+      line-height: 1.5715;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+      transition: all 0.3s;
+
+      &:hover {
+        border: 1px solid #40a9ff;
+      }
+
+      &:focus {
+        outline: 1px solid #40a9ff;
+      }
+    }
+  }
+
+  .react-tel-input {
+    input {
+      border: 1px solid #D9D9D9;
+      border-radius: 2px;
     }
   }
 }
 
-// map
+.delete-file-btn {
+  border: 1px solid #ccc;
+  background-color: rgb(244,244,244);
+  width: 31px;
+  cursor: pointer;
+  height: 31px;
 
-.ymaps-2-1-79-events-pane .ymaps-2-1-79-user-selection-none {
-  border: 1px solid red !important;
-}
-
-.ymaps-2-1-79-map-copyrights-promo {
-  display: none;
-}
-
-.file-uploader-label {
-  .ant-upload-select-text {
-    display: block;
-  }
-}
-
-.modal_input {
-  width: 95% !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-.modal__form {
-  width: 95% !important;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.phone_input {
-  input {
-    width: 95%;
-    padding: 4px 11px;
-    color: rgba(0, 0, 0, 0.85);
-    font-size: 14px;
-    line-height: 1.5715;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #d9d9d9;
-    border-radius: 2px;
-    transition: all 0.3s;
-
-    &:hover {
-      border: 1px solid #40a9ff;
-    }
-
-    &:focus {
-      outline: 1px solid #40a9ff;
+  svg {
+    margin-left: -2px;
+    //width: 1044px;
+    path {
+      fill: #888;
     }
   }
-}
 
-.react-tel-input {
-  input {
-    border: 1px solid #D9D9D9;
-    border-radius: 2px;
+  &:hover {
+    background-color: rgb(251,251,251);
+    border-color: #fa4b4b;
+
+    svg {
+      path {
+        fill: #fa4b4b;
+      }
+    }
   }
 }

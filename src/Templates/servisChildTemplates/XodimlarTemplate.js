@@ -3,8 +3,6 @@ import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {
     FileBlueIcon,
-    UploadFileOilasi,
-    UploadFilePasport,
 } from "../../assets/icons/icons";
 import {
     STRING,
@@ -14,14 +12,16 @@ import {
     PHONE,
     UPLOAD,
     MAP,
-    IMAGE,
+    IMAGE, PICTURE_WALL,
 } from "../../components/Modal/InputTypes";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-import {Popover, Button} from "antd";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
+import YunalishlarTemplate from "./YunalishlarTemplate";
+import {Popover} from "antd";
+import BigLength from "../../components/BigLength/BigLength";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -68,6 +68,17 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght,
                 },
                 {
+                    name: "Yo'nalishi",
+                    type: SELECT,
+                    required: true,
+                    placeholder: "Yo'nalishi",
+                    label: "Yo'nalish",
+                    gridColumn: "5 / 10",
+                    gridRow: "2 / 3",
+                    template: YunalishlarTemplate,
+                    options: "cities",
+                },
+                {
                     label: "Viloyat",
                     name: "viloyat",
                     type: SELECT,
@@ -79,30 +90,14 @@ const XodimlarTemplate = {
                     template: ViloyatlarTemplate
                 },
                 {
-                    name: "Yo'nalishi",
-                    type: SELECT,
-                    required: true,
-                    placeholder: "Yo'nalishi",
-                    label: "Yo'nalish",
-                    gridColumn: "5 / 10",
-                    gridRow: "2 / 3",
-                    template: ShaharTumanTemplate,
-                    options: "cities",
-                },
-                {
                     name: "shahar",
                     type: SELECT,
                     required: true,
                     placeholder: "Shahar",
                     label: "Shahar",
+                    template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
-                    option: [
-                        {value: "Olti ariq", key: "Olti ariq"},
-                        {value: "Qo'qon", key: "Qo'qon"},
-                        {value: "Marg'ilon", key: "Marg'ilon"},
-                        {value: "Qarshi", key: "Qarshi"},
-                    ],
                 },
                 {
                     name: "manzil",
@@ -136,23 +131,20 @@ const XodimlarTemplate = {
                 {
                     name: "passport",
                     type: UPLOAD,
+                    path: "/workers/image",
                     required: true,
-                    placeholder: "Yo'nalish",
                     gridColumn: "10 / 13",
                     gridRow: "2 / 4",
-                    // height: inputDeafultHeght * 1.2,
-                    Iconic: UploadFilePasport,
+                    Iconic: "UploadFilePasport",
                     label: "Passport",
                 },
                 {
                     name: "oilasi",
                     type: UPLOAD,
                     required: true,
-                    placeholder: "Oilasi",
                     gridColumn: "13 / 16",
                     gridRow: "2 / 4",
-                    // height: inputDeafultHeght * 1.2,
-                    Iconic: UploadFileOilasi,
+                    Iconic: "UploadFileOilasi",
                     label: "Oilasi",
                 },
                 {
@@ -162,13 +154,13 @@ const XodimlarTemplate = {
                     placeholder: "hozirgi turgan joyi (map quyiladi)",
                     gridColumn: "10 / 16",
                     gridRow: "4 / 7",
-                    height: inputDeafultHeght * 2,
+                    // height: inputDeafultHeght,
                     label: " "
                 },
                 {
                     label: " ",
-                    name: "rasmi",
-                    type: IMAGE,
+                    name: "developer_photo",
+                    type: PICTURE_WALL,
                     required: true,
                     // placeholder: "rasmi",
                     gridColumn: "16 / 21",
@@ -177,7 +169,6 @@ const XodimlarTemplate = {
             ],
         },
     ],
-
     filters: ["type_id"],
     columns: [
         {
@@ -302,21 +293,7 @@ const XodimlarTemplate = {
             key: "about",
             width: "45%",
             align,
-            render: (text) => {
-                let content = (
-                    <div style={{width: "400px"}}>
-                        <p>{text}</p>
-                    </div>
-                );
-                return (
-                    <Popover placement="leftTop" content={content}>
-                        <div className="hodim-template">
-                            <div className="box-shadow"></div>
-                            {text}
-                        </div>
-                    </Popover>
-                );
-            },
+            render: (text) => <BigLength text={text}/>,
             //   render: (text) => (
             //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
             //       <div
