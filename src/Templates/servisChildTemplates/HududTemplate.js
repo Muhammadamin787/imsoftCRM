@@ -6,6 +6,7 @@ import {FieldNumberOutlined} from "@ant-design/icons";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
+
 const HududTemplate = {
     text: "Hudud",
     path: HUDUD_PATH,

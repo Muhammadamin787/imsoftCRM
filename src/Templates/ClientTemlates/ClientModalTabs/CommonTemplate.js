@@ -7,12 +7,10 @@ import {
   IMAGE,
   DATE,
 } from "../../../components/Modal/InputTypes";
-import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
-// import ShaharTumanTemplate from "../../../Templates/servisChildTemplates/ShaharTumanTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
-
+import FaolyatTurlaiTemplate from  '../../servisChildTemplates/FaolyatTurlariTemplate';
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
@@ -32,6 +30,7 @@ const CommonTabTemplate = {
           placeholder: "Korxona nomi",
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
+          autoFocus: true
         },
         {
           name: "yunalish_turi",
@@ -81,6 +80,8 @@ const CommonTabTemplate = {
           label: "Faoliyat turi",
           gridColumn: "3 / 6",
           gridRow: "2 / 3",
+          options: "activity_types",
+          template: FaolyatTurlaiTemplate
         },
         {
           name: "xudud",

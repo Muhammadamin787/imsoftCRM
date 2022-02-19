@@ -1,4 +1,4 @@
-import {Upload, message} from "antd";
+import { Upload, message } from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
