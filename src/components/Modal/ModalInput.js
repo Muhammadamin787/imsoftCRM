@@ -126,12 +126,11 @@ const ModalInput = ({
                         <Select
                             size="small"
                             name={name}
-                            autoFocus
+                            // autoFocus
                             placeholder={placeholder}
                             required={required}
                             value={values[name]}
                             onChange={(e) => {
-
                                 if (autoSelect) {
                                     let selectedValues = {[name]: e};
                                     autoSelect.forEach(el => {

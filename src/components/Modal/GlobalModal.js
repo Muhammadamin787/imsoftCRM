@@ -60,6 +60,7 @@ const GlobalModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleChangeValue();
+
     const url = currentPage?.mainUrl;
     POST(url, values).then(res => {
         message.success({ content: res.data.data, key: e });
@@ -70,6 +71,7 @@ const GlobalModal = () => {
             dispatch(setData(res.data.data))
         });
     });
+    dispatch(toggleModal(false));
   };
 
   const draggleRef = useRef("s");
