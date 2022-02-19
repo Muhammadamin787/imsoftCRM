@@ -25,7 +25,9 @@ export class PicturesWall extends React.Component {
 
   handlePreview = async (file) => {
     if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
+      const url = await getBase64(file.originFileObj);
+      file.preview = url;
+      console.log(this.state.previewImage);
     }
     this.setState({
       previewImage: file.url || file.preview,
@@ -63,10 +65,7 @@ export class PicturesWall extends React.Component {
         style={{
           gridColumn: this.props.gridColumn,
           gridRow: this.props.gridRow,
-          height: this.props.height
-            ? this.props.height + "px"
-            : inputDeafultHeght + "px",
-          width: "100% !important",
+          overflow: "hidden",
           border: "1px solid #D9D9D9",
         }}
       >
