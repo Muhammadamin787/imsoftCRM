@@ -22,7 +22,7 @@ const TabInput = ({ record, name, type }) => {
             dev_docs: [...a]
         }));
 
-        console.log(values);
+        // console.log(values);
 
     }
 

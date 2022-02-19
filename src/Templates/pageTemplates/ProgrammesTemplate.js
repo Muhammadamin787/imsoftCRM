@@ -15,6 +15,7 @@ const ProgrammsTemplate = {
   text: "Dasturlar",
   // path: PROGRAMMES_PATH,
   icon: "VectorIcon",
+  
   tabs: [
     NewProgrammsTemplate,
     ProcessProgrammesTemplate,

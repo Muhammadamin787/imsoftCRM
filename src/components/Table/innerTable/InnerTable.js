@@ -14,17 +14,17 @@ const InnerTable = ({ innerTable }) => {
 
     // })
 
+    // console.log(innerTable);
     
     const addRow = () => {
-        let oldData = [...values.dev_docs] || [];
-        
+        let oldData = [...values?.dev_docs] || [];
+        console.log("ishla");
         oldData.push({
             rowId: uuidv4(),
             number: '',
             name: '',
             comment: '',
             file: '',
-            columnsName:"dev_docs",
             
         });
         
@@ -39,9 +39,9 @@ const InnerTable = ({ innerTable }) => {
         <>
             <Button onClick={addRow}>+</Button>
             <Table bordered
-                columns={innerTable.columns}
+                columns={innerTable?.columns}
                 className="inner-table"
-                dataSource={values.dev_docs || []}
+                dataSource={values?.dev_docs || []}
                 size={"small"}
                 scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
                 pagination={{ position: ["bottomCenter"] }}

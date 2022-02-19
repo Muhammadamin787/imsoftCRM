@@ -6,6 +6,7 @@ import "./ModalTabs.scss"
 
 
 const ModalTabs = ({tabs,i,handleChangeValue}) => {
+    
     return (
         <Tabs defaultActiveKey={[0]}>
         {tabs?.map((tab, i) => (
