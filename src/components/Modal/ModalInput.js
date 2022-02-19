@@ -42,6 +42,7 @@ const ModalInput = ({
                         options,
                         template,
                         required,
+                        filePath,
                         handleChangeValue
                     }) => {
     let input = null;
@@ -49,12 +50,11 @@ const ModalInput = ({
     const {currentPage, values, allData, innerModal} = useSelector((state) => state.tabs_reducer);
 
 
-  const handleSelectAdd = (template) => {
-    dispatch(setInnerModel(template))
-    dispatch(toggleInnerModal(true))
+    const handleSelectAdd = (template) => {
+        dispatch(setInnerModel(template))
+        dispatch(toggleInnerModal(true))
 
-  }
-
+    }
 
     switch (type) {
         case STRING:
@@ -260,6 +260,7 @@ const ModalInput = ({
                 <UploadFile
                     id="file-uploder"
                     name={name}
+                    filePath={filePath}
                     placeholder={placeholder}
                     gridColumn={gridColumn}
                     gridRow={gridRow}
@@ -287,7 +288,8 @@ const ModalInput = ({
         case PICTURE_WALL:
             input = (
                 <PicturesWall gridColumn={gridColumn}
-                              gridRow={gridRow}/>
+                              gridRow={gridRow}
+                              filePath={filePath}/>
             );
             break;
         default:
