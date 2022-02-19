@@ -42,7 +42,6 @@ const HududTemplate = {
                     required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",
-                    template: ShaharTumanTemplate,
                     gridRow: "2 / 3",
                     autoSelect: [
                         "state_id"

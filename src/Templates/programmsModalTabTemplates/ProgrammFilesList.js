@@ -15,6 +15,8 @@ export const ProgrammFilesList = {
             title: "Tafsif",
             dataIndex: "comment",
             key: "number",
+            // render: (text, record, index) => <TabInput record={record} name={"comment"} />,
+
             width: "39%",
             align: "center"
         },
@@ -23,6 +25,8 @@ export const ProgrammFilesList = {
             dataIndex: "file",
             key: "number",
             width: "17%",
+            // render: (text, record, index) => <TabInput record={record} name={"comment"} />,
+
             align: "center"
         }
     ]
