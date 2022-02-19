@@ -3,7 +3,7 @@ import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import React from 'react'
 import "./GlobalModal.scss"
 import {inputDeafultHeght} from "../../constant/deafultStyle"
-import { findIcon } from '../../assets/icons/icons';
+import {findIcon} from '../../assets/icons/icons';
 
 
 function getBase64(img, callback) {
@@ -27,35 +27,36 @@ class UpLoadJPG extends React.Component {
     state = {
         loading: false,
         imageUrl: "",
-
     };
 
-    handleChange = info => {
+    handleChange = (info, e) => {
+        console.log(info)
+        console.log(e)
         // if (info.file.status === 'uploading') {
         //   this.setState({ loading: true });
         //   return;
         // }
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, imageUrl =>
-                this.setState({
-                    imageUrl,
-                    // loading: false,
-                }),
-            );
-        }
+        // if (info.file.status === 'done') {
+        //     // Get this url from response in real world.
+        //     getBase64(info.file.originFileObj, imageUrl =>
+        //         this.setState({
+        //             imageUrl,
+        //             // loading: false,
+        //         }),
+        //     );
+        // }
 
     };
 
     render() {
         const {loading, imageUrl} = this.state;
 
-        // const uploadButton = (
-        //   <div>
-        //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
-        //     <div style={{ marginTop: 8 }}>Upload</div>
-        //   </div>
-        // );
+        const uploadButton = (
+            <div>
+                {loading ? <LoadingOutlined/> : <PlusOutlined/>}
+                <div style={{marginTop: 8}}>Upload</div>
+            </div>
+        );
 
         return (
             <label
@@ -64,9 +65,7 @@ class UpLoadJPG extends React.Component {
                 style={{
                     gridColumn: this.props.gridColumn,
                     gridRow: this.props.gridRow,
-                    height: this.props.height
-                        ? this.props.height + "px"
-                        : inputDeafultHeght + "px",
+                    height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
                     width: "100% !important",
                     // textAlign: "center",
                     // backgroundColor:"red",
@@ -74,21 +73,18 @@ class UpLoadJPG extends React.Component {
                 }}
             >
                 <p>{this.props?.label}</p>
-                <Upload
-                    id="file-uploder"
-                    name={this.props.name}
-                    placeholder={this.props.placeholder}
-                    alt="file"
-                    beforeUpload={beforeUpload}
-                    // onClick={this.props.handleChange}
-                    type="file"
-                    maxCount={1}
-                    showUploadList={false}
-                    className="upppp"
-                    // value={values}
-                    >{" "}
+                <Upload id="file-uploder"
+                        name={this.props.name}
+                        placeholder={this.props.placeholder}
+                        alt="file"
+                        // beforeUpload={beforeUpload}
+                        onChange={this.handleChange}
+                        type="file"
+                        maxCount={1}
+                        // showUploadList={false}
+                >{"  "}
                 </Upload>
-                    {this.props.Iconic && findIcon(this.props.Iconic)}
+                {this.props.Iconic && findIcon(this.props.Iconic)}
             </label>
         );
     }

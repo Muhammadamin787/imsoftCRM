@@ -1,6 +1,6 @@
 import { Input, InputNumber, DatePicker, Select, message } from "antd";
 import { Option } from "antd/lib/mentions";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -13,6 +13,7 @@ import {
   SELECT,
   STRING,
   UPLOAD,
+  PICTURE_WALL,
 } from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -29,6 +30,7 @@ import {
 } from "../../redux/tabs_reducer";
 import axios from "../../functions/axios";
 import { findIcon } from "../../assets/icons/icons";
+import { PicturesWall } from "./PicturesWall/PicturesWall";
 
 const { TextArea } = Input;
 
@@ -46,6 +48,7 @@ const ModalInput = ({
   template,
   required,
   handleChangeValue,
+  autoFocus,
 }) => {
   let input = null;
   const dispatch = useDispatch();
@@ -57,6 +60,15 @@ const ModalInput = ({
     dispatch(setInnerModel(template));
     dispatch(toggleInnerModal(true));
   };
+
+  const refs = useRef(null);
+
+  useEffect(() => {
+    const id = document.getElementById('autofucus');
+    if(id){
+        id.focus();
+    }
+  }, []);
 
   switch (type) {
     case STRING:
@@ -75,6 +87,7 @@ const ModalInput = ({
             autoFocus
             value={values && values[name]}
             placeholder={placeholder}
+            id={refs && "autofucus"}
             required={required}
             onChange={(e) => {
               const target = {
@@ -148,9 +161,6 @@ const ModalInput = ({
                 }
               }}
             >
-              <Option key={"asd"} value={"1"}>
-                farg'ona
-              </Option>
               {allData &&
                 allData[options]?.map((option, i) => (
                   <Option value={option.id} key={option.id}>
@@ -277,6 +287,7 @@ const ModalInput = ({
           gridColumn={gridColumn}
           gridRow={gridRow}
           height={height}
+          handleChange={handleChangeValue}
           Iconic={Iconic}
           label={label}
         />
@@ -295,6 +306,9 @@ const ModalInput = ({
           label={label}
         />
       );
+      break;
+    case PICTURE_WALL:
+      input = <PicturesWall gridColumn={gridColumn} gridRow={gridRow}  />;
       break;
     default:
       break;

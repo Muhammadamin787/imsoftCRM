@@ -15,7 +15,10 @@ export const counterSlice = createSlice({
     loading: false,
     tableItem: [],
     values: {},
-    allData: {},
+    allData: {
+      cites:[],
+      states:[]
+    },
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",

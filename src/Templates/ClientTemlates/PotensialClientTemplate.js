@@ -2,13 +2,12 @@ import React from "react";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import { POTENSIAL_MIJOZLAR } from "../../pages/pageConstants/PageRoutes";
 import { CLIENTS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
 import BigLength from "../../components/BigLength/BigLength";
 import { ClientTemplateApi } from "../../constant/apiLine/apiLine";
 import CommonTemplate from "./ClientModalTabs/CommonTemplate";
 import ContactsTemplate from "./ClientModalTabs/ContactsTemplate";
 import CommentsTemplate from "./ClientModalTabs/CommentsTabTemplate";
+import ImgZoom from "../../components/image zoom/ImgZoom";
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
   key: "1",
@@ -18,8 +17,10 @@ const PotensialClientTemplate = {
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
   allData: {
+    
     states: "/states/all",
     cities: "/cities/all",
+    activity_types: "/activity-types",
   },
   modal: {
     style: {
@@ -94,24 +95,7 @@ const PotensialClientTemplate = {
       dataIndex: "file",
       key: "file",
       width: "40%",
-      render: (_, record) => {
-        return (
-          <Zoom zoomMargin={10}>
-            <picture>
-              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-              <img
-                alt="img"
-                src={
-                  "https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI="
-                }
-                width="30"
-                height="30"
-                style={{ objectFit: "contain" }}
-              />
-            </picture>
-          </Zoom>
-        );
-      },
+      render: (_, record) => <ImgZoom src="https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI=" />,
       align: "center",
     },
     {

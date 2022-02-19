@@ -90,7 +90,8 @@ const GlobalModal = () => {
 
   return (
     <Modal
-      style={{ ...currentPage?.modal?.style }}
+        className="global-modal"
+        style={{ ...currentPage?.modal?.style }}
       width={currentPage?.modal?.style?.width}
       footer={null}
       title={

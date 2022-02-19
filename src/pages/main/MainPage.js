@@ -45,24 +45,39 @@ const MainPage = () => {
 
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    const url = currentPage?.mainUrl;
-    dispatch(setData([]));
-    if (url) {
-      dispatch(startLoading());
-      const data = axios(
-        removeApiStatusLines.includes(url) ? `${url}/status/${currentPage?.key}` : url
-      );
-      data
-        .then((res) => {
-          console.log(res);
-          dispatch(setData(res.data.data));
-        })
-        .then((r) => {
-          dispatch(stopLoading());
-        });
-    }
-  }, [pathname]);
+    // useEffect(() => {
+    //     dispatch(startLoading());
+    //     let currentPage = [
+    //         ...AllPages,
+    //         ...ServiceTemplate?.sections,
+    //         ...ProgrammsTemplate?.tabs,
+    //         ...ClientTemplate?.tabs,
+    //     ].find((page) => page.path === document.location.pathname);
+    //     dispatch(setCurrentPage(currentPage));
+    //     GET(currentPage?.mainUrl).then(res => {
+    //         dispatch(setData(res.data.data))
+    //         dispatch(stopLoading());
+    //     });
+    // }, []);
+
+    useEffect(() => {
+        const url = currentPage?.mainUrl;
+        dispatch(setData([]));
+        if (url) {
+            dispatch(startLoading());
+            const data = axios(
+                removeApiStatusLines.includes(url) ? `${url}/status/${currentPage?.key}` : url
+            );
+            data.then((res) => {
+                    console.log(res);
+                    dispatch(setData(res.data.data));
+                })
+                .then((r) => {
+                    dispatch(stopLoading());
+                });
+        }
+    }, [pathname]);
+
 
   return (
     <Layout className="site-container">
