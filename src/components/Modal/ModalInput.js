@@ -1,6 +1,6 @@
 import {Input, InputNumber, DatePicker, Select, message} from "antd";
 import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -12,7 +12,8 @@ import {
     PHONE,
     SELECT,
     STRING,
-    UPLOAD, PICTURE_WALL,
+    UPLOAD,
+    PICTURE_WALL,
 } from "./InputTypes";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -20,11 +21,16 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
-import {setValues, setInnerModel, toggleModal, toggleInnerModal, setAllData} from "../../redux/tabs_reducer"
-import axios from "../../functions/axios"
+import {
+    setValues,
+    setInnerModel,
+    toggleModal,
+    toggleInnerModal,
+    setAllData,
+} from "../../redux/tabs_reducer";
+import axios from "../../functions/axios";
 import {findIcon} from "../../assets/icons/icons";
 import {PicturesWall} from "./PicturesWall/PicturesWall";
-
 
 const {TextArea} = Input;
 
@@ -42,6 +48,8 @@ const ModalInput = ({
                         options,
                         template,
                         required,
+                        filePath,
+                        autoFocus,
                         handleChangeValue
                     }) => {
     let input = null;
@@ -49,12 +57,19 @@ const ModalInput = ({
     const {currentPage, values, allData, innerModal} = useSelector((state) => state.tabs_reducer);
 
 
-  const handleSelectAdd = (template) => {
-    dispatch(setInnerModel(template))
-    dispatch(toggleInnerModal(true))
+    const handleSelectAdd = (template) => {
+        dispatch(setInnerModel(template));
+        dispatch(toggleInnerModal(true));
+    };
 
-  }
+    const refs = useRef(null);
 
+    useEffect(() => {
+        const id = document.getElementById('autofucus');
+        if (id) {
+            id.focus();
+        }
+    }, []);
 
     switch (type) {
         case STRING:
@@ -71,6 +86,7 @@ const ModalInput = ({
                     <Input
                         name={name}
                         autoFocus
+                        id={refs && "autofucus"}
                         value={values && values[name]}
                         placeholder={placeholder}
                         required={required}
@@ -92,6 +108,7 @@ const ModalInput = ({
                     autoFocus
                     name={name}
                     required
+                    id={refs && "autofucus"}
                     style={{
                         gridColumn: gridColumn,
                         gridRow: gridRow,
@@ -119,6 +136,7 @@ const ModalInput = ({
                         height: height ? height + "px" : inputDeafultHeght + "px",
                     }}
                     required={required}
+                    id={refs && "autofucus"}
                     className="select-label"
                 >
                     {label && label}
@@ -259,6 +277,7 @@ const ModalInput = ({
                 <UploadFile
                     id="file-uploder"
                     name={name}
+                    filePath={filePath}
                     placeholder={placeholder}
                     gridColumn={gridColumn}
                     gridRow={gridRow}
@@ -286,7 +305,8 @@ const ModalInput = ({
         case PICTURE_WALL:
             input = (
                 <PicturesWall gridColumn={gridColumn}
-                              gridRow={gridRow}/>
+                              gridRow={gridRow}
+                              filePath={filePath}/>
             );
             break;
         default:
@@ -294,7 +314,7 @@ const ModalInput = ({
 
     }
 
-    return input;
+  return input;
 };
 
 export default ModalInput;

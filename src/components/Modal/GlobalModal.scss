@@ -372,13 +372,14 @@
 .delete-file-btn {
   border: 1px solid #ccc;
   background-color: rgb(244,244,244);
-  width: 31px;
+  width: 23px;
+  border-radius: 2px;
   cursor: pointer;
-  height: 31px;
+  height: 23px;
+  padding: 2px;
 
   svg {
     margin-left: -2px;
-    //width: 1044px;
     path {
       fill: #888;
     }

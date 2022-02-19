@@ -1,27 +1,24 @@
 import React from "react";
-import {XODIMLAR_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
+import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { FileBlueIcon } from "../../assets/icons/icons";
 import {
-    FileBlueIcon,
-} from "../../assets/icons/icons";
-import {
-    STRING,
-    DATE,
-    SELECT,
-    TEXTAREA,
-    PHONE,
-    UPLOAD,
-    MAP,
-    IMAGE, PICTURE_WALL,
+  STRING,
+  DATE,
+  SELECT,
+  TEXTAREA,
+  PHONE,
+  UPLOAD,
+  MAP,
+  PICTURE_WALL,
 } from "../../components/Modal/InputTypes";
-import {inputDeafultHeght} from "../../constant/deafultStyle";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
-import {Popover} from "antd";
 import BigLength from "../../components/BigLength/BigLength";
+import ImgZoom from "../../components/image zoom/ImgZoom";
+import Zoom from "react-medium-image-zoom";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -56,6 +53,7 @@ const XodimlarTemplate = {
                     gridColumn: "1 / 10",
                     gridRow: "1 / 2",
                     label: "F.I.SH",
+                    autoFocus: true
                 },
                 {
                     name: "tugilgan_sana",
@@ -129,9 +127,9 @@ const XodimlarTemplate = {
                     label: "Telefon",
                 },
                 {
-                    name: "passport",
                     type: UPLOAD,
-                    path: "/workers/image",
+                    name: "passport",
+                    filePath: "/workers/image",
                     required: true,
                     gridColumn: "10 / 13",
                     gridRow: "2 / 4",
@@ -139,13 +137,14 @@ const XodimlarTemplate = {
                     label: "Passport",
                 },
                 {
-                    name: "oilasi",
                     type: UPLOAD,
+                    name: "family",
+                    filePath: "/workers/image",
                     required: true,
                     gridColumn: "13 / 16",
                     gridRow: "2 / 4",
-                    Iconic: "UploadFileOilasi",
                     label: "Oilasi",
+                    Iconic: "UploadFileOilasi",
                 },
                 {
                     name: "hozirgi_yashash_joyi",
@@ -161,8 +160,8 @@ const XodimlarTemplate = {
                     label: " ",
                     name: "developer_photo",
                     type: PICTURE_WALL,
+                    filePath: "/workers/image",
                     required: true,
-                    // placeholder: "rasmi",
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
                 },
@@ -223,7 +222,6 @@ const XodimlarTemplate = {
             title: "Yo'nalish",
             dataIndex: "type_id",
             key: "type_id",
-            onFilter: (value, record) => record.type_id.indexOf(value) === 0,
             width: "35%",
         },
         {

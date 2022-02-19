@@ -77,11 +77,11 @@ class UpLoadJPG extends React.Component {
                         name={this.props.name}
                         placeholder={this.props.placeholder}
                         alt="file"
-                        beforeUpload={beforeUpload}
+                        // beforeUpload={beforeUpload}
                         onChange={this.handleChange}
                         type="file"
                         maxCount={1}
-                        showUploadList={false}
+                        // showUploadList={false}
                 >{"  "}
                 </Upload>
                 {this.props.Iconic && findIcon(this.props.Iconic)}
