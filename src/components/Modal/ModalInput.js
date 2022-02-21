@@ -56,6 +56,7 @@ const ModalInput = (props) => {
     filePath,
     autoFocus,
     handleChangeValue,
+    fileName
   } = props;
 
   const handleSelectAdd = (template) => {
@@ -320,6 +321,7 @@ const ModalInput = (props) => {
           filePath={filePath}
           name={name}
           handleChangeValue={handleChangeValue}
+          fileName={fileName?fileName:""}
         />
       );
       break;

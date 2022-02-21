@@ -15,7 +15,7 @@ const CommetsTabTemplate = {
 
       inputs: [
         {
-          name: "umumiy_izoxlar",
+          name: "general_info",
           type: STRING,
           required: true,
           placeholder: "Umumiy izoxlar",

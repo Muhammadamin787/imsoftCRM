@@ -51,7 +51,7 @@ const ContactsTemplate = {
           label: "Opirator",
         },
         {
-          name: "opirator_telifon",
+          name: "operator_phone_number",
           type: PHONE,
           required: true,
           placeholder: "Telifon",
@@ -60,7 +60,7 @@ const ContactsTemplate = {
           label: "Telifon 1",
         },
         {
-          name: "foto1",
+          name: "file",
           type: PICTURE_WALL,
           filePath: "/clients/image",
           required: true,
@@ -69,6 +69,7 @@ const ContactsTemplate = {
           gridRow: "3 / 25",
           height: inputDeafultHeght * 7,
           label: "Foto",
+          fileName: "file",
         },
         {
           name: "foto2",
@@ -80,6 +81,7 @@ const ContactsTemplate = {
           height: inputDeafultHeght * 7,
           label: " ",
           filePath: "/clients/image",
+          fileName: "file",
         },
         {
           name: "foto3",
@@ -91,6 +93,7 @@ const ContactsTemplate = {
           height: inputDeafultHeght * 7,
           label: " ",
           filePath: "/clients/image",
+          fileName: "file",
         },
         {
           name: "rahbar_telifon2",

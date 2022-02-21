@@ -24,7 +24,7 @@ const CommonTabTemplate = {
       inputs: [
         {
           label: "Korxona nomi",
-          name: "korxona_nomi",
+          name: "enterprise_name",
           type: STRING,
           required: true,
           placeholder: "Korxona nomi",
@@ -33,7 +33,7 @@ const CommonTabTemplate = {
           autoFocus: true
         },
         {
-          name: "yunalish_turi",
+          name: "category_id",
           type: SELECT,
           required: true,
           label: "Yunalish turi",
@@ -44,7 +44,7 @@ const CommonTabTemplate = {
           gridRow: "2 / 3",
         },
         {
-          name: "viloyat",
+          name: "state_name",
           type: SELECT,
           required: true,
           placeholder: "viloyat",
@@ -55,7 +55,7 @@ const CommonTabTemplate = {
           template: ViloyatlarTemplate,
         },
         {
-          name: "manzil",
+          name: "home_address",
           type: STRING,
           required: true,
           placeholder: "Manzil",
@@ -73,7 +73,7 @@ const CommonTabTemplate = {
           label: "Kelish turi",
         },
         {
-          name: "faoliyat_turi",
+          name: "type_name",
           type: SELECT,
           required: true,
           placeholder: "Faoliyat turi",
@@ -84,7 +84,7 @@ const CommonTabTemplate = {
           template: FaolyatTurlaiTemplate
         },
         {
-          name: "xudud",
+          name: "address_name",
           type: SELECT,
           required: true,
           placeholder: "xudud",
@@ -93,7 +93,7 @@ const CommonTabTemplate = {
           gridRow: "3 / 4",
         },
         {
-          name: "shahar_tuman",
+          name: "region_name",
           type: SELECT,
           required: true,
           label: "Shahar/Tuman",
