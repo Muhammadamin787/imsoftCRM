@@ -43,6 +43,8 @@ export class PicturesWall extends React.Component {
     };
 
     handleChange = (e) => {
+        console.log("e.fileList");
+        console.log(e.fileList);
         this.setState({fileList: e.fileList});
     }
 
