@@ -15,14 +15,14 @@ export const counterSlice = createSlice({
     loading: false,
     tableItem: [],
     values: {
-      dev_docs:[]
+      // dev_docs:[],
     },
     allData: {},
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
     currentLocation: [],
-    currentLocationIsOpen: false
+    currentLocationIsOpen: false,
   },
   reducers: {
     addNewTab: (state, { payload }) => {
@@ -109,22 +109,26 @@ export const counterSlice = createSlice({
     setSearchInputValue: (state, { payload }) => {
       state.serachInputValue = payload;
     },
-    setAllData: (state, {payload}) => {
-        // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
-            state.allData = { ...state.allData,...payload};
+    setAllData: (state, { payload }) => {
+      // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
+      state.allData = { ...state.allData, ...payload };
     },
-    setInnerModel: (state, {payload}) => {
-        state.innerModal =  payload;
+    setInnerModel: (state, { payload }) => {
+      state.innerModal = payload;
     },
-    setOffInnerModel: (state, {payload}) => {
-      state.innerModal = ""
+    setOffInnerModel: (state, { payload }) => {
+      state.innerModal = "";
     },
-    setCurrentLocation: (s, {payload}) =>{
+    setCurrentLocation: (s, { payload }) => {
       s.currentLocation = payload;
     },
-    setCurrentLocationIsOpen: (s, _) =>{
+    setCurrentLocationIsOpen: (s, _) => {
       s.currentLocationIsOpen = !s.currentLocationIsOpen;
-    }
+    },
+
+    setValuesKey: (state, { payload }) => {
+      state.values = { ...state.values, ...payload };
+    },
   },
 });
 
@@ -153,8 +157,8 @@ export const {
   setFilteredMainData,
   setOffInnerModel,
   setCurrentLocation,
-  setCurrentLocationIsOpen
-
+  setCurrentLocationIsOpen,
+  setValuesKey,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
