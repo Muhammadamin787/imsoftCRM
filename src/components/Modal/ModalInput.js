@@ -277,6 +277,9 @@ const ModalInput = ({
                 <UploadFile
                     id="file-uploder"
                     name={name}
+                    dispatch={dispatch}
+                    values={values}
+                    setValues={setValues}
                     filePath={filePath}
                     placeholder={placeholder}
                     gridColumn={gridColumn}

@@ -1,4 +1,4 @@
-import { Upload, message } from "antd";
+import {Upload, message} from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
@@ -6,6 +6,7 @@ import {DeleteIcon, findIcon} from "../../assets/icons/icons";
 import {BaseUrl} from "../../BaseUrl";
 import {DELETE} from "../../functions/Methods";
 import {LoadingOutlined} from "@ant-design/icons";
+import {setValues} from "../../redux/tabs_reducer";
 
 function beforeUpload(file) {
     const isJpgOrPng =
@@ -33,6 +34,12 @@ class UploadFile extends React.Component {
         }
         if (info.file.status === "done" && info.file?.response) {
             message.success("File saqlandi");
+            this.props.dispatch(
+                this.props.setValues({
+                    ...this.props.values,
+                    [this.props.name]: info?.file?.response
+                })
+            )
             this.setState({
                 imageUrl: info?.file?.response,
                 loading: false,
