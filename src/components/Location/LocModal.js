@@ -15,7 +15,6 @@ const LocModal = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     setLoc(currentLocation);
-    console.log(currentLocation);
   }, [currentLocation]);
   return (
     <Modal

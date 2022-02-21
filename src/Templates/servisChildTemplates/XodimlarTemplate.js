@@ -19,6 +19,7 @@ import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
 import ImgZoom from "../../components/image zoom/ImgZoom";
 import Zoom from "react-medium-image-zoom";
+import GetLocation from "../../components/Location/Location";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -284,6 +285,7 @@ const XodimlarTemplate = {
             key: "hozirgi_yashash_joyi",
             width: "15%",
             align,
+            render: (_, record, i) => <GetLocation record={record} />,
         },
         {
             title: "Qo'shimcha ma'lumot",
@@ -292,30 +294,6 @@ const XodimlarTemplate = {
             width: "45%",
             align,
             render: (text) => <BigLength text={text}/>,
-            //   render: (text) => (
-            //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
-            //       <div
-            //         style={{
-            //           height: "50px",
-            //           overflow: "scroll",
-            //           fontSize: ".9em",
-            //           margin: "-2px 0",
-            //           padding: 0,
-            //           // border: "1px solid red"
-            //         }}
-            //       >
-            //         {text}
-            //       </div>
-            //     </Popover>
-            //   ),
-            // render: (text => <div style={{
-            //     height: "50px",
-            //     overflow: "scroll",
-            //     fontSize: ".9em",
-            //     margin: "-2px 0",
-            //     padding: 0,
-            //     // border: "1px solid red"
-            // }}>{text}</div>)
         },
     ],
     scroll: {x: 2000, y: 500},

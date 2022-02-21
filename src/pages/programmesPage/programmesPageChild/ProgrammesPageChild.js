@@ -1,38 +1,22 @@
-import {useEffect} from "react";
+import { useEffect, useState } from "react";
 import ProgrammsTemplate from "../../../Templates/pageTemplates/ProgrammesTemplate";
-import { Tabs } from "antd";
-import { Link } from "react-router-dom";
 import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
-import { useDispatch, useSelector } from "react-redux";
 import GlobalTable from "../../../components/Table/GlobalTable";
-import { setCurrentPage, addNewTab } from "../../../redux/tabs_reducer";
-
-const { TabPane } = Tabs;
+import ChildTabs from "../../../components/ChildTabs/ChildTabs";
 
 const ProgrammesPageChild = ({ activeKey }) => {
-  const dispatch = useDispatch();
-  const {currentPage} = useSelector(state => state.tabs_reducer);
-  const handleTab = (page) => {
-    dispatch(setCurrentPage(page));
-    dispatch(addNewTab(page));
-  };
-
+  const [height, setHeight] = useState(0);
+  useEffect(() => {
+    const dad = document.getElementById("site__loyout");
+    setHeight(parseInt(dad.getBoundingClientRect().height));
+  }, []);
   return (
     <div>
       <Toolbar />
-      <Tabs defaultActiveKey={activeKey}>
-        {ProgrammsTemplate?.tabs?.map((item) => (
-          <TabPane
-            tab={
-              <Link to={item.path} onClick={() => handleTab(item)} style={{width: '100%', height: '100%', display: 'block'}}>
-                {item.text}
-              </Link>
-            }
-            key={item.key}
-          ></TabPane>
-        ))}
-      </Tabs>
-      <GlobalTable />
+      <div className="my__layout_child" style={{ height: height - 70 + "px" }}>
+        <ChildTabs data={ProgrammsTemplate} activeKey={activeKey}></ChildTabs>
+        <GlobalTable />
+      </div>
     </div>
   );
 };

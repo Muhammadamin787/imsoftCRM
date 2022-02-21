@@ -107,9 +107,7 @@ const PotensialClientTemplate = {
       key: "latitude",
       width: "40%",
       align: "center",
-      render: (text, record, index) => {
-        return <GetLocation record={record} />;
-      },
+      render: (_, record, i) => <GetLocation record={record} />,
     },
     {
       title: "Yo’nalishi",

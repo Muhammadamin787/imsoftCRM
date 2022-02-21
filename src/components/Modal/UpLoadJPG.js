@@ -30,8 +30,6 @@ class UpLoadJPG extends React.Component {
     };
 
     handleChange = (info, e) => {
-        console.log(info)
-        console.log(e)
         // if (info.file.status === 'uploading') {
         //   this.setState({ loading: true });
         //   return;

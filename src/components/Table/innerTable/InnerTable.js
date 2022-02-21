@@ -11,7 +11,6 @@ const InnerTable = ({ innerTable }) => {
 
     // })
 
-    console.log(innerTable.name);
 
     const addRow = () => {
 

@@ -21,7 +21,6 @@ export default class MapModal extends Component {
     const target = {
       [this.props.name]:this.state.coords,
     }
-    console.log(this.state.coords);
     this.props.handleChangeValue(target);
     
   };

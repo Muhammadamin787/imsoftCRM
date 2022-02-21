@@ -150,7 +150,7 @@ const MainPage = () => {
           </Popover>
         </div>
       </Header>
-      <Content className="site-layout" style={{ marginTop: 64 }}>
+      <Content className="site-layout" id="site__loyout" style={{ marginTop: 64 }}>
           <Routes>
             {[
               ...AllPages,
