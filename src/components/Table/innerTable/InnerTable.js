@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Form, Button } from "antd";
 import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
-import { setValues } from '../../../redux/tabs_reducer';
+import { setValues, setValuesKey } from '../../../redux/tabs_reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,26 +14,28 @@ const InnerTable = ({ innerTable }) => {
 
     // })
 
-    // console.log(innerTable);
+    console.log(innerTable.name);
     
     const addRow = () => {
-        let oldData = [...values?.dev_docs] || [];
-        console.log("ishla");
+        
+        dispatch(setValuesKey({[innerTable?.name]:[]}))
+
+
+        const oldData = [...values?.[innerTable?.name]]
+
+
         oldData.push({
             rowId: uuidv4(),
             number: '',
             name: '',
             comment: '',
             file: '',
-            
         });
         
-        dispatch(setValues({ ...values, dev_docs: oldData }));        
+        dispatch(setValues({ ...values, [innerTable?.name]: oldData }));        
     }
 
-    // useEffect(() =>{
-    //     addRow()
-    // }, [innerTable])
+
 
     return (
         <>
@@ -41,7 +43,7 @@ const InnerTable = ({ innerTable }) => {
             <Table bordered
                 columns={innerTable?.columns}
                 className="inner-table"
-                dataSource={values?.dev_docs || []}
+                dataSource={values?.[innerTable?.name] || []}
                 size={"small"}
                 scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
                 pagination={{ position: ["bottomCenter"] }}

@@ -12,9 +12,9 @@ const TabInput = ({ record, name, type }) => {
 
 
     const handleChange = (e) => {
-        const foundObj = values.dev_docs.find(d => d.rowId == record.rowId);
+        const foundObj = values?.dev_docs.find(d => d.rowId == record.rowId);
         const newObj = { ...foundObj, [name]: e };
-        let a = [...values.dev_docs];
+        let a = [...values?.dev_docs];
         a.splice(a.indexOf(foundObj), 1)
         a.push(newObj);
         dispatch(setValues({
@@ -38,6 +38,7 @@ const TabInput = ({ record, name, type }) => {
                         const target = {
                             [name]: e.target.value,
                         };
+
                         handleChange(e.target.value);
                     }}
                 />

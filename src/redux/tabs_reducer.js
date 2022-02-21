@@ -15,7 +15,7 @@ export const counterSlice = createSlice({
     loading: false,
     tableItem: [],
     values: {
-      dev_docs:[],
+      // dev_docs:[],
     },
     allData: {},
     innerModal: "",
@@ -117,6 +117,12 @@ export const counterSlice = createSlice({
     setOffInnerModel: (state, {payload}) => {
       state.innerModal = ""
     },
+
+    setValuesKey: (state, {payload}) => {
+
+      state.values = {...state.values, ...payload};
+    }
+
   },
 });
 
@@ -144,6 +150,7 @@ export const {
   toggleInnerModal,
   setFilteredMainData,
   setOffInnerModel,
+  setValuesKey
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
