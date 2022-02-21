@@ -8,16 +8,13 @@ import { v4 as uuidv4 } from 'uuid'
 const InnerTable = ({ innerTable }) => {
     const dispatch = useDispatch()
     const { values } = useSelector((state) => state.tabs_reducer);
-    // const [objKey, setObjKey] = useState({})
-    // useEffect(() => {
-    //     const colT = innerTable.columns.map(col => setObjKey({col}));
 
     // })
 
     console.log(innerTable.name);
-    
+
     const addRow = () => {
-        
+
         dispatch(setValuesKey({[innerTable?.name]:[]}))
 
 
@@ -32,7 +29,7 @@ const InnerTable = ({ innerTable }) => {
             file: '',
         });
         
-        dispatch(setValues({ ...values, [innerTable?.name]: oldData }));        
+        dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
     }
 
 

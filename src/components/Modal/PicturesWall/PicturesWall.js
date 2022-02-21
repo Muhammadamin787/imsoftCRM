@@ -6,12 +6,12 @@ import {DELETE} from "../../../functions/Methods";
 import {BaseUrl} from "../../../BaseUrl";
 
 function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+    });
 }
 
 export class PicturesWall extends React.Component {
@@ -42,7 +42,11 @@ export class PicturesWall extends React.Component {
         });
     };
 
-    handleChange = ({fileList}) => this.setState({fileList});
+    handleChange = (e) => {
+        console.log("e.fileList");
+        console.log(e.fileList);
+        this.setState({fileList: e.fileList});
+    }
 
     render() {
         const {previewVisible, previewImage, fileList, previewTitle} = this.state;
@@ -56,6 +60,7 @@ export class PicturesWall extends React.Component {
                 Upload
             </div>
         );
+
         const customStyles = {
             imageUploader: {
                 gridColumn: this.props.gridColumn,
