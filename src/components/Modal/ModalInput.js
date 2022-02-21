@@ -190,7 +190,6 @@ const ModalInput = (props) => {
           gridColumn={gridColumn}
           gridRow={gridRow}
           height={height}
-          name={name}
           handleChangeValue={handleChangeValue}
           required={required}
         />
