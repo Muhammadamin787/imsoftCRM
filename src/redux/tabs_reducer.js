@@ -16,7 +16,18 @@ export const counterSlice = createSlice({
     tableItem: [],
     values: {
     },
-    allData: {},
+    allData: {
+      status: [
+        {
+          id: 1,
+          name: "1"
+        },
+        {
+          id: 0,
+          name: "0"
+        },
+      ]
+    },
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
@@ -106,20 +117,20 @@ export const counterSlice = createSlice({
     setSearchInputValue: (state, { payload }) => {
       state.serachInputValue = payload;
     },
-    setAllData: (state, {payload}) => {
-        // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
-            state.allData = { ...state.allData,...payload};
+    setAllData: (state, { payload }) => {
+      // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
+      state.allData = { ...state.allData, ...payload };
     },
-    setInnerModel: (state, {payload}) => {
-        state.innerModal =  payload;
+    setInnerModel: (state, { payload }) => {
+      state.innerModal = payload;
     },
-    setOffInnerModel: (state, {payload}) => {
+    setOffInnerModel: (state, { payload }) => {
       state.innerModal = ""
     },
 
-    setValuesKey: (state, {payload}) => {
+    setValuesKey: (state, { payload }) => {
 
-      state.values = {...state.values, ...payload};
+      state.values = { ...state.values, ...payload };
     }
 
   },

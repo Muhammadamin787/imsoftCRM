@@ -176,7 +176,7 @@ const ModalInput = ({
                                 </Option>
                             ))}
                         </Select>
-                        {innerModal == "" ? <div className="option-add"
+                        {innerModal == "" && template ? <div className="option-add"
                                                  onClick={() => handleSelectAdd(template)}>{findIcon("Plus")}</div> : null}
                     </div>
                 </label>
