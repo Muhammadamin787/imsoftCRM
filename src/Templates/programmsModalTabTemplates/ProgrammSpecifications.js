@@ -4,11 +4,17 @@ import { Input, Button } from "antd"
 // import TabInput from "../../components/Modal/tabInput/tabInput";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { STRING, UPLOAD } from "../../components/Modal/InputTypes"
-
+import { v4 as uuidv4 } from 'uuid'
 
 export const ProgrammSpecifications = {
     text: "Texnik tafsiflar",
     name: "tech_doc",
+    CreateObj: {
+        rowId: uuidv4(),
+        name: '',
+        comment: '',
+        file: '',
+    },
     columns: [
         {
             title: <FieldNumberOutlined />,
@@ -20,7 +26,7 @@ export const ProgrammSpecifications = {
         {
             title: "Nomi",
             dataIndex: "name",
-            render: (text, record, index) => <TabInput record={record} name={"name"} type={STRING} />,
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
             key: "number",
             width: "25%",
             align: "center",
@@ -28,7 +34,7 @@ export const ProgrammSpecifications = {
         {
             title: "Tafsif",
             dataIndex: "comment",
-            render: (text, record, index) => <TabInput record={record} name={"comment"} type={STRING} />,
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
             key: "number",
             width: "35%",
             align: "center"
@@ -36,7 +42,7 @@ export const ProgrammSpecifications = {
         {
             title: "Fayl",
             dataIndex: "file_doc",
-            render: (text, record, index) => <TabInput record={record} name={"file_doc"} type={UPLOAD} />,
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} filePath={"/projects/image"} type={UPLOAD} />,
             key: "number",
             width: "15%",
             align: "center"

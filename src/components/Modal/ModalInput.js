@@ -58,19 +58,19 @@ const ModalInput = (props) => {
     handleChangeValue,
   } = props;
 
-  const handleSelectAdd = (template) => {
-    dispatch(setInnerModel(template));
-    dispatch(toggleInnerModal(true));
-  };
+    const handleSelectAdd = (template) => {
+        dispatch(setInnerModel(template));
+        dispatch(toggleInnerModal(true));
+    };
 
-  const refs = useRef(null);
+    const refs = useRef(null);
 
-  useEffect(() => {
-    const id = document.getElementById("autofucus");
-    if (id) {
-      id.focus();
-    }
-  }, []);
+    useEffect(() => {
+        const id = document.getElementById('autofucus');
+        if (id) {
+            id.focus();
+        }
+    }, []);
 
   switch (type) {
     case STRING:

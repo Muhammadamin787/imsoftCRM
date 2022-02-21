@@ -2,12 +2,17 @@ import { STRING, DATE, UPLOAD } from './../../components/Modal/InputTypes';
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
 import TabInput from "../../components/Modal/TabInput/TabInput";
-
+import { v4 as uuidv4 } from 'uuid'
 
 
 export const ProgrammFilesList = {
     text: "Fayllar ro’yxati",
     name:"file_doc",
+    CreateObj: {
+        rowId: uuidv4(),
+        comment: '',
+        file: '',
+    },
     columns: [
         {
             title: <FieldNumberOutlined/>,
@@ -20,16 +25,16 @@ export const ProgrammFilesList = {
             title: "Tafsif",
             dataIndex: "comment",
             key: "number",
-            render: (text, record, index) => <TabInput record={record} name={"comment"} type={STRING} />,
-            width: "39%",
+            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"comment"} type={STRING} />,
+            width: "70%",
             align: "center"
         },
         {
             title: "Fayl",
             dataIndex: "file_doc",
             key: "number",
-            width: "17%",
-            render: (text, record, index) => <TabInput record={record} name={"file_doc"} type={UPLOAD} />,
+            width: "20%",
+            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file"} type={UPLOAD} filePath={"/workers/image"} />,
             align: "center"
         }
     ]

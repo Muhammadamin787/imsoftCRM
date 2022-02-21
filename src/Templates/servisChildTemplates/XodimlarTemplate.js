@@ -32,6 +32,7 @@ const XodimlarTemplate = {
     allData: {
         states: "/states/all",
         cities: "/cities/all",
+    
     },
     modal: {
         style: {

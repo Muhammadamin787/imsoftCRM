@@ -1,0 +1,10 @@
+.tab-select__option{
+    .ant-select-single.ant-select{
+        width: 100%;
+        .ant-select-selector{
+            height: 33px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
