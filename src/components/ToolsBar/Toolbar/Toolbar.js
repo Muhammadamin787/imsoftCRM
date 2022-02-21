@@ -40,6 +40,8 @@ const Toolbar = ({ tableItem }) => {
     (state) => state.tabs_reducer
   );
 
+  // console.log(tableItem);
+
   const handleModalClick = () => {
     const newPanes = Panes?.map((page) =>
       page?.path === currentPage?.path
