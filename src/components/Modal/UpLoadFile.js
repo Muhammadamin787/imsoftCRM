@@ -34,12 +34,9 @@ class UploadFile extends React.Component {
         }
         if (info.file.status === "done" && info.file?.response) {
             message.success("File saqlandi");
-            this.props.dispatch(
-                this.props.setValues({
-                    ...this.props.values,
-                    [this.props.name]: info?.file?.response
-                })
-            )
+            this.props.onChange({
+                [this.props.name]: info?.file?.response
+            })
             this.setState({
                 imageUrl: info?.file?.response,
                 loading: false,
