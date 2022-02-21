@@ -36,10 +36,11 @@ export class PicturesWall extends React.Component {
   };
 
   handleDelete = (e) => {
-    DELETE(this.props.filePath + "/delete", {
-      type: this.props.name,
-      filename: e.response,
-    });
+    console.log(e);
+    // DELETE(this.props.filePath + "/delete", {
+    //   type: this.props.name,
+    //   filename: e.response,
+    // });
   };
 
   handleChange = (e) => {
@@ -80,6 +81,7 @@ export class PicturesWall extends React.Component {
         htmlFor="file-uploder"
         style={customStyles.imageUploader}
       >
+        {console.log(name)}
         <Upload
           action={BaseUrl + filePath}
           listType="picture-card"
