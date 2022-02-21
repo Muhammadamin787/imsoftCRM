@@ -86,6 +86,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
+      console.log(payload);
       // console.log(payload);
       state.values = payload;
     },

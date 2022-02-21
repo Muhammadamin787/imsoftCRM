@@ -43,6 +43,7 @@ const SearchInput = () => {
   }, [mainData]);
 
   useEffect(() => {
+
     let filter = mainData.filter((item) => {
       for (let i = 0; i < keys.length; i++) {
         if (typeof item[keys[i]] === "string") {
@@ -57,6 +58,7 @@ const SearchInput = () => {
         }
       }
     });
+
     let newColumn = currentPage?.columns?.map((item) => {
       if (!dontFilterTamlateDataIndex.includes(item.dataIndex)) {
         return {
@@ -83,6 +85,7 @@ const SearchInput = () => {
         return item;
       }
     });
+    
     if (currentPage?.columns) {
       dispatch(setCurrentPage({ ...currentPage, columns: newColumn }));
     }

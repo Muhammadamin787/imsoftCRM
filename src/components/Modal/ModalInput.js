@@ -161,6 +161,9 @@ const ModalInput = ({
                                     handleChangeValue({[name]: e});
                                 }
                             }}>
+                                <Option value={'01'}>
+                                    Assalomu aleykum
+                                </Option>
                             {allData && allData[options]?.map((option, i) => (
                                 <Option value={option.id} key={option.id}>
                                     {option.name}
