@@ -4,8 +4,7 @@ import ModalInput from "../ModalInput";
 import InnerTable from "../../Table/innerTable/InnerTable";
 import "./ModalTabs.scss"
 
-
-const ModalTabs = ({tabs,i,handleChangeValue}) => {
+const ModalTabs = ({tabs,i}) => {
     return (
         <Tabs defaultActiveKey={[0]}>
         {tabs?.map((tab, i) => (
@@ -18,7 +17,7 @@ const ModalTabs = ({tabs,i,handleChangeValue}) => {
                              gridAutoRows: forma.grid?.rows,
                          }}>
                         {forma?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name} handleChangeValue={handleChangeValue}/>
+                            <ModalInput {...input} key={input?.name}/>
                         ))}
                     </div>
                 ))}

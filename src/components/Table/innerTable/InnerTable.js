@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Form, Button } from "antd";
-import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
+import React from 'react';
+import { Table, Button } from "antd";
 import { setValues } from '../../../redux/tabs_reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid'
@@ -8,16 +7,9 @@ import { v4 as uuidv4 } from 'uuid'
 const InnerTable = ({ innerTable }) => {
     const dispatch = useDispatch()
     const { values } = useSelector((state) => state.tabs_reducer);
-    // const [objKey, setObjKey] = useState({})
-    // useEffect(() => {
-    //     const colT = innerTable.columns.map(col => setObjKey({col}));
 
-    // })
-
-    
     const addRow = () => {
         let oldData = [...values.dev_docs] || [];
-        
         oldData.push({
             rowId: uuidv4(),
             number: '',
@@ -27,13 +19,8 @@ const InnerTable = ({ innerTable }) => {
             columnsName:"dev_docs",
             
         });
-        
-        dispatch(setValues({ ...values, dev_docs: oldData }));        
+        dispatch(setValues({ ...values, dev_docs: oldData }));
     }
-
-    // useEffect(() =>{
-    //     addRow()
-    // }, [innerTable])
 
     return (
         <>

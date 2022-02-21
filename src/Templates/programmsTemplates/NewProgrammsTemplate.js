@@ -30,7 +30,11 @@ export const NewProgrammsTemplate = {
             width: 1000,
             marginTop: "-70px",
         },
-        tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
+        tabs: [
+            ProgrammSpecifications,
+            ProgrammPerformers,
+            ProgrammFilesList
+        ],
     },
     form: [
         {
