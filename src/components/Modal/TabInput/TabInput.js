@@ -1,32 +1,41 @@
 import React from 'react'
-import { Input, DatePicker } from "antd"
+import { Input, DatePicker, Select } from "antd"
 import { useSelector, useDispatch } from "react-redux";
 import { setValues } from '../../../redux/tabs_reducer';
 import UploadFile from "../../Modal/UpLoadFile"
-import { STRING, DATE, UPLOAD } from '../InputTypes'
+import { STRING, DATE, UPLOAD, SELECT } from '../InputTypes'
+import {Option} from "antd/lib/mentions";
+import "./TabInput.scss"
 
-const TabInput = ({ record, name, type }) => {
-    const { values } = useSelector(state => state.tabs_reducer);
+const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
+    const { values,allData } = useSelector(state => state.tabs_reducer);
     const dispatch = useDispatch();
 
+    // console.log(allData);
 
 
     const handleChange = (e) => {
-        const foundObj = values?.dev_docs.find(d => d.rowId == record.rowId);
+        const foundObj = values?.[tabName].find(d => d.rowId == record.rowId);
         const newObj = { ...foundObj, [name]: e };
-        let a = [...values?.dev_docs];
+        let a = [...values?.[tabName]];
         a.splice(a.indexOf(foundObj), 1)
         a.push(newObj);
+
         dispatch(setValues({
             ...values,
-            dev_docs: [...a]
+            [tabName]: [...a]
         }));
 
-        // console.log(values);
+        console.log(({
+            ...values,
+            [tabName]: [...a]
+        }))
 
     }
 
+
     let input = null;
+
 
     switch (type) {
         case STRING:
@@ -35,13 +44,31 @@ const TabInput = ({ record, name, type }) => {
                     name={name}
                     // value={values && values[name]}
                     onChange={(e) => {
-                        const target = {
-                            [name]: e.target.value,
-                        };
 
                         handleChange(e.target.value);
                     }}
                 />
+            );
+            break;
+
+            case SELECT:
+            input = (
+                    <div className="tab-select__option">
+                        <Select
+                            size="small"
+                            name={name}
+                            onChange={(e) => {
+                                handleChange(e);
+                                // console.log(e);
+                                }
+                            }>
+                            {allData && allData[options]?.map((option, i) => (
+                                <Option value={option.id} key={option.id}>
+                                    {option.name}
+                                </Option>
+                            ))}
+                        </Select>
+                    </div>
             );
             break;
 
@@ -51,9 +78,7 @@ const TabInput = ({ record, name, type }) => {
                     format="DD.MM.YYYY"
                     allowClear={false}
                     onChange={(_, dateString) => {
-                        const target = {
-                            [name]: dateString,
-                        };
+                        
                         handleChange(dateString);
                     }}
                 />
@@ -67,6 +92,8 @@ const TabInput = ({ record, name, type }) => {
                     name={name}
                     label="Upload"
                     handleChange={handleChange}
+                    filePath={filePath}
+
                 />
             );
             break;

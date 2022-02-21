@@ -44,8 +44,8 @@ export const NewProgrammsTemplate = {
             },
             inputs: [
                 {
-                    name: "client_name",
-                    type: STRING,
+                    name: "client_id",
+                    type: NUMBER,
                     required: true,
                     placeholder: "Mijoz",
                     gridColumn: "1 / 5",
@@ -80,7 +80,7 @@ export const NewProgrammsTemplate = {
                     label: "Umumiy tafsiflar",
                 },
                 {
-                    name: "developer_name",
+                    name: "developer_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Qabul qilgan xodim:",
@@ -91,14 +91,14 @@ export const NewProgrammsTemplate = {
                     template: XodimlarTemplate,
                 },
                 {
-                    name: "status",
-                    type: SELECT,
+                    name: "status_id",
+                    type: NUMBER,
                     required: true,
                     placeholder: "Xolati:",
                     gridColumn: "7 / 9",
                     gridRow: "2 / 3",
                     label: "xolati",
-                    options: "status",
+                    // options: "status",
                 },
             ],
             innerTable: [],

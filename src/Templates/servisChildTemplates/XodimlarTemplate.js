@@ -32,6 +32,7 @@ const XodimlarTemplate = {
     allData: {
         states: "/states/all",
         cities: "/cities/all",
+    
     },
     modal: {
         style: {
@@ -47,7 +48,7 @@ const XodimlarTemplate = {
             },
             inputs: [
                 {
-                    name: "full_name",
+                    name: "name",
                     type: STRING,
                     required: true,
                     placeholder: "F.I.SH",
@@ -57,7 +58,7 @@ const XodimlarTemplate = {
                     autoFocus: true
                 },
                 {
-                    name: "tugilgan_sana",
+                    name: "born_date",
                     type: DATE,
                     required: true,
                     placeholder: "Tug'ilgan sana",
@@ -67,11 +68,11 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght,
                 },
                 {
-                    name: "Yo'nalishi",
+                    label: "Yo'nalish",
+                    name: "type_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Yo'nalishi",
-                    label: "Yo'nalish",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
                     template: YunalishlarTemplate,
@@ -79,7 +80,7 @@ const XodimlarTemplate = {
                 },
                 {
                     label: "Viloyat",
-                    name: "viloyat",
+                    name: "state_id",
                     type: SELECT,
                     required: true,
                     placeholder: "viloyat",
@@ -89,43 +90,43 @@ const XodimlarTemplate = {
                     template: ViloyatlarTemplate
                 },
                 {
-                    name: "shahar",
+                    label: "Shahar",
+                    name: "region_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Shahar",
-                    label: "Shahar",
                     template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
                 },
                 {
-                    name: "manzil",
+                    label: "Manzil",
+                    name: "address",
                     type: STRING,
                     required: true,
                     placeholder: "Manzil",
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
-                    label: "Manzil",
                     // height: "40px"
                 },
                 {
-                    name: "qushimcha_malumot",
+                    label: "Qo'shimcha malumot",
+                    name: "about",
                     type: TEXTAREA,
                     required: true,
                     placeholder: "Qo'shimcha malumot",
                     gridColumn: "1 / 10",
                     gridRow: "5 / 7",
-                    label: "Qo'shimcha malumot",
                     height: inputDeafultHeght * 1.4,
                 },
                 {
-                    name: "telefon",
+                    label: "Telefon",
+                    name: "phone_number",
                     type: PHONE,
                     required: true,
                     placeholder: "Telefon",
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
-                    label: "Telefon",
                 },
                 {
                     type: UPLOAD,
@@ -148,7 +149,6 @@ const XodimlarTemplate = {
                     Iconic: "UploadFileOilasi",
                 },
                 {
-                    name: "hozirgi_yashash_joyi",
                     type: MAP,
                     required: true,
                     placeholder: "hozirgi turgan joyi (map quyiladi)",
