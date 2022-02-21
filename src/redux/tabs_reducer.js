@@ -14,14 +14,15 @@ export const counterSlice = createSlice({
     mainData: [],
     loading: false,
     tableItem: [],
-    values: {},
-    allData: {
-      cites:[],
-      states:[]
+    values: {
+      dev_docs:[]
     },
+    allData: {},
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
+    currentLocation: [],
+    currentLocationIsOpen: false
   },
   reducers: {
     addNewTab: (state, { payload }) => {
@@ -55,7 +56,6 @@ export const counterSlice = createSlice({
       // state.innerModal = ""
     },
     setCurrentPage: (state, { payload }) => {
-      // console.log(payload)
       if (!payload?.sections) {
         // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
         state.currentPage = payload;
@@ -86,7 +86,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       state.values = payload;
     },
     setData: (state, { payload }) => {
@@ -118,6 +118,12 @@ export const counterSlice = createSlice({
     },
     setOffInnerModel: (state, {payload}) => {
       state.innerModal = ""
+    },
+    setCurrentLocation: (s, {payload}) =>{
+      s.currentLocation = payload;
+    },
+    setCurrentLocationIsOpen: (s, _) =>{
+      s.currentLocationIsOpen = !s.currentLocationIsOpen;
     }
   },
 });
@@ -145,7 +151,10 @@ export const {
   setInnerModel,
   toggleInnerModal,
   setFilteredMainData,
-  setOffInnerModel
+  setOffInnerModel,
+  setCurrentLocation,
+  setCurrentLocationIsOpen
+
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

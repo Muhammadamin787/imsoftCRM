@@ -8,6 +8,8 @@ import CommonTemplate from "./ClientModalTabs/CommonTemplate";
 import ContactsTemplate from "./ClientModalTabs/ContactsTemplate";
 import CommentsTemplate from "./ClientModalTabs/CommentsTabTemplate";
 import ImgZoom from "../../components/image zoom/ImgZoom";
+import GetLocation from "../../components/Location/Location";
+
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
   key: "1",
@@ -17,7 +19,6 @@ const PotensialClientTemplate = {
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
   allData: {
-    
     states: "/states/all",
     cities: "/cities/all",
     activity_types: "/activity-types",
@@ -95,7 +96,9 @@ const PotensialClientTemplate = {
       dataIndex: "file",
       key: "file",
       width: "40%",
-      render: (_, record) => <ImgZoom src="https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI=" />,
+      render: (_, record) => (
+        <ImgZoom src="https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI=" />
+      ),
       align: "center",
     },
     {
@@ -104,6 +107,9 @@ const PotensialClientTemplate = {
       key: "latitude",
       width: "40%",
       align: "center",
+      render: (text, record, index) => {
+        return <GetLocation record={record} />;
+      },
     },
     {
       title: "Yo’nalishi",
