@@ -45,8 +45,8 @@ class UploadFile extends React.Component {
         //     loading: true,
         // });
         DELETE(this.props.filePath + "/delete", {
-            type: this.props.name,
-            filename: this.state.imageUrl
+            type: this.props?.name,
+            filename: this.state?.imageUrl
         }).then(res => {
             message.success("Fayl o'chirildi!");
             setTimeout(() => {
@@ -67,8 +67,8 @@ class UploadFile extends React.Component {
     }
 
     render() {
-        const {loading, imageUrl} = this.state;
-        const {gridColumn, gridRow, height, label, name, placeholder, filePath} = this.props;
+        const {loading, imageUrl} = this?.state;
+        const {gridColumn, gridRow, height, label, name, placeholder, filePath} = this?.props;
 
         const showFileStatus = () => {
             if (loading) {

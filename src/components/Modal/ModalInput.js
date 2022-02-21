@@ -102,8 +102,16 @@ const ModalInput = ({
             break;
         case NUMBER:
             input = (
+                <label
+                    style={{
+                        gridColumn: gridColumn,
+                        gridRow: gridRow,
+                        height: height ? height + "px" : inputDeafultHeght + "px",
+                    }}
+                    required={required}
+                > 
+                {label && label}
                 <InputNumber
-                    addonBefore={label}
                     type="number"
                     autoFocus
                     name={name}
@@ -125,6 +133,7 @@ const ModalInput = ({
                         handleChangeValue(target);
                     }}
                 />
+                </label>
             );
             break;
         case SELECT:

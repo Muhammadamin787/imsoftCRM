@@ -15,7 +15,6 @@ export const counterSlice = createSlice({
     loading: false,
     tableItem: [],
     values: {
-      // dev_docs:[],
     },
     allData: {},
     innerModal: "",

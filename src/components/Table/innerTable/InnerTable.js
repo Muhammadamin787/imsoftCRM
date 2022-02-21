@@ -3,36 +3,22 @@ import { Table, Form, Button } from "antd";
 import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
 import { setValues, setValuesKey } from '../../../redux/tabs_reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const InnerTable = ({ innerTable }) => {
     const dispatch = useDispatch()
     const { values } = useSelector((state) => state.tabs_reducer);
-    // const [objKey, setObjKey] = useState({})
-    // useEffect(() => {
-    //     const colT = innerTable.columns.map(col => setObjKey({col}));
 
-    // })
 
-    console.log(innerTable.name);
-    
     const addRow = () => {
-        
-        dispatch(setValuesKey({[innerTable?.name]:[]}))
 
-
+        dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }))
         const oldData = [...values?.[innerTable?.name]]
+        oldData.push(innerTable?.CreateObj);
 
+        dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
 
-        oldData.push({
-            rowId: uuidv4(),
-            number: '',
-            name: '',
-            comment: '',
-            file: '',
-        });
-        
-        dispatch(setValues({ ...values, [innerTable?.name]: oldData }));        
     }
 
 
