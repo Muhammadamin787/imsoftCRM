@@ -56,22 +56,22 @@ const ModalInput = (props) => {
     filePath,
     autoFocus,
     handleChangeValue,
-    fileName
+    fileName,
   } = props;
 
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template));
-        dispatch(toggleInnerModal(true));
-    };
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template));
+    dispatch(toggleInnerModal(true));
+  };
 
-    const refs = useRef(null);
+  const refs = useRef(null);
 
-    useEffect(() => {
-        const id = document.getElementById('autofucus');
-        if (id) {
-            id.focus();
-        }
-    }, []);
+  useEffect(() => {
+    const id = document.getElementById("autofucus");
+    if (id) {
+      id.focus();
+    }
+  }, []);
 
   switch (type) {
     case STRING:
@@ -292,7 +292,7 @@ const ModalInput = (props) => {
           gridColumn={gridColumn}
           gridRow={gridRow}
           height={height}
-          handleChange={handleChangeValue}
+          onChange={handleChangeValue}
           Iconic={Iconic}
           label={label}
         />
@@ -320,7 +320,7 @@ const ModalInput = (props) => {
           filePath={filePath}
           name={name}
           handleChangeValue={handleChangeValue}
-          fileName={fileName?fileName:""}
+          fileName={fileName ? fileName : ""}
         />
       );
       break;

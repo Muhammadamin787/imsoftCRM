@@ -60,7 +60,7 @@ const ContactsTemplate = {
           label: "Telifon 1",
         },
         {
-          name: "file",
+          name: "foto1",
           type: PICTURE_WALL,
           filePath: "/clients/image",
           required: true,

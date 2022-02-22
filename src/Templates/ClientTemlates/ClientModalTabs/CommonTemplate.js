@@ -104,7 +104,7 @@ const CommonTabTemplate = {
           template: ShaharTumanTemplate,
         },
         {
-          name: "xolati",
+          name: "client_status",
           type: SELECT,
           required: true,
           placeholder: "xolati",
