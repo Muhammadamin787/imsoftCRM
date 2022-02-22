@@ -291,7 +291,7 @@ const ModalInput = (props) => {
           gridColumn={gridColumn}
           gridRow={gridRow}
           height={height}
-          handleChange={handleChangeValue}
+          onChange={handleChangeValue}
           Iconic={Iconic}
           label={label}
         />
