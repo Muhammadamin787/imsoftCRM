@@ -11,8 +11,6 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
     const { values,allData } = useSelector(state => state.tabs_reducer);
     const dispatch = useDispatch();
 
-
-
     const handleChange = (e) => {
         const foundObj = values?.[tabName].find(d => d.rowId == record.rowId);
         const newObj = { ...foundObj, [name]: e };
@@ -24,12 +22,9 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
             ...values,
             [tabName]: [...a]
         }));
-
     }
 
-
     let input = null;
-
 
     switch (type) {
         case STRING:
@@ -44,7 +39,6 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
                 />
             );
             break;
-
             case SELECT:
             input = (
                     <div className="tab-select__option">
@@ -64,7 +58,6 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
                     </div>
             );
             break;
-
         case DATE:
             input = (
                 <DatePicker
@@ -77,7 +70,6 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
                 />
             );
             break;
-
         case UPLOAD:
             input = (
                 <UploadFile
@@ -85,15 +77,11 @@ const TabInput = ({ record, name, type,tabName ,options,filePath}) => {
                     name={name}
                     label="Upload"
                     handleChange={handleChange}
-                    filePath={filePath}
-
-                />
+                    filePath={filePath}/>
             );
             break;
-
         default:
             break;
-
     }
 
     return input;
