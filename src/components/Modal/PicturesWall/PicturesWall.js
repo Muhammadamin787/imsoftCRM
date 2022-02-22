@@ -19,7 +19,7 @@ export class PicturesWall extends React.Component {
     previewVisible: false,
     previewImage: "",
     previewTitle: "",
-    fileList: [],
+    fileList: this.props.fileList?this.props.fileList:[],
   };
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -51,7 +51,6 @@ export class PicturesWall extends React.Component {
   render() {
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
     const { name, filePath } = this.props;
-
     const uploadButton = (
       <div>
         <div>

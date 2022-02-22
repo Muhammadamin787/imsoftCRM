@@ -11,9 +11,14 @@ import YunalishlarTemplate from "../../../Templates/servisChildTemplates/Yunalis
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
 import FaolyatTurlaiTemplate from  '../../servisChildTemplates/FaolyatTurlariTemplate';
+import HududTemplate from '../../servisChildTemplates/HududTemplate'
+
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
+  allData: {
+    // cities: "/cities/all",
+  },
   form: [
     {
       grid: {
@@ -44,7 +49,7 @@ const CommonTabTemplate = {
           gridRow: "2 / 3",
         },
         {
-          name: "state_name",
+          name: "state_id",
           type: SELECT,
           required: true,
           placeholder: "viloyat",
@@ -64,16 +69,17 @@ const CommonTabTemplate = {
           label: "Manzil",
         },
         {
-          name: "kelish_turi",
+          name: "order_reason",
           type: SELECT,
           required: true,
           placeholder: "Kelish turi",
           gridColumn: "6 / 9",
           gridRow: "2 / 3",
           label: "Kelish turi",
+          options: "order_reason"
         },
         {
-          name: "type_name",
+          name: "activity_type_id",
           type: SELECT,
           required: true,
           placeholder: "Faoliyat turi",
@@ -84,16 +90,18 @@ const CommonTabTemplate = {
           template: FaolyatTurlaiTemplate
         },
         {
-          name: "address_name",
+          name: "address_id",
           type: SELECT,
           required: true,
           placeholder: "xudud",
+          template:HududTemplate,
+          options: "hudud",
           label: "Xudud",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
         },
         {
-          name: "region_name",
+          name: "region_id",
           type: SELECT,
           required: true,
           label: "Shahar/Tuman",
@@ -101,6 +109,7 @@ const CommonTabTemplate = {
           gridColumn: "3 / 6",
           gridRow: "3 / 4",
           label: "Shahar",
+          options: "cities",
           template: ShaharTumanTemplate,
         },
         {
@@ -111,6 +120,7 @@ const CommonTabTemplate = {
           label: "Xolati",
           gridColumn: "6 / 9",
           gridRow: "1 / 2",
+          options: "client_status"
         },
       ],
     },

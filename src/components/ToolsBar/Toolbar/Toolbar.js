@@ -40,7 +40,6 @@ const Toolbar = ({ tableItem }) => {
     (state) => state.tabs_reducer
   );
 
-  // console.log(tableItem);
 
   const handleModalClick = () => {
     const newPanes = Panes?.map((page) =>
@@ -88,7 +87,6 @@ const Toolbar = ({ tableItem }) => {
   const onEdit = () => {
     if (tableItem.length > 0 && tableItem.length < 2) {
       dispatch(setValues(...tableItem));
-      console.log(tableItem);
     }
     dispatch(toggleModal(true));
   };

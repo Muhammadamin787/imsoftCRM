@@ -24,7 +24,7 @@ const ContactsTemplate = {
 
       inputs: [
         {
-          name: "raxbar",
+          name: "client_name",
           type: STRING,
           required: true,
           placeholder: "Raxbar",
@@ -33,7 +33,7 @@ const ContactsTemplate = {
           label: "Raxbar",
         },
         {
-          name: "rahbar_telifon",
+          name: "client_phone_number",
           type: PHONE,
           required: true,
           placeholder: "Telifon",
@@ -42,7 +42,7 @@ const ContactsTemplate = {
           label: "Telifon 1",
         },
         {
-          name: "opirator",
+          name: "operator_name",
           type: STRING,
           required: true,
           placeholder: "Opirator",
@@ -60,7 +60,7 @@ const ContactsTemplate = {
           label: "Telifon 1",
         },
         {
-          name: "foto1",
+          name: "file_1",
           type: PICTURE_WALL,
           filePath: "/clients/image",
           required: true,
@@ -72,7 +72,7 @@ const ContactsTemplate = {
           fileName: "file",
         },
         {
-          name: "foto2",
+          name: "file_2",
           type: PICTURE_WALL,
           required: true,
           placeholder: "Foto",
@@ -84,7 +84,7 @@ const ContactsTemplate = {
           fileName: "file",
         },
         {
-          name: "foto3",
+          name: "file_3",
           type: PICTURE_WALL,
           required: true,
           placeholder: "Foto",
@@ -96,7 +96,7 @@ const ContactsTemplate = {
           fileName: "file",
         },
         {
-          name: "rahbar_telifon2",
+          name: "client_phone_number_2",
           type: PHONE,
           required: true,
           placeholder: "Telifon",
@@ -105,7 +105,7 @@ const ContactsTemplate = {
           label: "Telifon 2",
         },
         {
-          name: "opirator_telifon2",
+          name: "operator_phone_number_2",
           type: PHONE,
           required: true,
           placeholder: "Telifon",
@@ -114,7 +114,7 @@ const ContactsTemplate = {
           label: "Telifon 2",
         },
         {
-          name: "rahbar_tugilgan_sana",
+          name: "client_born_date",
           type: DATE,
           required: true,
           placeholder: "Tug'ilgan Sana",
@@ -123,7 +123,7 @@ const ContactsTemplate = {
           label: "Tug'ilgan Sana",
         },
         {
-          name: "opirator_tugilgan_sana",
+          name: "operator_born_date",
           type: DATE,
           required: true,
           placeholder: "Tug'ilgan Sana",

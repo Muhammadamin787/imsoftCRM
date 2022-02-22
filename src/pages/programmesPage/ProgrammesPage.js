@@ -24,7 +24,6 @@ const ProgrammesPage = ({ page }) => {
   //     }))
   //   }
 
-  // console.log(page);
 
 
   return (
