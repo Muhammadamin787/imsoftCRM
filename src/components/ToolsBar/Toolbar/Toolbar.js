@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import {
   removeTableItem,
   toggleModal,
@@ -19,9 +19,7 @@ import {
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
-import { v4 as uuidv4 } from 'uuid'
-
-
+import { v4 as uuidv4 } from "uuid";
 
 const addButtonIsDisabled = [
   JARAYONDAGI,
@@ -30,16 +28,12 @@ const addButtonIsDisabled = [
   OQITILAYOTGAN,
 ];
 
-
-
-
 const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes,MainData, values } = useSelector(
+  const { currentPage, loading, Panes, MainData, values } = useSelector(
     (state) => state.tabs_reducer
   );
-
 
   const handleModalClick = () => {
     const newPanes = Panes?.map((page) =>
@@ -51,7 +45,7 @@ const Toolbar = ({ tableItem }) => {
       ...currentPage,
       isOpenModal: !currentPage?.isOpenModal,
     };
-    
+
     dispatch(
       changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
@@ -67,7 +61,6 @@ const Toolbar = ({ tableItem }) => {
     // });
 
     // dispatch(setValues({ ...values, dev_docs: oldData }));
-
   };
 
   const onRemove = () => {
@@ -76,10 +69,15 @@ const Toolbar = ({ tableItem }) => {
     let ids = tableItem.map((row) => {
       return row.id;
     });
-    
+
     DELETE(url + "/delete", ids).then((res) => {
-      GET(removeApiStatusLines.includes(url)?`${url}/status/${currentPage?.key}`: url).then((res2) => {
-        setData(res2.data);
+      GET(
+        removeApiStatusLines.includes(url)
+          ? `${url}/status/${currentPage?.key}`
+          : url
+      ).then((res2) => {
+        console.log(res2.data.data);
+        dispatch(setData(res2.data.data));
       });
     });
   };
@@ -166,7 +164,12 @@ const Toolbar = ({ tableItem }) => {
               key={i}
               title={button?.tooltip?.text}
             >
-              <Button onClick={() => button.onClick()} disabled={addButtonIsDisabled.includes(currentPagePath)}>{button.icon}</Button>
+              <Button
+                onClick={() => button.onClick()}
+                disabled={addButtonIsDisabled.includes(currentPagePath)}
+              >
+                {button.icon}
+              </Button>
             </Tooltip>
           )
         )}

@@ -68,18 +68,18 @@ const SearchInput = () => {
           render: (text) => {
             let content = (
               <div style={{ width: "400px" }}>
-                <PaintBackground text={text} value={"a"} />
+                <PaintBackground text={text} value={value} />
               </div>
             );
             return popoverTrue.includes(item.dataIndex) ? (
               <Popover placement="leftTop" content={content}>
                 <div className="hodim-template">
                   <div className={"box-shadow"}></div>
-                  <PaintBackground text={text} value={"a"} />
+                  <PaintBackground text={text} value={value} />
                 </div>
               </Popover>
             ) : (
-              <PaintBackground text={text} value={"a"} />
+              <PaintBackground text={text} value={value} />
             );
           },
         };

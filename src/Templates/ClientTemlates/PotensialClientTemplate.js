@@ -104,7 +104,7 @@ const PotensialClientTemplate = {
     },
     {
       title: "Yo’nalishi",
-      dataIndex: "category_id",
+      dataIndex: "category_name",
       key: "category_id",
       width: "40%",
       align: "center",
