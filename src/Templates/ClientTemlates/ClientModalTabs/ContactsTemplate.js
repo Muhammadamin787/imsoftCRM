@@ -62,6 +62,7 @@ const ContactsTemplate = {
         {
           name: "foto1",
           type: PICTURE_WALL,
+          filePath: "/clients/image",
           required: true,
           placeholder: "Foto",
           gridColumn: "1 / 4",
@@ -78,6 +79,7 @@ const ContactsTemplate = {
           gridRow: "3 / 25",
           height: inputDeafultHeght * 7,
           label: " ",
+          filePath: "/clients/image",
         },
         {
           name: "foto3",
@@ -88,6 +90,7 @@ const ContactsTemplate = {
           gridRow: "3 / 25",
           height: inputDeafultHeght * 7,
           label: " ",
+          filePath: "/clients/image",
         },
         {
           name: "rahbar_telifon2",

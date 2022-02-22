@@ -12,7 +12,6 @@ import ProgrammesPageChild from "./programmesPageChild/ProgrammesPageChild";
 const ProgrammesPage = ({ page }) => {
   const dispatch = useDispatch();
   
-  // console.log(page);
   
   // const {values} = useSelector(state => state.tabs_reducer)
   // if (window.location.pathname == "/programmers/yangi_dasturlar" && page.isOpenModal) {

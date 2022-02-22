@@ -14,8 +14,7 @@ export const counterSlice = createSlice({
     mainData: [],
     loading: false,
     tableItem: [],
-    values: {
-    },
+    values: {},
     allData: {
       status: [
         {
@@ -31,6 +30,8 @@ export const counterSlice = createSlice({
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
+    currentLocation: [],
+    currentLocationIsOpen: false,
   },
   reducers: {
     addNewTab: (state, { payload }) => {
@@ -94,7 +95,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      // console.log(payload);
+      console.log(payload);
       state.values = payload;
     },
     setData: (state, { payload }) => {
@@ -125,14 +126,18 @@ export const counterSlice = createSlice({
       state.innerModal = payload;
     },
     setOffInnerModel: (state, { payload }) => {
-      state.innerModal = ""
+      state.innerModal = "";
+    },
+    setCurrentLocation: (s, { payload }) => {
+      s.currentLocation = payload;
+    },
+    setCurrentLocationIsOpen: (s, _) => {
+      s.currentLocationIsOpen = !s.currentLocationIsOpen;
     },
 
     setValuesKey: (state, { payload }) => {
-
       state.values = { ...state.values, ...payload };
-    }
-
+    },
   },
 });
 
@@ -160,7 +165,9 @@ export const {
   toggleInnerModal,
   setFilteredMainData,
   setOffInnerModel,
-  setValuesKey
+  setCurrentLocation,
+  setCurrentLocationIsOpen,
+  setValuesKey,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

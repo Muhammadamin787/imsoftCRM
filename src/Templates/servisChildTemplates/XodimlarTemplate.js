@@ -19,6 +19,7 @@ import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
 import ImgZoom from "../../components/image zoom/ImgZoom";
 import Zoom from "react-medium-image-zoom";
+import GetLocation from "../../components/Location/Location";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -47,7 +48,7 @@ const XodimlarTemplate = {
             },
             inputs: [
                 {
-                    name: "full_name",
+                    name: "name",
                     type: STRING,
                     required: true,
                     placeholder: "F.I.SH",
@@ -57,7 +58,7 @@ const XodimlarTemplate = {
                     autoFocus: true
                 },
                 {
-                    name: "tugilgan_sana",
+                    name: "born_date",
                     type: DATE,
                     required: true,
                     placeholder: "Tug'ilgan sana",
@@ -67,11 +68,11 @@ const XodimlarTemplate = {
                     height: inputDeafultHeght,
                 },
                 {
-                    name: "Yo'nalishi",
+                    label: "Yo'nalish",
+                    name: "type_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Yo'nalishi",
-                    label: "Yo'nalish",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
                     template: YunalishlarTemplate,
@@ -79,7 +80,7 @@ const XodimlarTemplate = {
                 },
                 {
                     label: "Viloyat",
-                    name: "viloyat",
+                    name: "state_id",
                     type: SELECT,
                     required: true,
                     placeholder: "viloyat",
@@ -89,43 +90,43 @@ const XodimlarTemplate = {
                     template: ViloyatlarTemplate
                 },
                 {
-                    name: "shahar",
+                    label: "Shahar",
+                    name: "region_id",
                     type: SELECT,
                     required: true,
                     placeholder: "Shahar",
-                    label: "Shahar",
                     template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
                     gridRow: "3 / 4",
                 },
                 {
-                    name: "manzil",
+                    label: "Manzil",
+                    name: "address",
                     type: STRING,
                     required: true,
                     placeholder: "Manzil",
                     gridColumn: "1 / 10",
                     gridRow: "4 / 5",
-                    label: "Manzil",
                     // height: "40px"
                 },
                 {
-                    name: "qushimcha_malumot",
+                    label: "Qo'shimcha malumot",
+                    name: "about",
                     type: TEXTAREA,
                     required: true,
                     placeholder: "Qo'shimcha malumot",
                     gridColumn: "1 / 10",
                     gridRow: "5 / 7",
-                    label: "Qo'shimcha malumot",
                     height: inputDeafultHeght * 1.4,
                 },
                 {
-                    name: "telefon",
+                    label: "Telefon",
+                    name: "phone_number",
                     type: PHONE,
                     required: true,
                     placeholder: "Telefon",
                     gridColumn: "10 / 16",
                     gridRow: "1 / 2",
-                    label: "Telefon",
                 },
                 {
                     type: UPLOAD,
@@ -148,7 +149,6 @@ const XodimlarTemplate = {
                     Iconic: "UploadFileOilasi",
                 },
                 {
-                    name: "hozirgi_yashash_joyi",
                     type: MAP,
                     required: true,
                     placeholder: "hozirgi turgan joyi (map quyiladi)",
@@ -285,6 +285,7 @@ const XodimlarTemplate = {
             key: "hozirgi_yashash_joyi",
             width: "15%",
             align,
+            render: (_, record, i) => <GetLocation record={record} />,
         },
         {
             title: "Qo'shimcha ma'lumot",
@@ -293,30 +294,6 @@ const XodimlarTemplate = {
             width: "45%",
             align,
             render: (text) => <BigLength text={text}/>,
-            //   render: (text) => (
-            //     <Popover placement="leftTop" content={text} style={{width: "400px !important"}}>
-            //       <div
-            //         style={{
-            //           height: "50px",
-            //           overflow: "scroll",
-            //           fontSize: ".9em",
-            //           margin: "-2px 0",
-            //           padding: 0,
-            //           // border: "1px solid red"
-            //         }}
-            //       >
-            //         {text}
-            //       </div>
-            //     </Popover>
-            //   ),
-            // render: (text => <div style={{
-            //     height: "50px",
-            //     overflow: "scroll",
-            //     fontSize: ".9em",
-            //     margin: "-2px 0",
-            //     padding: 0,
-            //     // border: "1px solid red"
-            // }}>{text}</div>)
         },
     ],
     scroll: {x: 2000, y: 500},

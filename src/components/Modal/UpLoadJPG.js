@@ -30,8 +30,6 @@ class UpLoadJPG extends React.Component {
     };
 
     handleChange = (info, e) => {
-        console.log(info)
-        console.log(e)
         // if (info.file.status === 'uploading') {
         //   this.setState({ loading: true });
         //   return;
@@ -59,29 +57,28 @@ class UpLoadJPG extends React.Component {
         );
 
         return (
-            <label
-                className="file-uploader-label"
-                htmlFor="file-uploder"
-                style={{
-                    gridColumn: this.props.gridColumn,
-                    gridRow: this.props.gridRow,
-                    height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
-                    width: "100% !important",
-                    // textAlign: "center",
-                    // backgroundColor:"red",
-                    border: "1px solid #D9D9D9",
-                }}
+            <label className="file-uploader-label"
+                   htmlFor="file-uploder"
+                   style={{
+                       gridColumn: this.props.gridColumn,
+                       gridRow: this.props.gridRow,
+                       height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
+                       width: "100% !important",
+                       // textAlign: "center",
+                       // backgroundColor:"red",
+                       border: "1px solid #D9D9D9",
+                   }}
             >
                 <p>{this.props?.label}</p>
                 <Upload id="file-uploder"
                         name={this.props.name}
                         placeholder={this.props.placeholder}
                         alt="file"
-                        // beforeUpload={beforeUpload}
+                    // beforeUpload={beforeUpload}
                         onChange={this.handleChange}
                         type="file"
                         maxCount={1}
-                        // showUploadList={false}
+                    // showUploadList={false}
                 >{"  "}
                 </Upload>
                 {this.props.Iconic && findIcon(this.props.Iconic)}

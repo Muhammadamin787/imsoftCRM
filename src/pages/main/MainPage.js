@@ -26,6 +26,7 @@ import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import { GET } from "../../functions/Methods";
 import SearchInput from '../../components/SearchInput/SearchInput'
+import LocModal from "../../components/Location/LocModal";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, mainData } = useSelector((state) => state.tabs_reducer);
@@ -149,8 +150,7 @@ const MainPage = () => {
           </Popover>
         </div>
       </Header>
-      <Content className="site-layout" style={{ marginTop: 64 }}>
-        <div>
+      <Content className="site-layout" id="site__loyout" style={{ marginTop: 64 }}>
           <Routes>
             {[
               ...AllPages,
@@ -173,11 +173,9 @@ const MainPage = () => {
               )
             )}
           </Routes>
-        </div>
         <GlobalModal />
         <InnerModal />
-        {/* <GlobalModal2 /> */}
-        {/* <AntdHookForm /> */}
+        <LocModal />
       </Content>
       <Footer className="site-footer">
         <BottomTabs />
