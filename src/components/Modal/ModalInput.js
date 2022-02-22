@@ -74,180 +74,181 @@ const ModalInput = (props) => {
         }
     }, []);
 
-    switch (type) {
-        case STRING:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                    required={required}
-                >
-                    {label && label}
-                    <Input
-                        name={name}
-                        autoFocus
-                        id={refs && "autofucus"}
-                        value={values[name] ? values[name] : ""}
-                        placeholder={placeholder}
-                        required={required}
-                        onChange={(e) => {
-                            const target = {
-                                [name]: e.target.value,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
-        case NUMBER:
-            input = (
-                <InputNumber
-                    addonBefore={label}
-                    type="number"
-                    autoFocus
-                    name={name}
-                    required
-                    id={refs && "autofucus"}
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                    placeholder={placeholder}
-                    showSearch
-                    onChange={(e) => {
-                        const target = {
-                            [name]: e,
-                        };
-                        handleChangeValue(target);
-                    }}
-                    value={values[name] ? values[name] : ""}
-                />
-            );
-            break;
-        case SELECT:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                    required={required}
-                    id={refs && "autofucus"}
-                    className="select-label"
-                >
-                    {label && label}
-                    <div className="select-add__option">
-                        <Select
-                            size="small"
-                            name={name}
-                            placeholder={placeholder}
-                            required={required}
-                            value={values[name]}
-                            onChange={(e) => {
-                                if (autoSelect) {
-                                    let selectedValues = {[name]: e};
-                                    autoSelect.forEach((el) => {
-                                        let thisObj = allData[options].find(
-                                            (item) => item["id"] === e
-                                        );
-                                        selectedValues = {...selectedValues, [el]: thisObj[el]};
-                                    });
-                                    handleChangeValue(selectedValues);
-                                } else {
-                                    handleChangeValue({[name]: e});
-                                }
-                            }}
-                        >
-                            {allData &&
-                                allData[options]?.map((option, i) => (
-                                    <Option
-                                        value={values[name] ? values[name] : option?.id}
-                                        key={option?.id}
-                                    >
-                                        {option?.name}
-                                    </Option>
-                                ))}
-                        </Select>
-                        {innerModal == "" ? (
-                            <div
-                                className="option-add"
-                                onClick={() => handleSelectAdd(template)}
-                            >
-                                {findIcon("Plus")}
-                            </div>
-                        ) : null}
-                    </div>
-                </label>
-            );
-            break;
-        case MAP:
-            input = (
-                <MapModal
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    handleChangeValue={handleChangeValue}
-                    required={required}
-                    geo={values?.longitude && values?.latitude ? [values.latitude, values?.longitude] : ""}
-                />
-            );
-            break;
-        case DATE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                >
-                    {label && label}
-                    <DatePicker
-                        placeholder={placeholder}
-                        format="DD.MM.YYYY"
-                        allowClear={false}
-                        autoFocus
-                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
-                        value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
-                        required={required}
-                        onChange={(_, dateString) => {
-                            const target = {
-                                [name]: dateString,
-                            };
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
-        case TEXTAREA:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                >
-                    {label && label}
-                    <TextArea
-                        placeholder={placeholder}
-                        autoFocus
-                        required={required}
-                        autoSize={{minRows: 3, maxRows: 3}}
-                        value={values[name] ? values[name] : ""}
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data.target.value,
-                            };
+  switch (type) {
+    case STRING:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+          required={required}
+        >
+          {label && label}
+          <Input
+            name={name}
+            autoFocus
+            id={refs && "autofucus"}
+            value={values && values[name]}
+            placeholder={placeholder}
+            required={required}
+            onChange={(e) => {
+              const target = {
+                [name]: e.target.value,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
+    case NUMBER:
+      input = (
+        <InputNumber
+          addonBefore={label}
+          type="number"
+          autoFocus
+          name={name}
+          required
+          id={refs && "autofucus"}
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+          placeholder={placeholder}
+          showSearch
+          onChange={(e) => {
+            const target = {
+              [name]: e,
+            };
+            handleChangeValue(target);
+          }}
+          value={values[name] ? values[name] : ""}
+        />
+      );
+      break;
+    case SELECT:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+          required={required}
+          id={refs && "autofucus"}
+          className="select-label"
+        >
+          {label && label}
+          <div className="select-add__option">
+            <Select
+              size="small"
+              name={name}
+              // autoFocus
+              placeholder={placeholder}
+              required={required}
+              value={values[name]}
+              onChange={(e) => {
+                if (autoSelect) {
+                  let selectedValues = { [name]: e };
+                  autoSelect.forEach((el) => {
+                    let thisObj = allData[options].find(
+                      (item) => item["id"] === e
+                    );
+                    selectedValues = { ...selectedValues, [el]: thisObj[el] };
+                  });
+                  handleChangeValue(selectedValues);
+                } else {
+                  handleChangeValue({ [name]: e });
+                }
+              }}
+            >
+              {allData &&
+                allData[options]?.map((option, i) => (
+                    <Option
+                        value={values[name] ? values[name] : option?.id}
+                        key={option?.id}
+                    >
+                        {option?.name}
+                    </Option>
+                ))}
+            </Select>
+              {innerModal == "" && template ? (
+                  <div
+                      className="option-add"
+                      onClick={() => handleSelectAdd(template)}
+                  >
+                      {findIcon("Plus")}
+                  </div>
+              ) : null}
+          </div>
+        </label>
+      );
+      break;
+    case MAP:
+      input = (
+        <MapModal
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          handleChangeValue={handleChangeValue}
+          required={required}
+          geo={values?.longitude && values?.latitude ? [values.latitude, values?.longitude] : ""}
+        />
+      );
+      break;
+    case DATE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
+          <DatePicker
+            placeholder={placeholder}
+            format="DD.MM.YYYY"
+            allowClear={false}
+            value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
+            autoFocus
+            // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+            required={required}
+            onChange={(_, dateString) => {
+              const target = {
+                [name]: dateString,
+              };
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
+    case TEXTAREA:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
+          <TextArea
+            placeholder={placeholder}
+            value={values[name] ? values[name] : ""}
+            autoFocus
+            required={required}
+            autoSize={{ minRows: 3, maxRows: 3 }}
+            onChange={(data) => {
+              const target = {
+                [name]: data.target.value,
+              };
 
                             handleChangeValue(target);
                         }}

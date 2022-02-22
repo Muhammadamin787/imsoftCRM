@@ -15,3 +15,25 @@
     }
   }
 }
+
+.tab-add__input{
+  background-color:#2F49D1;
+  border: none !important;
+  outline: none !important;
+  width: 25px;
+  height: 25px;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  span{
+    height: 25px;
+    width: 25px !important;
+  }
+}
+
+.tab-add__input:hover{
+  background-color:#2F49D1;
+  color:#fff !important;
+}

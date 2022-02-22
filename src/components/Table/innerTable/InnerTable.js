@@ -3,8 +3,10 @@ import { Table, Form, Button } from "antd";
 import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
 import { setValues, setValuesKey } from '../../../redux/tabs_reducer';
 import { useDispatch, useSelector } from 'react-redux';
+import {findIcon} from "../../../assets/icons/icons"
+import {PlusOutlined} from '@ant-design/icons';
 import { v4 as uuidv4 } from 'uuid';
-
+import "../GlobalTable.scss"
 
 const InnerTable = ({ innerTable }) => {
     const dispatch = useDispatch()
@@ -25,8 +27,10 @@ const InnerTable = ({ innerTable }) => {
 
     return (
         <>
-            <Button onClick={addRow}>+</Button>
-            <Table bordered
+            <Button className="tab-add__input" onClick={addRow}><span>+</span></Button>
+            {/* <Button className="tab-add__input" onClick={addRow}  ><PlusOutlined /></Button> */}
+            <Table 
+                bordered
                 columns={innerTable?.columns}
                 className="inner-table"
                 dataSource={values?.[innerTable?.name] || []}

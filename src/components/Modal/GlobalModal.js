@@ -58,7 +58,10 @@ const GlobalModal = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     handleChangeValue();
+
+    console.log(e.target);
 
     const url = currentPage?.mainUrl;
     POST(url, values).then(res => {
@@ -71,7 +74,6 @@ const GlobalModal = () => {
         });
     });
     dispatch(toggleModal(false));
-    dispatch(setValues({}));
   };
 
   const draggleRef = useRef("s");
