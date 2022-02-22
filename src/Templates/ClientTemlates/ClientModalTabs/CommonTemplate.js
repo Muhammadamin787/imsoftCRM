@@ -104,7 +104,6 @@ const CommonTabTemplate = {
           name: "region_id",
           type: SELECT,
           required: true,
-          label: "Shahar/Tuman",
           placeholder: "Shahar/Tuman",
           gridColumn: "3 / 6",
           gridRow: "3 / 4",
