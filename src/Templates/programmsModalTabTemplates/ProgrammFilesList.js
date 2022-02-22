@@ -3,6 +3,8 @@ import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { v4 as uuidv4 } from 'uuid'
+import { Input, Button } from "antd"
+
 
 
 export const ProgrammFilesList = {
@@ -18,7 +20,7 @@ export const ProgrammFilesList = {
             title: <FieldNumberOutlined/>,
             dataIndex: "id",
             key: "number",
-            width: "10px",
+            width: "5%",
             align: "center"
         },
         {
@@ -31,11 +33,25 @@ export const ProgrammFilesList = {
         },
         {
             title: "Fayl",
-            dataIndex: "file_doc",
+            dataIndex: "file",
+            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
-            width: "20%",
-            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file"} type={UPLOAD} filePath={"/workers/image"} />,
+            width: "15%",
+            align: "center"
+        },
+        {
+            title: "Actions",
+            dataIndex: "actions",
+            render: (_, record) => {
+                return <>
+                    <Button type="link">Delete</Button>
+                </>
+            },
+            key: "action",
+            width: "10%",
             align: "center"
         }
+
+
     ]
 }

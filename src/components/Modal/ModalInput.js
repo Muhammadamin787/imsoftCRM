@@ -171,7 +171,7 @@ const ModalInput = (props) => {
                   </Option>
                 ))}
             </Select>
-            {innerModal == "" ? (
+            {innerModal == "" && template ? (
               <div
                 className="option-add"
                 onClick={() => handleSelectAdd(template)}

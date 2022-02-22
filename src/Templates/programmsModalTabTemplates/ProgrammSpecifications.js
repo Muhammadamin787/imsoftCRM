@@ -28,7 +28,7 @@ export const ProgrammSpecifications = {
             dataIndex: "name",
             render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
             key: "number",
-            width: "25%",
+            width: "30%",
             align: "center",
         },
         {
@@ -36,13 +36,13 @@ export const ProgrammSpecifications = {
             dataIndex: "comment",
             render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
             key: "number",
-            width: "35%",
+            width: "40%",
             align: "center"
         },
         {
             title: "Fayl",
-            dataIndex: "file_doc",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} filePath={"/projects/image"} type={UPLOAD} />,
+            dataIndex: "file",
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
             width: "15%",
             align: "center"
@@ -56,7 +56,7 @@ export const ProgrammSpecifications = {
                 </>
             },
             key: "action",
-            width: "15%",
+            width: "10%",
             align: "center"
         }
 
