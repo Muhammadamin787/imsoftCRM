@@ -22,6 +22,8 @@ const PotensialClientTemplate = {
     states: "/states/all",
     cities: "/cities/all",
     activity_types: "/activity-types",
+    hudud: "/districts/all",
+    // cities: "/cities/all",
   },
   modal: {
     style: {
@@ -31,15 +33,14 @@ const PotensialClientTemplate = {
     tabs: [CommonTemplate, ContactsTemplate, CommentsTemplate],
   },
   filters: [
-    "order_time",
-    "type_name",
     "home_address",
     "address_name",
     "state_name",
     "region_name",
     "category_id",
+    "activity_type_name",
+    "created_at",
   ],
-
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -48,14 +49,6 @@ const PotensialClientTemplate = {
       width: "15%",
       align: "center",
       render: (text, _, i) => ++i,
-    },
-
-    {
-      title: "Kim orqali",
-      dataIndex: "enterprise_name",
-      key: "enterprise_name",
-      width: "60%",
-      align: "center",
     },
 
     {
@@ -93,7 +86,7 @@ const PotensialClientTemplate = {
 
     {
       title: "Rasm",
-      dataIndex: "file",
+      dataIndex: "file_1",
       key: "file",
       width: "40%",
       render: (_, record) => (
@@ -111,7 +104,7 @@ const PotensialClientTemplate = {
     },
     {
       title: "Yo’nalishi",
-      dataIndex: "category_id",
+      dataIndex: "category_name",
       key: "category_id",
       width: "40%",
       align: "center",
@@ -147,15 +140,15 @@ const PotensialClientTemplate = {
     },
     {
       title: "Faoliyat",
-      dataIndex: "type_name",
-      key: "type_name",
+      dataIndex: "activity_type_name",
+      key: "activity_type_name",
       width: "40%",
       align: "center",
     },
     {
       title: "Qo’shilgan Vaqti",
-      dataIndex: "order_time",
-      key: "order_time",
+      dataIndex: "created_at",
+      key: "created_at",
       width: "60%",
       align: "center",
     },

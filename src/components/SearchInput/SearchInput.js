@@ -20,6 +20,8 @@ const dontFilterTamlateDataIndex = [
   "family",
   "hozirgi_yashash_joyi",
   "number",
+  "file_1",
+  "latitude",
 ];
 
 // ! Template dagi dataIndex keladigan ma'lumotlarning length kotta bo'lib ketadigan bo'lsa u holda table buzilib ketadi
@@ -43,10 +45,10 @@ const SearchInput = () => {
   }, [mainData]);
 
   useEffect(() => {
-
     let filter = mainData.filter((item) => {
       for (let i = 0; i < keys.length; i++) {
         if (typeof item[keys[i]] === "string") {
+          console.log(item[keys[i]]);
           if (
             item[keys[i]]
               .toString()
@@ -85,7 +87,7 @@ const SearchInput = () => {
         return item;
       }
     });
-    
+
     if (currentPage?.columns) {
       dispatch(setCurrentPage({ ...currentPage, columns: newColumn }));
     }

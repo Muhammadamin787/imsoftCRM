@@ -96,7 +96,8 @@ const XodimlarTemplate = {
                     required: true,
                     placeholder: "Shahar",
                     template: ShaharTumanTemplate,
-                    gridColumn: "5 / 10",
+                    gridColumn: "5 / 10",  
+                    options: "cities",     
                     gridRow: "3 / 4",
                 },
                 {
@@ -165,6 +166,7 @@ const XodimlarTemplate = {
                     required: true,
                     gridColumn: "16 / 21",
                     gridRow: "1 / 7",
+                    fileName: "developer_photo",
                 },
             ],
         },

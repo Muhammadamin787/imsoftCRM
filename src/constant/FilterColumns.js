@@ -22,7 +22,7 @@ export default (filters, columns, data) => {
         return {
           ...a,
           filters: filtereds,
-          onFilter: (value, record) => record[d].indexOf(value) === 0,
+          onFilter: (value, record) => `${record[d]}`.indexOf(value) === 0,
         };
       } else {
         return a;

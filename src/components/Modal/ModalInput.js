@@ -21,6 +21,7 @@ import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
+import moment from "moment";
 import {
   setValues,
   setInnerModel,
@@ -56,21 +57,22 @@ const ModalInput = (props) => {
     filePath,
     autoFocus,
     handleChangeValue,
+    fileName,
   } = props;
 
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template));
-        dispatch(toggleInnerModal(true));
-    };
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template));
+    dispatch(toggleInnerModal(true));
+  };
 
-    const refs = useRef(null);
+  const refs = useRef(null);
 
-    useEffect(() => {
-        const id = document.getElementById('autofucus');
-        if (id) {
-            id.focus();
-        }
-    }, []);
+  useEffect(() => {
+    const id = document.getElementById("autofucus");
+    if (id) {
+      id.focus();
+    }
+  }, []);
 
   switch (type) {
     case STRING:
@@ -88,7 +90,7 @@ const ModalInput = (props) => {
             name={name}
             autoFocus
             id={refs && "autofucus"}
-            value={values && values[name]}
+            value={values[name] ? values[name] : ""}
             placeholder={placeholder}
             required={required}
             onChange={(e) => {
@@ -125,6 +127,7 @@ const ModalInput = (props) => {
             };
             handleChangeValue(target);
           }}
+          value={values[name] ? values[name] : ""}
         />
       );
       break;
@@ -145,7 +148,6 @@ const ModalInput = (props) => {
             <Select
               size="small"
               name={name}
-              // autoFocus
               placeholder={placeholder}
               required={required}
               value={values[name]}
@@ -164,11 +166,13 @@ const ModalInput = (props) => {
                 }
               }}
             >
-              <Option value={"01"}>Assalomu aleykum</Option>
               {allData &&
                 allData[options]?.map((option, i) => (
-                  <Option value={option.id} key={option.id}>
-                    {option.name}
+                  <Option
+                    value={values[name] ? values[name] : option?.id}
+                    key={option?.id}
+                  >
+                    {option?.name}
                   </Option>
                 ))}
             </Select>
@@ -192,6 +196,7 @@ const ModalInput = (props) => {
           height={height}
           handleChangeValue={handleChangeValue}
           required={required}
+          geo={values?.longtitude&&values?.latitude?[values.latitude, values?.longtitude]:""}
         />
       );
       break;
@@ -211,6 +216,7 @@ const ModalInput = (props) => {
             allowClear={false}
             autoFocus
             // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+            value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
             required={required}
             onChange={(_, dateString) => {
               const target = {
@@ -237,6 +243,7 @@ const ModalInput = (props) => {
             autoFocus
             required={required}
             autoSize={{ minRows: 3, maxRows: 3 }}
+            value={values[name] ? values[name] : ""}
             onChange={(data) => {
               const target = {
                 [name]: data.target.value,
@@ -277,6 +284,7 @@ const ModalInput = (props) => {
               };
               handleChangeValue(target);
             }}
+            value={values[name] ? values[name] : ""}
           />
         </label>
       );
@@ -319,6 +327,19 @@ const ModalInput = (props) => {
           filePath={filePath}
           name={name}
           handleChangeValue={handleChangeValue}
+          fileName={fileName ? fileName : ""}
+          fileList={
+            values[name]
+              ? [
+                  {
+                    uid: "-1",
+                    name: "image.png",
+                    status: "done",
+                    url: values[name],
+                  },
+                ]
+              : false
+          }
         />
       );
       break;

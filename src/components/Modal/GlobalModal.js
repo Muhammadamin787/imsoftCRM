@@ -58,7 +58,6 @@ const GlobalModal = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     handleChangeValue();
 
     const url = currentPage?.mainUrl;
@@ -72,6 +71,7 @@ const GlobalModal = () => {
         });
     });
     dispatch(toggleModal(false));
+    dispatch(setValues({}));
   };
 
   const draggleRef = useRef("s");

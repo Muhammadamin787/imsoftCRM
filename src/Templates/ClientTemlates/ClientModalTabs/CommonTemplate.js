@@ -11,9 +11,14 @@ import YunalishlarTemplate from "../../../Templates/servisChildTemplates/Yunalis
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
 import FaolyatTurlaiTemplate from  '../../servisChildTemplates/FaolyatTurlariTemplate';
+import HududTemplate from '../../servisChildTemplates/HududTemplate'
+
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
+  allData: {
+    // cities: "/cities/all",
+  },
   form: [
     {
       grid: {
@@ -24,7 +29,7 @@ const CommonTabTemplate = {
       inputs: [
         {
           label: "Korxona nomi",
-          name: "korxona_nomi",
+          name: "enterprise_name",
           type: STRING,
           required: true,
           placeholder: "Korxona nomi",
@@ -33,7 +38,7 @@ const CommonTabTemplate = {
           autoFocus: true
         },
         {
-          name: "yunalish_turi",
+          name: "category_id",
           type: SELECT,
           required: true,
           label: "Yunalish turi",
@@ -44,7 +49,7 @@ const CommonTabTemplate = {
           gridRow: "2 / 3",
         },
         {
-          name: "viloyat",
+          name: "state_id",
           type: SELECT,
           required: true,
           placeholder: "viloyat",
@@ -55,7 +60,7 @@ const CommonTabTemplate = {
           template: ViloyatlarTemplate,
         },
         {
-          name: "manzil",
+          name: "home_address",
           type: STRING,
           required: true,
           placeholder: "Manzil",
@@ -64,16 +69,17 @@ const CommonTabTemplate = {
           label: "Manzil",
         },
         {
-          name: "kelish_turi",
+          name: "order_reason",
           type: SELECT,
           required: true,
           placeholder: "Kelish turi",
           gridColumn: "6 / 9",
           gridRow: "2 / 3",
           label: "Kelish turi",
+          options: "order_reason"
         },
         {
-          name: "faoliyat_turi",
+          name: "activity_type_id",
           type: SELECT,
           required: true,
           placeholder: "Faoliyat turi",
@@ -84,16 +90,18 @@ const CommonTabTemplate = {
           template: FaolyatTurlaiTemplate
         },
         {
-          name: "xudud",
+          name: "address_id",
           type: SELECT,
           required: true,
           placeholder: "xudud",
+          template:HududTemplate,
+          options: "hudud",
           label: "Xudud",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
         },
         {
-          name: "shahar_tuman",
+          name: "region_id",
           type: SELECT,
           required: true,
           label: "Shahar/Tuman",
@@ -101,16 +109,18 @@ const CommonTabTemplate = {
           gridColumn: "3 / 6",
           gridRow: "3 / 4",
           label: "Shahar",
+          options: "cities",
           template: ShaharTumanTemplate,
         },
         {
-          name: "xolati",
+          name: "client_status",
           type: SELECT,
           required: true,
           placeholder: "xolati",
           label: "Xolati",
           gridColumn: "6 / 9",
           gridRow: "1 / 2",
+          options: "client_status"
         },
       ],
     },
