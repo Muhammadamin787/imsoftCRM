@@ -14,37 +14,6 @@ export const counterSlice = createSlice({
     loading: false,
     tableItem: [],
     values: {},
-    allData: {
-      status: [
-        {
-          id: 1,
-          name: "1",
-        },
-        {
-          id: 0,
-          name: "0",
-        },
-      ],
-      client_status: [
-        { id: 1, name: "Potensial mijoz" },
-        { id: 2, name: "Real Mijoz" },
-        { id: 3, name: "Rad etilgan mijoz" },
-      ],
-      order_reason: [
-        {
-          id: "Frontend",
-          name: "Frontend",
-        },
-        {
-          id: "Backend",
-          name: "Backend",
-        },
-        {
-          id: "Ui Ux",
-          name: "Ui Ux",
-        },
-      ],
-    },
     Panes: [],
     currentPage: {},
     innerModal: "",

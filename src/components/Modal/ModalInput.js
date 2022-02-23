@@ -22,13 +22,7 @@ import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import {
-  setValues,
-  setInnerModel,
-  toggleModal,
-  toggleInnerModal,
-  setAllData,
-} from "../../redux/stored_reducer";
+import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
@@ -38,7 +32,7 @@ const { TextArea } = Input;
 const ModalInput = (props) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage, values, allData, innerModal } = useSelector(
+  const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
   const {
@@ -59,6 +53,8 @@ const ModalInput = (props) => {
     handleChangeValue,
     fileName,
   } = props;
+
+  const {allData} = useSelector(s => s.unsaved_reducer);
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
@@ -150,7 +146,8 @@ const ModalInput = (props) => {
               name={name}
               placeholder={placeholder}
               required={required}
-              value={values[name]}
+              // value={allData[options]}
+              defaultValue={values[name]&&values[name]}
               onChange={(e) => {
                 if (autoSelect) {
                   let selectedValues = { [name]: e };
@@ -168,10 +165,7 @@ const ModalInput = (props) => {
             >
               {allData &&
                 allData[options]?.map((option, i) => (
-                  <Option
-                    value={values[name] ? values[name] : option?.id}
-                    key={option?.id}
-                  >
+                  <Option value={option?.id} key={option?.id}>
                     {option?.name}
                   </Option>
                 ))}
@@ -196,7 +190,11 @@ const ModalInput = (props) => {
           height={height}
           handleChangeValue={handleChangeValue}
           required={required}
-          geo={values?.longtitude&&values?.latitude?[values.latitude, values?.longtitude]:""}
+          geo={
+            values?.longtitude && values?.latitude
+              ? [values.latitude, values?.longtitude]
+              : ""
+          }
         />
       );
       break;
@@ -269,7 +267,6 @@ const ModalInput = (props) => {
             country={"uz"}
             style={{ height: "65px !important" }}
             specialLabel={false}
-            // autoFormat
             disableDropdown={true}
             countryCodeEditable={false}
             required={required}

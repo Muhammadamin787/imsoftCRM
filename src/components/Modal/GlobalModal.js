@@ -8,22 +8,17 @@ import {
   setValues,
   setTableItem,
 } from "../../redux/stored_reducer";
-import {
-  setData,
-  setAllData,
-} from "../../redux/unsaved_reducer";
+import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 
 const GlobalModal = () => {
-  const { currentPage, data, values } = useSelector(
-    (state) => state.tabs_reducer
-  );
+  const { currentPage, values } = useSelector((state) => state.tabs_reducer);
+  const { allData } = useSelector((state) => state.unsaved_reducer);
 
   const [bounds, setBounds] = useState({
     left: 0,
@@ -62,15 +57,19 @@ const GlobalModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleChangeValue();
-    const {mainUrl, key} = currentPage;
-    POST(mainUrl, values).then(res => {
-        message.success({ content: res.data.data, key: e });
-        dispatch(toggleModal(false));
-        dispatch(setValues({}));
-        dispatch(setTableItem([]))
-        GET(removeApiStatusLines.includes(mainUrl)?`${mainUrl}/status/${key}`:mainUrl).then(res => {
-            dispatch(setData(res.data.data))
-        });
+    const { mainUrl, key } = currentPage;
+    POST(mainUrl, values).then((res) => {
+      message.success({ content: res.data.data, key: e });
+      dispatch(toggleModal(false));
+      dispatch(setValues({}));
+      dispatch(setTableItem([]));
+      GET(
+        removeApiStatusLines.includes(mainUrl)
+          ? `${mainUrl}/status/${key}`
+          : mainUrl
+      ).then((res) => {
+        dispatch(setData(res.data.data));
+      });
     });
     dispatch(toggleModal(false));
   };
@@ -93,10 +92,9 @@ const GlobalModal = () => {
 
   return (
     <Modal
-        className="global-modal"
-        style={{ ...currentPage?.modal?.style }}
-        width={currentPage?.modal?.style?.width}
-
+      className="global-modal"
+      style={{ ...currentPage?.modal?.style }}
+      width={currentPage?.modal?.style?.width}
       footer={null}
       title={
         <div
@@ -159,7 +157,10 @@ const GlobalModal = () => {
             ))}
           </div>
         ))}
-        <ModalTabs tabs={currentPage?.modal?.tabs} handleChangeValue={handleChangeValue} />
+        <ModalTabs
+          tabs={currentPage?.modal?.tabs}
+          handleChangeValue={handleChangeValue}
+        />
         <div className="modal-form_buttons">
           <Button
             type="submit"
