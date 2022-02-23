@@ -83,7 +83,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                 <UploadFile
                     id="file-uploder"
                     label="Upload"
-                    filePath={filePath}/>
+                    filePath={filePath}
                     name={name}
                     onChange={handleChange}
                 />
