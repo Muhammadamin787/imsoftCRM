@@ -72,7 +72,6 @@ const MainPage = () => {
                 removeApiStatusLines.includes(url) ? `${url}/status/${currentPage?.key}` : url
             );
             data.then((res) => {
-                    // console.log(res);
                     dispatch(setData(res.data.data));
                 })
                 .then((r) => {

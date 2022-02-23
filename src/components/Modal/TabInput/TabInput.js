@@ -12,7 +12,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const { values, allData } = useSelector(state => state.tabs_reducer);
     const dispatch = useDispatch();
 
-    // console.log(allData);
 
 
     const handleChange = (e) => {
@@ -97,7 +96,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
         case DATE:
             input = (
                 <DatePicker
-                    format="DD.MM.YYYY"
+                    format="DD/MM/YYYY"
                     allowClear={false}
                     onChange={(_, dateString) => {
 

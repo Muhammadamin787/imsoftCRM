@@ -20,6 +20,8 @@ const dontFilterTamlateDataIndex = [
   "family",
   "hozirgi_yashash_joyi",
   "number",
+  "file_1",
+  "loc",
 ];
 
 // ! Template dagi dataIndex keladigan ma'lumotlarning length kotta bo'lib ketadigan bo'lsa u holda table buzilib ketadi
@@ -44,10 +46,10 @@ const SearchInput = () => {
   }, [mainData]);
 
   useEffect(() => {
-
     let filter = mainData.filter((item) => {
       for (let i = 0; i < keys.length; i++) {
         if (typeof item[keys[i]] === "string") {
+          console.log(item[keys[i]]);
           if (
             item[keys[i]]
               .toString()
@@ -61,35 +63,40 @@ const SearchInput = () => {
     });
 
     let newColumn = currentPage?.columns?.map((item) => {
-      if (!dontFilterTamlateDataIndex.includes(item.dataIndex)) {
-        return {
-          ...item,
-          render: (text) => {
-            let content = (
-              <div style={{ width: "400px" }}>
-                <PaintBackground text={text} value={value} />
-              </div>
-            );
-            return popoverTrue.includes(item.dataIndex) ? (
-              <Popover placement="leftTop" content={content}>
-                <div className="hodim-template">
-                  <div className={"box-shadow"}></div>
-                  <PaintBackground text={text} value={value} />
+      if (item?.dataIndex) {
+        if (!dontFilterTamlateDataIndex.includes(item?.dataIndex)) {
+          return {
+            ...item,
+            render: (text) => {
+              let content = (
+                <div style={{ width: "400px" }}>
+                  <PaintBackground text={`${text}`} value={value?value:" "} />
                 </div>
-              </Popover>
-            ) : (
-              <PaintBackground text={text} value={value} />
-            );
-          },
-        };
+              );
+              return popoverTrue.includes(item.dataIndex) ? (
+                <Popover placement="leftTop" content={content}>
+                  <div className="hodim-template">
+                    <div className={"box-shadow"}></div>
+                    <PaintBackground text={`${text}`} value={value?value:""} />
+                  </div>
+                </Popover>
+              ) : (
+                <PaintBackground text={`${text}`} value={value?value:""} />
+              );
+            },
+          };
+        } else {
+          return item;
+        }
       } else {
         return item;
       }
     });
-    
+
     if (currentPage?.columns) {
       dispatch(setCurrentPage({ ...currentPage, columns: newColumn }));
     }
+
     dispatch(setFilteredMainData(filter));
   }, [value]);
 

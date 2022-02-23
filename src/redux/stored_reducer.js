@@ -13,6 +13,7 @@ export const counterSlice = createSlice({
     values: {},
     loading: false,
     tableItem: [],
+    values: {},
     Panes: [],
     currentPage: {},
     innerModal: "",
@@ -54,7 +55,6 @@ export const counterSlice = createSlice({
     },
     setCurrentPage: (state, { payload }) => {
       if (!payload?.sections) {
-        // Bu sections bolgan tamplate larni currentPage ga o'zlashtirmaydi misol uchun ServicePage ni
         state.currentPage = payload;
       } else {
         state.currentPage = {};
@@ -83,6 +83,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
+      console.log(payload);
       state.values = payload;
     },
     startLoading: (state) => {

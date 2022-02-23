@@ -22,6 +22,9 @@ const PotensialClientTemplate = {
     states: "/states/all",
     cities: "/cities/all",
     activity_types: "/activity-types",
+    hudud: "/districts/all",
+    category_name: '/categories'
+    // cities: "/cities/all",
   },
   modal: {
     style: {
@@ -31,15 +34,14 @@ const PotensialClientTemplate = {
     tabs: [CommonTemplate, ContactsTemplate, CommentsTemplate],
   },
   filters: [
-    "order_time",
-    "type_name",
     "home_address",
     "address_name",
     "state_name",
     "region_name",
     "category_id",
+    "activity_type_name",
+    "created_at",
   ],
-
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -48,14 +50,6 @@ const PotensialClientTemplate = {
       width: "15%",
       align: "center",
       render: (text, _, i) => ++i,
-    },
-
-    {
-      title: "Kim orqali",
-      dataIndex: "enterprise_name",
-      key: "enterprise_name",
-      width: "60%",
-      align: "center",
     },
 
     {
@@ -93,25 +87,29 @@ const PotensialClientTemplate = {
 
     {
       title: "Rasm",
-      dataIndex: "file",
+      dataIndex: "file_1",
       key: "file",
       width: "40%",
-      render: (_, record) => (
-        <ImgZoom src="https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI=" />
+      render: (text, record) => (
+        <div style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
+          <ImgZoom src={text} />
+          <ImgZoom src={record?.file_2} />
+          <ImgZoom src={record?.file_3} />
+        </div>
       ),
       align: "center",
     },
     {
       title: "Location",
-      dataIndex: "latitude",
-      key: "latitude",
+      dataIndex: "loc",
+      key: "loc",
       width: "40%",
       align: "center",
       render: (_, record, i) => <GetLocation record={record} />,
     },
     {
       title: "Yo’nalishi",
-      dataIndex: "category_id",
+      dataIndex: "category_name",
       key: "category_id",
       width: "40%",
       align: "center",
@@ -147,15 +145,15 @@ const PotensialClientTemplate = {
     },
     {
       title: "Faoliyat",
-      dataIndex: "type_name",
-      key: "type_name",
+      dataIndex: "activity_type_name",
+      key: "activity_type_name",
       width: "40%",
       align: "center",
     },
     {
       title: "Qo’shilgan Vaqti",
-      dataIndex: "order_time",
-      key: "order_time",
+      dataIndex: "created_at",
+      key: "created_at",
       width: "60%",
       align: "center",
     },

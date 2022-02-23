@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
-import { BaseUrl } from "../../../BaseUrl";
+import { BaseUrl, BaseUrlPost } from "../../../BaseUrl";
+
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -18,7 +19,7 @@ export class PicturesWall extends React.Component {
     previewVisible: false,
     previewImage: "",
     previewTitle: "",
-    fileList: [],
+    fileList: this.props.fileList?this.props.fileList:[],
   };
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -36,23 +37,20 @@ export class PicturesWall extends React.Component {
   };
 
   handleDelete = (e) => {
-    console.log(e);
-    // DELETE(this.props.filePath + "/delete", {
-    //   type: this.props.name,
-    //   filename: e.response,
-    // });
+    DELETE(this.props.filePath + "/delete", {
+      type: this.props.name,
+      filename: e.response,
+    });
   };
 
   handleChange = (e) => {
-    console.log(e.fileList[0].response);
-    this.props.handleChangeValue({ [this.props.name]: e.fileList[0].response });
+    this.props.handleChangeValue({[this.props.name]: `${BaseUrlPost}${e.file.response}`});
     this.setState({ fileList: e.fileList });
   };
 
   render() {
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
-    const { name, filePath } = this.props;
-
+    const { filePath } = this.props;
     const uploadButton = (
       <div>
         <div>
@@ -81,12 +79,11 @@ export class PicturesWall extends React.Component {
         htmlFor="file-uploder"
         style={customStyles.imageUploader}
       >
-        {console.log(name)}
         <Upload
           action={BaseUrl + filePath}
           listType="picture-card"
           fileList={fileList}
-          name={name}
+          name={this.props.fileName}
           onPreview={this.handlePreview}
           onRemove={this.handleDelete}
           onChange={this.handleChange}
@@ -106,5 +103,3 @@ export class PicturesWall extends React.Component {
     );
   }
 }
-
-/* ------------------------------------ / ----------------------------------- */
