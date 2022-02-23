@@ -3,7 +3,7 @@ import React from "react";
 import { Input, Button } from "antd"
 // import TabInput from "../../components/Modal/tabInput/tabInput";
 import TabInput from "../../components/Modal/TabInput/TabInput";
-import { STRING, UPLOAD } from "../../components/Modal/InputTypes"
+import { STRING, UPLOAD, BUTTON } from "../../components/Modal/InputTypes"
 import { v4 as uuidv4 } from 'uuid'
 
 export const ProgrammSpecifications = {
@@ -15,6 +15,8 @@ export const ProgrammSpecifications = {
         comment: '',
         file: '',
     },
+    scroll: { y: 130},
+
     columns: [
         {
             title: <FieldNumberOutlined />,
@@ -40,24 +42,12 @@ export const ProgrammSpecifications = {
             align: "center"
         },
         {
-            title: "Fayl",
-            dataIndex: "file",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
-            key: "number",
-            width: "15%",
-            align: "center"
-        },
-        {
             title: "Actions",
             dataIndex: "actions",
-            render: (_, record) => {
-                return <>
-                    <Button type="link">Delete</Button>
-                </>
-            },
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
             key: "action",
             width: "10%",
-            align: "center"
+            align: "center",
         }
 
     ],

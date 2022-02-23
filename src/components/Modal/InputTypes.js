@@ -10,3 +10,4 @@ export const CHECKBOX = "CHECKBOX";
 export const MAP = "MAP";
 export const TEXTAREA = "TEXTAREA";
 export const UPLOAD = "UPLOAD";
+export const BUTTON = "BUTTON";

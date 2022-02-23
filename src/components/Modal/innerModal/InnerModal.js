@@ -3,7 +3,8 @@ import '../GlobalModal.scss'
 import {Modal, Button, Form, message} from "antd";
 import ModalInput from "../ModalInput";
 import {useSelector, useDispatch} from "react-redux";
-import {toggleInnerModal, setData, setAllData, setValues, setTableItem, setOffInnerModel} from "../../../redux/tabs_reducer";
+import {toggleInnerModal, setValues, setTableItem, setOffInnerModel} from "../../../redux/stored_reducer";
+import { setData, setAllData } from "../../../redux/unsaved_reducer";
 import Draggable from "react-draggable";
 import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
@@ -12,7 +13,7 @@ import {GET, POST} from "../../../functions/Methods";
 // ❗ hard code boldi, Global modaldagi codelar takrollandi 
 
 const InnerModal = () => {
-    const {currentPage, data, values, innerModal} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, values, innerModal} = useSelector((state) => state.tabs_reducer);
 
 
     const [bounds, setBounds] = useState({

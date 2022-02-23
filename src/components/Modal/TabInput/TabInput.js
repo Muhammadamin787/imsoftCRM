@@ -1,9 +1,10 @@
 import React from 'react'
-import { Input, DatePicker, Select } from "antd"
+import { Input, DatePicker, Select, Button } from "antd"
 import { useSelector, useDispatch } from "react-redux";
-import { setValues } from '../../../redux/tabs_reducer';
+import { DeleteOutlined } from "@ant-design/icons"
+import { setValues } from '../../../redux/stored_reducer';
 import UploadFile from "../../Modal/UpLoadFile"
-import { STRING, DATE, UPLOAD, SELECT } from '../InputTypes'
+import { STRING, DATE, UPLOAD, SELECT,BUTTON } from '../InputTypes'
 import { Option } from "antd/lib/mentions";
 import "./TabInput.scss"
 
@@ -17,6 +18,9 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const handleChange = (e) => {
 
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
+
+        // console.log(foundObj);
+
         const newObj = { ...foundObj, [name]: e };
         let a = [...values?.[tabName]];
         a.splice(a.indexOf(foundObj), 1)
@@ -30,6 +34,24 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
         }));
 
         // console.log(values);
+
+    }
+
+    const handleDelete = () => {
+        const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
+
+        const tabnameValues = values?.[tabName]
+        const newTabs = tabnameValues.filter(d => d.rowId !== foundObj.rowId)
+
+        // console.log(foundObj);
+        // console.log(tabnameValues);
+        // console.log(newTabs);
+
+        // dispatch(setValues({
+        //     ...values,
+        //     [tabName]: [...newTabs]
+        // }));
+
 
     }
 
@@ -97,6 +119,11 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
             );
             break;
 
+        case BUTTON:
+            input = (
+                <Button type='default' onClick={() => handleDelete()}><DeleteOutlined /></Button>
+            )
+            
         default:
             break;
 

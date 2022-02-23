@@ -5,12 +5,13 @@ import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
   toggleModal,
-  addValuesData,
-  setData,
-  setAllData,
   setValues,
   setTableItem,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
+import {
+  setData,
+  setAllData,
+} from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
@@ -96,7 +97,8 @@ const GlobalModal = () => {
     <Modal
         className="global-modal"
         style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
+        width={currentPage?.modal?.style?.width}
+
       footer={null}
       title={
         <div

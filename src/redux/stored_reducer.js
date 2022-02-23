@@ -9,24 +9,12 @@ import { DELETE, GET, POST } from "../functions/Methods";
 export const counterSlice = createSlice({
   name: "tabs_data",
   initialState: {
-    Panes: [],
-    currentPage: {},
-    mainData: [],
+    // saqlanadi
+    values: {},
     loading: false,
     tableItem: [],
-    values: {},
-    allData: {
-      status: [
-        {
-          id: 1,
-          name: "1"
-        },
-        {
-          id: 0,
-          name: "0"
-        },
-      ]
-    },
+    Panes: [],
+    currentPage: {},
     innerModal: "",
     filteredMainData: [],
     serachInputValue: "",
@@ -95,16 +83,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      // console.log(payload);
       state.values = payload;
-    },
-    setData: (state, { payload }) => {
-      let arrayWithKeys = [];
-      payload &&
-        payload?.forEach((item, key) => {
-          arrayWithKeys.push({ ...item, key });
-        });
-      state.mainData = arrayWithKeys;
     },
     startLoading: (state) => {
       state.loading = true;
@@ -117,10 +96,6 @@ export const counterSlice = createSlice({
     },
     setSearchInputValue: (state, { payload }) => {
       state.serachInputValue = payload;
-    },
-    setAllData: (state, { payload }) => {
-      // 1 chi yozgan codimiz  state.allData = {...state.allData, ...payload};
-      state.allData = { ...state.allData, ...payload };
     },
     setInnerModel: (state, { payload }) => {
       state.innerModal = payload;
@@ -154,13 +129,10 @@ export const {
   changePanesModal,
   toggleTableType,
   clearPanes,
-  setData,
   stopLoading,
   startLoading,
-  addValuesData,
   setSearchInputValue,
   setValues,
-  setAllData,
   setInnerModel,
   toggleInnerModal,
   setFilteredMainData,

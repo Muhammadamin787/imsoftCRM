@@ -4,8 +4,9 @@ import {
   toggleModal,
   changePanesModal,
   setValues,
-  setData,
-} from "../../../redux/tabs_reducer";
+} from "../../../redux/stored_reducer";
+import { setData } from "../../../redux/unsaved_reducer";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Button, message, Popconfirm, Tooltip } from "antd";
 import MacActions from "../MacActions/MacActions";
@@ -36,7 +37,7 @@ const addButtonIsDisabled = [
 const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes,MainData, values } = useSelector(
+  const { currentPage, loading, Panes, values } = useSelector(
     (state) => state.tabs_reducer
   );
 

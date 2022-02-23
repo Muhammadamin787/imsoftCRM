@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from "../../constant/FilterColumns";
-import { setTableItem } from "../../redux/tabs_reducer";
+import { setTableItem } from "../../redux/stored_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
   const {
     currentPage,
     tableItem,
-    mainData,
     loading,
     filteredMainData,
     serachInputValue,
   } = useSelector((state) => state?.tabs_reducer);
+  const {mainData} = useSelector((state) => state.unsaved_reducer)
   const dispatch = useDispatch();
   const { filters, columns } = currentPage;
 

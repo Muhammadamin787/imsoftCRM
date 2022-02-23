@@ -2,8 +2,8 @@ import React from "react";
 import {Button} from "antd";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {addNewTab} from "../../redux/tabs_reducer";
-import {setCurrentPage} from "../../redux/tabs_reducer"
+import {addNewTab} from "../../redux/stored_reducer";
+import {setCurrentPage} from "../../redux/stored_reducer"
 import {findIcon} from "../../assets/icons/icons";
 
 const ServicePage = ({page}) => {

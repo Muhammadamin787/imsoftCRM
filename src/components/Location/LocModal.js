@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setCurrentLocation,
   setCurrentLocationIsOpen,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
 
 import { YMaps, Map, FullscreenControl, Placemark } from "react-yandex-maps";
 const LocModal = () => {

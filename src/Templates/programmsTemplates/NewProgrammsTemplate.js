@@ -32,7 +32,7 @@ export const NewProgrammsTemplate = {
             marginTop: "-70px",
         },
         tabs: [
-            // ProgrammSpecifications,
+            ProgrammSpecifications,
             ProgrammPerformers,
             ProgrammFilesList
         ],
