@@ -21,7 +21,7 @@ const dontFilterTamlateDataIndex = [
   "hozirgi_yashash_joyi",
   "number",
   "file_1",
-  "latitude",
+  "loc",
 ];
 
 // ! Template dagi dataIndex keladigan ma'lumotlarning length kotta bo'lib ketadigan bo'lsa u holda table buzilib ketadi
@@ -70,18 +70,18 @@ const SearchInput = () => {
             render: (text) => {
               let content = (
                 <div style={{ width: "400px" }}>
-                  <PaintBackground text={text} value={value} />
+                  <PaintBackground text={`${text}`} value={value?value:" "} />
                 </div>
               );
               return popoverTrue.includes(item.dataIndex) ? (
                 <Popover placement="leftTop" content={content}>
                   <div className="hodim-template">
                     <div className={"box-shadow"}></div>
-                    <PaintBackground text={text} value={value} />
+                    <PaintBackground text={`${text}`} value={value?value:""} />
                   </div>
                 </Popover>
               ) : (
-                <PaintBackground text={text} value={value} />
+                <PaintBackground text={`${text}`} value={value?value:""} />
               );
             },
           };

@@ -10,7 +10,7 @@ import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
 import {GET, POST} from "../../../functions/Methods";
 
-// ❗ hard code boldi, Global modaldagi codelar takrollandi 
+// ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
     const {currentPage, values, innerModal} = useSelector((state) => state.tabs_reducer);

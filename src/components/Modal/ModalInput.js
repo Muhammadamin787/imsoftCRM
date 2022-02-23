@@ -1,78 +1,76 @@
-import {Input, InputNumber, DatePicker, Select, message} from "antd";
-import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState, useRef} from "react";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
+import { Option } from "antd/lib/mentions";
+import React, { useEffect, useState, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-    DATE,
-    IMAGE,
-    MAP,
-    NUMBER,
-    TEXTAREA,
-    PHONE,
-    SELECT,
-    STRING,
-    UPLOAD,
-    PICTURE_WALL,
+  DATE,
+  IMAGE,
+  MAP,
+  NUMBER,
+  TEXTAREA,
+  PHONE,
+  SELECT,
+  STRING,
+  UPLOAD,
+  PICTURE_WALL,
 } from "./InputTypes";
-import {inputDeafultHeght} from "../../constant/deafultStyle";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import {
-  setValues,
-  setInnerModel,
-  toggleModal,
-  toggleInnerModal,
-  setAllData,
-} from "../../redux/stored_reducer";
+import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
-import {findIcon} from "../../assets/icons/icons";
-import {PicturesWall} from "./PicturesWall/PicturesWall";
+import { findIcon } from "../../assets/icons/icons";
+import { PicturesWall } from "./PicturesWall/PicturesWall";
 
-const {TextArea} = Input;
+const { TextArea } = Input;
 
 const ModalInput = (props) => {
-    let input = null;
-    const dispatch = useDispatch();
-    const {currentPage, values, allData, innerModal} = useSelector(
-        (state) => state.tabs_reducer
-    );
-    const {
-        autoSelect,
-        placeholder,
-        name,
-        gridRow,
-        gridColumn,
-        label,
-        type,
-        height,
-        Iconic,
-        options,
-        template,
-        required,
-        filePath,
-        autoFocus,
-        handleChangeValue,
-        fileName,
-    } = props;
+  let input = null;
+  const dispatch = useDispatch();
+  const { currentPage, values, innerModal } = useSelector(
+    (state) => state.tabs_reducer
+  );
 
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template));
-        dispatch(toggleInnerModal(true));
-    };
 
-    const refs = useRef(null);
+  const {
+    autoSelect,
+    placeholder,
+    name,
+    gridRow,
+    gridColumn,
+    label,
+    type,
+    height,
+    Iconic,
+    options,
+    template,
+    required,
+    filePath,
+    autoFocus,
+    handleChangeValue,
+    fileName,
+  } = props;
 
-    useEffect(() => {
-        const id = document.getElementById("autofucus");
-        if (id) {
-            id.focus();
-        }
-    }, []);
+  const {allData} = useSelector(s => s.unsaved_reducer);
+
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template));
+    dispatch(toggleInnerModal(true));
+  };
+
+  const refs = useRef(null);
+
+  useEffect(() => {
+    const id = document.getElementById("autofucus");
+    if (id) {
+      id.focus();
+    }
+  }, []);
 
   switch (type) {
     case STRING:
@@ -90,7 +88,7 @@ const ModalInput = (props) => {
             name={name}
             autoFocus
             id={refs && "autofucus"}
-            value={values && values[name]}
+            value={values[name] ? values[name] : ""}
             placeholder={placeholder}
             required={required}
             onChange={(e) => {
@@ -151,7 +149,8 @@ const ModalInput = (props) => {
               // autoFocus
               placeholder={placeholder}
               required={required}
-              value={values[name]}
+              // value={allData[options]}
+              defaultValue={values[name]&&values[name]}
               onChange={(e) => {
                 if (autoSelect) {
                   let selectedValues = { [name]: e };
@@ -169,12 +168,9 @@ const ModalInput = (props) => {
             >
               {allData &&
                 allData[options]?.map((option, i) => (
-                    <Option
-                        value={values[name] ? values[name] : option?.id}
-                        key={option?.id}
-                    >
-                        {option?.name}
-                    </Option>
+                  <Option value={option?.id} key={option?.id}>
+                    {option?.name}
+                  </Option>
                 ))}
             </Select>
               {innerModal == "" && template ? (
@@ -250,103 +246,102 @@ const ModalInput = (props) => {
                 [name]: data.target.value,
               };
 
-                            handleChangeValue(target);
-                        }}
-                    />
-                </label>
-            );
-            break;
-        case PHONE:
-            input = (
-                <label
-                    style={{
-                        gridColumn: gridColumn,
-                        gridRow: gridRow,
-                        height: height ? height + "px" : inputDeafultHeght + "px",
-                    }}
-                >
-                    {label && label}
-                    <PhoneInput
-                        country={"uz"}
-                        style={{height: "65px !important"}}
-                        specialLabel={false}
-                        // autoFormat
-                        disableDropdown={true}
-                        countryCodeEditable={false}
-                        required={required}
-                        areaCodes={{
-                            uz: ["+998"],
-                        }}
-                        masks={{uz: "(..) ...-..-.."}}
-                        prefix="+"
-                        onChange={(data) => {
-                            const target = {
-                                [name]: data,
-                            };
-                            handleChangeValue(target);
-                        }}
-                        value={values[name] ? values[name] : ""}
-                    />
-                </label>
-            );
-            break;
-        case UPLOAD:
-            input = (
-                <UploadFile
-                    id="file-uploder"
-                    name={name}
-                    filePath={filePath}
-                    placeholder={placeholder}
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    onChange={handleChangeValue}
-                    Iconic={Iconic}
-                    label={label}
-                />
-            );
-            break;
-        case IMAGE:
-            input = (
-                <UpLoadJPG
-                    id="file-uploder"
-                    name={name}
-                    placeholder={placeholder}
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    height={height}
-                    Iconic={Iconic}
-                    label={label}
-                />
-            );
-            break;
-        case PICTURE_WALL:
-            input = (
-                <PicturesWall
-                    gridColumn={gridColumn}
-                    gridRow={gridRow}
-                    filePath={filePath}
-                    name={name}
-                    handleChangeValue={handleChangeValue}
-                    fileName={fileName ? fileName : ""}
-                    fileList={
-                        values[name]
-                            ? [
-                                {
-                                    uid: "-1",
-                                    name: "image.png",
-                                    status: "done",
-                                    url: values[name],
-                                },
-                            ]
-                            : false
-                    }
-                />
-            );
-            break;
-        default:
-            break;
-    }
+              handleChangeValue(target);
+            }}
+          />
+        </label>
+      );
+      break;
+    case PHONE:
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
+          <PhoneInput
+            country={"uz"}
+            // style={{ height: "65px !important"}}
+            specialLabel={false}
+            disableDropdown={true}
+            countryCodeEditable={false}
+            required={required}
+            areaCodes={{
+              uz: ["+998"],
+            }}
+            masks={{ uz: "(..) ...-..-.." }}
+            prefix="+"
+            onChange={(data) => {
+              const target = {
+                [name]: data,
+              };
+              handleChangeValue(target);
+            }}
+            value={values[name] ? values[name] : ""}
+          />
+        </label>
+      );
+      break;
+    case UPLOAD:
+      input = (
+        <UploadFile
+          id="file-uploder"
+          name={name}
+          filePath={filePath}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          onChange={handleChangeValue}
+          Iconic={Iconic}
+          label={label}
+        />
+      );
+      break;
+    case IMAGE:
+      input = (
+        <UpLoadJPG
+          id="file-uploder"
+          name={name}
+          placeholder={placeholder}
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          height={height}
+          Iconic={Iconic}
+          label={label}
+        />
+      );
+      break;
+    case PICTURE_WALL:
+      input = (
+        <PicturesWall
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          filePath={filePath}
+          name={name}
+          handleChangeValue={handleChangeValue}
+          fileName={fileName ? fileName : ""}
+          fileList={
+            values[name]
+              ? [
+                  {
+                    uid: "-1",
+                    name: "image.png",
+                    status: "done",
+                    url: values[name],
+                  },
+                ]
+              : false
+          }
+        />
+      );
+      break;
+    default:
+      break;
+  }
 
     return input;
 };

@@ -11,7 +11,7 @@ import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
 
 const ServicePageChild = ({page}) => {
     const dispatch = useDispatch();
-    const {Panes, currentPage, tableItem} = useSelector((s) => s.tabs_reducer);
+    const {Panes, currentPage, tableItem} = useSelector((state) => state.tabs_reducer);
     const navigate = useNavigate();
 
     const removeCurrentPage = (type = null) => {

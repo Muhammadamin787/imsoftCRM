@@ -101,8 +101,8 @@ const PotensialClientTemplate = {
     },
     {
       title: "Location",
-      dataIndex: " ",
-      key: " ",
+      dataIndex: "loc",
+      key: "loc",
       width: "40%",
       align: "center",
       render: (_, record, i) => <GetLocation record={record} />,

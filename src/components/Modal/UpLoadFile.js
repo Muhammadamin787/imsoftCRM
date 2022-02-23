@@ -3,7 +3,7 @@ import React from "react";
 import "./GlobalModal.scss";
 import {inputDeafultHeght} from "../../constant/deafultStyle";
 import {DeleteIcon, findIcon} from "../../assets/icons/icons";
-import {BaseUrl} from "../../BaseUrl";
+import {BaseUrl, BaseUrlPost} from "../../BaseUrl";
 import {DELETE} from "../../functions/Methods";
 import {LoadingOutlined} from "@ant-design/icons";
 import {setValues} from "../../redux/stored_reducer";
@@ -39,10 +39,10 @@ class UploadFile extends React.Component {
                 [this.props.name]: info?.file?.response
             })
             this.props.onChange({
-                [this.props.name]: info?.file?.response
+                [this.props.name]: `${BaseUrlPost}${info?.file?.response}`
             })
             this.setState({
-                imageUrl: info?.file?.response,
+                imageUrl: `${BaseUrlPost}${info?.file?.response}`,
                 loading: false,
             });
         }

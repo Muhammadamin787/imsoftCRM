@@ -32,6 +32,7 @@ import LocModal from "../../components/Location/LocModal";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage } = useSelector((state) => state.tabs_reducer);
+  console.log(currentPage);
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
   );
