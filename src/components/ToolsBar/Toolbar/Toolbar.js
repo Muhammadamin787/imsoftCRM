@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  removeTableItem,
+  setTableItem,
   toggleModal,
   changePanesModal,
   setValues,
@@ -76,8 +76,9 @@ const Toolbar = ({ tableItem }) => {
           ? `${url}/status/${currentPage?.key}`
           : url
       ).then((res2) => {
-        console.log(res2.data.data);
         dispatch(setData(res2.data.data));
+        dispatch(setValues({}));
+        dispatch(setTableItem([]));
       });
     });
   };

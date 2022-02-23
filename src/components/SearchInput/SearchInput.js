@@ -62,27 +62,31 @@ const SearchInput = () => {
     });
 
     let newColumn = currentPage?.columns?.map((item) => {
-      if (!dontFilterTamlateDataIndex.includes(item.dataIndex)) {
-        return {
-          ...item,
-          render: (text) => {
-            let content = (
-              <div style={{ width: "400px" }}>
-                <PaintBackground text={text} value={value} />
-              </div>
-            );
-            return popoverTrue.includes(item.dataIndex) ? (
-              <Popover placement="leftTop" content={content}>
-                <div className="hodim-template">
-                  <div className={"box-shadow"}></div>
+      if (item?.dataIndex) {
+        if (!dontFilterTamlateDataIndex.includes(item?.dataIndex)) {
+          return {
+            ...item,
+            render: (text) => {
+              let content = (
+                <div style={{ width: "400px" }}>
                   <PaintBackground text={text} value={value} />
                 </div>
-              </Popover>
-            ) : (
-              <PaintBackground text={text} value={value} />
-            );
-          },
-        };
+              );
+              return popoverTrue.includes(item.dataIndex) ? (
+                <Popover placement="leftTop" content={content}>
+                  <div className="hodim-template">
+                    <div className={"box-shadow"}></div>
+                    <PaintBackground text={text} value={value} />
+                  </div>
+                </Popover>
+              ) : (
+                <PaintBackground text={text} value={value} />
+              );
+            },
+          };
+        } else {
+          return item;
+        }
       } else {
         return item;
       }
@@ -91,6 +95,7 @@ const SearchInput = () => {
     if (currentPage?.columns) {
       dispatch(setCurrentPage({ ...currentPage, columns: newColumn }));
     }
+
     dispatch(setFilteredMainData(filter));
   }, [value]);
 

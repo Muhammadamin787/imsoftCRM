@@ -17,6 +17,7 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 
 const GlobalModal = () => {
   const { currentPage, data, values } = useSelector(
@@ -59,14 +60,13 @@ const GlobalModal = () => {
 
   const handleSubmit = (e) => {
     handleChangeValue();
-
-    const url = currentPage?.mainUrl;
-    POST(url, values).then(res => {
+    const {mainUrl, key} = currentPage;
+    POST(mainUrl, values).then(res => {
         message.success({ content: res.data.data, key: e });
         dispatch(toggleModal(false));
         dispatch(setValues({}));
         dispatch(setTableItem([]))
-        GET(url).then(res => {
+        GET(removeApiStatusLines.includes(mainUrl)?`${mainUrl}/status/${key}`:mainUrl).then(res => {
             dispatch(setData(res.data.data))
         });
     });

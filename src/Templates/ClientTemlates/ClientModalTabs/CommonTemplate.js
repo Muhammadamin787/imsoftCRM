@@ -44,7 +44,7 @@ const CommonTabTemplate = {
           label: "Yunalish turi",
           placeholder: "Yo'nalishlar turi",
           template: YunalishlarTemplate,
-          options: "cities",
+          options: "category_name",
           gridColumn: "1 / 3",
           gridRow: "2 / 3",
         },
