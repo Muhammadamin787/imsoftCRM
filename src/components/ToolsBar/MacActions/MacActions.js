@@ -64,8 +64,8 @@ const MacActions = ({onResize, onHide, onExit}) => {
     return (
         <div className="toolbar__buttons">
             {
-                macButtons.map(button =>
-                    <button className={"child-page__button " + button.className} onClick={button.onClick}>
+                macButtons.map((button,i) =>
+                    <button key={i} className={"child-page__button " + button.className} onClick={button.onClick}>
                         {button.icon}
                     </button>
                 )
