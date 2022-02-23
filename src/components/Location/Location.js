@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   setCurrentLocation,
   setCurrentLocationIsOpen,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
 const GetLocation = ({ record }) => {
   const dispatch = useDispatch();
   const click = () => {

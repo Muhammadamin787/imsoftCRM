@@ -44,13 +44,13 @@ export class PicturesWall extends React.Component {
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({[this.props.name]: e.file.response})
+    this.props.handleChangeValue({[this.props.name]: `https://830f-84-54-94-234.ngrok.io/${e.file.response}`})
     this.setState({ fileList: e.fileList });
   };
 
   render() {
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
-    const { name, filePath } = this.props;
+    const { filePath } = this.props;
     const uploadButton = (
       <div>
         <div>

@@ -5,18 +5,20 @@ import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
   toggleModal,
-  addValuesData,
-  setData,
-  setAllData,
   setValues,
   setTableItem,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
+import {
+  setData,
+  setAllData,
+} from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
+import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 
 const GlobalModal = () => {
   const { currentPage, data, values } = useSelector(
@@ -60,16 +62,13 @@ const GlobalModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleChangeValue();
-
-    console.log(e.target);
-
-    const url = currentPage?.mainUrl;
-    POST(url, values).then(res => {
+    const {mainUrl, key} = currentPage;
+    POST(mainUrl, values).then(res => {
         message.success({ content: res.data.data, key: e });
         dispatch(toggleModal(false));
         dispatch(setValues({}));
         dispatch(setTableItem([]))
-        GET(url).then(res => {
+        GET(removeApiStatusLines.includes(mainUrl)?`${mainUrl}/status/${key}`:mainUrl).then(res => {
             dispatch(setData(res.data.data))
         });
     });
@@ -96,7 +95,8 @@ const GlobalModal = () => {
     <Modal
         className="global-modal"
         style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
+        width={currentPage?.modal?.style?.width}
+
       footer={null}
       title={
         <div

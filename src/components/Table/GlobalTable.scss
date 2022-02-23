@@ -37,3 +37,13 @@
   background-color:#2F49D1;
   color:#fff !important;
 }
+
+.ant-table-tbody{
+  .ant-table-row{
+    .ant-table-cell{
+    // background-color: black !important;
+    // border: 1px solid red;
+    height: 10px !important;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { STRING, DATE, UPLOAD } from './../../components/Modal/InputTypes';
+import { STRING, DATE, UPLOAD,BUTTON } from './../../components/Modal/InputTypes';
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
 import TabInput from "../../components/Modal/TabInput/TabInput";
@@ -15,6 +15,8 @@ export const ProgrammFilesList = {
         comment: '',
         file: '',
     },
+    scroll: { y: 130},
+
     columns: [
         {
             title: <FieldNumberOutlined/>,
@@ -32,21 +34,9 @@ export const ProgrammFilesList = {
             align: "center"
         },
         {
-            title: "Fayl",
-            dataIndex: "file",
-            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
-            key: "number",
-            width: "15%",
-            align: "center"
-        },
-        {
             title: "Actions",
             dataIndex: "actions",
-            render: (_, record) => {
-                return <>
-                    <Button type="link">Delete</Button>
-                </>
-            },
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
             key: "action",
             width: "10%",
             align: "center"

@@ -23,12 +23,12 @@ import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
 import {
-    setValues,
-    setInnerModel,
-    toggleModal,
-    toggleInnerModal,
-    setAllData,
-} from "../../redux/tabs_reducer";
+  setValues,
+  setInnerModel,
+  toggleModal,
+  toggleInnerModal,
+  setAllData,
+} from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
 import {findIcon} from "../../assets/icons/icons";
 import {PicturesWall} from "./PicturesWall/PicturesWall";

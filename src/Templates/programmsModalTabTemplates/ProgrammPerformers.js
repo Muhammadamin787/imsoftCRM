@@ -1,6 +1,6 @@
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
-import { STRING, SELECT,DATE, UPLOAD } from "../../components/Modal/InputTypes";
+import { STRING, SELECT,DATE, UPLOAD, BUTTON } from "../../components/Modal/InputTypes";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { v4 as uuidv4 } from 'uuid'
 import { Input, Button } from "antd"
@@ -12,6 +12,8 @@ export const ProgrammPerformers = {
     allData: {
         workers: "/workers/all",
     },
+    scroll: { y: 130},
+
     CreateObj: {
         rowId: uuidv4(),
         name: '',
@@ -46,14 +48,6 @@ export const ProgrammPerformers = {
             align: "center"
         },
         {
-            title: "Fayl",
-            dataIndex: "file",
-            render: (text, record, index) => <TabInput record={record} tabName={"dev-doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
-            key: "number",
-            width: "15%",
-            align: "center"
-        },
-        {
             title: "Boshlash sanasi",
             dataIndex: "start_date",
             key: "number",
@@ -80,14 +74,12 @@ export const ProgrammPerformers = {
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (_, record) => {
-                return <>
-                    <Button type="link">Delete</Button>
-                </>
-            },
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
+            
             key: "action",
             width: "10%",
             align: "center"
+
         }
     ]
 }

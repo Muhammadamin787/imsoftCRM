@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "antd";
 import { Link } from "react-router-dom";
-import { setCurrentPage, addNewTab } from "../../redux/tabs_reducer";
+import { setCurrentPage, addNewTab } from "../../redux/stored_reducer";
 import { useDispatch } from "react-redux";
 
 const { TabPane } = Tabs;

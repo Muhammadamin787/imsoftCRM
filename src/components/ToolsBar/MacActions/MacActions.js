@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {CloseIcon, DashIcon,} from "../../../assets/icons/icons";
-import { changePanes, setCurrentPage } from "../../../redux/tabs_reducer";
+import { changePanes, setCurrentPage } from "../../../redux/stored_reducer";
 import {
     FullscreenExitOutlined,
 } from "@ant-design/icons";

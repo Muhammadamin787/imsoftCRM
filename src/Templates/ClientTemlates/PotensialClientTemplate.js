@@ -23,6 +23,7 @@ const PotensialClientTemplate = {
     cities: "/cities/all",
     activity_types: "/activity-types",
     hudud: "/districts/all",
+    category_name: '/categories'
     // cities: "/cities/all",
   },
   modal: {
@@ -89,15 +90,19 @@ const PotensialClientTemplate = {
       dataIndex: "file_1",
       key: "file",
       width: "40%",
-      render: (_, record) => (
-        <ImgZoom src="https://media.istockphoto.com/photos/people-watching-and-photographing-the-northern-lights-aurora-at-the-picture-id1177321571?k=20&m=1177321571&s=612x612&w=0&h=LoG5xB4PAGat6BcfUK0iGADcXxtvoiEkd1VqaFNrGrI=" />
+      render: (text, record) => (
+        <div style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
+          <ImgZoom src={text} />
+          <ImgZoom src={record?.file_2} />
+          <ImgZoom src={record?.file_3} />
+        </div>
       ),
       align: "center",
     },
     {
       title: "Location",
-      dataIndex: "latitude",
-      key: "latitude",
+      dataIndex: " ",
+      key: " ",
       width: "40%",
       align: "center",
       render: (_, record, i) => <GetLocation record={record} />,

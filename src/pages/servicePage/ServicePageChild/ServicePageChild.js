@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {
     setCurrentPage,
     changePanes,
-} from "../../../redux/tabs_reducer";
+} from "../../../redux/stored_reducer";
 import {useNavigate} from "react-router-dom";
 import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
 

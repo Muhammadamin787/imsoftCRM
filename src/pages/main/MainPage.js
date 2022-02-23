@@ -11,10 +11,12 @@ import AccountPNG from "../../assets/images/Ellipse 3.png";
 import { useDispatch } from "react-redux";
 import {
   setCurrentPage,
-  setData,
   startLoading,
   stopLoading,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
+
+import { setData } from "../../redux/unsaved_reducer";
+
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
@@ -29,8 +31,7 @@ import SearchInput from '../../components/SearchInput/SearchInput'
 import LocModal from "../../components/Location/LocModal";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
-  const { currentPage, mainData } = useSelector((state) => state.tabs_reducer);
-
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
   );

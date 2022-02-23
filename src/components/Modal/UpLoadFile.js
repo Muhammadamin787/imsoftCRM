@@ -6,6 +6,7 @@ import {DeleteIcon, findIcon} from "../../assets/icons/icons";
 import {BaseUrl} from "../../BaseUrl";
 import {DELETE} from "../../functions/Methods";
 import {LoadingOutlined} from "@ant-design/icons";
+import {setValues} from "../../redux/stored_reducer";
 
 function beforeUpload(file) {
     const isJpgOrPng =
