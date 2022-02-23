@@ -164,6 +164,11 @@
 
       .ant-upload {
         width: 100% !important;
+        
+      }
+
+      .ant-upload.ant-upload-select-picture-card{
+        // ❗uploda imgdagi border Ravshandan boshqa hech kim tegmay tursin
       }
 
       .file-uploader-label {
@@ -175,8 +180,12 @@
         outline: none;
         cursor: pointer;
         &:hover {
-          border: 1px dashed #888 !important;
+            border: 1px solid #57a8e9;
+            outline: 0;
+            -webkit-box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+            box-shadow: 0 0 0 2px rgba(87,168,233, .2);
         }
+
         .ant-upload-picture-card-wrapper {
           height: 100%;
 
@@ -272,12 +281,19 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-
+        
         .form-control {
           width: 100%;
           height: 35px;
           outline: none;
           padding-left: 10px;
+        }
+
+        .form-control:focus{
+          border-color: #57a8e9;
+          outline: 0;
+          -webkit-box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+          box-shadow: 0 0 0 2px rgba(87,168,233, .2);
         }
       }
     }

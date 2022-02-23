@@ -32,7 +32,7 @@ const XodimlarTemplate = {
     allData: {
         states: "/states/all",
         cities: "/cities/all",
-    
+        directions:"/directions/all"
     },
     modal: {
         style: {
@@ -75,8 +75,8 @@ const XodimlarTemplate = {
                     placeholder: "Yo'nalishi",
                     gridColumn: "5 / 10",
                     gridRow: "2 / 3",
+                    options: "directions",
                     template: YunalishlarTemplate,
-                    options: "cities",
                 },
                 {
                     label: "Viloyat",
@@ -97,6 +97,7 @@ const XodimlarTemplate = {
                     placeholder: "Shahar",
                     template: ShaharTumanTemplate,
                     gridColumn: "5 / 10",
+                    options: "cities",
                     gridRow: "3 / 4",
                 },
                 {

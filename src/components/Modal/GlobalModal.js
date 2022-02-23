@@ -160,6 +160,8 @@ const GlobalModal = () => {
               //  </label>
             ))}
           </div>
+
+
         ))}
         <ModalTabs tabs={currentPage?.modal?.tabs} handleChangeValue={handleChangeValue} />
         <div className="modal-form_buttons">

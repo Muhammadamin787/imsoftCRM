@@ -7,14 +7,20 @@ import { setTableItem } from "../../redux/stored_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
+  const {loading} = useSelector((s) => s.tabs_reducer)
+  console.log(loading);
+
   const {
-    currentPage,
     tableItem,
-    loading,
+    // loading,
     filteredMainData,
     serachInputValue,
+    currentPage,
   } = useSelector((state) => state?.tabs_reducer);
-  const {mainData} = useSelector((state) => state.unsaved_reducer)
+
+
+
+  const {mainData} = useSelector((state) => state?.unsaved_reducer)
   const dispatch = useDispatch();
   const { filters, columns } = currentPage;
 

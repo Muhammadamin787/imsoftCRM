@@ -3,7 +3,7 @@ import "./firstPageStyles.scss";
 import {useSelector} from 'react-redux';
 
 const FirstPage = ({ page }) => {
-  const panes = useSelector(s => s.tabs_reducer.Panes);
+  const panes = useSelector(state => state.stored_reducer.Panes);
 
   return (
     <div className="first-page">

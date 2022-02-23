@@ -74,7 +74,7 @@ export const ProgrammPerformers = {
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
+            render: (text, record, index) => <TabInput record={record} tabName={"dev_doc"}  type={BUTTON}  />,
             
             key: "action",
             width: "10%",

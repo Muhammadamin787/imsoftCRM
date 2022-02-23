@@ -37,8 +37,12 @@ const { TextArea } = Input;
 const ModalInput = (props) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage, values, allData, innerModal } = useSelector(
+  const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
+  );
+
+  const { allData } = useSelector(
+    (state) => state.unsaved_reducer
   );
   const {
     autoSelect,
@@ -259,7 +263,7 @@ const ModalInput = (props) => {
           {label && label}
           <PhoneInput
             country={"uz"}
-            style={{ height: "65px !important" }}
+            // style={{ height: "65px !important"}}
             specialLabel={false}
             // autoFormat
             disableDropdown={true}

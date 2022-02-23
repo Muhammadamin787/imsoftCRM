@@ -11,7 +11,6 @@ const YunalishlarTemplate = {
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
     mainUrl:"/directions",
-    // allData: ["/directions/"],
     modal: {
         style: {
             // width: 500,
