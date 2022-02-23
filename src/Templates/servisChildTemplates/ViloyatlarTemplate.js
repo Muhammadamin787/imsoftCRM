@@ -41,12 +41,6 @@ const ViloyatlarTemplate = {
       width: "95%",
     },
   ],
-  data: [
-    {
-      id: "1",
-      name: "Farg'ona",
-    },
-  ],
 };
 
 export default ViloyatlarTemplate;

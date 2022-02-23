@@ -24,10 +24,11 @@ export const NewProgrammsTemplate = {
     key: "1",
     allData: {
         workers: "/workers/all",
+        clients:"/clients/active"
     },
     modal: {
         style: {
-            width: 1000,
+            width: 1100,
             marginTop: "-70px",
         },
         tabs: [
@@ -45,12 +46,13 @@ export const NewProgrammsTemplate = {
             inputs: [
                 {
                     name: "client_id",
-                    type: NUMBER,
+                    type: SELECT,
                     required: true,
                     placeholder: "Mijoz",
                     gridColumn: "1 / 5",
                     gridRow: "1 / 2",
                     label: "Mijoz",
+                    options:"clients"
                 },
                 {
                     name: "start_date",

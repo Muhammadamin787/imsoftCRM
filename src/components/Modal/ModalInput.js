@@ -28,7 +28,7 @@ import {
   toggleModal,
   toggleInnerModal,
   setAllData,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
@@ -176,7 +176,7 @@ const ModalInput = (props) => {
                   </Option>
                 ))}
             </Select>
-            {innerModal == "" ? (
+            {innerModal == "" && template ? (
               <div
                 className="option-add"
                 onClick={() => handleSelectAdd(template)}

@@ -4,7 +4,7 @@ import {
   setSearchInputValue,
   setCurrentPage,
   setFilteredMainData,
-} from "../../redux/tabs_reducer";
+} from "../../redux/stored_reducer";
 import { useDispatch, useSelector } from "react-redux";
 import Highlighter from "react-highlight-words";
 import { Popover } from "antd";
@@ -33,7 +33,8 @@ const { Search } = Input;
 
 const SearchInput = () => {
   const [value, setValue] = useState("");
-  const { mainData, currentPage } = useSelector((s) => s.tabs_reducer);
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
+  const {mainData} = useSelector((state) => state.unsaved_reducer)
   const [keys, setKeys] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {

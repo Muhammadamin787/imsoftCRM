@@ -3,7 +3,7 @@ import React from "react";
 import { Input, Button } from "antd"
 // import TabInput from "../../components/Modal/tabInput/tabInput";
 import TabInput from "../../components/Modal/TabInput/TabInput";
-import { STRING, UPLOAD } from "../../components/Modal/InputTypes"
+import { STRING, UPLOAD, BUTTON } from "../../components/Modal/InputTypes"
 import { v4 as uuidv4 } from 'uuid'
 
 export const ProgrammSpecifications = {
@@ -15,6 +15,8 @@ export const ProgrammSpecifications = {
         comment: '',
         file: '',
     },
+    scroll: { y: 130},
+
     columns: [
         {
             title: <FieldNumberOutlined />,
@@ -28,7 +30,7 @@ export const ProgrammSpecifications = {
             dataIndex: "name",
             render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
             key: "number",
-            width: "25%",
+            width: "30%",
             align: "center",
         },
         {
@@ -36,28 +38,16 @@ export const ProgrammSpecifications = {
             dataIndex: "comment",
             render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
             key: "number",
-            width: "35%",
-            align: "center"
-        },
-        {
-            title: "Fayl",
-            dataIndex: "file_doc",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} filePath={"/projects/image"} type={UPLOAD} />,
-            key: "number",
-            width: "15%",
+            width: "40%",
             align: "center"
         },
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (_, record) => {
-                return <>
-                    <Button type="link">Delete</Button>
-                </>
-            },
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
             key: "action",
-            width: "15%",
-            align: "center"
+            width: "10%",
+            align: "center",
         }
 
     ],
