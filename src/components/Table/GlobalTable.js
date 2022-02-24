@@ -10,7 +10,6 @@ const GlobalTable = () => {
   const {loading} = useSelector((s) => s.tabs_reducer)
 
   const {
-    tableItem,
     // loading,
     filteredMainData,
     serachInputValue,
@@ -21,10 +20,12 @@ const GlobalTable = () => {
 
   const {mainData} = useSelector((state) => state?.unsaved_reducer)
   const dispatch = useDispatch();
-  const { filters, columns } = currentPage;
+  const { filters, columns, tableItem } = currentPage;
+
+  console.log(tableItem)
 
   const rowSelection = {
-    selectedRowKeys: tableItem.map((row) => row.key),
+    selectedRowKeys: tableItem?.map((row) => row.key),
     onChange: (selectedRowKeys, selectedRows) => {
       dispatch(setTableItem(selectedRows));
     },

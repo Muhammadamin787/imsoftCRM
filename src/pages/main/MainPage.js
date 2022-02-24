@@ -10,7 +10,7 @@ import {PageController} from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import {useDispatch} from "react-redux";
 import {
-    setCurrentPage,
+    setCurrentPage, setTableItem,
     startLoading,
     stopLoading,
 } from "../../redux/stored_reducer";
@@ -68,6 +68,9 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
+        // chap tomondagi tanlangan checkbox larni olib tashlaydi
+        // dispatch(setTableItem([]));
+
         const url = currentPage?.mainUrl;
         dispatch(setData([]));
         if (url) {
