@@ -16,7 +16,7 @@ const BottomTabs = () => {
   const dispatch = useDispatch();
   const { pathname } = window.location;
 
-  const [panes, setPanes] = useState(Panes);
+  const [panes, setPanes] = useState(Panes?Panes:[]);
   const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const BottomTabs = () => {
 
   return (
     <>
-      {Panes.length > 0 && (
+      {Panes?.length > 0 && (
         <div className="bottom__tabs_relative">
           <Tabs
             hideAdd
