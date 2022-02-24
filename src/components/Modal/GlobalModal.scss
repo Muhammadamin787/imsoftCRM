@@ -164,12 +164,15 @@
 
       .ant-upload {
         width: 100% !important;
-        
       }
 
-      .ant-upload.ant-upload-select-picture-card{
-        // ❗uploda imgdagi border Ravshandan boshqa hech kim tegmay tursin
-      }
+      // .ant-upload.ant-upload-select-picture-card {
+      //   border: 1px solid #D9D9D9;
+      //   &:focus {
+      //     border: 1px solid #57a8e9;
+      //     box-shadow: 0 0 0 2px rgba(87, 168, 233, .2);
+      //   };
+      // }
 
       .file-uploader-label {
         margin-top: 22px;
@@ -177,13 +180,21 @@
         font-weight: 400;
         font-size: 12px;
         line-height: 20px;
-        outline: none;
+        border: 1px solid #D9D9D9;
+
+        &:focus {
+          border-color: #57a8e9;
+          outline: 0;
+          box-shadow: 0 0 0 2px rgba(87, 168, 233, .2);
+        };
+
         cursor: pointer;
+
         &:hover {
-            border: 1px solid #57a8e9;
-            outline: 0;
-            -webkit-box-shadow: 0 0 0 2px rgba(87,168,233, .2);
-            box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+          border: 1px solid #57a8e9;
+          outline: 0;
+          -webkit-box-shadow: 0 0 0 2px rgba(87, 168, 233, .2);
+          box-shadow: 0 0 0 2px rgba(87, 168, 233, .2);
         }
 
         .ant-upload-picture-card-wrapper {
@@ -281,7 +292,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        
+
         .form-control {
           width: 100%;
           height: 35px;
@@ -289,11 +300,10 @@
           padding-left: 10px;
         }
 
-        .form-control:focus{
+        .form-control:focus {
           border-color: #57a8e9;
           outline: 0;
-          -webkit-box-shadow: 0 0 0 2px rgba(87,168,233, .2);
-          box-shadow: 0 0 0 2px rgba(87,168,233, .2);
+          box-shadow: 0 0 0 2px rgba(87, 168, 233, .2);
         }
       }
     }
@@ -387,7 +397,7 @@
 
 .delete-file-btn {
   border: 1px solid #ccc;
-  background-color: rgb(244,244,244);
+  background-color: rgb(244, 244, 244);
   width: 23px;
   border-radius: 2px;
   cursor: pointer;
@@ -396,13 +406,14 @@
 
   svg {
     margin-left: -2px;
+
     path {
       fill: #888;
     }
   }
 
   &:hover {
-    background-color: rgb(251,251,251);
+    background-color: rgb(251, 251, 251);
     border-color: #fa4b4b;
 
     svg {

@@ -48,6 +48,7 @@ class UpLoadJPG extends React.Component {
 
     render() {
         const {loading, imageUrl} = this.state;
+        const {gridColumn, gridRow, height} = this?.props;
 
         const uploadButton = (
             <div>
@@ -56,18 +57,30 @@ class UpLoadJPG extends React.Component {
             </div>
         );
 
+        const customStyles = {
+            // fileIconStyle: {position: "relative", top: "-7px", left: "-2px"},
+            labelStyle: {
+                gridColumn,
+                gridRow,
+                height: height ? height + "px" : inputDeafultHeght + "px",
+                width: "100% !important",
+                textAlign: "center",
+            },
+        }
+
         return (
             <label className="file-uploader-label"
                    htmlFor="file-uploder"
-                   style={{
-                       gridColumn: this.props.gridColumn,
-                       gridRow: this.props.gridRow,
-                       height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
-                       width: "100% !important",
-                       // textAlign: "center",
-                       // backgroundColor:"red",
-                       border: "1px solid #D9D9D9",
-                   }}
+                //    style={{
+                //        gridColumn: this.props.gridColumn,
+                //        gridRow: this.props.gridRow,
+                //        height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
+                //        width: "100% !important",
+                //        // textAlign: "center",
+                //        // backgroundColor:"red",
+                //        border: "1px solid #D9D9D9",
+                //    }}
+                style={customStyles.labelStyle}
             >
                 <p>{this.props?.label}</p>
                 <Upload id="file-uploder"

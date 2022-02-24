@@ -15,7 +15,7 @@ import {
   stopLoading,
 } from "../../redux/stored_reducer";
 
-import { setData } from "../../redux/unsaved_reducer";
+import { setData ,setAllData} from "../../redux/unsaved_reducer";
 
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -79,6 +79,20 @@ const MainPage = () => {
                 });
         }
     }, [pathname]);
+
+
+    useEffect(() => {
+      let currentData = currentPage?.allData;
+
+      if (currentData) {
+        for (const url in currentData) {
+          let res = axios(currentData[url]);
+          res.then((res) => {
+            dispatch(setAllData({ [url]: res.data.data }));
+          });
+        }
+      }
+    }, [currentPage]);
 
 
   return (

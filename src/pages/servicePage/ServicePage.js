@@ -15,6 +15,8 @@ const ServicePage = ({page}) => {
         dispatch(setCurrentPage(section));
     };
 
+    
+
     return (
         <div className="first-page">
             <div className="site-layout__body">

@@ -29,17 +29,17 @@ const GlobalModal = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentPage && currentPage?.isOpenModal) {
-      let currentData = currentPage?.allData;
-      for (const url in currentData) {
-        let res = axios(currentData[url]);
-        res.then((res) => {
-          dispatch(setAllData({ [url]: res.data.data }));
-        });
-      }
-    }
-  }, [currentPage]);
+  // useEffect(() => {
+  //   if (currentPage && currentPage?.isOpenModal) {
+  //     let currentData = currentPage?.allData;
+  //     for (const url in currentData) {
+  //       let res = axios(currentData[url]);
+  //       res.then((res) => {
+  //         dispatch(setAllData({ [url]: res.data.data }));
+  //       });
+  //     }
+  //   }
+  // }, [currentPage]);
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
