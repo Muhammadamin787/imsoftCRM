@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./BottomTabs.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { Tabs } from "antd";
-import { removeTab, setCurrentPage, clearPanes } from "../../redux/stored_reducer";
+import {removeTab, setCurrentPage, clearPanes, changePanes} from "../../redux/stored_reducer";
 import { useNavigate } from "react-router-dom";
 import { findIcon } from "../../assets/icons/icons";
 import { ClearOutlined } from "@ant-design/icons";
@@ -23,12 +23,11 @@ const BottomTabs = () => {
     setPanes(Panes);
   }, [Panes, pathname]);
 
-
-
   const onChange = (activeKey) => {
     navigate(Panes[activeKey].path);
     setActiveKey(activeKey);
     dispatch(setCurrentPage(Panes[activeKey]));
+    dispatch(changePanes(currentPage));
   };
 
   const onEdit = (targetKey, action) => {

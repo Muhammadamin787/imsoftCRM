@@ -20,7 +20,7 @@ export default class MapModal extends Component {
         this.setState({coords: e.get("coords")});
         this.props.handleChangeValue({
             latitude: this.state.coords[0],
-            longitude: this.state.coords[1],
+            longtitude: this.state.coords[1],
         });
     };
 
