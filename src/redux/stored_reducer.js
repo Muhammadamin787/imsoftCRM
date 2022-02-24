@@ -13,7 +13,6 @@ export const counterSlice = createSlice({
     values: {},
     loading: false,
     tableItem: [],
-    values: {},
     Panes: [],
     currentPage: {},
     innerModal: "",
@@ -83,7 +82,6 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      console.log(payload);
       state.values = payload;
     },
     startLoading: (state) => {

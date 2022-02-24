@@ -39,7 +39,8 @@ class UploadFile extends React.Component {
                 [this.props.name]: info?.file?.response
             })
             this.props.onChange({
-                [this.props.name]: `${BaseUrlPost}${info?.file?.response}`
+                // [this.props.name]: `${BaseUrlPost}${info?.file?.response}`
+                [this.props.name]: `${info?.file?.response}`
             })
             this.setState({
                 imageUrl: `${BaseUrlPost}${info?.file?.response}`,

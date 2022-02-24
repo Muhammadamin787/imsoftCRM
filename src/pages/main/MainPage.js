@@ -1,6 +1,6 @@
-import {Link, Route, Routes, NavLink, useLocation} from "react-router-dom";
+import {Link, Route, Routes, NavLink, useLocation, useHistory, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {Layout, Menu, Select, Popover, Button} from "antd";
+import {Layout, Menu, Popover, Button} from "antd";
 import "./mainPage.scss";
 import {Footer} from "antd/es/layout/layout";
 import {CompanyLogo, findIcon} from "../../assets/icons/icons";
@@ -26,13 +26,12 @@ import axios from "../../functions/axios";
 import GlobalModal from "../../components/Modal/GlobalModal";
 import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import {removeApiStatusLines} from "../../constant/apiLine/apiLine";
-import {GET} from "../../functions/Methods";
 import SearchInput from '../../components/SearchInput/SearchInput'
 import LocModal from "../../components/Location/LocModal";
+
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
     const {currentPage} = useSelector((state) => state.tabs_reducer);
-    console.log(currentPage);
     const [currentTime, setCurrentTime] = useState(
         moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
     );
@@ -47,21 +46,26 @@ const MainPage = () => {
     };
 
     const {pathname} = useLocation();
+    const navigateTo = useNavigate();
 
-    // useEffect(() => {
-    //     dispatch(startLoading());
-    //     let currentPage = [
-    //         ...AllPages,
-    //         ...ServiceTemplate?.sections,
-    //         ...ProgrammsTemplate?.tabs,
-    //         ...ClientTemplate?.tabs,
-    //     ].find((page) => page.path === document.location.pathname);
-    //     dispatch(setCurrentPage(currentPage));
-    //     GET(currentPage?.mainUrl).then(res => {
-    //         dispatch(setData(res.data.data))
-    //         dispatch(stopLoading());
-    //     });
-    // }, []);
+    useEffect(() => {
+        dispatch(startLoading());
+        let currentPage = [
+            ...AllPages,
+            ...ServiceTemplate?.sections,
+            ...ProgrammsTemplate?.tabs,
+            ...ClientTemplate?.tabs,
+        ].find((page) => page.path === document.location.pathname);
+        if (currentPage) {
+            dispatch(setCurrentPage(currentPage));
+        }else {
+            navigateTo("/servis");
+        }
+        // GET(currentPage?.mainUrl).then(res => {
+        //     dispatch(setData(res.data.data))
+        //     dispatch(stopLoading());
+        // });
+    }, []);
 
     useEffect(() => {
         const url = currentPage?.mainUrl;
