@@ -3,7 +3,7 @@ import '../GlobalModal.scss'
 import {Modal, Button, Form, message} from "antd";
 import ModalInput from "../ModalInput";
 import {useSelector, useDispatch} from "react-redux";
-import {toggleInnerModal, setValues, setTableItem, setOffInnerModel} from "../../../redux/stored_reducer";
+import {toggleInnerModal, setValues2, setTableItem, setOffInnerModel} from "../../../redux/stored_reducer";
 import { setData, setAllData } from "../../../redux/unsaved_reducer";
 import Draggable from "react-draggable";
 import MacActions from "../../ToolsBar/MacActions/MacActions";
@@ -39,7 +39,7 @@ const InnerModal = () => {
     const handleCancel = (e) => {
         dispatch(setOffInnerModel())
         dispatch(toggleInnerModal(false));
-        dispatch(setValues({}));
+        dispatch(setValues2({}));
     };
 
 
@@ -55,7 +55,7 @@ const InnerModal = () => {
         POST(url, values).then(res => {
             message.success({content: res.data.data, key: e});
             dispatch(toggleInnerModal(false));
-            dispatch(setValues({}));
+            dispatch(setValues2({}));
             dispatch(setTableItem([]))
             GET(url).then(res => {
                 dispatch(setData(res.data.data))
@@ -102,7 +102,9 @@ const InnerModal = () => {
                     <div className="modal-header">
                         <span>{innerModal?.text}</span>
                         <div className="modal-header__buttons">
-                            <MacActions onExit={handleCancel} onResize={resizeModal}/>
+                            <MacActions
+                                onExit={handleCancel}
+                                onResize={resizeModal}/>
                         </div>
                     </div>
                 </div>

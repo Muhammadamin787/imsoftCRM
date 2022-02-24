@@ -21,7 +21,6 @@ export const ProgrammPerformers = {
         start_date:"",
         deadline_date:"",
         finish_date:"",
-        file:""
     },
     columns: [
         {

@@ -20,6 +20,7 @@ import BigLength from "../../components/BigLength/BigLength";
 import ImgZoom from "../../components/image zoom/ImgZoom";
 import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
+import {Base, BaseUrl} from "../../BaseUrl";
 
 const align = "center";
 const XodimlarTemplate = {

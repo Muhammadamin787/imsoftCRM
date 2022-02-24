@@ -67,18 +67,18 @@ class UpLoadJPG extends React.Component {
                 textAlign: "center",
             },
         }
-
+        
         return (
             <label className="file-uploader-label"
-                   htmlFor="file-uploder"
-                //    style={{
+            htmlFor="file-uploder"
+            //    style={{
+                    //    border: "1px solid #D9D9D9",
                 //        gridColumn: this.props.gridColumn,
                 //        gridRow: this.props.gridRow,
                 //        height: this.props.height ? this.props.height + "px" : inputDeafultHeght + "px",
                 //        width: "100% !important",
                 //        // textAlign: "center",
                 //        // backgroundColor:"red",
-                //        border: "1px solid #D9D9D9",
                 //    }}
                 style={customStyles.labelStyle}
             >

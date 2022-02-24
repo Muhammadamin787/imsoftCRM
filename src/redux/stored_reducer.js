@@ -11,9 +11,9 @@ export const counterSlice = createSlice({
   initialState: {
     // saqlanadi
     values: {},
+    values2:{},
     loading: false,
     tableItem: [],
-    values: {},
     Panes: [],
     currentPage: {},
     innerModal: "",
@@ -83,8 +83,10 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      console.log(payload);
       state.values = payload;
+    },
+    setValues2: (state, { payload }) => {
+      state.values2 = payload;
     },
     startLoading: (state) => {
       state.loading = true;
@@ -134,6 +136,7 @@ export const {
   startLoading,
   setSearchInputValue,
   setValues,
+  setValues2,
   setInnerModel,
   toggleInnerModal,
   setFilteredMainData,
