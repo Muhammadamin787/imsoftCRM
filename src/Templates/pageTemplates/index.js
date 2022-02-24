@@ -15,7 +15,7 @@ import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
 
 // Basic routes templates
 export const AllPages = [
-  MainTemplate,
+  // MainTemplate,
   ClientTemplate,
   ProgrammsTemplate,
   ServiceTemplate,

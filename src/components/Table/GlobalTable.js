@@ -8,7 +8,6 @@ import { setTableItem } from "../../redux/stored_reducer";
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
   const {loading} = useSelector((s) => s.tabs_reducer)
-  console.log(loading);
 
   const {
     tableItem,

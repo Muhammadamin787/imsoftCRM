@@ -815,8 +815,8 @@ function Plus() {
       <path
         d="M7.99967 14.6668V8.00016M7.99967 8.00016V1.3335M7.99967 8.00016H14.6663M7.99967 8.00016H1.33301"
         stroke="#d9d9d9"
-        stroke-width="1.66667"
-        stroke-linecap="round"
+        strokeWidth="1.66667"
+        strokeLinecap="round"
       />
     </svg>
   );

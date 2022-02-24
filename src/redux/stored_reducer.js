@@ -13,7 +13,6 @@ export const counterSlice = createSlice({
     values: {},
     loading: false,
     tableItem: [],
-    values: {},
     Panes: [],
     currentPage: {},
     innerModal: "",

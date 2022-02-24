@@ -102,7 +102,9 @@ const InnerModal = () => {
                     <div className="modal-header">
                         <span>{innerModal?.text}</span>
                         <div className="modal-header__buttons">
-                            <MacActions onExit={handleCancel} onResize={resizeModal}/>
+                            <MacActions
+                                onExit={handleCancel}
+                                onResize={resizeModal}/>
                         </div>
                     </div>
                 </div>

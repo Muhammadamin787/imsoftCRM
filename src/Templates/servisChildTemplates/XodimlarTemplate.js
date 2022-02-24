@@ -20,6 +20,7 @@ import BigLength from "../../components/BigLength/BigLength";
 import ImgZoom from "../../components/image zoom/ImgZoom";
 import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
+import {Base, BaseUrl} from "../../BaseUrl";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -283,8 +284,8 @@ const XodimlarTemplate = {
     },
     {
       title: "Xarita",
-      dataIndex: "hozirgi_yashash_joyi",
-      key: "hozirgi_yashash_joyi",
+      dataIndex: "loc",
+      key: "loc",
       width: "15%",
       align,
       render: (_, record, i) => <GetLocation record={record} />,

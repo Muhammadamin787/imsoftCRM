@@ -34,8 +34,13 @@ class UploadFile extends React.Component {
         }
         if (info.file.status === "done" && info.file?.response) {
             message.success("File saqlandi");
+            console.log(info);
+            console.log({
+                [this.props.name]: info?.file?.response
+            })
             this.props.onChange({
-                [this.props.name]: `${BaseUrlPost}${info?.file?.response}`
+                // [this.props.name]: `${BaseUrlPost}${info?.file?.response}`
+                [this.props.name]: `${info?.file?.response}`
             })
             this.setState({
                 imageUrl: `${BaseUrlPost}${info?.file?.response}`,
