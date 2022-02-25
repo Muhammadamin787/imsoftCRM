@@ -22,7 +22,6 @@ const GlobalTable = () => {
   const dispatch = useDispatch();
   const { filters, columns, tableItem } = currentPage;
 
-  console.log(tableItem)
 
   const rowSelection = {
     selectedRowKeys: tableItem?.map((row) => row.key),

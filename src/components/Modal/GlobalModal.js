@@ -7,6 +7,8 @@ import {
   toggleModal,
   setValues,
   setTableItem,
+  stopLoading,
+  startLoading,
 } from "../../redux/stored_reducer";
 import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
@@ -43,7 +45,7 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
-    dispatch(setValues({}));
+    // dispatch(setValues({}));
   };
 
   const resizeModal = () => {
@@ -63,12 +65,14 @@ const GlobalModal = () => {
       dispatch(toggleModal(false));
       dispatch(setValues({}));
       dispatch(setTableItem([]));
+      dispatch(startLoading());
       GET(
         removeApiStatusLines.includes(mainUrl)
           ? `${mainUrl}/status/${key}`
           : mainUrl
       ).then((res) => {
         dispatch(setData(res.data.data));
+        dispatch(stopLoading());
       });
     });
     dispatch(toggleModal(false));
@@ -156,8 +160,6 @@ const GlobalModal = () => {
               //  </label>
             ))}
           </div>
-
-
         ))}
         <ModalTabs
           tabs={currentPage?.modal?.tabs}

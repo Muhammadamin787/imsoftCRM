@@ -286,8 +286,8 @@ const XodimlarTemplate = {
     },
     {
       title: "Xarita",
-      dataIndex: "hozirgi_yashash_joyi",
-      key: "hozirgi_yashash_joyi",
+      dataIndex: "loc",
+      key: "loc",
       width: "15%",
       align,
       render: (_, record, i) => <GetLocation record={record} />,

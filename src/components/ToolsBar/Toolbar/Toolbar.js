@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import {
   setTableItem,
   toggleModal,
-  changePanesModal,
   setValues,
+  stopLoading,
+  startLoading,
 } from "../../../redux/stored_reducer";
 import { setData } from "../../../redux/unsaved_reducer";
 
@@ -20,7 +21,6 @@ import {
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
-import { v4 as uuidv4 } from "uuid";
 
 const addButtonIsDisabled = [
   JARAYONDAGI,
@@ -33,23 +33,23 @@ const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
   const { currentPage, loading, Panes, MainData, values } = useSelector(
-
     (state) => state.tabs_reducer
   );
 
   const handleModalClick = () => {
-    const newPanes = Panes?.map((page) =>
-      page?.path === currentPage?.path
-        ? { ...page, isOpenModal: !currentPage?.isOpenModal }
-        : page
-    );
-    const newCurrentPage = {
-      ...currentPage,
-      isOpenModal: !currentPage?.isOpenModal,
-    };
+    // const newPanes = Panes?.map((page) =>
+    //   page?.path === currentPage?.path
+    //     ? { ...page, isOpenModal: !currentPage?.isOpenModal }
+    //     : page
+    // );
+    // const newCurrentPage = {
+    //   ...currentPage,
+    //   isOpenModal: !currentPage?.isOpenModal,
+    // };
 
     dispatch(
-      changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
+      toggleModal(true)
+      // changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
 
     // let oldData = [...values.dev_docs] || [];
@@ -65,24 +65,28 @@ const Toolbar = ({ tableItem }) => {
     // dispatch(setValues({ ...values, dev_docs: oldData }));
   };
 
-  const onRemove = () => {
+  const onRemove = async () => {
     const url = currentPage?.mainUrl;
-
-    let ids = tableItem.map((row) => {
-      return row.id;
-    });
-
-    DELETE(url + "/delete", ids).then((res) => {
-      GET(
-        removeApiStatusLines.includes(url)
-          ? `${url}/status/${currentPage?.key}`
-          : url
-      ).then((res2) => {
-        dispatch(setData(res2.data.data));
-        dispatch(setValues({}));
-        dispatch(setTableItem([]));
+    if (tableItem.length > 0) {
+      let ids = tableItem.map((row) => {
+        return row.id;
       });
-    });
+      dispatch(startLoading())
+      DELETE(url + "/delete", ids).then((res) => {
+        GET(
+          removeApiStatusLines.includes(url)
+            ? `${url}/status/${currentPage?.key}`
+            : url
+        ).then((res2) => {
+          dispatch(setData(res2.data.data));
+          dispatch(setValues({}));
+          dispatch(setTableItem([]));
+          dispatch(stopLoading());
+        });
+      });
+    } else {
+      message.error("Qator belgilang");
+    }
   };
 
   const onEdit = () => {
