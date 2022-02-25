@@ -212,6 +212,7 @@ const XodimlarTemplate = {
       dataIndex: "address",
       key: "address",
       width: "40%",
+      render: (text) => <BigLength text={text} />,
     },
     {
       title: "Tug'ilgan sana",
