@@ -1,7 +1,6 @@
 .bottom__tabs_relative {
   position: relative;
   z-index: 10;
-
   .clear__all {
     position: absolute;
     top: 0px;
@@ -11,45 +10,42 @@
     border: none;
     height: 96%;
     cursor: pointer;
-    transition: .1s;
+    transition: 0.1s;
 
     &:hover {
       background-color: var(--main-color);
     }
   }
 }
-
 .site-footer__tabs {
+  width: 100%;
   display: flex;
-  height: 31px;
-
-  .site-footer__tab {
-    background-color: #fff;
-    color: #999;
+  align-items: center;
+  .bottom__btn {
     display: flex;
-    justify-content: center;
     align-items: center;
-
+    padding: 3px 15px;
+    background-color: #fff;
+    border: none;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.2s;
     &:hover {
-      color: #4447E2;
-
+      color: blue;
       svg {
         path {
-          fill: #4447E2 !important;
+          fill: rgb(24, 0, 240) !important;
         }
       }
-
-      .anticon-close {
-        visibility: visible !important;
-      }
     }
-
     span {
-      margin-left: 15px;
+      margin-left: 10px;
     }
-
+    .bottom__cross {
+      margin-top: 6px;
+    }
     svg {
-      width: 17px;
+      width: 17px !important;
       height: 17px;
       //fill: #ffffff;
 
@@ -59,51 +55,117 @@
       }
     }
   }
-
-  // default antd styles
-  .ant-tabs-tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border-right: 1px solid red !important;
-    border-radius: 0 !important;
-    height: 30px;
-    min-width: 100px;
-    outline: none;
-    cursor: pointer;
-    padding-right: 9px !important;
-
-    .ant-tabs-tab-remove {
-      position: relative;
-      top: 3px;
-      transition: 1s;
-      color: #fff;
-      font-size: 10px;
-
-      svg path {
-        visibility: hidden;
+  .activeBottomKey {
+    background-color: blue !important;
+    color: #fff !important;
+    svg {
+      path {
+        fill: rgb(255, 255, 255) !important;
       }
     }
-
     &:hover {
-      .ant-tabs-tab-remove {
-        svg path {
-          visibility: visible;
+      svg {
+        path {
+          fill: rgb(255, 255, 255) !important;
         }
-
-        &:hover {
-          svg path {
-            visibility: visible;
-            fill: #940808;
-            stroke: #940808;
-          }
-        }
-
       }
     }
   }
 }
+
+// .site-footer__tabs {
+//   display: flex;
+//   height: 31px;
+
+//   .site-footer__tab {
+//     background-color: #fff;
+//     color: #999;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     &:hover {
+//       color: #4447e2;
+
+//       svg {
+//         path {
+//           fill: #4447e2 !important;
+//         }
+//       }
+
+//       .anticon-close {
+//         visibility: visible !important;
+//       }
+//     }
+
+//     span {
+//       margin-left: 15px;
+//     }
+
+//     svg {
+//       width: 17px;
+//       height: 17px;
+//       //fill: #ffffff;
+
+//       path {
+//         fill: #999 !important;
+//         //fill: #ffffff;
+//       }
+//     }
+//   }
+//   .active__bottom_tab {
+//     color: #ffffff !important;
+//     background-color: blue;
+//     &:hover svg {
+//       path {
+//         fill: #ffffff !important;
+//       }
+//     }
+//   }
+
+//   // default antd styles
+//   .ant-tabs-tab {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: transparent;
+//     border-right: 1px solid red !important;
+//     border-radius: 0 !important;
+//     height: 30px;
+//     min-width: 100px;
+//     outline: none;
+//     cursor: pointer;
+//     padding-right: 9px !important;
+
+//     .ant-tabs-tab-remove {
+//       position: relative;
+//       top: 3px;
+//       transition: 1s;
+//       color: #fff;
+//       font-size: 10px;
+
+//       svg path {
+//         visibility: hidden;
+//       }
+//     }
+
+//     &:hover {
+//       .ant-tabs-tab-remove {
+//         svg path {
+//           visibility: visible;
+//         }
+
+//         &:hover {
+//           svg path {
+//             visibility: visible;
+//             fill: #940808;
+//             stroke: #940808;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   background-color: #fff !important;

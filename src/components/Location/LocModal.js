@@ -18,28 +18,29 @@ const LocModal = () => {
   }, [currentLocation]);
   return (
     <Modal
-      style={{ width: "1200px" }}
       visible={currentLocationIsOpen}
       onOk={() => dispatch(setCurrentLocationIsOpen())}
       onCancel={() => dispatch(setCurrentLocationIsOpen())}
-      className={"location"}
+      className={'location'}
     >
-      <YMaps>
-        <Map
-          modules={["Placemark", "geocode", "geoObject.addon.balloon"]}
-          state={{
-            center: loc,
-            zoom: 15,
-          }}
-          style={{
-            width: "100%",
-            height: "500px",
-          }}
-        >
-          {loc ? <Placemark geometry={loc} /> : null}
-          {/* <FullscreenControl /> */}
-        </Map>
-      </YMaps>
+      <div style={{backgroundColor: '#fff', width: '1000px', height: '501px'}}>
+        <YMaps>
+          <Map
+            modules={["Placemark", "geocode", "geoObject.addon.balloon"]}
+            state={{
+              center: loc,
+              zoom: 15,
+            }}
+            style={{
+              width: "100%",
+              height: "500px",
+            }}
+          >
+            {loc ? <Placemark geometry={loc} /> : null}
+            {/* <FullscreenControl /> */}
+          </Map>
+        </YMaps>
+      </div>
     </Modal>
   );
 };
