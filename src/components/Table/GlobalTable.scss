@@ -16,8 +16,8 @@
   }
 }
 
-.tab-add__input{
-  background-color:#2F49D1;
+.tab-add__input {
+  background-color: #2f49d1;
   border: none !important;
   outline: none !important;
   width: 25px;
@@ -26,24 +26,59 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
   cursor: pointer;
-  span{
+  span {
     height: 25px;
     width: 25px !important;
   }
 }
 
-.tab-add__input:hover{
-  background-color:#2F49D1;
-  color:#fff !important;
+.tab-add__input:hover {
+  background-color: #2f49d1;
+  color: #fff !important;
 }
 
-.ant-table-tbody{
-  .ant-table-row{
-    .ant-table-cell{
-    // background-color: black !important;
-    // border: 1px solid red;
-    height: 33px !important;
+.ant-table-tbody {
+  .ant-table-row {
+    .ant-table-cell {
+      height: 33px !important;
+    }
+  }
+}
+
+.innerTable {
+  .innerTable-row {
+    .ant-table-wrapper {
+      .ant-spin-nested-loading {
+        .ant-spin-container {
+          .ant-table {
+            .ant-table-row {
+              .ant-table-cell{
+
+                // background-color: red !important;
+                // height: 10px !important;
+                padding: 0px 10px 0px 10px;
+                // margin: 10px !important;
+
+              }
+}
+            // .ant-table-small {
+            //   .ant-table-bordered {
+            //     .ant-table-fixed-header {
+            //       .ant-table-container {
+            //         .ant-table-body {
+            //           max-height: 130px !important;
+            //           .ant-table-row .ant-table-row-level-0 {
+            //           }
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
+          }
+        }
+      }
     }
   }
 }

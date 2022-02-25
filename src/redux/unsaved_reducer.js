@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import axios from "../functions/axios";
-import { DELETE, GET, POST } from "../functions/Methods";
+
 
 export const counterSlice = createSlice({
   name: "unsaved_reducer",
@@ -41,7 +40,7 @@ export const counterSlice = createSlice({
   },
   reducers: {
     setAllData: (state, { payload }) => {
-      state.allData = {...state.allData, ...payload};
+      state.allData = { ...state.allData, ...payload };
     },
     setData: (state, { payload }) => {
       let arrayWithKeys = [];

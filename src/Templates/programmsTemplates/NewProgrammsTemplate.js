@@ -1,11 +1,11 @@
-import {FieldNumberOutlined} from "@ant-design/icons";
-import {YANGI_DASTURLAR} from "../../pages/pageConstants/PageRoutes";
-import {PROGRAMMERS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {ProgrammSpecifications} from "../programmsModalTabTemplates/ProgrammSpecifications";
-import {ProgrammPerformers} from "../programmsModalTabTemplates/ProgrammPerformers";
-import {ProgrammFilesList} from "../programmsModalTabTemplates/ProgrammFilesList";
+import { FieldNumberOutlined } from "@ant-design/icons";
+import { YANGI_DASTURLAR } from "../../pages/pageConstants/PageRoutes";
+import { PROGRAMMERS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { ProgrammSpecifications } from "../programmsModalTabTemplates/ProgrammSpecifications";
+import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerformers";
+import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
-import {ProgrammsTemplateApi} from "../../constant/apiLine/apiLine";
+import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {
     STRING,
     DATE,
@@ -24,11 +24,12 @@ export const NewProgrammsTemplate = {
     key: "1",
     allData: {
         workers: "/workers/all",
-        clients:"/clients/active"
+        clients: "/clients/active"
     },
     modal: {
         style: {
             width: 1100,
+            height: 100,
             marginTop: "-70px",
         },
         tabs: [
@@ -52,7 +53,7 @@ export const NewProgrammsTemplate = {
                     gridColumn: "1 / 5",
                     gridRow: "1 / 2",
                     label: "Mijoz",
-                    options:"clients"
+                    options: "clients"
                 },
                 {
                     name: "start_date",
@@ -108,11 +109,10 @@ export const NewProgrammsTemplate = {
     ],
     isOpenModal: false,
     mainUrl: ProgrammsTemplateApi,
-    // allData: ["/projects"],
     filters: ["developer_name"],
     columns: [
         {
-            title: <FieldNumberOutlined/>,
+            title: <FieldNumberOutlined />,
             dataIndex: "number",
             key: "number",
             width: "10%",
@@ -139,7 +139,7 @@ export const NewProgrammsTemplate = {
             key: "general_info",
             width: "50%",
             align: "center",
-            render: (text) => <BigLength text={text}/>,
+            render: (text) => <BigLength text={text} />,
         },
         {
             title: "Ish olingan vaqti",

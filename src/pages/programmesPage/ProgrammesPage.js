@@ -1,11 +1,6 @@
-import { useState } from "react";
 import "./programmesPage.scss";
-import Toolbar from "../../components/ToolsBar/Toolbar/Toolbar";
 import { Layout } from "antd";
-import InnerTable from "../../components/Table/innerTable/InnerTable";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import ProgrammesPageChild from "./programmesPageChild/ProgrammesPageChild";
 
 const ProgrammesPage = ({ page }) => {

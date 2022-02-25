@@ -2,10 +2,6 @@ import {
   STRING,
   PHONE,
   MAP,
-  NUMBER,
-  SELECT,
-  UPLOAD,
-  IMAGE,
   DATE,
   PICTURE_WALL,
 } from "../../../components/Modal/InputTypes";
@@ -86,7 +82,6 @@ const ContactsTemplate = {
           gridRow: "2 / 3",
           label: "Telifon 2",
         },
-
         {
           name: "operator_born_date",
           type: DATE,

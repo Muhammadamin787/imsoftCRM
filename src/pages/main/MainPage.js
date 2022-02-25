@@ -24,7 +24,7 @@ import {
   stopLoading,
 } from "../../redux/stored_reducer";
 
-import { setData } from "../../redux/unsaved_reducer";
+import { setData ,setAllData} from "../../redux/unsaved_reducer";
 
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -101,7 +101,7 @@ const MainPage = () => {
 
 
   useEffect(() => {
-    console.log(Panes);
+    // console.log(Panes);
   }, [Panes])
 
   return (

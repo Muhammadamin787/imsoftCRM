@@ -51,18 +51,6 @@ const Toolbar = ({ tableItem }) => {
       toggleModal(true)
       // changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
-
-    // let oldData = [...values.dev_docs] || [];
-
-    // oldData.push({
-    //     rowId: uuidv4(),
-    //     number: '',
-    //     name: '',
-    //     comment: '',
-    //     file: '',
-    // });
-
-    // dispatch(setValues({ ...values, dev_docs: oldData }));
   };
 
   const onRemove = async () => {

@@ -9,8 +9,7 @@ const ReklamalarTemplate = {
   path: REKLAMALAR_PATH,
   icon: "Reklamalar",
   type: SERVIS_CHILD_PAGES,
-  mainUrl:"/reklams",
-	// allData:["/reklams"],
+  mainUrl: "/reklams",
   isOpenModal: false,
   form: [
     {
@@ -20,7 +19,7 @@ const ReklamalarTemplate = {
           name: "description",
           type: STRING,
           required: true,
-          placeholder:"Reklamalar",
+          placeholder: "Reklamalar",
           label: "Reklamalar"
         },
       ],

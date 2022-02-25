@@ -9,6 +9,4 @@ export const RejactProgrammesTemplate = {
   type: PROGRAMMERS_CHILD_PAGES,
   key: "5",
   mainUrl: ProgrammsTemplateApi,
-  // modal: {...NewProgrammsTemplate.modal},
-  // columns: [...NewProgrammsTemplate.columns],
 };

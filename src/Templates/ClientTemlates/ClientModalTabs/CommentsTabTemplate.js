@@ -1,5 +1,5 @@
 import { STRING } from "../../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { FieldNumberOutlined } from "@ant-design/icons";
 
 const align = "center";
 
@@ -63,7 +63,7 @@ const CommetsTabTemplate = {
     {
       number: "1",
       key: 1,
-      izox:"yaxshi table",
+      izox: "yaxshi table",
       fayl: "no fayl",
       xodim: "Uroq",
       vaqti: "2020/12/15",
@@ -71,7 +71,7 @@ const CommetsTabTemplate = {
     {
       number: "2",
       key: 2,
-      izox:"dastur mukammal ishlangan 👍",
+      izox: "dastur mukammal ishlangan 👍",
       fayl: "no fayl",
       xodim: "Tovar",
       vaqti: "2021/17/15",

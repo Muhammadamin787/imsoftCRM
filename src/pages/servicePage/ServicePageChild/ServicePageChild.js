@@ -1,17 +1,17 @@
 import React from "react";
 import "./servicePageChild.scss";
 import GlobalTable from "../../../components/Table/GlobalTable";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
     setCurrentPage,
     changePanes,
 } from "../../../redux/stored_reducer";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
 
-const ServicePageChild = ({page}) => {
+const ServicePageChild = ({ page }) => {
     const dispatch = useDispatch();
-    const {Panes, currentPage, tableItem} = useSelector((state) => state.tabs_reducer);
+    const { Panes, currentPage, tableItem } = useSelector((state) => state.tabs_reducer);
     const navigate = useNavigate();
 
     const removeCurrentPage = (type = null) => {
@@ -34,9 +34,9 @@ const ServicePageChild = ({page}) => {
     };
     return (
         <div className="child-page">
-            <Toolbar tableItem={tableItem} Panes={Panes} currentPage={currentPage}/>
+            <Toolbar tableItem={tableItem} Panes={Panes} currentPage={currentPage} />
             <div className="child-body">
-                <GlobalTable/>
+                <GlobalTable />
             </div>
         </div>
     );
