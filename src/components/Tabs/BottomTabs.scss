@@ -21,17 +21,11 @@
 
 .site-footer__tabs {
   display: flex;
-  //background-color: var(--main-color);
   height: 31px;
 
   .site-footer__tab {
-    //background: #5154ff !important;
-    //border: 1px solid red;
     background-color: #fff;
-
-    //border-radius: 5px;
     color: #999;
-    //color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,14 +65,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    //padding: 12px 0;
-    //font-size: 14px;
     background: transparent;
-    border: 0 !important;
-    border-right: 1px solid #ccc !important;
-    //border: 1px solid red !important;
+    border-right: 1px solid red !important;
     border-radius: 0 !important;
-    //background-color: #999 !important;
     height: 30px;
     min-width: 100px;
     outline: none;
@@ -117,16 +106,5 @@
 }
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
-  background: #5154ff;
   background-color: #fff !important;
-
-  //background: red;
-  //border-radius: 5px;
-  //color: #ffffff;
-}
-
-.active-footer-tab {
-  display: none !important;
-  background-color: #4447E2 !important;
-  border: 1px solid red !important;
 }

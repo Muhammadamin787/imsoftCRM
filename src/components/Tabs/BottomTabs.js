@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./BottomTabs.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { Tabs } from "antd";
-import {setCurrentPage, changePanes, removeTab} from "../../redux/stored_reducer";
+import {setCurrentPage, changePanes, removeTab, clearPanes} from "../../redux/stored_reducer";
 import { useNavigate } from "react-router-dom";
 import { findIcon } from "../../assets/icons/icons";
 import { ClearOutlined } from "@ant-design/icons";
@@ -65,7 +65,6 @@ const BottomTabs = () => {
               Panes?.map((pane, i) => (
                 <TabPane
                     closeIcon={findIcon("CloseIconForTab")}
-                    className={pane.path === pathname ? "active-footer-tab" : ""}
                     tab={
                     <div
                       className="site-footer__tab"

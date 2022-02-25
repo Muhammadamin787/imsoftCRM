@@ -111,6 +111,9 @@ export const counterSlice = createSlice({
     setOffInnerModel: (state, { payload }) => {
       state.innerModal = "";
     },
+    clearPanes: (state, {payload}) => {
+      state.Panes = payload;
+    },
     setCurrentLocation: (s, { payload }) => {
       s.currentLocation = payload;
     },
@@ -136,7 +139,7 @@ export const {
   editTableItem,
   // changePanesModal,
   toggleTableType,
-  // clearPanes,
+  clearPanes,
   stopLoading,
   startLoading,
   setSearchInputValue,
