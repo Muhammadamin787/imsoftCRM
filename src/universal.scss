@@ -8,10 +8,11 @@
 }
 .undefined {
   background-color: rgb(236, 151, 119) !important;
+  box-shadow: 0 0 4px 1px;
   padding: 0 3px;
 }
 .hodim-template {
-  height: 50px;
+  height: 30px;
   overflow: hidden;
   font-size: 0.9em;
   line-height: 17px;

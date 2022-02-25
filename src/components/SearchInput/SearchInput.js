@@ -66,7 +66,7 @@ const SearchInput = () => {
               </div>
             );
             if(`${text}`.length > 135){
-              console.log("big " + text.length);
+              // console.log("big " + text.length);
                 return (
                   <Popover placement="leftTop" content={content}>
                     <div className="hodim-template">
@@ -77,7 +77,7 @@ const SearchInput = () => {
                 )
             }
             else{
-              console.log("small " + text.length);
+              // console.log("small " + text.length);
               return (
                 <div className="hodim-template">
                   <PaintBackground text={`${text}`} value={`${value}`} />
