@@ -1,2 +1,2 @@
-export const Base = "https://cc10-213-230-112-81.ngrok.io/";
+export const Base = "https://aqlli-uy.uz/";
 export const BaseUrl = Base + "api";
