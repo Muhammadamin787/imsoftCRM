@@ -47,7 +47,7 @@ const BottomTabs = () => {
 
   const clearAll = () => {
     dispatch(clearPanes([]));
-    navigate('/asosiy');
+    navigate('/servis');
   }
 
   return (
@@ -64,7 +64,9 @@ const BottomTabs = () => {
             {Panes &&
               Panes?.map((pane, i) => (
                 <TabPane
-                  tab={
+                    closeIcon={findIcon("CloseIconForTab")}
+                    className={pane.path === pathname ? "active-footer-tab" : ""}
+                    tab={
                     <div
                       className="site-footer__tab"
                       onClick={() => onChange(i)}
@@ -79,7 +81,7 @@ const BottomTabs = () => {
           </Tabs>
           {Panes.length > 1 && (
             <button className="clear__all" onClick={clearAll}>
-              <ClearOutlined /> Clear all
+              <ClearOutlined /> Tabni tozalash
             </button>
           )}
         </div>

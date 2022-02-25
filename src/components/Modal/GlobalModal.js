@@ -171,13 +171,13 @@ const GlobalModal = () => {
           >
             Orqaga
           </Button>
-          <button
+          <Button
             type="submit"
             className="modal-form__button saqlash"
             onClick={(e) => handleSubmit(e)}
           >
             Saqlash
-          </button>
+          </Button>
         </div>
       </form>
     </Modal>

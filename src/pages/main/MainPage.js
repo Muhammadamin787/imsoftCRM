@@ -142,8 +142,8 @@ const MainPage = () => {
                         }
                         content={
                             <div>
-                                <Button color="danger" style={{width: "100%"}}>
-                                    Log out
+                                <Button type={"primary"} danger style={{width: "100%"}}>
+                                    Tizimdan chiqish
                                 </Button>
                             </div>
                         }
