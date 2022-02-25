@@ -18,23 +18,17 @@ const dontFilterTamlateDataIndex = [
   "developer_photo",
   "passport",
   "family",
-  "hozirgi_yashash_joyi",
   "number",
   "file_1",
   "loc",
 ];
-
-// ! Template dagi dataIndex keladigan ma'lumotlarning length kotta bo'lib ketadigan bo'lsa u holda table buzilib ketadi
-// ! buzilishini oldini olish uchun popover chiqarish kerak qaysi dataIndex ga chiqishini yozing 👨‍🏫👨‍🏫👨‍🏫
-
-const popoverTrue = ["about", "general_info", "home_address"];
 
 const { Search } = Input;
 
 const SearchInput = () => {
   const [value, setValue] = useState("");
   const { currentPage } = useSelector((state) => state.tabs_reducer);
-  const {mainData} = useSelector((state) => state.unsaved_reducer)
+  const { mainData } = useSelector((state) => state.unsaved_reducer);
   const [keys, setKeys] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -49,7 +43,6 @@ const SearchInput = () => {
     let filter = mainData.filter((item) => {
       for (let i = 0; i < keys.length; i++) {
         if (typeof item[keys[i]] === "string") {
-          console.log(item[keys[i]]);
           if (
             item[keys[i]]
               .toString()
@@ -63,31 +56,36 @@ const SearchInput = () => {
     });
 
     let newColumn = currentPage?.columns?.map((item) => {
-      if (item?.dataIndex) {
-        if (!dontFilterTamlateDataIndex.includes(item?.dataIndex)) {
-          return {
-            ...item,
-            render: (text) => {
-              let content = (
-                <div style={{ width: "400px" }}>
-                  <PaintBackground text={`${text}`} value={value?value:" "} />
+      if (!dontFilterTamlateDataIndex.includes(item?.dataIndex)) {
+        return {
+          ...item,
+          render: (text) => {
+            let content = (
+              <div style={{ width: "400px" }}>
+                <PaintBackground text={`${text}`} value={`${value}`} />
+              </div>
+            );
+            if(`${text}`.length > 135){
+              console.log("big " + text.length);
+                return (
+                  <Popover placement="leftTop" content={content}>
+                    <div className="hodim-template">
+                      <div className={"box-shadow"}></div>
+                      <PaintBackground text={`${text}`} value={`${value}`} />
+                    </div>
+                  </Popover>
+                )
+            }
+            else{
+              console.log("small " + text.length);
+              return (
+                <div className="hodim-template">
+                  <PaintBackground text={`${text}`} value={`${value}`} />
                 </div>
               );
-              return popoverTrue.includes(item.dataIndex) ? (
-                <Popover placement="leftTop" content={content}>
-                  <div className="hodim-template">
-                    <div className={"box-shadow"}></div>
-                    <PaintBackground text={`${text}`} value={value?value:""} />
-                  </div>
-                </Popover>
-              ) : (
-                <PaintBackground text={`${text}`} value={value?value:""} />
-              );
-            },
-          };
-        } else {
-          return item;
-        }
+            }
+          },
+        };
       } else {
         return item;
       }

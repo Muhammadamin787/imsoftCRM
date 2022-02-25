@@ -23,15 +23,15 @@ export const counterSlice = createSlice({
       ],
       order_reason: [
         {
-          id: "Frontend",
+          id: 1,
           name: "Frontend",
         },
         {
-          id: "Backend",
+          id: 2,
           name: "Backend",
         },
         {
-          id: "Ui Ux",
+          id: 3,
           name: "Ui Ux",
         },
       ],

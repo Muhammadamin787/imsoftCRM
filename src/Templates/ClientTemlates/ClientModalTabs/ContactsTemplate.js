@@ -127,7 +127,6 @@ const ContactsTemplate = {
           filePath: "/clients/image",
           fileName: "file",
         },
-
         {
           name: "client_addres",
           type: MAP,

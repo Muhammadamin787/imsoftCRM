@@ -1,33 +1,33 @@
-import {Input, InputNumber, DatePicker, Select, message} from "antd";
-import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState, useRef} from "react";
+import { Input, InputNumber, DatePicker, Select, message } from "antd";
+import { Option } from "antd/lib/mentions";
+import React, { useEffect, useState, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-    DATE,
-    IMAGE,
-    MAP,
-    NUMBER,
-    TEXTAREA,
-    PHONE,
-    SELECT,
-    STRING,
-    UPLOAD,
-    PICTURE_WALL,
+  DATE,
+  IMAGE,
+  MAP,
+  NUMBER,
+  TEXTAREA,
+  PHONE,
+  SELECT,
+  STRING,
+  UPLOAD,
+  PICTURE_WALL,
 } from "./InputTypes";
-import {inputDeafultHeght} from "../../constant/deafultStyle";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import {setInnerModel, toggleInnerModal} from "../../redux/stored_reducer";
+import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
-import {findIcon} from "../../assets/icons/icons";
-import {PicturesWall} from "./PicturesWall/PicturesWall";
+import { findIcon } from "../../assets/icons/icons";
+import { PicturesWall } from "./PicturesWall/PicturesWall";
 
-const {TextArea} = Input;
+const { TextArea } = Input;
 
 const ModalInput = (props) => {
     let input = null;
@@ -36,45 +36,54 @@ const ModalInput = (props) => {
         (state) => state.tabs_reducer
     );
 
+  const {
+    autoSelect,
+    placeholder,
+    name,
+    gridRow,
+    gridColumn,
+    label,
+    type,
+    height,
+    Iconic,
+    options,
+    template,
+    required,
+    filePath,
+    autoFocus,
+    handleChangeValue,
+    fileName,
+    countInput
+  } = props;
+
+  const { allData } = useSelector((s) => s?.unsaved_reducer);
+
+  const handleSelectAdd = (template) => {
+    dispatch(setInnerModel(template));
+    dispatch(toggleInnerModal(true));
+  };
+
+  const refs = useRef(null);
+
+  useEffect(() => {
+    const id = document.getElementById("autofucus");
+    if (id) {
+      id.focus();
+    }
+  }, []);
 
 
-    const {
-        autoSelect,
-        placeholder,
-        name,
-        gridRow,
-        gridColumn,
-        label,
-        type,
-        height,
-        Iconic,
-        options,
-        template,
-        required,
-        filePath,
-        autoFocus,
-        handleChangeValue,
-        fileName,
-    } = props;
+//   console.log(countInput);
+// const [reqSoni, setReqSoni] = useState(0)
 
-    const {allData} = useSelector(s => s?.unsaved_reducer);
-
-    const handleSelectAdd = (template) => {
-        dispatch(setInnerModel(template));
-        dispatch(toggleInnerModal(true));
-    };
-
-    const refs = useRef(null);
-
-    useEffect(() => {
-        const id = document.getElementById("autofucus");
-        if (id) {
-            id.focus();
-        }
-    }, []);
+// countInput.map(count => {
+//     if (count.required) {
+        
+//     }
+// })
 
 
-    switch (type) {
+  switch (type) {
         case STRING:
             input = (
                 <label
@@ -131,6 +140,7 @@ const ModalInput = (props) => {
                         handleChangeValue(target);
                     }}
                     value={innerModal ? values2[name] : values[name]}
+                    // value={values[name] ? values[name] : ""}
                 />
             );
             break;
@@ -221,7 +231,7 @@ const ModalInput = (props) => {
                         value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
                         // value={innerModal ? values2[name] : moment(values[name], "YYYY/MM/DD")}
                         autoFocus
-                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+                        defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
                         required={required}
                         onChange={(_, dateString) => {
                             const target = {
@@ -355,7 +365,7 @@ const ModalInput = (props) => {
             break;
     }
 
-    return input;
+  return input;
 };
 
 export default ModalInput;

@@ -151,6 +151,7 @@ const XodimlarTemplate = {
         {
           type: MAP,
           required: true,
+          height: "137",
           placeholder: "hozirgi turgan joyi (map quyiladi)",
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
@@ -281,8 +282,8 @@ const XodimlarTemplate = {
     },
     {
       title: "Xarita",
-      dataIndex: "hozirgi_yashash_joyi",
-      key: "hozirgi_yashash_joyi",
+      dataIndex: "loc",
+      key: "loc",
       width: "15%",
       align,
       render: (_, record, i) => <GetLocation record={record} />,

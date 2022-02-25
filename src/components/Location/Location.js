@@ -9,7 +9,7 @@ const GetLocation = ({ record }) => {
   const dispatch = useDispatch();
   const click = () => {
     dispatch(setCurrentLocationIsOpen());
-    dispatch(setCurrentLocation([+record.latitude, +record.longtitude]));
+    dispatch(setCurrentLocation([+record.latitude, +record.longitude]));
   };
   return (
     <div style={{ cursor: "pointer" }} onClick={click}>

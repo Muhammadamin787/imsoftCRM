@@ -1,5 +1,4 @@
 import ClientPageChild from "./clientPageChild/ClientPageChild";
-
 const ClientsPage = ({ page }) => {
 
   return (
