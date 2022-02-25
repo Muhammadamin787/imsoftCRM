@@ -1,7 +1,7 @@
-.bottom__tabs_relative{
+.bottom__tabs_relative {
   position: relative;
   z-index: 10;
-  .clear__all{
+  .clear__all {
     position: absolute;
     top: 2px;
     right: 2px;
@@ -15,10 +15,9 @@
   display: flex;
   background-color: var(--main-color);
   height: 31px;
-  
+
   .site-footer__tab {
     background: #5154ff !important;
-    //border-radius: 5px;
     color: #ffffff;
     display: flex;
     justify-content: center;
@@ -41,8 +40,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    //padding: 12px 0;
-    //font-size: 14px;
     background: transparent;
     border: 0;
     height: 30px;
@@ -56,7 +53,7 @@
       top: 9px;
     }
   }
-  
+
   .ant-tabs-tab-remove {
     color: #ffffff;
     font-size: 10px;
@@ -65,7 +62,4 @@
 
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   background: #5154ff;
-  //background: red;
-  //border-radius: 5px;
-  //color: #ffffff;
 }

@@ -17,10 +17,8 @@ import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
-import ImgZoom from "../../components/image zoom/ImgZoom";
 import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
-import {Base, BaseUrl} from "../../BaseUrl";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -110,7 +108,6 @@ const XodimlarTemplate = {
           placeholder: "Manzil",
           gridColumn: "1 / 10",
           gridRow: "4 / 5",
-          // height: "40px"
         },
         {
           label: "Qo'shimcha malumot",
@@ -157,7 +154,6 @@ const XodimlarTemplate = {
           placeholder: "hozirgi turgan joyi (map quyiladi)",
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
-          // height: inputDeafultHeght,
           label: " ",
         },
         {

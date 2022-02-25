@@ -42,6 +42,7 @@ const GlobalModal = () => {
   // }, [currentPage]);
 
   const handleCancel = (e) => {
+    console.log(false);
     dispatch(toggleModal(false));
     dispatch(setValues({}));
   };
@@ -56,7 +57,7 @@ const GlobalModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleChangeValue();
+    // handleChangeValue();
     const { mainUrl, key } = currentPage;
     POST(mainUrl, values).then((res) => {
       message.success({ content: res.data.data, key: e });
@@ -90,11 +91,11 @@ const GlobalModal = () => {
     });
   };
 
+
   return (
     <Modal
       className="global-modal"
       style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
       footer={null}
       title={
         <div
@@ -138,22 +139,11 @@ const GlobalModal = () => {
             }}
           >
             {form?.inputs?.map((input) => (
-              // <label
-              // style={{
-              //   gridColumn: input.gridColumn,
-              //   gridRow: input.gridRow,
-              //   height: input.height ? input.height + "px" : inputDeafultHeght + "px",
-              //   border: "1px solid black"
-              // }}
-              // className="select-label"
-              //   >
-              //     {input?.label}
               <ModalInput
                 {...input}
                 key={input?.name}
                 handleChangeValue={handleChangeValue}
               />
-              //  </label>
             ))}
           </div>
 

@@ -13,7 +13,7 @@ import {GET, POST} from "../../../functions/Methods";
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
-    const {currentPage, values, innerModal} = useSelector((state) => state.tabs_reducer);
+    const {currentPage, values2, innerModal} = useSelector((state) => state.tabs_reducer);
 
 
     const [bounds, setBounds] = useState({
@@ -47,12 +47,15 @@ const InnerModal = () => {
         // keyinchalik kichik katta qilagian funksiya yoziladi
     };
 
+    const handleChangeValue = (e) => {
+        dispatch(setValues2({ ...values2, ...e }));
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        handleChangeValue()
         const url = innerModal?.mainUrl;
-        POST(url, values).then(res => {
+        POST(url, values2).then(res => {
             message.success({content: res.data.data, key: e});
             dispatch(toggleInnerModal(false));
             dispatch(setValues2({}));
@@ -132,7 +135,7 @@ const InnerModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput {...input} key={input?.name}/>
+                            <ModalInput handleChangeValue={handleChangeValue} {...input} key={input?.name}/>
                         ))}
                     </div>
                 ))}

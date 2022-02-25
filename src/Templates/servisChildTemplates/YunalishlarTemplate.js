@@ -2,7 +2,6 @@ import React from "react";
 import {YUNALISHLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
 
 const YunalishlarTemplate = {
     text: "Yunalishlar",

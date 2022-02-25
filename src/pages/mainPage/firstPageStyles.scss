@@ -5,8 +5,6 @@
   display: flex;
   justify-content: space-between;
   height: 80%;
-  // border: 2px solid red;
-  // margin-top: 100px;
   margin: 3.6% 100px;
 
   .site-layout__body {
@@ -41,20 +39,16 @@
       }
       .body-item-meaning {
         display: flex;
-        // border: 1px solid red;
         align-items: center;
         justify-content: space-between;
 
         & > span {
           font-weight: 600;
-          // border: 1px solid red;
-          // height: 30px;
           padding: 0 10px;
           margin-left: 10px;
           text-overflow: ellipsis;
           font-size: 16px;
           overflow: hidden;
-          // width: 180px;
           white-space: nowrap;
         }
 

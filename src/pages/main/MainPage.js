@@ -1,4 +1,4 @@
-import {Link, Route, Routes, NavLink, useLocation, useHistory, useNavigate} from "react-router-dom";
+import {Link, Route, Routes, NavLink, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Layout, Menu, Popover, Button} from "antd";
 import "./mainPage.scss";
@@ -37,7 +37,6 @@ const MainPage = () => {
     );
 
     const {Header, Content} = Layout;
-    // const {Option} = Select;
     const {SubMenu, Item} = Menu;
     const dispatch = useDispatch();
 
@@ -85,7 +84,7 @@ const MainPage = () => {
             });
         }
     }, [pathname]);
-
+    
     useEffect(() => {
         let currentData = currentPage?.allData;
   

@@ -1,28 +1,29 @@
-import React,{ useState, useEffect} from 'react'
-import {Input, DatePicker, Select, Button} from "antd"
-import {useSelector, useDispatch} from "react-redux";
-import {DeleteOutlined} from "@ant-design/icons"
-import {setValues} from '../../../redux/stored_reducer';
+import React, { useState, useEffect } from 'react'
+import { Input, DatePicker, Select, Button } from "antd"
+import { useSelector, useDispatch } from "react-redux";
+import { DeleteOutlined } from "@ant-design/icons"
+import { setValues } from '../../../redux/stored_reducer';
 import UploadFile from "../../Modal/UpLoadFile"
-import {STRING, DATE, UPLOAD, SELECT, BUTTON} from '../InputTypes'
-import {Option} from "antd/lib/mentions";
+import { STRING, DATE, UPLOAD, SELECT, BUTTON } from '../InputTypes'
+import { Option } from "antd/lib/mentions";
 import "./TabInput.scss"
 
-const TabInput = ({record, name, type, tabName, options, filePath}) => {
-    const {values} = useSelector(state => state?.tabs_reducer);
+const TabInput = ({ record, name, type, tabName, options, filePath }) => {
+    const { values } = useSelector(state => state?.tabs_reducer);
     const { allData } = useSelector(state => state?.unsaved_reducer);
 
-    // console.log(allData);
+
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     handleChange()
-    // },[tabName])
+    useEffect(() => {
+        handleChange()
+        console.log(tabName);
+    },[tabName])
 
     function handleChange(e) {
-        console.log(tabName);
+        // console.log(tabName);
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
-        const newObj = {...foundObj, [name]: e};
+        const newObj = { ...foundObj, [name]: e };
         let foundTab = [...values?.[tabName]];
         foundTab.splice(foundTab.indexOf(foundObj), 1)
         foundTab.push(newObj);
@@ -34,20 +35,15 @@ const TabInput = ({record, name, type, tabName, options, filePath}) => {
     }
 
     const handleDelete = () => {
+
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
+        let foundTab = [...values?.[tabName]];
+        foundTab.splice(foundTab.indexOf(foundObj), 1)
 
-        const tabnameValues = values?.[tabName]
-        const newTabs = tabnameValues.filter(d => d.rowId !== foundObj.rowId)
-
-        // console.log(foundObj);
-        // console.log(tabnameValues);
-        // console.log(newTabs);
-
-        // dispatch(setValues({
-        //     ...values,
-        //     [tabName]: [...newTabs]
-        // }));
-
+        dispatch(setValues({
+            ...values,
+            [tabName]: [...foundTab]
+        }));
 
     }
 
@@ -100,17 +96,16 @@ const TabInput = ({record, name, type, tabName, options, filePath}) => {
             input = (
                 <UploadFile
                     id="file-uploder"
-                    label="Upload"
                     filePath={filePath}
                     name={name}
                     onChange={(e) => handleChange(e)}
+                    Iconic="UploadFileOilasi"
                 />
             );
             break;
-
         case BUTTON:
             input = (
-                <Button type='default' onClick={() => handleDelete()}><DeleteOutlined/></Button>
+                <Button type='default' onClick={() => handleDelete()}><DeleteOutlined /></Button>
             )
 
         default:

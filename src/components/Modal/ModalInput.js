@@ -36,7 +36,6 @@ const ModalInput = (props) => {
         (state) => state.tabs_reducer
     );
 
-    console.log(innerModal);
 
 
     const {
@@ -85,6 +84,8 @@ const ModalInput = (props) => {
                         height: height ? height + "px" : inputDeafultHeght + "px",
                     }}
                     required={required}
+                    required
+                    
                 >
                     {label && label}
                     <Input
@@ -92,7 +93,7 @@ const ModalInput = (props) => {
                         autoFocus
                         id={refs && "autofucus"}
                         // value={values[name] ? values[name] : ""}
-                        value={innerModal && template ? values2[name] : values[name]}
+                        value={innerModal ? values2[name] : values[name]}
                         placeholder={placeholder}
                         required={required}
                         onChange={(e) => {
@@ -129,7 +130,7 @@ const ModalInput = (props) => {
                         };
                         handleChangeValue(target);
                     }}
-                    value={values[name] ? values[name] : ""}
+                    value={innerModal ? values2[name] : values[name]}
                 />
             );
             break;
@@ -154,7 +155,8 @@ const ModalInput = (props) => {
                             placeholder={placeholder}
                             required={required}
                             // value={allData[options]}
-                            defaultValue={values[name] && values[name]}
+                            // defaultValue={values[name] && values[name]}
+                            defaultValue={innerModal ? values2[name] : values[name]}
                             onChange={(e) => {
                                 if (autoSelect) {
                                     let selectedValues = {[name]: e};
@@ -197,6 +199,7 @@ const ModalInput = (props) => {
                     height={height}
                     handleChangeValue={handleChangeValue}
                     required={required}
+                    
                     geo={values?.longtitude && values?.latitude ? [values.latitude, values?.longtitude] : ""}
                 />
             );
@@ -216,6 +219,7 @@ const ModalInput = (props) => {
                         format="DD.MM.YYYY"
                         allowClear={false}
                         value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
+                        // value={innerModal ? values2[name] : moment(values[name], "YYYY/MM/DD")}
                         autoFocus
                         // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
                         required={required}
@@ -241,7 +245,9 @@ const ModalInput = (props) => {
                     {label && label}
                     <TextArea
                         placeholder={placeholder}
-                        value={values[name] ? values[name] : ""}
+                        // value={values[name] ? values[name] : ""}
+                    value={innerModal ? values2[name] : values[name]}
+                        
                         autoFocus
                         required={required}
                         autoSize={{minRows: 3, maxRows: 3}}
@@ -284,7 +290,9 @@ const ModalInput = (props) => {
                             };
                             handleChangeValue(target);
                         }}
-                        value={values[name] ? values[name] : ""}
+                        // value={values[name] ? values[name] : ""}
+                        
+                    value={innerModal ? values2[name] : values[name]}
                     />
                 </label>
             );

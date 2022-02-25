@@ -20,7 +20,7 @@ import {
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
-import { v4 as uuidv4 } from "uuid";
+
 
 const addButtonIsDisabled = [
   JARAYONDAGI,
@@ -32,8 +32,7 @@ const addButtonIsDisabled = [
 const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes, MainData, values } = useSelector(
-
+  const { currentPage, Panes } = useSelector(
     (state) => state.tabs_reducer
   );
 
@@ -51,18 +50,6 @@ const Toolbar = ({ tableItem }) => {
     dispatch(
       changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
-
-    // let oldData = [...values.dev_docs] || [];
-
-    // oldData.push({
-    //     rowId: uuidv4(),
-    //     number: '',
-    //     name: '',
-    //     comment: '',
-    //     file: '',
-    // });
-
-    // dispatch(setValues({ ...values, dev_docs: oldData }));
   };
 
   const onRemove = () => {
