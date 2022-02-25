@@ -4,16 +4,16 @@ import React, { useEffect, useState, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-  DATE,
-  IMAGE,
-  MAP,
-  NUMBER,
-  TEXTAREA,
-  PHONE,
-  SELECT,
-  STRING,
-  UPLOAD,
-  PICTURE_WALL,
+    DATE,
+    IMAGE,
+    MAP,
+    NUMBER,
+    TEXTAREA,
+    PHONE,
+    SELECT,
+    STRING,
+    UPLOAD,
+    PICTURE_WALL,
 } from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -32,58 +32,75 @@ const { TextArea } = Input;
 const ModalInput = (props) => {
     let input = null;
     const dispatch = useDispatch();
-    const {currentPage, values, innerModal, values2} = useSelector(
+    const { currentPage, values, innerModal, values2 } = useSelector(
         (state) => state.tabs_reducer
     );
 
-  const {
-    autoSelect,
-    placeholder,
-    name,
-    gridRow,
-    gridColumn,
-    label,
-    type,
-    height,
-    Iconic,
-    options,
-    template,
-    required,
-    filePath,
-    autoFocus,
-    handleChangeValue,
-    fileName,
-    countInput
-  } = props;
+    const {
+        autoSelect,
+        placeholder,
+        name,
+        gridRow,
+        gridColumn,
+        label,
+        type,
+        height,
+        Iconic,
+        options,
+        template,
+        required,
+        isInnerModal,
+        filePath,
+        autoFocus,
+        handleChangeValue,
+        fileName,
+        countInput
+    } = props;
 
-  const { allData } = useSelector((s) => s?.unsaved_reducer);
+    const { allData } = useSelector((s) => s?.unsaved_reducer);
 
-  const handleSelectAdd = (template) => {
-    dispatch(setInnerModel(template));
-    dispatch(toggleInnerModal(true));
-  };
+    const handleSelectAdd = (template) => {
+        dispatch(setInnerModel(template));
+        dispatch(toggleInnerModal(true));
+    };
 
-  const refs = useRef(null);
+    const refs = useRef(null);
 
-  useEffect(() => {
-    const id = document.getElementById("autofucus");
-    if (id) {
-      id.focus();
+    useEffect(() => {
+        const id = document.getElementById("autofucus");
+        if (id) {
+            id.focus();
+        }
+    }, []);
+
+
+    //   console.log(countInput);
+    // const [reqSoni, setReqSoni] = useState(0)
+
+    // countInput.map(count => {
+    //     if (count.required) {
+
+    //     }
+    // })
+
+    const getProperValue = () => {
+        if (innerModal && isInnerModal) {
+            return values2[name]
+        } else {
+            return values[name]
+        }
     }
-  }, []);
+
+    const getProperValueDate = () => {
+        if (innerModal && isInnerModal) {
+            return values2[name]
+        } else {
+            return values[name]
+        }
+    }
 
 
-//   console.log(countInput);
-// const [reqSoni, setReqSoni] = useState(0)
-
-// countInput.map(count => {
-//     if (count.required) {
-        
-//     }
-// })
-
-
-  switch (type) {
+    switch (type) {
         case STRING:
             input = (
                 <label
@@ -94,15 +111,14 @@ const ModalInput = (props) => {
                     }}
                     required={required}
                     required
-                    
+
                 >
                     {label && label}
                     <Input
                         name={name}
                         autoFocus
                         id={refs && "autofucus"}
-                        // value={values[name] ? values[name] : ""}
-                        value={innerModal ? values2[name] : values[name]}
+                        value={getProperValue()}
                         placeholder={placeholder}
                         required={required}
                         onChange={(e) => {
@@ -139,8 +155,8 @@ const ModalInput = (props) => {
                         };
                         handleChangeValue(target);
                     }}
-                    value={innerModal ? values2[name] : values[name]}
-                    // value={values[name] ? values[name] : ""}
+                    value={getProperValue()}
+                // value={values[name] ? values[name] : ""}
                 />
             );
             break;
@@ -169,16 +185,16 @@ const ModalInput = (props) => {
                             defaultValue={innerModal ? values2[name] : values[name]}
                             onChange={(e) => {
                                 if (autoSelect) {
-                                    let selectedValues = {[name]: e};
+                                    let selectedValues = { [name]: e };
                                     autoSelect?.forEach((el) => {
                                         let thisObj = allData && allData[options] && allData[options].find(
                                             (item) => item["id"] === e
                                         );
-                                        selectedValues = {...selectedValues, [el]: thisObj[el]};
+                                        selectedValues = { ...selectedValues, [el]: thisObj[el] };
                                     });
                                     handleChangeValue(selectedValues);
                                 } else {
-                                    handleChangeValue({[name]: e});
+                                    handleChangeValue({ [name]: e });
                                 }
                             }}
                         >
@@ -209,7 +225,7 @@ const ModalInput = (props) => {
                     height={height}
                     handleChangeValue={handleChangeValue}
                     required={required}
-                    
+
                     geo={values?.longtitude && values?.latitude ? [values.latitude, values?.longtitude] : ""}
                 />
             );
@@ -231,7 +247,7 @@ const ModalInput = (props) => {
                         value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
                         // value={innerModal ? values2[name] : moment(values[name], "YYYY/MM/DD")}
                         autoFocus
-                        defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
+                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
                         required={required}
                         onChange={(_, dateString) => {
                             const target = {
@@ -256,11 +272,11 @@ const ModalInput = (props) => {
                     <TextArea
                         placeholder={placeholder}
                         // value={values[name] ? values[name] : ""}
-                    value={innerModal ? values2[name] : values[name]}
-                        
+                        value={innerModal ? values2[name] : values[name]}
+
                         autoFocus
                         required={required}
-                        autoSize={{minRows: 3, maxRows: 3}}
+                        autoSize={{ minRows: 3, maxRows: 3 }}
                         onChange={(data) => {
                             const target = {
                                 [name]: data.target.value,
@@ -292,7 +308,7 @@ const ModalInput = (props) => {
                         areaCodes={{
                             uz: ["+998"],
                         }}
-                        masks={{uz: "(..) ...-..-.."}}
+                        masks={{ uz: "(..) ...-..-.." }}
                         prefix="+"
                         onChange={(data) => {
                             const target = {
@@ -301,8 +317,8 @@ const ModalInput = (props) => {
                             handleChangeValue(target);
                         }}
                         // value={values[name] ? values[name] : ""}
-                        
-                    value={innerModal ? values2[name] : values[name]}
+
+                        value={innerModal ? values2[name] : values[name]}
                     />
                 </label>
             );
@@ -365,7 +381,7 @@ const ModalInput = (props) => {
             break;
     }
 
-  return input;
+    return input;
 };
 
 export default ModalInput;

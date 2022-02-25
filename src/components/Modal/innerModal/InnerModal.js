@@ -135,7 +135,7 @@ const InnerModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput handleChangeValue={handleChangeValue} {...input} key={input?.name}/>
+                            <ModalInput handleChangeValue={handleChangeValue} {...input} isInnerModal={true} key={input?.name}/>
                         ))}
                     </div>
                 ))}
