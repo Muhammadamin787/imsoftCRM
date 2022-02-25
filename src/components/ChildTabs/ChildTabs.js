@@ -1,7 +1,7 @@
 import React from "react";
 import {Tabs} from "antd";
 import {Link} from "react-router-dom";
-import {setCurrentPage, addNewTab} from "../../redux/stored_reducer";
+import {setCurrentPage} from "../../redux/stored_reducer";
 import {useDispatch} from "react-redux";
 
 const {TabPane} = Tabs;
@@ -11,7 +11,7 @@ const ChildTabs = ({data, activeKey}) => {
 
     const handleTab = (page) => {
         dispatch(setCurrentPage(page));
-        dispatch(addNewTab(page));
+        // dispatch(addNewTab(page));
     };
     return (
         <Tabs defaultActiveKey={activeKey} style={{padding: "0 20px"}}>

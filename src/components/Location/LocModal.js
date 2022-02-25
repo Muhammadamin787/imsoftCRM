@@ -6,7 +6,7 @@ import {
   setCurrentLocationIsOpen,
 } from "../../redux/stored_reducer";
 
-import { YMaps, Map, FullscreenControl, Placemark } from "react-yandex-maps";
+import { YMaps, Map, Placemark } from "react-yandex-maps";
 const LocModal = () => {
   const { currentLocationIsOpen, currentLocation } = useSelector(
     (s) => s.tabs_reducer
@@ -18,7 +18,7 @@ const LocModal = () => {
   }, [currentLocation]);
   return (
     <Modal
-      width={1000}
+      style={{ width: "1200px" }}
       visible={currentLocationIsOpen}
       onOk={() => dispatch(setCurrentLocationIsOpen())}
       onCancel={() => dispatch(setCurrentLocationIsOpen())}

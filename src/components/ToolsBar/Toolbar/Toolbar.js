@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   setTableItem,
   toggleModal,
-  changePanesModal,
   setValues,
   stopLoading,
   startLoading,
@@ -38,18 +37,19 @@ const Toolbar = ({ tableItem }) => {
   );
 
   const handleModalClick = () => {
-    const newPanes = Panes?.map((page) =>
-      page?.path === currentPage?.path
-        ? { ...page, isOpenModal: !currentPage?.isOpenModal }
-        : page
-    );
-    const newCurrentPage = {
-      ...currentPage,
-      isOpenModal: !currentPage?.isOpenModal,
-    };
+    // const newPanes = Panes?.map((page) =>
+    //   page?.path === currentPage?.path
+    //     ? { ...page, isOpenModal: !currentPage?.isOpenModal }
+    //     : page
+    // );
+    // const newCurrentPage = {
+    //   ...currentPage,
+    //   isOpenModal: !currentPage?.isOpenModal,
+    // };
 
     dispatch(
-      changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
+      toggleModal(true)
+      // changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
     );
 
     // let oldData = [...values.dev_docs] || [];

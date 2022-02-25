@@ -3,7 +3,7 @@ import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
-import { BaseUrl, BaseUrlPost } from "../../../BaseUrl";
+import { BaseUrl, Base } from "../../../BaseUrl";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -44,7 +44,7 @@ export class PicturesWall extends React.Component {
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({[this.props.name]: `${BaseUrlPost}${e.file.response}`});
+    this.props.handleChangeValue({[this.props.name]: `${Base}${e.file.response}`});
     this.setState({ fileList: e.fileList });
   };
 

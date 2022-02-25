@@ -4,12 +4,10 @@ import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
 import ServiceTemplate from "../Templates/pageTemplates/ServiceTemplate";
 import axios from "../functions/axios";
-import { DELETE, GET, POST } from "../functions/Methods";
-
+import { POST } from "../functions/Methods";
 export const counterSlice = createSlice({
   name: "tabs_data",
   initialState: {
-    // saqlanadi
     values: {},
     loading: false,
     tableItem: [],
@@ -22,28 +20,45 @@ export const counterSlice = createSlice({
     currentLocationIsOpen: false,
   },
   reducers: {
-    addNewTab: (state, { payload }) => {
-      const bool = [
-        ...ServiceTemplate?.sections,
-        ...ProgrammsTemplate?.tabs,
-        ...ClientTemplate?.tabs,
-      ]?.find((a) => (a?.path === payload?.path ? true : false));
-      if (bool) {
-        state.Panes = _.uniqBy([...state?.Panes, payload], "path");
-      }
-    },
-    clearPanes: (state, { payload }) => {
-      state.Panes = payload;
-    },
     removeTab: (state, action) => {
       state.Panes.splice(action.payload, 1);
     },
-    changePanesModal: (s, { payload }) => {
-      s.Panes = payload.panes;
-      s.currentPage = payload.currentPage;
-    },
-    changePanes: (state, { payload }) => {
-      state.Panes.splice(payload, 1);
+    setCurrentPage: (state, { payload }) => {
+      if (!payload?.sections) {
+        const newCurrentPage = {
+          ...state.currentPage,
+          tableItem: [...state.tableItem],
+          values: { ...state.values },
+        };
+
+        if (
+          newCurrentPage?.path &&
+          newCurrentPage?.text !== "Mijozlar Ro'yxati"
+        ) {
+          const find = state.Panes.find(
+            (a) => a.path === state.currentPage.path
+          );
+          if (find) {
+            state.Panes = state.Panes.map((item) =>
+              item.path === state.currentPage.path ? newCurrentPage : item
+            );
+          } else {
+            state.Panes = _.uniqBy([...state?.Panes, newCurrentPage], "path");
+          }
+        }
+
+        state.values = {};
+        state.tableItem = [];
+
+        state.Panes.forEach((page) => {
+          if (page.path === payload.path) {
+            state.values = page.values;
+            state.tableItem = page.tableItem;
+          }
+        });
+
+        state.currentPage = payload;
+      }
     },
     toggleModal: (state, { payload }) => {
       state.currentPage.isOpenModal = payload;
@@ -52,13 +67,6 @@ export const counterSlice = createSlice({
       state.innerModal.isOpenModal = payload;
       // state.innerModal = ""
     },
-    setCurrentPage: (state, { payload }) => {
-      if (!payload?.sections) {
-        state.currentPage = payload;
-      } else {
-        state.currentPage = {};
-      }
-    },
     changeCurrentPageData: (state, { payload }) => {
       if (payload) {
         state.currentPage.data = payload;
@@ -66,6 +74,7 @@ export const counterSlice = createSlice({
     },
     setTableItem: (state, { payload }) => {
       state.tableItem = payload;
+      state.currentPage.tableItem = payload;
     },
     removeTableItem: (state, { payload }) => {
       let ids = state.tableItem.map((row) => {
@@ -82,7 +91,6 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      console.log(payload);
       state.values = payload;
     },
     startLoading: (state) => {
@@ -117,7 +125,7 @@ export const counterSlice = createSlice({
 });
 
 export const {
-  addNewTab,
+  // addNewTab,
   removeTab,
   toggleModal,
   setCurrentPage,
@@ -126,9 +134,9 @@ export const {
   setTableItem,
   removeTableItem,
   editTableItem,
-  changePanesModal,
+  // changePanesModal,
   toggleTableType,
-  clearPanes,
+  // clearPanes,
   stopLoading,
   startLoading,
   setSearchInputValue,

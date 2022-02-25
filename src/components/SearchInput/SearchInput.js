@@ -43,7 +43,6 @@ const SearchInput = () => {
     let filter = mainData.filter((item) => {
       for (let i = 0; i < keys.length; i++) {
         if (typeof item[keys[i]] === "string") {
-          console.log(item[keys[i]]);
           if (
             item[keys[i]]
               .toString()
@@ -66,18 +65,25 @@ const SearchInput = () => {
                 <PaintBackground text={`${text}`} value={`${value}`} />
               </div>
             );
-            return `${text}`.length > 135 ? (
-              <Popover placement="leftTop" content={content}>
+            if(`${text}`.length > 135){
+              console.log("big " + text.length);
+                return (
+                  <Popover placement="leftTop" content={content}>
+                    <div className="hodim-template">
+                      <div className={"box-shadow"}></div>
+                      <PaintBackground text={`${text}`} value={`${value}`} />
+                    </div>
+                  </Popover>
+                )
+            }
+            else{
+              console.log("small " + text.length);
+              return (
                 <div className="hodim-template">
-                  <div className={"box-shadow"}></div>
                   <PaintBackground text={`${text}`} value={`${value}`} />
                 </div>
-              </Popover>
-            ) : (
-              <div className="hodim-template">
-                <PaintBackground text={`${text}`} value={`${value}`} />
-              </div>
-            );
+              );
+            }
           },
         };
       } else {

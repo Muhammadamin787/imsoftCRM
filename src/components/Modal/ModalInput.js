@@ -145,11 +145,9 @@ const ModalInput = (props) => {
             <Select
               size="small"
               name={name}
-              // autoFocus
               placeholder={placeholder}
               required={required}
-              // value={allData[options]}
-              defaultValue={values[name] && values[name]}
+              value={values[name] && values[name]}
               onChange={(e) => {
                 if (autoSelect) {
                   let selectedValues = { [name]: e };
@@ -195,8 +193,8 @@ const ModalInput = (props) => {
           handleChangeValue={handleChangeValue}
           required={required}
           geo={
-            values?.longilongtitudetude && values?.latitude
-              ? [values.latitude, values?.longtitude]
+            values?.longitude && values?.latitude
+              ? [values.latitude, values?.longitude]
               : ""
           }
         />

@@ -29,6 +29,7 @@ const XodimlarTemplate = {
   icon: "Xodimlar",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
+  tableItem: [],
   mainUrl: "/workers",
   allData: {
     states: "/states/all",

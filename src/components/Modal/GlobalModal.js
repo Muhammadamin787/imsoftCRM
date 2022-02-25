@@ -45,7 +45,7 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
-    dispatch(setValues({}));
+    // dispatch(setValues({}));
   };
 
   const resizeModal = () => {
