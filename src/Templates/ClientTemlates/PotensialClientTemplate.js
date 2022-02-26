@@ -23,7 +23,7 @@ const PotensialClientTemplate = {
     cities: "/cities/all",
     activity_types: "/activity-types",
     hudud: "/districts/all",
-    category_name: '/categories'
+    category_name: "/categories",
     // cities: "/cities/all",
   },
   modal: {
@@ -87,12 +87,18 @@ const PotensialClientTemplate = {
 
     {
       title: "Rasm",
-      dataIndex: "file_1",
-      key: "file",
+      dataIndex: "img",
+      key: "i",
       width: "40%",
       render: (text, record) => (
-        <div style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
-          <ImgZoom src={text} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <ImgZoom src={record?.file_1} />
           <ImgZoom src={record?.file_2} />
           <ImgZoom src={record?.file_3} />
         </div>

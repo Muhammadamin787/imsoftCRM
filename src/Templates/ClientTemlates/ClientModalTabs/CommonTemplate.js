@@ -1,12 +1,4 @@
-import {
-  STRING,
-  SELECT,
-  MAP,
-  NUMBER,
-  UPLOAD,
-  IMAGE,
-  DATE,
-} from "../../../components/Modal/InputTypes";
+import { STRING, SELECT } from "../../../components/Modal/InputTypes";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
@@ -16,9 +8,6 @@ import HududTemplate from "../../servisChildTemplates/HududTemplate";
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
-  allData: {
-    // cities: "/cities/all",
-  },
   form: [
     {
       grid: {

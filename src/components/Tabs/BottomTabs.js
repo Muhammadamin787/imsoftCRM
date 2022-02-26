@@ -25,19 +25,16 @@ const BottomTabs = () => {
   const { pathname } = window.location;
 
   const [panes, setPanes] = useState(Panes ? Panes : []);
-  const [activeKey, setActiveKey] = useState(panes && panes[0]?.key);
 
   useEffect(() => {
     setPanes(Panes);
   }, [Panes, pathname]);
 
   const onChange = (activeKey) => {
-    console.log("asda");
     dispatch(setBottomActiveKey(activeKey));
     navigate(Panes[activeKey].path);
-    setActiveKey(activeKey);
     dispatch(setCurrentPage(Panes[activeKey]));
-    dispatch(changePanes(currentPage));
+    // dispatch(changePanes(currentPage));
   };
 
   const onEdit = (e, targetKey) => {

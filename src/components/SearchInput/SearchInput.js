@@ -20,6 +20,7 @@ const dontFilterTamlateDataIndex = [
   "number",
   "file_1",
   "loc",
+  "img",
 ];
 // created_at
 const { Search } = Input;
