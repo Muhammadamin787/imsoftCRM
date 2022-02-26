@@ -100,9 +100,6 @@ const MainPage = () => {
   }, [pathname]);
 
 
-  useEffect(() => {
-    // console.log(Panes);
-  }, [Panes])
 
   return (
     <Layout className="site-container">

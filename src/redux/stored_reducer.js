@@ -19,6 +19,7 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
+    bottomActiveKey: null,
   },
   reducers: {
     removeTab: (state, action) => {
@@ -115,8 +116,8 @@ export const counterSlice = createSlice({
     setOffInnerModel: (state, { payload }) => {
       state.innerModal = "";
     },
-    clearPanes: (state, {payload}) => {
-      state.Panes = payload;
+    clearPanes: (state) => {
+      state.Panes = [];
     },
     setCurrentLocation: (s, { payload }) => {
       s.currentLocation = payload;
@@ -128,11 +129,13 @@ export const counterSlice = createSlice({
     setValuesKey: (state, { payload }) => {
       state.values = { ...state.values, ...payload };
     },
+    setBottomActiveKey: (state, { payload }) => {
+      state.bottomActiveKey = payload;
+    },
   },
 });
 
 export const {
-  // addNewTab,
   removeTab,
   toggleModal,
   setCurrentPage,
@@ -141,7 +144,6 @@ export const {
   setTableItem,
   removeTableItem,
   editTableItem,
-  // changePanesModal,
   toggleTableType,
   clearPanes,
   stopLoading,
@@ -156,6 +158,7 @@ export const {
   setCurrentLocation,
   setCurrentLocationIsOpen,
   setValuesKey,
+  setBottomActiveKey,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

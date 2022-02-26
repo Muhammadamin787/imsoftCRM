@@ -11,9 +11,6 @@ import HududTemplate from '../../servisChildTemplates/HududTemplate'
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
-  allData: {
-    // cities: "/cities/all",
-  },
   form: [
     {
       grid: {

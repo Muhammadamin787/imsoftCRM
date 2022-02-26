@@ -47,7 +47,6 @@ const GlobalTable = () => {
   useEffect(() => {
     filterAdd();
   }, [currentPage, mainData]);
-
   return (
     <Table
       bordered
