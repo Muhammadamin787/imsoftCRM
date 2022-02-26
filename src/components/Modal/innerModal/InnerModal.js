@@ -61,18 +61,6 @@ const InnerModal = () => {
         // handleChangeValue()
         const url = innerModal?.mainUrl;
 
-        // console.log(url);
-
-        // POST(url, values2).then(res => {
-        //     message.success({content: res.data.data, key: e});
-        //     dispatch(toggleInnerModal(false));
-        //     dispatch(setValues2({}));
-        //     dispatch(setTableItem([]))
-        //     GET(url).then(res => {
-        //         dispatch(setData(res.data.data))
-        //     });
-        // });
-        // dispatch(setOffInnerModel())
 
 
         const requiredInputs = [];
@@ -93,15 +81,11 @@ const InnerModal = () => {
             }
         })
 
-        console.log(requiredInputs);
 
-        // allData[options]
 
         if (isNotErrors) {
             POST(url, values2).then(res => {
                 message.success({ content: res.data.data, key: e });
-                console.log(res.data);
-                console.log(values2);
                 dispatch(toggleInnerModal(false));
                 dispatch(setValues2({}));
                 dispatch(setTableItem([]))

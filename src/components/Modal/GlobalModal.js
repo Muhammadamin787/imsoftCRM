@@ -17,6 +17,7 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
+import { getSuggestedQuery } from "@testing-library/react";
 
 
 const GlobalModal = () => {
@@ -97,6 +98,7 @@ const GlobalModal = () => {
           dispatch(stopLoading());
         });
       });
+
       dispatch(toggleModal(false));
     }
 

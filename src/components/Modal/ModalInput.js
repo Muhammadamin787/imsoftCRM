@@ -90,7 +90,8 @@ const ModalInput = (props) => {
             return values[name]
         }
     }
-
+    console.log("HojiAkbar, getProperValue");
+    
     const getProperValueDate = () => {
         if (innerModal && isInnerModal) {
             return moment(values2[name], "YYYY/MM/DD")

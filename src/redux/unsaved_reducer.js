@@ -43,6 +43,7 @@ export const counterSlice = createSlice({
       state.allData = { ...state.allData, ...payload };
     },
     setData: (state, { payload }) => {
+      // payload = [{dcfs}, {nm,}]
       let arrayWithKeys = [];
       payload &&
         payload?.forEach((item, key) => {
