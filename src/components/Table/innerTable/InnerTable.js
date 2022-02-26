@@ -38,7 +38,7 @@ const InnerTable = ({ innerTable }) => {
                 dataSource={values?.[innerTable?.name] || []}
                 size={"small"}
                 scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
-                pagination={{ position: ["bottomCenter"] }}
+                // pagination={{ position: ["bottomCenter"] }}
                 />
             </div>
         </div>

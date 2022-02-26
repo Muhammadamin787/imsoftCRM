@@ -20,6 +20,7 @@ const ViloyatlarTemplate = {
           name: "name",
           type: STRING,
           required: true,
+          options:"states",
           placeholder: "Viloyatlar",
           label: "Viloyat"
         },

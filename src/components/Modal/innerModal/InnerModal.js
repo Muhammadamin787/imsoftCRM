@@ -1,20 +1,25 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../GlobalModal.scss'
-import {Modal, Button, Form, message} from "antd";
+import { Modal, Button, Form, message } from "antd";
 import ModalInput from "../ModalInput";
-import {useSelector, useDispatch} from "react-redux";
-import {toggleInnerModal, setValues2, setTableItem, setOffInnerModel} from "../../../redux/stored_reducer";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    toggleInnerModal, setValues2, setTableItem, setOffInnerModel, stopLoading,
+    startLoading,
+} from "../../../redux/stored_reducer";
 import { setData, setAllData } from "../../../redux/unsaved_reducer";
 import Draggable from "react-draggable";
 import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
-import {GET, POST} from "../../../functions/Methods";
+import { GET, POST } from "../../../functions/Methods";
+import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
 
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
-    const {currentPage, values2, innerModal} = useSelector((state) => state.tabs_reducer);
+    const { currentPage, values2, innerModal } = useSelector((state) => state.tabs_reducer);
 
+    const { key } = currentPage;
 
     const [bounds, setBounds] = useState({
         left: 0, top: 0, bottom: 0, right: 0
@@ -29,11 +34,11 @@ const InnerModal = () => {
             for (const url in currentData) {
                 let res = axios(currentData[url])
                 res.then(res => {
-                    dispatch(setAllData({[url]: res.data.data}));
+                    dispatch(setAllData({ [url]: res.data.data }));
                 });
             }
         }
-    }, [innerModal, currentPage]);
+    }, [ values2]);
 
 
     const handleCancel = (e) => {
@@ -49,29 +54,72 @@ const InnerModal = () => {
 
     const handleChangeValue = (e) => {
         dispatch(setValues2({ ...values2, ...e }));
-      };
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleChangeValue()
+        // handleChangeValue()
         const url = innerModal?.mainUrl;
-        POST(url, values2).then(res => {
-            message.success({content: res.data.data, key: e});
-            dispatch(toggleInnerModal(false));
-            dispatch(setValues2({}));
-            dispatch(setTableItem([]))
-            GET(url).then(res => {
-                dispatch(setData(res.data.data))
+
+        // console.log(url);
+
+        // POST(url, values2).then(res => {
+        //     message.success({content: res.data.data, key: e});
+        //     dispatch(toggleInnerModal(false));
+        //     dispatch(setValues2({}));
+        //     dispatch(setTableItem([]))
+        //     GET(url).then(res => {
+        //         dispatch(setData(res.data.data))
+        //     });
+        // });
+        // dispatch(setOffInnerModel())
+
+
+        const requiredInputs = [];
+
+        innerModal.form.forEach(el => {
+            el.inputs.forEach(d => {
+                if (d?.required) {
+                    requiredInputs.push(d);
+                }
             });
         });
-        dispatch(setOffInnerModel())
+        let isNotErrors = false;
+        requiredInputs.map(d => {
+            if (!values2[d.name]) {
+                return message.error(d.label + "ni kiritmadingiz");
+            }else {
+                isNotErrors = true;
+            }
+        })
 
-    }   
+        console.log(requiredInputs);
+
+        // allData[options]
+
+        if (isNotErrors) {
+            POST(url, values2).then(res => {
+                message.success({ content: res.data.data, key: e });
+                console.log(res.data);
+                console.log(values2);
+                dispatch(toggleInnerModal(false));
+                dispatch(setValues2({}));
+                dispatch(setTableItem([]))
+                GET(url).then(res => {
+                    dispatch(setData(res.data.data))
+                    // console.log(res.data.data);
+                    // dispatch(setAllData({ [url]: res.data.data }));
+                });
+            });
+            dispatch(setOffInnerModel(false));
+        }
+
+    }
 
     const draggleRef = useRef("s");
 
     const onStart = (event, uiData) => {
-        const {clientWidth, clientHeight} = window.document.documentElement;
+        const { clientWidth, clientHeight } = window.document.documentElement;
         const targetRect = draggleRef.current?.getBoundingClientRect();
         if (!targetRect) {
             return;
@@ -88,7 +136,7 @@ const InnerModal = () => {
     return (
         <Modal
             className="inner-modal"
-            style={{...innerModal?.modal?.style}}
+            style={{ ...innerModal?.modal?.style }}
             width={innerModal?.modal?.style?.width}
             footer={null}
             title={
@@ -107,7 +155,7 @@ const InnerModal = () => {
                         <div className="modal-header__buttons">
                             <MacActions
                                 onExit={handleCancel}
-                                onResize={resizeModal}/>
+                                onResize={resizeModal} />
                         </div>
                     </div>
                 </div>
@@ -135,7 +183,7 @@ const InnerModal = () => {
                         }}
                     >
                         {form?.inputs?.map((input) => (
-                            <ModalInput handleChangeValue={handleChangeValue} {...input} isInnerModal={true} key={input?.name}/>
+                            <ModalInput handleChangeValue={handleChangeValue} {...input} isInnerModal={true} key={input?.name} />
                         ))}
                     </div>
                 ))}

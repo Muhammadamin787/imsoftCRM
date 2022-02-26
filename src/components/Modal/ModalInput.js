@@ -93,9 +93,14 @@ const ModalInput = (props) => {
 
     const getProperValueDate = () => {
         if (innerModal && isInnerModal) {
-            return values2[name]
+            return moment(values2[name], "YYYY/MM/DD")
         } else {
-            return values[name]
+            if(values[name]){
+                return moment(values[name], "YYYY/MM/DD")
+            }else {
+                return "";
+            }
+            
         }
     }
 
@@ -147,6 +152,7 @@ const ModalInput = (props) => {
                         display: "flex",
                         flexDirection: "column",
                     }}
+                    value={getProperValue()}
                     placeholder={placeholder}
                     showSearch
                     onChange={(e) => {
@@ -155,7 +161,6 @@ const ModalInput = (props) => {
                         };
                         handleChangeValue(target);
                     }}
-                    value={getProperValue()}
                 // value={values[name] ? values[name] : ""}
                 />
             );
@@ -177,12 +182,10 @@ const ModalInput = (props) => {
                         <Select
                             size="small"
                             name={name}
-                            // autoFocus
+                            autoFocus
                             placeholder={placeholder}
                             required={required}
-                            // value={allData[options]}
-                            // defaultValue={values[name] && values[name]}
-                            defaultValue={innerModal ? values2[name] : values[name]}
+                            value={getProperValue()}
                             onChange={(e) => {
                                 if (autoSelect) {
                                     let selectedValues = { [name]: e };
@@ -244,10 +247,8 @@ const ModalInput = (props) => {
                         placeholder={placeholder}
                         format="DD.MM.YYYY"
                         allowClear={false}
-                        value={values[name] ? moment(values[name], "YYYY/MM/DD") : ""}
-                        // value={innerModal ? values2[name] : moment(values[name], "YYYY/MM/DD")}
+                        value={getProperValueDate()}
                         autoFocus
-                        // defaultValue={moment("2020/01/01", "YYYY/MM/DD")}
                         required={required}
                         onChange={(_, dateString) => {
                             const target = {
@@ -271,9 +272,7 @@ const ModalInput = (props) => {
                     {label && label}
                     <TextArea
                         placeholder={placeholder}
-                        // value={values[name] ? values[name] : ""}
-                        value={innerModal ? values2[name] : values[name]}
-
+                        value={getProperValue()}
                         autoFocus
                         required={required}
                         autoSize={{ minRows: 3, maxRows: 3 }}
@@ -281,7 +280,6 @@ const ModalInput = (props) => {
                             const target = {
                                 [name]: data.target.value,
                             };
-
                             handleChangeValue(target);
                         }}
                     />
@@ -300,7 +298,6 @@ const ModalInput = (props) => {
                     {label && label}
                     <PhoneInput
                         country={"uz"}
-                        // style={{ height: "65px !important"}}
                         specialLabel={false}
                         disableDropdown={true}
                         countryCodeEditable={false}
@@ -316,9 +313,7 @@ const ModalInput = (props) => {
                             };
                             handleChangeValue(target);
                         }}
-                        // value={values[name] ? values[name] : ""}
-
-                        value={innerModal ? values2[name] : values[name]}
+                        value={getProperValue()}
                     />
                 </label>
             );

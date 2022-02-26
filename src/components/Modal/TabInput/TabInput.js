@@ -15,10 +15,10 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        handleChange()
-        console.log(tabName);
-    },[tabName])
+    // useEffect(() => {
+    //     // handleChange()
+    //     console.log(tabName);
+    // },[tabName])
 
     function handleChange(e) {
         // console.log(tabName);

@@ -76,7 +76,6 @@ export const ProgrammPerformers = {
             key: "action",
             width: "10%",
             align: "center"
-
         }
     ]
 }
