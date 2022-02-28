@@ -2,12 +2,10 @@
 import ClientTemplate from "./ClientTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
 import ServiceTemplate from "./ServiceTemplate";
-import LoginTemplate from "../LoginTemplate/LoginTemplate"
 
 // Basic routes templates
 export const AllPages = [
   // MainTemplate,
-  // LoginTemplate,
   ClientTemplate,
   ProgrammsTemplate,
   ServiceTemplate,

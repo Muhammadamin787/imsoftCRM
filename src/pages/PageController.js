@@ -21,8 +21,6 @@ import Login from "./login/Login";
 
 export const PageController = ({ page }) => {
     switch (page.type) {
-        case LOGIN_PAGE:
-            return <Login/>
         case MAIN_PAGE:
             return <FirstPage page={page} />;
         case CLIENTS_PAGE:
