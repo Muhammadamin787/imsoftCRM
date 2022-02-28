@@ -48,7 +48,7 @@ const PotensialClientTemplate = {
       key: "number",
       width: "15%",
       align: "center",
-      render: (text, _, i) => ++i,
+      render: (text, _, i) => <p>{++i}</p>,
     },
 
     {
@@ -95,8 +95,9 @@ const PotensialClientTemplate = {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
+            position: "relative"
           }}
-        >
+        > 
           <ImgZoom src={record?.file_1} />
           <ImgZoom src={record?.file_2} />
           <ImgZoom src={record?.file_3} />

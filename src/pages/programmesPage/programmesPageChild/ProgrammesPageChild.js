@@ -13,7 +13,7 @@ const ProgrammesPageChild = ({ activeKey }) => {
   return (
     <div>
       <Toolbar />
-      <div className="my__layout_child" style={{ height: height - 70 + "px" }}>
+      <div className="my__layout_child" style={{ height: height+ "px" }}>
         <ChildTabs data={ProgrammsTemplate} activeKey={activeKey}></ChildTabs>
         <GlobalTable />
       </div>

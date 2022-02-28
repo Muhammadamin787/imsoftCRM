@@ -29,10 +29,10 @@ const addButtonIsDisabled = [
   OQITILAYOTGAN,
 ];
 
-const Toolbar = ({ tableItem }) => {
+const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state) => state.tabs_reducer);
+  const { currentPage , tableItem } = useSelector((state) => state.tabs_reducer);
 
   const handleModalClick = () => {
     // const newPanes = Panes?.map((page) =>
@@ -53,6 +53,7 @@ const Toolbar = ({ tableItem }) => {
 
   const onRemove = async () => {
     const url = currentPage?.mainUrl;
+    console.log(currentPage);
     if (tableItem.length > 0) {
       let ids = tableItem.map((row) => {
         return row.id;
@@ -76,6 +77,7 @@ const Toolbar = ({ tableItem }) => {
   };
 
   const onEdit = () => {
+    console.log("asdasd");
     if (tableItem.length > 0 && tableItem.length < 2) {
       dispatch(setValues(...tableItem));
     }

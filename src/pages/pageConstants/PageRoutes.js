@@ -3,7 +3,6 @@ export const SERVIS_PATH = "/servis";
 export const CLIENTS_PATH = "/clients";
 export const PROGRAMMES_PATH = "/programmes";
 export const REPORT_PATH = "/report";
-export const LOGIN_PATH = "/"
 
 // paths of service pages
 export const REKLAMALAR_PATH = "/servis/reklamalar";

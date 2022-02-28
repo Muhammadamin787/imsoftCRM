@@ -17,12 +17,10 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
-import { getSuggestedQuery } from "@testing-library/react";
-
-
 const GlobalModal = () => {
-  const { currentPage, values, innerModal } = useSelector((state) => state.tabs_reducer);
-
+  const { currentPage, values, innerModal } = useSelector(
+    (state) => state.tabs_reducer
+  );
 
   const [bounds, setBounds] = useState({
     left: 0,
@@ -49,43 +47,48 @@ const GlobalModal = () => {
     if (currentPage && currentPage.isOpenModal) {
       let currentData = currentPage?.allData;
       for (const url in currentData) {
-        let res = axios(currentData[url])
-        res.then(res => {
+        let res = axios(currentData[url]);
+        res.then((res) => {
           dispatch(setAllData({ [url]: res.data.data }));
         });
       }
     }
   }, [currentPage, innerModal]);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const { mainUrl, key } = currentPage;
-
-
+    const { mainUrl, key, form, modal } = currentPage;
     const requiredInputs = [];
+    let bool = false;
 
-    currentPage.form.forEach(el => {
-      el.inputs.forEach(d => {
-        if (d.required) {
-          requiredInputs.push(d);
-        }
+    if (form) {
+      form.forEach((el) => {
+        el.inputs.forEach((d) => {
+          if (d.required) {
+            requiredInputs.push(d);
+          }
+        });
       });
+    } else {
+      modal.tabs.forEach((el) => {
+        el?.form[0]?.inputs?.forEach((d) => {
+          if (d?.required) {
+            requiredInputs.push(d);
+          }
+        });
+      });
+    }
+
+    requiredInputs.forEach((key) => {
+      if (!Object.keys(values).includes(key?.name)) {
+        bool = true;
+        message.error(
+          key?.name !== "longitude" ? key?.label : "Map" + "ni kiritmadingiz"
+        );
+      }
     });
 
-
-    let isNotErrors = false;
-    requiredInputs.map(d => {
-      if (!values[d?.name]) {
-        return message.error(d.label + "ni kiritmadingiz")
-      } else {
-        isNotErrors = true;
-      }
-    })
-
-
-    if (isNotErrors) {
+    if (!bool) {
       POST(mainUrl, values).then((res) => {
         message.success({ content: res.data.data, key: e });
         dispatch(toggleModal(false));
@@ -97,6 +100,7 @@ const GlobalModal = () => {
             ? `${mainUrl}/status/${key}`
             : mainUrl
         ).then((res) => {
+          console.log(res);
           dispatch(setData(res.data.data));
           dispatch(stopLoading());
         });
@@ -104,11 +108,6 @@ const GlobalModal = () => {
 
       dispatch(toggleModal(false));
     }
-
-    // if (!isNotErrors) {
-    //   dispatch(toggleModal(true));
-    // }
-
   };
 
   const draggleRef = useRef("s");
@@ -126,8 +125,6 @@ const GlobalModal = () => {
       bottom: clientHeight - (targetRect.bottom - uiData.y),
     });
   };
-
-
 
   return (
     <Modal

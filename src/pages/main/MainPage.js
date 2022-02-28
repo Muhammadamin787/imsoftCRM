@@ -24,7 +24,7 @@ import {
   stopLoading,
 } from "../../redux/stored_reducer";
 
-import { setData ,setAllData} from "../../redux/unsaved_reducer";
+import { setData, setAllData } from "../../redux/unsaved_reducer";
 
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -139,85 +139,91 @@ const MainPage = () => {
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
                     {findIcon(menu?.icon)}
                   </span>
-                                        <span>{menu.text}</span>
-                                    </NavLink>
-                                </Item>
-                            )
-                    )}
-                </Menu>
-                <div className="header__user-profile">
-                    <SearchInput/>
-                    <Popover
-                        placement="bottomRight"
-                        title={
-                            <div style={{textAlign: "center"}}>
-                                <img
-                                    className="user-profile-image"
-                                    src={AccountPNG}
-                                    alt="Foydalanuvchi rasmi"
-                                />
-                                <h3>Hojiakbar</h3>
-                            </div>
-                        }
-                        content={
-                            <div>
-                                <Button type={"primary"} danger onClick={() => handleLog_out()}style={{width: "100%"}}>
-                                    Tizimdan chiqish
-                                </Button>
-                            </div>
-                        }
-                        trigger="click"
-                    >
-                        <img
-                            className="user-profile-image"
-                            src={AccountPNG}
-                            alt="Foydalanuvchi rasmi"
-                        />
-                    </Popover>
-                </div>
+                  <span>{menu.text}</span>
+                </NavLink>
+              </Item>
+            )
+          )}
+        </Menu>
+        <div className="header__user-profile">
+          <SearchInput />
+          <Popover
+            placement="bottomRight"
+            title={
+              <div style={{ textAlign: "center" }}>
+                <img
+                  className="user-profile-image"
+                  src={AccountPNG}
+                  alt="Foydalanuvchi rasmi"
+                />
+                <h3>Hojiakbar</h3>
+              </div>
+            }
+            content={
+              <div>
+                <Button type={"primary"} danger style={{ width: "100%" }}>
+                  Tizimdan chiqish
+                </Button>
+              </div>
+            }
+            trigger="click"
+          >
+            <img
+              className="user-profile-image"
+              src={AccountPNG}
+              alt="Foydalanuvchi rasmi"
+            />
+          </Popover>
+        </div>
       </Header>
-            <Content className="site-layout" id="site__loyout" style={{marginTop: 64}}>
-                <Routes>
-                    {[
-                        ...AllPages,
-                        ...ServiceTemplate?.sections,
-                        ...ProgrammsTemplate?.tabs,
-                        ...ClientTemplate?.tabs,
-                    ].map((page, i) =>
-                        page.submenus ? (
-                            page.submenus.map((sub, k) => (
-                                <Route key={k}
-                                       path={sub.path}
-                                       element={<PageController page={sub} key={sub?.path}/>}
-                                />
-                            ))
-                        ) : (
-                            <Route key={i}
-                                   path={page.path}
-                                   element={<PageController page={page} key={page?.path}/>}
-                            />
-                        )
-                    )}
-                </Routes>
-                <GlobalModal/>
-                <InnerModal/>
-                <LocModal/>
-            </Content>
-            <Footer className="site-footer">
-                <BottomTabs/>
-                {/*<div className="site-footer__content">*/}
-                {/*  <div className="site-footer__icons">*/}
-                {/*    <GlobusIcon2 />*/}
-                {/*    <TelegramIcon />*/}
-                {/*  </div>*/}
-                {/*  <div className="site-footer__text">*/}
-                {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
-                {/*  </div>*/}
-                {/*  <div className="site-footer-clock">{currentTime}</div>*/}
-                {/*</div>*/}
-            </Footer>
-        </Layout>
-    );
+      <Content
+        className="site-layout"
+        id="site__loyout"
+        style={{ marginTop: 64 }}
+      >
+        <Routes>
+          {[
+            ...AllPages,
+            ...ServiceTemplate?.sections,
+            ...ProgrammsTemplate?.tabs,
+            ...ClientTemplate?.tabs,
+          ].map((page, i) =>
+            page.submenus ? (
+              page.submenus.map((sub, k) => (
+                <Route
+                  key={k}
+                  path={sub.path}
+                  element={<PageController page={sub} key={sub?.path} />}
+                />
+              ))
+            ) : (
+              <Route
+                key={i}
+                path={page.path}
+                element={<PageController page={page} key={page?.path} />}
+              />
+            )
+          )}
+        </Routes>
+        <GlobalModal />
+        <InnerModal />
+        <LocModal />
+      </Content>
+      <Footer className="site-footer">
+        <BottomTabs />
+        {/*<div className="site-footer__content">*/}
+        {/*  <div className="site-footer__icons">*/}
+        {/*    <GlobusIcon2 />*/}
+        {/*    <TelegramIcon />*/}
+        {/*  </div>*/}
+        {/*  <div className="site-footer__text">*/}
+        {/*    © 2021 - Барча ҳуқуқлар ҳимояланган*/}
+        {/*  </div>*/}
+        {/*  <div className="site-footer-clock">{currentTime}</div>*/}
+        {/*</div>*/}
+      </Footer>
+    </Layout>
+  );
 };
 
 export default MainPage;

@@ -74,7 +74,6 @@ const ModalInput = (props) => {
     }, []);
 
 
-    //   console.log(countInput);
     // const [reqSoni, setReqSoni] = useState(0)
 
     // countInput.map(count => {
@@ -90,7 +89,6 @@ const ModalInput = (props) => {
             return values[name]
         }
     }
-    // console.log("HojiAkbar, getProperValue");
     
     const getProperValueDate = () => {
         if (innerModal && isInnerModal) {
