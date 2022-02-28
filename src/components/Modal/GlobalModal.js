@@ -47,20 +47,20 @@ const GlobalModal = () => {
 
   useEffect(() => {
     if (currentPage && currentPage.isOpenModal) {
-        let currentData = currentPage?.allData;
-        for (const url in currentData) {
-            let res = axios(currentData[url])
-            res.then(res => {
-                dispatch(setAllData({ [url]: res.data.data }));
-            });
-        }
+      let currentData = currentPage?.allData;
+      for (const url in currentData) {
+        let res = axios(currentData[url])
+        res.then(res => {
+          dispatch(setAllData({ [url]: res.data.data }));
+        });
+      }
     }
-}, [ currentPage, innerModal]);
+  }, [currentPage, innerModal]);
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handleChangeValue();
+
     const { mainUrl, key } = currentPage;
 
 
@@ -74,15 +74,18 @@ const GlobalModal = () => {
       });
     });
 
-      requiredInputs.map(d => {
-        if (!values[d.name]) {
-          return message.error(d.label+"ni kiritmadingiz");
-        }
-      })
+
+    let isNotErrors = false;
+    requiredInputs.map(d => {
+      if (!values[d?.name]) {
+        return message.error(d.label + "ni kiritmadingiz")
+      } else {
+        isNotErrors = true;
+      }
+    })
 
 
-
-    if (!requiredInputs.length) {
+    if (isNotErrors) {
       POST(mainUrl, values).then((res) => {
         message.success({ content: res.data.data, key: e });
         dispatch(toggleModal(false));
@@ -101,6 +104,10 @@ const GlobalModal = () => {
 
       dispatch(toggleModal(false));
     }
+
+    // if (!isNotErrors) {
+    //   dispatch(toggleModal(true));
+    // }
 
   };
 

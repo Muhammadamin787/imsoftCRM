@@ -22,6 +22,7 @@ export default class MapModal extends Component {
             latitude: this.state.coords[0],
             longitude: this.state.coords[1],
         });
+
     };
 
     render() {

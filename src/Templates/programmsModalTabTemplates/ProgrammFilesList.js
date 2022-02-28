@@ -12,7 +12,7 @@ export const ProgrammFilesList = {
     CreateObj: {
         rowId: uuidv4(),
         comment: '',
-        file: '',
+        file1: '',
     },
     scroll: { y: 130},
 
@@ -34,8 +34,8 @@ export const ProgrammFilesList = {
         },
         {
             title: "Fayl",
-            dataIndex: "file",
-            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
+            dataIndex: "file1",
+            render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file1"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
             width: "15%",
             align: "center"
