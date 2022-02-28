@@ -14,7 +14,7 @@ const ProgrammesPageChild = ({ activeKey }) => {
     <div>
       <Toolbar />
       <div className="my__layout_child" style={{ height: height - 70 + "px" }}>
-        <ChildTabs data={ProgrammsTemplate} activeKey={activeKey}></ChildTabs>
+        <ChildTabs data={ProgrammsTemplate} activeKey={activeKey}/>
         <GlobalTable />
       </div>
     </div>

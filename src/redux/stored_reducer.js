@@ -101,6 +101,9 @@ export const counterSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
+    stopLoading: (state) => {
+      state.loading = false;
+    },
     setFilteredMainData: (state, { payload }) => {
       state.filteredMainData = payload;
     },

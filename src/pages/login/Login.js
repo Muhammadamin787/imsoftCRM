@@ -1,10 +1,10 @@
-import { Form, Input, Button, message } from "antd";
+import {Form, Input, Button, message} from "antd";
 import "./login.scss";
-import React, { useState } from "react"
+import React, {useState} from "react"
 import Logo from "../../assets/logo/logo.png";
-import { useDispatch } from "react-redux";
-import { setLogin, setUser } from "../../redux/stored_reducer";
-import { POST } from "../../functions/Methods"
+import {useDispatch} from "react-redux";
+import {setLogin, setUser} from "../../redux/stored_reducer";
+import {POST} from "../../functions/Methods"
 
 
 const Login = () => {
@@ -16,42 +16,41 @@ const Login = () => {
     const onFinish = e => {
         setWait(false);
 
-        POST("/login-user", e).then((res) => {
-            if (res.status == "200") {
-                dispatch(setUser(res.data.user))
                 dispatch(setLogin(true))
-                message.success({ content: "Xush kelibsiz", key: e });
-            }
-        }).catch(e => {
-            return message.error({ content: "Qayta uriib kuring❗", key: e }) && setWait(true);
-        })
+        // POST("/login-user", e).then((res) => {
+        //     if (res.status == "200") {
+        //         dispatch(setUser(res.data.user))
+        //         message.success({content: "Xush kelibsiz", key: e});
+        //     }
+        // }).catch(e => {
+        //     return message.error({content: "Qayta uriib kuring❗", key: e}) && setWait(true);
+        // })
     };
-
-
 
 
     return (
         <div className={"login_wrapper"}>
             <Form className={"login_form"} name="basic" onFinish={onFinish}>
                 <div className="login_logo">
-                    <img height="40" src={Logo} alt="logo" />
+                    <img height="40" src={Logo} alt="logo"/>
                 </div>
                 <Form.Item
                     label="Email"
                     name="email"
-                    rules={[{ required: true, message: "Loginni kiriting!" }]}
+                    rules={[{required: true, message: "Loginni kiriting!"}]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
                 <Form.Item
                     label="Password"
                     name="password"
-                    rules={[{ required: true, message: "Parolni kiriting!" }]}
+                    rules={[{required: true, message: "Parolni kiriting!"}]}
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                    {wait ? (<Button htmlType="submit" className={"action_btn main-btn"} > Kirish </Button>) : ( <Button type="primary" loading> Loading </Button>)}
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    {wait ? (<Button htmlType="submit" className={"action_btn main-btn"}> Kirish </Button>) : (
+                        <Button type="primary" loading> Loading </Button>)}
                 </div>
             </Form>
         </div>
