@@ -14,6 +14,9 @@
             });
 
         } catch (error) {
+            if(error.message.includes("401")){
+                message.error({content:"Email yoki Password notug'ri"})
+            }
             if (error.message.includes("500")) {
                 message.error({ content: "Formani to'ldiring!", key: key });
             } else if (error.message.includes("400")) {

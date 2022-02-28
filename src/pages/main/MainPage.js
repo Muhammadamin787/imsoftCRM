@@ -37,7 +37,8 @@ import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
-import { GET } from "../../functions/Methods";
+import {GET} from '../../functions/Methods';
+import { setUser, setLogin } from "../../redux/stored_reducer"
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -98,6 +99,12 @@ const MainPage = () => {
         });
     }
   }, [pathname]);
+
+
+  const handleLog_out = () => {
+    dispatch(setUser(null));
+    dispatch(setLogin(false));
+  }
 
   return (
     <Layout className="site-container">

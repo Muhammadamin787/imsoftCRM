@@ -157,7 +157,7 @@ const XodimlarTemplate = {
           placeholder: "hozirgi turgan joyi (map quyiladi)",
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
-          label: " ",
+          label: "xarita",
         },
         {
           label: " ",

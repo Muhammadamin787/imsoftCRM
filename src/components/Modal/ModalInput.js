@@ -227,8 +227,7 @@ const ModalInput = (props) => {
                     height={height}
                     handleChangeValue={handleChangeValue}
                     required={required}
-
-                    geo={values?.longtitude && values?.latitude ? [values.latitude, values?.longtitude] : ""}
+                    geo={values?.longitude && values?.latitude ? [values.latitude, values?.longitude] : ""}
                 />
             );
             break;
