@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {setCurrentPage} from "../../redux/stored_reducer"
 import {findIcon} from "../../assets/icons/icons";
 
-const ServicePage = ({page}) => {
+const ServicePage = ({ page }) => {
     const sections = page?.sections;
     const dispatch = useDispatch();
 

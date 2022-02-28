@@ -1,5 +1,4 @@
 .child-page {
-  // border: 2px  solid red;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -9,9 +8,7 @@
     flex-grow: 1;
     height: 100%;
     overflow: auto;
-    // border: 2px solid blue;
   }
-
 
   .main-table {
     flex-grow: 1;
@@ -51,10 +48,6 @@
     }
   }
 }
-
-// .ant-table-pagination{
-//   display: none;
-// }
 
 .hodimlar {
   background-image: url("../../../assets/icons/staff.svg");

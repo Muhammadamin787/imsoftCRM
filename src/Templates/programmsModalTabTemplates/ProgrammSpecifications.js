@@ -1,7 +1,5 @@
 import { FieldNumberOutlined } from "@ant-design/icons";
 import React from "react";
-import { Input, Button } from "antd"
-// import TabInput from "../../components/Modal/tabInput/tabInput";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { STRING, UPLOAD, BUTTON } from "../../components/Modal/InputTypes"
 import { v4 as uuidv4 } from 'uuid'
@@ -15,7 +13,7 @@ export const ProgrammSpecifications = {
         comment: '',
         file: '',
     },
-    scroll: { y: 130},
+    scroll: { y: 130 },
 
     columns: [
         {
@@ -52,7 +50,7 @@ export const ProgrammSpecifications = {
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"}  type={BUTTON}  />,
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} type={BUTTON} />,
             key: "action",
             width: "10%",
             align: "center",

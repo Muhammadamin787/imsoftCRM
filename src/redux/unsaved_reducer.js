@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import axios from "../functions/axios";
-import { DELETE, GET, POST } from "../functions/Methods";
 
 export const counterSlice = createSlice({
   name: "unsaved_reducer",
@@ -10,11 +8,23 @@ export const counterSlice = createSlice({
       status: [
         {
           id: 1,
-          name: "1",
+          name: "Yangi dastur",
         },
         {
-          id: 0,
-          name: "0",
+          id: 2,
+          name: "Jarayondagi",
+        },
+        {
+          id: 3,
+          name: "O'qitilayotgan",
+        },
+        {
+          id: 4,
+          name: "Topshirilgan",
+        },
+        {
+          id: 5,
+          name: "Bekor qilingan",
         },
       ],
       client_status: [
@@ -41,9 +51,10 @@ export const counterSlice = createSlice({
   },
   reducers: {
     setAllData: (state, { payload }) => {
-      state.allData = {...state.allData, ...payload};
+      state.allData = { ...state.allData, ...payload };
     },
     setData: (state, { payload }) => {
+      // payload = [{dcfs}, {nm,}]
       let arrayWithKeys = [];
       payload &&
         payload?.forEach((item, key) => {

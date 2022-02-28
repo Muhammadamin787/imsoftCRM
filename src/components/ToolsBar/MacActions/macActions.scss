@@ -15,7 +15,7 @@
     align-items: center;
     border: none;
     cursor: pointer;
-    transition: .07s;
+    transition: 0.07s;
     padding: 0;
 
     svg {
@@ -34,11 +34,11 @@
   }
 
   .green_btn {
-    background-color: #24C33D;
+    background-color: #24c33d;
   }
 
   .yellow_btn {
-    background-color: #F7B629;
+    background-color: #f7b629;
 
     svg {
       path {
@@ -49,6 +49,6 @@
   }
 
   .red_btn {
-    background-color: #F65951;
+    background-color: #f65951;
   }
 }

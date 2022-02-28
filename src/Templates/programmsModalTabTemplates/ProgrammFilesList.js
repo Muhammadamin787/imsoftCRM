@@ -1,9 +1,8 @@
-import { STRING, DATE, UPLOAD,BUTTON } from './../../components/Modal/InputTypes';
+import { STRING, UPLOAD,BUTTON } from './../../components/Modal/InputTypes';
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { v4 as uuidv4 } from 'uuid'
-import { Input, Button } from "antd"
 
 
 

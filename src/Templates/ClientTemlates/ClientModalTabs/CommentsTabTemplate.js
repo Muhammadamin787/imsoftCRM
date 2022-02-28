@@ -1,11 +1,23 @@
-import { STRING } from "../../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { STRING, UPLOAD, SELECT, DATE,BUTTON } from "../../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
+import { v4 as uuidv4 } from 'uuid'
+import TabInput from "../../../components/Modal/TabInput/TabInput";
 
 const align = "center";
 
 const CommetsTabTemplate = {
   text: "Izohlar",
   isOpenModal: false,
+  name: "general_doc",
+  CreateObj: {
+    rowId: uuidv4(),
+    comment: '',
+    file: '',
+    worker: "",
+    vaqti: ""
+  },
+  scroll: { y: 130 },
+
   form: [
     {
       grid: {
@@ -32,51 +44,49 @@ const CommetsTabTemplate = {
       dataIndex: "number",
       key: "number",
       width: "5%",
-      align,
+      align: "center"
     },
     {
       title: "Izox",
-      dataIndex: "izox",
+      dataIndex: "general_info",
+      render: (text, record, index) => <TabInput record={record} tabName={"general_doc"} name={"comment"} type={STRING} />,
       key: "izox",
       width: "40%",
+      align: "center"
     },
     {
       title: "Fayl",
-      dataIndex: "fayl",
-      key: "fayl",
+      dataIndex: "file",
+      render: (text, record, index) => <TabInput record={record} tabName={"general_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
+      key: "file",
       width: "15%",
+      align: "center"
     },
     {
       title: "Xodim",
-      dataIndex: "xodim",
+      dataIndex: "worker",
+      render: (text, record, index) => <TabInput record={record} tabName={"general_doc"} name={"worker"} options={"workers"} type={SELECT} />,
       key: "xodim",
       width: "25%",
+      align: "center"
     },
     {
       title: "Vaqti",
       dataIndex: "vaqti",
+      render: (text, record, index) => <TabInput record={record} tabName={"general_doc"} name={"vaqti"} type={DATE} />,
       key: "vaqti",
       width: "15%",
+      align: "center"
     },
+    {
+      title: "Actions",
+      dataIndex: "actions",
+      render: (text, record, index) => <TabInput record={record} tabName={"general_doc"}  type={BUTTON} />,
+      key: "action",
+      width: "10%",
+      align: "center"
+  }
   ],
-  data: [
-    {
-      number: "1",
-      key: 1,
-      izox:"yaxshi table",
-      fayl: "no fayl",
-      xodim: "Uroq",
-      vaqti: "2020/12/15",
-    },
-    {
-      number: "2",
-      key: 2,
-      izox:"dastur mukammal ishlangan 👍",
-      fayl: "no fayl",
-      xodim: "Tovar",
-      vaqti: "2021/17/15",
-    },
-  ]
 };
 
 export default CommetsTabTemplate;

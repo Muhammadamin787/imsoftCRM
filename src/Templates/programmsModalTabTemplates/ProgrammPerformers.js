@@ -1,9 +1,8 @@
 import {FieldNumberOutlined} from "@ant-design/icons";
 import React from "react";
-import { STRING, SELECT,DATE, UPLOAD, BUTTON } from "../../components/Modal/InputTypes";
+import { STRING, SELECT,DATE, BUTTON } from "../../components/Modal/InputTypes";
 import TabInput from "../../components/Modal/TabInput/TabInput";
 import { v4 as uuidv4 } from 'uuid'
-import { Input, Button } from "antd"
 
 
 export const ProgrammPerformers = {
@@ -21,7 +20,6 @@ export const ProgrammPerformers = {
         start_date:"",
         deadline_date:"",
         finish_date:"",
-        file:""
     },
     columns: [
         {
@@ -75,11 +73,9 @@ export const ProgrammPerformers = {
             title: "Actions",
             dataIndex: "actions",
             render: (text, record, index) => <TabInput record={record} tabName={"dev_doc"}  type={BUTTON}  />,
-            
             key: "action",
             width: "10%",
             align: "center"
-
         }
     ]
 }

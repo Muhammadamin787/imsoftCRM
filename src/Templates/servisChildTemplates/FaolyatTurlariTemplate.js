@@ -2,7 +2,7 @@ import React from "react";
 import { FAOLYAT_TURLARI_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
-import {STRING} from "../../components/Modal/InputTypes";
+import { STRING } from "../../components/Modal/InputTypes";
 
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
@@ -10,8 +10,7 @@ const FaolyatTurlaiTemplate = {
   icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
-  mainUrl:"/activity-types",
-  // allData:["/activity-types/"],
+  mainUrl: "/activity-types",
   form: [
     {
       grid: "1fr",

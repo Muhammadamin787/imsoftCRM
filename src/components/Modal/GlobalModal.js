@@ -14,13 +14,13 @@ import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
-import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
-
+import axios from "../../functions/axios";
 const GlobalModal = () => {
-  const { currentPage, values } = useSelector((state) => state.tabs_reducer);
-  const { allData } = useSelector((state) => state.unsaved_reducer);
+  const { currentPage, values, innerModal } = useSelector(
+    (state) => state.tabs_reducer
+  );
 
   const [bounds, setBounds] = useState({
     left: 0,
@@ -31,21 +31,8 @@ const GlobalModal = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentPage && currentPage?.isOpenModal) {
-      let currentData = currentPage?.allData;
-      for (const url in currentData) {
-        let res = axios(currentData[url]);
-        res.then((res) => {
-          dispatch(setAllData({ [url]: res.data.data }));
-        });
-      }
-    }
-  }, [currentPage]);
-
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
-    dispatch(setValues({}));
   };
 
   const resizeModal = () => {
@@ -56,26 +43,71 @@ const GlobalModal = () => {
     dispatch(setValues({ ...values, ...e }));
   };
 
+  useEffect(() => {
+    if (currentPage && currentPage.isOpenModal) {
+      let currentData = currentPage?.allData;
+      for (const url in currentData) {
+        let res = axios(currentData[url]);
+        res.then((res) => {
+          dispatch(setAllData({ [url]: res.data.data }));
+        });
+      }
+    }
+  }, [currentPage, innerModal]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleChangeValue();
-    const { mainUrl, key } = currentPage;
-    POST(mainUrl, values).then((res) => {
-      message.success({ content: res.data.data, key: e });
-      dispatch(toggleModal(false));
-      dispatch(setValues({}));
-      dispatch(setTableItem([]));
-      dispatch(startLoading());
-      GET(
-        removeApiStatusLines.includes(mainUrl)
-          ? `${mainUrl}/status/${key}`
-          : mainUrl
-      ).then((res) => {
-        dispatch(setData(res.data.data));
-        dispatch(stopLoading());
+    const { mainUrl, key, form, modal } = currentPage;
+    const requiredInputs = [];
+    let bool = false;
+
+    if (form) {
+      form.forEach((el) => {
+        el.inputs.forEach((d) => {
+          if (d.required) {
+            requiredInputs.push(d);
+          }
+        });
       });
+    } else {
+      modal.tabs.forEach((el) => {
+        el?.form[0]?.inputs?.forEach((d) => {
+          if (d?.required) {
+            requiredInputs.push(d);
+          }
+        });
+      });
+    }
+
+    requiredInputs.forEach((key) => {
+      if (!Object.keys(values).includes(key?.name)) {
+        bool = true;
+        message.error(
+          key?.name !== "longitude" ? key?.label : "Map" + "ni kiritmadingiz"
+        );
+      }
     });
-    dispatch(toggleModal(false));
+
+    if (!bool) {
+      POST(mainUrl, values).then((res) => {
+        message.success({ content: res.data.data, key: e });
+        dispatch(toggleModal(false));
+        dispatch(setValues({}));
+        dispatch(setTableItem([]));
+        dispatch(startLoading());
+        GET(
+          removeApiStatusLines.includes(mainUrl)
+            ? `${mainUrl}/status/${key}`
+            : mainUrl
+        ).then((res) => {
+          console.log(res);
+          dispatch(setData(res.data.data));
+          dispatch(stopLoading());
+        });
+      });
+
+      dispatch(toggleModal(false));
+    }
   };
 
   const draggleRef = useRef("s");
@@ -98,7 +130,6 @@ const GlobalModal = () => {
     <Modal
       className="global-modal"
       style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
       footer={null}
       title={
         <div
@@ -142,22 +173,12 @@ const GlobalModal = () => {
             }}
           >
             {form?.inputs?.map((input) => (
-              // <label
-              // style={{
-              //   gridColumn: input.gridColumn,
-              //   gridRow: input.gridRow,
-              //   height: input.height ? input.height + "px" : inputDeafultHeght + "px",
-              //   border: "1px solid black"
-              // }}
-              // className="select-label"
-              //   >
-              //     {input?.label}
               <ModalInput
                 {...input}
                 key={input?.name}
+                countInput={form?.inputs}
                 handleChangeValue={handleChangeValue}
               />
-              //  </label>
             ))}
           </div>
         ))}

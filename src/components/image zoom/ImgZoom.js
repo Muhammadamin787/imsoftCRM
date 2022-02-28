@@ -10,10 +10,12 @@ const ImgZoom = ({ src }) => {
   const [time, setTime] = useState(true);
 
   const start = (e) => {
-    setTime(false);
-    console.log(e);
+    setTimeout(() => {
+      setTime(false);
+      e.style.width = "30px"
+      e.style.height = "30px"
+    }, 1000);
   };
-
   return (
     <div>
       <Zoom zoomMargin={10}>
@@ -22,7 +24,7 @@ const ImgZoom = ({ src }) => {
           <img
             alt=" "
             src={src}
-            style={{ objectFit: "contain", width: "30px", height: "30px" }}
+            style={{ objectFit: "contain", width: "0px", height: "0px" }}
             onLoad={(e) => start(e.target)}
           />
         </picture>

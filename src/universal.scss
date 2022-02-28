@@ -46,3 +46,12 @@
   border: none !important;
   border-right: 1px solid #999 !important;
 }
+.img__skelaton{
+ position: absolute;
+ z-index: 15;
+ margin-left: -8px;
+ width: 30px;
+ .ant-skeleton-avatar {
+   width: 30px;
+ }
+}

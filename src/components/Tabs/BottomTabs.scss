@@ -28,6 +28,7 @@
     background-color: #fff;
     border: none;
     border-right: 1px solid #ccc;
+    outline: none !important;
     cursor: pointer;
     transition: 0.2s;
     &:hover {
@@ -72,101 +73,6 @@
     }
   }
 }
-
-// .site-footer__tabs {
-//   display: flex;
-//   height: 31px;
-
-//   .site-footer__tab {
-//     background-color: #fff;
-//     color: #999;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-
-//     &:hover {
-//       color: #4447e2;
-
-//       svg {
-//         path {
-//           fill: #4447e2 !important;
-//         }
-//       }
-
-//       .anticon-close {
-//         visibility: visible !important;
-//       }
-//     }
-
-//     span {
-//       margin-left: 15px;
-//     }
-
-//     svg {
-//       width: 17px;
-//       height: 17px;
-//       //fill: #ffffff;
-
-//       path {
-//         fill: #999 !important;
-//         //fill: #ffffff;
-//       }
-//     }
-//   }
-//   .active__bottom_tab {
-//     color: #ffffff !important;
-//     background-color: blue;
-//     &:hover svg {
-//       path {
-//         fill: #ffffff !important;
-//       }
-//     }
-//   }
-
-//   // default antd styles
-//   .ant-tabs-tab {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background: transparent;
-//     border-right: 1px solid red !important;
-//     border-radius: 0 !important;
-//     height: 30px;
-//     min-width: 100px;
-//     outline: none;
-//     cursor: pointer;
-//     padding-right: 9px !important;
-
-//     .ant-tabs-tab-remove {
-//       position: relative;
-//       top: 3px;
-//       transition: 1s;
-//       color: #fff;
-//       font-size: 10px;
-
-//       svg path {
-//         visibility: hidden;
-//       }
-//     }
-
-//     &:hover {
-//       .ant-tabs-tab-remove {
-//         svg path {
-//           visibility: visible;
-//         }
-
-//         &:hover {
-//           svg path {
-//             visibility: visible;
-//             fill: #940808;
-//             stroke: #940808;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   background-color: #fff !important;
 }

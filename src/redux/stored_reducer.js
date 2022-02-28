@@ -9,6 +9,7 @@ export const counterSlice = createSlice({
   name: "tabs_data",
   initialState: {
     values: {},
+    values2: {},
     loading: false,
     tableItem: [],
     Panes: [],
@@ -18,7 +19,6 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
-    bottomActiveKey: null,
   },
   reducers: {
     removeTab: (state, action) => {
@@ -94,6 +94,9 @@ export const counterSlice = createSlice({
     setValues: (state, { payload }) => {
       state.values = payload;
     },
+    setValues2: (state, { payload }) => {
+      state.values2 = payload;
+    },
     startLoading: (state) => {
       state.loading = true;
     },
@@ -125,9 +128,6 @@ export const counterSlice = createSlice({
     setValuesKey: (state, { payload }) => {
       state.values = { ...state.values, ...payload };
     },
-    setBottomActiveKey: (state, { payload }) => {
-      state.bottomActiveKey = payload;
-    },
   },
 });
 
@@ -146,6 +146,7 @@ export const {
   startLoading,
   setSearchInputValue,
   setValues,
+  setValues2,
   setInnerModel,
   toggleInnerModal,
   setFilteredMainData,

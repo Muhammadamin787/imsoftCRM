@@ -15,6 +15,9 @@ import ContactsTemplate from "../ClientTemlates/ClientModalTabs/ContactsTemplate
 import CommonTemplate from "../ClientTemlates/ClientModalTabs/CommonTemplate";
 const ClientTemplate = {
   ...PotensialClientTemplate,
+  allData: {
+    workers: "/workers/all",
+},
   modal: {
     style: {
       width: 1200,

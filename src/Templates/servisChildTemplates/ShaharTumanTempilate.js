@@ -1,7 +1,7 @@
 import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
-import { STRING, SELECT, NUMBER } from "../../components/Modal/InputTypes";
+import { STRING, SELECT } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from '@ant-design/icons';
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 

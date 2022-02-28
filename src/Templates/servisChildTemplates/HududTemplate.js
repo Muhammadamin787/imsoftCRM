@@ -1,9 +1,8 @@
 import React from "react";
-import {HUDUD_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {SELECT, STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
-import ShaharTumanTemplate from "./ShaharTumanTempilate";
+import { HUDUD_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { SELECT, STRING } from "../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 
@@ -57,24 +56,13 @@ const HududTemplate = {
                     gridColumn: "1 / 3",
                     gridRow: "3 / 4",
                     template: ViloyatlarTemplate
-
                 },
-                // {
-                //     name: "Map bulishi  kk",
-                //     type: MAP,
-                //     required: true,
-                //     placeholder: "map bulishi kk",
-                //     gridColumn: "2 / 3",
-                //     gridRow: "1 / 3",
-                //     height: inputDeafultHeght * 2.5,
-                // },
-
             ],
         },
     ],
     columns: [
         {
-            title: <FieldNumberOutlined/>,
+            title: <FieldNumberOutlined />,
             dataIndex: "id",
             key: "id",
             width: "5%",

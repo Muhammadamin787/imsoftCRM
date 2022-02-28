@@ -24,7 +24,6 @@ const PotensialClientTemplate = {
     activity_types: "/activity-types",
     hudud: "/districts/all",
     category_name: "/categories",
-    // cities: "/cities/all",
   },
   modal: {
     style: {

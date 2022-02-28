@@ -1,9 +1,12 @@
-import { STRING, SELECT } from "../../../components/Modal/InputTypes";
+import {
+  STRING,
+  SELECT,
+} from "../../../components/Modal/InputTypes";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
-import FaolyatTurlaiTemplate from "../../servisChildTemplates/FaolyatTurlariTemplate";
-import HududTemplate from "../../servisChildTemplates/HududTemplate";
+import FaolyatTurlaiTemplate from '../../servisChildTemplates/FaolyatTurlariTemplate';
+import HududTemplate from '../../servisChildTemplates/HududTemplate'
 
 const CommonTabTemplate = {
   text: "Umumiy",
@@ -25,6 +28,16 @@ const CommonTabTemplate = {
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
           autoFocus: true,
+        },
+        {
+          name: "client_status",
+          type: SELECT,
+          required: true,
+          placeholder: "xolati",
+          label: "Xolati",
+          gridColumn: "6 / 9",
+          gridRow: "1 / 2",
+          options: "client_status"
         },
         {
           name: "category_id",
@@ -111,6 +124,7 @@ const CommonTabTemplate = {
           label: "Xudud",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
+          options: "states",
         },
       ],
     },

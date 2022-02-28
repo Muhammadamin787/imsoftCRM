@@ -9,7 +9,7 @@ const ViloyatlarTemplate = {
   path: VILOYATLAR_PATH,
   icon: "Group",
   type: SERVIS_CHILD_PAGES,
-  mainUrl:"/states",
+  mainUrl: "/states",
   // allData:["/states/"],
   isOpenModal: false,
   form: [
@@ -20,7 +20,8 @@ const ViloyatlarTemplate = {
           name: "name",
           type: STRING,
           required: true,
-          placeholder:"Viloyatlar",
+          options:"states",
+          placeholder: "Viloyatlar",
           label: "Viloyat"
         },
       ],
