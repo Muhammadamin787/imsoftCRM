@@ -6,10 +6,9 @@ import {
   setFilteredMainData,
 } from "../../redux/stored_reducer";
 import { useDispatch, useSelector } from "react-redux";
-import Highlighter from "react-highlight-words";
 import { Popover } from "antd";
 import PaintBackground from "../PaintBackground/PaintBackground";
-
+import moment from "moment";
 // ! Template dagi dataIndex agar rasim yoki string && number dan boshqa typedagi ma'lumot bo'ladigan bolsa shu arrayni 👇
 // ! ichiga qaysi dataIndex larini o'qimasligini yozib qo'yishingiz talab qiliniadi aks holda projact da hatoli yoki
 // ! tushunmovchilik kuzatilishi mumkin 👨‍🏫👨‍🏫👨‍🏫
@@ -21,8 +20,9 @@ const dontFilterTamlateDataIndex = [
   "number",
   "file_1",
   "loc",
+  "img",
 ];
-
+// created_at
 const { Search } = Input;
 
 const SearchInput = () => {
@@ -65,22 +65,26 @@ const SearchInput = () => {
                 <PaintBackground text={`${text}`} value={`${value}`} />
               </div>
             );
-            if(`${text}`.length > 135){
-              // console.log("big " + text.length);
-                return (
-                  <Popover placement="leftTop" content={content}>
-                    <div className="hodim-template">
-                      <div className={"box-shadow"}></div>
-                      <PaintBackground text={`${text}`} value={`${value}`} />
-                    </div>
-                  </Popover>
-                )
-            }
-            else{
-              // console.log("small " + text.length);
+            if (`${text}`.length > 59) {
+              return (
+                <Popover placement="leftTop" content={content}>
+                  <div className="hodim-template">
+                    <div className={"box-shadow"}></div>
+                    <PaintBackground text={`${text}`} value={`${value}`} />
+                  </div>
+                </Popover>
+              );
+            } else {
               return (
                 <div className="hodim-template">
-                  <PaintBackground text={`${text}`} value={`${value}`} />
+                  <PaintBackground
+                    text={`${
+                      item?.dataIndex === "created_at"
+                        ? moment(text).format("DD/MM/YYYY")
+                        : text
+                    }`}
+                    value={`${value}`}
+                  />
                 </div>
               );
             }
@@ -96,7 +100,7 @@ const SearchInput = () => {
     }
 
     dispatch(setFilteredMainData(filter));
-  }, [value]);
+  }, [value, mainData]);
 
   return (
     <Search

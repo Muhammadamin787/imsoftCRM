@@ -44,7 +44,7 @@ export class PicturesWall extends React.Component {
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({[this.props.name]: `${Base}${e.file.response}`});
+    this.props.handleChangeValue({[this.props.name]: `${e.file.response}`});
     this.setState({ fileList: e.fileList });
   };
 

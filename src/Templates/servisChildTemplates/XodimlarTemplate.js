@@ -19,6 +19,7 @@ import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
 import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
+import ImgZoom from "../../components/image zoom/ImgZoom";
 
 const align = "center";
 const XodimlarTemplate = {
@@ -150,12 +151,11 @@ const XodimlarTemplate = {
         },
         {
           type: MAP,
-          required: true,
           height: "137",
           placeholder: "hozirgi turgan joyi (map quyiladi)",
           gridColumn: "10 / 16",
           gridRow: "4 / 7",
-          label: " ",
+          label: "xarita",
         },
         {
           label: " ",
@@ -233,22 +233,7 @@ const XodimlarTemplate = {
       key: "developer_photo",
       width: "10%",
       align,
-      render: (_, record) => {
-        return (
-          <Zoom zoomMargin={10}>
-            <picture>
-              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-              <img
-                alt="img"
-                src={record.developer_photo}
-                width="30"
-                height="30"
-                style={{ objectFit: "contain" }}
-              />
-            </picture>
-          </Zoom>
-        );
-      },
+      render: (_, record) => <ImgZoom src={record?.developer_photo} />,
     },
     {
       title: "Passport",
@@ -256,22 +241,7 @@ const XodimlarTemplate = {
       key: "passport",
       width: "20%",
       align,
-      render: (_, record) => {
-        return (
-          <Zoom zoomMargin={10}>
-            <picture>
-              {/* <source media="(max-width: 800px)" srcSet={record.rasmi} /> */}
-              <img
-                alt="img"
-                src={record.passport}
-                width="30"
-                height="30"
-                style={{ objectFit: "contain" }}
-              />
-            </picture>
-          </Zoom>
-        );
-      },
+      render: (_, record) => <ImgZoom src={record?.passport} />,
     },
     {
       title: "Oilasi",

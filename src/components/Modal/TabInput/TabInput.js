@@ -16,7 +16,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        handleChange()
+        // handleChange()
         console.log(tabName);
     },[tabName])
 
@@ -59,7 +59,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                 />
             );
             break;
-
         case SELECT:
             input = (
                 <div className="tab-select__option">
@@ -93,6 +92,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
             );
             break;
         case UPLOAD:
+
             input = (
                 <UploadFile
                     id="file-uploder"
@@ -103,6 +103,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                 />
             );
             break;
+
         case BUTTON:
             input = (
                 <Button type='default' onClick={() => handleDelete()}><DeleteOutlined /></Button>

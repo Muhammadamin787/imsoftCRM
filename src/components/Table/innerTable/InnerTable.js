@@ -28,7 +28,6 @@ const InnerTable = ({ innerTable }) => {
     return (
         <div className="innerTable">
             <Button className="tab-add__input" onClick={addRow}><span>+</span></Button>
-            {/* <Button className="tab-add__input" onClick={addRow}  ><PlusOutlined /></Button> */}
             <div className="innerTable-row">
 
             <Table 
@@ -38,7 +37,7 @@ const InnerTable = ({ innerTable }) => {
                 dataSource={values?.[innerTable?.name] || []}
                 size={"small"}
                 scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
-                pagination={{ position: ["bottomCenter"] }}
+                // pagination={{ position: ["bottomCenter"] }}
                 />
             </div>
         </div>

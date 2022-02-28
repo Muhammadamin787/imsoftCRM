@@ -52,6 +52,9 @@
     .ant-table-wrapper {
       .ant-spin-nested-loading {
         .ant-spin-container {
+          .ant-pagination{
+            display: none;
+          }
           .ant-table {
             .ant-table-row {
               .ant-table-cell{

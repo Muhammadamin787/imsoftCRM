@@ -18,7 +18,7 @@ const ClientPageChild = ({ activeKey }) => {
   return (
     <>
       <Toolbar tableItem={tableItem} />
-      <div className="my__layout_child" style={{ height: height - 70 + "px" }}>
+      <div className="my__layout_child" style={{ height: height - 40 + "px" }}>
         <ChildTabs data={ClientTemplate} activeKey={activeKey} />
         <GlobalTable />
       </div>

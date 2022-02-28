@@ -14,13 +14,15 @@ import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
-import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
+import axios from "../../functions/axios";
+import { getSuggestedQuery } from "@testing-library/react";
+
 
 const GlobalModal = () => {
-  const { currentPage, values } = useSelector((state) => state.tabs_reducer);
-  const { allData } = useSelector((state) => state.unsaved_reducer);
+  const { currentPage, values, innerModal } = useSelector((state) => state.tabs_reducer);
+
 
   const [bounds, setBounds] = useState({
     left: 0,
@@ -31,22 +33,8 @@ const GlobalModal = () => {
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (currentPage && currentPage?.isOpenModal) {
-  //     let currentData = currentPage?.allData;
-  //     for (const url in currentData) {
-  //       let res = axios(currentData[url]);
-  //       res.then((res) => {
-  //         dispatch(setAllData({ [url]: res.data.data }));
-  //       });
-  //     }
-  //   }
-  // }, [currentPage]);
-
   const handleCancel = (e) => {
-    // console.log(false);
     dispatch(toggleModal(false));
-    // dispatch(setValues({}));
   };
 
   const resizeModal = () => {
@@ -57,26 +45,70 @@ const GlobalModal = () => {
     dispatch(setValues({ ...values, ...e }));
   };
 
+  useEffect(() => {
+    if (currentPage && currentPage.isOpenModal) {
+      let currentData = currentPage?.allData;
+      for (const url in currentData) {
+        let res = axios(currentData[url])
+        res.then(res => {
+          dispatch(setAllData({ [url]: res.data.data }));
+        });
+      }
+    }
+  }, [currentPage, innerModal]);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handleChangeValue();
+
     const { mainUrl, key } = currentPage;
-    POST(mainUrl, values).then((res) => {
-      message.success({ content: res.data.data, key: e });
-      dispatch(toggleModal(false));
-      dispatch(setValues({}));
-      dispatch(setTableItem([]));
-      dispatch(startLoading());
-      GET(
-        removeApiStatusLines.includes(mainUrl)
-          ? `${mainUrl}/status/${key}`
-          : mainUrl
-      ).then((res) => {
-        dispatch(setData(res.data.data));
-        dispatch(stopLoading());
+
+
+    const requiredInputs = [];
+
+    currentPage.form.forEach(el => {
+      el.inputs.forEach(d => {
+        if (d.required) {
+          requiredInputs.push(d);
+        }
       });
     });
-    dispatch(toggleModal(false));
+
+
+    let isNotErrors = false;
+    requiredInputs.map(d => {
+      if (!values[d?.name]) {
+        return message.error(d.label + "ni kiritmadingiz")
+      } else {
+        isNotErrors = true;
+      }
+    })
+
+
+    if (isNotErrors) {
+      POST(mainUrl, values).then((res) => {
+        message.success({ content: res.data.data, key: e });
+        dispatch(toggleModal(false));
+        dispatch(setValues({}));
+        dispatch(setTableItem([]));
+        dispatch(startLoading());
+        GET(
+          removeApiStatusLines.includes(mainUrl)
+            ? `${mainUrl}/status/${key}`
+            : mainUrl
+        ).then((res) => {
+          dispatch(setData(res.data.data));
+          dispatch(stopLoading());
+        });
+      });
+
+      dispatch(toggleModal(false));
+    }
+
+    // if (!isNotErrors) {
+    //   dispatch(toggleModal(true));
+    // }
+
   };
 
   const draggleRef = useRef("s");

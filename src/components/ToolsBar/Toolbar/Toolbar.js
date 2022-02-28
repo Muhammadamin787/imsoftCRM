@@ -32,9 +32,7 @@ const addButtonIsDisabled = [
 const Toolbar = ({ tableItem }) => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes, MainData, values } = useSelector(
-    (state) => state.tabs_reducer
-  );
+  const { currentPage } = useSelector((state) => state.tabs_reducer);
 
   const handleModalClick = () => {
     // const newPanes = Panes?.map((page) =>
@@ -59,7 +57,7 @@ const Toolbar = ({ tableItem }) => {
       let ids = tableItem.map((row) => {
         return row.id;
       });
-      dispatch(startLoading())
+      dispatch(startLoading());
       DELETE(url + "/delete", ids).then((res) => {
         GET(
           removeApiStatusLines.includes(url)

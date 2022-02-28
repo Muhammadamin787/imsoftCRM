@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
-import ClientTemplate from "../Templates/pageTemplates/ClientTemplate";
-import ProgrammsTemplate from "../Templates/pageTemplates/ProgrammesTemplate";
-import ServiceTemplate from "../Templates/pageTemplates/ServiceTemplate";
 import axios from "../functions/axios";
+
 import { POST } from "../functions/Methods";
 export const counterSlice = createSlice({
   name: "tabs_data",
@@ -19,6 +17,9 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
+    bottomActiveKey: null,
+    auth:false,
+    user:null,
   },
   reducers: {
     removeTab: (state, action) => {
@@ -100,9 +101,6 @@ export const counterSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
-    stopLoading: (state) => {
-      state.loading = false;
-    },
     setFilteredMainData: (state, { payload }) => {
       state.filteredMainData = payload;
     },
@@ -115,8 +113,8 @@ export const counterSlice = createSlice({
     setOffInnerModel: (state, { payload }) => {
       state.innerModal = "";
     },
-    clearPanes: (state, {payload}) => {
-      state.Panes = payload;
+    clearPanes: (state) => {
+      state.Panes = [];
     },
     setCurrentLocation: (s, { payload }) => {
       s.currentLocation = payload;
@@ -128,11 +126,26 @@ export const counterSlice = createSlice({
     setValuesKey: (state, { payload }) => {
       state.values = { ...state.values, ...payload };
     },
+    setBottomActiveKey: (state, { payload }) => {
+      state.bottomActiveKey = payload;
+    },
+    setLogin: (state, { payload }) => {
+
+      state.auth = payload;
+      // if ((auth.login === payload.login) && (auth.password === payload.password)) {
+      //   state.user = true;
+      // }else {
+      //   state.user = false;
+      // }
+    },
+    setUser: (state, { payload }) => {
+      state.user = payload;
+    }
+
   },
 });
 
 export const {
-  // addNewTab,
   removeTab,
   toggleModal,
   setCurrentPage,
@@ -141,7 +154,6 @@ export const {
   setTableItem,
   removeTableItem,
   editTableItem,
-  // changePanesModal,
   toggleTableType,
   clearPanes,
   stopLoading,
@@ -156,6 +168,9 @@ export const {
   setCurrentLocation,
   setCurrentLocationIsOpen,
   setValuesKey,
+  setBottomActiveKey,
+  setLogin,
+  setUser
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

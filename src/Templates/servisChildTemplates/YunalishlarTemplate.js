@@ -24,7 +24,8 @@ const YunalishlarTemplate = {
                     name: "name",
                     type: STRING,
                     placeholder: "Yo'nalishlar",
-                    label: "Yo'nalish"
+                    label: "Yo'nalish",
+                    required: true,
                 },
             ],
         },

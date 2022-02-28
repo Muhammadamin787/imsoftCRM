@@ -38,6 +38,7 @@ import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
 import {GET} from '../../functions/Methods';
+import { setUser, setLogin } from "../../redux/stored_reducer"
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -100,9 +101,10 @@ const MainPage = () => {
   }, [pathname]);
 
 
-  useEffect(() => {
-    // console.log(Panes);
-  }, [Panes])
+  const handleLog_out = () => {
+    dispatch(setUser(null));
+    dispatch(setLogin(false));
+  }
 
   return (
     <Layout className="site-container">
@@ -159,7 +161,7 @@ const MainPage = () => {
                         }
                         content={
                             <div>
-                                <Button type={"primary"} danger style={{width: "100%"}}>
+                                <Button type={"primary"} danger onClick={() => handleLog_out()}style={{width: "100%"}}>
                                     Tizimdan chiqish
                                 </Button>
                             </div>
@@ -173,7 +175,7 @@ const MainPage = () => {
                         />
                     </Popover>
                 </div>
-            </Header>
+      </Header>
             <Content className="site-layout" id="site__loyout" style={{marginTop: 64}}>
                 <Routes>
                     {[
