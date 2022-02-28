@@ -4,10 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Tabs } from "antd";
 import {
   setCurrentPage,
-  changePanes,
   removeTab,
   clearPanes,
-  setBottomActiveKey,
 } from "../../redux/stored_reducer";
 import { useNavigate } from "react-router-dom";
 import { findIcon } from "../../assets/icons/icons";
@@ -16,9 +14,7 @@ import { ClearOutlined, CloseOutlined } from "@ant-design/icons";
 const { TabPane } = Tabs;
 
 const BottomTabs = () => {
-  const { Panes, currentPage, bottomActiveKey } = useSelector(
-    (state) => state?.tabs_reducer
-  );
+  const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,17 +27,15 @@ const BottomTabs = () => {
   }, [Panes, pathname]);
 
   const onChange = (activeKey) => {
-    dispatch(setBottomActiveKey(activeKey));
     navigate(Panes[activeKey].path);
     dispatch(setCurrentPage(Panes[activeKey]));
-    // dispatch(changePanes(currentPage));
   };
 
   const onEdit = (e, targetKey) => {
     e.stopPropagation();
     if (panes?.length === 1) {
       navigate("/servis");
-      dispatch(clearPanes())
+      dispatch(clearPanes());
     } else if (panes[+targetKey]?.text === currentPage?.text) {
       if (panes?.length - 1 > targetKey) {
         dispatch(setCurrentPage(panes[+targetKey + 1]));

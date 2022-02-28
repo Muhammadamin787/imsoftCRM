@@ -151,6 +151,8 @@ const XodimlarTemplate = {
         },
         {
           type: MAP,
+          required: true,
+          name: "longitude",
           height: "137",
           placeholder: "hozirgi turgan joyi (map quyiladi)",
           gridColumn: "10 / 16",

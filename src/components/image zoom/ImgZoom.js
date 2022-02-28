@@ -1,30 +1,45 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { Base } from "../../BaseUrl";
 import { useSelector } from "react-redux";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Skeleton, Switch, List, Avatar } from "antd";
+import { StarOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
+
 const ImgZoom = ({ src }) => {
-  const { currentPage } = useSelector((s) => s.tabs_reducer);
-  const { mainData } = useSelector((s) => s.unsaved_reducer);
-  const returnImgZoom = useCallback(() => {
-    return (
+  const [time, setTime] = useState(true);
+
+  const start = (e) => {
+    setTimeout(() => {
+      setTime(false);
+      e.style.width = "30px"
+      e.style.height = "30px"
+    }, 1000);
+  };
+  return (
+    <div>
       <Zoom zoomMargin={10}>
-        <source media="(max-width: 800px)" srcSet={Base + src} />
+        <source media="(max-width: 800px)" srcSet={src} />
         <picture>
-          <LazyLoadImage alt={"aa"} effect="blur" src={Base + src} />
-          {/* <img
-            alt="img"
-            src={Base + src}
-            width="30"
-            height="30"
-            style={{ objectFit: "contain" }}
-          /> */}
+          <img
+            alt=" "
+            src={src}
+            style={{ objectFit: "contain", width: "0px", height: "0px" }}
+            onLoad={(e) => start(e.target)}
+          />
         </picture>
+        {time && (
+          <Skeleton.Avatar
+            className="img__skelaton"
+            active={true}
+            size={"small"}
+            shape={"default"}
+            width={"100px"}
+          />
+        )}
       </Zoom>
-    );
-  }, [currentPage, mainData]);
-  return returnImgZoom();
+    </div>
+  );
 };
 
 export default ImgZoom;

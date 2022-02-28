@@ -1,7 +1,6 @@
 import React from "react";
 import {
     SERVIS_PAGE,
-    LOGIN_PAGE,
     MAIN_PAGE,
     PROGRAMMES_PAGE,
     REPORT_PAGE,
@@ -16,13 +15,10 @@ import ServicePage from "./servicePage/ServicePage";
 import ReportPage from "./reportPage/ReportPage";
 import ServicePageChild from "./servicePage/ServicePageChild/ServicePageChild";
 import ClientsPage from "./clientsPage/ClientsPage";
-import Login from "./login/Login";
 
 
 export const PageController = ({ page }) => {
     switch (page.type) {
-        case LOGIN_PAGE:
-            return <Login/>
         case MAIN_PAGE:
             return <FirstPage page={page} />;
         case CLIENTS_PAGE:

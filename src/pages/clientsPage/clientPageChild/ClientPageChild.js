@@ -5,7 +5,6 @@ import GlobalTable from "../../../components/Table/GlobalTable";
 import ClientTemplate from "../../../Templates/pageTemplates/ClientTemplate";
 import ChildTabs from "../../../components/ChildTabs/ChildTabs";
 
-
 const ClientPageChild = ({ activeKey }) => {
   const [height, setHeight] = useState(0);
   const { tableItem } = useSelector((s) => s.tabs_reducer);
@@ -17,7 +16,7 @@ const ClientPageChild = ({ activeKey }) => {
 
   return (
     <>
-      <Toolbar tableItem={tableItem} />
+      <Toolbar />
       <div className="my__layout_child" style={{ height: height - 40 + "px" }}>
         <ChildTabs data={ClientTemplate} activeKey={activeKey} />
         <GlobalTable />

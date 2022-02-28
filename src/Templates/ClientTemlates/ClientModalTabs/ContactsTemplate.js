@@ -128,7 +128,7 @@ const ContactsTemplate = {
           fileName: "file",
         },
         {
-          name: "client_addres",
+          name: "longitude",
           type: MAP,
           required: true,
           placeholder: "Client Addres",

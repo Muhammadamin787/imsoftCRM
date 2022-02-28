@@ -7,7 +7,7 @@ export const counterSlice = createSlice({
   name: "tabs_data",
   initialState: {
     values: {},
-    values2:{},
+    values2: {},
     loading: false,
     tableItem: [],
     Panes: [],
@@ -17,7 +17,6 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
-    bottomActiveKey: null,
     auth:false,
     user:null,
   },
