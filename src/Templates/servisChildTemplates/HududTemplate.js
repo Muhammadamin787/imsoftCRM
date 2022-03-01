@@ -37,7 +37,7 @@ const HududTemplate = {
                     label: "Shahar/Tuman",
                     name: "region_id",
                     type: SELECT,
-                    options: "cities",
+                    options: "states",
                     required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",
@@ -76,7 +76,7 @@ const HududTemplate = {
         },
         {
             title: "Shahar nomi",
-            dataIndex: "city_name",
+            dataIndex: "region_name",
             key: "Hudud nomi",
             width: "40%",
         },

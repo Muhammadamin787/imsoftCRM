@@ -9,9 +9,10 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 function App() {
 
-    const { auth } = useSelector(state => state.tabs_reducer)
+    // const { auth } = useSelector(state => state.tabs_reducer)
+    // const auth = true;
 
-    if (auth) {
+    if (true) {
         return <MainPage />
     } else {
         return (

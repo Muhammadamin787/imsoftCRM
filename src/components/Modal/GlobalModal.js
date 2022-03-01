@@ -33,6 +33,7 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
+    dispatch(setValues({}))
   };
 
   const resizeModal = () => {
@@ -78,13 +79,20 @@ const GlobalModal = () => {
         });
       });
     }
-
+    console.log(requiredInputs);
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = true;
         message.error(
-          key?.name !== "longitude" ? key?.label : "Map" + "ni kiritmadingiz"
+          key?.name !== "longitude"
+            ? key?.label + "ni kiritmadingiz"
+            : "Map ni kiritmadingiz"
         );
+        // message.error(
+        //   key?.name !== "longitude"
+        //     ? key?.label + "ni kiritmadingiz"
+        //     : "Map ni kiritmadingiz"
+        // );
       }
     });
 

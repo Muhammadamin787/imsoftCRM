@@ -17,8 +17,8 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
-    auth:false,
-    user:null,
+    auth: false,
+    user: null,
   },
   reducers: {
     removeTab: (state, action) => {
@@ -100,6 +100,9 @@ export const counterSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
+    stopLoading: (state) => {
+      state.loading = false;
+    },
     setFilteredMainData: (state, { payload }) => {
       state.filteredMainData = payload;
     },
@@ -129,7 +132,6 @@ export const counterSlice = createSlice({
       state.bottomActiveKey = payload;
     },
     setLogin: (state, { payload }) => {
-
       state.auth = payload;
       // if ((auth.login === payload.login) && (auth.password === payload.password)) {
       //   state.user = true;
@@ -139,8 +141,7 @@ export const counterSlice = createSlice({
     },
     setUser: (state, { payload }) => {
       state.user = payload;
-    }
-
+    },
   },
 });
 
@@ -169,7 +170,7 @@ export const {
   setValuesKey,
   setBottomActiveKey,
   setLogin,
-  setUser
+  setUser,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

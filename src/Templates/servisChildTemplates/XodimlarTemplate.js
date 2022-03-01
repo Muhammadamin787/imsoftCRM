@@ -17,10 +17,9 @@ import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
 import YunalishlarTemplate from "./YunalishlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
-import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
 import ImgZoom from "../../components/image zoom/ImgZoom";
-
+import { Base } from "../../BaseUrl";
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -234,7 +233,7 @@ const XodimlarTemplate = {
       key: "developer_photo",
       width: "10%",
       align,
-      render: (_, record) => <ImgZoom src={record?.developer_photo} />,
+      render: (_, record) => <ImgZoom src={ Base + record?.developer_photo} />,
     },
     {
       title: "Passport",
@@ -242,7 +241,7 @@ const XodimlarTemplate = {
       key: "passport",
       width: "20%",
       align,
-      render: (_, record) => <ImgZoom src={record?.passport} />,
+      render: (_, record) => <ImgZoom src={ Base + record?.passport} />,
     },
     {
       title: "Oilasi",
