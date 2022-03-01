@@ -21,7 +21,8 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     },[tabName])
 
     function handleChange(e) {
-        // console.log(tabName);
+        console.log("tabName===");
+        console.log(tabName);
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
         const newObj = { ...foundObj, [name]: e };
         let foundTab = [...values?.[tabName]];
@@ -92,7 +93,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
             );
             break;
         case UPLOAD:
-
             input = (
                 <UploadFile
                     id="file-uploder"

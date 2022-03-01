@@ -14,13 +14,10 @@ const InnerTable = ({ innerTable }) => {
 
 
     const addRow = () => {
-
-        dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }))
-        const oldData = [...values?.[innerTable?.name]]
+        dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }));
+        const oldData = [...values?.[innerTable?.name]];
         oldData.push(innerTable?.CreateObj);
-
         dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
-
     }
 
 

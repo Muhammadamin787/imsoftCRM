@@ -15,7 +15,6 @@ export const ProgrammFilesList = {
         file1: '',
     },
     scroll: { y: 130},
-
     columns: [
         {
             title: <FieldNumberOutlined/>,
