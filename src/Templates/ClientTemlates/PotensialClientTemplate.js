@@ -18,13 +18,13 @@ const PotensialClientTemplate = {
   type: CLIENTS_CHILD_PAGES,
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
-  allData: {
-    states: "/states/all",
-    cities: "/cities/all",
-    activity_types: "/activity-types",
-    hudud: "/districts/all",
-    category_name: "/categories",
-  },
+  // allData: {
+  //   states: "/states/all",
+  //   cities: "/cities/all",
+  //   activity_types: "/activity-types",
+  //   hudud: "/districts/all",
+  //   category_name: "/categories",
+  // },
   modal: {
     style: {
       width: 1200,

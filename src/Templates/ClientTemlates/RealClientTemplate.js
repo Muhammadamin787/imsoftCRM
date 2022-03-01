@@ -8,6 +8,13 @@ const RealClientTemplate = {
   path: REAL_MIJOZLAR,
   key: "2",
   type: CLIENTS_CHILD_PAGES,
+  allData: {
+    states: "/states/all",
+    cities: "/cities/all",
+    activity_types: "/activity-types",
+    hudud: "/districts/all",
+    category_name: "/categories",
+  },
   isOpenModal: false,
 
   mainUrl: ClientTemplateApi,

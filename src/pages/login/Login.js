@@ -17,9 +17,10 @@ const Login = () => {
         setWait(false);
 
         POST("/login-user", e).then((res) => {
+            console.log(res);
             if (res.status == "200") {
-                dispatch(setUser(res.data.user))
-                dispatch(setLogin(true))
+                dispatch(setUser(res.data.user));
+                dispatch(setLogin(true));
                 message.success({ content: "Xush kelibsiz", key: e });
             }
         }).catch(e => {

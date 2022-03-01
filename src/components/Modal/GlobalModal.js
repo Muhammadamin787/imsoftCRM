@@ -17,6 +17,11 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
+
+
+
+
+
 const GlobalModal = () => {
   const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer

@@ -15,6 +15,8 @@ import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
 import { GET, POST } from "../../../functions/Methods";
 
+
+
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
@@ -44,16 +46,18 @@ const InnerModal = () => {
       }
     }
   }, [values2]);
+  
+  const resizeModal = () => {
+    // keyinchalik kichik katta qilagian funksiya yoziladi
+  };
 
+  
   const handleCancel = (e) => {
     dispatch(setOffInnerModel());
     dispatch(toggleInnerModal(false));
     dispatch(setValues2({}));
   };
 
-  const resizeModal = () => {
-    // keyinchalik kichik katta qilagian funksiya yoziladi
-  };
 
   const handleChangeValue = (e) => {
     dispatch(setValues2({ ...values2, ...e }));

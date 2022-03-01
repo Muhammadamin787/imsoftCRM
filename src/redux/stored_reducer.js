@@ -139,7 +139,10 @@ export const counterSlice = createSlice({
     },
     setUser: (state, { payload }) => {
       state.user = payload;
-    }
+    },
+    stopLoading: (state) => {
+      state.loading = false;
+    },
 
   },
 });
