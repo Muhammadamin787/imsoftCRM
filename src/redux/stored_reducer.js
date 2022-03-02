@@ -30,10 +30,7 @@ export const counterSlice = createSlice({
           values: { ...state.values },
         };
 
-        if (
-          newCurrentPage?.path &&
-          newCurrentPage?.text !== "Mijozlar Ro'yxati"
-        ) {
+        if (newCurrentPage?.path) {
           const find = state.Panes.find(
             (a) => a.path === state.currentPage.path
           );
@@ -58,6 +55,10 @@ export const counterSlice = createSlice({
 
         state.currentPage = payload;
       }
+    },
+    setPanes: (s) => {
+      console.log("ishladim");
+      s.Panes = s.Panes.splice(0, 1);
     },
     toggleModal: (state, { payload }) => {
       state.currentPage.isOpenModal = payload;
@@ -90,7 +91,8 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      state.values = payload;
+      console.log(payload);
+      state.values = { ...payload };
     },
     setValues2: (state, { payload }) => {
       state.values2 = payload;
@@ -132,7 +134,6 @@ export const counterSlice = createSlice({
     stopLoading: (state) => {
       state.loading = false;
     },
-
   },
 });
 
@@ -160,6 +161,7 @@ export const {
   setCurrentLocationIsOpen,
   setValuesKey,
   setBottomActiveKey,
+  setPanes,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

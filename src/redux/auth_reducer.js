@@ -13,15 +13,11 @@ export const counterSlice = createSlice({
     setUser: (state, { payload }) => {
       state.user = payload;
     },
-    setToken:(state, { payload }) => {
-      state.token = payload;
-    }
   },
 });
 
 export const {
-  setUser,
-  setToken
+  setUser
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

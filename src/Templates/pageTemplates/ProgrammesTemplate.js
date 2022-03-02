@@ -8,9 +8,7 @@ const ProgrammsTemplate = {
   accessKey: 2,
   ...NewProgrammsTemplate,
   text: "Dasturlar",
-  // path: PROGRAMMES_PATH,
   icon: "VectorIcon",
-  
   tabs: [
     NewProgrammsTemplate,
     ProcessProgrammesTemplate,
@@ -18,6 +16,7 @@ const ProgrammsTemplate = {
     SubmittedProgrammesTemplate,
     RejactProgrammesTemplate,
   ],
+  childText: NewProgrammsTemplate.text,
 };
 
 export default ProgrammsTemplate;

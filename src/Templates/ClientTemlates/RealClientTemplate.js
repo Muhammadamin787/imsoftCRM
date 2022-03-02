@@ -6,6 +6,13 @@ const RealClientTemplate = {
   ...PotensialClientTemplate,
   text: "Real mijozlar",
   path: REAL_MIJOZLAR,
+  allData: {
+    states: "/states/all",
+    cities: "/cities/all",
+    activity_types: "/activity-types",
+    hudud: "/districts/all",
+    category_name: "/categories",
+  },
   key: "2",
   type: CLIENTS_CHILD_PAGES,
 

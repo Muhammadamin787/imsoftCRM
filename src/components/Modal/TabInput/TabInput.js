@@ -15,14 +15,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        // handleChange()
-        console.log(tabName);
-    },[tabName])
-
     function handleChange(e) {
-        console.log("tabName===");
-        console.log(tabName);
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
         const newObj = { ...foundObj, [name]: e };
         let foundTab = [...values?.[tabName]];
@@ -68,7 +61,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                         name={name}
                         onChange={(e) => {
                             handleChange(e);
-                            // console.log(e);
                         }
                         }>
                         {allData && allData[options]?.map((option, i) => (
@@ -83,7 +75,7 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
         case DATE:
             input = (
                 <DatePicker
-                    format="DD/MM/YYYY"
+                    // format="DD/MM/YYYY"
                     allowClear={false}
                     onChange={(_, dateString) => {
 
