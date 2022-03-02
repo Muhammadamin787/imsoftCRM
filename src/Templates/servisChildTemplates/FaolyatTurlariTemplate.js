@@ -2,7 +2,8 @@ import React from "react";
 import { FAOLYAT_TURLARI_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
-import { STRING } from "../../components/Modal/InputTypes";
+import { STRING, SELECT } from "../../components/Modal/InputTypes";
+import YunalishlarTemplate from "./YunalishlarTemplate";
 
 const FaolyatTurlaiTemplate = {
   text: "Faolyat turlari",
@@ -11,6 +12,9 @@ const FaolyatTurlaiTemplate = {
   type: SERVIS_CHILD_PAGES,
   isOpenModal: false,
   mainUrl: "/activity-types",
+  allData: {
+    categories: "/categories",
+},
   form: [
     {
       grid: "1fr",
@@ -22,6 +26,15 @@ const FaolyatTurlaiTemplate = {
           placeholder: "Faolyat turi nomi",
           label: "Faolyat turi"
         },
+        {
+          placeholder: "Yo'nalishlar",
+          label: "Yo'nalish",
+          name: "region_id",
+          required: true,
+          type: SELECT,
+          template:YunalishlarTemplate,
+          options: "categories",
+      },
       ],
     },
   ],

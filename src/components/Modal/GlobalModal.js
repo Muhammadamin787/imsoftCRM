@@ -26,27 +26,17 @@ const GlobalModal = () => {
   const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
-
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const draggleRef = useRef("s");
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
     bottom: 0,
     right: 0,
   });
-  const [disabled, setDisabled] = useState(true);
-  const dispatch = useDispatch();
 
-  const handleCancel = (e) => {
-    dispatch(toggleModal(false));
-  };
 
-  const resizeModal = () => {
-    // keyinchalik kichik katta qilagian funksiya yoziladi
-  };
-
-  const handleChangeValue = (e) => {
-    dispatch(setValues({ ...values, ...e }));
-  };
 
   useEffect(() => {
     if (currentPage && currentPage.isOpenModal) {
@@ -60,11 +50,25 @@ const GlobalModal = () => {
     }
   }, [currentPage, innerModal]);
 
+  const resizeModal = () => {
+    // keyinchalik kichik katta qilagian funksiya yoziladi
+  };
+
+  const handleChangeValue = (e) => {
+    dispatch(setValues({ ...values, ...e }));
+  };
+
+  const handleCancel = (e) => {
+    dispatch(toggleModal(false));
+    dispatch(setValues({}))
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { mainUrl, key, form, modal } = currentPage;
     const requiredInputs = [];
     let bool = false;
+
 
     if (form) {
       form.forEach((el) => {
@@ -83,13 +87,20 @@ const GlobalModal = () => {
         });
       });
     }
-
+    console.log(requiredInputs);
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = true;
         message.error(
-          key?.name !== "longitude" ? key?.label : "Map" + "ni kiritmadingiz"
+          key?.name !== "longitude"
+            ? key?.label + "ni kiritmadingiz"
+            : "Map ni kiritmadingiz"
         );
+        // message.error(
+        //   key?.name !== "longitude"
+        //     ? key?.label + "ni kiritmadingiz"
+        //     : "Map ni kiritmadingiz"
+        // );
       }
     });
 
@@ -115,7 +126,6 @@ const GlobalModal = () => {
     }
   };
 
-  const draggleRef = useRef("s");
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;

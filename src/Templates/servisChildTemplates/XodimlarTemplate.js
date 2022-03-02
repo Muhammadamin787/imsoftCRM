@@ -15,12 +15,11 @@ import {
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
-import YunalishlarTemplate from "./YunalishlarTemplate";
+import LavozimlarTemplate from "./LavozimlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
-import Zoom from "react-medium-image-zoom";
 import GetLocation from "../../components/Location/Location";
 import ImgZoom from "../../components/image zoom/ImgZoom";
-
+import { Base } from "../../BaseUrl";
 const align = "center";
 const XodimlarTemplate = {
   text: "Xodimlar",
@@ -33,7 +32,7 @@ const XodimlarTemplate = {
   allData: {
     states: "/states/all",
     cities: "/cities/all",
-    directions: "/directions/all",
+    directions: "/directions",
   },
   modal: {
     style: {
@@ -69,14 +68,14 @@ const XodimlarTemplate = {
           height: inputDeafultHeght,
         },
         {
-          label: "Yo'nalish",
+          label: "Lavozim",
           name: "type_id",
           type: SELECT,
           required: true,
-          placeholder: "Yo'nalishi",
+          placeholder: "Lavozimi",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
-          template: YunalishlarTemplate,
+          template: LavozimlarTemplate,
           options: "directions",
         },
         {
@@ -234,7 +233,7 @@ const XodimlarTemplate = {
       key: "developer_photo",
       width: "10%",
       align,
-      render: (_, record) => <ImgZoom src={record?.developer_photo} />,
+      render: (_, record) => <ImgZoom src={ Base + record?.developer_photo} />,
     },
     {
       title: "Passport",
@@ -242,7 +241,7 @@ const XodimlarTemplate = {
       key: "passport",
       width: "20%",
       align,
-      render: (_, record) => <ImgZoom src={record?.passport} />,
+      render: (_, record) => <ImgZoom src={ Base + record?.passport} />,
     },
     {
       title: "Oilasi",

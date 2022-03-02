@@ -122,6 +122,7 @@ const ModalInput = (props) => {
                         name={name}
                         autoFocus
                         id={refs && "autofucus"}
+                        // value={values[name]}
                         value={getProperValue()}
                         placeholder={placeholder}
                         required={required}
