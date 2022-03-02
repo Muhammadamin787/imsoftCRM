@@ -23,7 +23,7 @@ import axios from "../../functions/axios";
 
 
 const GlobalModal = () => {
-  const { currentPage, values, innerModal } = useSelector(
+  const { currentPage, values, values2 ,innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
   const [disabled, setDisabled] = useState(true);
@@ -48,7 +48,7 @@ const GlobalModal = () => {
         });
       }
     }
-  }, [currentPage, innerModal]);
+  }, [currentPage]);
 
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
@@ -87,7 +87,6 @@ const GlobalModal = () => {
         });
       });
     }
-    console.log(requiredInputs);
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = true;
@@ -107,6 +106,7 @@ const GlobalModal = () => {
     if (!bool) {
       POST(mainUrl, values).then((res) => {
         message.success({ content: res.data.data, key: e });
+        console.log(res);
         dispatch(toggleModal(false));
         dispatch(setValues({}));
         dispatch(setTableItem([]));
@@ -116,7 +116,7 @@ const GlobalModal = () => {
             ? `${mainUrl}/status/${key}`
             : mainUrl
         ).then((res) => {
-          console.log(res);
+          console.log(res.data.data);
           dispatch(setData(res.data.data));
           dispatch(stopLoading());
         });

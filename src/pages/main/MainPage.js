@@ -37,8 +37,8 @@ import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
-import {GET} from '../../functions/Methods';
-import { setUser, setToken } from "../../redux/auth_reducer"
+import {GET, POST, DELETE,} from '../../functions/Methods';
+import { setUser } from "../../redux/auth_reducer"
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -101,10 +101,10 @@ const MainPage = () => {
     }
   }, [pathname]);
 
-
   const handleLog_out = () => {
+    DELETE(`/logout-user/${user.id}`)
     dispatch(setUser(null));
-    dispatch(setToken(null))
+    localStorage.removeItem('token')
   }
 
   return (

@@ -29,7 +29,7 @@ const FaolyatTurlaiTemplate = {
         {
           placeholder: "Yo'nalishlar",
           label: "Yo'nalish",
-          name: "region_id",
+          name: "category_id",
           required: true,
           type: SELECT,
           template:YunalishlarTemplate,
