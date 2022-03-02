@@ -3,7 +3,7 @@ import "./login.scss";
 import React, { useState } from "react";
 import Logo from "../../assets/logo/logo.png";
 import { useDispatch } from "react-redux";
-import { setUser, setToken } from "../../redux/auth_reducer";
+import { setUser } from "../../redux/auth_reducer";
 import { POST } from "../../functions/Methods";
 
 const Login = () => {
@@ -17,7 +17,7 @@ const Login = () => {
       .then((res) => {
         if (res.status == "200") {
           dispatch(setUser(res.data.data));
-          dispatch(setToken(`Bearer ${res.data.data.token}`));
+          localStorage.setItem("token", res.data.data.token);
           message.success({ content: "Xush kelibsiz", key: e });
         }
       })

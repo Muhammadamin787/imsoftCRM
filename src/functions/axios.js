@@ -1,16 +1,10 @@
 import { message } from "antd";
 import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-const key = "error";    
-
+const key = "error";
 
 export default async (url, method = "GET", data = null, id = null) => {
-
-    // const { token } = useSelector(state => state?.auth_reducer)
-    // console.log(Token);
-
+    const token = localStorage.getItem("token");
 
     const path = id ? url + "/" + id : url;
     try {
@@ -18,7 +12,12 @@ export default async (url, method = "GET", data = null, id = null) => {
             method: method,
             url: BaseUrl + path,
             data: data,
-            // header: token
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
         });
 
     } catch (error) {

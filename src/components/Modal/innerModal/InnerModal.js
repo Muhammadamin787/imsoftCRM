@@ -35,17 +35,18 @@ const InnerModal = () => {
     right: 0,
   });
   
-  useEffect(() => {
-    if (currentPage && currentPage.isOpenModal) {
-      let currentData = currentPage?.allData;
-      for (const url in currentData) {
-        let res = axios(currentData[url]);
-        res.then((res) => {
-          dispatch(setAllData({ [url]: res.data.data }));
-        });
-      }
-    }
-  }, [values2, innerModal, currentPage]);
+  // useEffect(() => {
+  //   if (currentPage && currentPage.isOpenModal) {
+  //     let currentData = currentPage?.allData;
+  //     for (const url in currentData) {
+  //       let res = axios(currentData[url]);
+  //       res.then((res) => {
+  //         console.log(res.data.data);
+  //         dispatch(setAllData({ [url]: res.data.data }));
+  //       });
+  //     }
+  //   }
+  // }, [values2, innerModal, currentPage]);
   
   
   const resizeModal = () => {
@@ -86,13 +87,18 @@ const InnerModal = () => {
 
     if (isNotErrors) {
       POST(url, values2).then((res) => {
+        // console.log(res.data.data);
+        // console.log(url);
         message.success({ content: res.data.data, key: e });
+        console.log(res.data.data);
+        console.log(url);
         dispatch(toggleInnerModal(false));
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
-        GET(url).then((res) => {
-          dispatch(setData(res.data.data));
-        });
+      });
+      GET(url).then((res) => {
+        // console.log(res.data.data); 
+        dispatch(setData(res.data.data));
       });
       dispatch(setOffInnerModel(false));
     }
