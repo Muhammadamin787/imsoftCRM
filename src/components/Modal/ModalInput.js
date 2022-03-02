@@ -1,6 +1,6 @@
-import { Input, InputNumber, DatePicker, Select, message } from "antd";
-import { Option } from "antd/lib/mentions";
-import React, { useEffect, useState, useRef } from "react";
+import {Input, InputNumber, DatePicker, Select, message} from "antd";
+import {Option} from "antd/lib/mentions";
+import React, {useEffect, useState, useRef} from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -13,26 +13,28 @@ import {
     SELECT,
     STRING,
     UPLOAD,
-    PICTURE_WALL,
+    PICTURE_WALL, PASSWORD, MULTIPLE_SELECT,
 } from "./InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
+import {setInnerModel, toggleInnerModal} from "../../redux/stored_reducer";
 import axios from "../../functions/axios";
-import { findIcon } from "../../assets/icons/icons";
-import { PicturesWall } from "./PicturesWall/PicturesWall";
+import {findIcon} from "../../assets/icons/icons";
+import {PicturesWall} from "./PicturesWall/PicturesWall";
+import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import {accessValues} from "../../constant/constants";
 
-const { TextArea } = Input;
+const {TextArea} = Input;
 
 const ModalInput = (props) => {
     let input = null;
     const dispatch = useDispatch();
-    const { currentPage, values, innerModal, values2 } = useSelector(
+    const {currentPage, values, innerModal, values2} = useSelector(
         (state) => state.tabs_reducer
     );
 
@@ -57,7 +59,7 @@ const ModalInput = (props) => {
         countInput
     } = props;
 
-    const { allData } = useSelector((s) => s?.unsaved_reducer);
+    const {allData} = useSelector((s) => s?.unsaved_reducer);
 
     const handleSelectAdd = (template) => {
         dispatch(setInnerModel(template));
@@ -89,17 +91,17 @@ const ModalInput = (props) => {
             return values[name]
         }
     }
-    
+
     const getProperValueDate = () => {
         if (innerModal && isInnerModal) {
             return moment(values2[name], "YYYY/MM/DD")
         } else {
-            if(values[name]){
+            if (values[name]) {
                 return moment(values[name], "YYYY/MM/DD")
-            }else {
+            } else {
                 return "";
             }
-            
+
         }
     }
 
@@ -161,7 +163,7 @@ const ModalInput = (props) => {
                         };
                         handleChangeValue(target);
                     }}
-                // value={values[name] ? values[name] : ""}
+                    // value={values[name] ? values[name] : ""}
                 />
             );
             break;
@@ -188,16 +190,16 @@ const ModalInput = (props) => {
                             value={getProperValue()}
                             onChange={(e) => {
                                 if (autoSelect) {
-                                    let selectedValues = { [name]: e };
+                                    let selectedValues = {[name]: e};
                                     autoSelect?.forEach((el) => {
                                         let thisObj = allData && allData[options] && allData[options].find(
                                             (item) => item["id"] === e
                                         );
-                                        selectedValues = { ...selectedValues, [el]: thisObj[el] };
+                                        selectedValues = {...selectedValues, [el]: thisObj[el]};
                                     });
                                     handleChangeValue(selectedValues);
                                 } else {
-                                    handleChangeValue({ [name]: e });
+                                    handleChangeValue({[name]: e});
                                 }
                             }}
                         >
@@ -230,6 +232,28 @@ const ModalInput = (props) => {
                     required={required}
                     geo={values?.longitude && values?.latitude ? [values.latitude, values?.longitude] : ""}
                 />
+            );
+            break;
+        case PASSWORD:
+            input = (
+                <label style={{
+                    gridColumn: gridColumn,
+                    gridRow: gridRow,
+                    height: height ? height + "px" : inputDeafultHeght + "px",
+                }}
+                       required={required}>
+                    {label && label}
+                    <Input.Password
+                        placeholder="input password"
+                        value={values[name]}
+                        iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
+                        onChange={(e) => {
+                            handleChangeValue({
+                                [name]: e.target.value,
+                            });
+                        }}
+                    />
+                </label>
             );
             break;
         case DATE:
@@ -274,7 +298,7 @@ const ModalInput = (props) => {
                         value={getProperValue()}
                         autoFocus
                         required={required}
-                        autoSize={{ minRows: 3, maxRows: 3 }}
+                        autoSize={{minRows: 3, maxRows: 3}}
                         onChange={(data) => {
                             const target = {
                                 [name]: data.target.value,
@@ -304,7 +328,7 @@ const ModalInput = (props) => {
                         areaCodes={{
                             uz: ["+998"],
                         }}
-                        masks={{ uz: "(..) ...-..-.." }}
+                        masks={{uz: "(..) ...-..-.."}}
                         prefix="+"
                         onChange={(data) => {
                             const target = {
@@ -369,6 +393,41 @@ const ModalInput = (props) => {
                             : false
                     }
                 />
+            );
+            break;
+        case MULTIPLE_SELECT :
+            const access = accessValues;
+            const children = [];
+            access.map(category => {
+                children.push(<Option key={category.value}>{category.text}</Option>);
+            })
+            input = (
+                <Select
+                    mode="multiple"
+                    allowClear
+                    style={{
+                        gridColumn: gridColumn,
+                        gridRow: gridRow,
+                        height: height ? height + "px" : inputDeafultHeght + "px",
+                    }}
+                    // style={{ width: '100%' }}
+                    placeholder="Please select"
+                    onChange={(value) => {
+                        let res = [1];
+                        value?.map(el => {
+                            accessValues.map(item => {
+                                if (el === item.text || +el === item.value) {
+                                    res.push(+item.value);
+                                }
+                            })
+                        })
+                        handleChangeValue({
+                            access: res,
+                        })
+                    }}
+                >
+                    {children}
+                </Select>
             );
             break;
         default:

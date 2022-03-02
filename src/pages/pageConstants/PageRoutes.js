@@ -5,6 +5,7 @@ export const PROGRAMMES_PATH = "/programmes";
 export const REPORT_PATH = "/report";
 
 // paths of service pages
+export const USERS_PATH = "/servis/users";
 export const REKLAMALAR_PATH = "/servis/reklamalar";
 export const FAOLYAT_TURLARI_PATH = "/servis/faoliyat_turlari";
 export const HUDUD_PATH = "/servis/hudud";

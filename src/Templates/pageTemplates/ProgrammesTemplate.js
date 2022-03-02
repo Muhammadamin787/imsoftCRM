@@ -5,6 +5,7 @@ import { RejactProgrammesTemplate } from "../programmsTemplates/RejactProgrammes
 import { SubmittedProgrammesTemplate } from "../programmsTemplates/SubmittedProgrammesTemplate";
 
 const ProgrammsTemplate = {
+  accessKey: 2,
   ...NewProgrammsTemplate,
   text: "Dasturlar",
   // path: PROGRAMMES_PATH,

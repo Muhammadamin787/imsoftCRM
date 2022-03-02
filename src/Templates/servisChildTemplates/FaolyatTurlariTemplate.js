@@ -6,6 +6,7 @@ import { STRING, SELECT } from "../../components/Modal/InputTypes";
 import YunalishlarTemplate from "./YunalishlarTemplate";
 
 const FaolyatTurlaiTemplate = {
+  accessKey: 4,
   text: "Faolyat turlari",
   path: FAOLYAT_TURLARI_PATH,
   icon: "Faoliyat",

@@ -10,8 +10,10 @@ import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate"
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate"
 import LavozimlarTemplate from "../servisChildTemplates/LavozimlarTemplate"
+import UsersTemplate from "../servisChildTemplates/UsersTemplate";
 
 const ServiceTemplate = {
+  accessKey: 3,
   text: "Servis",
   path: SERVIS_PATH,
   icon: "ServiceIcon",
@@ -26,6 +28,7 @@ const ServiceTemplate = {
     HududTemplate,
     LavozimlarTemplate,
     ReklamalarTemplate,
+    UsersTemplate,
   ],
 };
 
