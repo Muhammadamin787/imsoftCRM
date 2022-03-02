@@ -15,7 +15,7 @@ import {
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate";
-import YunalishlarTemplate from "./YunalishlarTemplate";
+import LavozimlarTemplate from "./LavozimlarTemplate";
 import BigLength from "../../components/BigLength/BigLength";
 import GetLocation from "../../components/Location/Location";
 import ImgZoom from "../../components/image zoom/ImgZoom";
@@ -32,7 +32,7 @@ const XodimlarTemplate = {
   allData: {
     states: "/states/all",
     cities: "/cities/all",
-    directions: "/directions/all",
+    directions: "/directions",
   },
   modal: {
     style: {
@@ -68,14 +68,14 @@ const XodimlarTemplate = {
           height: inputDeafultHeght,
         },
         {
-          label: "Yo'nalish",
+          label: "Lavozim",
           name: "type_id",
           type: SELECT,
           required: true,
-          placeholder: "Yo'nalishi",
+          placeholder: "Lavozimi",
           gridColumn: "5 / 10",
           gridRow: "2 / 3",
-          template: YunalishlarTemplate,
+          template: LavozimlarTemplate,
           options: "directions",
         },
         {

@@ -1,15 +1,15 @@
 import React from "react";
-import {YUNALISHLAR_PATH} from "../../pages/pageConstants/PageRoutes";
+import {LAVOZIM_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {STRING} from "../../components/Modal/InputTypes";
 
-const YunalishlarTemplate = {
-    text: "Yunalishlar",
-    path: YUNALISHLAR_PATH,
-    icon: "Yunalishlar",
+const  LavozimlarTemplate = {
+    text: "Lavozimlar",
+    path: LAVOZIM_PATH,
+    icon: "Xodimlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    mainUrl:"/categories",
+    mainUrl:"/directions",
     modal: {
         style: {
             // width: 500,
@@ -23,8 +23,8 @@ const YunalishlarTemplate = {
                 {
                     name: "name",
                     type: STRING,
-                    placeholder: "Yo'nalishlar",
-                    label: "Yo'nalish",
+                    placeholder: "Lavozimlar",
+                    label: "Lavozimlar",
                     required: true,
                 },
             ],
@@ -40,7 +40,7 @@ const YunalishlarTemplate = {
             render: (text, data, index) => ++index
         },
         {
-            title: "Yo'nalish nomi",
+            title: "Lavozim nomi",
             dataIndex: "name",
             key: "name",
             width: "95%",
@@ -48,4 +48,4 @@ const YunalishlarTemplate = {
     ],
 };
 
-export default YunalishlarTemplate;
+export default LavozimlarTemplate;

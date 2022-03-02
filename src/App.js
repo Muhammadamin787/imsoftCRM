@@ -6,13 +6,15 @@ import Login from "./pages/login/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 
-
 function App() {
 
-    // const { auth } = useSelector(state => state.tabs_reducer)
-    // const auth = true;
+    const { user} = useSelector(state => state.auth_reducer)
+    
+    // console.log(user);
+    // console.log(token);
 
-    if (true) {
+
+    if (user) {
         return <MainPage />
     } else {
         return (
@@ -21,7 +23,6 @@ function App() {
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         )
-
     }
 
 }

@@ -19,6 +19,7 @@ const PotensialClientTemplate = {
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
   allData: {
+    workers: "/workers/all",
     states: "/states/all",
     cities: "/cities/all",
     activity_types: "/activity-types",

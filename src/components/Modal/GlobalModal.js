@@ -17,32 +17,20 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
+
 const GlobalModal = () => {
   const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
-
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const draggleRef = useRef("s");
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
     bottom: 0,
     right: 0,
   });
-  const [disabled, setDisabled] = useState(true);
-  const dispatch = useDispatch();
-
-  const handleCancel = (e) => {
-    dispatch(toggleModal(false));
-    dispatch(setValues({}));
-  };
-
-  const resizeModal = () => {
-    // keyinchalik kichik katta qilagian funksiya yoziladi
-  };
-
-  const handleChangeValue = (e) => {
-    dispatch(setValues({ ...values, ...e }));
-  };
 
   useEffect(() => {
     if (currentPage && currentPage.isOpenModal) {
@@ -55,6 +43,19 @@ const GlobalModal = () => {
       }
     }
   }, [currentPage, innerModal]);
+
+  const resizeModal = () => {
+    // keyinchalik kichik katta qilagian funksiya yoziladi
+  };
+
+  const handleChangeValue = (e) => {
+    dispatch(setValues({ ...values, ...e }));
+  };
+
+  const handleCancel = (e) => {
+    dispatch(toggleModal(false));
+    dispatch(setValues({}));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,6 +83,7 @@ const GlobalModal = () => {
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = true;
+        console.log(key);
         message.error(
           key?.name !== "longitude"
             ? key?.label + "ni kiritmadingiz"
@@ -90,7 +92,7 @@ const GlobalModal = () => {
       }
     });
 
-    if (!bool) {
+    if (bool) {
       POST(mainUrl, values).then((res) => {
         message.success({ content: res.data.data, key: e });
         dispatch(toggleModal(false));
@@ -110,8 +112,6 @@ const GlobalModal = () => {
       dispatch(toggleModal(false));
     }
   };
-
-  const draggleRef = useRef("s");
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;

@@ -17,8 +17,6 @@ export const counterSlice = createSlice({
     serachInputValue: "",
     currentLocation: [],
     currentLocationIsOpen: false,
-    auth: false,
-    user: null,
   },
   reducers: {
     removeTab: (state, action) => {
@@ -32,9 +30,7 @@ export const counterSlice = createSlice({
           values: { ...state.values },
         };
 
-        if (
-          newCurrentPage?.path
-        ) {
+        if (newCurrentPage?.path) {
           const find = state.Panes.find(
             (a) => a.path === state.currentPage.path
           );
@@ -59,6 +55,10 @@ export const counterSlice = createSlice({
 
         state.currentPage = payload;
       }
+    },
+    setPanes: (s) => {
+      console.log("ishladim");
+      s.Panes = s.Panes.splice(0, 1);
     },
     toggleModal: (state, { payload }) => {
       state.currentPage.isOpenModal = payload;
@@ -91,7 +91,8 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      state.values = {...payload, latitude: 49.65121658, longitude: 49.4861321658};
+      console.log(payload);
+      state.values = { ...payload };
     },
     setValues2: (state, { payload }) => {
       state.values2 = payload;
@@ -130,16 +131,8 @@ export const counterSlice = createSlice({
     setBottomActiveKey: (state, { payload }) => {
       state.bottomActiveKey = payload;
     },
-    setLogin: (state, { payload }) => {
-      state.auth = payload;
-      // if ((auth.login === payload.login) && (auth.password === payload.password)) {
-      //   state.user = true;
-      // }else {
-      //   state.user = false;
-      // }
-    },
-    setUser: (state, { payload }) => {
-      state.user = payload;
+    stopLoading: (state) => {
+      state.loading = false;
     },
   },
 });
@@ -168,8 +161,7 @@ export const {
   setCurrentLocationIsOpen,
   setValuesKey,
   setBottomActiveKey,
-  setLogin,
-  setUser,
+  setPanes,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

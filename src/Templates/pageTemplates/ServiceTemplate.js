@@ -9,7 +9,7 @@ import HududTemplate from "../servisChildTemplates/HududTemplate";
 import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
 import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate"
 import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate"
-
+import LavozimlarTemplate from "../servisChildTemplates/LavozimlarTemplate"
 
 const ServiceTemplate = {
   text: "Servis",
@@ -24,6 +24,7 @@ const ServiceTemplate = {
     ViloyatlarTemplate,
     ShaharTumanTemplate,
     HududTemplate,
+    LavozimlarTemplate,
     ReklamalarTemplate,
   ],
 };

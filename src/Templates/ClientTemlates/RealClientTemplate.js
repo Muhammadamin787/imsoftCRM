@@ -15,6 +15,7 @@ const RealClientTemplate = {
   },
   key: "2",
   type: CLIENTS_CHILD_PAGES,
+
   isOpenModal: false,
 
   mainUrl: ClientTemplateApi,

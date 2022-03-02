@@ -18,9 +18,10 @@
   }
 }
 .site-footer__tabs {
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
+  overflow: scroll !important;
   .bottom__btn {
     display: flex;
     align-items: center;

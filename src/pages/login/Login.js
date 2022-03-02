@@ -3,7 +3,7 @@ import "./login.scss";
 import React, { useState } from "react";
 import Logo from "../../assets/logo/logo.png";
 import { useDispatch } from "react-redux";
-import { setLogin, setUser } from "../../redux/stored_reducer";
+import { setUser, setToken } from "../../redux/auth_reducer";
 import { POST } from "../../functions/Methods";
 
 const Login = () => {
@@ -16,8 +16,8 @@ const Login = () => {
     POST("/login-user", e)
       .then((res) => {
         if (res.status == "200") {
-          dispatch(setUser(res.data.user));
-          dispatch(setLogin(true));
+          dispatch(setUser(res.data.data));
+          dispatch(setToken(`Bearer ${res.data.data.token}`));
           message.success({ content: "Xush kelibsiz", key: e });
         }
       })
@@ -36,7 +36,7 @@ const Login = () => {
           <img height="40" src={Logo} alt="logo" />
         </div>
         <Form.Item
-          label="Email"
+          label="Login"
           name="email"
           rules={[{ required: true, message: "Loginni kiriting!" }]}
         >
