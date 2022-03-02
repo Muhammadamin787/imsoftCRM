@@ -97,7 +97,7 @@ const InnerModal = () => {
         dispatch(setTableItem([]));
       });
       GET(url).then((res) => {
-        console.log(res.data.data); 
+        // console.log(res.data.data); 
         dispatch(setData(res.data.data));
       });
       dispatch(setOffInnerModel(false));

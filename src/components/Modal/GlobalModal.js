@@ -111,15 +111,15 @@ const GlobalModal = () => {
         dispatch(setValues({}));
         dispatch(setTableItem([]));
         dispatch(startLoading());
-        GET(
-          removeApiStatusLines.includes(mainUrl)
-            ? `${mainUrl}/status/${key}`
-            : mainUrl
-        ).then((res) => {
-          console.log(res.data.data);
-          dispatch(setData(res.data.data));
-          dispatch(stopLoading());
-        });
+      });
+      GET(
+        removeApiStatusLines.includes(mainUrl)
+          ? `${mainUrl}/status/${key}`
+          : mainUrl
+      ).then((res) => {
+        console.log(res.data.data);
+        dispatch(setData(res.data.data));
+        dispatch(stopLoading());
       });
 
       dispatch(toggleModal(false));
