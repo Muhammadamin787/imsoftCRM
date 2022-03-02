@@ -9,7 +9,7 @@ import ContactsTemplate from "./ClientModalTabs/ContactsTemplate";
 import CommentsTemplate from "./ClientModalTabs/CommentsTabTemplate";
 import ImgZoom from "../../components/image zoom/ImgZoom";
 import GetLocation from "../../components/Location/Location";
-
+import { Base } from "../../BaseUrl";
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
   key: "1",
@@ -19,6 +19,7 @@ const PotensialClientTemplate = {
   isOpenModal: false,
   mainUrl: ClientTemplateApi,
   allData: {
+    workers: "/workers/all",
     states: "/states/all",
     cities: "/cities/all",
     activity_types: "/activity-types",
@@ -98,9 +99,9 @@ const PotensialClientTemplate = {
             position: "relative"
           }}
         > 
-          <ImgZoom src={record?.file_1} />
-          <ImgZoom src={record?.file_2} />
-          <ImgZoom src={record?.file_3} />
+          <ImgZoom src={Base + record?.file_1} />
+          <ImgZoom src={Base + record?.file_2} />
+          <ImgZoom src={Base + record?.file_3} />
         </div>
       ),
       align: "center",

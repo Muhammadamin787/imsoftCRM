@@ -12,7 +12,7 @@ export const XODIMLAR_PATH = "/servis/xodimlar";
 export const VILOYATLAR_PATH = "/servis/viloyatlar";
 export const YUNALISHLAR_PATH = "/servis/yunalishlar";
 export const SHAHAR_TUMAN_PATH = "/servis/shahar_tuman";
-export const TEST_PATH = "/servis/test";
+export const LAVOZIM_PATH = "/servis/lavozimlar"
 
 /* ------------------------- paths of client pages ------------------------ */
 export const INKOR_MIJOZLAR = "/clients/inkor_mijozlar";

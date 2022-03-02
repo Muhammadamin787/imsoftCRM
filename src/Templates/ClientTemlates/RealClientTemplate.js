@@ -8,6 +8,7 @@ const RealClientTemplate = {
   path: REAL_MIJOZLAR,
   key: "2",
   type: CLIENTS_CHILD_PAGES,
+
   isOpenModal: false,
 
   mainUrl: ClientTemplateApi,

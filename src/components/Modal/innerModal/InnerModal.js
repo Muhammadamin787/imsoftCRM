@@ -15,24 +15,26 @@ import MacActions from "../../ToolsBar/MacActions/MacActions";
 import axios from "../../../functions/axios";
 import { GET, POST } from "../../../functions/Methods";
 
+
+
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
+
+
   const { currentPage, values2, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
-
-  const { key } = currentPage;
-
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const draggleRef = useRef("s");
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
     bottom: 0,
     right: 0,
   });
-  const [disabled, setDisabled] = useState(true);
-  const dispatch = useDispatch();
-
+  
   useEffect(() => {
     if (currentPage && currentPage.isOpenModal) {
       let currentData = currentPage?.allData;
@@ -44,13 +46,8 @@ const InnerModal = () => {
       }
     }
   }, [values2]);
-
-  const handleCancel = (e) => {
-    dispatch(setOffInnerModel());
-    dispatch(toggleInnerModal(false));
-    dispatch(setValues2({}));
-  };
-
+  
+  
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };
@@ -59,10 +56,16 @@ const InnerModal = () => {
     dispatch(setValues2({ ...values2, ...e }));
   };
 
+  const handleCancel = (e) => {
+    dispatch(setOffInnerModel());
+    dispatch(toggleInnerModal(false));
+    dispatch(setValues2({}));
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = innerModal?.mainUrl;
-
     const requiredInputs = [];
 
     innerModal.form.forEach((el) => {
@@ -95,7 +98,7 @@ const InnerModal = () => {
     }
   };
 
-  const draggleRef = useRef("s");
+  
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;

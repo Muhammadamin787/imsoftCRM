@@ -128,8 +128,8 @@ export const NewProgrammsTemplate = {
         },
         {
             title: "Dastur nomi",
-            dataIndex: "project_name",
-            key: "project_name",
+            dataIndex: "name",
+            key: "name",
             width: "30%",
             align: "center",
         },
@@ -157,8 +157,8 @@ export const NewProgrammsTemplate = {
         },
         {
             title: "Kim orqali",
-            dataIndex: "by_client",
-            key: "by_client",
+            dataIndex: "from_whom",
+            key: "from_whom",
             width: "30%",
             align: "center",
         },

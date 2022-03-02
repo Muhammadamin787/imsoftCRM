@@ -1,8 +1,7 @@
-import React from "react";
 import "./firstPageStyles.scss";
 import {useSelector} from 'react-redux';
 
-const FirstPage = ({ page }) => {
+const FirstPage = () => {
   const {Panes} = useSelector(state => state.tabs_reducer);
 
   return (

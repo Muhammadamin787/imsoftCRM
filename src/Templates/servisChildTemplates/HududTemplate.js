@@ -4,7 +4,7 @@ import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { SELECT, STRING } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
-
+import ShaharTumanTemplate from "./ShaharTumanTempilate"
 
 const HududTemplate = {
     text: "Hudud",
@@ -35,13 +35,14 @@ const HududTemplate = {
                 },
                 {
                     label: "Shahar/Tuman",
-                    name: "region_id",
-                    type: SELECT,
-                    options: "cities",
-                    required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",
                     gridRow: "2 / 3",
+                    name: "region_id",
+                    required: true,
+                    type: SELECT,
+                    template:ShaharTumanTemplate,
+                    options: "cities",
                     autoSelect: [
                         "state_id"
                     ]
@@ -76,7 +77,7 @@ const HududTemplate = {
         },
         {
             title: "Shahar nomi",
-            dataIndex: "city_name",
+            dataIndex: "region_name",
             key: "Hudud nomi",
             width: "40%",
         },

@@ -5,11 +5,16 @@ import MainPage from "./pages/main/MainPage";
 import Login from "./pages/login/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
 
+
 function App() {
 
-    const { auth } = useSelector(state => state.tabs_reducer)
+    const { user} = useSelector(state => state.auth_reducer)
 
-    if (auth) {
+    // console.log(user);
+    // console.log(token);
+
+
+    if (user) {
         return <MainPage />
     } else {
         return (

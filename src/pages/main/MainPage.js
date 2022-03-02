@@ -38,13 +38,14 @@ import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
 import {GET} from '../../functions/Methods';
-import { setUser, setLogin } from "../../redux/stored_reducer"
+import { setUser, setToken } from "../../redux/auth_reducer"
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
   const [currentTime, setCurrentTime] = useState(
     moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
   );
+  const { user } = useSelector((state) => state.auth_reducer);
 
   const { Header, Content } = Layout;
   // const {Option} = Select;
@@ -103,7 +104,7 @@ const MainPage = () => {
 
   const handleLog_out = () => {
     dispatch(setUser(null));
-    dispatch(setLogin(false));
+    dispatch(setToken(null))
   }
 
   return (
@@ -156,12 +157,12 @@ const MainPage = () => {
                   src={AccountPNG}
                   alt="Foydalanuvchi rasmi"
                 />
-                <h3>Hojiakbar</h3>
+                <h3>{user.name}</h3>
               </div>
             }
             content={
               <div>
-                <Button type={"primary"} danger style={{ width: "100%" }}>
+                <Button type={"primary"} danger onClick={handleLog_out} style={{ width: "100%" }}>
                   Tizimdan chiqish
                 </Button>
               </div>
