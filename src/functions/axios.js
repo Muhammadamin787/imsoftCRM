@@ -8,10 +8,6 @@ const key = "error";
 
 export default async (url, method = "GET", data = null, id = null) => {
 
-    // const { token } = useSelector(state => state?.auth_reducer)
-    // console.log(Token);
-
-
     const path = id ? url + "/" + id : url;
     try {
         return await axios({
