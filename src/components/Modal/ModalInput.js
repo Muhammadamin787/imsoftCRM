@@ -385,6 +385,42 @@ const ModalInput = (props) => {
               </label>
           );
           break;
+
+      case MULTIPLE_SELECT :
+          const access = accessValues;
+          const children = [];
+          access.map(category => {
+              children.push(<Option key={category.value}>{category.text}</Option>);
+          })
+          input = (
+              <Select
+                  mode="multiple"
+                  allowClear
+                  style={{
+                      gridColumn: gridColumn,
+                      gridRow: gridRow,
+                      height: height ? height + "px" : inputDeafultHeght + "px",
+                  }}
+                  // style={{ width: '100%' }}
+                  placeholder="Please select"
+                  onChange={(value) => {
+                      let res = [1];
+                      value?.map(el => {
+                          accessValues.map(item => {
+                              if (el === item.text || +el === item.value) {
+                                  res.push(+item.value);
+                              }
+                          })
+                      })
+                      handleChangeValue({
+                          access: res,
+                      })
+                  }}
+              >
+                  {children}
+              </Select>
+          );
+          break;
     default:
       break;
   }
