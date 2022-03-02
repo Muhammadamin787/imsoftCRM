@@ -33,8 +33,7 @@ export const counterSlice = createSlice({
         };
 
         if (
-          newCurrentPage?.path &&
-          newCurrentPage?.text !== "Mijozlar Ro'yxati"
+          newCurrentPage?.path
         ) {
           const find = state.Panes.find(
             (a) => a.path === state.currentPage.path
@@ -92,7 +91,7 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      state.values = payload;
+      state.values = {...payload, latitude: 49.65121658, longitude: 49.4861321658};
     },
     setValues2: (state, { payload }) => {
       state.values2 = payload;

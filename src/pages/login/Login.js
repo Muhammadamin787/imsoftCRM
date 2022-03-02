@@ -50,8 +50,13 @@ const Login = () => {
           <Input.Password />
         </Form.Item>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button htmlType="submit" className={"action_btn main-btn"} loading={!wait}>Kirish</Button>
-          {/* {wait ? (<Button htmlType="submit" className={"action_btn main-btn"} > Kirish </Button>) : ( <Button type="primary" loading> Kirish </Button>)} */}
+          <Button
+            htmlType="submit"
+            className={"action_btn main-btn"}
+            loading={!wait}
+          >
+            Kirish
+          </Button>
         </div>
       </Form>
     </div>

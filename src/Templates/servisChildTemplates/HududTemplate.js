@@ -37,7 +37,7 @@ const HududTemplate = {
                     label: "Shahar/Tuman",
                     name: "region_id",
                     type: SELECT,
-                    options: "states",
+                    options: "cities",
                     required: true,
                     placeholder: "Shahar/Tuman",
                     gridColumn: "1 / 3",

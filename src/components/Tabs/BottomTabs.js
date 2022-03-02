@@ -71,7 +71,9 @@ const BottomTabs = () => {
               Panes?.map((pane, i) => (
                 <button className="bottom__btn" onClick={() => onChange(i)}>
                   {findIcon(pane?.icon)}
-                  <span className="innerText">{pane?.text}</span>
+                  <span className="innerText">
+                    {pane?.childText ? pane?.childText : pane?.text}
+                  </span>
                   <span className="bottom__cross" onClick={(e) => onEdit(e, i)}>
                     {findIcon("CloseIconForTab")}
                   </span>

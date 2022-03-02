@@ -7,13 +7,12 @@ import ChildTabs from "../../../components/ChildTabs/ChildTabs";
 
 const ClientPageChild = ({ activeKey }) => {
   const [height, setHeight] = useState(0);
-  const { tableItem } = useSelector((s) => s.tabs_reducer);
 
   useEffect(() => {
     const dad = document.getElementById("site__loyout");
     setHeight(parseInt(dad.getBoundingClientRect().height));
   }, []);
-
+  
   return (
     <>
       <Toolbar />

@@ -53,7 +53,6 @@ const Toolbar = () => {
 
   const onRemove = async () => {
     const url = currentPage?.mainUrl;
-    console.log(currentPage);
     if (tableItem.length > 0) {
       let ids = tableItem.map((row) => {
         return row.id;

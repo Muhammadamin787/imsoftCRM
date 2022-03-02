@@ -4,7 +4,6 @@ import {
   Routes,
   NavLink,
   useLocation,
-  useHistory,
   useNavigate,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -12,19 +11,17 @@ import { Layout, Menu, Popover, Button } from "antd";
 import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
 import { CompanyLogo, findIcon } from "../../assets/icons/icons";
-import moment from "moment";
 import { AllPages } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import { useDispatch } from "react-redux";
 import {
   setCurrentPage,
-  setTableItem,
   startLoading,
   stopLoading,
 } from "../../redux/stored_reducer";
 
-import { setData, setAllData } from "../../redux/unsaved_reducer";
+import { setData } from "../../redux/unsaved_reducer";
 
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -37,14 +34,11 @@ import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
-import {GET} from '../../functions/Methods';
-import { setUser, setLogin } from "../../redux/stored_reducer"
+import { GET } from "../../functions/Methods";
+import { setUser, setLogin } from "../../redux/stored_reducer";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
-  const [currentTime, setCurrentTime] = useState(
-    moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
-  );
 
   const { Header, Content } = Layout;
   // const {Option} = Select;
@@ -100,11 +94,10 @@ const MainPage = () => {
     }
   }, [pathname]);
 
-
   const handleLog_out = () => {
     dispatch(setUser(null));
     dispatch(setLogin(false));
-  }
+  };
 
   return (
     <Layout className="site-container">
