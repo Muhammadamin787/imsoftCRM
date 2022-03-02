@@ -45,7 +45,7 @@ const InnerModal = () => {
         });
       }
     }
-  }, [values2]);
+  }, [values2, innerModal, currentPage]);
   
   
   const resizeModal = () => {

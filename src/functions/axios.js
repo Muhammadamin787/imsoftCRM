@@ -3,7 +3,7 @@ import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-const key = "error";
+const key = "error";    
 
 
 export default async (url, method = "GET", data = null, id = null) => {
@@ -23,7 +23,7 @@ export default async (url, method = "GET", data = null, id = null) => {
 
     } catch (error) {
         if (error.message.includes("401")) {
-            message.error({ content: "Email yoki Password notug'ri" })
+            message.error({ content: "Login yoki Password notug'ri" })
         }
         if (error.message.includes("500")) {
             message.error({ content: "Formani to'ldiring!", key: key });
