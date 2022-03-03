@@ -14,12 +14,18 @@ function getBase64(file) {
   });
 }
 
+const token = localStorage.getItem("token");
+
+
 export class PicturesWall extends React.Component {
   state = {
     previewVisible: false,
     previewImage: "",
     previewTitle: "",
     fileList: this.props.fileList?this.props.fileList:[],
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -48,7 +54,6 @@ export class PicturesWall extends React.Component {
     this.setState({ fileList: e.fileList });
   };
   render() {
-    const token = localStorage.getItem("token");
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
     const { filePath } = this.props;
     const uploadButton = (
@@ -81,12 +86,7 @@ export class PicturesWall extends React.Component {
       >
         <Upload
           action={BaseUrl + filePath}
-          headers= {
-            {'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'}
-        }
+          headers= {this.state.headers}
           listType="picture-card"
           fileList={fileList}
           name={this.props.fileName}
