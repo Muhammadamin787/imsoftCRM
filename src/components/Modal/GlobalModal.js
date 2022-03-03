@@ -61,8 +61,8 @@ const GlobalModal = () => {
     e.preventDefault();
     const { mainUrl, key, form, modal } = currentPage;
     const requiredInputs = [];
-    let bool = false;
-    console.log(modal);
+    let bool = true;
+    
     if (form) {
       form.forEach((el) => {
         el.inputs.forEach((d) => {
@@ -82,7 +82,7 @@ const GlobalModal = () => {
     }
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
-        bool = true;
+        bool = false;
         message.error(
           key?.name !== "longitude"
             ? key?.label + "ni kiritmadingiz"
@@ -90,13 +90,8 @@ const GlobalModal = () => {
         );
       }
     });
-    console.log(Object.keys(values));
-    console.log(requiredInputs);
-    if (
-      Object.keys(values).includes("longitude")
-        ? Object.keys(values).length - 1 === requiredInputs.length
-        : Object.keys(values).length === requiredInputs.length
-    ) {
+
+    if (bool) {
       POST(mainUrl, values).then((res) => {
         if (res) {
           message.success({ content: res.data.data, key: e });

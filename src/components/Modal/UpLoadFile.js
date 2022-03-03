@@ -48,6 +48,7 @@ class UploadFile extends React.Component {
         loading: false,
       });
     }
+    console.log(this.state.headers);
   };
 
   handleDelete = (info) => {
