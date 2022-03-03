@@ -23,7 +23,7 @@ import {
 } from "../../redux/stored_reducer";
 
 import { setData } from "../../redux/unsaved_reducer";
-
+import { ToastContainer, toast } from "react-toastify";
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
@@ -97,7 +97,7 @@ const MainPage = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {   
+  useEffect(() => {
     if (Panes.length > 7) {
       dispatch(setPanes([...Panes].splice(1, Panes.length)));
     }
@@ -111,6 +111,8 @@ const MainPage = () => {
 
   return (
     <Layout className="site-container">
+      <ToastContainer />
+
       <Header className="site-header">
         <div className="header__logo">
           <CompanyLogo />

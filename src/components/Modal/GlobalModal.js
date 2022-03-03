@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, Form, message } from "antd";
+import { Modal, Button, message } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,6 +17,8 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const GlobalModal = () => {
   const { currentPage, values, values2, innerModal } = useSelector(
@@ -62,7 +64,7 @@ const GlobalModal = () => {
     const { mainUrl, key, form, modal } = currentPage;
     const requiredInputs = [];
     let bool = true;
-    
+
     if (form) {
       form.forEach((el) => {
         el.inputs.forEach((d) => {
@@ -80,6 +82,7 @@ const GlobalModal = () => {
         });
       });
     }
+
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = false;
@@ -90,7 +93,7 @@ const GlobalModal = () => {
         );
       }
     });
-
+    
     if (bool) {
       POST(mainUrl, values).then((res) => {
         if (res) {

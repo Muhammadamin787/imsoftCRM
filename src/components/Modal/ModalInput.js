@@ -238,7 +238,7 @@ const ModalInput = (props) => {
             autoFocus
             required={required}
             onChange={(e, dateString) => {
-              const formatDate = moment(e._d).format("YYYY-MM-DD hh-mm-ss");
+              const formatDate = moment(e._d).format("YYYY-MM-DD hh:mm:ss");
               const target = {
                 [name]: formatDate,
               };
