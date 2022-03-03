@@ -124,7 +124,6 @@ const CommonTabTemplate = {
           label: "Xudud",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
-          options: "states",
         },
       ],
     },
