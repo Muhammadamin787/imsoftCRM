@@ -4,6 +4,7 @@ import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {STRING} from "../../components/Modal/InputTypes";
 
 const YunalishlarTemplate = {
+    accessKey: 6,
     text: "Yunalishlar",
     path: YUNALISHLAR_PATH,
     icon: "Yunalishlar",

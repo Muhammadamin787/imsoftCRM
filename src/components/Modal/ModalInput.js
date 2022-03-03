@@ -1,30 +1,33 @@
-import { Input, InputNumber, DatePicker, Select, message } from "antd";
-import { Option } from "antd/lib/mentions";
-import React, { useEffect, useState, useRef } from "react";
+import {Input, InputNumber, DatePicker, Select, message} from "antd";
+import {Option} from "antd/lib/mentions";
+import React, {useEffect, useState, useRef} from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
-  DATE,
-  IMAGE,
-  MAP,
-  NUMBER,
-  TEXTAREA,
-  PHONE,
-  SELECT,
-  STRING,
-  UPLOAD,
-  PICTURE_WALL,
+    DATE,
+    IMAGE,
+    MAP,
+    NUMBER,
+    TEXTAREA,
+    PHONE,
+    SELECT,
+    STRING,
+    UPLOAD,
+    PICTURE_WALL, PASSWORD, MULTIPLE_SELECT,
 } from "./InputTypes";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {inputDeafultHeght} from "../../constant/deafultStyle";
 import "moment/locale/ru";
 import MapModal from "./MapModal";
 import UpLoadJPG from "./UpLoadJPG";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
-import { findIcon } from "../../assets/icons/icons";
-import { PicturesWall } from "./PicturesWall/PicturesWall";
+import {setInnerModel, toggleInnerModal} from "../../redux/stored_reducer";
+import axios from "../../functions/axios";
+import {findIcon} from "../../assets/icons/icons";
+import {PicturesWall} from "./PicturesWall/PicturesWall";
+import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import {accessValues} from "../../constant/constants";
 
 const { TextArea } = Input;
 
@@ -71,7 +74,7 @@ const ModalInput = (props) => {
   }, []);
 
   const getProperValue = () => {
-      if (innerModal && isInnerModal) {
+    if (innerModal && isInnerModal) {
       return values2[name];
     } else {
       return values[name];
@@ -100,7 +103,6 @@ const ModalInput = (props) => {
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
           required={required}
-          required
         >
           {label && label}
           <Input
@@ -207,18 +209,18 @@ const ModalInput = (props) => {
       break;
     case MAP:
       input = (
-        <MapModal
-          gridColumn={gridColumn}
-          gridRow={gridRow}
-          height={height}
-          handleChangeValue={handleChangeValue}
-          required={required}
-          geo={
-            values?.longitude && values?.latitude
-              ? [values.latitude, values?.longitude]
-              : ""
-          }
-        />
+          <MapModal
+            gridColumn={gridColumn}
+            gridRow={gridRow}
+            height={height}
+            handleChangeValue={handleChangeValue}
+            required={required}
+            geo={
+              values?.longitude && values?.latitude
+                ? [values.latitude, values?.longitude]
+                : ""
+            }
+          />
       );
       break;
     case DATE:
@@ -301,7 +303,7 @@ const ModalInput = (props) => {
               };
               handleChangeValue(target);
             }}
-            value={getProperValue()?getProperValue():"+998"}
+            value={getProperValue() ? getProperValue() : "+998"}
           />
         </label>
       );
@@ -348,18 +350,77 @@ const ModalInput = (props) => {
           fileList={
             values[name]
               ? [
-                  {
-                    uid: "-1",
-                    name: "image.png",
-                    status: "done",
-                    url: values[name],
-                  },
-                ]
+                {
+                  uid: "-1",
+                  name: "image.png",
+                  status: "done",
+                  url: values[name],
+                },
+              ]
               : false
           }
         />
       );
       break;
+
+      case PASSWORD:
+          input = (
+              <label style={{
+                  gridColumn: gridColumn,
+                  gridRow: gridRow,
+                  height: height ? height + "px" : inputDeafultHeght + "px",
+              }}
+                     required={required}>
+                  {label && label}
+                  <Input.Password
+                      placeholder="input password"
+                      value={values[name]}
+                      iconRender={visible => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
+                      onChange={(e) => {
+                          handleChangeValue({
+                              [name]: e.target.value,
+                          });
+                      }}
+                  />
+              </label>
+          );
+          break;
+
+      case MULTIPLE_SELECT :
+          const access = accessValues;
+          const children = [];
+          access.map(category => {
+              children.push(<Option key={category.value}>{category.text}</Option>);
+          })
+          input = (
+              <Select
+                  mode="multiple"
+                  allowClear
+                  style={{
+                      gridColumn: gridColumn,
+                      gridRow: gridRow,
+                      height: height ? height + "px" : inputDeafultHeght + "px",
+                  }}
+                  // style={{ width: '100%' }}
+                  placeholder="Please select"
+                  onChange={(value) => {
+                      let res = [1];
+                      value?.map(el => {
+                          accessValues.map(item => {
+                              if (el === item.text || +el === item.value) {
+                                  res.push(+item.value);
+                              }
+                          })
+                      })
+                      handleChangeValue({
+                          access: res,
+                      })
+                  }}
+              >
+                  {children}
+              </Select>
+          );
+          break;
     default:
       break;
   }

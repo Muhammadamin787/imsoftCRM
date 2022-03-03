@@ -8,7 +8,7 @@ import {
   setValues,
   setTableItem,
   stopLoading,
-  startLoading,
+  startLoading, setValues2,
 } from "../../redux/stored_reducer";
 import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
@@ -35,6 +35,9 @@ const GlobalModal = () => {
   });
 
   useEffect(() => {
+    if(!innerModal){
+      dispatch(setValues2({}));
+    }
     if (currentPage && currentPage.isOpenModal) {
       let currentData = currentPage?.allData;
       for (const url in currentData) {

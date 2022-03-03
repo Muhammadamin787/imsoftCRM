@@ -5,6 +5,7 @@ import { STRING } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 
 const ViloyatlarTemplate = {
+  accessKey: 7,
   text: "Viloyatlar",
   path: VILOYATLAR_PATH,
   icon: "Group",
