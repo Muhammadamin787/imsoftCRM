@@ -39,7 +39,7 @@ const Login = () => {
         </div>
         <Form.Item
           label="Login"
-          name="email"
+          name="login"
           rules={[{ required: true, message: "Loginni kiriting!" }]}
         >
           <Input />
