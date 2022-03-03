@@ -47,8 +47,8 @@ export class PicturesWall extends React.Component {
     this.props.handleChangeValue({[this.props.name]: `${e.file.response}`});
     this.setState({ fileList: e.fileList });
   };
-
   render() {
+    const token = localStorage.getItem("token");
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
     const { filePath } = this.props;
     const uploadButton = (
@@ -81,6 +81,12 @@ export class PicturesWall extends React.Component {
       >
         <Upload
           action={BaseUrl + filePath}
+          headers= {
+            {'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'}
+        }
           listType="picture-card"
           fileList={fileList}
           name={this.props.fileName}

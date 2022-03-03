@@ -87,19 +87,15 @@ const InnerModal = () => {
 
     if (isNotErrors) {
       POST(url, values2).then((res) => {
-        // console.log(res.data.data);
-        // console.log(url);
         message.success({ content: res.data.data, key: e });
-        console.log(res.data.data);
-        console.log(url);
-        dispatch(toggleInnerModal(false));
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
+        GET(url).then((res) => {
+          console.log(res.data.data); 
+          dispatch(setAllData(res.data.data));
+        });
       });
-      GET(url).then((res) => {
-        // console.log(res.data.data); 
-        dispatch(setData(res.data.data));
-      });
+      dispatch(toggleInnerModal(false));
       dispatch(setOffInnerModel(false));
     }
   };

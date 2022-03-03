@@ -9,11 +9,7 @@ import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {
     STRING,
     DATE,
-    MAP,
-    NUMBER,
     SELECT,
-    UPLOAD,
-    IMAGE,
 } from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 

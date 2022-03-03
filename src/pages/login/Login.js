@@ -13,6 +13,8 @@ const Login = () => {
   const onFinish = (e) => {
     setWait(false);
 
+    // {login:"sdfg", password:"esdgfrew"}
+
     POST("/login-user", e)
       .then((res) => {
         if (res.status == "200") {

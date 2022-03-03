@@ -12,7 +12,7 @@ function beforeUpload(file) {
     file.type === "application/pdf" ||
     file.type === "application/msword" ||
     file.type ===
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     file.type === "image/jpeg" ||
     file.type === "image/png";
 
@@ -78,6 +78,7 @@ class UploadFile extends React.Component {
     const { loading, imageUrl } = this?.state;
     const { gridColumn, gridRow, height, label, name, placeholder, filePath } =
       this?.props;
+    const token = localStorage.getItem("token");
 
     const showFileStatus = () => {
       if (loading) {
@@ -120,6 +121,14 @@ class UploadFile extends React.Component {
         <Upload
           action={BaseUrl + filePath}
           onChange={this.handleChange}
+          headers={
+            {
+              'Authorization': `Bearer ${token}`,
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
+          }
           beforeUpload={beforeUpload}
           placeholder={placeholder}
           showUploadList={false}

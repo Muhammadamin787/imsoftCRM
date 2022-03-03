@@ -9,10 +9,6 @@ import { Route, Routes, Navigate } from "react-router-dom";
 function App() {
 
     const { user} = useSelector(state => state.auth_reducer)
-    
-    // console.log(user);
-    // console.log(token);
-
 
     if (user) {
         return <MainPage />
