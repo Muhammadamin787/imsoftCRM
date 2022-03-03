@@ -24,30 +24,7 @@ const ClientTemplate = {
   },
   tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
   text: "Mijozlar Ro'yxati",
-  // path: POTENSIAL_MIJOZLAR,
-  // icon: "ProfileIcon",
-  // type: CLIENTS_CHILD_PAGES,
-  // mainUrl: PotensialClientTemplate.mainUrl,
-  // isOpenModal: false,
-  // // allData: ["/clients"],
-  // modal: {
-  //     style: {
-  //         width: 1200,
-  //         marginTop: "-70px"
-  //     },
-  //     tabs: [
-  //         CommonTemplate, ContactsTemplate, CommentsTemplate
-  //     ]
-  // },
-  // tabs: [PotensialClientTemplate, RealClientTemplate, RejactClientTemplate],
-
-  // columns: [...PotensialClientTemplate.columns],
-
-  // filters: [...PotensialClientTemplate.filters],
-
-  // data: [...PotensialClientTemplate.data],
-
-  // scroll: {...PotensialClientTemplate.scroll}
+  childText: PotensialClientTemplate.text,
 };
 
 export default ClientTemplate;

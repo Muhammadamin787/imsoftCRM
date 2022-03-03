@@ -54,7 +54,7 @@ const BottomTabs = () => {
   useEffect(() => {
     const parent = document.querySelectorAll(".innerText");
     parent.forEach((item, i) => {
-      if (item.innerText === currentPage.text) {
+      if (item.innerText === currentPage.text || currentPage?.childText === item.innerText) {
         item.parentElement.classList.add("activeBottomKey");
       } else {
         item.parentElement.classList.remove("activeBottomKey");
@@ -71,7 +71,9 @@ const BottomTabs = () => {
               Panes?.map((pane, i) => (
                 <button className="bottom__btn" onClick={() => onChange(i)}>
                   {findIcon(pane?.icon)}
-                  <span className="innerText">{pane?.text}</span>
+                  <span className="innerText">
+                    {pane?.childText ? pane?.childText : pane?.text}
+                  </span>
                   <span className="bottom__cross" onClick={(e) => onEdit(e, i)}>
                     {findIcon("CloseIconForTab")}
                   </span>

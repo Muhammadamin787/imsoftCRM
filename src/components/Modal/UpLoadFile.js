@@ -39,10 +39,6 @@ class UploadFile extends React.Component {
     }
     if (info.file.status === "done" && info.file?.response) {
       message.success("File saqlandi");
-      // console.log(info);
-      // console.log({
-      //     [this.props.name]: info?.file?.response
-      // })
       this.props.onChange({
         // [this.props.name]: `${Base}${info?.file?.response}`
         [this.props.name]: `${info?.file?.response}`,
@@ -52,6 +48,7 @@ class UploadFile extends React.Component {
         loading: false,
       });
     }
+    console.log(this.state.headers);
   };
 
   handleDelete = (info) => {

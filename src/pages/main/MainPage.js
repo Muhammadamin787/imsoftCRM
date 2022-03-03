@@ -4,7 +4,6 @@ import {
   Routes,
   NavLink,
   useLocation,
-  useHistory,
   useNavigate,
 } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -12,19 +11,18 @@ import { Layout, Menu, Popover, Button } from "antd";
 import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
 import { CompanyLogo, findIcon } from "../../assets/icons/icons";
-import moment from "moment";
 import { AllPages } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
 import { useDispatch } from "react-redux";
 import {
   setCurrentPage,
-  setTableItem,
   startLoading,
   stopLoading,
+  setPanes,
 } from "../../redux/stored_reducer";
 
-import { setData, setAllData } from "../../redux/unsaved_reducer";
+import { setData } from "../../redux/unsaved_reducer";
 
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
@@ -37,8 +35,9 @@ import InnerModal from "../../components/Modal/innerModal/InnerModal";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
-import {GET, POST, DELETE,} from '../../functions/Methods';
-import { setUser } from "../../redux/auth_reducer"
+import { GET, POST, DELETE } from "../../functions/Methods";
+import { setUser } from "../../redux/auth_reducer";
+import moment from "moment";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -79,9 +78,6 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    // chap tomondagi tanlangan checkbox larni olib tashlaydi
-    // dispatch(setTableItem([]));
-
     const url = currentPage?.mainUrl;
     dispatch(setData([]));
     if (url) {
@@ -101,11 +97,17 @@ const MainPage = () => {
     }
   }, [pathname]);
 
+  useEffect(() => {   
+    if (Panes.length > 7) {
+      dispatch(setPanes([...Panes].splice(1, Panes.length)));
+    }
+  }, [Panes]);
+
   const handleLog_out = () => {
-    DELETE(`/logout-user/${user.id}`)
+    DELETE(`/logout-user/${user.id}`);
     dispatch(setUser(null));
-    localStorage.removeItem('token')
-  }
+    localStorage.removeItem("token");
+  };
 
   return (
     <Layout className="site-container">
@@ -162,7 +164,12 @@ const MainPage = () => {
             }
             content={
               <div>
-                <Button type={"primary"} danger onClick={handleLog_out} style={{ width: "100%" }}>
+                <Button
+                  type={"primary"}
+                  danger
+                  onClick={handleLog_out}
+                  style={{ width: "100%" }}
+                >
                   Tizimdan chiqish
                 </Button>
               </div>

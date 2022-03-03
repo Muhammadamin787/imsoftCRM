@@ -7,9 +7,7 @@ import { SubmittedProgrammesTemplate } from "../programmsTemplates/SubmittedProg
 const ProgrammsTemplate = {
   ...NewProgrammsTemplate,
   text: "Dasturlar",
-  // path: PROGRAMMES_PATH,
   icon: "VectorIcon",
-  
   tabs: [
     NewProgrammsTemplate,
     ProcessProgrammesTemplate,
@@ -17,6 +15,7 @@ const ProgrammsTemplate = {
     SubmittedProgrammesTemplate,
     RejactProgrammesTemplate,
   ],
+  childText: NewProgrammsTemplate.text,
 };
 
 export default ProgrammsTemplate;
