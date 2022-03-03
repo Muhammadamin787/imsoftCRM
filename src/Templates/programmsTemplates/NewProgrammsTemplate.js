@@ -7,13 +7,9 @@ import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesLi
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {
-  STRING,
-  DATE,
-  MAP,
-  NUMBER,
-  SELECT,
-  UPLOAD,
-  IMAGE,
+    STRING,
+    DATE,
+    SELECT,
 } from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 

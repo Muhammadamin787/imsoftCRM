@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Table, Form, Button } from "antd";
-import Toolbar from "../../ToolsBar/Toolbar/Toolbar";
-import { setValues, setValuesKey } from "../../../redux/stored_reducer";
-import { useDispatch, useSelector } from "react-redux";
-import { findIcon } from "../../../assets/icons/icons";
-import { PlusOutlined } from "@ant-design/icons";
-import { v4 as uuidv4 } from "uuid";
-import "../GlobalTable.scss";
+import { setValues, setValuesKey } from '../../../redux/stored_reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import "../GlobalTable.scss"
+
 
 const InnerTable = ({ innerTable }) => {
   const dispatch = useDispatch();
