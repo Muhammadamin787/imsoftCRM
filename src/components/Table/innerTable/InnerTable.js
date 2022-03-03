@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Form, Button } from "antd";
-import Toolbar from '../../ToolsBar/Toolbar/Toolbar'
 import { setValues, setValuesKey } from '../../../redux/stored_reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { findIcon } from "../../../assets/icons/icons"
-import { PlusOutlined } from '@ant-design/icons';
-import { v4 as uuidv4 } from 'uuid';
 import "../GlobalTable.scss"
+
 
 const InnerTable = ({ innerTable }) => {
     const dispatch = useDispatch()
     const { values } = useSelector((state) => state.tabs_reducer);
+    const pathname = window.location.pathname
 
 
     const addRow = () => {
-
         dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }))
         const oldData = [...values?.[innerTable?.name]]
         oldData.push(innerTable?.CreateObj);
-
         dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
-
     }
 
-// console.log(values?.[innerTable?.name]);
+    const styles = {
+        height: (pathname == "/programmers/yangi_dasturlar" ? "0px" : "10px")
+    }
 
     return (
         <div className="innerTable">
+            <div style={styles}></div>
             <Button className="tab-add__input" onClick={addRow}><span>+</span></Button>
             <div className="innerTable-row">
 
