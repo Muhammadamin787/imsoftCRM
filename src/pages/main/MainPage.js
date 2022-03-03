@@ -97,7 +97,7 @@ const MainPage = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {
+  useEffect(() => {   
     if (Panes.length > 7) {
       dispatch(setPanes([...Panes].splice(1, Panes.length)));
     }
