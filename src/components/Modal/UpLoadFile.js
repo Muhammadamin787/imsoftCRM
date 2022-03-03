@@ -21,11 +21,16 @@ function beforeUpload(file) {
   }
   return isJpgOrPng;
 }
+const token = localStorage.getItem("token");
 
 class UploadFile extends React.Component {
+
   state = {
     loading: false,
     imageUrl: "",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
   handleChange = (info) => {
     if (info.file.status === "uploading") {
@@ -74,7 +79,7 @@ class UploadFile extends React.Component {
     const { loading, imageUrl } = this?.state;
     const { gridColumn, gridRow, height, label, name, placeholder, filePath } =
       this?.props;
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
     const showFileStatus = () => {
       if (loading) {
@@ -117,14 +122,7 @@ class UploadFile extends React.Component {
         <Upload
           action={BaseUrl + filePath}
           onChange={this.handleChange}
-          headers={
-            {
-              'Authorization': `Bearer ${token}`,
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            }
-          }
+          headers={this.state.headers}
           beforeUpload={beforeUpload}
           placeholder={placeholder}
           showUploadList={false}
