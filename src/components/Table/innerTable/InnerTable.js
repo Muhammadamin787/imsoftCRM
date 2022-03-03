@@ -22,6 +22,7 @@ const InnerTable = ({ innerTable }) => {
         style={{ margin: "10px 0" }}
         className="tab-add__input"
         onClick={addRow}
+        type="button"
       >
         <span>+</span>
       </button>

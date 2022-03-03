@@ -110,6 +110,7 @@ class UploadFile extends React.Component {
         height: height ? height + "px" : inputDeafultHeght + "px",
         width: "100% !important",
         textAlign: "center",
+        cursor:"pointer"
       },
     };
 

@@ -71,7 +71,7 @@ const ModalInput = (props) => {
   }, []);
 
   const getProperValue = () => {
-      if (innerModal && isInnerModal) {
+    if (innerModal && isInnerModal) {
       return values2[name];
     } else {
       return values[name];
@@ -207,18 +207,18 @@ const ModalInput = (props) => {
       break;
     case MAP:
       input = (
-        <MapModal
-          gridColumn={gridColumn}
-          gridRow={gridRow}
-          height={height}
-          handleChangeValue={handleChangeValue}
-          required={required}
-          geo={
-            values?.longitude && values?.latitude
-              ? [values.latitude, values?.longitude]
-              : ""
-          }
-        />
+          <MapModal
+            gridColumn={gridColumn}
+            gridRow={gridRow}
+            height={height}
+            handleChangeValue={handleChangeValue}
+            required={required}
+            geo={
+              values?.longitude && values?.latitude
+                ? [values.latitude, values?.longitude]
+                : ""
+            }
+          />
       );
       break;
     case DATE:
@@ -301,7 +301,7 @@ const ModalInput = (props) => {
               };
               handleChangeValue(target);
             }}
-            value={getProperValue()?getProperValue():"+998"}
+            value={getProperValue() ? getProperValue() : "+998"}
           />
         </label>
       );
@@ -348,13 +348,13 @@ const ModalInput = (props) => {
           fileList={
             values[name]
               ? [
-                  {
-                    uid: "-1",
-                    name: "image.png",
-                    status: "done",
-                    url: values[name],
-                  },
-                ]
+                {
+                  uid: "-1",
+                  name: "image.png",
+                  status: "done",
+                  url: values[name],
+                },
+              ]
               : false
           }
         />

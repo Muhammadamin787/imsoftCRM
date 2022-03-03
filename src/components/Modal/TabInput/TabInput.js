@@ -64,8 +64,8 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                         }
                         }>
                         {allData && allData[options]?.map((option, i) => (
-                            <Option value={option.id} key={option.id}>
-                                {option.name}
+                            <Option value={option?.id} key={option?.id}>
+                                {option?.name}
                             </Option>
                         ))}
                     </Select>
