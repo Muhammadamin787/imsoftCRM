@@ -90,23 +90,27 @@ const GlobalModal = () => {
         );
       }
     });
-    if (Object.keys(values).length === requiredInputs.length) {
+    console.log(Object.keys(values));
+    console.log(requiredInputs);
+    if (
+      Object.keys(values).includes("longitude")
+        ? Object.keys(values).length - 1 === requiredInputs.length
+        : Object.keys(values).length === requiredInputs.length
+    ) {
       POST(mainUrl, values).then((res) => {
         if (res) {
           message.success({ content: res.data.data, key: e });
           dispatch(toggleModal(false));
           dispatch(setValues({}));
           dispatch(setTableItem([]));
-          dispatch(startLoading());
         }
       });
-      
+      dispatch(startLoading());
       GET(
         removeApiStatusLines.includes(mainUrl)
           ? `${mainUrl}/status/${key}`
           : mainUrl
       ).then((res) => {
-        console.log(res);
         dispatch(setData(res.data.data));
         dispatch(stopLoading());
       });

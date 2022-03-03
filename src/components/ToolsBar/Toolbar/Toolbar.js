@@ -32,7 +32,9 @@ const addButtonIsDisabled = [
 const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, tableItem } = useSelector((state) => state.tabs_reducer);
+  const { currentPage, tableItem, values } = useSelector(
+    (state) => state.tabs_reducer
+  );
 
   const handleModalClick = () => {
     // const newPanes = Panes?.map((page) =>
@@ -77,9 +79,10 @@ const Toolbar = () => {
 
   const onEdit = () => {
     if (tableItem.length > 0 && tableItem.length < 2) {
-      dispatch(setValues(...tableItem));
+      dispatch(setValues({ ...tableItem[0] }));
+      console.log({ ...tableItem[0] });
     }
-    dispatch(toggleModal(true));
+    dispatch(toggleModal(tableItem));
   };
 
   const currentPageIcon = findIcon(currentPage?.icon);
@@ -159,7 +162,10 @@ const Toolbar = () => {
             >
               <Button
                 onClick={() => button.onClick()}
-                disabled={addButtonIsDisabled.includes(currentPagePath) && button?.tooltip?.text !== "Taxrirlash"}
+                disabled={
+                  addButtonIsDisabled.includes(currentPagePath) &&
+                  button?.tooltip?.text !== "Taxrirlash"
+                }
               >
                 {button.icon}
               </Button>
