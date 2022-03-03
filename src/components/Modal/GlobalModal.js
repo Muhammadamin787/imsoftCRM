@@ -19,7 +19,7 @@ import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
 
 const GlobalModal = () => {
-  const { currentPage, values, values2 ,innerModal } = useSelector(
+  const { currentPage, values, values2, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
   const [disabled, setDisabled] = useState(true);
@@ -62,7 +62,7 @@ const GlobalModal = () => {
     const { mainUrl, key, form, modal } = currentPage;
     const requiredInputs = [];
     let bool = false;
-
+    console.log(modal);
     if (form) {
       form.forEach((el) => {
         el.inputs.forEach((d) => {
@@ -83,7 +83,6 @@ const GlobalModal = () => {
     requiredInputs.forEach((key) => {
       if (!Object.keys(values).includes(key?.name)) {
         bool = true;
-        console.log(key);
         message.error(
           key?.name !== "longitude"
             ? key?.label + "ni kiritmadingiz"
@@ -91,27 +90,28 @@ const GlobalModal = () => {
         );
       }
     });
-
-    if (bool) {
+    if (Object.keys(values).length === requiredInputs.length) {
       POST(mainUrl, values).then((res) => {
-        message.success({ content: res.data.data, key: e });
-        console.log(res);
-        dispatch(toggleModal(false));
-        dispatch(setValues({}));
-        dispatch(setTableItem([]));
-        dispatch(startLoading());
-      });
-      GET(
-        removeApiStatusLines.includes(mainUrl)
-          ? `${mainUrl}/status/${key}`
-          : mainUrl
-      ).then((res) => {
-        console.log(res.data.data);
-        dispatch(setData(res.data.data));
-        dispatch(stopLoading());
+        if (res) {
+          message.success({ content: res.data.data, key: e });
+          dispatch(toggleModal(false));
+          dispatch(setValues({}));
+          dispatch(setTableItem([]));
+          dispatch(startLoading());
+          GET(
+            removeApiStatusLines.includes(mainUrl)
+              ? `${mainUrl}/status/${key}`
+              : mainUrl
+          ).then((res) => {
+            dispatch(setData(res.data.data));
+            dispatch(stopLoading());
+          });
+        }
       });
 
       dispatch(toggleModal(false));
+    } else {
+      message.error("xato");
     }
   };
 

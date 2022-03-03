@@ -98,10 +98,10 @@ const MainPage = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (Panes.lenght >= 8) {
-      dispatch(setPanes());
+    if (Panes.length > 7) {
+      dispatch(setPanes([...Panes].splice(1, Panes.length)));
     }
-  }, []);
+  }, [Panes]);
 
   const handleLog_out = () => {
     DELETE(`/logout-user/${user.id}`);

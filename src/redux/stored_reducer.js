@@ -56,9 +56,14 @@ export const counterSlice = createSlice({
         state.currentPage = payload;
       }
     },
-    setPanes: (s) => {
-      console.log("ishladim");
-      s.Panes = s.Panes.splice(0, 1);
+    setPanes: (s, { payload }) => {
+      s.Panes = payload;
+    },
+    clearPanes: (state) => {
+      state.Panes = [];
+    },
+    removePositionPanes: (state, { payload }) => {
+      state.Panes = state.Panes.filter((item, i) => i !== payload);
     },
     toggleModal: (state, { payload }) => {
       state.currentPage.isOpenModal = payload;
@@ -91,7 +96,6 @@ export const counterSlice = createSlice({
       }
     },
     setValues: (state, { payload }) => {
-      console.log(payload);
       state.values = { ...payload };
     },
     setValues2: (state, { payload }) => {
@@ -115,9 +119,7 @@ export const counterSlice = createSlice({
     setOffInnerModel: (state, { payload }) => {
       state.innerModal = "";
     },
-    clearPanes: (state) => {
-      state.Panes = [];
-    },
+
     setCurrentLocation: (s, { payload }) => {
       s.currentLocation = payload;
     },
@@ -142,7 +144,6 @@ export const {
   toggleModal,
   setCurrentPage,
   changeCurrentPageData,
-  changePanes,
   setTableItem,
   removeTableItem,
   editTableItem,
@@ -162,6 +163,7 @@ export const {
   setValuesKey,
   setBottomActiveKey,
   setPanes,
+  removePositionPanes,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

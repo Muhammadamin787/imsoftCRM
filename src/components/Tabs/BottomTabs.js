@@ -54,7 +54,7 @@ const BottomTabs = () => {
   useEffect(() => {
     const parent = document.querySelectorAll(".innerText");
     parent.forEach((item, i) => {
-      if (item.innerText === currentPage.text) {
+      if (item.innerText === currentPage.text || currentPage?.childText === item.innerText) {
         item.parentElement.classList.add("activeBottomKey");
       } else {
         item.parentElement.classList.remove("activeBottomKey");
