@@ -85,7 +85,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
             );
             break;
         case UPLOAD:
-
             input = (
                 <UploadFile
                     id="file-uploder"
