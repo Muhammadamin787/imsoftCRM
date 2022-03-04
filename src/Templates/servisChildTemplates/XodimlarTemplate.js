@@ -33,6 +33,7 @@ const XodimlarTemplate = {
     mainUrl: "/workers",
     allData: {
         states: "/states/all",
+        // workers:"/workers/all",
         cities: "/cities/all",
         directions: "/directions",
     },

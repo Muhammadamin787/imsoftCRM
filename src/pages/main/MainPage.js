@@ -1,3 +1,4 @@
+import { accessValues } from './../../constant/constants';
 import {
   Link,
   Route,
@@ -57,7 +58,6 @@ const MainPage = () => {
 
   const { pathname } = useLocation();
   const navigateTo = useNavigate();
-
   useEffect(() => {
     dispatch(startLoading());
     let currentPage = [
@@ -109,6 +109,14 @@ const MainPage = () => {
     localStorage.removeItem("token");
   };
 
+
+  const vse =  [
+    ...AllPages,
+    ...ServiceTemplate?.sections,
+    ...ProgrammsTemplate?.tabs,
+    ...ClientTemplate?.tabs,
+  ];
+
   return (
     <Layout className="site-container">
       <ToastContainer />
@@ -122,7 +130,7 @@ const MainPage = () => {
           mode="horizontal"
           defaultSelectedKeys={["0"]}
         >
-          {AllPages.map((menu, i) =>
+          {AllPages.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey)).map((menu, i) =>
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
@@ -192,12 +200,7 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {[
-            ...AllPages,
-            ...ServiceTemplate?.sections,
-            ...ProgrammsTemplate?.tabs,
-            ...ClientTemplate?.tabs,
-          ].map((page, i) =>
+          {vse.filter((item) =>  user?.access.includes(100) || user?.access.includes(item.accessKey)).map((page, i) =>
             page.submenus ? (
               page.submenus.map((sub, k) => (
                 <Route

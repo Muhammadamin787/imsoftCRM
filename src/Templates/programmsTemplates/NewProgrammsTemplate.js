@@ -15,6 +15,7 @@ import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
 export const NewProgrammsTemplate = {
   text: "Yangi dasturlar",
+  accessKey: 2,
   path: YANGI_DASTURLAR,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "1",
