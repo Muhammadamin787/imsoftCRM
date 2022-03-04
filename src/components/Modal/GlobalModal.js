@@ -39,6 +39,7 @@ const GlobalModal = () => {
     bottom: 0,
     right: 0,
   });
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
     if (!innerModal) {
@@ -71,6 +72,7 @@ const GlobalModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setBtnDisabled(true);
     POST(
       mainUrl,
       currentPage.mainUrl === ProgrammsTemplateApi
@@ -84,6 +86,7 @@ const GlobalModal = () => {
         dispatch(startLoading());
         setUpdate(true);
       }
+      setBtnDisabled(false);
     });
   };
 
@@ -188,6 +191,7 @@ const GlobalModal = () => {
             type="submit"
             className="modal-form__button saqlash"
             onClick={(e) => handleSubmit(e)}
+            disabled={btnDisabled}
           >
             Saqlash
           </Button>

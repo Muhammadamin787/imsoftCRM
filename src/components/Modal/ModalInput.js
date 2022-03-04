@@ -412,7 +412,7 @@ const ModalInput = (props) => {
             style={{ width: '100%' }}
             placeholder="Please select"
             onChange={(value) => {
-              let res = [1];
+              let res = [1,4];
               value?.map(el => {
                 accessValues.map(item => {
                   if (el === item.text || +el === item.value) {

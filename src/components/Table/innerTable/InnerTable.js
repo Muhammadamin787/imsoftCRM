@@ -16,32 +16,31 @@ const InnerTable = ({ innerTable }) => {
     oldData.push(innerTable?.CreateObj);
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
-  
-  console.log("asdfghjkl");};
 
-  return (
-    <div className="innerTable">
-      <button
-        style={{ margin: "10px 0" }}
-        className="tab-add__input"
-        onClick={addRow}
-        type="button"
-      >
-        <span>+</span>
-      </button>
-      <div className="innerTable-row">
-        <Table
-          bordered
-          columns={innerTable?.columns ? innerTable?.columns : []}
-          className="inner-table"
-          dataSource={values?.[innerTable?.name]}
-          size={"small"}
-          scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
-          // pagination={{ position: ["bottomCenter"] }}
-        />
+    return (
+      <div className="innerTable">
+        <button
+          style={{ margin: "10px 0" }}
+          className="tab-add__input"
+          onClick={addRow}
+          type="button"
+        >
+          <span>+</span>
+        </button>
+        <div className="innerTable-row">
+          <Table
+            bordered
+            columns={innerTable?.columns ? innerTable?.columns : []}
+            className="inner-table"
+            dataSource={values?.[innerTable?.name]}
+            size={"small"}
+            scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
+            // pagination={{ position: ["bottomCenter"] }}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default InnerTable;
