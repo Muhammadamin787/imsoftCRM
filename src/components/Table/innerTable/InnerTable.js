@@ -4,6 +4,7 @@ import { setValues, setValuesKey } from '../../../redux/stored_reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import "../GlobalTable.scss"
 
+console.log("fdghjlkjhgfhj");
 
 const InnerTable = ({ innerTable }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,18 @@ const InnerTable = ({ innerTable }) => {
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
   };
+
+
+
+
+
+
+
+
+
+
+
+  /// gvhjklk;jhjlk;kjhvjbnkl;kjhvj
   return (
     <div className="innerTable">
       <button
