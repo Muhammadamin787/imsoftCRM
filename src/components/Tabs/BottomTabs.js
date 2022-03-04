@@ -48,7 +48,7 @@ const BottomTabs = () => {
 
   const clearAll = () => {
     dispatch(clearPanes([]));
-    navigate("/servis");
+    navigate("/asosiy");
   };
 
   useEffect(() => {

@@ -37,7 +37,6 @@ const InnerModal = () => {
   //     for (const url in currentData) {
   //       let res = axios(currentData[url]);
   //       res.then((res) => {
-  //         console.log(res.data.data);
   //         dispatch(setAllData({ [url]: res.data.data }));
   //       });
   //     }
@@ -85,7 +84,6 @@ const InnerModal = () => {
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
         GET(url).then((res) => {
-          console.log(res.data.data);
           dispatch(setAllData(res.data.data));
         });
       });

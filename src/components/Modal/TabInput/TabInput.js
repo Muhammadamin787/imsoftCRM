@@ -13,6 +13,11 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const { allData } = useSelector(state => state?.unsaved_reducer);
 
 
+
+console.log("dfghjkhgjkjhghjk");
+
+
+
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -108,5 +113,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     return input;
 
 }
+//hjkl;jhkljh
 
 export default TabInput;

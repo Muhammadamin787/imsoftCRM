@@ -357,7 +357,7 @@ const ModalInput = (props) => {
                   url: values[name],
                 },
               ]
-              : false
+              : []
           }
         />
       );

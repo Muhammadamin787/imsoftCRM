@@ -16,7 +16,10 @@ import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
-import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
+import {
+  ProgrammsTemplateApi,
+  removeApiStatusLines,
+} from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,6 +28,7 @@ const GlobalModal = () => {
   const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
+  const { user } = useSelector((s) => s.auth_reducer);
   const [update, setUpdate] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
@@ -63,11 +67,16 @@ const GlobalModal = () => {
     dispatch(toggleModal(false));
     dispatch(setValues({}));
   };
-  const { mainUrl, key, form, modal } = currentPage;
+  const { mainUrl, key } = currentPage;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    POST(mainUrl, values).then((res) => {
+    POST(
+      mainUrl,
+      currentPage.mainUrl === ProgrammsTemplateApi
+        ? { ...values, from_whom: user.name }
+        : values
+    ).then((res) => {
       if (res) {
         dispatch(toggleModal(false));
         dispatch(setValues({}));
