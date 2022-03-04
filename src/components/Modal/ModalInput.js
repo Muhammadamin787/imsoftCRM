@@ -369,7 +369,7 @@ const ModalInput = (props) => {
           gridColumn: gridColumn,
           gridRow: gridRow,
           height: height ? height + "px" : inputDeafultHeght + "px",
-        }}
+          }}
           required={required}>
           {label && label}
           <Input.Password
@@ -393,26 +393,17 @@ const ModalInput = (props) => {
         children.push(<Option key={category.value}>{category.text}</Option>);
       })
       input = (
-        <label
-          style={{
-            gridColumn: gridColumn,
-            gridRow: gridRow,
-            height: height ? height + "px" : inputDeafultHeght + "px",
-          }}
-          required={required}
-          // id={refs && "autofucus"}
-          // className="select-label"
-        >
+        <label style={{
+          gridColumn: gridColumn,
+          gridRow: gridRow,
+          height: height ? height + "px" : inputDeafultHeght + "px",
+        }}
+          required={required}>
           {label && label}
           <Select
             mode="multiple"
             allowClear
-            style={{
-              gridColumn: gridColumn,
-              gridRow: gridRow,
-              height: height ? height + "px" : inputDeafultHeght + "px",
-            }}
-            // style={{ width: '100%' }}
+            style={{ width: '100%' }}
             placeholder="Please select"
             onChange={(value) => {
               let res = [1];

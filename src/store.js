@@ -11,7 +11,7 @@ const persistConfig = {
   storage: storage,
   stateReconciler: autoMergeLevel1,
   whiteList: ["tabs_reducer"],
-  blacklist: ["unsaved_reducer"]
+  blacklist: ["unsaved_reducer", "tabs_reducer"]
 };
 
 const reducers = combineReducers({
