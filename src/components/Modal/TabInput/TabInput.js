@@ -14,7 +14,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
 
 
 
-console.log("dfghjkhgjkjhghjk");
 
 
 
