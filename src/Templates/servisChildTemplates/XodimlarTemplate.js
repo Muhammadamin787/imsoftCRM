@@ -236,7 +236,7 @@ const XodimlarTemplate = {
             key: "developer_photo",
             width: "10%",
             align,
-            render: (_, record) => <ImgZoom src={Base + record?.developer_photo}/>,
+            render: (_, record) => <ImgZoom src={record?.developer_photo}/>,
         },
         {
             title: "Passport",
@@ -244,7 +244,7 @@ const XodimlarTemplate = {
             key: "passport",
             width: "20%",
             align,
-            render: (_, record) => <ImgZoom src={Base + record?.passport}/>,
+            render: (_, record) => <ImgZoom src={record?.passport}/>,
         },
         {
             title: "Oilasi",
