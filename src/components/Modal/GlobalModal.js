@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, message } from "antd";
+import { Modal, Button } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,8 @@ import {
   setValues,
   setTableItem,
   stopLoading,
-  startLoading, setValues2,
+  startLoading,
+  setValues2,
 } from "../../redux/stored_reducer";
 import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
@@ -17,13 +18,14 @@ import MacActions from "../ToolsBar/MacActions/MacActions";
 import { GET, POST } from "../../functions/Methods";
 import { removeApiStatusLines } from "../../constant/apiLine/apiLine";
 import axios from "../../functions/axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const GlobalModal = () => {
-  const { currentPage, values, values2, innerModal } = useSelector(
+  const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
+  const [update, setUpdate] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
   const draggleRef = useRef("s");
@@ -35,7 +37,7 @@ const GlobalModal = () => {
   });
 
   useEffect(() => {
-    if(!innerModal){
+    if (!innerModal) {
       dispatch(setValues2({}));
     }
     if (currentPage && currentPage.isOpenModal) {
@@ -61,52 +63,23 @@ const GlobalModal = () => {
     dispatch(toggleModal(false));
     dispatch(setValues({}));
   };
+  const { mainUrl, key, form, modal } = currentPage;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { mainUrl, key, form, modal } = currentPage;
-    const requiredInputs = [];
-    let bool = true;
-
-    if (form) {
-      form.forEach((el) => {
-        el.inputs.forEach((d) => {
-          if (d.required) {
-            requiredInputs.push(d);
-          }
-        });
-      });
-    } else {
-      modal.tabs.forEach((el) => {
-        el?.form[0]?.inputs?.forEach((d) => {
-          if (d?.required) {
-            requiredInputs.push(d);
-          }
-        });
-      });
-    }
-
-    requiredInputs.forEach((key) => {
-      if (!Object.keys(values).includes(key?.name)) {
-        bool = false;
-        message.error(
-          key?.name !== "longitude"
-            ? key?.label + "ni kiritmadingiz"
-            : "Map ni kiritmadingiz"
-        );
+    POST(mainUrl, values).then((res) => {
+      if (res) {
+        dispatch(toggleModal(false));
+        dispatch(setValues({}));
+        dispatch(setTableItem([]));
+        dispatch(startLoading());
+        setUpdate(true);
       }
     });
-    
-    if (bool) {
-      POST(mainUrl, values).then((res) => {
-        if (res) {
-          message.success({ content: res.data.data, key: e });
-          dispatch(toggleModal(false));
-          dispatch(setValues({}));
-          dispatch(setTableItem([]));
-        }
-      });
-      dispatch(startLoading());
+  };
+
+  useEffect(() => {
+    if (update) {
       GET(
         removeApiStatusLines.includes(mainUrl)
           ? `${mainUrl}/status/${key}`
@@ -114,13 +87,11 @@ const GlobalModal = () => {
       ).then((res) => {
         dispatch(setData(res.data.data));
         dispatch(stopLoading());
+        toast.success("Muaffaqiyatlik bajarildi");
       });
-
-      dispatch(toggleModal(false));
-    } else {
-      message.error("xato");
+      setUpdate(false);
     }
-  };
+  }, [update]);
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;

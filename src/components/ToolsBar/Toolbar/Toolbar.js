@@ -9,7 +9,7 @@ import {
 import { setData } from "../../../redux/unsaved_reducer";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Button, message, Popconfirm, Tooltip } from "antd";
+import { Button, Popconfirm, Tooltip } from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import { findIcon } from "../../../assets/icons/icons";
@@ -21,7 +21,8 @@ import {
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const addButtonIsDisabled = [
   JARAYONDAGI,
   BEKOR_QILINGAN,
@@ -73,7 +74,7 @@ const Toolbar = () => {
         });
       });
     } else {
-      message.error("Qator belgilang");
+      toast.error("Qator belgilang");
     }
   };
 

@@ -1,37 +1,43 @@
-import { message } from "antd";
 import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const key = "error";
 
 export default async (url, method = "GET", data = null, id = null) => {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    const path = id ? url + "/" + id : url;
-    try {
-        return await axios({
-            method: method,
-            url: BaseUrl + path,
-            data: data,
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            }
-        });
-
-    } catch (error) {
-        if (error.message.includes("401")) {
-            message.error({ content: "Login yoki Password notug'ri" })
-        }
-        if (error.message.includes("500")) {
-            message.error({ content: "Formani to'ldiring!", key: key });
-        } else if (error.message.includes("400")) {
-            message.warn({ content: "Oldin bog'langan ma'lumitlarni o'chiring", key: key });
-        } else if (error.message.includes("422")) {
-            message.error({ content: error.message, key: key });
-        }
+  const path = id ? url + "/" + id : url;
+  try {
+    return await axios({
+      method: method,
+      url: BaseUrl + path,
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  } catch (error) {
+    if (error.message.includes("401")) {
+      toast[key]("Login yoki Password notug'ri");
     }
+    if (error.message.includes("500")) {
+      toast[key]("Formani to'ldiring!");
+    } else if (error.message.includes("400")) {
+      toast.warn("Oldin bog'langan ma'lumitlarni o'chiring");
+    } else if (error.message.includes("422")) {
+      const format = error.response.data.errors;
+      
+      Object.keys(format).forEach((item) => {
+        format[item].forEach((mes) =>{
+          toast.error(mes);
+        })
+      })
+      
+    }
+  }
 };
-
-
