@@ -12,7 +12,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const { values } = useSelector(state => state?.tabs_reducer);
     const { allData } = useSelector(state => state?.unsaved_reducer);
 
-console.log("poiuytrertyuiopoiuy");
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -108,6 +107,7 @@ console.log("poiuytrertyuiopoiuy");
     return input;
 
 }
+//hjkl;jhkljh
 
 
 //mkjkjblb

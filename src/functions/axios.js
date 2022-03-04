@@ -30,14 +30,17 @@ export default async (url, method = "GET", data = null, id = null) => {
     } else if (error.message.includes("400")) {
       toast.warn("Oldin bog'langan ma'lumitlarni o'chiring");
     } else if (error.message.includes("422")) {
-      const format = error.response.data.errors;
-      
-      Object.keys(format).forEach((item) => {
-        format[item].forEach((mes) =>{
-          toast.error(mes);
-        })
-      })
-      
+      const format = error.response.data?.errors;
+
+      if (typeof format === "object") {
+        Object.keys(format ? format : {}).forEach((item) => {
+          format[item].forEach((mes) => {
+            toast.error(mes);
+          });
+        });
+      } else {
+        toast.error(`${format}`);
+      }
     }
   }
 };

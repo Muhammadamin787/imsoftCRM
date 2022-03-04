@@ -361,7 +361,7 @@ const ModalInput = (props) => {
                   url: values[name],
                 },
               ]
-              : false
+              : []
           }
         />
       );
@@ -378,8 +378,8 @@ const ModalInput = (props) => {
           {label && label}
           <Input.Password
             placeholder="input password"
-            value={values[name]}
             iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+            value={values[name]}
             onChange={(e) => {
               handleChangeValue({
                 [name]: e.target.value,
@@ -407,6 +407,8 @@ const ModalInput = (props) => {
           <Select
             mode="multiple"
             allowClear
+            // value={getProperValue()}
+            // value={values[name]}
             style={{ width: '100%' }}
             placeholder="Please select"
             onChange={(value) => {

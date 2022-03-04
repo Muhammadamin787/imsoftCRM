@@ -81,7 +81,6 @@ const Toolbar = () => {
   const onEdit = () => {
     if (tableItem.length > 0 && tableItem.length < 2) {
       dispatch(setValues({ ...tableItem[0] }));
-      console.log({ ...tableItem[0] });
     }
     dispatch(toggleModal(tableItem));
   };

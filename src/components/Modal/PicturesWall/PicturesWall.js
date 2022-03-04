@@ -21,15 +21,18 @@ function getBase64(file) {
 const token = localStorage.getItem("token");
 
 export class PicturesWall extends React.Component {
-  state = {
-    previewVisible: false,
-    previewImage: "",
-    previewTitle: "",
-    fileList: this.props.fileList ? this.props.fileList : [],
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      previewVisible: false,
+      previewImage: "",
+      previewTitle: "",
+      fileList: props.fileList,
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    };
+  }
 
   handleCancel = () => this.setState({ previewVisible: false });
 
@@ -64,6 +67,7 @@ export class PicturesWall extends React.Component {
     this.props.handleChangeValue({ [this?.props?.name]: `${e.file.response}` });
     this.setState({ fileList: e.fileList });
   };
+
   render() {
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
     const { filePath } = this.props;
