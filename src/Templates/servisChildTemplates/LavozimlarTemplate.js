@@ -4,7 +4,7 @@ import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {STRING} from "../../components/Modal/InputTypes";
 
 const  LavozimlarTemplate = {
-    accessKey: 10,
+    accessKey: 11,
     text: "Lavozimlar",
     path: LAVOZIM_PATH,
     icon: "Xodimlar",

@@ -116,6 +116,9 @@ const MainPage = () => {
     ...ClientTemplate?.tabs,
   ];
 
+  const filterAccessKey = (array) => array.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey))
+
+
   return (
     <Layout className="site-container">
       <ToastContainer />
@@ -129,11 +132,7 @@ const MainPage = () => {
           mode="horizontal"
           defaultSelectedKeys={["0"]}
         >
-          {AllPages.filter(
-            (item) =>
-              user?.access.includes(100) ||
-              user?.access.includes(item.accessKey)
-          ).map((menu, i) =>
+          {filterAccessKey(AllPages).map((menu, i) =>
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
@@ -203,12 +202,7 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {vse
-            .filter(
-              (item) =>
-                user?.access.includes(100) ||
-                user?.access.includes(item.accessKey)
-            )
+          {filterAccessKey(vse)
             .map((page, i) =>
               page.submenus ? (
                 page.submenus.map((sub, k) => (

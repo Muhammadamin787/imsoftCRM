@@ -5,7 +5,7 @@ import { STRING } from "../../components/Modal/InputTypes";
 import { FieldNumberOutlined } from "@ant-design/icons";
 
 const ReklamalarTemplate = {
-  accessKey: 11,
+  accessKey: 12,
   text: "Reklamalar",
   path: REKLAMALAR_PATH,
   icon: "Reklamalar",

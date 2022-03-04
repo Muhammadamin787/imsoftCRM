@@ -5,18 +5,24 @@ import {MULTIPLE_SELECT, PASSWORD, PHONE, STRING} from "../../components/Modal/I
 import {FieldNumberOutlined} from "@ant-design/icons";
 
 const UsersTemplate = {
-    accessKey: 12,
+    accessKey: 13,
     text: "Foydalanuvchilar",
     path: USERS_PATH,
     icon: "UsersIcon",
     type: SERVIS_CHILD_PAGES,
     mainUrl: "/users",
     isOpenModal: false,
+    modal: {
+        style: {
+            width: 550,
+            // marginTop: "-70px"
+        }
+    },
     form: [
         {
             grid: {
-                columns: "repeat(1, 10fr)",
-                rows: "repeat(6, 1fr)",
+                // columns: "repeat(1, 10fr)",
+                // rows: "repeat(6, 1fr)",
             },
             inputs: [
                 {
@@ -24,53 +30,40 @@ const UsersTemplate = {
                     type: STRING,
                     name: "name",
                     required: true,
-                    gridColumn: "1 / 6",
+                    gridColumn: "1 / 3",
                     gridRow: "1 / 2",
                     placeholder: "FIO",
-                },
-                {
-                    label: "Telefon",
-                    type: PHONE,
-                    name: "phone_number",
-                    required: true,
-                    gridColumn: "6 / 11",
-                    gridRow: "1 / 2",
-                    placeholder: "telefon",
                 },
                 {
                     label: "Login",
                     type: STRING,
                     name: "login",
                     required: true,
-                    gridColumn: "1 / 11",
                     gridRow: "2 / 3",
                     placeholder: "login",
+                },
+                {
+                    label: "Telefon",
+                    type: PHONE,
+                    name: "phone_number",
+                    required: true,
+                    gridRow: "2 / 3",
+                    placeholder: "telefon",
                 },
                 {
                     label: "Parol",
                     type: PASSWORD,
                     name: "password",
                     required: true,
-                    gridColumn: "1 / 6",
                     gridRow: "3 / 4",
                     placeholder: "parol",
-                },
-                {
-                    label: "Parolni tasdiqlang",
-                    type: PASSWORD,
-                    name: "password_confirmation",
-                    required: true,
-                    gridColumn: "6 / 11",
-                    gridRow: "3 / 4",
-                    placeholder: "Parolni Tasdiqlang",
                 },
                 {
                     label: "Huquqlari",
                     type: MULTIPLE_SELECT,
                     name: "access",
                     required: true,
-                    gridColumn: "1 / 11",
-                    gridRow: "4 / 5",
+                    gridRow: "3 / 4",
                     placeholder: "parol",
                 },
             ],

@@ -12,7 +12,7 @@ import GetLocation from "../../components/Location/Location";
 import { Base } from "../../BaseUrl";
 const PotensialClientTemplate = {
   text: "Potensial mijozlar",
-  accessKey: 1,
+  accessKey: 2,
   key: "1",
   icon: "ProfileIcon",
   path: POTENSIAL_MIJOZLAR,
