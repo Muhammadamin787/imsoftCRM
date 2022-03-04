@@ -1,7 +1,6 @@
 import {INKOR_MIJOZLAR} from '../../pages/pageConstants/PageRoutes';
 import {CLIENTS_CHILD_PAGES} from '../../pages/pageConstants/PageTypes';
 import PotensialClientTemplate from './PotensialClientTemplate';
-import "react-medium-image-zoom/dist/styles.css";
 import { ClientTemplateApi } from "../../constant/apiLine/apiLine";
 const RejactClientTemplate = {
   ...PotensialClientTemplate,

@@ -6,25 +6,25 @@ import { DeleteIcon, findIcon } from "../../assets/icons/icons";
 import { BaseUrl, Base } from "../../BaseUrl";
 import { DELETE } from "../../functions/Methods";
 import { LoadingOutlined } from "@ant-design/icons";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function beforeUpload(file) {
   const isJpgOrPng =
     file.type === "application/pdf" ||
     file.type === "application/msword" ||
     file.type ===
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     file.type === "image/jpeg" ||
     file.type === "image/png";
 
   if (!isJpgOrPng) {
-    message.error("Bunday fayl turi qabul qilinmaydi!");
+    toast.error("Bunday fayl turi qabul qilinmaydi!");
   }
   return isJpgOrPng;
 }
 const token = localStorage.getItem("token");
 
 class UploadFile extends React.Component {
-
   state = {
     loading: false,
     imageUrl: "",
@@ -38,7 +38,7 @@ class UploadFile extends React.Component {
       return;
     }
     if (info.file.status === "done" && info.file?.response) {
-      message.success("File saqlandi");
+      toast.success("File saqlandi");
       this.props.onChange({
         // [this.props.name]: `${Base}${info?.file?.response}`
         [this.props.name]: `${info?.file?.response}`,
@@ -57,7 +57,7 @@ class UploadFile extends React.Component {
       filename: this.state?.imageUrl,
     })
       .then((res) => {
-        message.success("Fayl o'chirildi!");
+        toast.success("Fayl o'chirildi!");
         setTimeout(() => {
           this.setState({
             imageUrl: "",
@@ -66,7 +66,7 @@ class UploadFile extends React.Component {
         }, 0);
       })
       .catch((err) => {
-        message.destroy("Xatolik, fayl o'chmadi!");
+        toast.warn("Xatolik, fayl o'chmadi!");
         setTimeout(() => {
           this.setState({
             imageUrl: "",
@@ -110,7 +110,7 @@ class UploadFile extends React.Component {
         height: height ? height + "px" : inputDeafultHeght + "px",
         width: "100% !important",
         textAlign: "center",
-        cursor:"pointer"
+        cursor: "pointer",
       },
     };
 

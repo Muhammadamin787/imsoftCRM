@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../GlobalModal.scss";
-import { Modal, Button, Form, message } from "antd";
+import { Modal, Button, Form } from "antd";
 import ModalInput from "../ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,19 +9,15 @@ import {
   setTableItem,
   setOffInnerModel,
 } from "../../../redux/stored_reducer";
-import { setData, setAllData } from "../../../redux/unsaved_reducer";
+import { setAllData } from "../../../redux/unsaved_reducer";
 import Draggable from "react-draggable";
 import MacActions from "../../ToolsBar/MacActions/MacActions";
-import axios from "../../../functions/axios";
 import { GET, POST } from "../../../functions/Methods";
-
-
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
-
-
   const { currentPage, values2, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
@@ -34,7 +30,7 @@ const InnerModal = () => {
     bottom: 0,
     right: 0,
   });
-  
+
   // useEffect(() => {
   //   if (currentPage && currentPage.isOpenModal) {
   //     let currentData = currentPage?.allData;
@@ -47,8 +43,7 @@ const InnerModal = () => {
   //     }
   //   }
   // }, [values2, innerModal, currentPage]);
-  
-  
+
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };
@@ -62,7 +57,6 @@ const InnerModal = () => {
     dispatch(toggleInnerModal(false));
     dispatch(setValues2({}));
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,7 +73,7 @@ const InnerModal = () => {
     let isNotErrors = false;
     requiredInputs.map((d) => {
       if (!values2[d.name]) {
-        return message.error(d.label + "ni kiritmadingiz");
+        return toast.error(d.label + "ni kiritmadingiz");
       } else {
         isNotErrors = true;
       }
@@ -87,11 +81,11 @@ const InnerModal = () => {
 
     if (isNotErrors) {
       POST(url, values2).then((res) => {
-        message.success({ content: res.data.data, key: e });
+        toast.success(res.data.data);
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
         GET(url).then((res) => {
-          console.log(res.data.data); 
+          console.log(res.data.data);
           dispatch(setAllData(res.data.data));
         });
       });
@@ -99,8 +93,6 @@ const InnerModal = () => {
       dispatch(setOffInnerModel(false));
     }
   };
-
-  
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;

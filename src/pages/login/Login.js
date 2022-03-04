@@ -5,7 +5,8 @@ import Logo from "../../assets/logo/logo.png";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/auth_reducer";
 import { POST } from "../../functions/Methods";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const dispatch = useDispatch();
   const [wait, setWait] = useState(true);
@@ -20,12 +21,12 @@ const Login = () => {
         if (res.status == "200") {
           dispatch(setUser(res.data.data));
           localStorage.setItem("token", res.data.data.token);
-          message.success({ content: "Xush kelibsiz", key: e });
+          toast.success("Xush kelibsiz");
         }
       })
       .catch((e) => {
         return (
-          message.error({ content: "Qayta uriib kuring❗", key: e }) &&
+          toast.error("Qayta uriib kuring ❗") &&
           setWait(true)
         );
       });

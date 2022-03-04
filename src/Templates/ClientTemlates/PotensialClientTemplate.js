@@ -100,9 +100,9 @@ const PotensialClientTemplate = {
             position: "relative"
           }}
         > 
-          <ImgZoom src={Base + record?.file_1} />
-          <ImgZoom src={Base + record?.file_2} />
-          <ImgZoom src={Base + record?.file_3} />
+          <ImgZoom src={record?.file_1} />
+          <ImgZoom src={record?.file_2} />
+          <ImgZoom src={record?.file_3} />
         </div>
       ),
       align: "center",

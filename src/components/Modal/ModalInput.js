@@ -1,6 +1,6 @@
-import { Input, InputNumber, DatePicker, Select, message } from "antd";
-import { Option } from "antd/lib/mentions";
-import React, { useEffect, useState, useRef } from "react";
+import {Input, InputNumber, DatePicker, Select} from "antd";
+import {Option} from "antd/lib/mentions";
+import React, {useEffect, useState, useRef} from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -240,7 +240,7 @@ const ModalInput = (props) => {
             autoFocus
             required={required}
             onChange={(e, dateString) => {
-              const formatDate = moment(e._d).format("YYYY-MM-DD hh-mm-ss");
+              const formatDate = moment(e._d).format("YYYY-MM-DD hh:mm:ss");
               const target = {
                 [name]: formatDate,
               };

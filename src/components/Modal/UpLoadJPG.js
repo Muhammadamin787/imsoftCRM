@@ -1,9 +1,11 @@
-import {Upload, message} from 'antd';
+import {Upload} from 'antd';
 import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import React from 'react'
 import "./GlobalModal.scss"
 import {inputDeafultHeght} from "../../constant/deafultStyle"
 import {findIcon} from '../../assets/icons/icons';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function getBase64(img, callback) {
@@ -18,7 +20,7 @@ function beforeUpload(file) {
         file.type === "image/png";
 
     if (!isJpgOrPng) {
-        message.error('You can only upload JPG/PNG file!');
+        toast.error('You can only upload JPG/PNG file!');
     }
     return isJpgOrPng;
 }

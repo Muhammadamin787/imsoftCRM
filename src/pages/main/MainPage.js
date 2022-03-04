@@ -1,3 +1,4 @@
+import { accessValues } from "./../../constant/constants";
 import {
   Link,
   Route,
@@ -23,7 +24,6 @@ import {
 } from "../../redux/stored_reducer";
 
 import { setData } from "../../redux/unsaved_reducer";
-
 import BottomTabs from "../../components/Tabs/BottomTabs";
 import ClientTemplate from "../../Templates/pageTemplates/ClientTemplate";
 import ProgrammsTemplate from "../../Templates/pageTemplates/ProgrammesTemplate";
@@ -38,8 +38,7 @@ import LocModal from "../../components/Location/LocModal";
 import { GET, POST, DELETE } from "../../functions/Methods";
 import { setUser } from "../../redux/auth_reducer";
 import moment from "moment";
-
-
+import { ToastContainer } from "react-toastify";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -98,7 +97,7 @@ const MainPage = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {   
+  useEffect(() => {
     if (Panes.length > 7) {
       dispatch(setPanes([...Panes].splice(1, Panes.length)));
     }
@@ -110,8 +109,7 @@ const MainPage = () => {
     localStorage.removeItem("token");
   };
 
-
-  const vse =  [
+  const vse = [
     ...AllPages,
     ...ServiceTemplate?.sections,
     ...ProgrammsTemplate?.tabs,
@@ -123,6 +121,8 @@ const MainPage = () => {
 
   return (
     <Layout className="site-container">
+      <ToastContainer />
+
       <Header className="site-header">
         <div className="header__logo">
           <CompanyLogo />
@@ -132,7 +132,7 @@ const MainPage = () => {
           mode="horizontal"
           defaultSelectedKeys={["0"]}
         >
-          {filterAccessKey(AllPages).filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey)).map((menu, i) =>
+          {filterAccessKey(AllPages).map((menu, i) =>
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
@@ -202,23 +202,24 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {filterAccessKey(vse).filter((item) =>  user?.access.includes(100) || user?.access.includes(item.accessKey)).map((page, i) =>
-            page.submenus ? (
-              page.submenus.map((sub, k) => (
+          {filterAccessKey(vse)
+            .map((page, i) =>
+              page.submenus ? (
+                page.submenus.map((sub, k) => (
+                  <Route
+                    key={k}
+                    path={sub.path}
+                    element={<PageController page={sub} key={sub?.path} />}
+                  />
+                ))
+              ) : (
                 <Route
-                  key={k}
-                  path={sub.path}
-                  element={<PageController page={sub} key={sub?.path} />}
+                  key={i}
+                  path={page.path}
+                  element={<PageController page={page} key={page?.path} />}
                 />
-              ))
-            ) : (
-              <Route
-                key={i}
-                path={page.path}
-                element={<PageController page={page} key={page?.path} />}
-              />
-            )
-          )}
+              )
+            )}
         </Routes>
         <GlobalModal />
         <InnerModal />
