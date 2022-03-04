@@ -97,6 +97,7 @@ export const counterSlice = createSlice({
     },
     setValues: (state, { payload }) => {
       state.values = { ...payload };
+      console.log(payload);
     },
     setValues2: (state, { payload }) => {
       state.values2 = payload;

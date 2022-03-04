@@ -321,6 +321,8 @@ const ModalInput = (props) => {
           onChange={handleChangeValue}
           Iconic={Iconic}
           label={label}
+          dispatch={dispatch}
+          values={values}
         />
       );
       break;
@@ -345,6 +347,8 @@ const ModalInput = (props) => {
           gridRow={gridRow}
           filePath={filePath}
           name={name}
+          dispatch={dispatch}
+          values={values}
           handleChangeValue={handleChangeValue}
           fileName={fileName ? fileName : ""}
           fileList={

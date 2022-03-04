@@ -1,4 +1,4 @@
-export const MAIN_PATH = "/asosiy";
+export const MAIN_PATH = "/";
 export const SERVIS_PATH = "/servis";
 export const CLIENTS_PATH = "/clients";
 export const PROGRAMMES_PATH = "/programmes";

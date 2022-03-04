@@ -4,6 +4,10 @@ import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
 import { BaseUrl, Base } from "../../../BaseUrl";
+import {setValues} from "../../../redux/stored_reducer"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -42,16 +46,22 @@ export class PicturesWall extends React.Component {
   };
 
   handleDelete = (e) => {
+    const {dispatch, values} = this?.props;
     DELETE(this.props.filePath + "/delete", {
       type: this.props.name,
       filename: e.response,
+    }).then((res) => {
+      dispatch(setValues({ ...values, [this?.props?.name]: null }));
+      toast.success("Rasm o'chirildi!");
+    }).catch((err) => {
+      toast.warn("Xatolik, fayl o'chmadi!")
     });
+
+
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({ [this.props.name]: `${e.file.response}` });
-    console.log(e.file.response);
-    console.log(this.state.headers);
+    this.props.handleChangeValue({ [this?.props?.name]: `${e.file.response}` });
     this.setState({ fileList: e.fileList });
   };
   render() {

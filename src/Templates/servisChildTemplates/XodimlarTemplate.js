@@ -256,7 +256,6 @@ const XodimlarTemplate = {
       align,
       // render: (text) => <FileBlueIcon/>,
       render: (text) => {
-        console.log(Base + text);
         return (
           <a href={Base + text} target="_blank">
             <FileBlueIcon />
