@@ -7,7 +7,7 @@ import ViloyatlarTemplate from "./ViloyatlarTemplate";
 import ShaharTumanTemplate from "./ShaharTumanTempilate"
 
 const HududTemplate = {
-    accessKey: 9,
+    accessKey: 10,
     text: "Hudud",
     path: HUDUD_PATH,
     icon: "Hudud",

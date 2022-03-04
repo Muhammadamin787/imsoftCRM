@@ -5,7 +5,7 @@ import {MULTIPLE_SELECT, PASSWORD, PHONE, STRING} from "../../components/Modal/I
 import {FieldNumberOutlined} from "@ant-design/icons";
 
 const UsersTemplate = {
-    accessKey: 12,
+    accessKey: 13,
     text: "Foydalanuvchilar",
     path: USERS_PATH,
     icon: "UsersIcon",

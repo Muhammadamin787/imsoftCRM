@@ -23,7 +23,7 @@ import {Base} from "../../BaseUrl";
 
 const align = "center";
 const XodimlarTemplate = {
-    accessKey: 5,
+    accessKey: 6,
     text: "Xodimlar",
     path: XODIMLAR_PATH,
     icon: "Xodimlar",

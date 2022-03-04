@@ -6,7 +6,7 @@ import { FieldNumberOutlined } from '@ant-design/icons';
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 const ShaharTumanTemplate = {
-  accessKey: 8,
+  accessKey: 9,
   text: "Shahar Tuman",
   path: SHAHAR_TUMAN_PATH,
   icon: "City",

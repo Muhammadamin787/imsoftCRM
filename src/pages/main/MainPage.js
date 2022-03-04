@@ -1,4 +1,3 @@
-import { accessValues } from './../../constant/constants';
 import {
   Link,
   Route,
@@ -39,6 +38,8 @@ import LocModal from "../../components/Location/LocModal";
 import { GET, POST, DELETE } from "../../functions/Methods";
 import { setUser } from "../../redux/auth_reducer";
 import moment from "moment";
+
+
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -117,6 +118,9 @@ const MainPage = () => {
     ...ClientTemplate?.tabs,
   ];
 
+  const filterAccessKey = (array) => array.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey))
+
+
   return (
     <Layout className="site-container">
       <Header className="site-header">
@@ -128,7 +132,7 @@ const MainPage = () => {
           mode="horizontal"
           defaultSelectedKeys={["0"]}
         >
-          {AllPages.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey)).map((menu, i) =>
+          {filterAccessKey(AllPages).filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey)).map((menu, i) =>
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
@@ -198,7 +202,7 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {vse.filter((item) =>  user?.access.includes(100) || user?.access.includes(item.accessKey)).map((page, i) =>
+          {filterAccessKey(vse).filter((item) =>  user?.access.includes(100) || user?.access.includes(item.accessKey)).map((page, i) =>
             page.submenus ? (
               page.submenus.map((sub, k) => (
                 <Route

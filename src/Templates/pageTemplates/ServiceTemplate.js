@@ -13,7 +13,7 @@ import LavozimlarTemplate from "../servisChildTemplates/LavozimlarTemplate"
 import UsersTemplate from "../servisChildTemplates/UsersTemplate";
 
 const ServiceTemplate = {
-  accessKey: 3,
+  accessKey: 4,
   text: "Servis",
   path: SERVIS_PATH,
   icon: "ServiceIcon",
