@@ -12,6 +12,8 @@ import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate"
 import LavozimlarTemplate from "../servisChildTemplates/LavozimlarTemplate"
 import UsersTemplate from "../servisChildTemplates/UsersTemplate";
 
+
+
 const ServiceTemplate = {
   accessKey: 4,
   text: "Servis",
@@ -29,7 +31,7 @@ const ServiceTemplate = {
     LavozimlarTemplate,
     ReklamalarTemplate,
     UsersTemplate,
-  ],
+  ]
 };
 
 export default ServiceTemplate;

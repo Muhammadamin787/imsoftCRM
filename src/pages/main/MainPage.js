@@ -42,9 +42,6 @@ import { ToastContainer } from "react-toastify";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
-  const [currentTime, setCurrentTime] = useState(
-    moment(new Date()).format("DD.MM.YYYY hh:mm:ss")
-  );
   const { user } = useSelector((state) => state.auth_reducer);
 
   const { Header, Content } = Layout;

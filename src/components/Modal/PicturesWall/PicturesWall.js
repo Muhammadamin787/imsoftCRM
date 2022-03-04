@@ -25,7 +25,7 @@ export class PicturesWall extends React.Component {
       previewTitle: "",
       fileList: props.fileList,
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     };
   }
