@@ -57,6 +57,7 @@ export class PicturesWall extends React.Component {
   render() {
     const { previewVisible, previewImage, fileList, previewTitle } = this.state;
     const { filePath } = this.props;
+    console.log(this.state.fileList);
     const uploadButton = (
       <div>
         <div>
