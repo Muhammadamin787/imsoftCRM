@@ -61,12 +61,14 @@ const GlobalModal = () => {
   };
 
   const handleChangeValue = (e) => {
-    dispatch(setValues({ ...values, ...e }));
+    if(e){
+      dispatch(setValues({ ...values, ...e }));
+    }
   };
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
-    dispatch(setValues({}));
+    // dispatch(setValues({}));
   };
   const { mainUrl, key } = currentPage;
 
@@ -192,6 +194,7 @@ const GlobalModal = () => {
             className="modal-form__button saqlash"
             onClick={(e) => handleSubmit(e)}
             disabled={btnDisabled}
+            loading={btnDisabled}
           >
             Saqlash
           </Button>

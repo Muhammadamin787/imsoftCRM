@@ -28,15 +28,15 @@ const InnerTable = ({ innerTable }) => {
           <span>+</span>
         </button>
         <div className="innerTable-row">
-          <Table
+          {/* <Table
             bordered
-            columns={innerTable?.columns ? innerTable?.columns : []}
+            columns={[]}
             className="inner-table"
-            dataSource={values?.[innerTable?.name]}
+            dataSource={[]}
             size={"small"}
             scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
             // pagination={{ position: ["bottomCenter"] }}
-          />
+          /> */}
         </div>
       </div>
     );

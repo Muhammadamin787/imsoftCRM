@@ -1,6 +1,6 @@
-import {Input, InputNumber, DatePicker, Select} from "antd";
-import {Option} from "antd/lib/mentions";
-import React, {useEffect, useState, useRef} from "react";
+import { Input, InputNumber, DatePicker, Select } from "antd";
+import { Option } from "antd/lib/mentions";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "./GlobalModal.scss";
 import {
@@ -13,7 +13,9 @@ import {
   SELECT,
   STRING,
   UPLOAD,
-  PICTURE_WALL, PASSWORD, MULTIPLE_SELECT,
+  PICTURE_WALL,
+  PASSWORD,
+  MULTIPLE_SELECT,
 } from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -23,7 +25,6 @@ import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
 import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
-import axios from "../../functions/axios";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -34,7 +35,7 @@ const { TextArea } = Input;
 const ModalInput = (props) => {
   let input = null;
   const dispatch = useDispatch();
-  const { currentPage, values, innerModal, values2 } = useSelector(
+  const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
 
@@ -92,6 +93,31 @@ const ModalInput = (props) => {
       }
     }
   };
+
+  const upload = useCallback(() => {
+    return (
+      <PicturesWall
+        gridColumn={gridColumn}
+        gridRow={gridRow}
+        filePath={filePath}
+        name={name}
+        dispatch={dispatch}
+        values={values}
+        handleChangeValue={handleChangeValue}
+        fileName={fileName ? fileName : ""}
+        fileList={
+          values[name] && [
+            {
+              uid: "-1",
+              name: "image.png",
+              status: "done",
+              url: values[name],
+            },
+          ]
+        }
+      />
+    );
+  }, [values]);
 
   switch (type) {
     case STRING:
@@ -341,44 +367,25 @@ const ModalInput = (props) => {
       );
       break;
     case PICTURE_WALL:
-      input = (
-        <PicturesWall
-          gridColumn={gridColumn}
-          gridRow={gridRow}
-          filePath={filePath}
-          name={name}
-          dispatch={dispatch}
-          values={values}
-          handleChangeValue={handleChangeValue}
-          fileName={fileName ? fileName : ""}
-          fileList={
-            values[name]
-              ? [
-                {
-                  uid: "-1",
-                  name: "image.png",
-                  status: "done",
-                  url: values[name],
-                },
-              ]
-              : []
-          }
-        />
-      );
+      input = upload();
       break;
 
     case PASSWORD:
       input = (
-        <label style={{
-          gridColumn: gridColumn,
-          gridRow: gridRow,
-          height: height ? height + "px" : inputDeafultHeght + "px",
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}>
+          required={required}
+        >
           {label && label}
           <Input.Password
             placeholder="input password"
-            iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+            iconRender={(visible) =>
+              visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+            }
             value={values[name]}
             onChange={(e) => {
               handleChangeValue({
@@ -393,36 +400,38 @@ const ModalInput = (props) => {
     case MULTIPLE_SELECT:
       const access = accessValues;
       const children = [];
-      access.map(category => {
+      access.map((category) => {
         children.push(<Option key={category.value}>{category.text}</Option>);
-      })
+      });
       input = (
-        <label style={{
-          gridColumn: gridColumn,
-          gridRow: gridRow,
-          height: height ? height + "px" : inputDeafultHeght + "px",
-        }}
-          required={required}>
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+          required={required}
+        >
           {label && label}
           <Select
             mode="multiple"
             allowClear
             // value={getProperValue()}
             // value={values[name]}
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
             placeholder="Please select"
             onChange={(value) => {
-              let res = [1,4];
-              value?.map(el => {
-                accessValues.map(item => {
+              let res = [1, 4];
+              value?.map((el) => {
+                accessValues.map((item) => {
                   if (el === item.text || +el === item.value) {
                     res.push(+item.value);
                   }
-                })
-              })
+                });
+              });
               handleChangeValue({
                 access: res,
-              })
+              });
             }}
           >
             {children}
@@ -430,6 +439,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     default:
       break;
   }

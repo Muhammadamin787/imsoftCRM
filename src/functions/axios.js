@@ -23,6 +23,7 @@ export default async (url, method = "GET", data = null, id = null) => {
     });
   } catch (error) {
     if (error.message.includes("401")) {
+      console.log("ishladim");
       toast[key]("Login yoki Password notug'ri");
     }
     if (error.message.includes("500")) {

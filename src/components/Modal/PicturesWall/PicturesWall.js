@@ -4,10 +4,9 @@ import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
 import { BaseUrl, Base } from "../../../BaseUrl";
-import {setValues} from "../../../redux/stored_reducer"
+import { setValues } from "../../../redux/stored_reducer";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -27,9 +26,9 @@ export class PicturesWall extends React.Component {
       previewVisible: false,
       previewImage: "",
       previewTitle: "",
-      fileList: props.fileList,
+      fileList: [],
       headers: {
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     };
   }
@@ -49,22 +48,22 @@ export class PicturesWall extends React.Component {
   };
 
   handleDelete = (e) => {
-    const {dispatch, values} = this?.props;
+    const { dispatch, values } = this?.props;
     DELETE(this.props.filePath + "/delete", {
       type: this.props.name,
       filename: e.response,
-    }).then((res) => {
-      dispatch(setValues({ ...values, [this?.props?.name]: null }));
-      toast.success("Rasm o'chirildi!");
-    }).catch((err) => {
-      toast.warn("Xatolik, fayl o'chmadi!")
-    });
-
-
+    })
+      .then((res) => {
+        dispatch(setValues({ ...values, [this?.props?.name]: null }));
+        toast.success("Rasm o'chirildi!");
+      })
+      .catch((err) => {
+        toast.warn("Xatolik, fayl o'chmadi!");
+      });
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({ [this?.props?.name]: `${e.file.response}` });
+    this.props.handleChangeValue(e.file.response && { [this?.props?.name]: `${e.file.response}` });
     this.setState({ fileList: e.fileList });
   };
 
@@ -92,7 +91,7 @@ export class PicturesWall extends React.Component {
       },
       previewModal: { marginTop: "-20px", maxHeight: "100px" },
     };
-
+    console.log(this.state.fileList);
     return (
       <div
         className="file-uploader-label"
@@ -109,8 +108,10 @@ export class PicturesWall extends React.Component {
           onRemove={this.handleDelete}
           onChange={this.handleChange}
         >
+          {this.state.fileList && this.state.fileList[0]?.name}
           {fileList.length >= 1 ? null : uploadButton}
         </Upload>
+        {/* <h1>{this.state.fileList && this.state.fileList[0]?.name}</h1> */}
         <Modal
           visible={previewVisible}
           title={previewTitle}

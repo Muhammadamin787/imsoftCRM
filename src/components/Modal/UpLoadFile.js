@@ -33,7 +33,7 @@ class UploadFile extends React.Component {
     loading: false,
     imageUrl: "",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
   handleChange = (info) => {
