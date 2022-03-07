@@ -284,3 +284,11 @@ const XodimlarTemplate = {
 };
 
 export default XodimlarTemplate;
+// {
+//   {
+//     "access" : "mijozlar",
+//     "id" : 1,
+//   },
+
+  
+// } 

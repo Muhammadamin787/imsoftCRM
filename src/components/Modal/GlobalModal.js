@@ -68,6 +68,7 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
+    dispatch(setValues({}));
   };
   const currentPageSetModal = () => {
     dispatch(setValues({}));
