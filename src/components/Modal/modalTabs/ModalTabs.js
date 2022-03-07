@@ -13,7 +13,7 @@ const ModalTabs = ({tabs, i, handleChangeValue}) => {
                 <Tabs.TabPane tab={tab.text} key={i}>
                     {tab.form?.map((forma, i) => (
                         <div className="modal-grid__form"
-                             key={forma?.grid}
+                             key={i}
                              style={{
                                  gridTemplateColumns: forma.grid?.columns,
                                  gridAutoRows: forma.grid?.rows,
