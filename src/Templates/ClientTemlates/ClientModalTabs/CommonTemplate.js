@@ -1,12 +1,9 @@
-import {
-  STRING,
-  SELECT,
-} from "../../../components/Modal/InputTypes";
+import { STRING, SELECT } from "../../../components/Modal/InputTypes";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
-import FaolyatTurlaiTemplate from '../../servisChildTemplates/FaolyatTurlariTemplate';
-import HududTemplate from '../../servisChildTemplates/HududTemplate'
+import FaolyatTurlaiTemplate from "../../servisChildTemplates/FaolyatTurlariTemplate";
+import HududTemplate from "../../servisChildTemplates/HududTemplate";
 
 const CommonTabTemplate = {
   text: "Umumiy",
@@ -37,7 +34,7 @@ const CommonTabTemplate = {
           label: "Xolati",
           gridColumn: "6 / 9",
           gridRow: "1 / 2",
-          options: "client_status"
+          options: "client_status",
         },
         {
           name: "category_id",
@@ -60,6 +57,17 @@ const CommonTabTemplate = {
           gridRow: "2 / 3",
           options: "activity_types",
           template: FaolyatTurlaiTemplate,
+        },
+        {
+          name: "address_id",
+          type: SELECT,
+          required: true,
+          placeholder: "xudud",
+          template: HududTemplate,
+          options: "hudud",
+          label: "Xudud",
+          gridColumn: "6 / 9",
+          gridRow: "2 / 3",
         },
         {
           name: "state_id",
@@ -85,25 +93,6 @@ const CommonTabTemplate = {
           template: ShaharTumanTemplate,
         },
         {
-          name: "home_address",
-          type: STRING,
-          required: true,
-          placeholder: "Manzil",
-          gridColumn: "1 / 6",
-          gridRow: "4 / 5",
-          label: "Manzil",
-        },
-        {
-          name: "client_status",
-          type: SELECT,
-          required: true,
-          placeholder: "xolati",
-          label: "Xolati",
-          gridColumn: "6 / 9",
-          gridRow: "1 / 2",
-          options: "client_status",
-        },
-        {
           name: "order_reason",
           type: SELECT,
           required: true,
@@ -113,27 +102,23 @@ const CommonTabTemplate = {
           label: "Kelish turi",
           options: "order_reason",
         },
-
         {
-          name: "address_id",
-          type: SELECT,
+          name: "home_address",
+          type: STRING,
           required: true,
-          placeholder: "xudud",
-          template: HududTemplate,
-          options: "hudud",
-          label: "Xudud",
-          gridColumn: "6 / 9",
-          gridRow: "2 / 3",
+          placeholder: "Manzil",
+          gridColumn: "1 / 6",
+          gridRow: "4 / 5",
+          label: "Manzil",
         },
 
         {
-          name: "Kim tomondan",
+          name: "from",
           type: SELECT,
           required: true,
-          placeholder: "Kim Tomondan",
-          // template: HududTemplate,
+          placeholder: "Kim tomondan",
           options: "kim_tomondan",
-          label: "kim_tomondan",
+          label: "Kim tomondan",
           gridColumn: "6 / 9",
           gridRow: "4 / 5",
         },

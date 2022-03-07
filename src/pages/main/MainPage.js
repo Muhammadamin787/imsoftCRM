@@ -101,9 +101,9 @@ const MainPage = () => {
   }, [Panes]);
 
   const handleLog_out = () => {
-    DELETE(`/logout-user/${user.id}`);
+    DELETE(`/logout-user/${user?.id}`);
     dispatch(setUser(null));
-    localStorage.removeItem("token");
+    localStorage.clear();
   };
 
   const vse = [
@@ -113,8 +113,11 @@ const MainPage = () => {
     ...ClientTemplate?.tabs,
   ];
 
-  const filterAccessKey = (array) => array.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey))
-
+  const filterAccessKey = (array) =>
+    array.filter(
+      (item) =>
+        user?.access.includes(100) || user?.access.includes(item.accessKey)
+    );
 
   return (
     <Layout className="site-container">
@@ -199,24 +202,23 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {filterAccessKey(vse)
-            .map((page, i) =>
-              page.submenus ? (
-                page.submenus.map((sub, k) => (
-                  <Route
-                    key={k}
-                    path={sub.path}
-                    element={<PageController page={sub} key={sub?.path} />}
-                  />
-                ))
-              ) : (
+          {filterAccessKey(vse).map((page, i) =>
+            page.submenus ? (
+              page.submenus.map((sub, k) => (
                 <Route
-                  key={i}
-                  path={page.path}
-                  element={<PageController page={page} key={page?.path} />}
+                  key={k}
+                  path={sub.path}
+                  element={<PageController page={sub} key={sub?.path} />}
                 />
-              )
-            )}
+              ))
+            ) : (
+              <Route
+                key={i}
+                path={page.path}
+                element={<PageController page={page} key={page?.path} />}
+              />
+            )
+          )}
         </Routes>
         <GlobalModal />
         <InnerModal />

@@ -4,10 +4,9 @@ import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
 import { BaseUrl, Base } from "../../../BaseUrl";
-import {setValues} from "../../../redux/stored_reducer"
+import { setValues } from "../../../redux/stored_reducer";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -27,9 +26,10 @@ export class PicturesWall extends React.Component {
       previewVisible: false,
       previewImage: "",
       previewTitle: "",
-      fileList: props.fileList,
+      fileList: [],
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
       },
     };
   }
@@ -49,22 +49,24 @@ export class PicturesWall extends React.Component {
   };
 
   handleDelete = (e) => {
-    const {dispatch, values} = this?.props;
+    const { dispatch, values } = this?.props;
     DELETE(this.props.filePath + "/delete", {
       type: this.props.name,
       filename: e.response,
-    }).then((res) => {
-      dispatch(setValues({ ...values, [this?.props?.name]: null }));
-      toast.success("Rasm o'chirildi!");
-    }).catch((err) => {
-      toast.warn("Xatolik, fayl o'chmadi!")
-    });
-
-
+    })
+      .then((res) => {
+        dispatch(setValues({ ...values, [this?.props?.name]: null }));
+        toast.success("Rasm o'chirildi!");
+      })
+      .catch((err) => {
+        toast.warn("Xatolik, fayl o'chmadi!");
+      });
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue({ [this?.props?.name]: `${e.file.response}` });
+    this.props.handleChangeValue(
+      e.file.response && { [this?.props?.name]: `${e.file.response}` }
+    );
     this.setState({ fileList: e.fileList });
   };
 
@@ -90,9 +92,7 @@ export class PicturesWall extends React.Component {
         width: "100% !important",
         border: "1px solid #D9D9D9",
       },
-      previewModal: { marginTop: "-20px", maxHeight: "100px" },
     };
-
     return (
       <div
         className="file-uploader-label"
@@ -115,10 +115,10 @@ export class PicturesWall extends React.Component {
           visible={previewVisible}
           title={previewTitle}
           footer={null}
-          style={customStyles.previewModal}
           onCancel={this.handleCancel}
+          className="previewModal"
         >
-          <img alt="example" style={{ width: "100%" }} src={previewImage} />
+          <img className="modalImg" alt="example" src={previewImage} />
         </Modal>
       </div>
     );

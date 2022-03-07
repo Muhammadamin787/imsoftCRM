@@ -34,6 +34,7 @@ class UploadFile extends React.Component {
     imageUrl: "",
     headers: {
       Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
     },
   };
   handleChange = (info) => {
