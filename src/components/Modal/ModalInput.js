@@ -263,7 +263,7 @@ const ModalInput = (props) => {
             placeholder={placeholder}
             allowClear={false}
             value={getProperValueDate()}
-            format={"MM.DD.YYYY"}
+            format={"DD.MM.YYYY"}
             autoFocus
             required={required}
             onChange={(e, dateString) => {
@@ -370,7 +370,6 @@ const ModalInput = (props) => {
     case PICTURE_WALL:
       input = upload();
       break;
-
     case PASSWORD:
       input = (
         <label
@@ -397,7 +396,6 @@ const ModalInput = (props) => {
         </label>
       );
       break;
-
     case MULTIPLE_SELECT:
       const access = accessValues;
       const children = [];
@@ -440,7 +438,6 @@ const ModalInput = (props) => {
         </label>
       );
       break;
-
     default:
       break;
   }

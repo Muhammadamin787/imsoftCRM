@@ -29,6 +29,7 @@ export class PicturesWall extends React.Component {
       fileList: [],
       headers: {
         Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": "*",
       },
     };
   }
@@ -54,8 +55,10 @@ export class PicturesWall extends React.Component {
       filename: e.response,
     })
       .then((res) => {
-        dispatch(setValues({ ...values, [this?.props?.name]: null }));
-        toast.success("Rasm o'chirildi!");
+        if (res) {
+          dispatch(setValues({ ...values, [this?.props?.name]: null }));
+          toast.success("Rasm o'chirildi!");
+        }
       })
       .catch((err) => {
         toast.warn("Xatolik, fayl o'chmadi!");

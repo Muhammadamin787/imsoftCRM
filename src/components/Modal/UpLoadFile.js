@@ -8,16 +8,15 @@ import { DELETE } from "../../functions/Methods";
 import { LoadingOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from "react-redux"
-import { setValues } from '../../redux/stored_reducer'
-
+import { useDispatch, useSelector } from "react-redux";
+import { setValues } from "../../redux/stored_reducer";
 
 function beforeUpload(file) {
   const isJpgOrPng =
     file.type === "application/pdf" ||
     file.type === "application/msword" ||
     file.type ===
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     file.type === "image/jpeg" ||
     file.type === "image/png";
 
@@ -34,6 +33,7 @@ class UploadFile extends React.Component {
     imageUrl: "",
     headers: {
       Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
     },
   };
   handleChange = (info) => {
@@ -55,33 +55,32 @@ class UploadFile extends React.Component {
   };
 
   handleDelete = (info) => {
-    const {dispatch, values} = this.props;
-    
+    const { dispatch, values } = this.props;
+
     DELETE(this.props.filePath + "/delete", {
       type: this.props?.name,
       filename: this.state?.imageUrl,
     })
-    .then((res) => {
-      toast.success("Fayl o'chirildi!");
-      dispatch(setValues({ ...values, [this?.props?.name]: null }));
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    })
-    .catch((err) => {
-      toast.warn("Xatolik, fayl o'chmadi!");
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    });
+      .then((res) => {
+        toast.success("Fayl o'chirildi!");
+        dispatch(setValues({ ...values, [this?.props?.name]: null }));
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      })
+      .catch((err) => {
+        toast.warn("Xatolik, fayl o'chmadi!");
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      });
   };
-
 
   render() {
     const { loading, imageUrl } = this?.state;
