@@ -168,7 +168,7 @@ const MainPage = () => {
                   src={AccountPNG}
                   alt="Foydalanuvchi rasmi"
                 />
-                <h3>{user.name}</h3>
+                <h3>{user?.name}</h3>
               </div>
             }
             content={
