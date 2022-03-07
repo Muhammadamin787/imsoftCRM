@@ -1,5 +1,5 @@
 import React from "react";
-import { Upload, Modal } from "antd";
+import { Upload, Modal, Popover } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
@@ -26,7 +26,7 @@ export class PicturesWall extends React.Component {
       previewVisible: false,
       previewImage: "",
       previewTitle: "",
-      fileList: [],
+      fileList: this.props.fileList,
       headers: {
         Authorization: `Bearer ${token}`,
         "Access-Control-Allow-Origin": "*",
@@ -69,12 +69,12 @@ export class PicturesWall extends React.Component {
     this.props.handleChangeValue(
       e.file.response && { [this?.props?.name]: `${e.file.response}` }
     );
-    this.setState({ fileList: e.fileList });
+    this.props.setFileList(e.fileList);
   };
 
   render() {
-    const { previewVisible, previewImage, fileList, previewTitle } = this.state;
-    const { filePath } = this.props;
+    const { previewVisible, previewImage, previewTitle } = this.state;
+    const { filePath, fileList } = this.props;
     const uploadButton = (
       <div>
         <div>
@@ -95,34 +95,52 @@ export class PicturesWall extends React.Component {
         border: "1px solid #D9D9D9",
       },
     };
+
     return (
-      <div
-        className="file-uploader-label"
-        htmlFor="file-uploder"
-        style={customStyles.imageUploader}
-      >
-        <Upload
-          action={BaseUrl + filePath}
-          headers={this.state.headers}
-          listType="picture-card"
-          fileList={fileList}
-          name={this.props.fileName}
-          onPreview={this.handlePreview}
-          onRemove={this.handleDelete}
-          onChange={this.handleChange}
+      <>
+        <div
+          className="file-uploader-label"
+          htmlFor="file-uploder"
+          style={customStyles.imageUploader}
         >
-          {fileList.length >= 1 ? null : uploadButton}
-        </Upload>
-        <Modal
-          visible={previewVisible}
-          title={previewTitle}
-          footer={null}
-          onCancel={this.handleCancel}
-          className="previewModal"
-        >
-          <img className="modalImg" alt="example" src={previewImage} />
-        </Modal>
-      </div>
+          <Upload
+            action={BaseUrl + filePath}
+            headers={this.state.headers}
+            listType="picture-card"
+            fileList={fileList}
+            name={this.props.fileName}
+            onPreview={this.handlePreview}
+            onRemove={this.handleDelete}
+            onChange={this.handleChange}
+          >
+            {fileList.length >= 1 ? null : uploadButton}
+          </Upload>
+          <div className="file-uploader-name">
+            <Popover
+              placement="rightBottom"
+              content={
+                <div
+                  style={{ width: "100px !important", wordBreak: "break" }}
+                  className="file-uploader-span"
+                >
+                  {fileList[0]?.name}
+                </div>
+              }
+            >
+              <span>{fileList[0]?.name}</span>
+            </Popover>
+          </div>
+          <Modal
+            visible={previewVisible}
+            title={previewTitle}
+            footer={null}
+            onCancel={this.handleCancel}
+            className="previewModal"
+          >
+            <img className="modalImg" alt="example" src={previewImage} />
+          </Modal>
+        </div>
+      </>
     );
   }
 }

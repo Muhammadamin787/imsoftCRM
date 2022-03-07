@@ -29,6 +29,7 @@ import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { accessValues } from "../../constant/constants";
+import { Base } from "../../BaseUrl";
 
 const { TextArea } = Input;
 
@@ -38,6 +39,8 @@ const ModalInput = (props) => {
   const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
+  const [fileList, setFileList] = useState([]);
+  const [imgUrl, setImgUrl] = useState("");
 
   const {
     autoSelect,
@@ -94,29 +97,24 @@ const ModalInput = (props) => {
     }
   };
 
-  const upload = useCallback(() => {
-    return (
-      <PicturesWall
-        gridColumn={gridColumn}
-        gridRow={gridRow}
-        filePath={filePath}
-        name={name}
-        dispatch={dispatch}
-        values={values}
-        handleChangeValue={handleChangeValue}
-        fileName={fileName ? fileName : ""}
-        fileList={
-          values[name] && [
-            {
-              uid: "-1",
-              name: "image.png",
-              status: "done",
-              url: values[name],
-            },
-          ]
-        }
-      />
-    );
+  useEffect(() => {
+    if (type === PICTURE_WALL) {
+      setFileList(
+        values[name]
+          ? [
+              {
+                uid: "-1",
+                name: fileList[0]?.name ? fileList[0]?.name : "image.png",
+                status: "done",
+                url: Base + values[name],
+              },
+            ]
+          : []
+      );
+    }
+    if (type === UPLOAD) {
+      setImgUrl(values[name] ? values[name] : "");
+    }
   }, [values]);
 
   switch (type) {
@@ -350,6 +348,8 @@ const ModalInput = (props) => {
           label={label}
           dispatch={dispatch}
           values={values}
+          imageUrl={imgUrl}
+          setUrl={setImgUrl}
         />
       );
       break;
@@ -368,7 +368,20 @@ const ModalInput = (props) => {
       );
       break;
     case PICTURE_WALL:
-      input = upload();
+      input = (
+        <PicturesWall
+          gridColumn={gridColumn}
+          gridRow={gridRow}
+          filePath={filePath}
+          name={name}
+          dispatch={dispatch}
+          values={values}
+          handleChangeValue={handleChangeValue}
+          fileName={fileName ? fileName : ""}
+          fileList={fileList}
+          setFileList={setFileList}
+        />
+      );
       break;
     case PASSWORD:
       input = (

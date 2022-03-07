@@ -80,7 +80,7 @@ const SearchInput = () => {
                   <PaintBackground
                     text={`${
                       item?.dataIndex === "created_at"
-                        ? moment(text).format("DD/MM/YYYY")
+                        ? moment(text).format("DD-MM-YYYY")
                         : text
                     }`}
                     // text={`${text}`}

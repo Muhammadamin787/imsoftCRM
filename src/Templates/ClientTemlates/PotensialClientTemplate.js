@@ -34,15 +34,7 @@ const PotensialClientTemplate = {
     },
     tabs: [CommonTemplate, ContactsTemplate, CommentsTemplate],
   },
-  filters: [
-    "home_address",
-    "address_name",
-    "state_name",
-    "region_name",
-    "category_id",
-    "activity_type_name",
-    "created_at",
-  ],
+  filters: ["state_name", "region_name", "category_id", "activity_type_name"],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -97,9 +89,9 @@ const PotensialClientTemplate = {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            position: "relative"
+            position: "relative",
           }}
-        > 
+        >
           <ImgZoom src={record?.file_1} />
           <ImgZoom src={record?.file_2} />
           <ImgZoom src={record?.file_3} />

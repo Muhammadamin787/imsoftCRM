@@ -105,8 +105,8 @@ const MainPage = () => {
         toast.success(res.data.message);
       }
     });
-    dispatch(setUser(null));
     localStorage.clear();
+    dispatch(setUser(null));
   };
 
   const vse = [
