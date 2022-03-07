@@ -1,8 +1,8 @@
 import React from "react";
-import {REKLAMALAR_PATH, USERS_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {MULTIPLE_SELECT, PASSWORD, PHONE, STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { USERS_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { MULTIPLE_SELECT, PASSWORD, PHONE, STRING } from "../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
 
 const UsersTemplate = {
     accessKey: 13,
@@ -14,8 +14,7 @@ const UsersTemplate = {
     isOpenModal: false,
     modal: {
         style: {
-            width: 550,
-            // marginTop: "-70px"
+            width: 600,
         }
     },
     form: [
@@ -71,7 +70,7 @@ const UsersTemplate = {
     ],
     columns: [
         {
-            title: <FieldNumberOutlined/>,
+            title: <FieldNumberOutlined />,
             dataIndex: "id",
             key: "id",
             width: "5%",

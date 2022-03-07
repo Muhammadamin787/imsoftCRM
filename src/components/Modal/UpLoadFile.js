@@ -1,4 +1,4 @@
-import { Upload, message } from "antd";
+import { Upload } from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
@@ -56,31 +56,31 @@ class UploadFile extends React.Component {
   };
 
   handleDelete = (info) => {
-    const {dispatch, values} = this.props;
-    
+    const { dispatch, values } = this.props;
+
     DELETE(this.props.filePath + "/delete", {
       type: this.props?.name,
       filename: this.state?.imageUrl,
     })
-    .then((res) => {
-      toast.success("Fayl o'chirildi!");
-      dispatch(setValues({ ...values, [this?.props?.name]: null }));
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    })
-    .catch((err) => {
-      toast.warn("Xatolik, fayl o'chmadi!");
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    });
+      .then((res) => {
+        toast.success("Fayl o'chirildi!");
+        dispatch(setValues({ ...values, [this?.props?.name]: null }));
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      })
+      .catch((err) => {
+        toast.warn("Xatolik, fayl o'chmadi!");
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      });
   };
 
 

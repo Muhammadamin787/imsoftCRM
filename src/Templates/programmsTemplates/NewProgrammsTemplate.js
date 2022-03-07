@@ -7,9 +7,9 @@ import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesLi
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {
-    STRING,
-    DATE,
-    SELECT,
+  STRING,
+  DATE,
+  SELECT,
 } from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
@@ -120,7 +120,7 @@ export const NewProgrammsTemplate = {
       key: "number",
       width: "10%",
       align: "center",
-      render: (text, data, index) => ++index,
+      render: (index) => ++index,
     },
     {
       title: "Mijoz F.I.O",

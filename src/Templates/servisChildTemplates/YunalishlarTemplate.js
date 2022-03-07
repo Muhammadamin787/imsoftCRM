@@ -1,7 +1,7 @@
 import React from "react";
-import {YUNALISHLAR_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {STRING} from "../../components/Modal/InputTypes";
+import { YUNALISHLAR_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { STRING } from "../../components/Modal/InputTypes";
 
 const YunalishlarTemplate = {
     accessKey: 7,
@@ -10,7 +10,7 @@ const YunalishlarTemplate = {
     icon: "Yunalishlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    mainUrl:"/categories",
+    mainUrl: "/categories",
     modal: {
         style: {
             // width: 500,
@@ -38,7 +38,7 @@ const YunalishlarTemplate = {
             key: "number",
             width: "5%",
             align: "center",
-            render: (text, data, index) => ++index
+            render: (index) => ++index
         },
         {
             title: "Yo'nalish nomi",

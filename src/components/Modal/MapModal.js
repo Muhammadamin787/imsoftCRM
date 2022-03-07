@@ -1,15 +1,15 @@
-import {inputDeafultHeght} from "../../constant/deafultStyle";
-import React, {Component} from "react";
-import {YMaps, Map, FullscreenControl, Placemark} from "react-yandex-maps";
+import { inputDeafultHeght } from "../../constant/deafultStyle";
+import React, { Component } from "react";
+import { YMaps, Map, FullscreenControl, Placemark } from "react-yandex-maps";
 
 export default class MapModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
             // coords: this?.props?.geo?.length == 2 ? this?.props?.value : [],
-            coords: this?.props?.geo?this.props.geo:[],
+            coords: this?.props?.geo ? this.props.geo : [],
             mapState: {
-                center: this?.props?.geo?this.props.geo:[40.382352644806545, 71.77953969910632],
+                center: this?.props?.geo ? this.props.geo : [40.382352644806545, 71.77953969910632],
                 zoom: 6,
             },
         };
@@ -17,7 +17,7 @@ export default class MapModal extends Component {
 
 
     onMapClick = (e) => {
-        this.setState({coords: e.get("coords")});
+        this.setState({ coords: e.get("coords") });
         this.props.handleChangeValue({
             latitude: this.state.coords[0],
             longitude: this.state.coords[1],
@@ -44,9 +44,9 @@ export default class MapModal extends Component {
                     }}
                 >
                     {this.state.coords ? (
-                        <Placemark geometry={this.state.coords}/>
+                        <Placemark geometry={this.state.coords} />
                     ) : null}
-                    <FullscreenControl/>
+                    <FullscreenControl />
                 </Map>
             </YMaps>
         );

@@ -3,7 +3,7 @@ import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
-import { BaseUrl, Base } from "../../../BaseUrl";
+import { BaseUrl } from "../../../BaseUrl";
 import { setValues } from "../../../redux/stored_reducer";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -81,6 +81,7 @@ export class PicturesWall extends React.Component {
         Upload
       </div>
     );
+
 
     const customStyles = {
       imageUploader: {

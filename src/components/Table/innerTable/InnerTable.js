@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Table, Form, Button } from "antd";
+import React from "react";
+import { Table } from "antd";
 import { setValues, setValuesKey } from "../../../redux/stored_reducer";
 import { useDispatch, useSelector } from "react-redux";
 import "../GlobalTable.scss";
@@ -15,6 +15,7 @@ const InnerTable = ({ innerTable }) => {
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
   };
+
   return (
     <div className="innerTable">
       <button
@@ -33,7 +34,6 @@ const InnerTable = ({ innerTable }) => {
           dataSource={[]}
           size={"small"}
           scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
-          // pagination={{ position: ["bottomCenter"] }}
         />
       </div>
     </div>

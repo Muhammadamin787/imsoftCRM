@@ -15,7 +15,7 @@ const FaolyatTurlaiTemplate = {
   mainUrl: "/activity-types",
   allData: {
     categories: "/categories",
-},
+  },
   form: [
     {
       grid: "1fr",
@@ -33,9 +33,9 @@ const FaolyatTurlaiTemplate = {
           name: "category_id",
           required: true,
           type: SELECT,
-          template:YunalishlarTemplate,
+          template: YunalishlarTemplate,
           options: "categories",
-      },
+        },
       ],
     },
   ],
@@ -46,7 +46,7 @@ const FaolyatTurlaiTemplate = {
       key: "id",
       width: "10%",
       align: "center",
-      render: (text, data, index) => ++index,
+      render: (index) => ++index,
     },
     {
       title: "Faoliyat turi",

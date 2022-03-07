@@ -78,11 +78,10 @@ const SearchInput = () => {
               return (
                 <div className="hodim-template">
                   <PaintBackground
-                    text={`${
-                      item?.dataIndex === "created_at"
+                    text={`${item?.dataIndex === "created_at"
                         ? moment(text).format("DD/MM/YYYY")
                         : text
-                    }`}
+                      }`}
                     // text={`${text}`}
                     value={`${value}`}
                   />

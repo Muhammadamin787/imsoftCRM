@@ -33,18 +33,6 @@ const InnerModal = () => {
   const [getReqActive, setGetReqActive] = useState(false);
   const [btnActive, setBtnActive] = useState(false);
 
-  // useEffect(() => {
-  //   if (currentPage && currentPage.isOpenModal) {
-  //     let currentData = currentPage?.allData;
-  //     for (const url in currentData) {
-  //       let res = axios(currentData[url]);
-  //       res.then((res) => {
-  //         dispatch(setAllData({ [url]: res.data.data }));
-  //       });
-  //     }
-  //   }
-  // }, [values2, innerModal, currentPage]);
-
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };

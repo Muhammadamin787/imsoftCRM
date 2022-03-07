@@ -42,13 +42,6 @@ const ReklamalarTemplate = {
       width: "95%",
     },
   ],
-  data: [
-    {
-      number: "1",
-      reklama_nomi: "Instagram mitti.me",
-      key: 1,
-    },
-  ],
 };
 
 export default ReklamalarTemplate;
