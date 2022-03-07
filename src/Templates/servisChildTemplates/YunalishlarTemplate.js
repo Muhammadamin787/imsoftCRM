@@ -5,7 +5,7 @@ import {STRING} from "../../components/Modal/InputTypes";
 
 const YunalishlarTemplate = {
     accessKey: 7,
-    text: "Yunalishlar",
+    text: "Yo'nalishlar",
     path: YUNALISHLAR_PATH,
     icon: "Yunalishlar",
     type: SERVIS_CHILD_PAGES,

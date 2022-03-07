@@ -37,8 +37,7 @@ import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
 import { GET, POST, DELETE } from "../../functions/Methods";
 import { setUser } from "../../redux/auth_reducer";
-import moment from "moment";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -101,9 +100,13 @@ const MainPage = () => {
   }, [Panes]);
 
   const handleLog_out = () => {
-    DELETE(`/logout-user/${user.id}`);
+    DELETE(`/logout-user/${user?.id}`).then((res) => {
+      if (res) {
+        toast.success(res.data.message);
+      }
+    });
+    localStorage.clear();
     dispatch(setUser(null));
-    localStorage.removeItem("token");
   };
 
   const vse = [
@@ -113,8 +116,11 @@ const MainPage = () => {
     ...ClientTemplate?.tabs,
   ];
 
-  const filterAccessKey = (array) => array.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey))
-
+  const filterAccessKey = (array) =>
+    array.filter(
+      (item) =>
+        user?.access.includes(100) || user?.access.includes(item.accessKey)
+    );
 
   return (
     <Layout className="site-container">
@@ -168,7 +174,7 @@ const MainPage = () => {
                   src={AccountPNG}
                   alt="Foydalanuvchi rasmi"
                 />
-                <h3>{user.name}</h3>
+                <h3>{user?.name}</h3>
               </div>
             }
             content={
@@ -199,24 +205,23 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {filterAccessKey(vse)
-            .map((page, i) =>
-              page.submenus ? (
-                page.submenus.map((sub, k) => (
-                  <Route
-                    key={k}
-                    path={sub.path}
-                    element={<PageController page={sub} key={sub?.path} />}
-                  />
-                ))
-              ) : (
+          {filterAccessKey(vse).map((page, i) =>
+            page.submenus ? (
+              page.submenus.map((sub, k) => (
                 <Route
-                  key={i}
-                  path={page.path}
-                  element={<PageController page={page} key={page?.path} />}
+                  key={k}
+                  path={sub.path}
+                  element={<PageController page={sub} key={sub?.path} />}
                 />
-              )
-            )}
+              ))
+            ) : (
+              <Route
+                key={i}
+                path={page.path}
+                element={<PageController page={page} key={page?.path} />}
+              />
+            )
+          )}
         </Routes>
         <GlobalModal />
         <InnerModal />

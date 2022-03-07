@@ -7,7 +7,7 @@ import { setTableItem } from "../../redux/stored_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
-  const {loading} = useSelector((s) => s.tabs_reducer)
+  const { loading } = useSelector((s) => s.tabs_reducer)
 
   const {
     // loading,
@@ -18,7 +18,7 @@ const GlobalTable = () => {
 
 
 
-  const {mainData} = useSelector((state) => state?.unsaved_reducer)
+  const { mainData } = useSelector((state) => state?.unsaved_reducer)
   const dispatch = useDispatch();
   const { filters, columns, tableItem } = currentPage;
 
@@ -47,6 +47,19 @@ const GlobalTable = () => {
   useEffect(() => {
     filterAdd();
   }, [currentPage, mainData]);
+
+
+
+  const onClickRow = record => {
+    return {
+      onClick: () => {
+        dispatch(setTableItem([record]));
+      },
+    };
+  };
+
+
+
   return (
     <Table
       bordered
@@ -57,10 +70,13 @@ const GlobalTable = () => {
       size={"small"}
       scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
       pagination={{ position: ["bottomCenter"] }}
+
       rowSelection={{
         type: "checkbox",
         ...rowSelection,
       }}
+
+      onRow={onClickRow}
     />
   );
 };

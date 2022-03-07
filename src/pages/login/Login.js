@@ -5,35 +5,31 @@ import Logo from "../../assets/logo/logo.png";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/auth_reducer";
 import { POST } from "../../functions/Methods";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
   const dispatch = useDispatch();
-  const [wait, setWait] = useState(true);
+  const [wait, setWait] = useState(false);
 
   const onFinish = (e) => {
-    setWait(false);
-
-    // {login:"sdfg", password:"esdgfrew"}
+    setWait(true);
 
     POST("/login-user", e)
       .then((res) => {
         if (res.status == "200") {
+          toast.success("Xush kelibsiz");
           dispatch(setUser(res.data.data));
           localStorage.setItem("token", res.data.data.token);
-          toast.success("Xush kelibsiz");
         }
       })
-      .catch((e) => {
-        return (
-          toast.error("Qayta uriib kuring ❗") &&
-          setWait(true)
-        );
+      .catch((err) => {
+        setWait(false);
       });
   };
 
   return (
     <div className={"login_wrapper"}>
+      <ToastContainer />
       <Form className={"login_form"} name="basic" onFinish={onFinish}>
         <div className="login_logo">
           <img height="40" src={Logo} alt="logo" />
@@ -56,7 +52,7 @@ const Login = () => {
           <Button
             htmlType="submit"
             className={"action_btn main-btn"}
-            loading={!wait}
+            loading={wait}
           >
             Kirish
           </Button>

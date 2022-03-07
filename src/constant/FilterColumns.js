@@ -7,21 +7,17 @@ export default (filters, columns, data) => {
     filteredCols = filteredCols.map((a) => {
       if (a.dataIndex == d) {
         let filtereds = _.uniqBy(data, (e) => e[d]).map((k) => {
-          return {
-            text: k[d],
-            value: k[d],
-          };
-          // if (d === "time_create") {
-          //   return {
-          //     text: moment(k[d]).format("DD.MM.YYYY") || "",
-          //     value: moment(k[d]).format("DD.MM.YYYY") || "",
-          //   };
-          // } else {
-          //   return {
-          //     text: k[d],
-          //     value: k[d],
-          //   };
-          // }
+          if (d === "created_at") {
+            return {
+              text: moment(k[d]).format("DD-MM-YYYY") || "",
+              value: moment(k[d]).format("DD-MM-YYYY") || "",
+            };
+          } else {
+            return {
+              text: k[d],
+              value: k[d],
+            };
+          }
         });
         return {
           ...a,

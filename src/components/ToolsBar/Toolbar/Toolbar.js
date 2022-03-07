@@ -38,44 +38,33 @@ const Toolbar = () => {
   );
 
   const handleModalClick = () => {
-    // const newPanes = Panes?.map((page) =>
-    //   page?.path === currentPage?.path
-    //     ? { ...page, isOpenModal: !currentPage?.isOpenModal }
-    //     : page
-    // );
-    // const newCurrentPage = {
-    //   ...currentPage,
-    //   isOpenModal: !currentPage?.isOpenModal,
-    // };
-
-    dispatch(
-      toggleModal(true)
-      // changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
-    );
+    dispatch(toggleModal(true));
   };
 
   const onRemove = async () => {
     const url = currentPage?.mainUrl;
-    if (tableItem.length > 0) {
-      let ids = tableItem.map((row) => {
-        return row.id;
-      });
-      dispatch(startLoading());
-      DELETE(url + "/delete", ids).then((res) => {
+    let ids = tableItem.map((row) => {
+      return row.id;
+    });
+
+    DELETE(url + "/delete", ids).then((res) => {
+      if (res) {
+        dispatch(startLoading());
+        toast.success("Muvaffaqiyatlik o'chirildi");
         GET(
           removeApiStatusLines.includes(url)
             ? `${url}/status/${currentPage?.key}`
             : url
         ).then((res2) => {
-          dispatch(setData(res2.data.data));
-          dispatch(setValues({}));
-          dispatch(setTableItem([]));
-          dispatch(stopLoading());
+          if (res2) {
+            dispatch(setData(res2.data.data));
+            dispatch(setValues({}));
+            dispatch(setTableItem([]));
+            dispatch(stopLoading());
+          }
         });
-      });
-    } else {
-      toast.error("Qator belgilang");
-    }
+      }
+    });
   };
 
   const onEdit = () => {
@@ -92,6 +81,7 @@ const Toolbar = () => {
       placement: "top",
       title: "1 ta qatorni belgilng!",
       okText: "tushundim",
+      showCancel: false,
     },
   };
 
@@ -117,13 +107,23 @@ const Toolbar = () => {
     },
     {
       icon: findIcon("DeleteIcon"),
-      pop: {
-        placement: "top",
-        title: "Malumotni o'chirmoqchimisiz!",
-        onConfirm: onRemove,
-        okText: "Ha",
-        cancelText: "Yo'q",
-      },
+      pop:
+        tableItem.length > 0
+          ? {
+              placement: "top",
+              title: "Malumotni o'chirmoqchimisiz!",
+              cancelText: "Yo'q",
+              okText: "Ha",
+              onConfirm: onRemove,
+            }
+          : noPopEdit.pop,
+      // pop: {
+      //   placement: "top",
+      //   title: "Malumotni o'chirmoqchimisiz!",
+      //   cancelText: "Yo'q",
+      //   okText: "Ha",
+      //   onConfirm: onRemove,
+      // },
       tooltip: {
         placement: "bottom",
         text: "O'chirish",
@@ -145,7 +145,7 @@ const Toolbar = () => {
       <div className="toolbar__tools">
         {ToolBarButtons?.map((button, i) =>
           button.pop ? (
-            <Popconfirm {...button.pop} showCancel={false}>
+            <Popconfirm {...button.pop}>
               <Tooltip
                 placement={button?.tooltip?.placement}
                 title={button?.tooltip?.text}

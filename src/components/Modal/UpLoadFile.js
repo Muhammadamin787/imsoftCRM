@@ -1,4 +1,4 @@
-import { Upload, message } from "antd";
+import { Upload, Popover } from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
@@ -8,16 +8,15 @@ import { DELETE } from "../../functions/Methods";
 import { LoadingOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch, useSelector } from "react-redux"
-import { setValues } from '../../redux/stored_reducer'
-
+import { useDispatch, useSelector } from "react-redux";
+import { setValues } from "../../redux/stored_reducer";
 
 function beforeUpload(file) {
   const isJpgOrPng =
     file.type === "application/pdf" ||
     file.type === "application/msword" ||
     file.type ===
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     file.type === "image/jpeg" ||
     file.type === "image/png";
 
@@ -31,9 +30,9 @@ const token = localStorage.getItem("token");
 class UploadFile extends React.Component {
   state = {
     loading: false,
-    imageUrl: "",
+    fileName: "",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
   handleChange = (info) => {
@@ -44,49 +43,59 @@ class UploadFile extends React.Component {
     if (info.file.status === "done" && info.file?.response) {
       toast.success("File saqlandi");
       this.props.onChange({
-        // [this.props.name]: `${Base}${info?.file?.response}`
         [this.props.name]: `${info?.file?.response}`,
       });
+      this.props.setUrl(`${Base}${info?.file?.response}`);
       this.setState({
-        imageUrl: `${Base}${info?.file?.response}`,
         loading: false,
       });
+      this.setState({
+        fileName: info.file.name,
+      });
+      this.setState({ fileList: info });
     }
   };
 
   handleDelete = (info) => {
-    const {dispatch, values} = this.props;
-    
+    const { dispatch, values } = this.props;
+
     DELETE(this.props.filePath + "/delete", {
       type: this.props?.name,
       filename: this.state?.imageUrl,
     })
-    .then((res) => {
-      toast.success("Fayl o'chirildi!");
-      dispatch(setValues({ ...values, [this?.props?.name]: null }));
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    })
-    .catch((err) => {
-      toast.warn("Xatolik, fayl o'chmadi!");
-      setTimeout(() => {
-        this.setState({
-          imageUrl: "",
-          loading: false,
-        });
-      }, 0);
-    });
+      .then((res) => {
+        toast.success("Fayl o'chirildi!");
+        dispatch(setValues({ ...values, [this?.props?.name]: null }));
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      })
+      .catch((err) => {
+        toast.warn("Xatolik, fayl o'chmadi!");
+        setTimeout(() => {
+          this.setState({
+            imageUrl: "",
+            loading: false,
+          });
+        }, 0);
+      });
   };
 
-
   render() {
-    const { loading, imageUrl } = this?.state;
-    const { gridColumn, gridRow, height, label, name, placeholder, filePath } =
-      this?.props;
+    const { loading } = this?.state;
+    const {
+      gridColumn,
+      gridRow,
+      imageUrl,
+      height,
+      label,
+      name,
+      placeholder,
+      filePath,
+    } = this?.props;
 
     const showFileStatus = () => {
       if (loading) {
@@ -97,19 +106,41 @@ class UploadFile extends React.Component {
       } else if (imageUrl) {
         // bu file saqlangandagi holat
         return (
-          <button
-            type="button"
-            className="delete-file-btn"
-            onClick={this.handleDelete}
-          >
-            <DeleteIcon />
-          </button>
+          <div>
+            <button
+              type="button"
+              className="delete-file-btn"
+              onClick={this.handleDelete}
+            >
+              <DeleteIcon />
+            </button>
+            <div className="file-uploader-name">
+              <Popover
+                placement="rightBottom"
+                content={
+                  <div className="file-uploader-span">
+                    {this.state.fileName}
+                  </div>
+                }
+              >
+                <span>{this.state.fileName}</span>
+              </Popover>
+            </div>
+          </div>
         );
       }
     };
 
     const customStyles = {
-      fileIconStyle: { position: "relative", top: "-7px", left: "-2px" },
+      fileIconStyle: {
+        position: "relative",
+        backgroundColor: "white",
+        top: "-44px",
+        left: "0px",
+        width: "100%",
+        height: "100%",
+        paddingTop: "10px",
+      },
       labelStyle: {
         gridColumn,
         gridRow,
@@ -142,7 +173,7 @@ class UploadFile extends React.Component {
         >
           {" "}
         </Upload>
-        <span style={customStyles.fileIconStyle}>{showFileStatus()}</span>
+        <div style={customStyles.fileIconStyle}>{showFileStatus()}</div>
       </label>
     );
   }
