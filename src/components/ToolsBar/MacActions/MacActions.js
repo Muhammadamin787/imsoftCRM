@@ -4,6 +4,7 @@ import {
   setCurrentPage,
   clearPanes,
   removePositionPanes,
+  setValues,
 } from "../../../redux/stored_reducer";
 import { FullscreenExitOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -33,6 +34,7 @@ const MacActions = ({ onResize, onHide, onExit }) => {
       navigate(Panes[Panes.length - 1].path);
       handlePanes(position, el);
     }
+    
   };
   function handlePanes(id, el) {
     if (el) {

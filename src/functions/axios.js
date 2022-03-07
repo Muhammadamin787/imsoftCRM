@@ -22,17 +22,12 @@ export default async (url, method = "GET", data = null, id = null) => {
       },
     });
   } catch (error) {
-    if (error.message.includes("401")) {
-      console.log("ishladim");
-      toast[key]("Login yoki Password notug'ri");
-    }
-    if (error.message.includes("500")) {
-      toast[key]("Formani to'ldiring!");
-    } else if (error.message.includes("400")) {
+    if (error.message.includes("400")) {
       toast.warn("Oldin bog'langan ma'lumitlarni o'chiring");
+    } else if (error.message.includes("401")) {
+      toast.error(error?.response?.data?.message);
     } else if (error.message.includes("422")) {
       const format = error.response.data?.errors;
-
       if (typeof format === "object") {
         Object.keys(format ? format : {}).forEach((item) => {
           format[item].forEach((mes) => {
@@ -42,6 +37,8 @@ export default async (url, method = "GET", data = null, id = null) => {
       } else {
         toast.error(`${format}`);
       }
+    } else if (error.message.includes("500")) {
+      toast[key]("Serverda bilan ulanishda xatolik bor!");
     }
   }
 };

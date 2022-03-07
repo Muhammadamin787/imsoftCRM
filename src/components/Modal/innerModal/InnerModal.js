@@ -30,6 +30,8 @@ const InnerModal = () => {
     bottom: 0,
     right: 0,
   });
+  const [getReqActive, setGetReqActive] = useState(false);
+  const [btnActive, setBtnActive] = useState(false);
 
   // useEffect(() => {
   //   if (currentPage && currentPage.isOpenModal) {
@@ -60,36 +62,16 @@ const InnerModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const url = innerModal?.mainUrl;
-    const requiredInputs = [];
-
-    innerModal.form.forEach((el) => {
-      el.inputs.forEach((d) => {
-        if (d?.required) {
-          requiredInputs.push(d);
-        }
-      });
-    });
-    let isNotErrors = false;
-    requiredInputs.map((d) => {
-      if (!values2[d.name]) {
-        return toast.error(d.label + "ni kiritmadingiz");
-      } else {
-        isNotErrors = true;
-      }
-    });
-
-    if (isNotErrors) {
-      POST(url, values2).then((res) => {
-        toast.success(res.data.data);
+    setBtnActive(true);
+    POST(url, values2).then((res) => {
+      if (res) {
+        setGetReqActive(true);
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
-        GET(url).then((res) => {
-          dispatch(setAllData(res.data.data));
-        });
-      });
-      dispatch(toggleInnerModal(false));
-      dispatch(setOffInnerModel(false));
-    }
+        toast.success(res.data.data.name + " Muaffaqiyatlik qo'shildi");
+      }
+      setBtnActive(false);
+    });
   };
 
   const onStart = (event, uiData) => {
@@ -105,6 +87,19 @@ const InnerModal = () => {
       bottom: clientHeight - (targetRect.bottom - uiData.y),
     });
   };
+
+  useEffect(() => {
+    const url = innerModal?.mainUrl;
+    if (getReqActive) {
+      GET(url).then((res) => {
+        dispatch(setAllData(res.data.data));
+        dispatch(setOffInnerModel(false));
+        dispatch(toggleInnerModal(false));
+        setGetReqActive(false);
+        setBtnActive(false);
+      });
+    }
+  }, [getReqActive]);
 
   return (
     <Modal
@@ -175,6 +170,7 @@ const InnerModal = () => {
             type="submit"
             className="modal-form__button saqlash"
             onClick={(e) => handleSubmit(e)}
+            loading={btnActive}
           >
             Saqlash
           </Button>

@@ -146,14 +146,14 @@ export const NewProgrammsTemplate = {
     },
     {
       title: "Ish olingan vaqti",
-      dataIndex: "start_date",
+      dataIndex: "created_at",
       key: "start_date",
       width: "30%",
       align: "center",
     },
     {
       title: "Ish topshirish vaqti",
-      dataIndex: "finish_date",
+      dataIndex: "created_at",
       key: "finish_date",
       width: "40%",
       align: "center",

@@ -101,7 +101,7 @@ const MainPage = () => {
   }, [Panes]);
 
   const handleLog_out = () => {
-    DELETE(`/logout-user/${user.id}`);
+    DELETE(`/logout-user/${user?.id}`);
     dispatch(setUser(null));
     localStorage.clear();
   };

@@ -7,7 +7,7 @@ import YunalishlarTemplate from "./YunalishlarTemplate";
 
 const FaolyatTurlaiTemplate = {
   accessKey: 5,
-  text: "Faolyat turlari",
+  text: "Faoliyat turlari",
   path: FAOLYAT_TURLARI_PATH,
   icon: "Faoliyat",
   type: SERVIS_CHILD_PAGES,

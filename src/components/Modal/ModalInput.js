@@ -263,6 +263,7 @@ const ModalInput = (props) => {
             placeholder={placeholder}
             allowClear={false}
             value={getProperValueDate()}
+            format={"MM.DD.YYYY"}
             autoFocus
             required={required}
             onChange={(e, dateString) => {

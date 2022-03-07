@@ -63,7 +63,9 @@ export class PicturesWall extends React.Component {
   };
 
   handleChange = (e) => {
-    this.props.handleChangeValue(e.file.response && { [this?.props?.name]: `${e.file.response}` });
+    this.props.handleChangeValue(
+      e.file.response && { [this?.props?.name]: `${e.file.response}` }
+    );
     this.setState({ fileList: e.fileList });
   };
 
@@ -89,9 +91,7 @@ export class PicturesWall extends React.Component {
         width: "100% !important",
         border: "1px solid #D9D9D9",
       },
-      previewModal: { marginTop: "-20px", maxHeight: "100px" },
     };
-    console.log(this.state.fileList);
     return (
       <div
         className="file-uploader-label"
@@ -108,18 +108,16 @@ export class PicturesWall extends React.Component {
           onRemove={this.handleDelete}
           onChange={this.handleChange}
         >
-          {this.state.fileList && this.state.fileList[0]?.name}
           {fileList.length >= 1 ? null : uploadButton}
         </Upload>
-        {/* <h1>{this.state.fileList && this.state.fileList[0]?.name}</h1> */}
         <Modal
           visible={previewVisible}
           title={previewTitle}
           footer={null}
-          style={customStyles.previewModal}
           onCancel={this.handleCancel}
+          className="previewModal"
         >
-          <img alt="example" style={{ width: "100%" }} src={previewImage} />
+          <img className="modalImg" alt="example" src={previewImage} />
         </Modal>
       </div>
     );

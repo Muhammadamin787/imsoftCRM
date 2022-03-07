@@ -61,14 +61,17 @@ const GlobalModal = () => {
   };
 
   const handleChangeValue = (e) => {
-    if(e){
+    if (e) {
       dispatch(setValues({ ...values, ...e }));
     }
   };
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
-    // dispatch(setValues({}));
+  };
+  const currentPageSetModal = () => {
+    dispatch(setValues({}));
+    dispatch(toggleModal(false));
   };
   const { mainUrl, key } = currentPage;
 
@@ -140,7 +143,7 @@ const GlobalModal = () => {
           <div className="modal-header">
             <span>{currentPage?.text}</span>
             <div className="modal-header__buttons">
-              <MacActions onExit={handleCancel} onResize={resizeModal} />
+              <MacActions onExit={currentPageSetModal} onResize={resizeModal} />
             </div>
           </div>
         </div>
