@@ -37,8 +37,7 @@ import SearchInput from "../../components/SearchInput/SearchInput";
 import LocModal from "../../components/Location/LocModal";
 import { GET, POST, DELETE } from "../../functions/Methods";
 import { setUser } from "../../redux/auth_reducer";
-import moment from "moment";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -101,9 +100,13 @@ const MainPage = () => {
   }, [Panes]);
 
   const handleLog_out = () => {
-    DELETE(`/logout-user/${user?.id}`);
-    dispatch(setUser(null));
+    DELETE(`/logout-user/${user?.id}`).then((res) => {
+      if (res) {
+        toast.success(res.data.message);
+      }
+    });
     localStorage.clear();
+    dispatch(setUser(null));
   };
 
   const vse = [

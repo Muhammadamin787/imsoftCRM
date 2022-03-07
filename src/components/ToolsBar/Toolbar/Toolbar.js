@@ -33,10 +33,10 @@ const addButtonIsDisabled = [
 const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const currentPageIcon = findIcon(currentPage?.icon);
   const { currentPage, tableItem } = useSelector(
     (state) => state.tabs_reducer
   );
+  const currentPageIcon = findIcon(currentPage?.icon);
 
   useEffect(() => {
     setCurrentPagePath(currentPage.path);
