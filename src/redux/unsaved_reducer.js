@@ -32,33 +32,37 @@ export const counterSlice = createSlice({
         { id: 2, name: "Real Mijoz" },
         { id: 3, name: "Rad etilgan mijoz" },
       ],
-      order_reason: [
+      order_reason_id: [
         {
           id: 1,
           name: "Agent orqali",
+          url:"/workers/all"
         },
         {
           id: 2,
           name: "Mijoz orqali",
+          url:"/clients/active"
         },
         {
           id: 3,
           name: "Xodimlar orqali",
+          url:"/workers/all"
         },
         {
           id: 4,
           name: "Reklama orqali ",
+          url:"/reklams"
         },
         {
           id: 5,
           name: "Boshqa",
+          url:""
         },
       ],
-      from_whom:[
-        {id: 1, name:"bir"},
-        {id: 2, name:"ikkii"},
-      ]
+      order_reason:[],
     },
+    searchInputValue:[],
+    changeInputtype:true,
     mainData: [],
   },
   reducers: {
@@ -66,7 +70,6 @@ export const counterSlice = createSlice({
       state.allData = { ...state.allData, ...payload };
     },
     setData: (state, { payload }) => {
-      // payload = [{dcfs}, {nm,}]
       let arrayWithKeys = [];
       payload &&
         payload?.forEach((item, key) => {
@@ -74,12 +77,18 @@ export const counterSlice = createSlice({
         });
       state.mainData = arrayWithKeys;
     },
-    setFromWhom : (state, { payload }) => {
-      state.allData.from_whom = payload
+    setOrderReason : (state, { payload }) => {
+      state.allData.order_reason = payload
+    },
+    setSearchInputValue: (state, { payload }) => {
+      state.searchInputValue = payload
+    },
+    toogleInputType: (state, { payload }) => {
+      state.changeInputtype = payload;
     }
   },
 });
 
-export const { setAllData, setData } = counterSlice.actions;
+export const { setAllData, setData,setOrderReason, setSearchInputValue, toogleInputType } = counterSlice.actions;
 
 export default counterSlice.reducer;

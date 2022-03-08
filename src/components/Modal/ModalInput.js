@@ -1,4 +1,4 @@
-import { Input, InputNumber, DatePicker, Select } from "antd";
+import { Input, InputNumber, DatePicker, Select, Spin } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -25,12 +25,14 @@ import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
+import { setInnerModel, setValues, toggleInnerModal, removeOrder_reason } from "../../redux/stored_reducer";
+import { setOrderReason, setSearchInputValue, toogleInputType } from "../../redux/unsaved_reducer"
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { accessValues } from "../../constant/constants";
 import { Base } from "../../BaseUrl";
+import { GET } from "../../functions/Methods";
 
 const { TextArea } = Input;
 
@@ -40,6 +42,8 @@ const ModalInput = (props) => {
   const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
+  const { searchInputValue, allData, changeInputtype } = useSelector(state => state.unsaved_reducer)
+
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
 
@@ -62,7 +66,6 @@ const ModalInput = (props) => {
     fileName,
   } = props;
 
-  const { allData } = useSelector((s) => s?.unsaved_reducer);
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
@@ -118,6 +121,19 @@ const ModalInput = (props) => {
     }
   }, [values]);
 
+
+
+  //                 select search uchun
+
+  const [filD, setFilD] = useState("")
+  useEffect(() => {
+    const filteredData = allData[options]?.filter((option) => option?.name.toLowerCase().includes(filD.toLowerCase()));
+    console.log(filteredData);
+    dispatch(setSearchInputValue(filteredData))
+  }, [filD])
+
+  //                 select search uchun
+
   switch (type) {
     case STRING:
       input = (
@@ -147,6 +163,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case NUMBER:
       input = (
         <InputNumber
@@ -176,6 +193,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case SELECT:
       input = (
         <label
@@ -195,24 +213,24 @@ const ModalInput = (props) => {
               name={name}
               autoFocus
               required={required}
+              notFoundContent={allData[options] ? null : <Spin size="small" />}
               value={getProperValue()}
               onChange={(e) => {
+                dispatch(setOrderReason([]))
+                dispatch(removeOrder_reason())
 
-                // console.log(e);
-
-                if (autoSelect) {
-                  let selectedValues = { [name]: e };
-                  autoSelect?.forEach((el) => {
-                    let thisObj =
-                      allData &&
-                      allData[options] &&
-                      allData[options].find((item) => item["id"] === e);
-                    selectedValues = { ...selectedValues, [el]: thisObj[el] };
-                  });
-                  handleChangeValue(selectedValues);
-                } else {
-                  handleChangeValue({ [name]: e });
+                if (options == "order_reason_id") {
+                  if (allData[options][e - 1]?.id != 5) {
+                    GET(allData[options][e - 1]?.url).then(res => {
+                      dispatch(setOrderReason(res.data.data));
+                      dispatch(toogleInputType(true))
+                    })
+                  } else {
+                    dispatch(toogleInputType(false))
+                    dispatch(setOrderReason([]))
+                  }
                 }
+                dispatch(removeOrder_reason())
               }}
             >
               {allData &&
@@ -235,6 +253,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case MAP:
       input = (
         <MapModal
@@ -251,6 +270,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case DATE:
       input = (
         <label
@@ -279,6 +299,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case TEXTAREA:
       input = (
         <label
@@ -305,6 +326,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case PHONE:
       input = (
         <label
@@ -337,6 +359,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case UPLOAD:
       input = (
         <UploadFile
@@ -357,6 +380,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case IMAGE:
       input = (
         <UpLoadJPG
@@ -371,6 +395,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case PICTURE_WALL:
       input = (
         <PicturesWall
@@ -387,6 +412,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case PASSWORD:
       input = (
         <label
@@ -413,6 +439,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case MULTIPLE_SELECT:
       const access = accessValues;
       const children = [];
@@ -428,6 +455,7 @@ const ModalInput = (props) => {
             style={{ width: "100%" }}
             placeholder="Please select"
             maxTagCount={"responsive"}
+            notFoundContent={true}
             onChange={(value) => {
               let res = [1, 4];
               value?.map((el) => {
@@ -451,11 +479,11 @@ const ModalInput = (props) => {
       break;
 
     case SEARCH_SELECT:
-      let stateBir = [];
+
       const handleSearch = searchWords => {
-        // setValue(value)
-        // console.log(value);
+        setFilD(searchWords)
       };
+
       input = (
         <label
           style={{
@@ -468,21 +496,42 @@ const ModalInput = (props) => {
           className="select-label"
         >
           {label && label}
-          <Select
-            showSearch
-            value={getProperValue()}
-            placeholder={placeholder}
-            defaultActiveFirstOption={false}
-            showArrow={false}
-            filterOption={false}
-            onSearch={handleSearch}
-            onChange={(e) => {
-              console.log(e)
-            }}
-            notFoundContent={null}
-          >
-            {allData && allData[options] && allData[options]?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>)}
-          </Select>
+
+          {changeInputtype ?
+            <Select
+              showSearch
+              value={getProperValue()}
+              placeholder={placeholder}
+              defaultActiveFirstOption={false}
+              showArrow={false}
+              filterOption={false}
+              onSearch={handleSearch}
+              notFoundContent={allData[options] ? <Spin size="small" /> : null}
+              onChange={(e) => {
+                handleChangeValue({ [name]: e })
+              }}
+            >
+              {(searchInputValue?.length > 0) ?
+                searchInputValue?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>) :
+                allData[options]?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>)}
+            </Select>
+            :
+            <Input
+              name={name}
+              autoFocus
+              id={refs && "autofucus"}
+              value={getProperValue()}
+              placeholder={placeholder}
+              required={required}
+              onChange={(e) => {
+                const target = {
+                  [name]: e.target.value,
+                };
+                handleChangeValue(target);
+              }}
+            />
+          }
+
         </label>
       )
 

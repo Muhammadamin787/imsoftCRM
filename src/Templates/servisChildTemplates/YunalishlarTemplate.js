@@ -34,11 +34,11 @@ const YunalishlarTemplate = {
     columns: [
         {
             title: "№",
-            dataIndex: "number",
-            key: "number",
+            dataIndex: "id",
+            key: "id",
             width: "5%",
             align: "center",
-            render: (index) => ++index
+            // render: (index) => ++index
         },
         {
             title: "Yo'nalish nomi",

@@ -37,8 +37,8 @@ const ReklamalarTemplate = {
     },
     {
       title: "Reklama Nomi",
-      dataIndex: "description",
-      key: "description",
+      dataIndex: "name",
+      key: "name",
       width: "95%",
     },
   ],

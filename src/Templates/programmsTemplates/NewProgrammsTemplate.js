@@ -116,11 +116,10 @@ export const NewProgrammsTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "10%",
       align: "center",
-      render: (index) => ++index,
     },
     {
       title: "Mijoz F.I.O",

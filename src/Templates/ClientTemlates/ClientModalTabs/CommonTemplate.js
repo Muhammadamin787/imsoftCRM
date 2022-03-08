@@ -8,6 +8,10 @@ import HududTemplate from "../../servisChildTemplates/HududTemplate";
 const CommonTabTemplate = {
   text: "Umumiy",
   isOpenModal: false,
+  allData: {
+    workers: "/workers/all",
+    reklams: "/reklams/all",
+},
   form: [
     {
       grid: {
@@ -93,14 +97,14 @@ const CommonTabTemplate = {
           template: ShaharTumanTemplate,
         },
         {
-          name: "order_reason",
+          name: "order_reason_id",
           type: SELECT,
           required: true,
           placeholder: "Kelish turi",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
           label: "Kelish turi",
-          options: "order_reason",
+          options: "order_reason_id",
         },
         {
           name: "home_address",
@@ -113,14 +117,14 @@ const CommonTabTemplate = {
         },
 
         {
-          name: "from_whom",
+          name: "order_reason",
           type: SEARCH_SELECT,
           required: true,
           placeholder: "Kim tomondan",
           label: "Kim tomondan",
           gridColumn: "6 / 9",
           gridRow: "4 / 5",
-          options: "from_whom",
+          options: "order_reason",
         },
       ],
     },

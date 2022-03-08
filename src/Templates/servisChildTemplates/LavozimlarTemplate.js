@@ -34,11 +34,10 @@ const LavozimlarTemplate = {
     columns: [
         {
             title: "№",
-            dataIndex: "number",
-            key: "number",
+            dataIndex: "id",
+            key: "id",
             width: "5%",
             align: "center",
-            render: (index) => ++index
         },
         {
             title: "Lavozim nomi",
