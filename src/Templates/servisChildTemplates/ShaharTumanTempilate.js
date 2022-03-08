@@ -2,7 +2,7 @@ import React from "react";
 import { SHAHAR_TUMAN_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { STRING, SELECT } from "../../components/Modal/InputTypes";
-import { FieldNumberOutlined } from '@ant-design/icons';
+import { FieldNumberOutlined } from "@ant-design/icons";
 import ViloyatlarTemplate from "./ViloyatlarTemplate";
 
 const ShaharTumanTemplate = {
@@ -23,22 +23,20 @@ const ShaharTumanTemplate = {
         {
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
-          gridRow: "1 / 2",
-          label: "Shahar/Tuman"
+          gridRow: "2 / 3",
+          label: "Shahar/Tuman",
         },
         {
           name: "state_id",
           type: SELECT,
-          required: true,
           placeholder: "Viloyat",
           gridColumn: "1 / 2",
-          gridRow: "2 / 3",
+          gridRow: "1 / 2",
           label: "Viloyat",
           options: "states",
-          template: ViloyatlarTemplate
+          template: ViloyatlarTemplate,
         },
       ],
     },
@@ -62,7 +60,6 @@ const ShaharTumanTemplate = {
       dataIndex: "state_name",
       key: "/states/",
       width: "47%",
-
     },
   ],
   data: [

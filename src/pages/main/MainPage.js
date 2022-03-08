@@ -140,7 +140,7 @@ const MainPage = () => {
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
-                  <Item key={"sub" + k}>
+                  <Item key={k}>
                     <Link to={sub.path}>
                       {sub.text}
                       {findIcon(menu?.icon)}

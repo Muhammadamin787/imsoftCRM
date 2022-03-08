@@ -145,7 +145,7 @@ const Toolbar = () => {
       <div className="toolbar__tools">
         {ToolBarButtons?.map((button, i) =>
           button.pop ? (
-            <Popconfirm {...button.pop}>
+            <Popconfirm {...button.pop} key={i}>
               <Tooltip
                 placement={button?.tooltip?.placement}
                 title={button?.tooltip?.text}

@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
 import { setInnerModel, setValues, toggleInnerModal, removeOrder_reason } from "../../redux/stored_reducer";
-import { setOrderReason, setSearchInputValue, toogleInputType } from "../../redux/unsaved_reducer"
+import { setOrderReason, setSearchInputValue, toogleInputType, setFilterData } from "../../redux/unsaved_reducer"
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -42,10 +42,11 @@ const ModalInput = (props) => {
   const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
-  const { searchInputValue, allData, changeInputtype } = useSelector(state => state.unsaved_reducer)
+  const { searchInputValue, allData, changeInputtype ,filterAllData} = useSelector(state => state.unsaved_reducer)
 
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
+  const [bool, setBool] = useState(true);
 
   const {
     autoSelect,
@@ -59,11 +60,13 @@ const ModalInput = (props) => {
     Iconic,
     options,
     template,
-    required,
     isInnerModal,
     filePath,
     handleChangeValue,
     fileName,
+    openFile,
+    filterData, 
+    parentSelect,
   } = props;
 
 
@@ -106,13 +109,13 @@ const ModalInput = (props) => {
       setFileList(
         values[name]
           ? [
-            {
-              uid: "-1",
-              name: fileList[0]?.name ? fileList[0]?.name : "image.png",
-              status: "done",
-              url: Base + values[name],
-            },
-          ]
+              {
+                uid: "-1",
+                name: fileList[0]?.name ? fileList[0]?.name : "image.png",
+                status: "done",
+                url: Base + values[name],
+              },
+            ]
           : []
       );
     }
@@ -133,6 +136,20 @@ const ModalInput = (props) => {
   }, [filD])
 
   //                 select search uchun
+  useEffect(() => {
+    if (allData[filterData]) {
+      if (values[name]) {
+        const a = allData[filterData].filter(
+          (item) => item[name] === values[name]
+        );
+        dispatch(setFilterData({ ...filterAllData, [filterData]: a }));
+      }
+    }
+  }, [values]);
+
+  useEffect(() => {
+    dispatch(setFilterData(allData));
+  }, [allData]);
 
   switch (type) {
     case STRING:
@@ -143,7 +160,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input
@@ -152,7 +168,6 @@ const ModalInput = (props) => {
             id={refs && "autofucus"}
             value={getProperValue()}
             placeholder={placeholder}
-            required={required}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
@@ -171,7 +186,6 @@ const ModalInput = (props) => {
           type="number"
           autoFocus
           name={name}
-          required
           id={refs && "autofucus"}
           style={{
             gridColumn: gridColumn,
@@ -189,7 +203,7 @@ const ModalInput = (props) => {
             };
             handleChangeValue(target);
           }}
-        // value={values[name] ? values[name] : ""}
+          // value={values[name] ? values[name] : ""}
         />
       );
       break;
@@ -202,7 +216,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
           id={refs && "autofucus"}
           className="select-label"
         >
@@ -212,7 +225,6 @@ const ModalInput = (props) => {
               size="small"
               name={name}
               autoFocus
-              required={required}
               notFoundContent={allData[options] ? null : <Spin size="small" />}
               value={getProperValue()}
               onChange={(e) => {
@@ -232,11 +244,13 @@ const ModalInput = (props) => {
                 }
                 dispatch(removeOrder_reason())
               }}
+              disabled={
+                parentSelect ? (values[parentSelect] ? false : true) : false
+              }
             >
-              {allData &&
-                allData[options] &&
-                allData[options]?.map((option, i) => (
-                  <Select.Option value={option?.id} key={option?.id}>
+              {filterAllData &&
+                filterAllData[options]?.map((option, i) => (
+                  <Select.Option value={option?.id} key={i}>
                     {option?.name}
                   </Select.Option>
                 ))}
@@ -261,7 +275,6 @@ const ModalInput = (props) => {
           gridRow={gridRow}
           height={height}
           handleChangeValue={handleChangeValue}
-          required={required}
           geo={
             values?.longitude && values?.latitude
               ? [values.latitude, values?.longitude]
@@ -287,7 +300,6 @@ const ModalInput = (props) => {
             value={getProperValueDate()}
             format={"DD.MM.YYYY"}
             autoFocus
-            required={required}
             onChange={(e, dateString) => {
               const formatDate = moment(e._d).format("YYYY-MM-DD hh:mm:ss");
               const target = {
@@ -314,7 +326,6 @@ const ModalInput = (props) => {
             placeholder={placeholder}
             value={getProperValue()}
             autoFocus
-            required={required}
             autoSize={{ minRows: 3, maxRows: 3 }}
             onChange={(data) => {
               const target = {
@@ -342,7 +353,6 @@ const ModalInput = (props) => {
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
-            required={required}
             areaCodes={{
               uz: ["+998"],
             }}
@@ -377,6 +387,7 @@ const ModalInput = (props) => {
           values={values}
           imageUrl={imgUrl}
           setUrl={setImgUrl}
+          openFile={openFile}
         />
       );
       break;
@@ -421,7 +432,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input.Password
@@ -444,10 +454,21 @@ const ModalInput = (props) => {
       const access = accessValues;
       const children = [];
       access.map((category) => {
-        children.push(<Option value={category.value} key={category.value}>{category.text}</Option>);
+        children.push(
+          <Option value={category.value} key={category.value}>
+            {category.text}
+          </Option>
+        );
       });
       input = (
-        <label style={{ gridColumn: gridColumn, gridRow: gridRow, height: height ? height + "px" : inputDeafultHeght + "px", }} required={required} >{label && label}
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
           <Select
             mode="multiple"
             allowClear
@@ -477,7 +498,6 @@ const ModalInput = (props) => {
         </label>
       );
       break;
-
     case SEARCH_SELECT:
 
       const handleSearch = searchWords => {
@@ -491,7 +511,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
           id={refs && "autofucus"}
           className="select-label"
         >
@@ -522,7 +541,6 @@ const ModalInput = (props) => {
               id={refs && "autofucus"}
               value={getProperValue()}
               placeholder={placeholder}
-              required={required}
               onChange={(e) => {
                 const target = {
                   [name]: e.target.value,
@@ -533,12 +551,10 @@ const ModalInput = (props) => {
           }
 
         </label>
-      )
-
+      );
     default:
       break;
   }
-
   return input;
 };
 

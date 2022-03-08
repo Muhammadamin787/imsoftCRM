@@ -23,7 +23,6 @@ const FaolyatTurlaiTemplate = {
         {
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Faolyat turi nomi",
           label: "Faolyat turi"
         },
@@ -31,7 +30,6 @@ const FaolyatTurlaiTemplate = {
           placeholder: "Yo'nalishlar",
           label: "Yo'nalish",
           name: "category_id",
-          required: true,
           type: SELECT,
           template: YunalishlarTemplate,
           options: "categories",

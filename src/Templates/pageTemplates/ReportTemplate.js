@@ -16,7 +16,6 @@ const ReportTemplate = {
 			{
 			  name: "Xisobotlar",
 			  type: STRING,
-			  required: true,
 			},
 		  ],
 		},

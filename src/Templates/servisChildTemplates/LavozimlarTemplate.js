@@ -26,7 +26,6 @@ const LavozimlarTemplate = {
                     type: STRING,
                     placeholder: "Lavozimlar",
                     label: "Lavozimlar",
-                    required: true,
                 },
             ],
         },

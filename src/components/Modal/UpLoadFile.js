@@ -32,9 +32,8 @@ class UploadFile extends React.Component {
     loading: false,
     fileName: "",
     headers: {
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
       "Access-Control-Allow-Origin": "*",
-
     },
   };
   handleChange = (info) => {
@@ -44,17 +43,15 @@ class UploadFile extends React.Component {
     }
     if (info.file.status === "done" && info.file?.response) {
       toast.success("File saqlandi");
+      this.setState({
+        loading: false,
+        fileName: info.file.name,
+        fileList: info,
+      });
       this.props.onChange({
         [this.props.name]: `${info?.file?.response}`,
       });
       this.props.setUrl(`${Base}${info?.file?.response}`);
-      this.setState({
-        loading: false,
-      });
-      this.setState({
-        fileName: info.file.name,
-      });
-      this.setState({ fileList: info });
     }
   };
 
@@ -87,7 +84,7 @@ class UploadFile extends React.Component {
   };
 
   render() {
-    const { loading } = this?.state;
+    const { loading } = this.state;
     const {
       gridColumn,
       gridRow,
@@ -97,14 +94,19 @@ class UploadFile extends React.Component {
       name,
       placeholder,
       filePath,
+      openFile,
     } = this?.props;
 
-    const showFileStatus = () => {
+    const showFileStatus = (bool) => {
       if (loading) {
         return <LoadingOutlined />;
-      } else if (imageUrl === "") {
+      } else if (!imageUrl) {
         // bu birinchi modal ochilgandagi holat
-        return findIcon(this?.props?.Iconic);
+        if (bool) {
+          return findIcon(this?.props?.Iconic);
+        } else if (!bool) {
+          return findIcon("UploadFileOilasi");
+        }
       } else if (imageUrl) {
         // bu file saqlangandagi holat
         return (
@@ -135,14 +137,14 @@ class UploadFile extends React.Component {
 
     const customStyles = {
       fileIconStyle: {
-        // position: "relative",
-        backgroundColor: "red",
-        // top: "-44px",
+        position: "relative",
+        // backgroundColor: "red",
+        top: "-44px",
         left: "0px",
         width: "100%",
         height: "100%",
         // paddingTop: "10px",
-        color: "blue"
+        color: "blue",
       },
       labelStyle: {
         gridColumn,
@@ -154,9 +156,8 @@ class UploadFile extends React.Component {
       },
     };
 
-// console.log(this?.props?.Iconic);
-    
-return (
+
+    return (
       <label
         className="file-uploader-label"
         htmlFor={"file-uploder" + name}
@@ -178,7 +179,9 @@ return (
         >
           {" "}
         </Upload>
-        <div style={customStyles?.fileIconStyle}>{showFileStatus()}</div>
+        <div style={openFile && customStyles.fileIconStyle}>
+          {showFileStatus(openFile ? true : false)}
+        </div>
       </label>
     );
   }

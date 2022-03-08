@@ -8,22 +8,15 @@ const InnerTable = ({ innerTable }) => {
   const dispatch = useDispatch();
   const { values } = useSelector((state) => state?.tabs_reducer);
 
-
   const addRow = () => {
     dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }));
     const oldData = [...values?.[innerTable?.name]];
 
-    // console.log(oldData);
-    oldData.push(innerTable?.CreateObj); 
+    oldData.push(innerTable?.CreateObj);
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
-
-    console.log( {...values, [innerTable?.name]: oldData});
   };
-
-  // console.log(innerTable);
-  // console.log(innerTable?.name);
-
+  console.log(innerTable);
   return (
     <div className="innerTable">
       <button
