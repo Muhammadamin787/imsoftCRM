@@ -42,15 +42,15 @@ class UploadFile extends React.Component {
     }
     if (info.file.status === "done" && info.file?.response) {
       toast.success("File saqlandi");
-      this.props.onChange({
-        [this.props.name]: `${info?.file?.response}`,
-      });
-      this.props.setUrl(`${Base}${info?.file?.response}`);
       this.setState({
         loading: false,
         fileName: info.file.name,
         fileList: info,
       });
+      this.props.onChange({
+        [this.props.name]: `${info?.file?.response}`,
+      });
+      this.props.setUrl(`${Base}${info?.file?.response}`);
     }
   };
 
@@ -83,7 +83,7 @@ class UploadFile extends React.Component {
   };
 
   render() {
-    const { loading } = this?.state;
+    const { loading } = this.state;
     const {
       gridColumn,
       gridRow,
@@ -100,13 +100,15 @@ class UploadFile extends React.Component {
       if (loading) {
         return <LoadingOutlined />;
       } else if (!imageUrl) {
+        console.log("111111");
         // bu birinchi modal ochilgandagi holat
         if (bool) {
-          return findIcon(bool ? this?.props?.Iconic : "UploadFileOilasi");
+          return findIcon(this?.props?.Iconic);
         } else if (!bool) {
           return findIcon("UploadFileOilasi");
         }
       } else if (imageUrl) {
+        console.log("222222");
         // bu file saqlangandagi holat
         return (
           <div>

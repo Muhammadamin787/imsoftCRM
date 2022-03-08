@@ -14,7 +14,7 @@ const align = "center";
 const CommetsTabTemplate = {
   text: "Izohlar",
   isOpenModal: false,
-  name: "general_doc",
+  name: "general_document",
   CreateObj: {
     rowId: uuidv4(),
     comment: "",

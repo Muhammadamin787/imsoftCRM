@@ -168,11 +168,11 @@ const XodimlarTemplate = {
   columns: [
     {
       title: "№",
-      dataIndex: "number",
+      dataIndex: "id",
       key: "number",
       width: "6%",
       align,
-      render: (index) => ++index,
+      render: (index) => index,
     },
     {
       title: "F.I.Sh",

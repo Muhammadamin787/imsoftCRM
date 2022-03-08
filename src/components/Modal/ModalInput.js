@@ -116,6 +116,8 @@ const ModalInput = (props) => {
       setImgUrl(values[name] ? values[name] : "");
     }
   }, [values]);
+
+  
   switch (type) {
     case STRING:
       input = (
