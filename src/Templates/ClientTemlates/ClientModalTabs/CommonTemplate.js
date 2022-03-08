@@ -20,7 +20,6 @@ const CommonTabTemplate = {
           label: "Korxona nomi",
           name: "enterprise_name",
           type: STRING,
-          required: true,
           placeholder: "Korxona nomi",
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
@@ -29,7 +28,6 @@ const CommonTabTemplate = {
         {
           name: "client_status",
           type: SELECT,
-          required: true,
           placeholder: "xolati",
           label: "Xolati",
           gridColumn: "6 / 9",
@@ -39,7 +37,6 @@ const CommonTabTemplate = {
         {
           name: "category_id",
           type: SELECT,
-          required: true,
           label: "Yunalish turi",
           placeholder: "Yo'nalishlar turi",
           template: YunalishlarTemplate,
@@ -50,7 +47,6 @@ const CommonTabTemplate = {
         {
           name: "activity_type_id",
           type: SELECT,
-          required: true,
           placeholder: "Faoliyat turi",
           label: "Faoliyat turi",
           gridColumn: "3 / 6",
@@ -61,7 +57,6 @@ const CommonTabTemplate = {
         {
           name: "address_id",
           type: SELECT,
-          required: true,
           placeholder: "xudud",
           template: HududTemplate,
           options: "hudud",
@@ -72,7 +67,6 @@ const CommonTabTemplate = {
         {
           name: "state_id",
           type: SELECT,
-          required: true,
           placeholder: "viloyat",
           label: "Viloyat",
           gridColumn: "1 / 3",
@@ -83,7 +77,6 @@ const CommonTabTemplate = {
         {
           name: "region_id",
           type: SELECT,
-          required: true,
           label: "Shahar/Tuman",
           placeholder: "Shahar/Tuman",
           gridColumn: "3 / 6",
@@ -95,7 +88,6 @@ const CommonTabTemplate = {
         {
           name: "order_reason",
           type: SELECT,
-          required: true,
           placeholder: "Kelish turi",
           gridColumn: "6 / 9",
           gridRow: "3 / 4",
@@ -105,7 +97,6 @@ const CommonTabTemplate = {
         {
           name: "home_address",
           type: STRING,
-          required: true,
           placeholder: "Manzil",
           gridColumn: "1 / 6",
           gridRow: "4 / 5",
@@ -115,7 +106,6 @@ const CommonTabTemplate = {
         {
           name: "from",
           type: SELECT,
-          required: true,
           placeholder: "Kim tomondan",
           options: "kim_tomondan",
           label: "Kim tomondan",

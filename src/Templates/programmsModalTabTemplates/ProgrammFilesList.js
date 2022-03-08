@@ -37,7 +37,7 @@ export const ProgrammFilesList = {
             render: (text, record, index) => <TabInput record={record} tabName={"file_doc"} name={"file1"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
             width: "15%",
-            align: "center"
+            align: "center",
         },
         {
             title: "Actions",

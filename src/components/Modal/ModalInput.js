@@ -54,11 +54,11 @@ const ModalInput = (props) => {
     Iconic,
     options,
     template,
-    required,
     isInnerModal,
     filePath,
     handleChangeValue,
     fileName,
+    openFile,
   } = props;
 
   const { allData } = useSelector((s) => s?.unsaved_reducer);
@@ -116,7 +116,6 @@ const ModalInput = (props) => {
       setImgUrl(values[name] ? values[name] : "");
     }
   }, [values]);
-
   switch (type) {
     case STRING:
       input = (
@@ -126,7 +125,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input
@@ -135,7 +133,6 @@ const ModalInput = (props) => {
             id={refs && "autofucus"}
             value={getProperValue()}
             placeholder={placeholder}
-            required={required}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
@@ -153,7 +150,6 @@ const ModalInput = (props) => {
           type="number"
           autoFocus
           name={name}
-          required
           id={refs && "autofucus"}
           style={{
             gridColumn: gridColumn,
@@ -171,7 +167,7 @@ const ModalInput = (props) => {
             };
             handleChangeValue(target);
           }}
-        // value={values[name] ? values[name] : ""}
+          // value={values[name] ? values[name] : ""}
         />
       );
       break;
@@ -183,7 +179,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
           id={refs && "autofucus"}
           className="select-label"
         >
@@ -193,7 +188,6 @@ const ModalInput = (props) => {
               size="small"
               name={name}
               autoFocus
-              required={required}
               value={getProperValue()}
               onChange={(e) => {
                 if (autoSelect) {
@@ -238,7 +232,6 @@ const ModalInput = (props) => {
           gridRow={gridRow}
           height={height}
           handleChangeValue={handleChangeValue}
-          required={required}
           geo={
             values?.longitude && values?.latitude
               ? [values.latitude, values?.longitude]
@@ -263,7 +256,6 @@ const ModalInput = (props) => {
             value={getProperValueDate()}
             format={"DD.MM.YYYY"}
             autoFocus
-            required={required}
             onChange={(e, dateString) => {
               const formatDate = moment(e._d).format("YYYY-MM-DD hh:mm:ss");
               const target = {
@@ -289,7 +281,6 @@ const ModalInput = (props) => {
             placeholder={placeholder}
             value={getProperValue()}
             autoFocus
-            required={required}
             autoSize={{ minRows: 3, maxRows: 3 }}
             onChange={(data) => {
               const target = {
@@ -316,7 +307,6 @@ const ModalInput = (props) => {
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
-            required={required}
             areaCodes={{
               uz: ["+998"],
             }}
@@ -350,6 +340,7 @@ const ModalInput = (props) => {
           values={values}
           imageUrl={imgUrl}
           setUrl={setImgUrl}
+          openFile={openFile}
         />
       );
       break;
@@ -391,7 +382,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input.Password
@@ -413,10 +403,21 @@ const ModalInput = (props) => {
       const access = accessValues;
       const children = [];
       access.map((category) => {
-        children.push(<Option value={category.value} key={category.value}>{category.text}</Option>);
+        children.push(
+          <Option value={category.value} key={category.value}>
+            {category.text}
+          </Option>
+        );
       });
       input = (
-        <label style={{ gridColumn: gridColumn, gridRow: gridRow, height: height ? height + "px" : inputDeafultHeght + "px", }} required={required} >{label && label}
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+        >
+          {label && label}
           <Select
             mode="multiple"
             allowClear

@@ -48,11 +48,9 @@ class UploadFile extends React.Component {
       this.props.setUrl(`${Base}${info?.file?.response}`);
       this.setState({
         loading: false,
-      });
-      this.setState({
         fileName: info.file.name,
+        fileList: info,
       });
-      this.setState({ fileList: info });
     }
   };
 
@@ -95,14 +93,19 @@ class UploadFile extends React.Component {
       name,
       placeholder,
       filePath,
+      openFile,
     } = this?.props;
 
-    const showFileStatus = () => {
+    const showFileStatus = (bool) => {
       if (loading) {
         return <LoadingOutlined />;
-      } else if (imageUrl === "") {
+      } else if (!imageUrl) {
         // bu birinchi modal ochilgandagi holat
-        return findIcon(this?.props?.Iconic);
+        if (bool) {
+          return findIcon(bool ? this?.props?.Iconic : "UploadFileOilasi");
+        } else if (!bool) {
+          return findIcon("UploadFileOilasi");
+        }
       } else if (imageUrl) {
         // bu file saqlangandagi holat
         return (
@@ -173,7 +176,9 @@ class UploadFile extends React.Component {
         >
           {" "}
         </Upload>
-        <div style={customStyles.fileIconStyle}>{showFileStatus()}</div>
+        <div style={openFile && customStyles.fileIconStyle}>
+          {showFileStatus(openFile ? true : false)}
+        </div>
       </label>
     );
   }

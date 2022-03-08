@@ -31,7 +31,7 @@ const InnerTable = ({ innerTable }) => {
           bordered
           columns={innerTable?.columns ? innerTable?.columns : []}
           className="inner-table"
-          dataSource={[]}
+          dataSource={values[innerTable?.name]}
           size={"small"}
           scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
         />

@@ -23,7 +23,6 @@ const ShaharTumanTemplate = {
         {
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Shahar/Tuman",
           gridColumn: "1 / 2",
           gridRow: "1 / 2",
@@ -32,7 +31,6 @@ const ShaharTumanTemplate = {
         {
           name: "state_id",
           type: SELECT,
-          required: true,
           placeholder: "Viloyat",
           gridColumn: "1 / 2",
           gridRow: "2 / 3",

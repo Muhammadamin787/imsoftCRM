@@ -19,7 +19,6 @@ const ReklamalarTemplate = {
         {
           name: "description",
           type: STRING,
-          required: true,
           placeholder: "Reklamalar",
           label: "Reklamalar"
         },
