@@ -86,6 +86,7 @@ const XodimlarTemplate = {
           gridRow: "3 / 4",
           options: "states",
           template: ViloyatlarTemplate,
+          filterData: "cities",
         },
         {
           label: "Shahar",
@@ -96,7 +97,7 @@ const XodimlarTemplate = {
           gridColumn: "5 / 10",
           options: "cities",
           gridRow: "3 / 4",
-          filterSelectOption: "state_id",
+          parentSelect: "state_id",
         },
         {
           label: "Manzil",
@@ -179,6 +180,7 @@ const XodimlarTemplate = {
       dataIndex: "name",
       key: "name",
       width: "40%",
+      align,
     },
     {
       title: "Telefon",

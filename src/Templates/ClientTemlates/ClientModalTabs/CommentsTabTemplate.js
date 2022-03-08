@@ -54,7 +54,7 @@ const CommetsTabTemplate = {
     {
       title: "Izox",
       dataIndex: "general_info",
-      render: (text, record, index) => (
+      render: (text, record) => (
         <TabInput
           record={record}
           tabName={"general_doc"}
@@ -69,7 +69,7 @@ const CommetsTabTemplate = {
     {
       title: "Fayl",
       dataIndex: "file",
-      render: (text, record, index) => (
+      render: (text, record) => (
         <TabInput
           record={record}
           tabName={"general_doc"}

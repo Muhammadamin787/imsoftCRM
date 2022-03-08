@@ -1,4 +1,8 @@
-import { STRING, SELECT,SEARCH_SELECT } from "../../../components/Modal/InputTypes";
+import {
+  STRING,
+  SELECT,
+  SEARCH_SELECT,
+} from "../../../components/Modal/InputTypes";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
@@ -55,36 +59,43 @@ const CommonTabTemplate = {
           template: FaolyatTurlaiTemplate,
         },
         {
-          name: "address_id",
-          type: SELECT,
-          placeholder: "xudud",
-          template: HududTemplate,
-          options: "hudud",
-          label: "Xudud",
-          gridColumn: "6 / 9",
-          gridRow: "2 / 3",
-        },
-        {
           name: "state_id",
           type: SELECT,
           placeholder: "viloyat",
           label: "Viloyat",
-          gridColumn: "1 / 3",
-          gridRow: "3 / 4",
+          gridColumn: "6 / 9",
+          gridRow: "2 / 3",
           options: "states",
           template: ViloyatlarTemplate,
+          filterData: "cities",
         },
         {
           name: "region_id",
           type: SELECT,
           label: "Shahar/Tuman",
           placeholder: "Shahar/Tuman",
-          gridColumn: "3 / 6",
+
+          gridColumn: "1 / 3",
           gridRow: "3 / 4",
           label: "Shahar",
           options: "cities",
           template: ShaharTumanTemplate,
+          filterData: "hudud",
+          parentSelect: "state_id",
         },
+
+        {
+          name: "address_id",
+          type: SELECT,
+          placeholder: "xudud",
+          template: HududTemplate,
+          options: "hudud",
+          label: "Xudud",
+          gridColumn: "3 / 6",
+          gridRow: "3 / 4",
+          parentSelect: "region_id",
+        },
+
         {
           name: "order_reason",
           type: SELECT,
@@ -102,7 +113,6 @@ const CommonTabTemplate = {
           gridRow: "4 / 5",
           label: "Manzil",
         },
-
         {
           name: "from_whom",
           type: SEARCH_SELECT,

@@ -26,6 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
 import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
+import { setFilterData } from "../../redux/unsaved_reducer";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -42,6 +43,7 @@ const ModalInput = (props) => {
   );
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
+  const [bool, setBool] = useState(true);
 
   const {
     autoSelect,
@@ -60,9 +62,11 @@ const ModalInput = (props) => {
     handleChangeValue,
     fileName,
     openFile,
+    filterData,
+    parentSelect,
   } = props;
 
-  const { allData } = useSelector((s) => s?.unsaved_reducer);
+  const { allData, filterAllData } = useSelector((s) => s?.unsaved_reducer);
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
@@ -117,6 +121,21 @@ const ModalInput = (props) => {
       setImgUrl(values[name] ? values[name] : "");
     }
   }, [values]);
+
+  useEffect(() => {
+    if (allData[filterData]) {
+      if (values[name]) {
+        const a = allData[filterData].filter(
+          (item) => item[name] === values[name]
+        );
+        dispatch(setFilterData({ ...filterAllData, [filterData]: a }));
+      }
+    }
+  }, [values]);
+
+  useEffect(() => {
+    dispatch(setFilterData(allData));
+  }, [allData]);
 
   switch (type) {
     case STRING:
@@ -192,28 +211,18 @@ const ModalInput = (props) => {
               autoFocus
               value={getProperValue()}
               onChange={(e) => {
-                if (autoSelect) {
-                  let selectedValues = { [name]: e };
-                  autoSelect?.forEach((el) => {
-                    let thisObj =
-                      allData &&
-                      allData[options] &&
-                      allData[options].find((item) => item["id"] === e);
-                    selectedValues = { ...selectedValues, [el]: thisObj[el] };
-                  });
-                  handleChangeValue(selectedValues);
-                } else {
-                  handleChangeValue({ [name]: e });
-                }
+                handleChangeValue({ [name]: e });
               }}
+              disabled={
+                parentSelect ? (values[parentSelect] ? false : true) : false
+              }
             >
-              {allData &&
-                allData[options]?.map((option, i) => (
-                  <Select.Option value={option?.id} key={option?.id}>
+              {filterAllData &&
+                filterAllData[options]?.map((option, i) => (
+                  <Select.Option value={option?.id} key={i}>
                     {option?.name}
                   </Select.Option>
-                ))
-                }
+                ))}
             </Select>
             {innerModal == "" && template ? (
               <div
@@ -448,12 +457,10 @@ const ModalInput = (props) => {
         </label>
       );
       break;
-
     case SEARCH_SELECT:
       let stateBir = [];
       const handleSearch = (searchWords) => {
         // setValue(value)
-        // console.log(value);
       };
       input = (
         <label
@@ -479,22 +486,19 @@ const ModalInput = (props) => {
             }}
             notFoundContent={null}
           >
-            {allData &&
-              allData[options] &&
-              allData[options]?.map((option) => (
+            {filterAllData &&
+              filterAllData[options] &&
+              filterAllData[options]?.map((option) => (
                 <Option value={option?.id} key={option?.id}>
-                  {" "}
-                  {option?.name}{" "}
+                  {option?.name}
                 </Option>
               ))}
           </Select>
         </label>
       );
-
     default:
       break;
   }
-
   return input;
 };
 

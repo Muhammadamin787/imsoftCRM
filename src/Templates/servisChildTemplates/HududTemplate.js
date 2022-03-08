@@ -32,8 +32,8 @@ const HududTemplate = {
           placeholder: "Viloyat",
           gridColumn: "1 / 3",
           gridRow: "1 / 2",
-
           template: ViloyatlarTemplate,
+          filterData: "cities",
         },
         {
           label: "Shahar/Tuman",
@@ -45,6 +45,7 @@ const HududTemplate = {
           template: ShaharTumanTemplate,
           options: "cities",
           autoSelect: ["state_id"],
+          parentSelect: "state_id",
         },
         {
           label: "Hudud",

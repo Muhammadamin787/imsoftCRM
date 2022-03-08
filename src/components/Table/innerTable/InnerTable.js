@@ -16,7 +16,7 @@ const InnerTable = ({ innerTable }) => {
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
   };
-
+  console.log(innerTable);
   return (
     <div className="innerTable">
       <button
