@@ -88,6 +88,11 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                     name={name}
                     onChange={(e) => handleChange(e)}
                     Iconic="UploadFileOilasi"
+                    placeholder={"placeholder"}
+                    dispatch={dispatch}
+                    values={values}
+                    // imageUrl={imgUrl}
+                    // setUrl={setImgUrl}
                 />
             );
             break;

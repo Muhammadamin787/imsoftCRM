@@ -6,11 +6,12 @@ import "../GlobalTable.scss";
 
 const InnerTable = ({ innerTable }) => {
   const dispatch = useDispatch();
-  const { values } = useSelector((state) => state.tabs_reducer);
+  const { values } = useSelector((state) => state?.tabs_reducer);
 
   const addRow = () => {
     dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }));
     const oldData = [...values?.[innerTable?.name]];
+
     oldData.push(innerTable?.CreateObj);
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));

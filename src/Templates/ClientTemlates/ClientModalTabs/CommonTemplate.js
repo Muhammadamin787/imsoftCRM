@@ -1,4 +1,4 @@
-import { STRING, SELECT } from "../../../components/Modal/InputTypes";
+import { STRING, SELECT,SEARCH_SELECT } from "../../../components/Modal/InputTypes";
 import YunalishlarTemplate from "../../../Templates/servisChildTemplates/YunalishlarTemplate";
 import ViloyatlarTemplate from "../../../Templates/servisChildTemplates/ViloyatlarTemplate";
 import ShaharTumanTemplate from "../../servisChildTemplates/ShaharTumanTempilate";
@@ -104,13 +104,13 @@ const CommonTabTemplate = {
         },
 
         {
-          name: "from",
-          type: SELECT,
+          name: "from_whom",
+          type: SEARCH_SELECT,
           placeholder: "Kim tomondan",
-          options: "kim_tomondan",
           label: "Kim tomondan",
           gridColumn: "6 / 9",
           gridRow: "4 / 5",
+          options: "from_whom",
         },
       ],
     },

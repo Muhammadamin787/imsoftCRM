@@ -33,6 +33,7 @@ class UploadFile extends React.Component {
     fileName: "",
     headers: {
       Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
     },
   };
   handleChange = (info) => {
@@ -100,7 +101,6 @@ class UploadFile extends React.Component {
       if (loading) {
         return <LoadingOutlined />;
       } else if (!imageUrl) {
-        console.log("111111");
         // bu birinchi modal ochilgandagi holat
         if (bool) {
           return findIcon(this?.props?.Iconic);
@@ -108,7 +108,6 @@ class UploadFile extends React.Component {
           return findIcon("UploadFileOilasi");
         }
       } else if (imageUrl) {
-        console.log("222222");
         // bu file saqlangandagi holat
         return (
           <div>
@@ -139,12 +138,13 @@ class UploadFile extends React.Component {
     const customStyles = {
       fileIconStyle: {
         position: "relative",
-        backgroundColor: "white",
+        // backgroundColor: "red",
         top: "-44px",
         left: "0px",
         width: "100%",
         height: "100%",
-        paddingTop: "10px",
+        // paddingTop: "10px",
+        color: "blue",
       },
       labelStyle: {
         gridColumn,
@@ -155,6 +155,7 @@ class UploadFile extends React.Component {
         cursor: "pointer",
       },
     };
+
 
     return (
       <label

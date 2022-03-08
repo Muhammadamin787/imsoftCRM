@@ -169,7 +169,7 @@ const XodimlarTemplate = {
     {
       title: "№",
       dataIndex: "id",
-      key: "number",
+      key: "id",
       width: "6%",
       align,
       render: (index) => index,
