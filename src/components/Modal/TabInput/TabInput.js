@@ -11,7 +11,6 @@ import "./TabInput.scss"
 const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     const { values } = useSelector(state => state?.tabs_reducer);
     const { allData } = useSelector(state => state?.unsaved_reducer);
-
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -28,7 +27,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     }
 
     const handleDelete = () => {
-
         const foundObj = values?.[tabName].find(d => d?.rowId == record?.rowId);
         let foundTab = [...values?.[tabName]];
         foundTab.splice(foundTab.indexOf(foundObj), 1)
@@ -37,7 +35,6 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
             ...values,
             [tabName]: [...foundTab]
         }));
-
     }
 
     let input = null;
@@ -94,12 +91,10 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
                 />
             );
             break;
-
         case BUTTON:
             input = (
                 <Button type='default' onClick={() => handleDelete()}><DeleteOutlined /></Button>
             )
-
         default:
             break;
     }
@@ -107,9 +102,5 @@ const TabInput = ({ record, name, type, tabName, options, filePath }) => {
     return input;
 
 }
-//hjkl;jhkljh
-
-
-//mkjkjblb
 
 export default TabInput;

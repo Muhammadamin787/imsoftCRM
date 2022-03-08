@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
 import { CloseIcon, DashIcon } from "../../../assets/icons/icons";
 import {
   setCurrentPage,
   clearPanes,
   removePositionPanes,
-  setValues,
 } from "../../../redux/stored_reducer";
 import { FullscreenExitOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +13,7 @@ const MacActions = ({ onResize, onHide, onExit }) => {
   const navigate = useNavigate();
   const { currentPage, Panes } = useSelector((s) => s.tabs_reducer);
   const dispatch = useDispatch();
+  
   const removeCurrentPage = (el) => {
     let position = null;
     Panes?.forEach((item, i) => {

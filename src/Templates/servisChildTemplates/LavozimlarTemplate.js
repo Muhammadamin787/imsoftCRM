@@ -1,16 +1,16 @@
 import React from "react";
-import {LAVOZIM_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {STRING} from "../../components/Modal/InputTypes";
+import { LAVOZIM_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { STRING } from "../../components/Modal/InputTypes";
 
-const  LavozimlarTemplate = {
+const LavozimlarTemplate = {
     accessKey: 11,
     text: "Lavozimlar",
     path: LAVOZIM_PATH,
     icon: "Xodimlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    mainUrl:"/directions",
+    mainUrl: "/directions",
     modal: {
         style: {
             // width: 500,
@@ -38,7 +38,7 @@ const  LavozimlarTemplate = {
             key: "number",
             width: "5%",
             align: "center",
-            render: (text, data, index) => ++index
+            render: (index) => ++index
         },
         {
             title: "Lavozim nomi",

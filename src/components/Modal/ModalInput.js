@@ -171,7 +171,7 @@ const ModalInput = (props) => {
             };
             handleChangeValue(target);
           }}
-          value={values[name] ? values[name] : ""}
+        // value={values[name] ? values[name] : ""}
         />
       );
       break;
@@ -413,31 +413,25 @@ const ModalInput = (props) => {
       const access = accessValues;
       const children = [];
       access.map((category) => {
-        children.push(<Option key={category.value}>{category.text}</Option>);
+        children.push(<Option value={category.value} key={category.value}>{category.text}</Option>);
       });
       input = (
-        <label
-          style={{
-            gridColumn: gridColumn,
-            gridRow: gridRow,
-            height: height ? height + "px" : inputDeafultHeght + "px",
-          }}
-          required={required}
-        >
-          {label && label}
+        <label style={{ gridColumn: gridColumn, gridRow: gridRow, height: height ? height + "px" : inputDeafultHeght + "px", }} required={required} >{label && label}
           <Select
             mode="multiple"
             allowClear
-            // value={getProperValue()}
-            // value={values[name]}
+            value={getProperValue()}
             style={{ width: "100%" }}
             placeholder="Please select"
+            maxTagCount={"responsive"}
             onChange={(value) => {
               let res = [1, 4];
               value?.map((el) => {
                 accessValues.map((item) => {
-                  if (el === item.text || +el === item.value) {
-                    res.push(+item.value);
+                  if (!res.includes(el)) {
+                    if (el === item.text || +el === item.value) {
+                      res.push(+item.value);
+                    }
                   }
                 });
               });

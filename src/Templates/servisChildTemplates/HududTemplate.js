@@ -22,7 +22,6 @@ const HududTemplate = {
     {
       grid: {
         columns: "1fr 1fr",
-        // rows: "1fr 1fr",
       },
       inputs: [
         {

@@ -2,7 +2,6 @@ import React from "react";
 import { XODIMLAR_PATH } from "../../pages/pageConstants/PageRoutes";
 import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { FileBlueIcon } from "../../assets/icons/icons";
-import { Link } from "react-router-dom";
 import {
   STRING,
   DATE,
@@ -34,7 +33,6 @@ const XodimlarTemplate = {
   mainUrl: "/workers",
   allData: {
     states: "/states/all",
-    // workers:"/workers/all",
     cities: "/cities/all",
     directions: "/directions",
   },
@@ -183,7 +181,7 @@ const XodimlarTemplate = {
       key: "number",
       width: "6%",
       align,
-      render: (text, data, index) => ++index,
+      render: (index) => ++index,
     },
     {
       title: "F.I.Sh",

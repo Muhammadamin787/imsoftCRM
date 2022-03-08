@@ -28,6 +28,7 @@ const GlobalModal = () => {
   const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
+  const { mainUrl, key } = currentPage;
   const { user } = useSelector((s) => s.auth_reducer);
   const [update, setUpdate] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -56,6 +57,21 @@ const GlobalModal = () => {
     }
   }, [currentPage]);
 
+  const onStart = (event, uiData) => {
+    const { clientWidth, clientHeight } = window.document.documentElement;
+    const targetRect = draggleRef.current?.getBoundingClientRect();
+    if (!targetRect) {
+      return;
+    }
+    setBounds({
+      left: -targetRect.left + uiData.x,
+      right: clientWidth - (targetRect.right - uiData.x),
+      top: -targetRect.top + uiData.y,
+      bottom: clientHeight - (targetRect.bottom - uiData.y),
+    });
+  };
+
+
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };
@@ -68,12 +84,13 @@ const GlobalModal = () => {
 
   const handleCancel = (e) => {
     dispatch(toggleModal(false));
+    dispatch(setValues({}));
   };
+
   const currentPageSetModal = () => {
     dispatch(setValues({}));
     dispatch(toggleModal(false));
   };
-  const { mainUrl, key } = currentPage;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -109,20 +126,6 @@ const GlobalModal = () => {
       setUpdate(false);
     }
   }, [update]);
-
-  const onStart = (event, uiData) => {
-    const { clientWidth, clientHeight } = window.document.documentElement;
-    const targetRect = draggleRef.current?.getBoundingClientRect();
-    if (!targetRect) {
-      return;
-    }
-    setBounds({
-      left: -targetRect.left + uiData.x,
-      right: clientWidth - (targetRect.right - uiData.x),
-      top: -targetRect.top + uiData.y,
-      bottom: clientHeight - (targetRect.bottom - uiData.y),
-    });
-  };
 
   return (
     <Modal

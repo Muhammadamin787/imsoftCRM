@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BottomTabs.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { Tabs } from "antd";
 import {
   setCurrentPage,
   removeTab,
@@ -9,22 +8,24 @@ import {
 } from "../../redux/stored_reducer";
 import { useNavigate } from "react-router-dom";
 import { findIcon } from "../../assets/icons/icons";
-import { ClearOutlined, CloseOutlined } from "@ant-design/icons";
+import { ClearOutlined } from "@ant-design/icons";
 
-const { TabPane } = Tabs;
 
 const BottomTabs = () => {
   const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = window.location;
-
   const [panes, setPanes] = useState(Panes ? Panes : []);
 
   useEffect(() => {
     setPanes(Panes);
   }, [Panes, pathname]);
+
+  const clearAll = () => {
+    dispatch(clearPanes([]));
+    navigate("/");
+  };
 
   const onChange = (activeKey) => {
     navigate(Panes[activeKey].path);
@@ -44,11 +45,6 @@ const BottomTabs = () => {
       }
     }
     dispatch(removeTab(targetKey));
-  };
-
-  const clearAll = () => {
-    dispatch(clearPanes([]));
-    navigate("/asosiy");
   };
 
   useEffect(() => {

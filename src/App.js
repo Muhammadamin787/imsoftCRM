@@ -7,7 +7,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 function App() {
   const { user } = useSelector((state) => state.auth_reducer);
 
-  
+
   if (user) {
     return <MainPage />;
   } else {

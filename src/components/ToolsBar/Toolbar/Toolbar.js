@@ -33,9 +33,14 @@ const addButtonIsDisabled = [
 const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, tableItem, values } = useSelector(
+  const { currentPage, tableItem } = useSelector(
     (state) => state.tabs_reducer
   );
+  const currentPageIcon = findIcon(currentPage?.icon);
+
+  useEffect(() => {
+    setCurrentPagePath(currentPage.path);
+  }, [currentPage]);
 
   const handleModalClick = () => {
     dispatch(toggleModal(true));
@@ -74,14 +79,12 @@ const Toolbar = () => {
     dispatch(toggleModal(tableItem));
   };
 
-  const currentPageIcon = findIcon(currentPage?.icon);
-
   const noPopEdit = {
     pop: {
       placement: "top",
       title: "1 ta qatorni belgilng!",
       okText: "tushundim",
-      showCancel: false,
+      showCancel: "ok",
     },
   };
 
@@ -110,12 +113,12 @@ const Toolbar = () => {
       pop:
         tableItem.length > 0
           ? {
-              placement: "top",
-              title: "Malumotni o'chirmoqchimisiz!",
-              cancelText: "Yo'q",
-              okText: "Ha",
-              onConfirm: onRemove,
-            }
+            placement: "top",
+            title: "Malumotni o'chirmoqchimisiz!",
+            cancelText: "Yo'q",
+            okText: "Ha",
+            onConfirm: onRemove,
+          }
           : noPopEdit.pop,
       // pop: {
       //   placement: "top",
@@ -132,9 +135,6 @@ const Toolbar = () => {
     },
   ];
 
-  useEffect(() => {
-    setCurrentPagePath(currentPage.path);
-  }, [currentPage]);
 
   return (
     <div className="toolbar">
