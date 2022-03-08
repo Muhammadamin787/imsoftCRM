@@ -6,15 +6,23 @@ import "../GlobalTable.scss";
 
 const InnerTable = ({ innerTable }) => {
   const dispatch = useDispatch();
-  const { values } = useSelector((state) => state.tabs_reducer);
+  const { values } = useSelector((state) => state?.tabs_reducer);
+
 
   const addRow = () => {
     dispatch(setValuesKey({ [innerTable?.name]: [innerTable?.CreateObj] }));
     const oldData = [...values?.[innerTable?.name]];
-    oldData.push(innerTable?.CreateObj);
+
+    // console.log(oldData);
+    oldData.push(innerTable?.CreateObj); 
 
     dispatch(setValues({ ...values, [innerTable?.name]: oldData }));
+
+    console.log( {...values, [innerTable?.name]: oldData});
   };
+
+  // console.log(innerTable);
+  // console.log(innerTable?.name);
 
   return (
     <div className="innerTable">
@@ -31,7 +39,7 @@ const InnerTable = ({ innerTable }) => {
           bordered
           columns={innerTable?.columns ? innerTable?.columns : []}
           className="inner-table"
-          dataSource={[]}
+          dataSource={values[innerTable?.name]}
           size={"small"}
           scroll={innerTable?.scroll ? { ...innerTable?.scroll } : { y: 380 }}
         />

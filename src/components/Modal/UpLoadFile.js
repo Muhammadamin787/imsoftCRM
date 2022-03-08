@@ -32,7 +32,9 @@ class UploadFile extends React.Component {
     loading: false,
     fileName: "",
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+
     },
   };
   handleChange = (info) => {
@@ -133,13 +135,14 @@ class UploadFile extends React.Component {
 
     const customStyles = {
       fileIconStyle: {
-        position: "relative",
-        backgroundColor: "white",
-        top: "-44px",
+        // position: "relative",
+        backgroundColor: "red",
+        // top: "-44px",
         left: "0px",
         width: "100%",
         height: "100%",
-        paddingTop: "10px",
+        // paddingTop: "10px",
+        color: "blue"
       },
       labelStyle: {
         gridColumn,
@@ -151,7 +154,9 @@ class UploadFile extends React.Component {
       },
     };
 
-    return (
+// console.log(this?.props?.Iconic);
+    
+return (
       <label
         className="file-uploader-label"
         htmlFor={"file-uploder" + name}
@@ -173,7 +178,7 @@ class UploadFile extends React.Component {
         >
           {" "}
         </Upload>
-        <div style={customStyles.fileIconStyle}>{showFileStatus()}</div>
+        <div style={customStyles?.fileIconStyle}>{showFileStatus()}</div>
       </label>
     );
   }

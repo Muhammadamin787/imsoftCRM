@@ -26,7 +26,7 @@ export const ProgrammSpecifications = {
         {
             title: "Nomi",
             dataIndex: "name",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
+            render: (record) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
             key: "number",
             width: "30%",
             align: "center",
@@ -34,7 +34,7 @@ export const ProgrammSpecifications = {
         {
             title: "Tafsif",
             dataIndex: "comment",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
+            render: (record) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
             key: "number",
             width: "40%",
             align: "center"
@@ -42,7 +42,7 @@ export const ProgrammSpecifications = {
         {
             title: "Fayl",
             dataIndex: "file",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
+            render: (record) => <TabInput record={record} tabName={"tech_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
             width: "15%",
             align: "center"
@@ -50,7 +50,7 @@ export const ProgrammSpecifications = {
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} type={BUTTON} />,
+            render: (record) => <TabInput record={record} tabName={"tech_doc"} type={BUTTON} />,
             key: "action",
             width: "10%",
             align: "center",

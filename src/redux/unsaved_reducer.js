@@ -35,17 +35,29 @@ export const counterSlice = createSlice({
       order_reason: [
         {
           id: 1,
-          name: "Frontend",
+          name: "Agent orqali",
         },
         {
           id: 2,
-          name: "Backend",
+          name: "Mijoz orqali",
         },
         {
           id: 3,
-          name: "Ui Ux",
+          name: "Xodimlar orqali",
+        },
+        {
+          id: 4,
+          name: "Reklama orqali ",
+        },
+        {
+          id: 5,
+          name: "Boshqa",
         },
       ],
+      from_whom:[
+        {id: 1, name:"bir"},
+        {id: 2, name:"ikkii"},
+      ]
     },
     mainData: [],
   },
@@ -62,6 +74,9 @@ export const counterSlice = createSlice({
         });
       state.mainData = arrayWithKeys;
     },
+    setFromWhom : (state, { payload }) => {
+      state.allData.from_whom = payload
+    }
   },
 });
 

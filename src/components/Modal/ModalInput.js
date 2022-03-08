@@ -16,6 +16,7 @@ import {
   PICTURE_WALL,
   PASSWORD,
   MULTIPLE_SELECT,
+  SEARCH_SELECT,
 } from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -102,13 +103,13 @@ const ModalInput = (props) => {
       setFileList(
         values[name]
           ? [
-              {
-                uid: "-1",
-                name: fileList[0]?.name ? fileList[0]?.name : "image.png",
-                status: "done",
-                url: Base + values[name],
-              },
-            ]
+            {
+              uid: "-1",
+              name: fileList[0]?.name ? fileList[0]?.name : "image.png",
+              status: "done",
+              url: Base + values[name],
+            },
+          ]
           : []
       );
     }
@@ -196,6 +197,9 @@ const ModalInput = (props) => {
               required={required}
               value={getProperValue()}
               onChange={(e) => {
+
+                // console.log(e);
+
                 if (autoSelect) {
                   let selectedValues = { [name]: e };
                   autoSelect?.forEach((el) => {
@@ -445,6 +449,43 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
+    case SEARCH_SELECT:
+      let stateBir = [];
+      const handleSearch = searchWords => {
+        // setValue(value)
+        // console.log(value);
+      };
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+          required={required}
+          id={refs && "autofucus"}
+          className="select-label"
+        >
+          {label && label}
+          <Select
+            showSearch
+            value={getProperValue()}
+            placeholder={placeholder}
+            defaultActiveFirstOption={false}
+            showArrow={false}
+            filterOption={false}
+            onSearch={handleSearch}
+            onChange={(e) => {
+              console.log(e)
+            }}
+            notFoundContent={null}
+          >
+            {allData && allData[options] && allData[options]?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>)}
+          </Select>
+        </label>
+      )
+
     default:
       break;
   }

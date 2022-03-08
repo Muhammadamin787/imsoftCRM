@@ -13,3 +13,4 @@ export const TEXTAREA = "TEXTAREA";
 export const UPLOAD = "UPLOAD";
 export const BUTTON = "BUTTON";
 export const MULTIPLE_SELECT = "MULTIPLE_SELECT";
+export const SEARCH_SELECT = "SEARCH_SELECT";

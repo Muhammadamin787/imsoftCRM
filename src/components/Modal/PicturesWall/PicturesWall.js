@@ -28,7 +28,7 @@ export class PicturesWall extends React.Component {
       previewTitle: "",
       fileList: this.props.fileList,
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Access-Control-Allow-Origin": "*",
       },
     };
@@ -116,7 +116,7 @@ export class PicturesWall extends React.Component {
           >
             {fileList.length >= 1 ? null : uploadButton}
           </Upload>
-          <div className="file-uploader-name">
+          {/* <div className="file-uploader-name">
             <Popover
               placement="rightBottom"
               content={
@@ -130,7 +130,7 @@ export class PicturesWall extends React.Component {
             >
               <span>{fileList[0]?.name}</span>
             </Popover>
-          </div>
+          </div> */}
           <Modal
             visible={previewVisible}
             title={previewTitle}

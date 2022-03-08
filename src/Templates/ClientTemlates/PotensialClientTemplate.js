@@ -38,11 +38,11 @@ const PotensialClientTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
+      dataIndex: "id",
       key: "number",
       width: "15%",
       align: "center",
-      render: (text, _, i) => <p>{++i}</p>,
+      render: (text, _, i) => ++i,
     },
 
     {
