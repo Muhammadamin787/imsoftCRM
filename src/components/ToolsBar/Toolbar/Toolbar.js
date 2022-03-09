@@ -12,8 +12,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Popconfirm, Tooltip } from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
-import { findIcon } from "../../../assets/icons/icons";
-import { DELETE, GET, POST } from "../../../functions/Methods";
+import {
+  AddItem,
+  findIcon,
+  EditIcon,
+  DeleteIcon,
+} from "../../../assets/icons/icons";
+import { DELETE, GET } from "../../../functions/Methods";
 import {
   JARAYONDAGI,
   BEKOR_QILINGAN,
@@ -23,6 +28,7 @@ import {
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const addButtonIsDisabled = [
   JARAYONDAGI,
   BEKOR_QILINGAN,
@@ -33,9 +39,7 @@ const addButtonIsDisabled = [
 const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, tableItem } = useSelector(
-    (state) => state.tabs_reducer
-  );
+  const { currentPage, tableItem } = useSelector((state) => state.tabs_reducer);
   const currentPageIcon = findIcon(currentPage?.icon);
 
   useEffect(() => {
@@ -90,7 +94,7 @@ const Toolbar = () => {
 
   const ToolBarButtons = [
     {
-      icon: findIcon("AddItem"),
+      icon: <AddItem />,
       onClick: handleModalClick,
       tooltip: {
         placement: "bottom",
@@ -99,7 +103,7 @@ const Toolbar = () => {
       },
     },
     {
-      icon: findIcon("EditIcon"),
+      icon: <EditIcon />,
       onClick: tableItem?.length === 1 && onEdit,
       pop: (tableItem?.length > 1 || tableItem?.length === 0) && noPopEdit?.pop,
       tooltip: {
@@ -109,16 +113,16 @@ const Toolbar = () => {
       },
     },
     {
-      icon: findIcon("DeleteIcon"),
+      icon: <DeleteIcon />,
       pop:
         tableItem.length > 0
           ? {
-            placement: "top",
-            title: "Malumotni o'chirmoqchimisiz!",
-            cancelText: "Yo'q",
-            okText: "Ha",
-            onConfirm: onRemove,
-          }
+              placement: "top",
+              title: "Malumotni o'chirmoqchimisiz!",
+              cancelText: "Yo'q",
+              okText: "Ha",
+              onConfirm: onRemove,
+            }
           : noPopEdit.pop,
       // pop: {
       //   placement: "top",
@@ -134,7 +138,6 @@ const Toolbar = () => {
       },
     },
   ];
-
 
   return (
     <div className="toolbar">

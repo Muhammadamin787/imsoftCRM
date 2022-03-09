@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { findIcon } from "../../assets/icons/icons";
 import { ClearOutlined } from "@ant-design/icons";
-
+import SearchIcon from "./SearchIcon";
 
 const BottomTabs = () => {
   const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
@@ -50,7 +50,10 @@ const BottomTabs = () => {
   useEffect(() => {
     const parent = document.querySelectorAll(".innerText");
     parent.forEach((item, i) => {
-      if (item.innerText === currentPage.text || currentPage?.childText === item.innerText) {
+      if (
+        item.innerText === currentPage.text ||
+        currentPage?.childText === item.innerText
+      ) {
         item.parentElement.classList.add("activeBottomKey");
       } else {
         item.parentElement.classList.remove("activeBottomKey");
@@ -66,7 +69,8 @@ const BottomTabs = () => {
             {Panes &&
               Panes?.map((pane, i) => (
                 <button className="bottom__btn" onClick={() => onChange(i)}>
-                  {findIcon(pane?.icon)}
+                  {/* {findIcon(pane?.icon)} */}
+                  <SearchIcon icon={pane?.icon} />
                   <span className="innerText">
                     {pane?.childText ? pane?.childText : pane?.text}
                   </span>
