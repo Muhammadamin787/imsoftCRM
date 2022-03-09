@@ -239,6 +239,7 @@ const ModalInput = (props) => {
                   } else {
                     dispatch(toogleInputType(false))
                     dispatch(setOrderReason([]))
+                    // handleChangeValue()
                   }
                 }
                 dispatch(removeOrder_reason())

@@ -5,9 +5,9 @@ import MainPage from "./pages/main/MainPage";
 import Login from "./pages/login/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
 function App() {
-  const { user } = useSelector((state) => state.auth_reducer);
+  // const { user } = useSelector((state) => state.auth_reducer);
 
-  // const user = true
+  const user = true
 
   if (user) {
     return <MainPage />;

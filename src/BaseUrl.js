@@ -1,4 +1,4 @@
 // export const Base = "https://aqlli-uy.uz/";
-export const Base = "https://imsoft.ngrok.io/";
+export const Base = "imsoft-crm-serverside.imsoftgroup.uz/";
 export const BaseUrl = Base + "api/v1";
 
