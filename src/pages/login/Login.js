@@ -17,8 +17,8 @@ const Login = () => {
     POST("/login-user", e)
       .then((res) => {
         if (res.status == "200") {
-          toast.success("Xush kelibsiz");
           dispatch(setUser(res.data.data));
+          toast.success("Xush kelibsiz");
           localStorage.setItem("token", res.data.data.token);
         }
       })

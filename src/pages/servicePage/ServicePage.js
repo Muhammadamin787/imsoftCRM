@@ -19,7 +19,7 @@ const ServicePage = ({ page }) => {
     <div className="first-page">
       <div className="site-layout__body">
         {filterAccessKey(sections).map((section, i) => (
-          <Link to={section.path} key={section?.path}>
+          <Link to={section.path} key={i}>
             <Button
               className={"site-layout__body-items"}
               onClick={() => handleTab(section)}

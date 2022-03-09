@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setCurrentLocation,
   setCurrentLocationIsOpen,
 } from "../../redux/stored_reducer";
 

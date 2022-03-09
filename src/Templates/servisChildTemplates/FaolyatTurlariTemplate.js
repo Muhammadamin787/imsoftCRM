@@ -15,7 +15,7 @@ const FaolyatTurlaiTemplate = {
   mainUrl: "/activity-types",
   allData: {
     categories: "/categories",
-},
+  },
   form: [
     {
       grid: "1fr",
@@ -23,7 +23,6 @@ const FaolyatTurlaiTemplate = {
         {
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Faolyat turi nomi",
           label: "Faolyat turi"
         },
@@ -31,11 +30,10 @@ const FaolyatTurlaiTemplate = {
           placeholder: "Yo'nalishlar",
           label: "Yo'nalish",
           name: "category_id",
-          required: true,
           type: SELECT,
-          template:YunalishlarTemplate,
+          template: YunalishlarTemplate,
           options: "categories",
-      },
+        },
       ],
     },
   ],
@@ -46,7 +44,6 @@ const FaolyatTurlaiTemplate = {
       key: "id",
       width: "10%",
       align: "center",
-      render: (text, data, index) => ++index,
     },
     {
       title: "Faoliyat turi",

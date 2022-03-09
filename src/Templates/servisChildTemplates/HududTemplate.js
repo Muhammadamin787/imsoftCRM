@@ -22,20 +22,18 @@ const HududTemplate = {
     {
       grid: {
         columns: "1fr 1fr",
-        // rows: "1fr 1fr",
       },
       inputs: [
         {
           label: "Viloyat",
           name: "state_id",
           type: SELECT,
-          required: true,
           options: "states",
           placeholder: "Viloyat",
           gridColumn: "1 / 3",
           gridRow: "1 / 2",
-
           template: ViloyatlarTemplate,
+          filterData: "cities",
         },
         {
           label: "Shahar/Tuman",
@@ -43,17 +41,16 @@ const HududTemplate = {
           gridColumn: "1 / 3",
           gridRow: "2 / 3",
           name: "region_id",
-          required: true,
           type: SELECT,
           template: ShaharTumanTemplate,
           options: "cities",
           autoSelect: ["state_id"],
+          parentSelect: "state_id",
         },
         {
           label: "Hudud",
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Hudud",
           gridColumn: "1 / 3",
           gridRow: "3 / 4",

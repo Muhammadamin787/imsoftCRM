@@ -3,7 +3,7 @@ import { Upload, Modal, Popover } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { inputDeafultHeght } from "../../../constant/deafultStyle";
 import { DELETE } from "../../../functions/Methods";
-import { BaseUrl, Base } from "../../../BaseUrl";
+import { BaseUrl } from "../../../BaseUrl";
 import { setValues } from "../../../redux/stored_reducer";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,7 +28,7 @@ export class PicturesWall extends React.Component {
       previewTitle: "",
       fileList: this.props.fileList,
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Access-Control-Allow-Origin": "*",
       },
     };
@@ -84,6 +84,7 @@ export class PicturesWall extends React.Component {
       </div>
     );
 
+
     const customStyles = {
       imageUploader: {
         gridColumn: this.props.gridColumn,
@@ -115,7 +116,7 @@ export class PicturesWall extends React.Component {
           >
             {fileList.length >= 1 ? null : uploadButton}
           </Upload>
-          <div className="file-uploader-name">
+          {/* <div className="file-uploader-name">
             <Popover
               placement="rightBottom"
               content={
@@ -129,7 +130,7 @@ export class PicturesWall extends React.Component {
             >
               <span>{fileList[0]?.name}</span>
             </Popover>
-          </div>
+          </div> */}
           <Modal
             visible={previewVisible}
             title={previewTitle}

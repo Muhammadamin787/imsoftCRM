@@ -19,7 +19,6 @@ const ReklamalarTemplate = {
         {
           name: "description",
           type: STRING,
-          required: true,
           placeholder: "Reklamalar",
           label: "Reklamalar"
         },
@@ -37,16 +36,9 @@ const ReklamalarTemplate = {
     },
     {
       title: "Reklama Nomi",
-      dataIndex: "description",
-      key: "description",
+      dataIndex: "name",
+      key: "name",
       width: "95%",
-    },
-  ],
-  data: [
-    {
-      number: "1",
-      reklama_nomi: "Instagram mitti.me",
-      key: 1,
     },
   ],
 };

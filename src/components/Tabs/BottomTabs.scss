@@ -18,7 +18,7 @@
   }
 }
 .site-footer__tabs {
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   .bottom__btn {
@@ -48,11 +48,8 @@
     svg {
       width: 17px !important;
       height: 17px;
-      //fill: #ffffff;
-
       path {
         fill: #999 !important;
-        //fill: #ffffff;
       }
     }
   }

@@ -136,6 +136,9 @@ export const counterSlice = createSlice({
     stopLoading: (state) => {
       state.loading = false;
     },
+    removeOrder_reason: (state, { payload }) => {
+      state.values.order_reason = null;
+    }
   },
 });
 
@@ -164,6 +167,7 @@ export const {
   setBottomActiveKey,
   setPanes,
   removePositionPanes,
+  removeOrder_reason
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

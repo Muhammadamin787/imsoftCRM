@@ -1,8 +1,8 @@
 import React from "react";
-import {REKLAMALAR_PATH, USERS_PATH} from "../../pages/pageConstants/PageRoutes";
-import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
-import {MULTIPLE_SELECT, PASSWORD, PHONE, STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
+import { USERS_PATH } from "../../pages/pageConstants/PageRoutes";
+import { SERVIS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
+import { MULTIPLE_SELECT, PASSWORD, PHONE, STRING } from "../../components/Modal/InputTypes";
+import { FieldNumberOutlined } from "@ant-design/icons";
 
 const UsersTemplate = {
     accessKey: 13,
@@ -14,8 +14,7 @@ const UsersTemplate = {
     isOpenModal: false,
     modal: {
         style: {
-            width: 550,
-            // marginTop: "-70px"
+            width: 600,
         }
     },
     form: [
@@ -29,7 +28,6 @@ const UsersTemplate = {
                     label: "F.I.O",
                     type: STRING,
                     name: "name",
-                    required: true,
                     gridColumn: "1 / 3",
                     gridRow: "1 / 2",
                     placeholder: "FIO",
@@ -38,7 +36,6 @@ const UsersTemplate = {
                     label: "Login",
                     type: STRING,
                     name: "login",
-                    required: true,
                     gridRow: "2 / 3",
                     placeholder: "login",
                 },
@@ -46,7 +43,6 @@ const UsersTemplate = {
                     label: "Telefon",
                     type: PHONE,
                     name: "phone_number",
-                    required: true,
                     gridRow: "2 / 3",
                     placeholder: "telefon",
                 },
@@ -54,7 +50,6 @@ const UsersTemplate = {
                     label: "Parol",
                     type: PASSWORD,
                     name: "password",
-                    required: true,
                     gridRow: "3 / 4",
                     placeholder: "parol",
                 },
@@ -62,7 +57,6 @@ const UsersTemplate = {
                     label: "Huquqlari",
                     type: MULTIPLE_SELECT,
                     name: "access",
-                    required: true,
                     gridRow: "3 / 4",
                     placeholder: "parol",
                 },
@@ -71,7 +65,7 @@ const UsersTemplate = {
     ],
     columns: [
         {
-            title: <FieldNumberOutlined/>,
+            title: <FieldNumberOutlined />,
             dataIndex: "id",
             key: "id",
             width: "5%",

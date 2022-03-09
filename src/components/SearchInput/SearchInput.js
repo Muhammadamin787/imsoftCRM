@@ -82,7 +82,7 @@ const SearchInput = () => {
                       item?.dataIndex === "created_at"
                         ? moment(text).format("DD-MM-YYYY")
                         : text
-                    }`}
+                      }`}
                     // text={`${text}`}
                     value={`${value}`}
                   />

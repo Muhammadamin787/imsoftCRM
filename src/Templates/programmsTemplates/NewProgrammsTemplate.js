@@ -7,9 +7,9 @@ import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesLi
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
 import {
-    STRING,
-    DATE,
-    SELECT,
+  STRING,
+  DATE,
+  SELECT,
 } from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
@@ -41,7 +41,6 @@ export const NewProgrammsTemplate = {
         {
           name: "client_id",
           type: SELECT,
-          required: true,
           placeholder: "Mijoz",
           gridColumn: "1 / 5",
           gridRow: "1 / 2",
@@ -51,7 +50,6 @@ export const NewProgrammsTemplate = {
         {
           name: "start_date",
           type: DATE,
-          required: true,
           placeholder: "Buyurtma sana:",
           gridColumn: "5 / 7",
           gridRow: "1 / 2",
@@ -61,7 +59,6 @@ export const NewProgrammsTemplate = {
         {
           name: "finish_date",
           type: DATE,
-          required: true,
           placeholder: "Topshirilgan sana:",
           gridColumn: "7 / 9",
           gridRow: "1 / 2",
@@ -70,7 +67,6 @@ export const NewProgrammsTemplate = {
         {
           name: "name",
           type: STRING,
-          required: true,
           placeholder: "Projact ismi",
           gridColumn: "1 / 5",
           gridRow: "2 / 3",
@@ -79,7 +75,6 @@ export const NewProgrammsTemplate = {
         {
           name: "developer_id",
           type: SELECT,
-          required: true,
           placeholder: "Qabul qilgan xodim:",
           gridColumn: "5 / 7",
           gridRow: "2 / 3",
@@ -90,7 +85,6 @@ export const NewProgrammsTemplate = {
         {
           name: "status_id",
           type: SELECT,
-          required: true,
           placeholder: "Xolati:",
           gridColumn: "7 / 9",
           gridRow: "2 / 3",
@@ -100,7 +94,6 @@ export const NewProgrammsTemplate = {
         {
           name: "general_info",
           type: STRING,
-          required: true,
           placeholder: "Umumiy tafsiflar",
           gridColumn: "1 / 9",
           gridRow: "3 / 4",
@@ -116,11 +109,10 @@ export const NewProgrammsTemplate = {
   columns: [
     {
       title: <FieldNumberOutlined />,
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "id",
+      key: "id",
       width: "10%",
       align: "center",
-      render: (text, data, index) => ++index,
     },
     {
       title: "Mijoz F.I.O",

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from "../../constant/FilterColumns";
-import { setTableItem } from "../../redux/stored_reducer";
+import { setTableItem, setValues, toggleModal } from "../../redux/stored_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
@@ -16,12 +16,13 @@ const GlobalTable = () => {
     currentPage,
   } = useSelector((state) => state?.tabs_reducer);
 
-
-
   const { mainData } = useSelector((state) => state?.unsaved_reducer)
   const dispatch = useDispatch();
   const { filters, columns, tableItem } = currentPage;
 
+  useEffect(() => {
+    filterAdd();
+  }, [currentPage, mainData]);
 
   const rowSelection = {
     selectedRowKeys: tableItem?.map((row) => row.key),
@@ -44,21 +45,19 @@ const GlobalTable = () => {
     setNewColumns(filteredColumns);
   }
 
-  useEffect(() => {
-    filterAdd();
-  }, [currentPage, mainData]);
-
-
-
   const onClickRow = record => {
     return {
       onClick: () => {
         dispatch(setTableItem([record]));
       },
+      onDoubleClick: () => {
+        if (tableItem.length > 0 && tableItem.length < 2) {
+          dispatch(setValues({ ...tableItem[0] }));
+        }
+        dispatch(toggleModal(tableItem));
+      }
     };
   };
-
-
 
   return (
     <Table
@@ -70,12 +69,10 @@ const GlobalTable = () => {
       size={"small"}
       scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
       pagination={{ position: ["bottomCenter"] }}
-
       rowSelection={{
         type: "checkbox",
         ...rowSelection,
       }}
-
       onRow={onClickRow}
     />
   );

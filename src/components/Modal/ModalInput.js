@@ -1,4 +1,4 @@
-import { Input, InputNumber, DatePicker, Select } from "antd";
+import { Input, InputNumber, DatePicker, Select, Spin } from "antd";
 import { Option } from "antd/lib/mentions";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
@@ -16,6 +16,7 @@ import {
   PICTURE_WALL,
   PASSWORD,
   MULTIPLE_SELECT,
+  SEARCH_SELECT,
 } from "./InputTypes";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
 import "moment/locale/ru";
@@ -24,12 +25,22 @@ import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import { setInnerModel, toggleInnerModal } from "../../redux/stored_reducer";
+import {
+  setInnerModel,
+  toggleInnerModal,
+  removeOrder_reason,
+} from "../../redux/stored_reducer";
+import {
+  setOrderReason,
+  toogleInputType,
+  setFilterData,
+} from "../../redux/unsaved_reducer";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { accessValues } from "../../constant/constants";
 import { Base } from "../../BaseUrl";
+import { GET } from "../../functions/Methods";
 
 const { TextArea } = Input;
 
@@ -39,8 +50,12 @@ const ModalInput = (props) => {
   const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
+  const { searchInputValue, allData, changeInputtype, filterAllData } =
+    useSelector((state) => state.unsaved_reducer);
+
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
+  const [bool, setBool] = useState(true);
 
   const {
     autoSelect,
@@ -54,14 +69,14 @@ const ModalInput = (props) => {
     Iconic,
     options,
     template,
-    required,
     isInnerModal,
     filePath,
     handleChangeValue,
     fileName,
+    openFile,
+    filterData,
+    parentSelect,
   } = props;
-
-  const { allData } = useSelector((s) => s?.unsaved_reducer);
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
@@ -117,6 +132,34 @@ const ModalInput = (props) => {
     }
   }, [values]);
 
+  //                 select search uchun
+
+  const [filD, setFilD] = useState("");
+  useEffect(() => {
+    // const filteredData = allData[options]?.filter((option) =>
+    //   option?.name.toLowerCase().includes(filD.toLowerCase())
+    // );
+    // dispatch(setSearchInputValue(filteredData));
+  }, [filD]);
+
+  //                 select search uchun
+
+  useEffect(() => {
+    if (allData[filterData]) {
+      console.log("ishladim");
+      if (values[name]) {
+        const a = allData[filterData].filter(
+          (item) => item[name] === values[name]
+        );
+        dispatch(setFilterData({ ...filterAllData, [filterData]: a }));
+      }
+    }
+  }, [values, allData]);
+
+  useEffect(() => {
+    dispatch(setFilterData(allData));
+  }, [allData]);
+
   switch (type) {
     case STRING:
       input = (
@@ -126,7 +169,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input
@@ -135,7 +177,6 @@ const ModalInput = (props) => {
             id={refs && "autofucus"}
             value={getProperValue()}
             placeholder={placeholder}
-            required={required}
             onChange={(e) => {
               const target = {
                 [name]: e.target.value,
@@ -146,6 +187,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case NUMBER:
       input = (
         <InputNumber
@@ -153,7 +195,6 @@ const ModalInput = (props) => {
           type="number"
           autoFocus
           name={name}
-          required
           id={refs && "autofucus"}
           style={{
             gridColumn: gridColumn,
@@ -171,10 +212,11 @@ const ModalInput = (props) => {
             };
             handleChangeValue(target);
           }}
-          value={values[name] ? values[name] : ""}
+          // value={values[name] ? values[name] : ""}
         />
       );
       break;
+
     case SELECT:
       input = (
         <label
@@ -183,7 +225,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
           id={refs && "autofucus"}
           className="select-label"
         >
@@ -193,28 +234,33 @@ const ModalInput = (props) => {
               size="small"
               name={name}
               autoFocus
-              required={required}
+              notFoundContent={allData[options] ? null : <Spin size="small" />}
               value={getProperValue()}
+              showSearch
+              onSearch={(e) => console.log(e)}
               onChange={(e) => {
-                if (autoSelect) {
-                  let selectedValues = { [name]: e };
-                  autoSelect?.forEach((el) => {
-                    let thisObj =
-                      allData &&
-                      allData[options] &&
-                      allData[options].find((item) => item["id"] === e);
-                    selectedValues = { ...selectedValues, [el]: thisObj[el] };
-                  });
-                  handleChangeValue(selectedValues);
-                } else {
-                  handleChangeValue({ [name]: e });
+                dispatch(setOrderReason([]));
+                dispatch(removeOrder_reason());
+                handleChangeValue({ [name]: e });
+                if (options == "order_reason_id") {
+                  if (allData[options][e - 1]?.id != 5) {
+                    GET(allData[options][e - 1]?.url).then((res) => {
+                      dispatch(setOrderReason(res.data.data));
+                      dispatch(toogleInputType(true));
+                    });
+                  } else {
+                    dispatch(toogleInputType(false));
+                    dispatch(setOrderReason([]));
+                  }
                 }
               }}
+              disabled={
+                parentSelect ? (values[parentSelect] ? false : true) : false
+              }
             >
-              {allData &&
-                allData[options] &&
-                allData[options]?.map((option, i) => (
-                  <Select.Option value={option?.id} key={option?.id}>
+              {filterAllData &&
+                filterAllData[options]?.map((option, i) => (
+                  <Select.Option value={option?.id} key={i}>
                     {option?.name}
                   </Select.Option>
                 ))}
@@ -231,6 +277,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case MAP:
       input = (
         <MapModal
@@ -238,7 +285,6 @@ const ModalInput = (props) => {
           gridRow={gridRow}
           height={height}
           handleChangeValue={handleChangeValue}
-          required={required}
           geo={
             values?.longitude && values?.latitude
               ? [values.latitude, values?.longitude]
@@ -247,6 +293,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case DATE:
       input = (
         <label
@@ -263,7 +310,6 @@ const ModalInput = (props) => {
             value={getProperValueDate()}
             format={"DD.MM.YYYY"}
             autoFocus
-            required={required}
             onChange={(e, dateString) => {
               const formatDate = moment(e._d).format("YYYY-MM-DD hh:mm:ss");
               const target = {
@@ -275,6 +321,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case TEXTAREA:
       input = (
         <label
@@ -289,7 +336,6 @@ const ModalInput = (props) => {
             placeholder={placeholder}
             value={getProperValue()}
             autoFocus
-            required={required}
             autoSize={{ minRows: 3, maxRows: 3 }}
             onChange={(data) => {
               const target = {
@@ -301,6 +347,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case PHONE:
       input = (
         <label
@@ -316,7 +363,6 @@ const ModalInput = (props) => {
             specialLabel={false}
             disableDropdown={true}
             countryCodeEditable={false}
-            required={required}
             areaCodes={{
               uz: ["+998"],
             }}
@@ -333,6 +379,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case UPLOAD:
       input = (
         <UploadFile
@@ -350,9 +397,11 @@ const ModalInput = (props) => {
           values={values}
           imageUrl={imgUrl}
           setUrl={setImgUrl}
+          openFile={openFile}
         />
       );
       break;
+
     case IMAGE:
       input = (
         <UpLoadJPG
@@ -367,6 +416,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case PICTURE_WALL:
       input = (
         <PicturesWall
@@ -383,6 +433,7 @@ const ModalInput = (props) => {
         />
       );
       break;
+
     case PASSWORD:
       input = (
         <label
@@ -391,7 +442,6 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Input.Password
@@ -409,11 +459,16 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case MULTIPLE_SELECT:
       const access = accessValues;
       const children = [];
       access.map((category) => {
-        children.push(<Option key={category.value}>{category.text}</Option>);
+        children.push(
+          <Option value={category.value} key={category.value}>
+            {category.text}
+          </Option>
+        );
       });
       input = (
         <label
@@ -422,22 +477,24 @@ const ModalInput = (props) => {
             gridRow: gridRow,
             height: height ? height + "px" : inputDeafultHeght + "px",
           }}
-          required={required}
         >
           {label && label}
           <Select
             mode="multiple"
             allowClear
-            // value={getProperValue()}
-            // value={values[name]}
+            value={getProperValue()}
             style={{ width: "100%" }}
             placeholder="Please select"
+            maxTagCount={"responsive"}
+            notFoundContent={true}
             onChange={(value) => {
               let res = [1, 4];
               value?.map((el) => {
                 accessValues.map((item) => {
-                  if (el === item.text || +el === item.value) {
-                    res.push(+item.value);
+                  if (!res.includes(el)) {
+                    if (el === item.text || +el === item.value) {
+                      res.push(+item.value);
+                    }
                   }
                 });
               });
@@ -451,10 +508,70 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+    case SEARCH_SELECT:
+      const handleSearch = (searchWords) => {
+        setFilD(searchWords);
+      };
+      input = (
+        <label
+          style={{
+            gridColumn: gridColumn,
+            gridRow: gridRow,
+            height: height ? height + "px" : inputDeafultHeght + "px",
+          }}
+          id={refs && "autofucus"}
+          className="select-label"
+        >
+          {label && label}
+
+          {changeInputtype ? (
+            <Select
+              showSearch
+              value={getProperValue()}
+              placeholder={placeholder}
+              defaultActiveFirstOption={false}
+              showArrow={false}
+              filterOption={false}
+              onSearch={handleSearch}
+              notFoundContent={allData[options] ? <Spin size="small" /> : null}
+              onChange={(e) => {
+                handleChangeValue({ [name]: e });
+              }}
+            >
+              {searchInputValue?.length > 0
+                ? searchInputValue?.map((option) => (
+                    <Option value={option?.id} key={option?.id}>
+                      {" "}
+                      {option?.name}{" "}
+                    </Option>
+                  ))
+                : allData[options]?.map((option) => (
+                    <Option value={option?.id} key={option?.id}>
+                      {" "}
+                      {option?.name}{" "}
+                    </Option>
+                  ))}
+            </Select>
+          ) : (
+            <Input
+              name={name}
+              autoFocus
+              id={refs && "autofucus"}
+              value={getProperValue()}
+              placeholder={placeholder}
+              onChange={(e) => {
+                const target = {
+                  [name]: e.target.value,
+                };
+                handleChangeValue(target);
+              }}
+            />
+          )}
+        </label>
+      );
     default:
       break;
   }
-
   return input;
 };
 

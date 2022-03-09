@@ -135,11 +135,12 @@ const MainPage = () => {
           mode="horizontal"
           defaultSelectedKeys={["0"]}
         >
-          {filterAccessKey(AllPages).map((menu, i) =>
+          {/* {filterAccessKey(AllPages).map((menu, i) => */}
+          {AllPages.map((menu, i) =>
             menu.submenus ? (
               <SubMenu key={i} title={menu.text}>
                 {menu.submenus.map((sub, k) => (
-                  <Item key={"sub" + k}>
+                  <Item key={k}>
                     <Link to={sub.path}>
                       {sub.text}
                       {findIcon(menu?.icon)}
@@ -205,7 +206,8 @@ const MainPage = () => {
         style={{ marginTop: 64 }}
       >
         <Routes>
-          {filterAccessKey(vse).map((page, i) =>
+          {/* {filterAccessKey(vse).map((page, i) => */}
+          {vse.map((page, i) =>
             page.submenus ? (
               page.submenus.map((sub, k) => (
                 <Route

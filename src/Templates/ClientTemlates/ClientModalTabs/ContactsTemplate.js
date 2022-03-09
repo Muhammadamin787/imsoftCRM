@@ -22,7 +22,6 @@ const ContactsTemplate = {
         {
           name: "client_name",
           type: STRING,
-          required: true,
           placeholder: "Raxbar",
           gridColumn: "1 / 6",
           gridRow: "1 / 2",
@@ -31,7 +30,6 @@ const ContactsTemplate = {
         {
           name: "client_phone_number",
           type: PHONE,
-          required: true,
           placeholder: "Telifon",
           gridColumn: "6 / 10",
           gridRow: "1 / 2",
@@ -40,7 +38,6 @@ const ContactsTemplate = {
         {
           name: "client_phone_number_2",
           type: PHONE,
-          required: true,
           placeholder: "Telifon",
           gridColumn: "10 / 15",
           gridRow: "1 / 2",
@@ -49,7 +46,6 @@ const ContactsTemplate = {
         {
           name: "client_born_date",
           type: DATE,
-          required: true,
           placeholder: "Tug'ilgan Sana",
           gridColumn: "15 / 19",
           gridRow: "1 / 2",
@@ -58,7 +54,6 @@ const ContactsTemplate = {
         {
           name: "operator_name",
           type: STRING,
-          required: true,
           placeholder: "Opirator",
           gridColumn: "1 / 6",
           gridRow: "2 / 3",
@@ -67,7 +62,6 @@ const ContactsTemplate = {
         {
           name: "operator_phone_number",
           type: PHONE,
-          required: true,
           placeholder: "Telifon",
           gridColumn: "6 / 10",
           gridRow: "2 / 3",
@@ -76,7 +70,6 @@ const ContactsTemplate = {
         {
           name: "operator_phone_number_2",
           type: PHONE,
-          required: true,
           placeholder: "Telifon",
           gridColumn: "10 / 15",
           gridRow: "2 / 3",
@@ -85,7 +78,6 @@ const ContactsTemplate = {
         {
           name: "operator_born_date",
           type: DATE,
-          required: true,
           placeholder: "Tug'ilgan Sana",
           gridColumn: "15 / 19",
           gridRow: "2 / 3",
@@ -95,7 +87,6 @@ const ContactsTemplate = {
           name: "file_1",
           type: PICTURE_WALL,
           filePath: "/clients/image",
-          required: true,
           placeholder: "Foto",
           gridColumn: "1 / 4",
           gridRow: "3 / 25",
@@ -106,7 +97,6 @@ const ContactsTemplate = {
         {
           name: "file_2",
           type: PICTURE_WALL,
-          required: true,
           placeholder: "Foto",
           gridColumn: "4 / 7",
           gridRow: "3 / 25",
@@ -118,7 +108,6 @@ const ContactsTemplate = {
         {
           name: "file_3",
           type: PICTURE_WALL,
-          required: true,
           placeholder: "Foto",
           gridColumn: "7 / 10",
           gridRow: "3 / 25",
@@ -130,7 +119,6 @@ const ContactsTemplate = {
         {
           name: "longitude",
           type: MAP,
-          required: true,
           placeholder: "Client Addres",
           gridColumn: "10 / 19",
           gridRow: "3 / 25",

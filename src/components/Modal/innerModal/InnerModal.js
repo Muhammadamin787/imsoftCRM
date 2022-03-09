@@ -18,9 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 // ❗ hard code boldi, Global modaldagi codelar takrollandi
 
 const InnerModal = () => {
-  const { currentPage, values2, innerModal } = useSelector(
-    (state) => state.tabs_reducer
-  );
+  const { values2, innerModal } = useSelector((state) => state.tabs_reducer);
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
   const draggleRef = useRef("s");
@@ -32,18 +30,6 @@ const InnerModal = () => {
   });
   const [getReqActive, setGetReqActive] = useState(false);
   const [btnActive, setBtnActive] = useState(false);
-
-  // useEffect(() => {
-  //   if (currentPage && currentPage.isOpenModal) {
-  //     let currentData = currentPage?.allData;
-  //     for (const url in currentData) {
-  //       let res = axios(currentData[url]);
-  //       res.then((res) => {
-  //         dispatch(setAllData({ [url]: res.data.data }));
-  //       });
-  //     }
-  //   }
-  // }, [values2, innerModal, currentPage]);
 
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
@@ -68,7 +54,7 @@ const InnerModal = () => {
         setGetReqActive(true);
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
-        toast.success(res.data.data.name + " Muaffaqiyatlik qo'shildi");
+        toast.success(res.data?.data?.name + " Muaffaqiyatlik qo'shildi");
       }
       setBtnActive(false);
     });
