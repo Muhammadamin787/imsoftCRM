@@ -131,7 +131,6 @@ const ModalInput = (props) => {
   const [filD, setFilD] = useState("")
   useEffect(() => {
     const filteredData = allData[options]?.filter((option) => option?.name.toLowerCase().includes(filD.toLowerCase()));
-    console.log(filteredData);
     dispatch(setSearchInputValue(filteredData))
   }, [filD])
 
@@ -503,7 +502,6 @@ const ModalInput = (props) => {
       const handleSearch = searchWords => {
         setFilD(searchWords)
       };
-
       input = (
         <label
           style={{
