@@ -71,7 +71,6 @@ const GlobalModal = () => {
     });
   };
 
-
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };
@@ -119,9 +118,11 @@ const GlobalModal = () => {
           ? `${mainUrl}/status/${key}`
           : mainUrl
       ).then((res) => {
-        dispatch(setData(res.data.data));
-        dispatch(stopLoading());
-        toast.success("Muaffaqiyatlik bajarildi");
+        if (res) {
+          dispatch(setData(res.data.data));
+          dispatch(stopLoading());
+          toast.success("Muaffaqiyatlik bajarildi");
+        }
       });
       setUpdate(false);
     }

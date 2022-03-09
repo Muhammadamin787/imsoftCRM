@@ -34,6 +34,7 @@ import {
   setOrderReason,
   toogleInputType,
   setFilterData,
+  setSearchInputValue,
 } from "../../redux/unsaved_reducer";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
@@ -55,7 +56,6 @@ const ModalInput = (props) => {
 
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
-  const [bool, setBool] = useState(true);
 
   const {
     autoSelect,
@@ -136,17 +136,16 @@ const ModalInput = (props) => {
 
   const [filD, setFilD] = useState("");
   useEffect(() => {
-    // const filteredData = allData[options]?.filter((option) =>
-    //   option?.name.toLowerCase().includes(filD.toLowerCase())
-    // );
-    // dispatch(setSearchInputValue(filteredData));
+    const filteredData = allData[options]?.filter((option) =>
+      option?.name.toLowerCase().includes(filD.toLowerCase())
+    );
+    dispatch(setSearchInputValue(filteredData));
   }, [filD]);
 
   //                 select search uchun
 
   useEffect(() => {
     if (allData[filterData]) {
-      console.log("ishladim");
       if (values[name]) {
         const a = allData[filterData].filter(
           (item) => item[name] === values[name]
@@ -155,10 +154,6 @@ const ModalInput = (props) => {
       }
     }
   }, [values, allData]);
-
-  useEffect(() => {
-    dispatch(setFilterData(allData));
-  }, [allData]);
 
   switch (type) {
     case STRING:
@@ -237,7 +232,15 @@ const ModalInput = (props) => {
               notFoundContent={allData[options] ? null : <Spin size="small" />}
               value={getProperValue()}
               showSearch
-              onSearch={(e) => console.log(e)}
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+              filterSort={(optionA, optionB) =>
+                optionA.children
+                  .toLowerCase()
+                  .localeCompare(optionB.children.toLowerCase())
+              }
               onChange={(e) => {
                 dispatch(setOrderReason([]));
                 dispatch(removeOrder_reason());
@@ -508,6 +511,7 @@ const ModalInput = (props) => {
         </label>
       );
       break;
+
     case SEARCH_SELECT:
       const handleSearch = (searchWords) => {
         setFilD(searchWords);
@@ -569,6 +573,7 @@ const ModalInput = (props) => {
           )}
         </label>
       );
+
     default:
       break;
   }

@@ -103,9 +103,9 @@ class UploadFile extends React.Component {
       } else if (!imageUrl) {
         // bu birinchi modal ochilgandagi holat
         if (bool) {
-          return findIcon(this?.props?.Iconic);
+          return <div>{findIcon(this?.props?.Iconic)}</div>;
         } else if (!bool) {
-          return findIcon("UploadFileOilasi");
+          return <div>{findIcon("UploadFileOilasi")}</div>;
         }
       } else if (imageUrl) {
         // bu file saqlangandagi holat
@@ -143,7 +143,7 @@ class UploadFile extends React.Component {
         left: "0px",
         width: "100%",
         height: "100%",
-        // paddingTop: "10px",
+        paddingTop: "10px",
         color: "blue",
       },
       labelStyle: {
@@ -155,7 +155,6 @@ class UploadFile extends React.Component {
         cursor: "pointer",
       },
     };
-
 
     return (
       <label
