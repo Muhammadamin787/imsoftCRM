@@ -25,8 +25,16 @@ import UpLoadJPG from "./UpLoadJPG";
 import { useDispatch, useSelector } from "react-redux";
 import UploadFile from "./UpLoadFile";
 import moment from "moment";
-import { setInnerModel, setValues, toggleInnerModal, removeOrder_reason } from "../../redux/stored_reducer";
-import { setOrderReason, setSearchInputValue, toogleInputType, setFilterData } from "../../redux/unsaved_reducer"
+import {
+  setInnerModel,
+  toggleInnerModal,
+  removeOrder_reason,
+} from "../../redux/stored_reducer";
+import {
+  setOrderReason,
+  toogleInputType,
+  setFilterData,
+} from "../../redux/unsaved_reducer";
 import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -42,7 +50,8 @@ const ModalInput = (props) => {
   const { values, innerModal, values2 } = useSelector(
     (state) => state.tabs_reducer
   );
-  const { searchInputValue, allData, changeInputtype ,filterAllData} = useSelector(state => state.unsaved_reducer)
+  const { searchInputValue, allData, changeInputtype, filterAllData } =
+    useSelector((state) => state.unsaved_reducer);
 
   const [fileList, setFileList] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
@@ -65,10 +74,9 @@ const ModalInput = (props) => {
     handleChangeValue,
     fileName,
     openFile,
-    filterData, 
+    filterData,
     parentSelect,
   } = props;
-
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
@@ -124,19 +132,21 @@ const ModalInput = (props) => {
     }
   }, [values]);
 
-
-
   //                 select search uchun
 
-  const [filD, setFilD] = useState("")
+  const [filD, setFilD] = useState("");
   useEffect(() => {
-    const filteredData = allData[options]?.filter((option) => option?.name.toLowerCase().includes(filD.toLowerCase()));
-    dispatch(setSearchInputValue(filteredData))
-  }, [filD])
+    // const filteredData = allData[options]?.filter((option) =>
+    //   option?.name.toLowerCase().includes(filD.toLowerCase())
+    // );
+    // dispatch(setSearchInputValue(filteredData));
+  }, [filD]);
 
   //                 select search uchun
+
   useEffect(() => {
     if (allData[filterData]) {
+      console.log("ishladim");
       if (values[name]) {
         const a = allData[filterData].filter(
           (item) => item[name] === values[name]
@@ -144,7 +154,7 @@ const ModalInput = (props) => {
         dispatch(setFilterData({ ...filterAllData, [filterData]: a }));
       }
     }
-  }, [values]);
+  }, [values, allData]);
 
   useEffect(() => {
     dispatch(setFilterData(allData));
@@ -226,22 +236,23 @@ const ModalInput = (props) => {
               autoFocus
               notFoundContent={allData[options] ? null : <Spin size="small" />}
               value={getProperValue()}
+              showSearch
+              onSearch={(e) => console.log(e)}
               onChange={(e) => {
-                dispatch(setOrderReason([]))
-                dispatch(removeOrder_reason())
-
+                dispatch(setOrderReason([]));
+                dispatch(removeOrder_reason());
+                handleChangeValue({ [name]: e });
                 if (options == "order_reason_id") {
                   if (allData[options][e - 1]?.id != 5) {
-                    GET(allData[options][e - 1]?.url).then(res => {
+                    GET(allData[options][e - 1]?.url).then((res) => {
                       dispatch(setOrderReason(res.data.data));
-                      dispatch(toogleInputType(true))
-                    })
+                      dispatch(toogleInputType(true));
+                    });
                   } else {
-                    dispatch(toogleInputType(false))
-                    dispatch(setOrderReason([]))
+                    dispatch(toogleInputType(false));
+                    dispatch(setOrderReason([]));
                   }
                 }
-                dispatch(removeOrder_reason())
               }}
               disabled={
                 parentSelect ? (values[parentSelect] ? false : true) : false
@@ -498,9 +509,8 @@ const ModalInput = (props) => {
       );
       break;
     case SEARCH_SELECT:
-
-      const handleSearch = searchWords => {
-        setFilD(searchWords)
+      const handleSearch = (searchWords) => {
+        setFilD(searchWords);
       };
       input = (
         <label
@@ -514,7 +524,7 @@ const ModalInput = (props) => {
         >
           {label && label}
 
-          {changeInputtype ?
+          {changeInputtype ? (
             <Select
               showSearch
               value={getProperValue()}
@@ -525,14 +535,24 @@ const ModalInput = (props) => {
               onSearch={handleSearch}
               notFoundContent={allData[options] ? <Spin size="small" /> : null}
               onChange={(e) => {
-                handleChangeValue({ [name]: e })
+                handleChangeValue({ [name]: e });
               }}
             >
-              {(searchInputValue?.length > 0) ?
-                searchInputValue?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>) :
-                allData[options]?.map(option => <Option value={option?.id} key={option?.id}> {option?.name} </Option>)}
+              {searchInputValue?.length > 0
+                ? searchInputValue?.map((option) => (
+                    <Option value={option?.id} key={option?.id}>
+                      {" "}
+                      {option?.name}{" "}
+                    </Option>
+                  ))
+                : allData[options]?.map((option) => (
+                    <Option value={option?.id} key={option?.id}>
+                      {" "}
+                      {option?.name}{" "}
+                    </Option>
+                  ))}
             </Select>
-            :
+          ) : (
             <Input
               name={name}
               autoFocus
@@ -546,8 +566,7 @@ const ModalInput = (props) => {
                 handleChangeValue(target);
               }}
             />
-          }
-
+          )}
         </label>
       );
     default:

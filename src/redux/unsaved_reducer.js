@@ -135,7 +135,7 @@ export const counterSlice = createSlice({
       state.mainData = arrayWithKeys;
     },
     setOrderReason : (state, { payload }) => {
-      state.allData.order_reason = payload
+      state.allData.order_reason = payload;
     },
     setSearchInputValue: (state, { payload }) => {
       state.searchInputValue = payload
