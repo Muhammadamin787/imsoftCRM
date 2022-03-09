@@ -7,10 +7,10 @@ export default (filters, columns, data) => {
     filteredCols = filteredCols.map((a) => {
       if (a.dataIndex == d) {
         let filtereds = _.uniqBy(data, (e) => e[d]).map((k) => {
-          if (d === "time_create") {
+          if (d === "created_at") {
             return {
-              text: moment(k[d]).format("DD.MM.YYYY") || "",
-              value: moment(k[d]).format("DD.MM.YYYY") || "",
+              text: moment(k[d]).format("DD-MM-YYYY") || "",
+              value: moment(k[d]).format("DD-MM-YYYY") || "",
             };
           } else {
             return {
@@ -22,6 +22,7 @@ export default (filters, columns, data) => {
         return {
           ...a,
           filters: filtereds,
+          onFilter: (value, record) => `${record[d]}`.indexOf(value) === 0,
         };
       } else {
         return a;

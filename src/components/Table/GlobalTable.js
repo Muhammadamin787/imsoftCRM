@@ -3,33 +3,41 @@ import { useEffect, useState } from "react";
 import "./GlobalTable.scss";
 import { useSelector, useDispatch } from "react-redux";
 import FilterColumns from "../../constant/FilterColumns";
-import { setTableItem } from "../../redux/tabs_reducer";
+import { setTableItem } from "../../redux/stored_reducer";
 
 const GlobalTable = () => {
   const [newColumns, setNewColumns] = useState([]);
-  const { currentPage,tableItem, mainData, loading, filteredMainData, serachInputValue } = useSelector((state) => state?.tabs_reducer);
+  const { loading } = useSelector((s) => s.tabs_reducer)
+
+  const {
+    // loading,
+    filteredMainData,
+    serachInputValue,
+    currentPage,
+  } = useSelector((state) => state?.tabs_reducer);
+
+
+
+  const { mainData } = useSelector((state) => state?.unsaved_reducer)
   const dispatch = useDispatch();
-  const {filters, columns} = currentPage;
+  const { filters, columns, tableItem } = currentPage;
+
 
   const rowSelection = {
-    selectedRowKeys: tableItem.map(row => row.key),
+    selectedRowKeys: tableItem?.map((row) => row.key),
     onChange: (selectedRowKeys, selectedRows) => {
-        dispatch(setTableItem(selectedRows))
+      dispatch(setTableItem(selectedRows));
     },
     getCheckboxProps: (record) => ({
-        disabled: record.name === 'Disabled User',
-        name: record.name,
+      disabled: record.name === "Disabled User",
+      name: record.name,
     }),
-};
+  };
 
   function filterAdd() {
     let filteredColumns = [];
     if (filters) {
-      filteredColumns = FilterColumns(
-        filters,
-        columns,
-        mainData
-      );
+      filteredColumns = FilterColumns(filters, columns, mainData);
     } else {
       filteredColumns = columns;
     }
@@ -39,6 +47,18 @@ const GlobalTable = () => {
   useEffect(() => {
     filterAdd();
   }, [currentPage, mainData]);
+
+
+
+  const onClickRow = record => {
+    return {
+      onClick: () => {
+        dispatch(setTableItem([record]));
+      },
+    };
+  };
+
+
 
   return (
     <Table
@@ -50,10 +70,13 @@ const GlobalTable = () => {
       size={"small"}
       scroll={currentPage?.scroll ? { ...currentPage?.scroll } : { y: 380 }}
       pagination={{ position: ["bottomCenter"] }}
+
       rowSelection={{
         type: "checkbox",
         ...rowSelection,
       }}
+
+      onRow={onClickRow}
     />
   );
 };

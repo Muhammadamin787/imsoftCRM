@@ -1,39 +1,51 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Modal, Button, Form, message } from "antd";
+import { Modal, Button } from "antd";
 import "./GlobalModal.scss";
 import ModalInput from "./ModalInput";
 import { useSelector, useDispatch } from "react-redux";
 import {
   toggleModal,
-  addValuesData,
-  setData,
-  setAllData,
   setValues,
   setTableItem,
-} from "../../redux/tabs_reducer";
+  stopLoading,
+  startLoading,
+  setValues2,
+} from "../../redux/stored_reducer";
+import { setData, setAllData } from "../../redux/unsaved_reducer";
 import ModalTabs from "./modalTabs/ModalTabs";
 import Draggable from "react-draggable";
 import MacActions from "../ToolsBar/MacActions/MacActions";
-import axios from "../../functions/axios";
 import { GET, POST } from "../../functions/Methods";
-import { inputDeafultHeght } from "../../constant/deafultStyle";
+import {
+  ProgrammsTemplateApi,
+  removeApiStatusLines,
+} from "../../constant/apiLine/apiLine";
+import axios from "../../functions/axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const GlobalModal = () => {
-  const { currentPage, data, values } = useSelector(
+  const { currentPage, values, innerModal } = useSelector(
     (state) => state.tabs_reducer
   );
-
+  const { user } = useSelector((s) => s.auth_reducer);
+  const [update, setUpdate] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const draggleRef = useRef("s");
   const [bounds, setBounds] = useState({
     left: 0,
     top: 0,
     bottom: 0,
     right: 0,
   });
-  const [disabled, setDisabled] = useState(true);
-  const dispatch = useDispatch();
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
-    if (currentPage && currentPage?.isOpenModal) {
+    if (!innerModal) {
+      dispatch(setValues2({}));
+    }
+    if (currentPage && currentPage.isOpenModal) {
       let currentData = currentPage?.allData;
       for (const url in currentData) {
         let res = axios(currentData[url]);
@@ -44,35 +56,59 @@ const GlobalModal = () => {
     }
   }, [currentPage]);
 
-  const handleCancel = (e) => {
-    dispatch(toggleModal(false));
-    dispatch(setValues({}));
-  };
-
   const resizeModal = () => {
     // keyinchalik kichik katta qilagian funksiya yoziladi
   };
 
   const handleChangeValue = (e) => {
-    dispatch(setValues({ ...values, ...e }));
+    if (e) {
+      dispatch(setValues({ ...values, ...e }));
+    }
   };
+
+  const handleCancel = (e) => {
+    dispatch(toggleModal(false));
+  };
+  const currentPageSetModal = () => {
+    dispatch(setValues({}));
+    dispatch(toggleModal(false));
+  };
+  const { mainUrl, key } = currentPage;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleChangeValue();
-    const url = currentPage?.mainUrl;
-    POST(url, values).then(res => {
-        message.success({ content: res.data.data, key: e });
+    setBtnDisabled(true);
+    POST(
+      mainUrl,
+      currentPage.mainUrl === ProgrammsTemplateApi
+        ? { ...values, from_whom: user.name }
+        : values
+    ).then((res) => {
+      if (res) {
         dispatch(toggleModal(false));
         dispatch(setValues({}));
-        dispatch(setTableItem([]))
-        GET(url).then(res => {
-            dispatch(setData(res.data.data))
-        });
+        dispatch(setTableItem([]));
+        dispatch(startLoading());
+        setUpdate(true);
+      }
+      setBtnDisabled(false);
     });
   };
 
-  const draggleRef = useRef("s");
+  useEffect(() => {
+    if (update) {
+      GET(
+        removeApiStatusLines.includes(mainUrl)
+          ? `${mainUrl}/status/${key}`
+          : mainUrl
+      ).then((res) => {
+        dispatch(setData(res.data.data));
+        dispatch(stopLoading());
+        toast.success("Muaffaqiyatlik bajarildi");
+      });
+      setUpdate(false);
+    }
+  }, [update]);
 
   const onStart = (event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;
@@ -90,9 +126,8 @@ const GlobalModal = () => {
 
   return (
     <Modal
-        className="global-modal"
-        style={{ ...currentPage?.modal?.style }}
-      width={currentPage?.modal?.style?.width}
+      className="global-modal"
+      style={{ ...currentPage?.modal?.style }}
       footer={null}
       title={
         <div
@@ -108,7 +143,7 @@ const GlobalModal = () => {
           <div className="modal-header">
             <span>{currentPage?.text}</span>
             <div className="modal-header__buttons">
-              <MacActions onExit={handleCancel} onResize={resizeModal} />
+              <MacActions onExit={currentPageSetModal} onResize={resizeModal} />
             </div>
           </div>
         </div>
@@ -136,26 +171,19 @@ const GlobalModal = () => {
             }}
           >
             {form?.inputs?.map((input) => (
-              // <label
-              // style={{
-              //   gridColumn: input.gridColumn,
-              //   gridRow: input.gridRow,
-              //   height: input.height ? input.height + "px" : inputDeafultHeght + "px",
-              //   border: "1px solid black"
-              // }}
-              // className="select-label"
-              //   >
-              //     {input?.label}
               <ModalInput
                 {...input}
                 key={input?.name}
+                countInput={form?.inputs}
                 handleChangeValue={handleChangeValue}
               />
-              //  </label>
             ))}
           </div>
         ))}
-        <ModalTabs tabs={currentPage?.modal?.tabs} handleChangeValue={handleChangeValue} />
+        <ModalTabs
+          tabs={currentPage?.modal?.tabs}
+          handleChangeValue={handleChangeValue}
+        />
         <div className="modal-form_buttons">
           <Button
             type="submit"
@@ -164,13 +192,15 @@ const GlobalModal = () => {
           >
             Orqaga
           </Button>
-          <button
+          <Button
             type="submit"
             className="modal-form__button saqlash"
             onClick={(e) => handleSubmit(e)}
+            disabled={btnDisabled}
+            loading={btnDisabled}
           >
             Saqlash
-          </button>
+          </Button>
         </div>
       </form>
     </Modal>

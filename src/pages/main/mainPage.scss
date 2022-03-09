@@ -81,7 +81,6 @@
         }
       }
 
-
       .header__navigation__item:first-child {
         margin-left: -100px;
       }
@@ -114,11 +113,6 @@
   .site-layout {
     background-color: #eaedf2;
     margin-top: 54px !important;
-
-    & > div {
-       //border: 1px solid deeppink;
-      height: 100%;
-    }
   }
 
   // __________________________Site Layout end
@@ -127,6 +121,7 @@
   .site-footer {
     background-color: #fff;
     padding: 0;
+
     .site-footer__content {
       padding: 0 40px;
       display: flex;
@@ -153,7 +148,21 @@
   // __________________________Site Footer end
 }
 
-
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after {
   border-bottom: none !important;
+}
+
+.location {
+  .ant-modal-footer {
+    display: none !important;
+  }
+  .ymaps-2-1-79-gotoymaps__text {
+    display: none !important;
+  }
+  .ymaps-2-1-79-map-copyrights-promo {
+    display: none !important;
+  }
+  .ymaps-2-1-79-copyright__content-cell {
+    display: none !important;
+  }
 }

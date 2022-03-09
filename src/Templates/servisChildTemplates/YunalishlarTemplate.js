@@ -2,16 +2,15 @@ import React from "react";
 import {YUNALISHLAR_PATH} from "../../pages/pageConstants/PageRoutes";
 import {SERVIS_CHILD_PAGES} from "../../pages/pageConstants/PageTypes";
 import {STRING} from "../../components/Modal/InputTypes";
-import {FieldNumberOutlined} from "@ant-design/icons";
 
 const YunalishlarTemplate = {
-    text: "Yunalishlar",
+    accessKey: 7,
+    text: "Yo'nalishlar",
     path: YUNALISHLAR_PATH,
     icon: "Yunalishlar",
     type: SERVIS_CHILD_PAGES,
     isOpenModal: false,
-    mainUrl:"/directions",
-    // allData: ["/directions/"],
+    mainUrl:"/categories",
     modal: {
         style: {
             // width: 500,
@@ -26,7 +25,8 @@ const YunalishlarTemplate = {
                     name: "name",
                     type: STRING,
                     placeholder: "Yo'nalishlar",
-                    label: "Yo'nalish"
+                    label: "Yo'nalish",
+                    required: true,
                 },
             ],
         },

@@ -1,71 +1,78 @@
-.bottom__tabs_relative{
+.bottom__tabs_relative {
   position: relative;
   z-index: 10;
-  .clear__all{
+  .clear__all {
     position: absolute;
-    top: 2px;
-    right: 2px;
-    background-color: var(--main-color);
+    top: 0px;
+    right: 0px;
+    background-color: #aaa;
     color: #fff;
-    border: 1px solid #fff;
+    border: none;
+    height: 96%;
     cursor: pointer;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: var(--main-color);
+    }
   }
 }
 .site-footer__tabs {
+  width: 80%;
   display: flex;
-  background-color: var(--main-color);
-  height: 31px;
-  
-  .site-footer__tab {
-    background: #5154ff !important;
-    //border-radius: 5px;
-    color: #ffffff;
+  align-items: center;
+  .bottom__btn {
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 3px 15px;
+    background-color: #fff;
+    border: none;
+    border-right: 1px solid #ccc;
+    outline: none !important;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      color: blue;
+      svg {
+        path {
+          fill: rgb(24, 0, 240) !important;
+        }
+      }
+    }
     span {
-      margin-left: 15px;
+      margin-left: 10px;
+    }
+    .bottom__cross {
+      margin-top: 6px;
     }
     svg {
-      width: 17px;
+      width: 17px !important;
       height: 17px;
-      fill: #ffffff;
+      //fill: #ffffff;
+
       path {
-        fill: #ffffff;
+        fill: #999 !important;
+        //fill: #ffffff;
       }
     }
   }
-
-  // default antd styles
-  .ant-tabs-tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    //padding: 12px 0;
-    //font-size: 14px;
-    background: transparent;
-    border: 0;
-    height: 30px;
-    min-width: 100px;
-    outline: none;
-    cursor: pointer;
-
-    .anticon-close {
-      position: absolute;
-      right: 5px;
-      top: 9px;
+  .activeBottomKey {
+    background-color: blue !important;
+    color: #fff !important;
+    svg {
+      path {
+        fill: rgb(255, 255, 255) !important;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: rgb(255, 255, 255) !important;
+        }
+      }
     }
   }
-  
-  .ant-tabs-tab-remove {
-    color: #ffffff;
-    font-size: 10px;
-  }
 }
-
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
-  background: #5154ff;
-  //background: red;
-  //border-radius: 5px;
-  //color: #ffffff;
+  background-color: #fff !important;
 }

@@ -1,14 +1,23 @@
 import "antd/dist/antd.css";
 import "./universal.scss";
+import { useSelector } from "react-redux";
 import MainPage from "./pages/main/MainPage";
-import useFetch from "./functions/axios"
-
+import Login from "./pages/login/Login";
+import { Route, Routes, Navigate } from "react-router-dom";
 function App() {
+  const { user } = useSelector((state) => state.auth_reducer);
+
+  
+  if (user) {
+    return <MainPage />;
+  } else {
     return (
-        <MainPage/>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     );
+  }
 }
 
 export default App;
-
-

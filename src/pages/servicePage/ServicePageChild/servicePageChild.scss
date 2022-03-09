@@ -1,5 +1,4 @@
 .child-page {
-  // border: 2px  solid red;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -9,18 +8,10 @@
     flex-grow: 1;
     height: 100%;
     overflow: auto;
-    // border: 2px solid blue;
-  }
-
-  .main-table.ant-table-wrapper {
-    // height: 506px !important;
-    // overflow: hidden;
-    // border: 2px solid yellow;
   }
 
   .main-table {
     flex-grow: 1;
-    // height: 459px !important;
     overflow: auto;
   }
 }
@@ -35,7 +26,6 @@
 
   .child-page__tools {
     height: 40px;
-    // display: flex;
     align-items: center;
 
     button {
@@ -58,10 +48,6 @@
     }
   }
 }
-
-// .ant-table-pagination{
-//   display: none;
-// }
 
 .hodimlar {
   background-image: url("../../../assets/icons/staff.svg");

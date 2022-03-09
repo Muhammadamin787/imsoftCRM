@@ -6,20 +6,27 @@ import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerfor
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
-import {STRING, DATE,MAP, NUMBER, SELECT, UPLOAD, IMAGE} from "../../components/Modal/InputTypes"
+import {
+    STRING,
+    DATE,
+    SELECT,
+} from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
 export const NewProgrammsTemplate = {
   text: "Yangi dasturlar",
+  accessKey: 3,
   path: YANGI_DASTURLAR,
   type: PROGRAMMERS_CHILD_PAGES,
   key: "1",
-  allData:{
-    workers:"/workers/all"
+  allData: {
+    workers: "/workers/all",
+    clients: "/clients/active",
   },
   modal: {
     style: {
-      width: 1000,
+      width: 1100,
+      height: 100,
       marginTop: "-70px",
     },
     tabs: [ProgrammSpecifications, ProgrammPerformers, ProgrammFilesList],
@@ -28,17 +35,18 @@ export const NewProgrammsTemplate = {
     {
       grid: {
         columns: "repeat(1, 8fr)",
-        rows: "repeat(1, 3fr)",
+        rows: "repeat(1, 8fr)",
       },
       inputs: [
         {
-          name: "client_name",
-          type: STRING,
+          name: "client_id",
+          type: SELECT,
           required: true,
           placeholder: "Mijoz",
           gridColumn: "1 / 5",
           gridRow: "1 / 2",
           label: "Mijoz",
+          options: "clients",
         },
         {
           name: "start_date",
@@ -49,6 +57,7 @@ export const NewProgrammsTemplate = {
           gridRow: "1 / 2",
           label: "Buyurtma sana",
         },
+
         {
           name: "finish_date",
           type: DATE,
@@ -59,34 +68,43 @@ export const NewProgrammsTemplate = {
           label: "Topshiriligan sana",
         },
         {
+          name: "name",
+          type: STRING,
+          required: true,
+          placeholder: "Projact ismi",
+          gridColumn: "1 / 5",
+          gridRow: "2 / 3",
+          label: "Projact ismi",
+        },
+        {
+          name: "developer_id",
+          type: SELECT,
+          required: true,
+          placeholder: "Qabul qilgan xodim:",
+          gridColumn: "5 / 7",
+          gridRow: "2 / 3",
+          label: "Qabul qilgan xodim",
+          options: "workers",
+          template: XodimlarTemplate,
+        },
+        {
+          name: "status_id",
+          type: SELECT,
+          required: true,
+          placeholder: "Xolati:",
+          gridColumn: "7 / 9",
+          gridRow: "2 / 3",
+          label: "xolati",
+          options: "status",
+        },
+        {
           name: "general_info",
           type: STRING,
           required: true,
           placeholder: "Umumiy tafsiflar",
           gridColumn: "1 / 9",
-          gridRow: "2 / 3",
+          gridRow: "3 / 4",
           label: "Umumiy tafsiflar",
-        },
-        {
-          name: "developer_name",
-          type: SELECT,
-          required: true,
-          placeholder: "Qabul qilgan xodim:",
-          gridColumn: "1 / 5",
-          gridRow: "3 / 4",
-          label: "Qabul qilgan xodim",
-          options:"workers",
-          template: XodimlarTemplate
-        },
-        {
-          name: "status",
-          type: SELECT,
-          required: true,
-          placeholder: "Xolati:",
-          gridColumn: "5 / 7",
-          gridRow: "3 / 4",
-          label: "xolati",
-          options:"status"
         },
       ],
       innerTable: [],
@@ -94,8 +112,7 @@ export const NewProgrammsTemplate = {
   ],
   isOpenModal: false,
   mainUrl: ProgrammsTemplateApi,
-  // allData: ["/projects"],
-  filters: ["developer_id"],
+  filters: ["developer_name"],
   columns: [
     {
       title: <FieldNumberOutlined />,
@@ -107,15 +124,15 @@ export const NewProgrammsTemplate = {
     },
     {
       title: "Mijoz F.I.O",
-      dataIndex: "client_id",
-      key: "client_id",
+      dataIndex: "client_name",
+      key: "client_name",
       width: "40%",
       align: "center",
     },
     {
       title: "Dastur nomi",
-      dataIndex: "project_name",
-      key: "project_name",
+      dataIndex: "name",
+      key: "name",
       width: "30%",
       align: "center",
     },
@@ -129,47 +146,31 @@ export const NewProgrammsTemplate = {
     },
     {
       title: "Ish olingan vaqti",
-      dataIndex: "start_date",
+      dataIndex: "created_at",
       key: "start_date",
       width: "30%",
       align: "center",
     },
     {
       title: "Ish topshirish vaqti",
-      dataIndex: "finish_date",
+      dataIndex: "created_at",
       key: "finish_date",
       width: "40%",
       align: "center",
     },
     {
       title: "Kim orqali",
-      dataIndex: "by_client",
-      key: "by_client",
+      dataIndex: "from_whom",
+      key: "from_whom",
       width: "30%",
       align: "center",
     },
     {
       title: "Hodim",
-      dataIndex: "developer_id",
-      key: "developer_id",
+      dataIndex: "developer_name",
+      key: "developer_name",
       width: "30%",
       align: "center",
-      onFilter: (value, record) => record.developer_id.indexOf(value) === 0,
     },
   ],
 };
-
-
-// "id": 10,
-// "project_name": "Christina O'Hara",
-// "general_info": "Quaerat excepturi necessitatibus sit quia consequatur est. Voluptas explicabo similique ut et illum natus. Ut pariatur illum et magnam placeat. Perferendis et repellat natus aut omnis mollitia. Architecto nulla veniam at recusandae consequatur. Voluptates possimus qui et neque quae aut aliquam. Atque dolor vitae ut error. Quo voluptate at aliquam tempora. Est autem eum qui atque ut occaecati. Corporis laborum nihil facere rerum. Fuga et fugit accusamus rem quia recusandae.",
-// "general_file": "https://via.placeholder.com/500x500.png/009944?text=IMSOFT+vel",
-// "status_id": 2,
-// "developer_id": "Prof. Roosevelt Schaden",
-// "developer_info": "Quia id eos possimus quis deserunt quam beatae. Ipsum asperiores ducimus ut voluptatem aliquid. Qui reprehenderit dolores ipsam nostrum aliquid enim vitae similique.",
-// "start_date": "1985-05-20 07:14:12",
-// "dedline_date": "1987-05-08 08:00:54",
-// "finish_date": "2013-05-28 20:29:22",
-// "about_file": "Earum aut cupiditate possimus. Sint aut commodi odit deleniti officia. Deleniti iste quam placeat vero dolores. Aut in sit rerum iusto. Eveniet modi veniam atque magni veniam delectus fugiat nisi. Non ab odit rerum aut ea ut. Assumenda dolor aut libero molestias consequuntur. Molestiae provident ea velit. Numquam dolorem voluptas aliquam odio ut. Est autem molestias voluptates placeat similique dolorum ut. Ipsam sit vel voluptatem nesciunt rerum. Ad et dolorem maiores natus voluptates vel voluptate aut. Earum tempore ut voluptatum. Velit enim aut dolore est. Qui vel quis vel rerum neque.",
-// "project_file": "https://via.placeholder.com/500x500.png/000088?text=IMSOFT+cupiditate",
-// "client_id": "Ross Von"

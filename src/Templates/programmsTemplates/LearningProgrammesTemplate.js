@@ -1,6 +1,4 @@
-import {
-  OQITILAYOTGAN,
-} from "../../pages/pageConstants/PageRoutes";
+import {OQITILAYOTGAN} from "../../pages/pageConstants/PageRoutes";
 import { PROGRAMMERS_CHILD_PAGES } from "../../pages/pageConstants/PageTypes";
 import { NewProgrammsTemplate } from "./NewProgrammsTemplate";
 import {ProgrammsTemplateApi} from '../../constant/apiLine/apiLine';
@@ -11,6 +9,4 @@ export const LearningProgrammesTemplate = {
   key: "3",
   type: PROGRAMMERS_CHILD_PAGES,
   mainUrl: ProgrammsTemplateApi,
-  // modal: {...NewProgrammsTemplate.modal},
-  // columns: [...NewProgrammsTemplate.columns],
 };

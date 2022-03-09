@@ -1,13 +1,15 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import {
-  removeTableItem,
+  setTableItem,
   toggleModal,
-  changePanesModal,
   setValues,
-  setData,
-} from "../../../redux/tabs_reducer";
+  stopLoading,
+  startLoading,
+} from "../../../redux/stored_reducer";
+import { setData } from "../../../redux/unsaved_reducer";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Button, message, Popconfirm, Tooltip } from "antd";
+import { Button, Popconfirm, Tooltip } from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
 import { findIcon } from "../../../assets/icons/icons";
@@ -19,6 +21,8 @@ import {
   OQITILAYOTGAN,
 } from "../../../pages/pageConstants/PageRoutes";
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const addButtonIsDisabled = [
   JARAYONDAGI,
   BEKOR_QILINGAN,
@@ -26,48 +30,48 @@ const addButtonIsDisabled = [
   OQITILAYOTGAN,
 ];
 
-const Toolbar = ({ tableItem }) => {
+const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
-  const { currentPage, loading, Panes,MainData } = useSelector(
+  const { currentPage, tableItem, values } = useSelector(
     (state) => state.tabs_reducer
   );
 
   const handleModalClick = () => {
-    const newPanes = Panes?.map((page) =>
-      page?.path === currentPage?.path
-        ? { ...page, isOpenModal: !currentPage?.isOpenModal }
-        : page
-    );
-    const newCurrentPage = {
-      ...currentPage,
-      isOpenModal: !currentPage?.isOpenModal,
-    };
-    
-    dispatch(
-      changePanesModal({ panes: newPanes, currentPage: newCurrentPage })
-    );
+    dispatch(toggleModal(true));
   };
 
-  const onRemove = () => {
+  const onRemove = async () => {
     const url = currentPage?.mainUrl;
-
     let ids = tableItem.map((row) => {
       return row.id;
     });
-    
+
     DELETE(url + "/delete", ids).then((res) => {
-      GET(removeApiStatusLines.includes(url)?`${url}/status/${currentPage?.key}`: url).then((res2) => {
-        setData(res2.data);
-      });
+      if (res) {
+        dispatch(startLoading());
+        toast.success("Muvaffaqiyatlik o'chirildi");
+        GET(
+          removeApiStatusLines.includes(url)
+            ? `${url}/status/${currentPage?.key}`
+            : url
+        ).then((res2) => {
+          if (res2) {
+            dispatch(setData(res2.data.data));
+            dispatch(setValues({}));
+            dispatch(setTableItem([]));
+            dispatch(stopLoading());
+          }
+        });
+      }
     });
   };
 
   const onEdit = () => {
-    if (tableItem.length === 1) {
-      dispatch(setValues(...tableItem));
+    if (tableItem.length > 0 && tableItem.length < 2) {
+      dispatch(setValues({ ...tableItem[0] }));
     }
-    dispatch(toggleModal(true));
+    dispatch(toggleModal(tableItem));
   };
 
   const currentPageIcon = findIcon(currentPage?.icon);
@@ -77,6 +81,7 @@ const Toolbar = ({ tableItem }) => {
       placement: "top",
       title: "1 ta qatorni belgilng!",
       okText: "tushundim",
+      showCancel: false,
     },
   };
 
@@ -102,13 +107,23 @@ const Toolbar = ({ tableItem }) => {
     },
     {
       icon: findIcon("DeleteIcon"),
-      pop: {
-        placement: "top",
-        title: "Malumotni o'chirmoqchimisiz!",
-        onConfirm: onRemove,
-        okText: "Ha",
-        cancelText: "Yo'q",
-      },
+      pop:
+        tableItem.length > 0
+          ? {
+              placement: "top",
+              title: "Malumotni o'chirmoqchimisiz!",
+              cancelText: "Yo'q",
+              okText: "Ha",
+              onConfirm: onRemove,
+            }
+          : noPopEdit.pop,
+      // pop: {
+      //   placement: "top",
+      //   title: "Malumotni o'chirmoqchimisiz!",
+      //   cancelText: "Yo'q",
+      //   okText: "Ha",
+      //   onConfirm: onRemove,
+      // },
       tooltip: {
         placement: "bottom",
         text: "O'chirish",
@@ -130,7 +145,7 @@ const Toolbar = ({ tableItem }) => {
       <div className="toolbar__tools">
         {ToolBarButtons?.map((button, i) =>
           button.pop ? (
-            <Popconfirm {...button.pop} showCancel={false}>
+            <Popconfirm {...button.pop}>
               <Tooltip
                 placement={button?.tooltip?.placement}
                 title={button?.tooltip?.text}
@@ -145,7 +160,15 @@ const Toolbar = ({ tableItem }) => {
               key={i}
               title={button?.tooltip?.text}
             >
-              <Button onClick={() => button.onClick()} disabled={addButtonIsDisabled.includes(currentPagePath)}>{button.icon}</Button>
+              <Button
+                onClick={() => button.onClick()}
+                disabled={
+                  addButtonIsDisabled.includes(currentPagePath) &&
+                  button?.tooltip?.text !== "Taxrirlash"
+                }
+              >
+                {button.icon}
+              </Button>
             </Tooltip>
           )
         )}

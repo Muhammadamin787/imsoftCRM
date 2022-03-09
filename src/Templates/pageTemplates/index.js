@@ -1,17 +1,8 @@
 // Main templates imports
 import ClientTemplate from "./ClientTemplate";
 import ProgrammsTemplate from "./ProgrammesTemplate";
-import MainTemplate from "./MainTemplate";
 import ServiceTemplate from "./ServiceTemplate";
-import ReportTemplate from "./ReportTemplate";
-import FaolyatTurlaiTemplate from "../servisChildTemplates/FaolyatTurlariTemplate";
-import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
-import YunalishlarTemplate from "../servisChildTemplates/YunalishlarTemplate";
-import ViloyatlarTemplate from "../servisChildTemplates/ViloyatlarTemplate";
-import ReklamalarTemplate from "../servisChildTemplates/ReklamalarTemplate";
-import HududTemplate from "../servisChildTemplates/HududTemplate";
-import ShaharTumanTemplate from "../servisChildTemplates/ShaharTumanTempilate";
-
+import MainTemplate from "./MainTemplate"
 
 // Basic routes templates
 export const AllPages = [

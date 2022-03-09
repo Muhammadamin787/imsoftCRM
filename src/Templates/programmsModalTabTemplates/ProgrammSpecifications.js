@@ -1,38 +1,48 @@
 import { FieldNumberOutlined } from "@ant-design/icons";
 import React from "react";
-import { Input, Button } from "antd"
-
+import TabInput from "../../components/Modal/TabInput/TabInput";
+import { STRING, UPLOAD, BUTTON } from "../../components/Modal/InputTypes"
+import { v4 as uuidv4 } from 'uuid'
 
 export const ProgrammSpecifications = {
     text: "Texnik tafsiflar",
+    name: "tech_doc",
+    CreateObj: {
+        rowId: uuidv4(),
+        name: '',
+        comment: '',
+        file: '',
+    },
+    scroll: { y: 130 },
+
     columns: [
         {
             title: <FieldNumberOutlined />,
-            dataIndex: "number",
+            dataIndex: "id",
             key: "number",
             width: "5%",
-            align: "center"
+            align: "center",
         },
         {
             title: "Nomi",
             dataIndex: "name",
-            render: (text) => (<Input type="text" />),
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"name"} type={STRING} />,
             key: "number",
-            width: "25%",
-            align: "center"
+            width: "30%",
+            align: "center",
         },
         {
             title: "Tafsif",
             dataIndex: "comment",
-            render: (text) => (<Input type="text" />),
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"comment"} type={STRING} />,
             key: "number",
-            width: "35%",
+            width: "40%",
             align: "center"
         },
         {
             title: "Fayl",
             dataIndex: "file",
-            render: () => (<Button>+</Button>),
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} name={"file"} type={UPLOAD} filePath={"/projects/image"} />,
             key: "number",
             width: "15%",
             align: "center"
@@ -40,29 +50,11 @@ export const ProgrammSpecifications = {
         {
             title: "Actions",
             dataIndex: "actions",
-            render: (_, record) => {
-                return <>
-                    <Button type="link">Delete</Button>
-                </>
-            },
+            render: (text, record, index) => <TabInput record={record} tabName={"tech_doc"} type={BUTTON} />,
             key: "action",
-            width: "15%",
-            align: "center"
+            width: "10%",
+            align: "center",
         }
 
     ],
-    data: [
-        {
-            number: "1",
-            name: "Marg",
-            comment: "izoh kiriting",
-            file: "file"
-        },
-        {
-            number: "2",
-            name: "Farg'ona",
-            comment: "commentlar uchun",
-            file: "file2"
-        }
-    ]
 }

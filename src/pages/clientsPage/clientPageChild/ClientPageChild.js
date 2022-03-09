@@ -1,38 +1,26 @@
-import "../clientsPage.scss";
-import {Tabs} from "antd";
-import {Link} from "react-router-dom";
+import { useEffect, useState } from "react";
 import Toolbar from "../../../components/ToolsBar/Toolbar/Toolbar";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import GlobalTable from "../../../components/Table/GlobalTable";
 import ClientTemplate from "../../../Templates/pageTemplates/ClientTemplate";
-import {setCurrentPage, addNewTab} from "../../../redux/tabs_reducer";
+import ChildTabs from "../../../components/ChildTabs/ChildTabs";
 
-const {TabPane} = Tabs;
+const ClientPageChild = ({ activeKey }) => {
+  const [height, setHeight] = useState(0);
 
-const ClientPageChild = ({activeKey}) => {
-    const dispatch = useDispatch();
-    const {tableItem} = useSelector(s => s.tabs_reducer);
-
-    const handleTab = (page) => {
-        dispatch(setCurrentPage(page));
-        dispatch(addNewTab(page));
-    };
-
-    return (
-        <div>
-            <Toolbar tableItem={tableItem} />
-            <Tabs defaultActiveKey={activeKey}>
-                {ClientTemplate?.tabs?.map((item) => (
-                    <TabPane key={item.key}
-                             tab={
-                                 <Link to={item.path} onClick={() => handleTab(item)}>
-                                     {item.text}
-                                 </Link>
-                             }/>
-                ))}
-            </Tabs>
-            <GlobalTable/>
-        </div>
-    );
+  useEffect(() => {
+    const dad = document.getElementById("site__loyout");
+    setHeight(parseInt(dad.getBoundingClientRect().height));
+  }, []);
+  
+  return (
+    <>
+      <Toolbar />
+      <div className="my__layout_child" style={{ height: height - 40 + "px" }}>
+        <ChildTabs data={ClientTemplate} activeKey={activeKey} />
+        <GlobalTable />
+      </div>
+    </>
+  );
 };
 export default ClientPageChild;

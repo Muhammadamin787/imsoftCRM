@@ -13,7 +13,6 @@
     padding: 0 10px;
     height: 95%;
     cursor: pointer;
-    //border: 1px solid red;
     justify-content: space-between;
     align-items: center;
     user-select: none;
@@ -48,7 +47,6 @@
 
       &:hover {
         background-color: rgba(200, 200, 200, 0.2);
-        // background-color: #3234af;
         svg {
           path {
             fill: #fff;
@@ -68,5 +66,4 @@
       }
     }
   }
-
 }
