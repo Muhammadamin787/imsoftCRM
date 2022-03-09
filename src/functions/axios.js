@@ -1,6 +1,5 @@
 import axios from "axios";
 import { BaseUrl } from "../BaseUrl";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const key = "error";

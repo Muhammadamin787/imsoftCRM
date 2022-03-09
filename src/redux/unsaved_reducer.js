@@ -92,39 +92,40 @@ export const counterSlice = createSlice({
         {
           id: 1,
           name: "Agent orqali",
-          url:"/workers/all"
+          url: "/workers/all",
         },
         {
           id: 2,
           name: "Mijoz orqali",
-          url:"/clients/active"
+          url: "/clients/active",
         },
         {
           id: 3,
           name: "Xodimlar orqali",
-          url:"/workers/all"
+          url: "/workers/all",
         },
         {
           id: 4,
           name: "Reklama orqali ",
-          url:"/reklams"
+          url: "/reklams",
         },
         {
           id: 5,
           name: "Boshqa",
-          url:""
+          url: "",
         },
       ],
-      order_reason:[],
+      order_reason: [],
     },
-    searchInputValue:[],
-    changeInputtype:true,
+    searchInputValue: [],
+    changeInputtype: true,
     filterAllData: [],
     mainData: [],
   },
   reducers: {
     setAllData: (state, { payload }) => {
       state.allData = { ...state.allData, ...payload };
+      state.filterAllData = state.allData;
     },
     setData: (state, { payload }) => {
       let arrayWithKeys = [];
@@ -134,11 +135,11 @@ export const counterSlice = createSlice({
         });
       state.mainData = arrayWithKeys;
     },
-    setOrderReason : (state, { payload }) => {
+    setOrderReason: (state, { payload }) => {
       state.allData.order_reason = payload;
     },
     setSearchInputValue: (state, { payload }) => {
-      state.searchInputValue = payload
+      state.searchInputValue = payload;
     },
     toogleInputType: (state, { payload }) => {
       state.changeInputtype = payload;
@@ -149,6 +150,13 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { setAllData, setData,setOrderReason,setFilterData, setSearchInputValue, toogleInputType } = counterSlice.actions;
+export const {
+  setAllData,
+  setData,
+  setOrderReason,
+  setFilterData,
+  setSearchInputValue,
+  toogleInputType,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
