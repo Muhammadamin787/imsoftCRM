@@ -23,8 +23,10 @@ export default async (url, method = "GET", data = null, id = null) => {
     } catch (error) {
       if (error.message.includes("400")) {
         toast.warn("Oldin bog'langan ma'lumitlarni o'chiring");
-      } else if (error.message.includes("401")) {
-        toast[key](error.response?.data?.message);
+      // }
+      // else if (error.message.includes("401")) {
+      //   toast[key](error.response?.data?.mess  age);
+
       } else if (error.message.includes("422")) {
         const format = error.response.data?.errors;
         if (typeof format === "object") {
