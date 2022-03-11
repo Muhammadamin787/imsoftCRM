@@ -12,12 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Popconfirm, Tooltip } from "antd";
 import MacActions from "../MacActions/MacActions";
 import "./toolBar.scss";
-import {
-  AddItem,
-  findIcon,
-  EditIcon,
-  DeleteIcon,
-} from "../../../assets/icons/icons";
+import { AddItem, EditIcon, DeleteIcon } from "../../../assets/icons/icons";
 import { DELETE, GET } from "../../../functions/Methods";
 import {
   JARAYONDAGI,
@@ -28,6 +23,7 @@ import {
 import { removeApiStatusLines } from "../../../constant/apiLine/apiLine";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchIcon from "../../Tabs/SearchIcon";
 
 const addButtonIsDisabled = [
   JARAYONDAGI,
@@ -40,7 +36,6 @@ const Toolbar = () => {
   const [currentPagePath, setCurrentPagePath] = useState("");
   const dispatch = useDispatch();
   const { currentPage, tableItem } = useSelector((state) => state.tabs_reducer);
-  const currentPageIcon = findIcon(currentPage?.icon);
 
   useEffect(() => {
     setCurrentPagePath(currentPage.path);
@@ -142,7 +137,9 @@ const Toolbar = () => {
   return (
     <div className="toolbar">
       <div className="toolbar__title">
-        <span>{currentPageIcon}</span>
+        <span>
+          <SearchIcon icon={currentPage.icon} />
+        </span>
         <span className="toolbar__title-text">{currentPage?.text}</span>
       </div>
       <div className="toolbar__tools">

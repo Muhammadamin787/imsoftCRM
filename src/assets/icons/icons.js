@@ -76,7 +76,7 @@ function MainIcon() {
   );
 }
 
-function DiagrammIcon() {
+function ProfileIconDiagrammIcon() {
   return (
     <svg
       width="24"
@@ -586,7 +586,7 @@ function AddItem() {
 
 function AddFile() {
   return (
-    <svg
+    <svgAddFolder
       width="16"
       height="16"
       viewBox="0 0 16 16"
@@ -597,7 +597,7 @@ function AddFile() {
         d="M10.6667 1.33334L14 4.66668V14.0053C13.9998 14.1808 13.93 14.349 13.8059 14.473C13.6817 14.597 13.5135 14.6667 13.338 14.6667H2.662C2.48692 14.6655 2.31934 14.5954 2.19548 14.4717C2.07161 14.3479 2.0014 14.1804 2 14.0053V1.99468C2 1.62934 2.29667 1.33334 2.662 1.33334H10.6667ZM7.33333 7.33334H5.33333V8.66668H7.33333V10.6667H8.66667V8.66668H10.6667V7.33334H8.66667V5.33334H7.33333V7.33334Z"
         fill="#4447E2"
       />
-    </svg>
+    </svgAddFolder>
   );
 }
 
@@ -990,7 +990,7 @@ function Location() {
 export {
   CompanyLogo,
   MainIcon,
-  DiagrammIcon,
+  ProfileIconDiagrammIcon,
   GlobusIcon,
   GlobusIcon2,
   TelegramIcon,
@@ -1028,53 +1028,7 @@ export {
   Plus,
   Location,
   EditIcon,
-};
-
-const iconArr = [
-  CompanyLogo,
-  MainIcon,
-  DiagrammIcon,
-  GlobusIcon,
-  GlobusIcon2,
-  TelegramIcon,
-  ServiceIcon,
-  ProfileIcon,
-  VectorIcon,
-  City,
-  Arrow,
-  Group,
-  Faoliyat,
-  Yunalishlar,
-  Xodimlar,
-  Hudud,
-  Reklamalar,
-  AddItem,
-  AddFile,
-  AddFolder,
-  CopyFolder,
-  TransferFolder,
-  EditFile,
-  Antenna,
-  AntennaReceive,
-  DeleteItem,
-  DeleteIcon,
-  EditIcon,
-  Circle,
-  MacRed,
   CloseIconForTab,
-  MacGreen,
-  CloseIcon,
   UsersIcon,
-  MacYellow,
-  UploadFilePasport,
-  UploadFileOilasi,
-  Plus,
-  Location,
-];
-
-export default iconArr;
-
-export const findIcon = (name) => {
-  const ic = iconArr.find((icon) => icon.name === name);
-  return ic && ic();
 };
+

@@ -1,14 +1,12 @@
 import "./firstPageStyles.scss";
-import {useSelector} from 'react-redux';
-import { findIcon } from "../../assets/icons/icons";
+import SearchIcon from "../../components/Tabs/SearchIcon";
 // import {Button, Group, Arrow} from 'antd'
 
 const FirstPage = () => {
-  const {Panes} = useSelector(state => state.tabs_reducer);
 
   return (
     <div className="first-page">
-      {findIcon("CompanyLogo")}
+      <SearchIcon icon={"CompanyLogo"} />
       {/* <div className="site-layout__body">
         {Panes?.map((item, i) => <h1>{item?.text}</h1>)}
         <Button className="site-layout__body-items">

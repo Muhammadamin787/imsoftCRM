@@ -28,7 +28,6 @@ const InnerModal = () => {
     bottom: 0,
     right: 0,
   });
-  const [getReqActive, setGetReqActive] = useState(false);
   const [btnActive, setBtnActive] = useState(false);
 
   const resizeModal = () => {
@@ -51,9 +50,14 @@ const InnerModal = () => {
     setBtnActive(true);
     POST(url, values2).then((res) => {
       if (res) {
-        setGetReqActive(true);
         dispatch(setValues2({}));
         dispatch(setTableItem([]));
+        GET(url).then((res) => {
+          dispatch(setAllData(res.data.data));
+          dispatch(setOffInnerModel(false));
+          dispatch(toggleInnerModal());
+          setBtnActive(false);
+        });
         toast.success(res.data?.data?.name + " Muaffaqiyatlik qo'shildi");
       }
       setBtnActive(false);
@@ -73,19 +77,6 @@ const InnerModal = () => {
       bottom: clientHeight - (targetRect.bottom - uiData.y),
     });
   };
-
-  useEffect(() => {
-    const url = innerModal?.mainUrl;
-    if (getReqActive) {
-      GET(url).then((res) => {
-        dispatch(setAllData(res.data.data));
-        dispatch(setOffInnerModel(false));
-        dispatch(toggleInnerModal(false));
-        setGetReqActive(false);
-        setBtnActive(false);
-      });
-    }
-  }, [getReqActive]);
 
   return (
     <Modal

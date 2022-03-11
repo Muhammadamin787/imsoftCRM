@@ -68,9 +68,8 @@ export const counterSlice = createSlice({
     toggleModal: (state, { payload }) => {
       state.currentPage.isOpenModal = payload;
     },
-    toggleInnerModal: (state, { payload }) => {
-      state.innerModal.isOpenModal = payload;
-      // state.innerModal = ""
+    toggleInnerModal: (state) => {
+      state.innerModal.isOpenModal = !state.innerModal.isOpenModal;
     },
     changeCurrentPageData: (state, { payload }) => {
       if (payload) {
@@ -116,7 +115,7 @@ export const counterSlice = createSlice({
     setInnerModel: (state, { payload }) => {
       state.innerModal = payload;
     },
-    setOffInnerModel: (state, { payload }) => {
+    setOffInnerModel: (state) => {
       state.innerModal = "";
     },
 
@@ -138,7 +137,7 @@ export const counterSlice = createSlice({
     },
     removeOrder_reason: (state, { payload }) => {
       state.values.order_reason = null;
-    }
+    },
   },
 });
 
@@ -167,7 +166,7 @@ export const {
   setBottomActiveKey,
   setPanes,
   removePositionPanes,
-  removeOrder_reason
+  removeOrder_reason,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -36,12 +36,12 @@ import {
   setFilterData,
   setSearchInputValue,
 } from "../../redux/unsaved_reducer";
-import { findIcon } from "../../assets/icons/icons";
 import { PicturesWall } from "./PicturesWall/PicturesWall";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { accessValues } from "../../constant/constants";
 import { Base } from "../../BaseUrl";
 import { GET } from "../../functions/Methods";
+import SearchIcon from "../Tabs/SearchIcon";
 
 const { TextArea } = Input;
 
@@ -80,7 +80,7 @@ const ModalInput = (props) => {
 
   const handleSelectAdd = (template) => {
     dispatch(setInnerModel(template));
-    dispatch(toggleInnerModal(true));
+    dispatch(toggleInnerModal());
   };
 
   const refs = useRef(null);
@@ -273,7 +273,7 @@ const ModalInput = (props) => {
                 className="option-add"
                 onClick={() => handleSelectAdd(template)}
               >
-                {findIcon("Plus")}
+                <SearchIcon icon="Plus" />
               </div>
             ) : null}
           </div>

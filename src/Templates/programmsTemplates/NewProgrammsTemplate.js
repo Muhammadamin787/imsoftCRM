@@ -6,11 +6,7 @@ import { ProgrammPerformers } from "../programmsModalTabTemplates/ProgrammPerfor
 import { ProgrammFilesList } from "../programmsModalTabTemplates/ProgrammFilesList";
 import BigLength from "../../components/BigLength/BigLength";
 import { ProgrammsTemplateApi } from "../../constant/apiLine/apiLine";
-import {
-  STRING,
-  DATE,
-  SELECT,
-} from "../../components/Modal/InputTypes";
+import { STRING, DATE, SELECT } from "../../components/Modal/InputTypes";
 import XodimlarTemplate from "../servisChildTemplates/XodimlarTemplate";
 
 export const NewProgrammsTemplate = {
@@ -67,10 +63,10 @@ export const NewProgrammsTemplate = {
         {
           name: "name",
           type: STRING,
-          placeholder: "Projact ismi",
+          placeholder: "Dastur",
           gridColumn: "1 / 5",
           gridRow: "2 / 3",
-          label: "Projact ismi",
+          label: "Dastur",
         },
         {
           name: "developer_id",

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import {addNewTab} from "../../redux/stored_reducer";
 import { setCurrentPage } from "../../redux/stored_reducer";
-import { findIcon } from "../../assets/icons/icons";
+import SearchIcon from "../../components/Tabs/SearchIcon";
 
 const ServicePage = ({ page }) => {
   const sections = page?.sections;
@@ -14,7 +14,11 @@ const ServicePage = ({ page }) => {
     // dispatch(addNewTab(section));
     dispatch(setCurrentPage(section));
   };
-  const filterAccessKey = (array) => array.filter((item) => user?.access.includes(100) || user?.access.includes(item.accessKey))
+  const filterAccessKey = (array) =>
+    array.filter(
+      (item) =>
+        user?.access.includes(100) || user?.access.includes(item.accessKey)
+    );
   return (
     <div className="first-page">
       <div className="site-layout__body">
@@ -25,7 +29,7 @@ const ServicePage = ({ page }) => {
               onClick={() => handleTab(section)}
             >
               <div className="body-item-meaning">
-                {findIcon(section?.icon)}
+                <SearchIcon icon={section?.icon} />
                 <span>{section?.text}</span>
               </div>
             </Button>

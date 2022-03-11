@@ -2,7 +2,7 @@ import { Upload, Popover } from "antd";
 import React from "react";
 import "./GlobalModal.scss";
 import { inputDeafultHeght } from "../../constant/deafultStyle";
-import { DeleteIcon, findIcon } from "../../assets/icons/icons";
+import { DeleteIcon } from "../../assets/icons/icons";
 import { BaseUrl, Base } from "../../BaseUrl";
 import { DELETE } from "../../functions/Methods";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setValues } from "../../redux/stored_reducer";
+import SearchIcon from "../Tabs/SearchIcon";
 
 function beforeUpload(file) {
   const isJpgOrPng =
@@ -103,9 +104,17 @@ class UploadFile extends React.Component {
       } else if (!imageUrl) {
         // bu birinchi modal ochilgandagi holat
         if (bool) {
-          return <div>{findIcon(this?.props?.Iconic)}</div>;
+          return (
+            <div>
+              <SearchIcon icon={this?.props?.Iconic} />
+            </div>
+          );
         } else if (!bool) {
-          return <div>{findIcon("UploadFileOilasi")}</div>;
+          return (
+            <div>
+              <SearchIcon icon={"UploadFileOilasi"} />
+            </div>
+          );
         }
       } else if (imageUrl) {
         // bu file saqlangandagi holat

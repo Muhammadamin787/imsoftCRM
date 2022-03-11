@@ -7,7 +7,6 @@ import {
   clearPanes,
 } from "../../redux/stored_reducer";
 import { useNavigate } from "react-router-dom";
-import { findIcon } from "../../assets/icons/icons";
 import { ClearOutlined } from "@ant-design/icons";
 import SearchIcon from "./SearchIcon";
 
@@ -69,13 +68,12 @@ const BottomTabs = () => {
             {Panes &&
               Panes?.map((pane, i) => (
                 <button className="bottom__btn" onClick={() => onChange(i)}>
-                  {/* {findIcon(pane?.icon)} */}
                   <SearchIcon icon={pane?.icon} />
                   <span className="innerText">
                     {pane?.childText ? pane?.childText : pane?.text}
                   </span>
                   <span className="bottom__cross" onClick={(e) => onEdit(e, i)}>
-                    {findIcon("CloseIconForTab")}
+                    <SearchIcon icon={"CloseIconForTab"} />
                   </span>
                 </button>
               ))}

@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Layout, Menu, Popover, Button } from "antd";
 import "./mainPage.scss";
 import { Footer } from "antd/es/layout/layout";
-import { CompanyLogo, findIcon } from "../../assets/icons/icons";
+import { CompanyLogo } from "../../assets/icons/icons";
 import { AllPages } from "../../Templates/pageTemplates/index";
 import { PageController } from "../PageController";
 import AccountPNG from "../../assets/images/Ellipse 3.png";
@@ -38,6 +38,7 @@ import LocModal from "../../components/Location/LocModal";
 import { GET, POST, DELETE } from "../../functions/Methods";
 import { setUser } from "../../redux/auth_reducer";
 import { toast, ToastContainer } from "react-toastify";
+import SearchIcon from "../../components/Tabs/SearchIcon";
 // Bismillahir rohmanyir rohiym!
 const MainPage = () => {
   const { currentPage, Panes } = useSelector((state) => state.tabs_reducer);
@@ -143,7 +144,7 @@ const MainPage = () => {
                   <Item key={k}>
                     <Link to={sub.path}>
                       {sub.text}
-                      {findIcon(menu?.icon)}
+                      <SearchIcon icon={menu?.icon} />
                     </Link>
                   </Item>
                 ))}
@@ -156,7 +157,7 @@ const MainPage = () => {
                   className={({ isActive }) => (isActive ? "activeStyle" : "")}
                 >
                   <span style={{ marginRight: "10px", marginTop: "10px" }}>
-                    {findIcon(menu?.icon)}
+                    <SearchIcon icon={menu?.icon} />
                   </span>
                   <span>{menu.text}</span>
                 </NavLink>
