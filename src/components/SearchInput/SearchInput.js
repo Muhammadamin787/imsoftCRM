@@ -83,7 +83,6 @@ const SearchInput = () => {
                         ? moment(text).format("DD-MM-YYYY")
                         : text
                       }`}
-                    // text={`${text}`}
                     value={`${value}`}
                   />
                 </div>

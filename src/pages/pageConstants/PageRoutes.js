@@ -5,25 +5,25 @@ export const PROGRAMMES_PATH = "/programmes";
 export const REPORT_PATH = "/report";
 
 // paths of service pages
-export const USERS_PATH = "/servis/users";
-export const REKLAMALAR_PATH = "/servis/reklamalar";
-export const FAOLYAT_TURLARI_PATH = "/servis/faoliyat_turlari";
-export const HUDUD_PATH = "/servis/hudud";
+export const USERS_PATH = "/users";
+export const REKLAMALAR_PATH = "/reklams";
+export const FAOLYAT_TURLARI_PATH = "/activity-types";
+export const HUDUD_PATH = "/districts";
 export const XODIMLAR_PATH = "/workers";
-export const VILOYATLAR_PATH = "/servis/viloyatlar";
-export const YUNALISHLAR_PATH = "/servis/yunalishlar";
-export const SHAHAR_TUMAN_PATH = "/servis/shahar_tuman";
-export const LAVOZIM_PATH = "/servis/lavozimlar";
+export const VILOYATLAR_PATH = "/states";
+export const YUNALISHLAR_PATH = "/categories";
+export const SHAHAR_TUMAN_PATH = "/cities";
+export const LAVOZIM_PATH = "/directions";
 
 /* ------------------------- paths of client pages ------------------------ */
-export const INKOR_MIJOZLAR = "/clients/inkor_mijozlar";
-export const REAL_MIJOZLAR = "/clients/real_mijozlar";
-export const POTENSIAL_MIJOZLAR = "/clients/potensial_mijozlar";
+export const INKOR_MIJOZLAR = "/clients/3";
+export const REAL_MIJOZLAR = "/clients/2";
+export const POTENSIAL_MIJOZLAR = "/clients/1";
 
 /* ------------------------ path of programmers pages ----------------------- */
 
-export const YANGI_DASTURLAR = "/programmers/yangi_dasturlar";
-export const JARAYONDAGI = "/programmers/jarayondagi";
-export const OQITILAYOTGAN = "/programmers/oqitilayotgan";
-export const TOPSHIRILGAN = "/programmers/topshirilgan";
-export const BEKOR_QILINGAN = "/programmers/bekor_qilingan";
+export const YANGI_DASTURLAR = "/projects/1";
+export const JARAYONDAGI = "/projects/2";
+export const OQITILAYOTGAN = "/projects/3";
+export const TOPSHIRILGAN = "/projects/4";
+export const BEKOR_QILINGAN = "/projects/5";

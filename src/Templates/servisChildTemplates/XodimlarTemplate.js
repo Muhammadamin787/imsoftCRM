@@ -212,7 +212,7 @@ const XodimlarTemplate = {
     },
     {
       title: "Tug'ilgan sana",
-      dataIndex: "created_at",
+      dataIndex: "born_date",
       key: "born_date",
       width: "26%",
       align,

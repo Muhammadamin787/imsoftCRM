@@ -14,12 +14,11 @@ const BottomTabs = () => {
   const { Panes, currentPage } = useSelector((state) => state?.tabs_reducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pathname } = window.location;
   const [panes, setPanes] = useState(Panes ? Panes : []);
 
   useEffect(() => {
     setPanes(Panes);
-  }, [Panes, pathname]);
+  }, [Panes]);
 
   const clearAll = () => {
     dispatch(clearPanes([]));

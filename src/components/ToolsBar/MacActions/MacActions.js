@@ -13,7 +13,7 @@ const MacActions = ({ onResize, onHide, onExit }) => {
   const navigate = useNavigate();
   const { currentPage, Panes } = useSelector((s) => s.tabs_reducer);
   const dispatch = useDispatch();
-  
+
   const removeCurrentPage = (el) => {
     let position = null;
     Panes?.forEach((item, i) => {
@@ -33,7 +33,6 @@ const MacActions = ({ onResize, onHide, onExit }) => {
       navigate(Panes[Panes.length - 1].path);
       handlePanes(position, el);
     }
-    
   };
   function handlePanes(id, el) {
     if (el) {
@@ -73,7 +72,7 @@ const MacActions = ({ onResize, onHide, onExit }) => {
     <div className="toolbar__buttons">
       {macButtons.map((button, i) => (
         <button
-          key={i}    
+          key={i}
           className={"child-page__button " + button.className}
           onClick={button.onClick}
         >
